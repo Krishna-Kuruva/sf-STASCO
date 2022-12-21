@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Auto response to leads</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <senderEmail>michael.furze@shell.com</senderEmail>
+            <senderName>Michael Furze</senderName>
+            <template>unfiled$public/LeadsWebtoLeademailresponseSAMPLE</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

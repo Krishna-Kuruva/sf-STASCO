@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contingent_Credit_Limit_Traded_Hub__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the traded Hub PFE limit that is apptoved by Shell Trading ie not SMP.</inlineHelpText>
+    <label>Contingent Credit Limit - Traded Hub</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

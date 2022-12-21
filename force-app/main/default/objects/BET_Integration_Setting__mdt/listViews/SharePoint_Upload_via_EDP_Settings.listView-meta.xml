@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SharePoint_Upload_via_EDP_Settings</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Active__c</columns>
+    <columns>Document_Category__c</columns>
+    <columns>Document_Type__c</columns>
+    <columns>Source__c</columns>
+    <columns>Endpoint_URL__c</columns>
+    <columns>URL_Extension__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>SharePoint Upload via EDP Settings</label>
+    <language>en_US</language>
+</ListView>

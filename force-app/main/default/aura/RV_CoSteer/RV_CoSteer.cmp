@@ -1,0 +1,330 @@
+<aura:component controller="RV_CoSteerController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+	<aura:attribute name="gradeList" type="String[]" default="AGO B7,IGO 50ppm,ULG95 E5"/>
+    <aura:attribute name="finalSteergradeList" type="String[]" default="AGO B7,IGO 50ppm,ULG95 E10,ULG95 E5,ULG98"/>
+    <aura:attribute name="motList" type="String[]" default="Barge,ITT,Rail,Truck"/>
+    <aura:attribute name="plantList" type="String[]"/>
+    <aura:attribute name="finalSteerplantList" type="String[]"/>
+    <aura:attribute name="sourceSteerLst" type="Location_Steer__c[]"/>
+    <aura:attribute name="depotSteerLst" type="Location_Steer__c[]"/>
+    <aura:attribute name="orgSteerLst" type="Location_Steer__c[]"/>
+    <aura:attribute name="dailyBSPTrendMap" type="object[]"/>
+    <aura:attribute name="sourceSteerLstColumnsLst" type="List"/>
+    <aura:attribute name="depotSteerLstColumnsLst" type="List"/>
+    <aura:attribute name="sortedBy" type="String"/>
+    <aura:attribute name="showOverriddenPlants" type="Boolean" default="false"/>
+    <aura:attribute name="sortDirection" type="String"/>
+    <aura:attribute name="ARAAGOSteer" type="Integer"/>
+    <aura:attribute name="ARAIGOSteer" type="Integer"/>
+    <aura:attribute name="HarburgAGOsteer" type="Integer"/>
+    <aura:attribute name="ARAMOGASSteer" type="Integer"/>
+    <aura:attribute name="HarburgIGOsteer" type="Integer"/>
+    <aura:attribute name="gradeSelDepot" type="String" default="AGO B7"/>
+    <aura:attribute name="FinalgradeSelDepot" type="String" default="AGO B7"/>
+    <aura:attribute name="gradeSel" type="String" default="AGO B7"/>
+    <aura:attribute name="motSel" type="String" default="All"/>
+    <aura:attribute name="selPlant" type="String" default="All"/>
+    <aura:attribute name="selFinalPlant" type="String" default="All"/>
+    <aura:attribute name="contractStartDate" type="Date"/>
+    <aura:attribute name="subscription" type="Map"/>
+    <aura:attribute name="channel" type="String" default="/event/RV_LocationSteerChange__e"/>
+    <lightning:empApi aura:id="empApi"/>
+    <aura:attribute name="MasterTableSync" type="String" />
+    <aura:attribute name="mouseStart" type="string" />
+    <aura:attribute name="oldWidth" type="string" />
+    <aura:attribute name="renderFinalSteer" type="Boolean" />
+    <div class="slds-align--absolute-center">
+       <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide"  />
+    </div>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="c-container">
+        <lightning:layout horizontalAlign="space" multipleRows="true">
+            
+            <lightning:layoutItem padding="around-small" size="9" >
+                <div class="page-section ">
+                    <h2><b>Origination Steer(EUR/MT) </b></h2>
+               </div>
+               
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_2-of-12 slds-p-around_x-small">
+                            <ui:inputNumber label="ARA AGO Steer" value="{!v.ARAAGOSteer}" disabled="true"/>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12 slds-p-around_x-small">
+                            <ui:inputNumber label="ARA IGO Steer" value="{!v.ARAIGOSteer}" disabled="true"/>
+                        </div>
+                         <div class="slds-col slds-size_3-of-12 slds-p-around_x-small">
+                            <ui:inputNumber label="ARA MOGAS Steer" value="{!v.ARAMOGASSteer}" disabled="true"/>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12 slds-p-around_x-small">
+                            <ui:inputNumber label="Harburg AGO Steer" value="{!v.HarburgAGOsteer}" disabled="true"/>
+                        </div>
+                       
+                        <div class="slds-col slds-size_3-of-12 slds-p-around_x-small">
+                            <ui:inputNumber label="Harburg IGO Steer" value="{!v.HarburgIGOsteer}" disabled="true"/>
+                        </div> 
+
+                    </div>
+               
+           </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="2" >
+                <div class="slds-float_right">
+                    <ui:inputDate aura:id="expdate" class="field" value="{!v.contractStartDate}" displayDatePicker="true" />
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="1" >
+            <div class="slds-float_right">
+                <lightning:button variant="brand" label="Refresh" onclick="{! c.handleClick }" />
+            </div>
+            </lightning:layoutItem>
+           <lightning:layoutItem padding="around-small" size="12" >
+                <div class="page-section ">
+                    <h2><b>Source Steer (EUR/MT) </b></h2>
+               </div>
+               <lightning:layoutItem padding="around-small" size="12" >
+               <div class="slds-grid slds-gutters">
+                   <div class="slds-col slds-size_2-of-12">
+                    <lightning:select name="selectItem" label="Select Grade" onchange="{!c.getSelGrdSteer}" value="{!v.gradeSel}">
+                        <option value="">-- None --</option>
+                        <aura:iteration items="{!v.gradeList}" var="grd">
+                            <option value="{!grd}" text="{!grd}"></option>
+                        </aura:iteration>
+                    </lightning:select>
+                   </div>
+               <div class="slds-col slds-size_10-of-12">
+                     <lightning:datatable data="{! v.sourceSteerLst }" 
+                                     columns="{! v.sourceSteerLstColumnsLst}" 
+                                     keyField="Id"
+                                     class="slds-scrollable_none"
+                                     hideCheckboxColumn="true" onsort="{!c.updateColumnSorting }" sortedBy="{!v.sortedBy}" 
+                                     sortedDirection="{!v.sortDirection}" defaultSortDirection="desc"/>
+                   </div>
+                   </div>
+               </lightning:layoutItem>
+           </lightning:layoutItem>
+           <lightning:layoutItem padding="around-small" size="12" >
+                   <div class="page-section ">
+                    <h2><b>Depot Steer(EUR/MT) </b></h2>
+               		</div>
+                    <lightning:layoutItem padding="horizontal-small" size="2" class="slds-float_left">
+                     <lightning:select name="selectItem" label="Select Grade" onchange="{!c.getSelGrdDepotSteer}" value="{!v.gradeSelDepot}">
+                        <option value="">-- None --</option>
+                        <aura:iteration items="{!v.gradeList}" var="grd">
+                            <option value="{!grd}" text="{!grd}"></option>
+                        </aura:iteration>
+                    </lightning:select>
+                   </lightning:layoutItem>
+					<lightning:layoutItem padding="horizontal-small" size="2" class="slds-float_left">
+                   <lightning:select name="selectItem" label="Select MOT" onchange="{!c.getSelGrdDepotSteer}" value="{!v.motSel}">
+                        
+                        <option value="All">All</option>
+                        <aura:iteration items="{!v.motList}" var="mot">
+                            <option value="{!mot}" text="{!mot}"></option>
+                        </aura:iteration>
+                   </lightning:select>
+                   </lightning:layoutItem>
+               <lightning:layoutItem padding="horizontal-small" size="2" class="slds-float_left">
+                   <lightning:select name="selectItem" label="Select Plant" onchange="{!c.getSelGrdDepotSteer}" value="{!v.selPlant}">
+                        <option value="All">All</option>
+                        <aura:iteration items="{!v.plantList}" var="plant">
+                            <option value="{!plant}" text="{!plant}"></option>
+                        </aura:iteration>
+                   </lightning:select>
+                   </lightning:layoutItem>
+               <lightning:layoutItem padding="horizontal-small" size="3" class="slds-float_left" >
+                   <div class="slds-p-horizontal medium">
+                       <ui:inputCheckbox class="myCheckbox" aura:id="showOverrideen" label="Show Overridden Plant" change="{!c.getOverriddenPlants}" value="{!v.showOverriddenPlants}"/>
+                    <!--  <lightning:input type="checkbox"  label="Show Overridden Plant" name="input2"/>  -->
+                   </div>
+               </lightning:layoutItem>
+            </lightning:layoutItem>
+           <lightning:layoutItem padding="horizontal-small" size="12" >
+               <div class="slds-p-around_medium">
+                     <lightning:datatable data="{!v.depotSteerLst}" 
+                                     columns="{! v.depotSteerLstColumnsLst}" 
+                                     keyField="Id"
+                                     class="slds-scrollable_none"
+                                     hideCheckboxColumn="true" onsort="{!c.updateColumnSorting }" sortedBy="{!v.sortedBy}" 
+                                     sortedDirection="{!v.sortDirection}" defaultSortDirection="desc"/>
+               </div>
+               </lightning:layoutItem>
+               <aura:if isTrue="{!v.renderFinalSteer}">
+            <lightning:layoutItem padding="horizontal-small" size="12" >
+                 <div class="page-section ">
+                    <h2><b>Final Steer</b></h2>
+                 </div><br/>
+                     <lightning:layoutItem padding="horizontal-small" size="2" class="slds-float_left">
+                           <lightning:select name="selectItem" label="Select Plant" onchange="{!c.getSelGrdFinalSteer}" value="{!v.selFinalPlant}">
+                                <option value="All">All</option>
+                                <aura:iteration items="{!v.finalSteerplantList}" var="plant">
+                                    <option value="{!plant}" text="{!plant}"></option>
+                                </aura:iteration>
+                           </lightning:select>
+                     </lightning:layoutItem>
+                    <lightning:layoutItem padding="horizontal-small" size="2" class="slds-float_left">
+                         <lightning:select name="selectItem" label="Select Grade" onchange="{!c.getSelGrdFinalSteer}" value="{!v.FinalgradeSelDepot}">
+                            <option value="">-- None --</option>
+                            <aura:iteration items="{!v.finalSteergradeList}" var="grd">
+                                <option value="{!grd}" text="{!grd}"></option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+            	</lightning:layoutItem>
+                	<lightning:layoutItem padding="horizontal-small" size="12" >
+                 	<div class="slds-p-around_medium">
+                     <!--<div class="slds-scrollable_y" style="height:100%;">-->
+            			<table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                            <thead>
+								<tr class="slds-line-height_reset">
+                                            
+                                       <th scope="col" class="slds-is-resizable slds-is-sortable">
+                                           <div class="slds-truncate " title="Plant Name">Plant Name</div>
+                                       </th>
+
+                                       <th scope="col">
+                                           <div class="slds-truncate " title="Grade">Grade</div>
+                                       </th>
+                                       <th scope="col">
+                                           <div class="slds-truncate " title="Depot Steer(Euro/Mt)">Depot Steer(Euro/Mt)</div>
+                                       </th>
+                                       <th class="slds-is-resizable" scope="col">
+                                            <span class="slds-truncate" title="Route Name">Route Name</span>
+                                            <div class="slds-resizable">
+                                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-602" tabindex="0" />
+                                                <span class="slds-resizable__handle" onmousedown="{!c.calculateWidth}" ondrag="{!c.setNewWidth}">
+                                                    <span class="slds-resizable__divider"></span>
+                                                </span>
+                                            </div>
+                                       </th>
+                                       <!--<th scope="col">
+                                           <div class="slds-truncate " title="Route Name">Route Name</div>
+                                       </th>-->
+                                       <th scope="col">
+                                           <div class="slds-truncate " title="Route Utilization%">Route Utilization%</div>
+                                       </th>
+                                       <th  scope="col">
+                                           <div class="slds-truncate " title="Weighted Co Steer (€/MT)">Weighted Co Steer (€/MT)</div>
+                                       </th>
+                                       <th  scope="col">
+                                           <div class="slds-truncate " title="weighted 3rd party Steer (EURO/MT)">weighted 3rd party Steer (EURO/MT)</div>
+                                       </th>
+                                      
+                                       <th  scope="col">
+                                           <div class="slds-truncate " title="Total Steer per Depot (EURO/MT)">Total Steer per Depot (EURO/MT)</div>
+                                       </th>
+                       			</tr>
+                            </thead>
+                            <tbody>
+                                    <aura:iteration items="{!v.dailyBSPTrendMap}" var="row" indexVar="itemIndex">
+                                                        <tr class="slds-hint-parent slds-theme_backgroundColor-lightblue">
+                                                                <td scope="col">
+                                                                    <div title="{!row.key}">{!row.key}</div>
+                                                                </td>
+                                                            	<td scope="col">
+                                                            	</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                                            	<td scope="col">
+                                        						</td>
+                                        
+                                                        </tr>
+                                                        <aura:iteration items="{!row.value}" var="cell" indexVar="index">
+                                                            	
+                                                                   
+                                                                    <tr class="slds-hint-parent">
+                                                                                    <th scope="col">
+                                                                                    </th>
+                                                                                    
+                                                                                    <th scope="col">
+                                                                                        
+                                                                                        {!cell.key} ({!cell.value.backBoneLst.length})
+                                                                                        <lightning:buttonIcon aura:id="{!cell.key}" value="{!row.key+';'+index+';'+cell.key}" onclick="{!c.toggle123}" iconName="{!cell.value.isExpand?'utility:chevrondown':'utility:chevronright'}" />
+                                                                                    </th>
+                                                                        			<th scope="col"></th>
+                                                                                    <th scope="col"></th>
+                                                                                    <th scope="col"></th>
+                                                                                    <th scope="col"></th>
+                                                                                    <th scope="col"></th>
+                                                                                    <th scope="col"></th>
+                                                                    </tr>
+                                                            		
+                                                                    <aura:iteration items="{!cell.value.backBoneLst}" var="cell1">
+                                                                              <aura:if isTrue="{!cell.value.isExpand}">
+                                                                                        <tr class="slds-hint-parent">
+                                                                                               <td scope="col">
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                                    <!--<div title="{!cell1.Daily_BSP_Trends__r.Depot_Steer__c}">{!cell1.Daily_BSP_Trends__r.Depot_Steer__c}</div>-->
+                                                                                               </td>
+                                                                                               <td scope="col" role="gridcell">
+                                                                                                        <div class="slds-truncate" title="{!cell1.Route_Name__c}">{!cell1.Route_Name__c}</div>
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                                        <div title="{!cell1.Route_Utilization__c}">{!cell1.Route_Utilization__c}</div>
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                                        <div title="{!cell1.CO_Steer__c}">{!cell1.CO_Steer__c}</div>
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                                        <div title="{!cell1.CO_Steer__c}">{!cell1.FreightToSource__c}</div>
+                                                                                               </td>
+                                                                                               <td scope="col">
+                                                                                               </td>
+                                                                                        </tr>
+                                                                               </aura:if>
+                                                                     </aura:iteration>
+                                                            		<tr class="slds-hint-parent">
+                                                                                        <td scope="col">
+                                                                                        </td>
+                                                                                            
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            <div class="slds-truncate" title="Subtotal:">Subtotal:</div>
+                                                                                            
+                                                                                        </td>
+                                                                                        
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            <div class="slds-truncate" title="{!cell.value.sumDepotSteer}">{!cell.value.sumDepotSteer}</div>
+                                                                                        </td>
+                                                                                            
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                        </td>
+                                                                                        
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            {!cell.value.sumrouteUtilization}
+                                                                                        </td>
+                                                                                            
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            {!cell.value.sumcosteer}
+                                                                                        </td>
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            {!cell.value.sumThirdparty}
+                                                                                        </td>
+                                                                                        <td scope="col" class="slds-theme_backgroundColor-lightgreen">
+                                                                                            {!cell.value.totalDepotSteer}
+                                                                                        </td>
+                                                                        				
+                                                                     </tr>
+                                                          </aura:iteration>
+                                                        
+                                    </aura:iteration>
+                       		</tbody>
+                				
+				   		</table>
+                     <!--</div>-->
+                 </div>
+                     
+             </lightning:layoutItem>
+               </aura:if>
+         </lightning:layout>
+            
+    </div>
+    
+</aura:component>

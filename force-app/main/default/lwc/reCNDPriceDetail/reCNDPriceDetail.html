@@ -1,0 +1,240 @@
+<template>
+    <div class="slds-p-top_xxx-small sectionHeight">
+     <div class="mainDiv1">
+        <div class="blockscolor">
+                <div aria-expanded="true"
+                    class="test-id__section-header-button slds-section__title-action slds-align_absolute-center">
+                    
+                    <span><b>Price and Related Factor</b></span>
+                </div>
+        </div>
+            <div class="fontSize slds-p-around_xx-small">
+                <div class="blockscolor slds-p-around_xx-small">
+                    
+                    <table >
+                        <tr>
+                        <template if:true={isSFJ}>
+                        <td class="slds-size_1-of-8"><b>Site  </b></td>
+                        <td class="slds-size_1-of-8">{selectedRecord.ShipTo}&nbsp;&nbsp;[{selectedRecord.ShipToNumbr}]</td>
+                        </template>
+
+                        <template if:false={isSFJ}>
+                            <td class="slds-size_1-of-8"><b>Location  </b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.Location}</td>
+							
+							<td class="slds-size_1-of-8"><b>Brand Fee</b></td>
+                        <td class="slds-size_1-of-8 ">{selectedRecord.brandFee}</td>
+                        </template>
+												
+						<td class="slds-size_1-of-8"><b>New Price </b></td>
+                        <td class="slds-size_1-of-8">{selectedRecord.newBase}</td>
+
+                        <td class="slds-size_1-of-8"><b>From Date</b></td>
+                        <td class="slds-size_1-of-8 ">{selectedRecord.validFrom}</td>
+                        </tr>
+						
+						 <tr>
+                           
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b>Product</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.Product}</td>
+							
+                            <template if:false={isSFJ}>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b> Brand Discount</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.brandDiscount}</td>
+                            </template>
+						
+							<td class="slds-size_1-of-8 slds-p-top_x-small"><b>Net Move</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.netMove}</td>
+						
+							<td class="slds-size_1-of-8 slds-p-top_x-small"><b>To Date </b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.validTo}</b></td>
+                        </tr>
+						<tr>
+                           
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b>Product</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.productDescription}</td>
+							
+                            <template if:false={isSFJ}>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b> Rack Basis Diff </b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.rackBasisDiff}</td>
+                            </template>
+
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b> Version</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.version}</td>
+						
+							<td class="slds-size_1-of-8 slds-p-top_x-small"><b>Status</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.Status}</td>
+                        </tr>
+						<tr>
+                           
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b>Rack</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.Rack}</td>
+							
+                            <template if:false={isSFJ}>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b> Product Diff </b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.productDiff}</td>
+                            </template>
+
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b>Market Move</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small">{selectedRecord.marketMove}</td>
+						
+							<td class="slds-size_1-of-8 slds-p-top_x-small"><b>Final Price</b></td>
+                            <td class="slds-size_1-of-8 slds-p-top_x-small"><b>{selectedRecord.finalValue}</b></td>
+                        </tr>
+						
+						<tr>
+                           
+							<td class="slds-size_1-of-8"><b>Product Group</b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.productGroup}</td>
+
+							<template if:false={isSFJ}>
+                            <td class="slds-size_1-of-8 "><b> Plant Diff </b></td>
+                            <td class="slds-size_1-of-8 ">{selectedRecord.plantDiff}</td>
+                            </template>
+
+                            <td class="slds-size_1-of-8"><b>Old Price</b></td>
+                            <td class="slds-size_1-of-8 ">{selectedRecord.oldBase}</td>
+							
+							<td class="slds-size_1-of-8"><b>Adjustment </b></td>
+                            <td class="slds-size_1-of-8">
+							<template if:true={allowEditForDate}>
+                                    <template if:true={isSFJ}>
+                                        <template if:true={pbAdjustAccess}>
+                                                <lightning-input type="number" name="Adjustment" variant="label-hidden" 
+                                                label="Adjustment" onchange={handleAdjustment} step=".001" class="inputCmp"
+                                                value={selectedRecord.Adjustment}>
+                                                </lightning-input>
+                                        </template>
+                                        <template if:false={pbAdjustAccess}>
+                                            {selectedRecord.Adjustment}
+                                        </template>
+                                    </template>
+                                    <template if:false={isSFJ}>
+                                        <template if:true={cpAdjustAccess}>
+                                                <lightning-input type="number" name="Adjustment" variant="label-hidden" 
+                                                label="Adjustment" onchange={handleAdjustment} step=".001" class="inputCmp"
+                                                value={selectedRecord.Adjustment}>
+                                                </lightning-input>
+
+                                        </template>
+                                        <template if:false={cpAdjustAccess}>
+                                            {selectedRecord.Adjustment}
+                                        </template>
+                                    </template>
+                                </template>
+
+                                <template if:false={allowEditForDate}>
+                                    {selectedRecord.Adjustment}
+                                </template>
+
+                                <template if:true={adjustError}>
+                                    <div class="errorStyle">Enter a valid input!!</div>
+                                </template>
+								</td>
+                        </tr>
+						
+						<tr>
+                           
+						   <td class="slds-size_1-of-8"><b>Customer Type</b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.Group}</td>   
+                            
+                            <template if:false={isSFJ}>
+                                <td class="slds-size_1-of-8"><b>Special Adjustment</b></td>
+                                <td class="slds-size_1-of-8">{selectedRecord.specialAdj}</td>
+                            </template>
+                            <td class="slds-size_1-of-8"><b>Rate Unit</b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.Rate}</td>
+                            
+							<td class="slds-size_1-of-8"><b>Comment </b></td>
+                            <td rowspan="2" class="slds-size_1-of-8">
+                                <template if:true={allowEditForDate}>
+                                    <template if:true={isSFJ}>
+                                        <template if:true={pbAdjustAccess}>
+                                                <lightning-textarea type="text" name="Comment" variant="label-hidden"
+                                                label="Comment" class="inputText" onchange={handleCommentChange}
+                                                value={selectedRecord.Comment}>
+                                                </lightning-textarea>
+                                        </template>
+                                        <template if:false={pbAdjustAccess}>
+                                            {selectedRecord.Comment}
+                                        </template>
+                                    </template>
+                                    <template if:false={isSFJ}>
+                                        <template if:true={cpAdjustAccess}>
+                                                <lightning-textarea type="text" name="Comment" variant="label-hidden"
+                                                label="Comment" class="inputText" onchange={handleCommentChange}
+                                                value={selectedRecord.Comment}>
+                                                </lightning-textarea>
+                                        </template>
+                                        <template if:false={cpAdjustAccess}>
+                                            {selectedRecord.Comment}
+                                        </template>
+                                    </template>
+                                </template>
+
+                                <template if:false={allowEditForDate}>
+                                    {selectedRecord.Comment}
+                                </template>
+
+                                <template if:true={commentError}>
+                                    <div class="errorStyle">Enter a valid comment!! </div>
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td class="slds-size_1-of-8"><b>Pricing Basis</b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.PricingBasis }</td>   
+                            
+                            <template if:false={isSFJ}>
+                                <td class="slds-size_1-of-8"><b>Special Comment</b></td>
+                                <td class="slds-size_1-of-8">{selectedRecord.specialComm}</td>
+                            </template>
+                            <td class="slds-size_1-of-8"><b>FX Rate</b></td>
+                            <td class="slds-size_1-of-8">{selectedRecord.FXRate}</td>   
+                        </tr>
+                    </table>
+                        
+                    
+                    <div class="slds-align_absolute-center blockscolor">
+                        <lightning-button variant="bare" disabled={disableButtons} label="Save" onclick={handlesave} class="slds-m-right_medium">
+                        </lightning-button>
+                        <lightning-button variant="bare" label="Cancel" onclick={closeDetail} class="">
+                        </lightning-button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+     <div class="mainDiv1">
+        <div class="blockscolor">
+            <div aria-expanded="true"
+                class="test-id__section-header-button slds-section__title-action  slds-align_absolute-center">
+                <span><b>Related History</b></span>
+            </div>
+        </div>
+            <div class="fontSize slds-p-around_xx-small">
+                <div class="blockscolor slds-p-around_xx-small">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered ">
+                        <tr>
+                            <th><b>Date</b></th>
+                             <th><b>Adjustment</b></th>
+                            <th><b>New Price</b></th>                           
+                            <th><b>Status</b></th>
+                            <th><b>Comment</b></th>
+                        </tr>
+                        <template for:each={versionList} for:item="version" >
+                            <tr key={version.versionId}>
+                                <td>{version.pricingDate}</td>
+                                <td>{version.adjustValue}</td>
+                                <td>{version.finalValue}</td>
+                                <td>{version.status}</td>
+                                <td>{version.comment}</td>
+                            </tr>
+                        </template>
+                    </table>
+                </div>
+            </div>
+    </div>
+</div>
+</template>

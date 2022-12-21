@@ -1,0 +1,594 @@
+<template>   
+    <div class="zoomout">
+        <strong class="slds-align--absolute-center">Note: Please update "Depo Pricing Backbone" for any exceptions at Depo level to Oil loss, HCV, Degree factor, TP</strong>
+        <br>
+    <div class="slds-grid" >
+        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+            <div class="slds-page-header__name-title">
+                <h1>
+                    <span class="slds-page-header__title slds-truncate" title="Commercial Fuels CBU Template 2020 CBU Sheet">Commercial Fuels CBU Template 2020 CBU Sheet</span>
+                </h1>
+            </div>
+        </div>  
+        <div class="slds-page-header__col-actions slds-align--absolute-center">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col"> 
+                </div>
+                <div class="slds-col">
+                    <span class="slds-truncate boldFont">Last Job Run : </span>
+                </div>
+                <div class="slds-col">
+                    <span class="slds-truncate"><b>{lastModifiedDate}</b></span>
+                </div>
+                <div class="slds-col">
+                    <span class="slds-truncate boldFont">CBU Date : </span>
+                </div>
+                <div class="slds-col">
+                    <span class="slds-truncate"><b>{todaysdate}</b></span>
+                </div>
+                <div class="slds-col"> 
+                </div>
+            </div>
+        </div>
+        <template if:true ={validProfile}>
+        <div class=" slds-size_1-of-12  slds-p-around_xx-small">            
+                <lightning-button class=" slds-m-left_x-small" variant="brand" label="Recalculate" title="Primary action" onclick={handleRecalculate}>
+                </lightning-button>                           
+        </div>
+        <div class=" slds-size_1-of-12  slds-p-around_xx-small">  
+            <lightning-button class="slds-m-left_x-small slds-button__icon_right" variant="brand" icon-name="utility:email" label="Email" title="Primary action" onclick={handleMail} >
+            </lightning-button> 
+        </div>
+      </template>
+    </div>
+    <template if:true={isRecalculate}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closePopUp}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Re-Calculate</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <h2 class="slds-text-heading_large slds-hyphenate slds-text-color_error slds-text-title_bold">Do you want to proceed?</h2>
+                                <br/>
+                                <h2 class="slds-text-heading_large slds-hyphenate slds-text-title_bold">Last Job Run : {lastModifiedDate}</h2>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closePopUp} title="No">No</button>
+                    <button class="slds-button slds-button_brand" onclick={executejob} title="Yes">Yes</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <div>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="slds-p-around_x-small" size="12">
+                <lightning-layout>
+                    <lightning-layout-item class="slds-p-around_x-small" size="6">
+                        <div class="slds-p-left_x-small slds-p-right_xx-small slds-box">
+                            <div class="page-section page-header slds-box slds-grid textfont" >    
+                                <h2><b>FX Rate</b></h2>
+                            </div>  
+                            <br/>
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="slds-size_3-of-10" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="FXRate">FX Rate</div>
+                                    </th>   
+                                    <th class="slds-size_3-of-10" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="Daily">Daily</div>
+                                    </th>
+                                </tr>
+                            </thead> 
+                            <tbody>                                                     
+                                <template for:each = {fxData} for:item = "fxDataItem" for:index="index">
+                                <tr key={fxDataItem.item}>
+                                    <td class="slds-size_3-of-10" >                     
+                                        <lightning-formatted-text value={fxDataItem.item}></lightning-formatted-text>
+                                    </td>
+                                    <td class="slds-size_3-of-10" >                     
+                                        <lightning-formatted-number value={fxDataItem.dailyval}  maximum-fraction-digits="4"
+                                            minimum-fraction-digits="4"></lightning-formatted-number>
+                                    </td>
+                                </tr>
+                                </template>
+                            </tbody>    
+                        </table>
+                        
+                           </div> 
+                           <br/>
+                           <div class="slds-p-left_x-small slds-p-right_xx-small slds-box">
+                            <div class="page-section page-header slds-box slds-grid textfont" >    
+                                <h2><b>BIO Quote</b></h2>
+                            </div>  
+                            <br/>
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-size_3-of-10" scope="col">
+                                            <div class="slds-truncate slds-align_absolute-left" title="FXRate">Name</div>
+                                        </th>   
+                                        <th class="slds-size_3-of-10" scope="col">
+                                            <div class="slds-truncate slds-align_absolute-left" title="Daily">Price</div>
+                                        </th>
+                                        <th class="slds-size_3-of-10" scope="col">
+                                            <div class="slds-truncate slds-align_absolute-left" title="Daily">Unit</div>
+                                        </th>
+                                    </tr>
+                                </thead> 
+                                <tbody>                                                     
+                                    <template for:each = {bioquote} for:item = "fxDataItem" for:index="index">
+                                    <tr key={fxDataItem.item}>
+                                        <td class="slds-size_3-of-10" >                     
+                                            <lightning-formatted-text value={fxDataItem.item}></lightning-formatted-text>
+                                        </td>
+                                        <td class="slds-size_3-of-10" >                     
+                                            <lightning-formatted-number value={fxDataItem.dailyval}  maximum-fraction-digits="4"
+                                                minimum-fraction-digits="4"></lightning-formatted-number>
+                                        </td>
+                                        <td class="slds-size_3-of-10" >                     
+                                            <lightning-formatted-text value={fxDataItem.Priceunit}></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    </template>
+                                </tbody>    
+                            </table>
+                        
+                           </div> 
+                        
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_x-small" size="6">
+                            <div class="slds-p-left_xx-small slds-p-right_x-small slds-box">
+                                <div class="page-section page-header slds-box slds-grid textfont">
+        
+                                    <h2><b>MOPS Data</b></h2>
+                                </div>
+                                <br/>
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                        <thead>
+                                            <tr class="slds-line-height_reset">
+                                                <th class="slds-size_3-of-10" scope="col">
+                                                    <div class="slds-truncate slds-align_absolute-left" title="region">Product Name</div>
+                                                </th>
+                                                <th class="slds-size_3-of-10" scope="col">
+                                                    <div class="slds-truncate slds-align_absolute-left" title="region">Daily Mops</div>
+                                                </th>
+                                                <th class="slds-size_3-of-10" scope="col">
+                                                    <div class="slds-truncate slds-align_absolute-left" title="region">Yesterday Mops</div>
+                                                </th>
+                                                <th class="slds-size_3-of-10" scope="col">
+                                                    <div class="slds-truncate slds-align_absolute-left" title="region">Mops Delta</div>
+                                                </th>
+                                                <th class="slds-size_3-of-10" scope="col">
+                                                    <div class="slds-truncate slds-align_absolute-left" title="region">UNIT</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             <template for:each = {mopsData} for:item = "mopsDataItem" for:index="index" >
+                                                <tr class="slds-hint-parent" key={mopsDataItem.item}>   
+                                                    <td class="slds-size_3-of-10" >                     
+                                                        <lightning-formatted-text value={mopsDataItem.item}></lightning-formatted-text>
+                                                    </td>
+                                                    <td class="slds-size_3-of-10" >                     
+                                                        <lightning-formatted-number value={mopsDataItem.dailyval} maximum-fraction-digits="2"
+                                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                                    </td>
+                                                    <td class="slds-size_3-of-10" >                     
+                                                        <lightning-formatted-number value={mopsDataItem.lastdayval} maximum-fraction-digits="2"
+                                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                                    </td>
+                                                    <td class="slds-size_3-of-10" >                     
+                                                        <lightning-formatted-number value={mopsDataItem.diffdayval} maximum-fraction-digits="2"
+                                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                                    </td>
+                                                    <td class="slds-size_3-of-10" >                     
+                                                        <lightning-formatted-text value={mopsDataItem.Priceunit}></lightning-formatted-text>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+                    </lightning-layout>
+        
+     <!--   <div class="zoomout">        !-->
+         <!--
+                  
+            <div class="slds-grid slds-gutters">	
+            <div class="slds-col slds-size_1-of-2">
+                <c-re_gain_loss></c-re_gain_loss>   
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <c-re_gain_loss></c-re_gain_loss>
+            </div>
+        </div> -->
+                 
+    <div class="page-section page-header slds-box slds-grid textfont slds-m-around_xx-small">
+        <div class="page-section slds-align_absolute-center" >
+            <h2><b>MTD POSITION</b></h2>
+        </div>
+    </div>    
+	  <div class="slds-scrollable slds-var-p-left_x-small slds-var-p-right_xx-small slds-p-top_xx-small" style="height:295px">
+		<div class="slds-grid ">	
+            <div class="slds-col slds-size_1-of-2 slds-p-left_xx-small slds-p-right_x-small">
+                <div class="page-section page-header slds-box slds-grid textfont">
+                    <div class="page-section slds-align_absolute-center" >
+                        <Strong>FSD B10</Strong>
+                    </div>
+                </div>
+                <!--calling child component!-->
+                <c-re_gain_loss filters='Gasoil 0.05% S' country='Thailand'></c-re_gain_loss>
+  
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-m-left_xx-small">
+                <div class="page-section page-header slds-box slds-grid textfont">
+                    <div class="page-section slds-align_absolute-center" >
+                        <Strong>F0C</Strong>
+                    </div>
+                </div>
+                <c-re_gain_loss filters='Marine FuelOil 180' country='Thailand'></c-re_gain_loss>
+            </div>
+        </div>
+	  </div>
+	
+        
+    <div class="page-section page-header slds-box slds-grid textfont">
+        <div class="page-section slds-align_absolute-center" >
+            <h2><b>Daily Average (all values in THB/LTR)</b></h2>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-checkbox_toggle slds-grid">
+              <!-- <span class="slds-form-element__label slds-m-bottom_none" >Detail</span>!-->
+              <lightning-input type="checkbox" label="Show details" onchange={handleToggle}></lightning-input>
+              <!--<input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked="" /> !-->
+            </label>
+          </div>
+    </div>
+   
+       <!-- toggling between 2 tables based on button selection!-->
+      <template if:false = {toggleClick}>
+     <div class="slds-p-around_xx-small">
+      <div class="slds-scrollable slds-var-p-left_x-small slds-var-p-right_xx-small slds-box slds-p-top_xx-small">
+    <!-- cbu table starts here!-->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+       <tr class="slds-line-height_reset">
+           <th class="slds-size_3-of-10 clsplant" scope="col">Plant</th>
+           <th class="slds-size_3-of-10 clsplant frzcol" scope="col">Plant</th>
+           <th class="slds-size_3-of-10 cls1 tableheader" scope="col" >FSD B10</th>
+           <th class="slds-size_3-of-10 cls2 tableheader" scope="col" >Com B10</th>
+           <th class="slds-size_3-of-10 cls1 tableheader" scope="col" >FSD B7</th>
+           <th class="slds-size_3-of-10 cls2 tableheader" scope="col">Com B7</th>
+           <th class="slds-size_3-of-10 cls1 tableheader" scope="col">Com B20</th>
+           <th class="slds-size_3-of-10 cls2 tableheader" scope="col">VPD B7</th>
+           <th class="slds-size_3-of-10 cls1 tableheader" scope="col">VPD B10</th>
+           <th class="slds-size_3-of-10 cls2 tableheader" scope="col">Com BO</th>
+           <th class="slds-size_3-of-10 cls3 tableheader" scope="col">FOA X</th>
+           <th class="slds-size_3-of-10 cls4 tableheader" scope="col">FOA</th>
+           <th class="slds-size_3-of-10 cls3 tableheader" scope="col">FOC X</th>
+           <th class="slds-size_3-of-10 cls4 tableheader" scope="col">FOC</th>
+           <th class="slds-size_3-of-10 cls10 tableheader" scope="col">LSFO-80</th>
+           <th class="slds-size_3-of-10 cls11 tableheader" scope="col">LSFO-380</th>
+           <th class="slds-size_3-of-10 cls10 tableheader" scope="col">MGO 0.1%</th>
+           <th class="slds-size_3-of-10 cls5 tableheader" scope="col">G95 E10</th>
+           <th class="slds-size_3-of-10 cls6 tableheader" scope="col">G91 E10</th>
+           <th class="slds-size_3-of-10 cls5 tableheader" scope="col">G95 E20</th>
+           <th class="slds-size_3-of-10 cls6 tableheader" scope="col">VPG E10</th>
+           <th class="slds-size_3-of-10 cls5 tableheader" scope="col">U95 E0</th>
+           <th class="slds-size_3-of-10 cls6 tableheader" scope="col">U91 E0</th>
+           <th class="slds-size_3-of-10 cls7 tableheader" scope="col">PSFD</th>
+           <th class="slds-size_3-of-10 cls8 tableheader" scope="col">AWD</th>
+           <th class="slds-size_3-of-10 cls7 tableheader" scope="col">LPP</th>
+           <th class="slds-size_3-of-10 cls8 tableheader" scope="col">ULSD</th>
+           <th class="slds-size_3-of-10 cls9 tableheader" scope="col">Kerosene</th>
+       </tr>
+    </thead>
+    <tbody>
+         <!--cbu table  iteration starts here!-->
+        <template for:each = {ldcCostData.costingMaps} for:item = "ldcData">
+        <tr key={ldcData.location}>
+            <th class="clsplant">{ldcData.location}</th>
+            <th class="clsplant frzcol">{ldcData.location}</th>
+            <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcData.fsdb10cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            
+            <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcData.comb10cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+           
+            <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcData.fsdb7cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+           
+            <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcData.comb7cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            
+            <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcData.comb20cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            
+            <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcData.vpdb7cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcData.vpdb10cbu} maximum-fraction-digits="2"
+               minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcData.comb0cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th> 
+            <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number value={ldcData.foaxcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number value={ldcData.foacbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number value={ldcData.focXcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number value={ldcData.foccbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number value={ldcData.lsfo8cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls11" scope="col"><lightning-formatted-number value={ldcData.lsfo3cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number value={ldcData.mgocbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcData.g95e10cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcData.g91e10cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcData.g95e20cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcData.vpge10cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcData.u95e0cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcData.u91e0cbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number value={ldcData.psfdcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number value={ldcData.awdcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number value={ldcData.lppcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th> 
+            <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number value={ldcData.ulsdcbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+            <th class="slds-size_3-of-10 cls9" scope="col"><lightning-formatted-number value={ldcData.kerocbu} maximum-fraction-digits="2"
+                minimum-fraction-digits="2"></lightning-formatted-number></th>
+        </tr>
+    </template>
+    <!--cbu table  iteration starts here!-->
+    </tbody>
+    </table>
+    <!-- cbu table ends here!-->
+       </div>
+    </div>
+    </template>
+  </div>
+    <template if:true = {toggleClick}>
+    <div class="slds-p-around_xx-small">
+    <div class="slds-scrollable_x slds-var-p-left_x-small slds-var-p-right_xx-small slds-box slds-p-top_xx-small">
+        <!-- cbu detail table starts here!-->
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-size_3-of-10 clsplant" scope="col" >Plant</th>
+                    <th class="slds-size_3-of-10 clsplant frzcol" scope="col" >Plant</th>
+                    <th class="slds-size_3-of-10 cls1" style="text-align:center" scope="col" colspan="2">FSD B10</th>
+                    <th class="slds-size_3-of-10 cls2" style="text-align:center" scope="col" colspan="2">Com B10</th>
+                    <th class="slds-size_3-of-10 cls1" style="text-align:center" scope="col" colspan="2">FSD B7</th>
+                    <th class="slds-size_3-of-10 cls2" style="text-align:center" scope="col" colspan="2">Com B7</th>
+                    <th class="slds-size_3-of-10 cls1" style="text-align:center" scope="col" colspan="2">Com B20</th>
+                    <th class="slds-size_3-of-10 cls2" style="text-align:center" scope="col" colspan="2">VPD B7</th>
+                    <th class="slds-size_3-of-10 cls1" style="text-align:center" scope="col" colspan="2">VPD B10</th>
+                    <th class="slds-size_3-of-10 cls2" style="text-align:center" scope="col" colspan="2">Com B0</th>
+                    <th class="slds-size_3-of-10 cls3" style="text-align:center" scope="col" colspan="2">FOA X</th>
+                    <th class="slds-size_3-of-10 cls4" style="text-align:center" scope="col" colspan="2">FOA</th>
+                    <th class="slds-size_3-of-10 cls3" style="text-align:center" scope="col" colspan="2">FOC X</th>
+                    <th class="slds-size_3-of-10 cls4" style="text-align:center" scope="col" colspan="2">FOC</th>
+                    <th class="slds-size_3-of-10 cls10" style="text-align:center" scope="col" colspan="2">LSFO-80</th>
+                    <th class="slds-size_3-of-10 cls11" style="text-align:center" scope="col" colspan="2">LSFO-380</th>
+                    <th class="slds-size_3-of-10 cls10" style="text-align:center" scope="col" colspan="2">MGO 0.1%</th>
+                    <th class="slds-size_3-of-10 cls5" style="text-align:center" scope="col" colspan="2">G95 E10</th>
+                    <th class="slds-size_3-of-10 cls6" style="text-align:center" scope="col" colspan="2">G91 E10</th>
+                    <th class="slds-size_3-of-10 cls5" style="text-align:center" scope="col" colspan="2">G95 E20</th>
+                    <th class="slds-size_3-of-10 cls6" style="text-align:center" scope="col" colspan="2">VPG E10</th>
+                    <th class="slds-size_3-of-10 cls5" style="text-align:center" scope="col" colspan="2">U95 E0</th>
+                    <th class="slds-size_3-of-10 cls6" style="text-align:center" scope="col" colspan="2">U91 E0</th>
+                    <th class="slds-size_3-of-10 cls7" style="text-align:center" scope="col" colspan="2">PSFD</th>
+                    <th class="slds-size_3-of-10 cls8" style="text-align:center" scope="col" colspan="2">AWD</th>
+                    <th class="slds-size_3-of-10 cls7" style="text-align:center" scope="col" colspan="2">LPP</th>
+                    <th class="slds-size_3-of-10 cls8" style="text-align:center" scope="col" colspan="2">ULSD</th>
+                    <th class="slds-size_3-of-10 cls9" style="text-align:center" scope="col" colspan="2">Kerosene</th>
+                </tr>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-size_3-of-10 cls1" scope="col"></th>
+                    <th class="slds-size_3-of-10 clsplant frzcol" style="height: 25px;" scope="col"></th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls1" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls2" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls3" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls3" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls4" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls4" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls3" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls3" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls4" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls4" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls10" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls10" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls11" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls11" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls10" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls10" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls5" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls6" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls7" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls7" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls8" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls8" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls7" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls7" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls8" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls8" scope="col">+/-</th>
+                    <th class="slds-size_3-of-10 cls9" scope="col">CBU</th>
+                    <th class="slds-size_3-of-10 cls9" scope="col">+/-</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                 <!--detail table  iteration starts here!-->
+                <template for:each = {ldcCostData.costingMaps} for:item = "ldcDataDetail">
+                    <tr key={ldcDataDetail.location}>
+                        <th class="clsplant">{ldcDataDetail.location}</th>
+                        <th class="clsplant frzcol">{ldcDataDetail.location}</th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcDataDetail.fsdb10cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.fsdb10diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcDataDetail.comb10cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.comb10diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcDataDetail.fsdb7cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.fsdb7diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number  value={ldcDataDetail.comb7cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.comb7diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcDataDetail.comb20cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.comb20diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcDataDetail.vpdb7cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.vpdb7diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number value={ldcDataDetail.vpdb10cbu} maximum-fraction-digits="2"
+                           minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls1" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.vpdb10diff} maximum-fraction-digits="2"
+                           minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number value={ldcDataDetail.comb0cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls2" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.comb0diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number value={ldcDataDetail.foaxcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.foaxdiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number value={ldcDataDetail.foacbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.foadiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number value={ldcDataDetail.focXcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls3" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.focXdiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number value={ldcDataDetail.foccbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls4" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.focdiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>                        
+                        <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number value={ldcDataDetail.lsfo8cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.lsfo8diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls11" scope="col"><lightning-formatted-number value={ldcDataDetail.lsfo3cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls11" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.lsfo3diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number value={ldcDataDetail.mgocbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls10" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.mgodiff} maximum-fraction-digits="2"
+                                minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcDataDetail.g95e10cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.g95e10diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcDataDetail.g91e10cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.g91e10diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcDataDetail.g95e20cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.g95e20diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>   
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcDataDetail.vpge10cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.vpge10diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number value={ldcDataDetail.u95e0cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls5" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.u95e0diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>   
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number value={ldcDataDetail.u91e0cbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls6" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.u91e0diff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number value={ldcDataDetail.psfdcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.psfddiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>   
+                        <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number value={ldcDataDetail.awdcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.awddiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number value={ldcDataDetail.lppcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls7" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.lppdiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>   
+                        <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number value={ldcDataDetail.ulsdcbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls8" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.ulsddiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls9" scope="col"><lightning-formatted-number value={ldcDataDetail.kerocbu} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        <th class="slds-size_3-of-10 cls9" scope="col"><lightning-formatted-number name="diff" value={ldcDataDetail.kerodiff} maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number></th>                                   
+                     </tr>
+                    </template> 
+            </tbody>
+             <!--detail table  iteration ends here!-->
+        </table>
+         <!-- cbu detail table ends here!-->
+    </div>
+    </div>
+    </template>
+</div>
+<template if:true={showSpinner}>
+    <div class="spinner">
+    <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+</div>
+</template>
+   </template>

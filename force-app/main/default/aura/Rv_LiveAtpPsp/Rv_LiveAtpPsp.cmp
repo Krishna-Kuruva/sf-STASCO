@@ -1,0 +1,250 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global" controller="LiveATPPSPDemoController">
+    <aura:attribute name="value" type="List"  default="DE01"/>    
+    <aura:attribute name="win" type="Integer" />    
+    <aura:attribute name="SalesChannel" type="List" />
+    <aura:attribute name="SelectedLocations" type="List" />
+    <aura:attribute name="unSelectedLocations" type="List" />
+    <aura:attribute name="selWindow" type="String" default="ATP1"/>
+    <aura:attribute name="selLocation" type="String" default="Customize"/>
+    <!--<aura:attribute name="ATPWrapList" type="RV_LiveATPPSPController.ATPWrap[]"/>-->
+    <aura:attribute name="ATPWrapList" type="list"/>
+    <aura:attribute name="optionsChannel" type="List" default="[
+                                                               {'label': 'AT', 'value': 'AT01'},
+                                                               {'label': 'DE', 'value': 'DE01'}
+                                                               ]"/>
+    
+  <!--  <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>  -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="c-container display-section">
+        <lightning:layoutItem padding="around-small" size="12" >
+            <div class="page-section page-header">
+                <h2><b>Live ATP-PSP</b></h2>
+            </div>
+        </lightning:layoutItem>
+        <!-- SELECTION SECTION -->
+        <lightning:layoutItem padding="around-small" size="12" >
+            <div class="slds-grid slds-wrap slds-size_4-of-4  ">
+                <div class="slds-grid slds-wrap slds-size_4-of-4 slds-p-around_x-small slds-color__background_gray-3 slds-m-bottom_small ">
+                    <div class="slds-float_left slds-grid slds-wrap slds-size_4-of-12">
+                        <B><lightning:checkboxGroup name="Select Channel"
+                                                 aura:id="channelgroup"                   
+                                                 label="Select Channel"
+                                                 options="{!v.optionsChannel }"                     
+                                                 value="{! v.value }"
+                                                 onchange="{!c.ChanelChange }" 
+                                                 /></B>
+                    </div>
+                    <!-- Customize Location Section -->
+                    <div class="slds-grid slds-wrap slds-size_4-of-12">
+                        <div class="slds-size_4-of-4 slds-float_left">
+                            <B>Customize Locations</B> 
+                        </div>
+                        <div class="slds-size_4-of-4">  
+                            
+                            
+							
+                            <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                <label class="uiLabel-left form-element__label uiLabel">
+                                    <ui:inputRadio aura:id="Loc3" name="others1" label="" text="Customize" change="{!c.onLocationSelect}" value="true"/>
+                                    <span>Customize My Locations</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Customize Location Section Ends -->
+                    <div class="slds-grid slds-wrap slds-size_4-of-12">
+                        <div class="slds-size_4-of-4 slds-float_left">
+                            <B>Select Window</B> 
+                        </div>
+                        <div class="slds-size_4-of-4">  
+                            <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                <label class="uiLabel-left form-element__label uiLabel">
+                                    <ui:inputRadio aura:id="ATP1" name="others" text="ATP1" label="" change="{!c.onGroup}" value="true" />
+                                    <span>Days(0-14)</span>
+                                </label>
+                            </div>
+                            <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                <label class="uiLabel-left form-element__label uiLabel">
+                                    <ui:inputRadio aura:id="ATP2" name="others" label="" text="ATP2" change="{!c.onGroup}" />
+                                    <span>Days(15-28)</span>
+                                </label>
+                            </div>
+                            <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                <label class="uiLabel-left form-element__label uiLabel">
+                                    <ui:inputRadio aura:id="ATP3" name="others" label="" text="ATP3" change="{!c.onGroup}" />
+                                    <span>Days(29-61)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <!-- Save Button Section -->
+			<aura:if isTrue="{!v.selLocation == 'Customize'}">
+            	<lightning:layoutItem padding="around-small" size="12">
+                    
+                    <div class="slds-float_right slds-p-around_small">
+                        <lightning:button variant="brand" label="Save" title="" onclick="{!c.getSelectedLocations}" />
+                    </div>
+                   
+            </lightning:layoutItem>
+                  <aura:set attribute="else">
+                      <lightning:layoutItem padding="around-small" size="12">
+                    
+                    <div class="slds-float_right slds-p-around_small">
+                         
+                       <lightning:button variant="brand" label="Refresh" title="" onclick="{!c.doInit}" />
+                          </div>
+                          
+                      </lightning:layoutItem>
+                </aura:set>
+            </aura:if>            
+            <!-- Save Button Section Ends here -->    
+        </lightning:layoutItem>
+        <!-- MAIN TABLE -->
+        <lightning:layoutItem size="12" >    
+            <div class="slds-grid slds-wrap slds-size_4-of-4">
+                <div class="slds-grid slds-wrap slds-size_4-of-4 slds-scrollable" >
+                    <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                
+                                <!-- Added Checkbox logic-->
+                                    <aura:if isTrue="{!v.selLocation == 'Customize'}">
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader"></th>
+                                    </aura:if>
+                                <!-- Checkbox logic ends here-->
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderLeft"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader"></th>
+                                
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:LightGreen !important;"><B>IGO</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:LightGreen !important;"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:LightGreen !important;"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader" style="background-color:LightGreen !important;"></th>
+                                
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:NavajoWhite !important;"><B>AGO</B></th>  
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:NavajoWhite !important;"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5" style="background-color:NavajoWhite !important;"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader" style="background-color:NavajoWhite !important;"></th>
+                                
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5"><B>MOGAS</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 "></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5"></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader"></th>
+                            </tr> 
+                            <tr class="slds-text-title_caps">
+                                <!-- Added Checkbox logic-->
+                                    <aura:if isTrue="{!v.selLocation == 'Customize'}">
+                                        <th scope="col" class="slds-truncate slds-cell-fixed putborderLeft"><B>SELECT</B></th>
+                                    </aura:if>
+                                <!-- Checkbox logic ends here-->
+                                <th scope="col" class="slds-truncate slds-cell-fixed putborderLeft"><B>LOC</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed putborderHeader"><B>CODE</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>ATP (CBM)</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>PSP</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed "><B>DAY</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed putborderHeader"><B>COMMENT</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>ATP (CBM)</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>PSP</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed "><B>DAY</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed putborderHeader"><B>COMMENT</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>ATP (CBM)</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed"><B>PSP</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed "><B>DAY</B></th>
+                                <th scope="col" class="slds-truncate slds-cell-fixed putborderHeader"><B>COMMENT</B></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.ATPWrapList}" var="item">
+                                <tr >
+                                <!-- Added Checkbox logic-->
+                                    <aura:if isTrue="{!v.selLocation == 'Customize'}">
+                                        <td scope="row" class="putborderHeader putborderLeft">
+                                            <ui:inputCheckbox class="slds-truncate" value="{!item.selected}" />
+                                        </td>
+                                    </aura:if>
+                                <!-- Checkbox logic ends here-->
+                                    <td scope="row" class="putborderHeader putborderLeft">
+                                        <ui:outputText class="slds-truncate" value="{!item.locName}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.locCode}"/>
+                                    </td>
+                                    <!--
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.atpIGO}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.atpIGOString}"/>
+                                    </td>-->
+                                   	<aura:if isTrue="{!lessthan(item.atpIGO, 0)}">
+                                        <td scope="row" class="putborderHeader" style="background-color:#FA5858 !important;">
+                                        	<B><ui:outputText class="slds-truncate" value="{!item.atpIGOString}"/></B>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:outputText class="slds-truncate" value="{!item.atpIGOString}"/></B>
+                                            </td>
+                                        </aura:set>
+                                	</aura:if>
+
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value=""/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.dateIGO}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.commentIGO}"/>
+                                    </td>
+                                    <aura:if isTrue="{!lessthan(item.atpAGO, 0)}">
+                                        <td scope="row" class="putborderHeader" style="background-color:#FA5858 !important;">
+                                            <B><ui:outputText class="slds-truncate" value="{!item.atpAGOString}"/></B>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:outputText class="slds-truncate" value="{!item.atpAGOString}"/></B>
+                                            </td>
+                                        </aura:set>
+                                    </aura:if>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value=""/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.dateAGO}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.commentAGO}"/>
+                                    </td>
+                                    <aura:if isTrue="{!lessthan(item.atpULG, 0)}">
+                                        <td scope="row" class="putborderHeader" style="background-color:#FA5858 !important;">
+                                            <B><ui:outputText class="slds-truncate" value="{!item.atpULGString}"/></B>
+                                        </td>
+                                        <aura:set attribute="else">
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:outputText class="slds-truncate" value="{!item.atpULGString}"/></B>
+                                            </td>
+                                        </aura:set>
+                                    </aura:if>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value=""/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.dateULG}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader">
+                                        <ui:outputText class="slds-truncate" value="{!item.commentULG}"/>
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>      
+            </div>
+        </lightning:layoutItem>
+    </div>
+</aura:component>

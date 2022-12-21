@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>HEL50ppm $/to</label>
+    <protected>false</protected>
+    <values>
+        <field>Plant_Code__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Quote_Name1__c</field>
+        <value xsi:type="xsd:string">Platts FOB Barge R&apos;dam Gasoil 50ppm (high)</value>
+    </values>
+    <values>
+        <field>Quote_Name2__c</field>
+        <value xsi:type="xsd:string">Platts CIF Cargo NWE ULSD 10ppm (high)</value>
+    </values>
+    <values>
+        <field>Quote_Name3__c</field>
+        <value xsi:type="xsd:string">ICE 16:30 yesterday $/to</value>
+    </values>
+    <values>
+        <field>Quote_Name4__c</field>
+        <value xsi:type="xsd:string">Platts FOB Barge R&apos;dam Diesel 10ppm (high)</value>
+    </values>
+    <values>
+        <field>Quote_Type__c</field>
+        <value xsi:type="xsd:string">Cargo</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Product Differential</value>
+    </values>
+</CustomMetadata>

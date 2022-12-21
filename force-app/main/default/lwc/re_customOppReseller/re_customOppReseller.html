@@ -1,0 +1,588 @@
+<template>          
+     <!--on loading message  start-->
+     <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>        
+    </template>
+     <!--on loading message end-->
+    <div class="bordertop slds-box" > 
+    <div class=" tabledata slds-table--header-fixed_container" style="height:300px;padding-top: 2%;">
+        <div class="slds-scrollable--y " style="height:100%;">
+            <table class="tableLayout fornttotable slds-table slds-table_bordered slds-table--header-fixed">
+                <thead>
+                    <tr>
+                        <template if:false={hidectrlbut}>                       
+                            <!--<template if:true={approvebutton}> -->
+                                <th scope="col" class="datatblbg checkboxwidth"  >
+                                    <div class="slds-p-top_xx-small slds-p-left_x-small slds-cell-fixed  slds-truncate datatblbg checkboxwidth">
+                                    <lightning-input type="checkbox" label="" name="selectAll" onchange={handleselectAllData}></lightning-input>
+                                    </div>
+                                </th>
+                           <!-- </template> -->
+                        </template>
+                        <th class="expand">
+                            <div class="expand"></div>
+                        </th>
+                        <th scope="col"  class="datatblbg customerName" >
+                            <div class="slds-p-top_xx-small slds-cell-fixed  slds-truncate datatblbg customerName" onclick={changeSortchar} data-target-id="customerNameSoldTo" title="Customer Name(Sold To)">Sold To Name &nbsp;&nbsp;
+                               <!-- <template if:true={sortAscOrDesc}>
+                                    <lightning-icon icon-name="utility:arrowdown" class="controlIconSize" onclick={changeSort} size="xx-small" alternative-text="asc order" title="asc order"></lightning-icon>
+                                </template>
+                                <template if:false={sortAscOrDesc}>
+                                    <lightning-icon icon-name="utility:arrowup" class="controlIconSize" onclick={changeSort} size="xx-small" alternative-text="desc order" title="desc order"></lightning-icon>
+                                </template>-->
+                            </div>
+                        </th> 
+                        <th scope="col"  class="datatblbg customerName" >
+                            <div class="slds-p-top_xx-small slds-cell-fixed  slds-truncate datatblbg customerName" onclick={changeSortchar} data-target-id="customerName" title="Customer Name(Ship To)">Ship To Name</div>
+                        </th>
+                                           
+                        <th scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" onclick={changeSortchar} data-target-id="product" title="Product">Product
+                            </div>
+                        </th>   
+                        <th scope="col" class="datatblbg plant">
+                            <div class="slds-p-top_xx-small slds-cell-fixed  slds-truncate datatblbg plant" onclick={changeSortchar} data-target-id="Location" title="Location">Location</div>
+                        </th>                         
+                        <th  scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" onclick={changesortNumber} data-target-id="soldTo" title="Sold-To">Sold-To</div>
+                        </th>
+                        <th  scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" onclick={changesortNumber} data-target-id="shipTo" title="Ship To">Ship To</div>
+                        </th>  
+                        <th scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Valid From">Valid From</div>
+                        </th>  
+                        <th scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Valid To">Valid To</div>
+                        </th>                                 
+                        <!--<th scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Transport Chgs">Transport Chgs</div>
+                        </th>
+                        <th scope="col" class="datatblbg stddisc">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg stddisc" title="Service SurChg">Service SurChg</div>
+                        </th>-->
+                        <th scope="col" class="datatblbg material">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" title="List Price">List Price</div>
+                        </th>
+                        <th scope="col" class="datatblbg tierDiscount">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg tierDiscount" title="Tier ">Tier</div>
+                        </th>
+                        <th scope="col" class="datatblbg dateTem">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg dateTem" title="Final Price">Final Price</div>
+                        </th>
+                        
+                            <th scope="col" class="datatblbg material">
+                                <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" title="Last Offered Price">Last Ofr</div>
+                            </th>
+                       
+                        <!--<th  scope="col" class="datatblbg region" >
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Discount" >Discount</div>
+                        </th>-->
+                        <th  scope="col" class="datatblbg material ">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"  title="MIDday Price">MIDday</div>
+                        </th>
+                        <!--<th  scope="col" class="datatblbg region">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="FC Margin">FC Margin</div>
+                        </th>-->
+                        <template if:true={cbuoutput}>
+                            <th  scope="col" class="datatblbg material">
+                                <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" title="CBU MC">CBU</div>
+                            </th>
+                            <!--<th  scope="col" class="datatblbg region">
+                                <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Margin CBU MC">Margin CBU MC</div>
+                            </th>-->
+                        </template>
+                        <th  scope="col" class="datatblbg material">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" onclick={changesortNumber} data-target-id="marginAboveLDC"  title="Margin Above LDC">Marg LDC</div>
+                        </th>
+                        <th  scope="col" class="datatblbg material">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"  onclick={changesortNumber} data-target-id="marginAboveMC" title="FC Margin">Marg MC</div>
+                        </th>
+                        <th  scope="col" class="datatblbg material">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" onclick={changesortNumber} data-target-id="forecastMarginAboveLDC" title="FC Margin">FCM LDC</div>
+                        </th>
+                        <th  scope="col" class="datatblbg material">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material" onclick={changesortNumber} data-target-id="forecastMarginAboveMC" title="FC Margin">FCM MC</div>
+                        </th>
+                        <th  scope="col" class="datatblbg tierDiscount">
+                            <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg tierDiscount" title="Status">Status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each = {CustData} for:item = "itemData">
+                        <tr class="slds-hint-parent celldata" key={itemData.id}>
+                            <template if:false={hidectrlbut}>
+                                <template if:true={itemData.checkBoxController}>
+                                <th scope="row" class="rowdesing" >
+                                    <lightning-input type="checkbox" onchange={slectedcheckbox} label="" name={itemData.id} checked={itemData.isChecked}></lightning-input>
+                                </th>
+                                </template>
+                                <template if:false={itemData.checkBoxController}>
+                                    <th scope="row" class="rowdesing" >
+                                    </th>
+                                </template>
+                            </template>
+                            <th class="expand">
+                                <span class="">&nbsp;</span>
+                                <lightning-button-icon icon-name="utility:new_window"
+                                alternative-text="Show Details"
+                                data-id={itemData.id}
+                                data-name="view"
+                                size="small"
+                                title="Show Details"
+                                variant="bare"
+                                onclick={editResellerdata}>
+                                </lightning-button-icon>
+                                <!--<template if:true={itemData.recordMode}>
+                                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:edit"
+                                    alternative-text="Edit"
+                                    data-id={itemData.id}
+                                    data-name="Edit"
+                                    size="small"
+                                    title="Edit Opps"
+                                    variant="bare"
+                                    onclick={editResellerdata}></lightning-button-icon>
+                                </template>-->
+                            </th>
+                            <th  scope="row" class="rowdesing">
+                                <div class="slds-truncate"  title={itemData.customerNameSoldTo}><lightning-formatted-url value={itemData.customerSoldToID} tooltip={itemData.customerNameSoldTo} label={itemData.customerNameSoldTo} target="_blank" ></lightning-formatted-url></div>
+                            </th>
+                            <th  scope="row" class="rowdesing">
+                                <div class="slds-truncate"  title={itemData.customerName}><lightning-formatted-url value={itemData.customerNameId} tooltip={itemData.customerName} label={itemData.customerName} target="_blank" ></lightning-formatted-url></div>
+                            </th>
+                            <td class="rowdesing">
+                                <div class="slds-truncate" title={itemData.product}>{itemData.product}</div><!--[{itemData.productCode}]-->
+                            </td>
+                            <td class="rowdesing">
+                                <div class="slds-truncate" title={itemData.Location}>{itemData.Location}</div>
+                            </td>
+                            <td class="rowdesing">
+                                <div class="slds-truncate" title={itemData.soldTo}>{itemData.soldTo}</div>
+                            </td>                           
+                            <td class="rowdesing">
+                                <div class="slds-truncate" title={itemData.shipTo}>{itemData.shipTo}</div>
+                            </td>
+                            <td class="rowdesing">
+                                <div class="slds-truncate" title={itemData.startDate}>{itemData.startDate}</div>
+                            </td>
+                            <td class="rowdesing">                               
+                                    <div class="slds-truncate" title={itemData.endDate}>{itemData.endDate}</div>  
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.listPrice}><lightning-formatted-number value={itemData.listPrice} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.tieredDiscount}><lightning-formatted-number value={itemData.tieredDiscount} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.finalPrice}>
+                                    <template if:false={approvebutton}>
+                                        <template if:false={itemData.recordMode}>
+                                            <lightning-formatted-number value={itemData.finalPrice} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                                        </template>
+                                        <template if:true={itemData.recordMode}>
+                                            <template if:false={itemData.inlineEdit}>
+                                                <lightning-formatted-number value={itemData.finalPrice} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                                                <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:edit"
+                                                            alternative-text="Edit"
+                                                            data-id={itemData.id}
+                                                            data-name="Edit"
+                                                            size="small"
+                                                            title="Edit Opps"
+                                                            variant="bare"
+                                                            onclick={enableInlineEdit}>
+                                                </lightning-button-icon>
+                                            </template>
+                                            <template if:true={itemData.inlineEdit}>
+                                                    <lightning-input name={itemData.id} type="number"  class="inlineEdit" step="0.01" variant="label-hidden" onchange={pricechange}  onblur={cancelInline} value={itemData.finalPrice}></lightning-input>
+                                                    &nbsp;&nbsp;
+                                            </template>
+                                        </template>
+                                    </template>
+                                    <template if:true={approvebutton}>
+                                        <lightning-formatted-number value={itemData.finalPrice} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number>
+                                    </template>
+                                </div>
+                            </td>
+                            
+                                <td class="rowdesing">
+                                    <div title={itemData.yesterdayFinalPrice}><lightning-formatted-number value={itemData.yesterdayFinalPrice} maximum-fraction-digits="2"
+                                        minimum-fraction-digits="2"></lightning-formatted-number></div>
+                                </td>
+                          
+                            <!--<td class="rowdesing">
+                                <div title={itemData.discount}><lightning-formatted-number value={itemData.discount} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td> -->
+                            <td class="rowdesing">
+                                <div title={itemData.midDayPrice}><lightning-formatted-number value={itemData.midDayPrice} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td> 
+                           <!-- <td class="rowdesing">
+                                <div title={itemData.fcMarginInd}><lightning-formatted-number value={itemData.fcMarginInd} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td> -->
+                           
+                            <template if:true={cbuoutput}>
+                                <td class="rowdesing">
+                                    <div title={itemData.cbuMC}><lightning-formatted-number value={itemData.cbuMC} maximum-fraction-digits="2"
+                                        minimum-fraction-digits="2"></lightning-formatted-number></div>
+                                </td> 
+                            </template>
+                            <td class="rowdesing">
+                                <div title={itemData.marginAboveLDC}><lightning-formatted-number value={itemData.marginAboveLDC} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.marginAboveMC}><lightning-formatted-number value={itemData.marginAboveMC} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.forecastMarginAboveLDC}><lightning-formatted-number value={itemData.forecastMarginAboveLDC} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <td class="rowdesing">
+                                <div title={itemData.forecastMarginAboveMC}><lightning-formatted-number value={itemData.forecastMarginAboveMC} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number></div>
+                            </td>
+                            <!--<template if:true={cbuoutput}>
+                                <td class="rowdesing">
+                                    <div title={itemData.cbuMC}><lightning-formatted-number value={itemData.cbuMC} maximum-fraction-digits="2"
+                                        minimum-fraction-digits="2"></lightning-formatted-number></div>
+                                </td> 
+                                <td class="rowdesing">
+                                    <div title={itemData.MarginaboveCBUMC}><lightning-formatted-number value={itemData.MarginaboveCBUMC} maximum-fraction-digits="2"
+                                        minimum-fraction-digits="2"></lightning-formatted-number></div>
+                                </td> 
+                            </template>-->
+                            <td class="rowdesing">
+                                <!--<div class="slds-truncate forntsize">  <lightning-avatar src="" initials={itemData.approveStatus} class={itemData.approveStatus} fallback-icon-name="standard:avatar"  alternative-text={itemData.approveStatus} size="x-small"></lightning-avatar></div>-->
+                                <span class="slds-avatar avatar" >                                    
+                                        <abbr class={itemData.avatarCssClass} style="padding-top: 0.1rem;" title={itemData.approveStatus}>{itemData.approveStatus}</abbr>                                   
+                                </span>
+                            </td>                        
+
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <template if:true={ShowEdit}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container ">
+              <header class="modeltemp slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                   <lightning-icon icon-name="utility:close"
+                      alternative-text="close"
+                      variant="inverse"
+                      size="small" ></lightning-icon>
+                   <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class=" slds-modal__title slds-hyphenate" >Detail view : {editReseller.customerName}</h2>
+            </header>
+             <div class="popUpcolor slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div >
+                    <div class="Backgroundcls borderToBox slds-box slds-m-bottom_xx-small">
+                        <div class="slds-grid slds-grid_pull-padded-medium">
+                            <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+                                <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Customer Name(Sold To)</b></td>
+                                            <!--<td>{editReseller.customerNameSoldTo}</td>-->
+                                            <td><lightning-formatted-url value={editReseller.customerSoldToID} tooltip={editReseller.customerSoldToID} label={editReseller.customerNameSoldTo} target="_blank" ></lightning-formatted-url>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Customer Name(Ship To)</b></td>
+                                            <td>{editReseller.customerName}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Product</b></td>
+                                            <td>{editReseller.product}[{editReseller.productCode}]</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Location</b></td>
+                                            <td>{editReseller.Location}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Sold-To</b></td>
+                                            <td>{editReseller.soldTo}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Ship To</b></td>
+                                            <td>{editReseller.shipTo}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>AM code</b></td>
+                                            <td>{editReseller.amCode}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+                                <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                    <tr>
+                                        <td><b>Transport Mode</b></td>
+                                        <td>{editReseller.tptMode}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>UNIT's</b></td>
+                                        <td>{editReseller.units}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Tiered Discount</b></td>
+                                        <td>{editReseller.tieredDiscount}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Sales Org</b></td>
+                                        <td>{editReseller.salesOrg}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Valid start date</b></td>
+                                        <td>{editReseller.startDate}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Valid End date</b></td>
+                                        <td>{editReseller.endDate}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>List Price Tier</b></td>
+                                        <td>{editReseller.listPriceTier}</td>
+                                    </tr>
+                                  
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Backgroundcls borderToBox slds-box">
+                        <div class="slds-grid slds-grid_pull-padded-medium">
+                            <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+                                <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                    <tbody>
+                                    
+                                        <tr>
+                                            <td><b>Temporary Discount</b></td>
+                                            <td><lightning-formatted-number value={editReseller.tempDiscount} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Transport Chgs</b></td>
+                                            <td><lightning-formatted-number value={editReseller.transportCharge} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number>
+                                                <!--<lightning-input type="number" step="0.01" variant="label-hidden" disabled onchange={finalPriceChange}  name="RE_Transport_Charge__c" value={editReseller.transportCharge}></lightning-input>
+                                             --></td>    
+                                        </tr>
+                                        <tr>
+                                            <td><b>Service SurChg</b></td>
+                                            <td><lightning-formatted-number value={editReseller.serviceSurChg} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>DFOA SurChg</b></td>
+                                            <td><lightning-formatted-number value={editReseller.dfoaCharges} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Rebate</b></td>
+                                            <td><lightning-formatted-number value={editReseller.rebate} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>BDF</b></td>
+                                            <td><lightning-formatted-number value={editReseller.bdf} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>List Price</b></td>
+                                            <td><lightning-formatted-number value={editReseller.listPrice} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number> 
+                                               <!-- <lightning-input type="number" step="0.01" variant="label-hidden" disabled onchange={finalPriceChange}  name="RE_List_Price__c" value={editReseller.listPrice}></lightning-input>
+                                            --></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Final Price</b></td>
+                                            <td><lightning-input type="number" step="0.01" variant="label-hidden" onchange={finalPriceChange}  name="RE_Final_Price_Rebate__c" value={editReseller.finalPrice}></lightning-input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Calculation logic</b></td>
+                                            <td>{editReseller.calculationLogic}</td>
+                                        </tr> 
+                                        
+                                        <tr>
+                                            <td><b>Last Modified By</b></td>
+                                            <td>{editReseller.lastModifiedBy} </td>
+                                        </tr> 
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Submitter Comments </b></td>                                            
+                                        </tr>
+                                        <tr>  
+                                            <template if:false={approvebutton}>  
+                                                <template if:true={editReseller.recordMode}>                                        
+                                                    <td colspan="2"><lightning-textarea name="SubmitterComments"  value={editReseller.submitterComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                                </template>
+                                                <template if:false={editReseller.recordMode}>                                        
+                                                    <td colspan="2"><lightning-textarea name="SubmitterComments" disabled  value={editReseller.submitterComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                                </template>
+                                            </template>
+                                            <template if:true={approvebutton}>                                          
+                                                <td colspan="2"><lightning-textarea name="SubmitterComments" disabled value={editReseller.submitterComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                            </template>
+                                        </tr>  
+                                      <!--  <tr>
+                                            <td><b>CBU MC for Final price calculation</b></td>
+                                            <td><lightning-formatted-number value={editReseller.cbuMCforFinalPrice} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>  -->                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+                                <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                    <tbody>
+                                            
+                                        <tr>
+                                            <td><b>MIDday Price</b></td>
+                                            <td><lightning-formatted-number value={editReseller.midDayPrice} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>AfterNoon Indication</b></td>
+                                            <td><lightning-formatted-number value={editReseller.RE_Afternoon_Indication} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>CBU MC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.cbuMC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><b>CBU LDC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.RE_CBU_LDC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>                                       
+                                       <!-- <tr>
+                                            <td><b>Margin above CBU MC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.MarginaboveCBUMC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>-->
+                                       
+                                        <tr>
+                                            <td><b>Margin Above LDC </b></td>
+                                            <td><lightning-formatted-number value={editReseller.marginAboveLDC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><b>Margin Above MC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.marginAboveMC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><b>Forecast Margin Above LDC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.forecastMarginAboveLDC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr> 
+                                        <tr>
+                                            <td><b>Forecast Margin Above MC</b></td>
+                                            <td><lightning-formatted-number value={editReseller.forecastMarginAboveMC} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><b>Submitted By</b></td>
+                                            <td>{editReseller.submittedBy}</td>
+                                        </tr>  
+                                        <tr>
+                                            <td><b>Approved By</b></td>
+                                            <td>{editReseller.approvedBy}</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Approver Comments </b></td>
+                                        </tr>
+                                        <tr>  
+                                            <template if:true={approvebutton}>
+                                                <template if:true={editReseller.recordMode}> 
+                                                    <td colspan="2"><lightning-textarea name="ApproverComments"   value={editReseller.approverComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                                </template>
+                                                <template if:false={editReseller.recordMode}> 
+                                                    <td colspan="2"><lightning-textarea name="ApproverComments"  disabled value={editReseller.approverComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                                </template>
+                                            </template> 
+                                            <template if:false={approvebutton}>                                         
+                                                <td colspan="2"><lightning-textarea name="ApproverComments" disabled value={editReseller.approverComments} onchange={finalPriceChange} variant="label-hidden"  ></lightning-textarea></td>
+                                            </template>
+                                        </tr>
+                                       <!-- <tr>
+                                            <td><b>CBU LDC for Final price calculation</b></td>
+                                            <td><lightning-formatted-number value={editReseller.cbuLDCforFinalPrice} maximum-fraction-digits="2"
+                                                minimum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+                  </div>
+             </div>
+             <footer class="modeltemp slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                <button class="slds-button slds-button_neutral" onclick={saveandClose}>Save</button>
+             </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+       <!--on loading message  start-->
+       <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+    </template>
+     <!--on loading message end-->
+      </template>
+</template>

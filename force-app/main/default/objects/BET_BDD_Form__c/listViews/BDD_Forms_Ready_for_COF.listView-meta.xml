@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDD_Forms_Ready_for_COF</fullName>
+    <columns>NAME</columns>
+    <columns>BDD_Line_of_Business__c</columns>
+    <columns>BDD_Entity_Type__c</columns>
+    <columns>BDD_Onboard_Type__c</columns>
+    <columns>BET_Status__c</columns>
+    <columns>GoldTier_Status__c</columns>
+    <columns>MDN_Status__c</columns>
+    <columns>Assigned_COF__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>BET_Status__c</field>
+        <operation>equals</operation>
+        <value>Ready for COF</value>
+    </filters>
+    <filters>
+        <field>BDD_Line_of_Business__c</field>
+        <operation>equals</operation>
+        <value>GLOBAL</value>
+    </filters>
+    <label>BDD Forms - GLOBAL | St: Ready for COF</label>
+    <sharedTo>
+        <group>BET_COF_Group</group>
+    </sharedTo>
+</ListView>

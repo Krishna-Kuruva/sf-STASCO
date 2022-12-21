@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>IT Dashboard Alert</label>
+    <protected>false</protected>
+    <values>
+        <field>Adhoc_Run_Allowed__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Alert_Needed__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Batch_Name__c</field>
+        <value xsi:type="xsd:string">IT Dashboard Alert every 0 Min</value>
+    </values>
+    <values>
+        <field>IT_Dashboard_Display_Order__c</field>
+        <value xsi:type="xsd:double">11.0</value>
+    </values>
+    <values>
+        <field>IT_Dashboard_Label__c</field>
+        <value xsi:type="xsd:string">Control Dashboard Alert</value>
+    </values>
+    <values>
+        <field>Invisible_on_Dashboard__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Only_Adhoc_Run_Allowed__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Parent_Class_Name__c</field>
+        <value xsi:type="xsd:string">NA</value>
+    </values>
+    <values>
+        <field>Parent_Class_Type__c</field>
+        <value xsi:type="xsd:string">Batchable</value>
+    </values>
+    <values>
+        <field>Related_MasterLabel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Schedulable_Class_Name__c</field>
+        <value xsi:type="xsd:string">Rv_ITdashboardAlert</value>
+    </values>
+    <values>
+        <field>Schedule_Expression__c</field>
+        <value xsi:type="xsd:string">0 0 * * * ?</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,24 @@
+.blockscolor {
+    background: #f3f2f2;
+    font-size: 10px;
+}
+
+.modalHeight{
+    width: 65%;
+    min-width: 25rem;
+}
+.fontsize{
+    font-size: 10px; 
+}
+td {
+    padding: 2px;
+}
+.warningFont{
+    font-size: 15px; 
+}
+
+.modalHeightLarge
+{
+    width: 75%;
+    min-width: 45rem;
+}

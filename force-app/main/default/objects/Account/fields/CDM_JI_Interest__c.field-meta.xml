@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CDM_JI_Interest__c</fullName>
+    <externalId>false</externalId>
+    <label>CDM/JI Interest</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Primary Seller</fullName>
+                <default>false</default>
+                <label>Primary Seller</label>
+            </value>
+            <value>
+                <fullName>Primary Buyer</fullName>
+                <default>false</default>
+                <label>Primary Buyer</label>
+            </value>
+            <value>
+                <fullName>Secondary-Offtake Seller</fullName>
+                <default>false</default>
+                <label>Secondary-Offtake Seller</label>
+            </value>
+            <value>
+                <fullName>Secondary-Offtake Buyer</fullName>
+                <default>false</default>
+                <label>Secondary-Offtake Buyer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

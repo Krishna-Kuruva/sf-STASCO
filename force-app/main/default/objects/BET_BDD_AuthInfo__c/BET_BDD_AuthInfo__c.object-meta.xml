@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>BET BDD salesforce authentication information and endpoint</description>
+    <enableFeeds>false</enableFeeds>
+    <label>BET_BDD_AuthInfo</label>
+    <visibility>Public</visibility>
+</CustomObject>

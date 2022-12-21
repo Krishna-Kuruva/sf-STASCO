@@ -1,0 +1,16 @@
+Hi {!BET_BDD_Form__c.BDD_Approver__c},<br/><br/>
+
+The below mentioned Record is assigned for BDD eligibility review.<br/><br/>
+
+
+
+<b>BDD Legal Name: </b> {!BET_BDD_Form__c.GT_Legal_Name__c} <br/><br/>
+<b>BDD Customer Entity Type | Classification: </b>  {!BET_BDD_Form__c.GT_Cust_Entity_Type_Class__c} <br/><br/>
+<b>BDD Commodity:  </b>  {!BET_BDD_Form__c.GT_BDD_Commodity__c}<br/><br/>
+<b>BDD Trader Name:  </b>  {!BET_BDD_Form__c.Trader_Originator_Email__c}<br/><br/>
+
+
+<a href="{!BET_BDD_Form__c.Link}">Click here</a> to approve or reject the BDD eligibility status of the related entity.<br/><br/>
+
+Thanks,<br/>
+COF.

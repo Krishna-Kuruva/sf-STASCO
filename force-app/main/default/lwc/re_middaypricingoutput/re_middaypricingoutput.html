@@ -1,0 +1,172 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_xxx-small slds-box">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left slds-text-heading_medium" title="region">EM</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="depot">Depot</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="value">Product</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="mornval">CBU (MC)</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="midforc">Movement Forecast</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="estmarg">Estimated Margin</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="shlprc">Shell price</div>
+                        </th>
+                        <th class="slds-size_2-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="mrkprc">Market price</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={myListEM}>
+                        <template for:each = {myListEM} for:item = "item">
+                            <tr class="slds-hint-parent" key={item.Id} id ={item.Id} >
+                                <td class="slds-size_1-of-12">
+                                </td>
+                                <td class="slds-size_1-of-12">
+                                    <lightning-formatted-text value= {item.RE_Depot__c}></lightning-formatted-text>
+                                </td>
+                                <td class="slds-size_1-of-12">
+                                    <lightning-formatted-text value= {item.RE_Product__c}></lightning-formatted-text>
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Morning_Marginal_Cost__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Midday_Forecast_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Estimated_Margin__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-input variant="label-hidden" name={item.Id} class="spinput"
+                                                     type = "number" step="0.01"  value={item.RE_Shell_Price__c} onchange={handleshellpriceChange}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_2-of-12">
+                                    <lightning-input variant="label-hidden" name={item.Id} class="mpinput"
+                                                     type = "text" value={item.RE_Market_Price__c} onchange={handlemarketpriceChange}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div class="slds-p-around_xxx-small slds-box">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left slds-text-heading_medium" title="region">PM</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="depot">Depot</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="value">Product</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="mornval">CBU (MC)</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="midforc">Movement Forecast</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="estmarg">Estimated Margin</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="shlprc">Shell price</div>
+                        </th>
+                        <th class="slds-size_2-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="mrkprc">Market price</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={myListPM}>
+                        <template for:each = {myListPM} for:item = "item">
+                            <tr class="slds-hint-parent" key={item.Id} id ={item.Id} >
+                                <td class="slds-size_1-of-12">
+                                </td>
+                                <td class="slds-size_1-of-12">
+                                    <lightning-formatted-text value= {item.RE_Depot__c}></lightning-formatted-text>
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-text value= {item.RE_Product__c}></lightning-formatted-text>
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Morning_Marginal_Cost__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Midday_Forecast_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-formatted-number  value={item.RE_Estimated_Margin__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                </td>
+                                <td class="slds-size_1-of-12 ">
+                                    <lightning-input variant="label-hidden" name={item.Id} class="spinput"
+                                                     type = "number" step="0.01"  value={item.RE_Shell_Price__c} onchange={handleshellpriceChangePM}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_2-of-12">
+                                    <lightning-input variant="label-hidden" name={item.Id} class="mpinput"
+                                                     type = "text" value={item.RE_Market_Price__c} onchange={handlemarketpriceChangePM}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div class="slds-modal__footer">
+            <lightning-button
+                    label="MailPM"
+                    slot="actions"
+                    icon-name="utility:email"
+                    onclick={handlePMMail}>
+            </lightning-button>&nbsp;
+            <lightning-button
+                    label="MailEM"
+                    slot="actions"
+                    icon-name="utility:email"
+                    onclick={handleEMMail}>
+            </lightning-button>&nbsp;
+            <lightning-button
+                    label="Save"
+                    icon-name="utility:save"
+                    slot="actions"
+                    onclick={handleSave}>
+            </lightning-button>&nbsp;
+            <lightning-button
+                    label="Reset"
+                    icon-name="utility:clear"
+                    slot="actions"
+                    onclick={handleCancel}>
+            </lightning-button>&nbsp;
+            <lightning-button
+                    label="Recalculate"
+                    icon-name="utility:replace"
+                    slot="actions"
+                    onclick={handlerecalculate}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

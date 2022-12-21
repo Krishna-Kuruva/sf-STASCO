@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0004</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:type="xsd:string">a.leger@petroleleger.ca;accounting@highlandsupply.ca;admin@huileshlh.com;administration@petrolescoulombe.com;c.cyr@petroleleger.ca;c.leger@petroleleger.ca;c.totunov@petroleleger.ca;collingwoodfuels@bellnet.ca;comptespayables@petroleleger.ca;fuels@highlandsupply.ca;pascal@grand-maison.com;Marylene.Vachon@filgo.ca;doug.granger@grangerfuels.com;gregstephens@collingwoodfuels.com;hlhmontlaurier@huileshlh.com;hlhvaldor@huileshlh.com;info@petrolescoulombe.com;ilafortune@petrolesexpert.com;j.hubert@huileshlh.com;jcox@vianet.ca;jgh@huileshlh.com;livraisons@petroleleger.ca;liza@stephensfuels.ca;bleneve@mackenzieoil.com;cmackenzie@mackenzieoil.com;cpassingham@mackenzieoil.com;sburman@mackenzieoil.com;csnell@mackenzieoil.com;marke@vianet.ca;nealbailey@vianet.ca;nick@chalmersfuels.ca;m.brochu@petroleleger.ca;aafarand@petroleleger.ca;p.leger@petroleleger.ca;</value>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Shell Canada - Branded Customer Notification</value>
+    </values>
+</CustomMetadata>

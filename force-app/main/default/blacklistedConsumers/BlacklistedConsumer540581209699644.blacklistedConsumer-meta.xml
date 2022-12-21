@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BlacklistedConsumer xmlns="http://soap.sforce.com/2006/04/metadata">
+    <blockedByApiWhitelisting>false</blockedByApiWhitelisting>
+    <consumerKey>3MVG9szVa2RxsqBbMzDRGE6vvs5ZNXP5PlwFDO5KXtzU5Lz3bnZpmsuvhns_e9U9oKR0QmaC8_n_Ufj2CauH0</consumerKey>
+    <consumerName>tools.bluecanvas.io</consumerName>
+    <masterLabel>BlacklistedConsumer540581209585470</masterLabel>
+</BlacklistedConsumer>

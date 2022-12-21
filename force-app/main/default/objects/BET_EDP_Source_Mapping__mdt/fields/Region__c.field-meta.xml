@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Region</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>WONA</fullName>
+                <default>true</default>
+                <label>WONA</label>
+            </value>
+            <value>
+                <fullName>SENA</fullName>
+                <default>false</default>
+                <label>SENA</label>
+            </value>
+            <value>
+                <fullName>STUSCO</fullName>
+                <default>false</default>
+                <label>STUSCO</label>
+            </value>
+            <value>
+                <fullName>GLOBAL</fullName>
+                <default>false</default>
+                <label>GLOBAL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

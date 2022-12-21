@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>ADP - ANDORAN PESETA</fullName>
+        <default>false</default>
+        <label>ADP - ANDORAN PESETA</label>
+    </customValue>
+    <customValue>
+        <fullName>AED - UNITED ARAB EMIRATES DIRHAM</fullName>
+        <default>false</default>
+        <label>AED - UNITED ARAB EMIRATES DIRHAM</label>
+    </customValue>
+    <customValue>
+        <fullName>AFA - AFGHANI (OLD)</fullName>
+        <default>false</default>
+        <label>AFA - AFGHANI (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>AFN - AFGHANI</fullName>
+        <default>false</default>
+        <label>AFN - AFGHANI</label>
+    </customValue>
+    <customValue>
+        <fullName>ALL - ALBANIAN LEK</fullName>
+        <default>false</default>
+        <label>ALL - ALBANIAN LEK</label>
+    </customValue>
+    <customValue>
+        <fullName>AMD - ARMENIAN DRAM</fullName>
+        <default>false</default>
+        <label>AMD - ARMENIAN DRAM</label>
+    </customValue>
+    <customValue>
+        <fullName>ANG - WEST INDIAN GUILDER</fullName>
+        <default>false</default>
+        <label>ANG - WEST INDIAN GUILDER</label>
+    </customValue>
+    <customValue>
+        <fullName>AOA - ANGOLANISCHE KWANZA</fullName>
+        <default>false</default>
+        <label>AOA - ANGOLANISCHE KWANZA</label>
+    </customValue>
+    <customValue>
+        <fullName>AON - ANGOLAN NEW KWANZA (OLD)</fullName>
+        <default>false</default>
+        <label>AON - ANGOLAN NEW KWANZA (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>AOR - ANGOLAN KWANZA REAJUSTADO (OLD)</fullName>
+        <default>false</default>
+        <label>AOR - ANGOLAN KWANZA REAJUSTADO (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>ARS - ARGENTINE PESO</fullName>
+        <default>false</default>
+        <label>ARS - ARGENTINE PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>ATS - AUSTRIAN SCHILLING</fullName>
+        <default>false</default>
+        <label>ATS - AUSTRIAN SCHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>AUD - AUSTRALIAN DOLLAR</fullName>
+        <default>false</default>
+        <label>AUD - AUSTRALIAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>AWG - ARUBAN GUILDER</fullName>
+        <default>false</default>
+        <label>AWG - ARUBAN GUILDER</label>
+    </customValue>
+    <customValue>
+        <fullName>AZM - AZERBAIJAN MANAT</fullName>
+        <default>false</default>
+        <label>AZM - AZERBAIJAN MANAT</label>
+    </customValue>
+    <customValue>
+        <fullName>BAM - BOSNIA AND HERZEGOVINA CONVERTIBLE MARK</fullName>
+        <default>false</default>
+        <label>BAM - BOSNIA AND HERZEGOVINA CONVERTIBLE MARK</label>
+    </customValue>
+    <customValue>
+        <fullName>BBD - BARBADOS DOLLAR</fullName>
+        <default>false</default>
+        <label>BBD - BARBADOS DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BDT - BANGLADESH TAKA</fullName>
+        <default>false</default>
+        <label>BDT - BANGLADESH TAKA</label>
+    </customValue>
+    <customValue>
+        <fullName>BEF - BELGIAN FRANC</fullName>
+        <default>false</default>
+        <label>BEF - BELGIAN FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>BGN - BULGARIAN LEV</fullName>
+        <default>false</default>
+        <label>BGN - BULGARIAN LEV</label>
+    </customValue>
+    <customValue>
+        <fullName>BHD - BAHRAIN DINAR</fullName>
+        <default>false</default>
+        <label>BHD - BAHRAIN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BIF - BURUNDI FRANC</fullName>
+        <default>false</default>
+        <label>BIF - BURUNDI FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>BMD - BERMUDAN DOLLAR</fullName>
+        <default>false</default>
+        <label>BMD - BERMUDAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BND - BRUNEI DOLLAR</fullName>
+        <default>false</default>
+        <label>BND - BRUNEI DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BOB - BOLIVIANO</fullName>
+        <default>false</default>
+        <label>BOB - BOLIVIANO</label>
+    </customValue>
+    <customValue>
+        <fullName>BRL - BRAZILIAN REAL</fullName>
+        <default>false</default>
+        <label>BRL - BRAZILIAN REAL</label>
+    </customValue>
+    <customValue>
+        <fullName>BSD - BAHAMAN DOLLAR</fullName>
+        <default>false</default>
+        <label>BSD - BAHAMAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BTN - BHUTAN NGULTRUM</fullName>
+        <default>false</default>
+        <label>BTN - BHUTAN NGULTRUM</label>
+    </customValue>
+    <customValue>
+        <fullName>BWP - BOTSWANA PULA</fullName>
+        <default>false</default>
+        <label>BWP - BOTSWANA PULA</label>
+    </customValue>
+    <customValue>
+        <fullName>BYB - BELORUSSIAN RUBLE (OLD)</fullName>
+        <default>false</default>
+        <label>BYB - BELORUSSIAN RUBLE (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>BYR - BELORUSSIAN RUBLE</fullName>
+        <default>false</default>
+        <label>BYR - BELORUSSIAN RUBLE</label>
+    </customValue>
+    <customValue>
+        <fullName>BZD - BELIZE DOLLAR</fullName>
+        <default>false</default>
+        <label>BZD - BELIZE DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>CAD - CANADIAN DOLLAR</fullName>
+        <default>false</default>
+        <label>CAD - CANADIAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>CDF - CONGOLESE FRANC</fullName>
+        <default>false</default>
+        <label>CDF - CONGOLESE FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>CFP - FRENCH FRANC (PACIFIC ISLANDS)</fullName>
+        <default>false</default>
+        <label>CFP - FRENCH FRANC (PACIFIC ISLANDS)</label>
+    </customValue>
+    <customValue>
+        <fullName>CHF - SWISS FRANC</fullName>
+        <default>false</default>
+        <label>CHF - SWISS FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>CLP - CHILEAN PESO</fullName>
+        <default>false</default>
+        <label>CLP - CHILEAN PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>CNY - CHINESISCHE YUAN (INTERNATIONAL)</fullName>
+        <default>false</default>
+        <label>CNY - CHINESISCHE YUAN (INTERNATIONAL)</label>
+    </customValue>
+    <customValue>
+        <fullName>COP - COLOMBIAN PESO</fullName>
+        <default>false</default>
+        <label>COP - COLOMBIAN PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>CRC - COSTA RICA COLON</fullName>
+        <default>false</default>
+        <label>CRC - COSTA RICA COLON</label>
+    </customValue>
+    <customValue>
+        <fullName>CUP - CUBAN PESO</fullName>
+        <default>false</default>
+        <label>CUP - CUBAN PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>CVE - CAPE VERDE ESCUDO</fullName>
+        <default>false</default>
+        <label>CVE - CAPE VERDE ESCUDO</label>
+    </customValue>
+    <customValue>
+        <fullName>CYP - CYPRUS POUND</fullName>
+        <default>false</default>
+        <label>CYP - CYPRUS POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>CZK - CZECH KRONA</fullName>
+        <default>false</default>
+        <label>CZK - CZECH KRONA</label>
+    </customValue>
+    <customValue>
+        <fullName>DEM - GERMAN MARK</fullName>
+        <default>false</default>
+        <label>DEM - GERMAN MARK</label>
+    </customValue>
+    <customValue>
+        <fullName>DJF - DJIBOUTI FRANC</fullName>
+        <default>false</default>
+        <label>DJF - DJIBOUTI FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>DKK - DANISH KRONE</fullName>
+        <default>false</default>
+        <label>DKK - DANISH KRONE</label>
+    </customValue>
+    <customValue>
+        <fullName>DOP - DOMINICAN PESO</fullName>
+        <default>false</default>
+        <label>DOP - DOMINICAN PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>DZD - ALGERIAN DINAR</fullName>
+        <default>false</default>
+        <label>DZD - ALGERIAN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>ECS - ECUADORIAN SUCRE ( &gt; USD)</fullName>
+        <default>false</default>
+        <label>ECS - ECUADORIAN SUCRE ( &gt; USD)</label>
+    </customValue>
+    <customValue>
+        <fullName>EEK - ESTONIAN KRONE</fullName>
+        <default>false</default>
+        <label>EEK - ESTONIAN KRONE</label>
+    </customValue>
+    <customValue>
+        <fullName>EGP - EGYPTIAN POUND</fullName>
+        <default>false</default>
+        <label>EGP - EGYPTIAN POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>ERN - ERITREAN NAFKA</fullName>
+        <default>false</default>
+        <label>ERN - ERITREAN NAFKA</label>
+    </customValue>
+    <customValue>
+        <fullName>ESP - SPANISH PESETA</fullName>
+        <default>false</default>
+        <label>ESP - SPANISH PESETA</label>
+    </customValue>
+    <customValue>
+        <fullName>ETB - ETHIOPIAN BIRR</fullName>
+        <default>false</default>
+        <label>ETB - ETHIOPIAN BIRR</label>
+    </customValue>
+    <customValue>
+        <fullName>EUR - EUROPEAN EURO</fullName>
+        <default>false</default>
+        <label>EUR - EUROPEAN EURO</label>
+    </customValue>
+    <customValue>
+        <fullName>FIM - FINNISH MARKKA</fullName>
+        <default>false</default>
+        <label>FIM - FINNISH MARKKA</label>
+    </customValue>
+    <customValue>
+        <fullName>FJD - FIJI DOLLAR</fullName>
+        <default>false</default>
+        <label>FJD - FIJI DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>FKP - FALKLAND POUND</fullName>
+        <default>false</default>
+        <label>FKP - FALKLAND POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>FRF - FRENCH FRANC</fullName>
+        <default>false</default>
+        <label>FRF - FRENCH FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>GBP - BRITISH POUND</fullName>
+        <default>false</default>
+        <label>GBP - BRITISH POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>GEL - GEORGIAN LARI</fullName>
+        <default>false</default>
+        <label>GEL - GEORGIAN LARI</label>
+    </customValue>
+    <customValue>
+        <fullName>GHC - GHANIAN CEDI</fullName>
+        <default>false</default>
+        <label>GHC - GHANIAN CEDI</label>
+    </customValue>
+    <customValue>
+        <fullName>GIP - GIBRALTAR POUND</fullName>
+        <default>false</default>
+        <label>GIP - GIBRALTAR POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>GMD - GAMBIAN DALASI</fullName>
+        <default>false</default>
+        <label>GMD - GAMBIAN DALASI</label>
+    </customValue>
+    <customValue>
+        <fullName>GNF - GUINEAN FRANC</fullName>
+        <default>false</default>
+        <label>GNF - GUINEAN FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>GRD - GREEK DRACHMA</fullName>
+        <default>false</default>
+        <label>GRD - GREEK DRACHMA</label>
+    </customValue>
+    <customValue>
+        <fullName>GTQ - GUATEMALAN QUETZAL</fullName>
+        <default>false</default>
+        <label>GTQ - GUATEMALAN QUETZAL</label>
+    </customValue>
+    <customValue>
+        <fullName>GWP - GUINEA PESO</fullName>
+        <default>false</default>
+        <label>GWP - GUINEA PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>GYD - GUYANA DOLLAR</fullName>
+        <default>false</default>
+        <label>GYD - GUYANA DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>HKD - HONG KONG DOLLAR</fullName>
+        <default>false</default>
+        <label>HKD - HONG KONG DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>HNL - HONDURAN LEMPIRA</fullName>
+        <default>false</default>
+        <label>HNL - HONDURAN LEMPIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>HRK - CROATIAN KUNA</fullName>
+        <default>false</default>
+        <label>HRK - CROATIAN KUNA</label>
+    </customValue>
+    <customValue>
+        <fullName>HTG - HAITIAN GOURDE</fullName>
+        <default>false</default>
+        <label>HTG - HAITIAN GOURDE</label>
+    </customValue>
+    <customValue>
+        <fullName>HUF - HUNGARIAN FORINT</fullName>
+        <default>false</default>
+        <label>HUF - HUNGARIAN FORINT</label>
+    </customValue>
+    <customValue>
+        <fullName>IDR - INDONESIAN RUPIAH</fullName>
+        <default>false</default>
+        <label>IDR - INDONESIAN RUPIAH</label>
+    </customValue>
+    <customValue>
+        <fullName>IEP - IRISH PUNT</fullName>
+        <default>false</default>
+        <label>IEP - IRISH PUNT</label>
+    </customValue>
+    <customValue>
+        <fullName>ILS - ISRAELI SCHECKEL</fullName>
+        <default>false</default>
+        <label>ILS - ISRAELI SCHECKEL</label>
+    </customValue>
+    <customValue>
+        <fullName>INR - INDIAN RUPEE</fullName>
+        <default>false</default>
+        <label>INR - INDIAN RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>IQD - IRAQUI DINAR</fullName>
+        <default>false</default>
+        <label>IQD - IRAQUI DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>IRR - IRANIAN RIAL</fullName>
+        <default>false</default>
+        <label>IRR - IRANIAN RIAL</label>
+    </customValue>
+    <customValue>
+        <fullName>ISK - ICELAND KRONA</fullName>
+        <default>false</default>
+        <label>ISK - ICELAND KRONA</label>
+    </customValue>
+    <customValue>
+        <fullName>ITL - ITALIAN LIRA</fullName>
+        <default>false</default>
+        <label>ITL - ITALIAN LIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>JMD - JAMAICAN DOLLAR</fullName>
+        <default>false</default>
+        <label>JMD - JAMAICAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>JOD - JORDANIAN DINAR</fullName>
+        <default>false</default>
+        <label>JOD - JORDANIAN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>JPY - JAPANESE YEN</fullName>
+        <default>false</default>
+        <label>JPY - JAPANESE YEN</label>
+    </customValue>
+    <customValue>
+        <fullName>KES - KENYAN SHILLING</fullName>
+        <default>false</default>
+        <label>KES - KENYAN SHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>KGS - KYRGYZSTAN SOM</fullName>
+        <default>false</default>
+        <label>KGS - KYRGYZSTAN SOM</label>
+    </customValue>
+    <customValue>
+        <fullName>KHR - CAMBODIAN RIEL</fullName>
+        <default>false</default>
+        <label>KHR - CAMBODIAN RIEL</label>
+    </customValue>
+    <customValue>
+        <fullName>KMF - COMOROS FRANC</fullName>
+        <default>false</default>
+        <label>KMF - COMOROS FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>KPW - NORTH KOREAN WON</fullName>
+        <default>false</default>
+        <label>KPW - NORTH KOREAN WON</label>
+    </customValue>
+    <customValue>
+        <fullName>KRW - SOUTH KOREAN WON</fullName>
+        <default>false</default>
+        <label>KRW - SOUTH KOREAN WON</label>
+    </customValue>
+    <customValue>
+        <fullName>KWD - KUWAITI DINAR</fullName>
+        <default>false</default>
+        <label>KWD - KUWAITI DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>KYD - CAYMAN DOLLAR</fullName>
+        <default>false</default>
+        <label>KYD - CAYMAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>KZT - KAZAKSTANIAN TENGE</fullName>
+        <default>false</default>
+        <label>KZT - KAZAKSTANIAN TENGE</label>
+    </customValue>
+    <customValue>
+        <fullName>LAK - LAOTIAN KIP</fullName>
+        <default>false</default>
+        <label>LAK - LAOTIAN KIP</label>
+    </customValue>
+    <customValue>
+        <fullName>LBP - LEBANESE POUND</fullName>
+        <default>false</default>
+        <label>LBP - LEBANESE POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>LKR - SRI LANKAN RUPEE</fullName>
+        <default>false</default>
+        <label>LKR - SRI LANKAN RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>LRD - LIBERIAN DOLLAR</fullName>
+        <default>false</default>
+        <label>LRD - LIBERIAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>LSL - LESOTHO LOTI</fullName>
+        <default>false</default>
+        <label>LSL - LESOTHO LOTI</label>
+    </customValue>
+    <customValue>
+        <fullName>LTL - LITHUANIAN LITA</fullName>
+        <default>false</default>
+        <label>LTL - LITHUANIAN LITA</label>
+    </customValue>
+    <customValue>
+        <fullName>LUF - LUXEMBOURG FRANC</fullName>
+        <default>false</default>
+        <label>LUF - LUXEMBOURG FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>LVL - LATVIAN LAT</fullName>
+        <default>false</default>
+        <label>LVL - LATVIAN LAT</label>
+    </customValue>
+    <customValue>
+        <fullName>LYD - LIBYAN DINAR</fullName>
+        <default>false</default>
+        <label>LYD - LIBYAN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>MAD - MOROCCAN DIRHAM</fullName>
+        <default>false</default>
+        <label>MAD - MOROCCAN DIRHAM</label>
+    </customValue>
+    <customValue>
+        <fullName>MDL - MOLDAVIAN LEU</fullName>
+        <default>false</default>
+        <label>MDL - MOLDAVIAN LEU</label>
+    </customValue>
+    <customValue>
+        <fullName>MGF - MADAGASCAN FRANC</fullName>
+        <default>false</default>
+        <label>MGF - MADAGASCAN FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>MKD - MACEDONIAN DENAR</fullName>
+        <default>false</default>
+        <label>MKD - MACEDONIAN DENAR</label>
+    </customValue>
+    <customValue>
+        <fullName>MMK - MYANMAR KYAT</fullName>
+        <default>false</default>
+        <label>MMK - MYANMAR KYAT</label>
+    </customValue>
+    <customValue>
+        <fullName>MNT - MONGOLIAN TUGRIK</fullName>
+        <default>false</default>
+        <label>MNT - MONGOLIAN TUGRIK</label>
+    </customValue>
+    <customValue>
+        <fullName>MOP - MACAO PATACA</fullName>
+        <default>false</default>
+        <label>MOP - MACAO PATACA</label>
+    </customValue>
+    <customValue>
+        <fullName>MRO - MAURITANIAN OUGUIYA</fullName>
+        <default>false</default>
+        <label>MRO - MAURITANIAN OUGUIYA</label>
+    </customValue>
+    <customValue>
+        <fullName>MTL - MALTESE LIRA</fullName>
+        <default>false</default>
+        <label>MTL - MALTESE LIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>MUR - MAURITIAN RUPEE</fullName>
+        <default>false</default>
+        <label>MUR - MAURITIAN RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>MVR - MALDIVE RUFIYAA</fullName>
+        <default>false</default>
+        <label>MVR - MALDIVE RUFIYAA</label>
+    </customValue>
+    <customValue>
+        <fullName>MWK - MALAWI KWACHA</fullName>
+        <default>false</default>
+        <label>MWK - MALAWI KWACHA</label>
+    </customValue>
+    <customValue>
+        <fullName>MXN - MEXICAN PESOS</fullName>
+        <default>false</default>
+        <label>MXN - MEXICAN PESOS</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR - MALAYSIAN RINGGIT</fullName>
+        <default>false</default>
+        <label>MYR - MALAYSIAN RINGGIT</label>
+    </customValue>
+    <customValue>
+        <fullName>MZM - MOZAMBIQUE METICAL</fullName>
+        <default>false</default>
+        <label>MZM - MOZAMBIQUE METICAL</label>
+    </customValue>
+    <customValue>
+        <fullName>NAD - NAMIBIAN DOLLAR</fullName>
+        <default>false</default>
+        <label>NAD - NAMIBIAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>NGN - NIGERIAN NAIRA</fullName>
+        <default>false</default>
+        <label>NGN - NIGERIAN NAIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>NIO - NICARAGUAN CORDOBA ORO</fullName>
+        <default>false</default>
+        <label>NIO - NICARAGUAN CORDOBA ORO</label>
+    </customValue>
+    <customValue>
+        <fullName>NLG - DUTCH GUILDER</fullName>
+        <default>false</default>
+        <label>NLG - DUTCH GUILDER</label>
+    </customValue>
+    <customValue>
+        <fullName>NOK - NORWEGIAN KRONE</fullName>
+        <default>false</default>
+        <label>NOK - NORWEGIAN KRONE</label>
+    </customValue>
+    <customValue>
+        <fullName>NPR - NEPALESE RUPEE</fullName>
+        <default>false</default>
+        <label>NPR - NEPALESE RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>NZD - NEW ZEALAND DOLLARS</fullName>
+        <default>false</default>
+        <label>NZD - NEW ZEALAND DOLLARS</label>
+    </customValue>
+    <customValue>
+        <fullName>OMR - OMANI RIAL</fullName>
+        <default>false</default>
+        <label>OMR - OMANI RIAL</label>
+    </customValue>
+    <customValue>
+        <fullName>PAB - PANAMANIAN BALBOA</fullName>
+        <default>false</default>
+        <label>PAB - PANAMANIAN BALBOA</label>
+    </customValue>
+    <customValue>
+        <fullName>PEN - PERUVIAN NEW SOL</fullName>
+        <default>false</default>
+        <label>PEN - PERUVIAN NEW SOL</label>
+    </customValue>
+    <customValue>
+        <fullName>PGK - PAPUA NEW GUINEA KINA</fullName>
+        <default>false</default>
+        <label>PGK - PAPUA NEW GUINEA KINA</label>
+    </customValue>
+    <customValue>
+        <fullName>PHP - PHILIPPINE PESO</fullName>
+        <default>false</default>
+        <label>PHP - PHILIPPINE PESO</label>
+    </customValue>
+    <customValue>
+        <fullName>PKR - PAKISTANI RUPEE</fullName>
+        <default>false</default>
+        <label>PKR - PAKISTANI RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>PLN - POLISH ZLOTY (NEW)</fullName>
+        <default>false</default>
+        <label>PLN - POLISH ZLOTY (NEW)</label>
+    </customValue>
+    <customValue>
+        <fullName>PTE - PORTUGUESE ESCUDO</fullName>
+        <default>false</default>
+        <label>PTE - PORTUGUESE ESCUDO</label>
+    </customValue>
+    <customValue>
+        <fullName>PYG - PARAGUAYAN GUARANI</fullName>
+        <default>false</default>
+        <label>PYG - PARAGUAYAN GUARANI</label>
+    </customValue>
+    <customValue>
+        <fullName>QAR - QATAR RIAL</fullName>
+        <default>false</default>
+        <label>QAR - QATAR RIAL</label>
+    </customValue>
+    <customValue>
+        <fullName>RMB - CHINESISCHE RENMINBI (NATIONAL)</fullName>
+        <default>false</default>
+        <label>RMB - CHINESISCHE RENMINBI (NATIONAL)</label>
+    </customValue>
+    <customValue>
+        <fullName>ROL - ROMANIAN LEU</fullName>
+        <default>false</default>
+        <label>ROL - ROMANIAN LEU</label>
+    </customValue>
+    <customValue>
+        <fullName>RUB - RUSSIAN RUBLE</fullName>
+        <default>false</default>
+        <label>RUB - RUSSIAN RUBLE</label>
+    </customValue>
+    <customValue>
+        <fullName>RWF - RWANDAN FRANC</fullName>
+        <default>false</default>
+        <label>RWF - RWANDAN FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>SAR - SAUDI RIYAL</fullName>
+        <default>false</default>
+        <label>SAR - SAUDI RIYAL</label>
+    </customValue>
+    <customValue>
+        <fullName>SBD - SOLOMON ISLANDS DOLLAR</fullName>
+        <default>false</default>
+        <label>SBD - SOLOMON ISLANDS DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SCR - SEYCHELLES RUPEE</fullName>
+        <default>false</default>
+        <label>SCR - SEYCHELLES RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>SDD - SUDANESE DINAR</fullName>
+        <default>false</default>
+        <label>SDD - SUDANESE DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SDP - SUDANESE POUND</fullName>
+        <default>false</default>
+        <label>SDP - SUDANESE POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>SEK - SWEDISH KRONA</fullName>
+        <default>false</default>
+        <label>SEK - SWEDISH KRONA</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD - SINGAPORE DOLLAR</fullName>
+        <default>false</default>
+        <label>SGD - SINGAPORE DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SHP - ST.HELENA POUND</fullName>
+        <default>false</default>
+        <label>SHP - ST.HELENA POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>SIT - SLOVENIAN TOLAR</fullName>
+        <default>false</default>
+        <label>SIT - SLOVENIAN TOLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SKK - SLOVAKIAN KRONA</fullName>
+        <default>false</default>
+        <label>SKK - SLOVAKIAN KRONA</label>
+    </customValue>
+    <customValue>
+        <fullName>SLL - SIERRA LEONE LEONE</fullName>
+        <default>false</default>
+        <label>SLL - SIERRA LEONE LEONE</label>
+    </customValue>
+    <customValue>
+        <fullName>SOS - SOMALIAN SHILLING</fullName>
+        <default>false</default>
+        <label>SOS - SOMALIAN SHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>SRG - SURINAM GUILDER</fullName>
+        <default>false</default>
+        <label>SRG - SURINAM GUILDER</label>
+    </customValue>
+    <customValue>
+        <fullName>STD - SAO TOME / PRINCIPE DOBRA</fullName>
+        <default>false</default>
+        <label>STD - SAO TOME / PRINCIPE DOBRA</label>
+    </customValue>
+    <customValue>
+        <fullName>SVC - EL SALVADOR COLON</fullName>
+        <default>false</default>
+        <label>SVC - EL SALVADOR COLON</label>
+    </customValue>
+    <customValue>
+        <fullName>SYP - SYRIAN POUND</fullName>
+        <default>false</default>
+        <label>SYP - SYRIAN POUND</label>
+    </customValue>
+    <customValue>
+        <fullName>SZL - SWAZILAND LILANGENI</fullName>
+        <default>false</default>
+        <label>SZL - SWAZILAND LILANGENI</label>
+    </customValue>
+    <customValue>
+        <fullName>THB - THAILAND BAHT</fullName>
+        <default>false</default>
+        <label>THB - THAILAND BAHT</label>
+    </customValue>
+    <customValue>
+        <fullName>TJR - TAJIKISTANI RUBLE (OLD)</fullName>
+        <default>false</default>
+        <label>TJR - TAJIKISTANI RUBLE (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>TJS - TAJIKISTANI SOMONI</fullName>
+        <default>false</default>
+        <label>TJS - TAJIKISTANI SOMONI</label>
+    </customValue>
+    <customValue>
+        <fullName>TMM - TURKMENISTANI MANAT</fullName>
+        <default>false</default>
+        <label>TMM - TURKMENISTANI MANAT</label>
+    </customValue>
+    <customValue>
+        <fullName>TND - TUNISIAN DINAR</fullName>
+        <default>false</default>
+        <label>TND - TUNISIAN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>TOP - TONGAN PA&apos;ANGA</fullName>
+        <default>false</default>
+        <label>TOP - TONGAN PA&apos;ANGA</label>
+    </customValue>
+    <customValue>
+        <fullName>TPE - TIMOR ESCUDO</fullName>
+        <default>false</default>
+        <label>TPE - TIMOR ESCUDO</label>
+    </customValue>
+    <customValue>
+        <fullName>TRY - TURKISH LIRA</fullName>
+        <default>false</default>
+        <label>TRY - TURKISH LIRA</label>
+    </customValue>
+    <customValue>
+        <fullName>TTD - TRINIDAD AND TOBAGO DOLLAR</fullName>
+        <default>false</default>
+        <label>TTD - TRINIDAD AND TOBAGO DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>TWD - NEW TAIWAN DOLLAR</fullName>
+        <default>false</default>
+        <label>TWD - NEW TAIWAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>TZS - TANZANIAN SHILLING</fullName>
+        <default>false</default>
+        <label>TZS - TANZANIAN SHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>UAH - UKRAINE HRYVNIA</fullName>
+        <default>false</default>
+        <label>UAH - UKRAINE HRYVNIA</label>
+    </customValue>
+    <customValue>
+        <fullName>UGX - UGANDAN SHILLING</fullName>
+        <default>false</default>
+        <label>UGX - UGANDAN SHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>USD - UNITED STATES DOLLAR</fullName>
+        <default>false</default>
+        <label>USD - UNITED STATES DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>UYU - URUGUAYAN PESO (NEW)</fullName>
+        <default>false</default>
+        <label>UYU - URUGUAYAN PESO (NEW)</label>
+    </customValue>
+    <customValue>
+        <fullName>UZS - UZBEKISTAN SOM</fullName>
+        <default>false</default>
+        <label>UZS - UZBEKISTAN SOM</label>
+    </customValue>
+    <customValue>
+        <fullName>VEB - VENEZUELAN BOLIVAR</fullName>
+        <default>false</default>
+        <label>VEB - VENEZUELAN BOLIVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>VND - VIETNAMESE DONG</fullName>
+        <default>false</default>
+        <label>VND - VIETNAMESE DONG</label>
+    </customValue>
+    <customValue>
+        <fullName>VUV - VANUATU VATU</fullName>
+        <default>false</default>
+        <label>VUV - VANUATU VATU</label>
+    </customValue>
+    <customValue>
+        <fullName>WST - SAMOAN TALA</fullName>
+        <default>false</default>
+        <label>WST - SAMOAN TALA</label>
+    </customValue>
+    <customValue>
+        <fullName>XAF - GABON CFA FRANC BEAC</fullName>
+        <default>false</default>
+        <label>XAF - GABON CFA FRANC BEAC</label>
+    </customValue>
+    <customValue>
+        <fullName>XCD - EAST CARRIBEAN DOLLAR</fullName>
+        <default>false</default>
+        <label>XCD - EAST CARRIBEAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>XDS - ST. CHRISTOPHER DOLLAR</fullName>
+        <default>false</default>
+        <label>XDS - ST. CHRISTOPHER DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>XEU - EUROPEAN CURRENCY UNIT (E.C.U.)</fullName>
+        <default>false</default>
+        <label>XEU - EUROPEAN CURRENCY UNIT (E.C.U.)</label>
+    </customValue>
+    <customValue>
+        <fullName>XOF - BENIN CFA FRANC BCEAO</fullName>
+        <default>false</default>
+        <label>XOF - BENIN CFA FRANC BCEAO</label>
+    </customValue>
+    <customValue>
+        <fullName>XPF - CFP FRANC</fullName>
+        <default>false</default>
+        <label>XPF - CFP FRANC</label>
+    </customValue>
+    <customValue>
+        <fullName>YER - TEMENI RYAL</fullName>
+        <default>false</default>
+        <label>YER - TEMENI RYAL</label>
+    </customValue>
+    <customValue>
+        <fullName>YER - YEMENI RYAL</fullName>
+        <default>false</default>
+        <label>YER - YEMENI RYAL</label>
+    </customValue>
+    <customValue>
+        <fullName>YUM - NEW YUGOSLAVIAN DINAR</fullName>
+        <default>false</default>
+        <label>YUM - NEW YUGOSLAVIAN DINAR</label>
+    </customValue>
+    <customValue>
+        <fullName>ZAR - SOUTH AFRICAN RAND</fullName>
+        <default>false</default>
+        <label>ZAR - SOUTH AFRICAN RAND</label>
+    </customValue>
+    <customValue>
+        <fullName>ZMK - ZAMBIAN KWACHA</fullName>
+        <default>false</default>
+        <label>ZMK - ZAMBIAN KWACHA</label>
+    </customValue>
+    <customValue>
+        <fullName>ZRN - ZAIRE (OLD)</fullName>
+        <default>false</default>
+        <label>ZRN - ZAIRE (OLD)</label>
+    </customValue>
+    <customValue>
+        <fullName>ZWD - ZIMBABWEAN DOLLAR</fullName>
+        <default>false</default>
+        <label>ZWD - ZIMBABWEAN DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>MRO - MAURITIAN RUPEE</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>MRO - MAURITIAN RUPEE</label>
+    </customValue>
+    <customValue>
+        <fullName>XCDS - ST. CHRISTOPHER DOLLAR</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>XCDS - ST. CHRISTOPHER DOLLAR</label>
+    </customValue>
+    <customValue>
+        <fullName>BEV - VENEZUELAN BOLIVAR</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BEV - VENEZUELAN BOLIVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>UGZ - UGANDAN SHILLING</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>UGZ - UGANDAN SHILLING</label>
+    </customValue>
+    <customValue>
+        <fullName>TRY - TURKISH LIRE</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>TRY - TURKISH LIRE</label>
+    </customValue>
+    <customValue>
+        <fullName>NGLG - DUTCH GUILDER</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>NGLG - DUTCH GUILDER</label>
+    </customValue>
+    <masterLabel>BET Currency</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

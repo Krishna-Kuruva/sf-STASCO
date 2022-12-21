@@ -1,0 +1,7 @@
+Hi Dean,   
+A change in the Final PSP has been proposed for    {!RE_MOA__c.RE_Product__c}  product of {!RE_MOA__c.RE_Depot_Name__c}  depot.
+AM Challenged Price
+{!RE_MOA__c.RE_AM_Challenged_Price__c}
+RE Final PSP
+{!RE_MOA__c.RE_Final_PSP__c}
+{!RE_MOA__c.RE_Remark__c}

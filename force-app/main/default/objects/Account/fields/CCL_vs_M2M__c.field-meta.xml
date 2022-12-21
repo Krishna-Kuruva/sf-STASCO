@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CCL_vs_M2M__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(M2M_B2B__c&lt;0,Contingent_Credit__c + M2M_B2B__c,Contingent_Credit__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If M2M is positive, CCL remains as it is.
+If M2M is negative, M2M is subtracted from the CCL.
+Compare this number to the PFE Remaining - use the lower number for next deal.</inlineHelpText>
+    <label>CCL less M2M</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

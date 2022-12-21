@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pricing_Condition__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Pricing Condition</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>YP03</fullName>
+                <default>false</default>
+                <label>YP03</label>
+            </value>
+            <value>
+                <fullName>YP04</fullName>
+                <default>false</default>
+                <label>YP04</label>
+            </value>
+            <value>
+                <fullName>YP09</fullName>
+                <default>false</default>
+                <label>YP09</label>
+            </value>
+            <value>
+                <fullName>YP10</fullName>
+                <default>false</default>
+                <label>YP10</label>
+            </value>
+            <value>
+                <fullName>YP23</fullName>
+                <default>true</default>
+                <label>YP23</label>
+            </value>
+            <value>
+                <fullName>YP24</fullName>
+                <default>false</default>
+                <label>YP24</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

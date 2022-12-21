@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Risk Marketing Paper Deal Done with {!Opportunity.Account}</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>FirmOrder1</letterhead>
+    <name>Risk Marketing Paper Deal Done</name>
+    <style>freeForm</style>
+    <subject>Risk Marketing Paper deal done- Opportunity Owner: {!Opportunity.Risk_Marketer__c} ; Customer: {!Opportunity.Account} ; Dex Ref (with 3rd Party): {!Opportunity.DEX_ref__c}</subject>
+    <textOnly>*** DEAL DONE NOTIFICATION *** 
+
+Deal executed on {!Opportunity.CloseDate} by {!Opportunity.Risk_Marketer__c} 
+
+Account Name : {!Opportunity.Account} 
+Book : {!Opportunity.Book__c} 
+Opportunity Name : {!Opportunity.Name} 
+Dex ref (with 3rd party) : {!Opportunity.DEX_ref__c} 
+BTB Dex ref (internal) : {!Opportunity.BTB_trader__c} 
+Internal DEX ref (trading as principle) : {!Opportunity.DEX_ref_trading_as_principle_deals__c} 
+
+Volume (Tonnes) : {!Opportunity.Volume__c} 
+Margin/mt : {!Opportunity.Margin__c} 
+Amount : {!Opportunity.Amount} 
+Max Mar : {!Opportunity.Max_MAR__c}
+ECL : {!Opportunity.ECL__c}
+ECL Multiple : {!Opportunity.ECL_Multiple__c}
+
+Tenor - from month : {!Opportunity.Tenor_from_month__c} 
+Tenor - to month : {!Opportunity.Tenor_to_month__c} 
+From year : {!Opportunity.From_year__c} 
+To year : {!Opportunity.To_year__c} 
+__________________________________________________ 
+MIM Confirmation : 
+
+{!Opportunity.Description} 
+
+{!Opportunity.Visuals__c} 
+__________________________________________________ 
+Trade Recap : 
+
+{!Opportunity.Confirmation__c} 
+
+__________________________________________________ 
+RMAV : 
+
+Service Fee per unit : {!Opportunity.Service_Fee_per_Unit__c}
+Service Fee (RMK) : {!Opportunity.Service_Fee_RMK__c}
+RMAV value per MT : {!Opportunity.OCAT_per_MT__c} 
+RMAV total value : {!Opportunity.OCAT_total__c} 
+RMAV confirm : {!Opportunity.OCAT_confirm__c} 
+__________________________________________________ 
+
+Click on the link to access the Opportunity directly: {!Opportunity.Link}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

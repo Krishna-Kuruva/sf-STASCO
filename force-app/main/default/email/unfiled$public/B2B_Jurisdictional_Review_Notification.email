@@ -1,0 +1,19 @@
+*** B2B Jurisdiction Review with {!Opportunity.Name} is due to be reviewed before {!Opportunity.Review_Date__c}*** 
+
+Stage {!Opportunity.StageName} 
+
+Date Requested {!Opportunity.Date_Requested__c} 
+
+Close Date {!Opportunity.CloseDate} 
+
+Legal Opinion {!Opportunity.Legal_opinion__c} 
+
+Legal Advisor {!Opportunity.Legal_advisor__c} 
+
+Date of Opinion {!Opportunity.Date_of_opinion__c} 
+
+Notes/Restrictions {!Opportunity.Notes_Restrictions__c} 
+
+__________________________________________________ 
+
+Following is the link to access Opportunity directly: {!Opportunity.Link}

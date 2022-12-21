@@ -1,0 +1,13 @@
+.error-text-styling
+{
+    color: red;
+    position: absolute;
+    left: 40%;
+}
+
+.thBg{
+    background-color: #212946 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
+    
+}

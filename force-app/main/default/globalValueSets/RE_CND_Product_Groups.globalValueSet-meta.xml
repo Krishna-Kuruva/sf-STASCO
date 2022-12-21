@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Bronze</fullName>
+        <default>false</default>
+        <label>Bronze</label>
+    </customValue>
+    <customValue>
+        <fullName>Furnace Oil</fullName>
+        <default>false</default>
+        <label>Furnace Oil</label>
+    </customValue>
+    <customValue>
+        <fullName>Furnace Oil ON04</fullName>
+        <default>false</default>
+        <label>Furnace Oil ON04</label>
+    </customValue>
+    <customValue>
+        <fullName>Furnace Oil QC01</fullName>
+        <default>false</default>
+        <label>Furnace Oil QC01</label>
+    </customValue>
+    <customValue>
+        <fullName>Furnace Oil QC09</fullName>
+        <default>false</default>
+        <label>Furnace Oil QC09</label>
+    </customValue>
+    <customValue>
+        <fullName>Heat O</fullName>
+        <default>false</default>
+        <label>Heat O</label>
+    </customValue>
+    <customValue>
+        <fullName>Heat O -36</fullName>
+        <default>false</default>
+        <label>Heat O -36</label>
+    </customValue>
+    <customValue>
+        <fullName>Heat O -43</fullName>
+        <default>false</default>
+        <label>Heat O -43</label>
+    </customValue>
+    <customValue>
+        <fullName>Kero</fullName>
+        <default>false</default>
+        <label>Kero</label>
+    </customValue>
+    <customValue>
+        <fullName>LNG</fullName>
+        <default>false</default>
+        <label>LNG</label>
+    </customValue>
+    <customValue>
+        <fullName>Marine Gas Oil</fullName>
+        <default>false</default>
+        <label>Marine Gas Oil</label>
+    </customValue>
+    <customValue>
+        <fullName>MGO</fullName>
+        <default>false</default>
+        <label>MGO</label>
+    </customValue>
+    <customValue>
+        <fullName>Mid</fullName>
+        <default>false</default>
+        <label>Mid</label>
+    </customValue>
+    <customValue>
+        <fullName>Premium</fullName>
+        <default>false</default>
+        <label>Premium</label>
+    </customValue>
+    <customValue>
+        <fullName>RUG</fullName>
+        <default>false</default>
+        <label>RUG</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX</fullName>
+        <default>false</default>
+        <label>SDX</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX AB03</fullName>
+        <default>false</default>
+        <label>SDX AB03</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX AB04</fullName>
+        <default>false</default>
+        <label>SDX AB04</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX BC02</fullName>
+        <default>false</default>
+        <label>SDX BC02</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX BC04</fullName>
+        <default>false</default>
+        <label>SDX BC04</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX BC05</fullName>
+        <default>false</default>
+        <label>SDX BC05</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX MB02</fullName>
+        <default>false</default>
+        <label>SDX MB02</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX MB03</fullName>
+        <default>false</default>
+        <label>SDX MB03</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX ON03</fullName>
+        <default>false</default>
+        <label>SDX ON03</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX ON04</fullName>
+        <default>false</default>
+        <label>SDX ON04</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX ON05</fullName>
+        <default>false</default>
+        <label>SDX ON05</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX ON06</fullName>
+        <default>false</default>
+        <label>SDX ON06</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX ON5</fullName>
+        <default>false</default>
+        <label>SDX ON5</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX QC01</fullName>
+        <default>false</default>
+        <label>SDX QC01</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX QC02</fullName>
+        <default>false</default>
+        <label>SDX QC02</label>
+    </customValue>
+    <customValue>
+        <fullName>SDX QC09</fullName>
+        <default>false</default>
+        <label>SDX QC09</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell Furnace</fullName>
+        <default>false</default>
+        <label>Shell Furnace</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell Heat O -36</fullName>
+        <default>false</default>
+        <label>Shell Heat O -36</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell Heat O -43</fullName>
+        <default>false</default>
+        <label>Shell Heat O -43</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell ULSD</fullName>
+        <default>false</default>
+        <label>Shell ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Silver</fullName>
+        <default>false</default>
+        <label>Silver</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD</fullName>
+        <default>false</default>
+        <label>ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -20</fullName>
+        <default>false</default>
+        <label>ULSD -20</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -25</fullName>
+        <default>false</default>
+        <label>ULSD -25</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -30</fullName>
+        <default>false</default>
+        <label>ULSD -30</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -34</fullName>
+        <default>false</default>
+        <label>ULSD -34</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -36</fullName>
+        <default>false</default>
+        <label>ULSD -36</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -38</fullName>
+        <default>false</default>
+        <label>ULSD -38</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -41</fullName>
+        <default>false</default>
+        <label>ULSD -41</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -43</fullName>
+        <default>false</default>
+        <label>ULSD -43</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD -48</fullName>
+        <default>false</default>
+        <label>ULSD -48</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD AB03</fullName>
+        <default>false</default>
+        <label>ULSD AB03</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD AB04</fullName>
+        <default>false</default>
+        <label>ULSD AB04</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD BC02</fullName>
+        <default>false</default>
+        <label>ULSD BC02</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD BC04</fullName>
+        <default>false</default>
+        <label>ULSD BC04</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD BC05</fullName>
+        <default>false</default>
+        <label>ULSD BC05</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD EC</fullName>
+        <default>false</default>
+        <label>ULSD EC</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD MB02</fullName>
+        <default>false</default>
+        <label>ULSD MB02</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD MB03</fullName>
+        <default>false</default>
+        <label>ULSD MB03</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD NT01</fullName>
+        <default>false</default>
+        <label>ULSD NT01</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD ON03</fullName>
+        <default>false</default>
+        <label>ULSD ON03</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD ON04</fullName>
+        <default>false</default>
+        <label>ULSD ON04</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD ON05</fullName>
+        <default>false</default>
+        <label>ULSD ON05</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD ON06</fullName>
+        <default>false</default>
+        <label>ULSD ON06</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD ON07</fullName>
+        <default>false</default>
+        <label>ULSD ON07</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD QC01</fullName>
+        <default>false</default>
+        <label>ULSD QC01</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD QC02</fullName>
+        <default>false</default>
+        <label>ULSD QC02</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD QC07</fullName>
+        <default>false</default>
+        <label>ULSD QC07</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD QC09</fullName>
+        <default>false</default>
+        <label>ULSD QC09</label>
+    </customValue>
+    <customValue>
+        <fullName>V-Power</fullName>
+        <default>false</default>
+        <label>V-Power</label>
+    </customValue>
+    <description>Revolution Canada Product Groups</description>
+    <masterLabel>RE_CND_Product_Groups</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

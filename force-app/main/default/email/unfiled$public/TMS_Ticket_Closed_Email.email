@@ -1,0 +1,22 @@
+Hi {!TMS_Ticket_Information__c.OwnerFullName},
+<br/>
+<br/>
+This mail is to inform you that the below ticket has been resolved and closed.
+<br/>
+<br/>
+{!TMS_Ticket_Information__c.Link}<i>Open the link using Google Chrome </i>
+<br/>
+<br/>
+<table border="1"><tr><th>Ticket #<th>Details</th><th>Resolution Details</th><th>Person Assigned</th></tr>
+<tr>
+<td>{!TMS_Ticket_Information__c.Name}</td>
+<td>{!TMS_Ticket_Information__c.Issue_Detail__c}</td>
+<td>{!TMS_Ticket_Information__c.Resolution_Detail__c}</td>
+<td>{!TMS_Ticket_Information__c.Case_Assigned_To__c}</td>
+</tr>
+</table>
+<br/>
+<br/>
+Many thanks,
+<br/>
+TMS Ticketing Team

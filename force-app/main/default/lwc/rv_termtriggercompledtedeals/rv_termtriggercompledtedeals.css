@@ -1,0 +1,19 @@
+.slds-datepicker thead>tr>th{
+
+    border: none !important;
+}
+
+.cancelSpinner{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.setCal .slds-modal__header .slds-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
+    margin-left: 0;
+    bottom: 0;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_Legal_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>* Legal Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GV - Government</fullName>
+                <default>false</default>
+                <label>GV - Government</label>
+            </value>
+            <value>
+                <fullName>LC - Limited Company</fullName>
+                <default>false</default>
+                <label>LC - Limited Company</label>
+            </value>
+            <value>
+                <fullName>PV - Private Customer</fullName>
+                <default>false</default>
+                <label>PV - Private Customer</label>
+            </value>
+            <value>
+                <fullName>UC - Unlimited Company</fullName>
+                <default>false</default>
+                <label>UC - Unlimited Company</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

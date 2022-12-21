@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Average_Margin__c</fullName>
+    <externalId>false</externalId>
+    <formula>Actual_Volume_T_2012__c / Deals_Done_2008__c</formula>
+    <label>Average Margin $ per Deal 2008</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

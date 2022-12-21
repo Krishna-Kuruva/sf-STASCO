@@ -1,0 +1,23 @@
+<!--
+ - Created by Dharmendra.Singh2 on 8/27/2021.
+ -->
+
+<!-- Rv Online Sales Info -->
+<template>
+    <lightning-card  title="ONLINE SALES INFOS">
+        <lightning-record-view-form record-id={accRecordId} object-api-name="Account" >
+            <lightning-output-field field-name={olfField} class="slds-checkbox__label">
+
+            </lightning-output-field>
+        </lightning-record-view-form>
+        <div>
+            <div class="slds-col slds-size_2-of-12 slds-is-resizable"></div>
+            <div class="slds-col slds-size_4-of-12">
+                <span>Last online deals: {list}</span>
+            </div>
+            <div class="slds-col slds-size_2-of-12"></div>
+        </div>
+
+
+    </lightning-card>
+</template>

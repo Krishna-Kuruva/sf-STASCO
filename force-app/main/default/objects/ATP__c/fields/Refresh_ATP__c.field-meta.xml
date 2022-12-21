@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Refresh_ATP__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This checkbox will be used by the user to refresh the ATP1  value from Refresh ATP1 to ATP1.</description>
+    <externalId>false</externalId>
+    <label>Refresh ATP</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

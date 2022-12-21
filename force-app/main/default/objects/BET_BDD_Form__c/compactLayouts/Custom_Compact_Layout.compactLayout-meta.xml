@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Compact_Layout</fullName>
+    <fields>GT_Legal_Name__c</fields>
+    <fields>BDD_Line_of_Business__c</fields>
+    <fields>BDD_Entity_Type__c</fields>
+    <fields>BDD_Onboard_Type__c</fields>
+    <fields>BET_Status__c</fields>
+    <fields>GoldTier_Status__c</fields>
+    <fields>MDN_Status__c</fields>
+    <fields>CreatedById</fields>
+    <fields>LastModifiedById</fields>
+    <label>Custom Compact Layout</label>
+</CompactLayout>

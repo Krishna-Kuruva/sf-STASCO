@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>allInternalUsers</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_Updated_Support_STL</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_PH_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND (NOT ( ISBLANK( RE_ApprovalProcess__r.RE_User_Name__c )),NOT ( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )), ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Submitted STL&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>STL Approver</label>
+        <name>STL_Approver</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_STL_approve</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>RE_update_cost_approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_PH_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND ( NOT ( ISBLANK( RE_ApprovalProcess__r.RE_User_Name__c )),
+( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )) , ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Submitted STL&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>STL Approve Only</label>
+        <name>STL_Approve_Only</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_PM_approve</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>RE_update_PH_Approve</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_PH_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND ( NOT ( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )) , ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Support STL&apos;))</formula>
+        </entryCriteria>
+        <label>Pricing Manager</label>
+        <name>Pricing_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>RT_Price_Book__c.RecordType</field>
+            <operation>equals</operation>
+            <value>PH Price Book</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RT_Price_Book__c.RE_Custom_Opp_Approve__c</field>
+            <operation>equals</operation>
+            <value>Submitted STL</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>PH_Rejection_Action</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>RE PH Cust Opps Approval</label>
+    <processOrder>2</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

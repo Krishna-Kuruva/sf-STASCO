@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>MYR CTS/BBL</fullName>
+        <default>false</default>
+        <label>MYR CTS/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR CTS/CBM</fullName>
+        <default>false</default>
+        <label>MYR CTS/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR CTS/LTR</fullName>
+        <default>false</default>
+        <label>MYR CTS/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR CTS/TON</fullName>
+        <default>false</default>
+        <label>MYR CTS/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR/BBL</fullName>
+        <default>false</default>
+        <label>MYR/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR/CBM</fullName>
+        <default>false</default>
+        <label>MYR/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR/LTR</fullName>
+        <default>false</default>
+        <label>MYR/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR/TON</fullName>
+        <default>false</default>
+        <label>MYR/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD CTS/BBL</fullName>
+        <default>false</default>
+        <label>SGD CTS/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD CTS/CBM</fullName>
+        <default>false</default>
+        <label>SGD CTS/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD CTS/LTR</fullName>
+        <default>false</default>
+        <label>SGD CTS/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD CTS/TON</fullName>
+        <default>false</default>
+        <label>SGD CTS/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD/BBL</fullName>
+        <default>false</default>
+        <label>SGD/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD/CBM</fullName>
+        <default>false</default>
+        <label>SGD/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD/LTR</fullName>
+        <default>false</default>
+        <label>SGD/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>SGD/TON</fullName>
+        <default>false</default>
+        <label>SGD/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>USD CTS/BBL</fullName>
+        <default>false</default>
+        <label>USD CTS/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>USD CTS/CBM</fullName>
+        <default>false</default>
+        <label>USD CTS/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>USD CTS/LTR</fullName>
+        <default>false</default>
+        <label>USD CTS/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>USD CTS/TON</fullName>
+        <default>false</default>
+        <label>USD CTS/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>USD/BBL</fullName>
+        <default>false</default>
+        <label>USD/BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>USD/CBM</fullName>
+        <default>false</default>
+        <label>USD/CBM</label>
+    </customValue>
+    <customValue>
+        <fullName>USD/LTR</fullName>
+        <default>false</default>
+        <label>USD/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>USD/TON</fullName>
+        <default>false</default>
+        <label>USD/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>USD</fullName>
+        <default>false</default>
+        <label>USD</label>
+    </customValue>
+    <customValue>
+        <fullName>BBL</fullName>
+        <default>false</default>
+        <label>BBL</label>
+    </customValue>
+    <customValue>
+        <fullName>LTR</fullName>
+        <default>false</default>
+        <label>LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>MYR</fullName>
+        <default>false</default>
+        <label>MYR</label>
+    </customValue>
+    <customValue>
+        <fullName>THB/LTR</fullName>
+        <default>false</default>
+        <label>THB/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>STG/LTR</fullName>
+        <default>false</default>
+        <label>STG/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>THB/KG</fullName>
+        <default>false</default>
+        <label>THB/KG</label>
+    </customValue>
+    <customValue>
+        <fullName>PHP/L15</fullName>
+        <default>false</default>
+        <label>PHP/L15</label>
+    </customValue>
+    <customValue>
+        <fullName>PHP/LTR</fullName>
+        <default>false</default>
+        <label>PHP/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>PHP/TON</fullName>
+        <default>false</default>
+        <label>PHP/TON</label>
+    </customValue>
+    <customValue>
+        <fullName>CAD CTS/LTR</fullName>
+        <default>false</default>
+        <label>CAD CTS/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>CAD/LTR</fullName>
+        <default>false</default>
+        <label>CAD/LTR</label>
+    </customValue>
+    <customValue>
+        <fullName>USD/GAL</fullName>
+        <default>false</default>
+        <label>USD/GAL</label>
+    </customValue>
+    <customValue>
+        <fullName>CAD CTS/L</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CAD CTS/L</label>
+    </customValue>
+    <description>Rate Units to be used in  Revolution East Applicaion</description>
+    <masterLabel>RE_Rate_Unit_Set</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

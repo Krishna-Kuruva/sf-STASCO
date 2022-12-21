@@ -1,0 +1,26 @@
+*** Template Firm order ***
+
+{!Account.Name}
+{!Account.BillingAddress}
+
+
+Dear {!Account.Acct_Mgr__c} 
+
+We herby give  {!Opportunity.Shell_Entity__c} a firm order to execute the following deal when the below pricing conditions have been met within the validity period given below.
+
+As soon as practical, when the conditions have been met, Shell will inform that the deal has been closed and will send the relevant contract information
+
+Product: {!Opportunity.Product__c}
+Product Location: {!Opportunity.Delivery_Location__c}
+Period: {!Opportunity.Start_Date__c} : {!Opportunity.CloseDate}
+Total Volume: {!Opportunity.Volume__c}
+Price {!Opportunity.Price_to_Customer__c}
+
+Validity: This order is valid till 15:00 GMT (London) {!Opportunity.Execution_Date__c}
+
+If {!Account.Name} wants to cancel the order, {!Account.Name}must give 1 hours notice of cancellation. Notice will only be deemed on receipt and confirmation of receipt by Shell.
+
+Signed
+
+
+{!Account.Name}

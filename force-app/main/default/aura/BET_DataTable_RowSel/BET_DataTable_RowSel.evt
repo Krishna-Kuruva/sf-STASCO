@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="selectedRecord" type="Object"/>
+    <aura:attribute name="componentId" type="String"/>
+</aura:event>

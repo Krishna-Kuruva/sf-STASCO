@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CreateDateMonthYear__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(Year((Latest_Actioned_Date__c))) &amp; &quot;/&quot; &amp;
+IF(
+Month((Latest_Actioned_Date__c))&lt;10,
+&quot;0&quot;&amp; TEXT(MONTH((Latest_Actioned_Date__c))),
+TEXT(Month((Latest_Actioned_Date__c))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CreateDateMonthYear</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>TTTM_OT_YP04</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Handling_Type__c</field>
+        <value xsi:type="xsd:string">Others</value>
+    </values>
+    <values>
+        <field>IsATPVolumeReduced__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsGsapDealCancelOn__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsGsapDealCreateOn__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsPricingTaxed__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsRetroATPVolumeReduced__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsRetroGsapDealCancelOn__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsRetroGsapDealCreateOn__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsRetroVolumeHedged__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>IsVolumeHedged__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>IsZeroPriceDeal__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>PO_Type__c</field>
+        <value xsi:type="xsd:string">TTTM</value>
+    </values>
+    <values>
+        <field>Pricing_Condition__c</field>
+        <value xsi:type="xsd:string">YP04</value>
+    </values>
+    <values>
+        <field>Pricing_Indicator__c</field>
+        <value xsi:type="xsd:string">F</value>
+    </values>
+    <values>
+        <field>Shipping_Condition__c</field>
+        <value xsi:type="xsd:string">Rail;Barge</value>
+    </values>
+</CustomMetadata>

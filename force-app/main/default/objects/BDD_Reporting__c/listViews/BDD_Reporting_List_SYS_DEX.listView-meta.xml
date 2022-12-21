@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDD_Reporting_List_SYS_DEX</fullName>
+    <columns>NAME</columns>
+    <columns>GT_Counterparty_Legal_Name__c</columns>
+    <columns>GT_Latest_Approved_Date_DD_MM_YYYY__c</columns>
+    <columns>System_Group__c</columns>
+    <columns>Reviewer__c</columns>
+    <columns>System_ID__c</columns>
+    <columns>Reviewed_2020__c</columns>
+    <columns>Not_Qualified_for_BDD__c</columns>
+    <columns>CP_Type__c</columns>
+    <columns>Intended_Business_Relationship__c</columns>
+    <columns>Customer_Nature_Of_Business__c</columns>
+    <columns>Customer_Rationale_for_Onboard__c</columns>
+    <columns>Latest_Trade_Date_DD_MM_YYYY__c</columns>
+    <columns>Review_Commentary_2020__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>BDD_Reporting__c.System_Group</value>
+    </filters>
+    <filters>
+        <field>System_Deactivation_Indicator__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>System_Group__c</field>
+        <operation>equals</operation>
+        <value>DEX</value>
+    </filters>
+    <label>BDD Reporting List - SYS:  DEX</label>
+</ListView>

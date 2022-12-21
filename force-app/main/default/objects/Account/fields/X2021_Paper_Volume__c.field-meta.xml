@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2021_Paper_Volume__c</fullName>
+    <externalId>false</externalId>
+    <label>2021 Paper Volume</label>
+    <summarizedField>Opportunity.Volume__c</summarizedField>
+    <summaryFilterItems>
+        <field>Opportunity.Year__c</field>
+        <operation>equals</operation>
+        <value>2021</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Opportunity.StageName</field>
+        <operation>equals</operation>
+        <value>Closed Won</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

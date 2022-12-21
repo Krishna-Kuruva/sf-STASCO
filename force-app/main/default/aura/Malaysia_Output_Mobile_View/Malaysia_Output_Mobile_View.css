@@ -1,0 +1,86 @@
+.THIS .slds-th__action{ justify-content: center !important; }
+.THIS .slds-grid_align-end { justify-content: center !important; }
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.THIS .page-section {
+    border: solid 2px #FFCC00;
+    padding: 0.5rem;
+}
+.THIS .addBorder {
+	border: solid 2px #FFCC00;
+}
+.THIS .secondHeader
+{
+    font-weight: bold;
+}
+.THIS .locColor
+{
+	background-color:rgb(250, 250, 249);
+    min-width: 130px !important;
+}
+.THIS .locColor1
+{
+	float: right;
+}
+.THIS .keroseneColor
+{
+	background-color:#FEF2CC;
+}
+.THIS .GasoilB7Color
+{
+	background-color:#E1EDD9;
+}
+.THIS .GasoilB0Color
+{
+	background-color:#FCE4D6;
+}
+.THIS .ULG97Color
+{
+	background-color:#DDEBF6;
+}
+.THIS .ULG95Color
+{
+	background-color:#FEF2CC;
+}
+.THIS lightning-primitive-header-actions {
+    display: none;
+}
+.THIS lightning-primitive-icon {
+   
+}
+.THIS{
+    font-size: 12px;
+}
+
+.THIS .slds-table_cell-buffer tr>th:first-child {
+    padding-left: 0.1rem;
+    position: fixed !important;
+    z-index:1;
+}
+
+.THIS .slds-table_cell-buffer tr>td:first-child {
+    padding-left: 0.1rem;
+	position: fixed !important;
+    z-index:1;    
+}
+
+.THIS .slds-table th {
+    padding: 0.2rem 0.2rem; 
+}
+
+.THIS .slds-table td {
+    padding: 0.2rem 0.2rem; 
+}
+.THIS .slds-table_cell-buffer tr>th:last-child{
+    padding-right: 0.1rem;
+}
+
+.THIS .slds-table_cell-buffer tr>td:last-child{
+    padding-right: 0.1rem;
+}
+.THIS .font-style{
+    color: rgb(250,250,249) !important; 
+}

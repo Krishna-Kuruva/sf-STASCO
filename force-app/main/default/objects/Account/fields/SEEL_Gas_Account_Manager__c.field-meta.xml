@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SEEL_Gas_Account_Manager__c</fullName>
+    <description>SEEL Gas Account Manager (only relevant for joint customers of B2B and SEEL).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>SEEL Gas Account Manager (only relevant for joint customers of B2B and SEEL).</inlineHelpText>
+    <label>SEEL Gas Account Manager</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aydin, Fulya SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Aydin, Fulya SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Boettcher, Stefan S SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Boettcher, Stefan S SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Dassel, Anna SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Dassel, Anna SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Glabbatz, Roswitha V SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Glabbatz, Roswitha V SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Heitmueller, Ulf SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Heitmueller, Ulf SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Leidel, Hans-Herbert SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Leidel, Hans-Herbert SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Mundt, Olaf SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Mundt, Olaf SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Pedersen, Vera SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Pedersen, Vera SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Perl, Thorsten PL SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Perl, Thorsten PL SEDG-SEE-B</label>
+            </value>
+            <value>
+                <fullName>Schulz, Michael M SEDG-SEE-B</fullName>
+                <default>false</default>
+                <label>Schulz, Michael M SEDG-SEE-B</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

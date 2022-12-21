@@ -1,0 +1,20 @@
+*** CASE ESCALATION ALERT ***  
+
+FFP Contact : {!Case.FP_Contact__c}
+FFP Email Id : {!Case.FP_Email_Id__c}
+==================================================
+
+Shell OU : {!Case.Shell_Entity_Name__c}
+OU Position: {!Case.OU_Poistion__c}
+
+Settlement Month : {!Case.Settlement_Month__c}
+Settlement Due Date : {!Case.Settlement_Due_Date__c}
+Settlement Amount : {!Case.Settlement_Amount__c}
+
+Description:
+{!Case.Description}
+
+Internal Comment :
+{!Case.Comments}
+
+Click on the link to access the case:  {!Case.Link}

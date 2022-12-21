@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Risk Marketing Approval (WONA)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WONA Approval</name>
+    <style>none</style>
+    <subject>Approval Required for RM Deal ; Account Manager: {!Account.Acct_Mgr__c} ; Customer:  {!Opportunity.Account}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,85 @@
+<template>
+    <lightning-card>          
+        <div class="">
+            <table class="setTable slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_3-of-12" scope="col">
+                            <div class="slds-truncate" title="Type"></div>
+                        </th>
+                        <th class="slds-size_3-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="value">Value</div>
+                        </th>
+                        <th class="slds-size_3-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="validfrom">Valid From</div>
+                        </th>
+                        <th class="slds-size_3-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="validto">Valid To</div>
+                        </th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={myList}>
+                        <template for:each = {myList} for:item = "item">
+                            <tr class="slds-hint-parent" key={item.Id}>
+                                <td class="slds-size_3-of-10">
+                                    Morning Publication
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden" 
+                                    type = "number" step="0.001"  value={item.RE_Morning_MC0_Value__c} onchange={handlemornvalueChange}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"
+                                    type = "date" value={item.RE_Morning_MC0_Valid_From__c} onchange={handlemornvalidfromChange}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"
+                                    type = "date" value={item.RE_Morning_MC0_Valid_To__c} onchange={handlemornvalidtoChange}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                            <tr class="slds-hint-parent" key={item.Id}>
+                                <td class="slds-size_3-of-10">
+                                    Mid Day Publication
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"
+                                    type = "number" step="0.001" value={item.RE_Midday_MC0_Value__c} onchange={handlemidvalueChange}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"
+                                    type = "date" value={item.RE_Midday_MC0_Valid_From__c} onchange={handlemidvalidfromChange}>
+                                    </lightning-input>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"
+                                    type = "date" value={item.RE_Midday_MC0_Valid_To__c} onchange={handlemidvalidtoChange}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </template> 
+                    </template>                    
+                </tbody>
+            </table>   
+            <br/>   
+            <div class="buttonsection">
+                <lightning-button 
+                    label={toggleSaveLabel} 
+                    icon-name="utility:save" 
+                    slot="actions"
+                    onclick={handleSave}>
+                </lightning-button>&nbsp;
+                <lightning-button 
+                    label="Cancel" 
+                    icon-name="utility:cancel" 
+                    slot="actions"
+                    onclick={handleCancel}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

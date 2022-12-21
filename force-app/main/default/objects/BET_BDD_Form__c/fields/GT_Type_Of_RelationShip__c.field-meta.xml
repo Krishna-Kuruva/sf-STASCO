@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Type_Of_RelationShip__c</fullName>
+    <externalId>false</externalId>
+    <label>* What type of relationship is requested</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Basic Customer</fullName>
+                <default>false</default>
+                <label>Basic Customer</label>
+            </value>
+            <value>
+                <fullName>Exchange Member</fullName>
+                <default>false</default>
+                <label>Exchange Member</label>
+            </value>
+            <value>
+                <fullName>Non-Basic Customer</fullName>
+                <default>false</default>
+                <label>Non-Basic Customer</label>
+            </value>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Royalty Payee</fullName>
+                <default>false</default>
+                <label>Royalty Payee</label>
+            </value>
+            <value>
+                <fullName>Technical Operator</fullName>
+                <default>false</default>
+                <label>Technical Operator</label>
+            </value>
+            <value>
+                <fullName>Vessel</fullName>
+                <default>false</default>
+                <label>Vessel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

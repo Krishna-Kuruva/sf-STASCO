@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Revolution East</label>
+    <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
+    <tabs>Malaysia_Output</tabs>
+    <tabs>Singapore_Output</tabs>
+    <tabs>RE_MY_CostPrice__c</tabs>
+    <tabs>RE_FX_Rates__c</tabs>
+    <tabs>RE_Market_Quotes__c</tabs>
+    <tabs>RE_Bio_Quotes__c</tabs>
+    <tabs>RE_Route_Backbone__c</tabs>
+    <tabs>RE_Location__c</tabs>
+    <tabs>RE_Contract__c</tabs>
+    <tabs>RE_MY_Output__c</tabs>
+    <tabs>RE_Sales_Tax__c</tabs>
+    <tabs>RE_SG_CostPrice__c</tabs>
+    <tabs>Mops__c</tabs>
+    <tabs>RE_External_FX_Rates__c</tabs>
+    <tabs>RE_Job_Run_Audit__c</tabs>
+    <tabs>RE_External_Exchange_Rate__c</tabs>
+    <tabs>RE_External_Market_Quotes__c</tabs>
+    <tabs>TH_Output</tabs>
+    <tabs>Landing_page</tabs>
+    <tabs>CO_dashboard</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>REV_Contract_Master__c</tabs>
+    <tabs>RT_Setting__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Customer_Creation</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Revolution_East_UtilityBar</utilityBar>
+</CustomApplication>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0015</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:type="xsd:string">Pamela.Avender@shell.com;Marie-Claude.Brown@shell.com;Sylvie.Cauchon@shell.com;Jibi.J.Cherian@shell.com;Martin.Choquette@shell.com;Ikponmwosa.Moses@shell.com;N.Clendening@shell.com;Dominic.Cuzzocrea@shell.com;Samra.Dass@shell.com;Tanya.Dusyk@shell.com;Oana.Finn@shell.com;Audrey.Gemmell@shell.com;Nidhin.George@shell.com;Belinda.Grcar@shell.com;Susan.Hanley@shell.com;Dean.Hegan@shell.com;Hester.Ho@shell.com;Addy.Jerath@shell.com;Sarah.Johnston@shell.com;Ahmer.Khan@shell.com;Lacey.Kim@shell.com;Erin.King@shell.com;Sheena.McKinnon@shell.com;Kevin.Leiver@shell.com;katrina.macinnes@shell.com;Jennifer.Mardinger@shell.com;Deborah.Muss@shell.com;Sherri.Nicholson@shell.com;Patty.Otoole@shell.com;Daljit.Parhar@shell.com;Annie.Pomerleau@shell.com;S.Ramakrishnaba@shell.com;Povilas.Liaudanskas@shell.com;Benoit.Ruel@shell.com;Saad.Saleem@shell.com;Erik.Samoil@shell.com;Jackson.Rempel@shell.com;</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Internal Rack Notification</value>
+    </values>
+</CustomMetadata>

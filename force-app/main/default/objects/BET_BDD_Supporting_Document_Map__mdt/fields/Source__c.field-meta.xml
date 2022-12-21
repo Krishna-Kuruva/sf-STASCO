@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Source</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Orbis</fullName>
+                <default>true</default>
+                <label>Orbis</label>
+            </value>
+            <value>
+                <fullName>Bankers Almanac</fullName>
+                <default>false</default>
+                <label>Bankers Almanac</label>
+            </value>
+            <value>
+                <fullName>VIES</fullName>
+                <default>false</default>
+                <label>VIES</label>
+            </value>
+            <value>
+                <fullName>IRS</fullName>
+                <default>false</default>
+                <label>IRS</label>
+            </value>
+            <value>
+                <fullName>OFAC</fullName>
+                <default>false</default>
+                <label>OFAC</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>LexisNexis</fullName>
+                <default>false</default>
+                <label>LexisNexis</label>
+            </value>
+            <value>
+                <fullName>BANKER</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>BANKER</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

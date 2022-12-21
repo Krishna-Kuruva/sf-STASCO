@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Lightning Message Channel publishes data from advance filter in completed Deals</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>Type of event; filter</description>
+        <fieldName>eventType</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Customer(soldTo)</description>
+        <fieldName>customer</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>CreatedOn</description>
+        <fieldName>createdOn</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Staus on Advanced filter</description>
+        <fieldName>advStatus</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>start date on Advanced filter</description>
+        <fieldName>startDte</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>end date on Advanced filter</description>
+        <fieldName>endDte</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Internet Sales on Advanced filter</description>
+        <fieldName>internetSales</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Advanced filter check</description>
+        <fieldName>sAdvanceFilter</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>created By filter check</description>
+        <fieldName>advcreatedBy</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Sold To filter check</description>
+        <fieldName>advSoldTo</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>SHTno filter check</description>
+        <fieldName>advShtNo</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>PO Type filter check</description>
+        <fieldName>advpoType</fieldName>
+    </lightningMessageFields>
+    <masterLabel>Rv_DiPublishAdvanceFilter</masterLabel>
+</LightningMessageChannel>

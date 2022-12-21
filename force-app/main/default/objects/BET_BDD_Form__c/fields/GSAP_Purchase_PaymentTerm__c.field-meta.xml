@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_Purchase_PaymentTerm__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Not required if Business Line is Terminalling</inlineHelpText>
+    <label>* Purchase Payment Term</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>H007 - 10th of Next Month</fullName>
+                <default>false</default>
+                <label>H007 - 10th of Next Month</label>
+            </value>
+            <value>
+                <fullName>HB00 - Immediate Payment from Date on Invoice</fullName>
+                <default>false</default>
+                <label>HB00 - Immediate Payment from Date on Invoice</label>
+            </value>
+            <value>
+                <fullName>HB03 - Due 3 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB03 - Due 3 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB07 - Due 7 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB07 - Due 7 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB10 - Due 10 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB10 - Due 10 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB14 - Due 14 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB14 - Due 14 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB21 - Due 21 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB21 - Due 21 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB25 - Due 25 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB25 - Due 25 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HB30 - Due 30 days from Invoice Date</fullName>
+                <default>false</default>
+                <label>HB30 - Due 30 days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>HC02 - 2 Working days from receipt of invoice</fullName>
+                <default>false</default>
+                <label>HC02 - 2 Working days from receipt of invoice</label>
+            </value>
+            <value>
+                <fullName>HG05 - 5 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG05 - 5 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG10 - 10 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG10 - 10 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG20 - 20 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG20 - 20 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG30 - 30 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG30 - 30 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HH07 - Net 7 days from end of month</fullName>
+                <default>false</default>
+                <label>HH07 - Net 7 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HH10 - Net 10 days from end of month</fullName>
+                <default>false</default>
+                <label>HH10 - Net 10 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HH15 - Net 15 days from end of month</fullName>
+                <default>false</default>
+                <label>HH15 - Net 15 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HH20 - Net 20 days from end of month</fullName>
+                <default>false</default>
+                <label>HH20 - Net 20 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HH21 - Net 21 days from end of month</fullName>
+                <default>false</default>
+                <label>HH21 - Net 21 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HH30 - Net 30 days from end of month</fullName>
+                <default>false</default>
+                <label>HH30 - Net 30 days from end of month</label>
+            </value>
+            <value>
+                <fullName>HI06 - 6th of 2nd Following Month</fullName>
+                <default>false</default>
+                <label>HI06 - 6th of 2nd Following Month</label>
+            </value>
+            <value>
+                <fullName>HI15 - 15th of 2nd Following Month</fullName>
+                <default>false</default>
+                <label>HI15 - 15th of 2nd Following Month</label>
+            </value>
+            <value>
+                <fullName>HJ05 - 5 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ05 - 5 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ10 - 10 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ10 - 10 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ15 - 15 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ15 - 15 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ20 - 20 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ20 - 20 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ30 - 30 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ30 - 30 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HK15 - 15th of 3rd Following Month</fullName>
+                <default>false</default>
+                <label>HK15 - 15th of 3rd Following Month</label>
+            </value>
+            <value>
+                <fullName>HL07 - 7 Working days from end of month</fullName>
+                <default>false</default>
+                <label>HL07 - 7 Working days from end of month</label>
+            </value>
+            <value>
+                <fullName>HM14 - Friday plus 14 days</fullName>
+                <default>false</default>
+                <label>HM14 - Friday plus 14 days</label>
+            </value>
+            <value>
+                <fullName>HX30 - 1% 10, Net 30 SKONTO</fullName>
+                <default>false</default>
+                <label>HX30 - 1% 10, Net 30 SKONTO</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

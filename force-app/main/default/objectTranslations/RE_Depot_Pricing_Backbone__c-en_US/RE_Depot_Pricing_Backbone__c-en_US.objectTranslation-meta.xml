@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Depot Pricing Backbone</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Depot Pricing Backbone</value>
+    </caseValues>
+    <layouts>
+        <layout>Canada</layout>
+        <sections>
+            <label></label>
+            <section>Additive Cost/Brand Fee</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Differential Basis</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Pricing Basis</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Depot_Pricing_Backbone Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Philippines Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Thailand</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Canada</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Malaysia</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Philippines</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Singapore</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Thailand</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

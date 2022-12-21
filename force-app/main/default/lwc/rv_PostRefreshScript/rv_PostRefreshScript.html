@@ -1,0 +1,88 @@
+<!--
+ - Created by Soumyajit.Jagadev on 11-May-20.
+ -->
+
+<!-- Rv Post Refresh Script -->
+<template>
+    <template if:true={spinnerDisplay}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+    </template>
+    <template if:false={spinnerDisplay}>
+        <div if:true={displayPage}>
+            <div class="slds-box">
+                <div if:false={showResults}>
+                    <lightning-input type="checkbox" label="Check Only" name="CheckOnly" checked={checkOnly} onchange={checkboxChange}></lightning-input>
+                    <br/>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_6-of-12">
+                            <div class="slds-box slds-box_x-small">
+                                <lightning-input type="checkbox" label="Update GSAP Connection to TEST C94" name="GsapUpdate" checked={GsapUpdateChecked} onchange={checkboxChange}></lightning-input>
+                            </div>
+                            <div class="slds-box slds-box_x-small">
+                                <lightning-input type="checkbox" label="Insert OLF Connection Settings" name="OlfConnInsert" checked={OlfConnInsertChecked} onchange={checkboxChange}></lightning-input>
+                            </div>
+                            <div class="slds-box slds-box_x-small">
+                                <lightning-input type="checkbox" label="Invalidate OLF Account Emails" name="OlfAccEmailUpdate" checked={OlfAccEmailUpdateChecked} onchange={checkboxChange}></lightning-input>
+                                <div if:true={OlfAccEmailUpdateChecked} style="padding-left:3em;">
+                                    <lightning-input type="text"  label="Invalid Text to Append: " name="invalidString" value={invalidString} onchange={textFldChange}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <div class="slds-col slds-size_6-of-12 slds-box slds-box_x-small">
+                            <lightning-input type="checkbox" label="Update IT Dashboard Alert Email Template" name="ITalertEmailUpdate" checked={ITalertEmailUpdateChecked} onchange={checkboxChange}></lightning-input>
+                            <lightning-input type="checkbox" label="Update OLF Email Template" name="OlfEmailUpdate" checked={OlfEmailUpdateChecked} onchange={checkboxChange}></lightning-input>
+                            <div if:true={showEmailField} style="padding-left:3em;">
+                                <lightning-input type="text"  label="Email ID(s) to Use: " name="emailId" value={emailId} onchange={textFldChange}></lightning-input>
+                            </div>
+                            <div if:true={showOrgField} style="padding-left:3em;">
+                                <lightning-input type="text"  label="Org Name to Append: " name="orgName" value={orgName} onchange={textFldChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div if:true={showResults}>
+                    <span class="slds-align_absolute-center">
+                        <b>
+                             <div if:true={checkOnly}>
+                                 Check Result(s)
+                             </div>
+                            <div if:false={checkOnly}>
+                                Run Result(s)
+                            </div>
+                        </b>
+                    </span>
+                    <br/>
+                    <div class="slds-box slds-box_x-small slds-align_absolute-center">
+                        <ul class="slds-list_dotted">
+                            <template for:each={resultList} for:item='rl'>
+                                <li key={rl} >{rl}</li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" label="Run" title="Run" onclick={runPostRefresh} disabled={runBtnDisabled}>
+                </lightning-button>
+                <span>&nbsp;&nbsp;</span>
+                <lightning-button variant="brand" label="Reset" title="Reset" onclick={reset} disabled={resetBtnDisabled}>
+                </lightning-button>
+            </div>
+        </div>
+        <div if:false={displayPage}>
+            <span>Authentication Error. This is not a Sandbox Org or You do not have required permission.</span>
+        </div>
+    </template>
+</template>

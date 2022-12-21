@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L1_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>L1 Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Value Generation</fullName>
+                <default>false</default>
+                <label>Value Generation</label>
+            </value>
+            <value>
+                <fullName>OPEX – SG&amp;A</fullName>
+                <default>false</default>
+                <label>OPEX – SG&amp;A</label>
+            </value>
+            <value>
+                <fullName>OPEX – Direct Trading Costs</fullName>
+                <default>false</default>
+                <label>OPEX – Direct Trading Costs</label>
+            </value>
+            <value>
+                <fullName>OPEX – Other</fullName>
+                <default>false</default>
+                <label>OPEX – Other</label>
+            </value>
+            <value>
+                <fullName>Other Costs Gross Margin</fullName>
+                <default>false</default>
+                <label>Other Costs Gross Margin</label>
+            </value>
+            <value>
+                <fullName>Non-Accountable Costs</fullName>
+                <default>false</default>
+                <label>Non-Accountable Costs</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

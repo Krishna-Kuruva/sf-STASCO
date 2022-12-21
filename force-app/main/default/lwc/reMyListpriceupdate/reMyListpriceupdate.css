@@ -1,0 +1,59 @@
+.zoomout{  
+    zoom : 0.85;
+    padding : 0px !important;
+    /*background : white;*/
+}
+.inlineEdit{
+    float: left;
+    width: 85%;
+    zoom: 0.85;
+    font-size: 16px;
+}
+.slds-box{
+   /* border : 2px solid #FFCC00 !important;
+    padding : 7px !important;
+    margin : 1px !important;*/
+    background-color: #f2f5f9;
+    border-radius: 20px;
+    border: 4px solid rgba(255,255,255,.125);
+    box-shadow: -8px 7px 20px 0 rgb(255 255 255 / 25%);
+    padding: 10px 15px 15px;
+}
+/*.redcls{
+    background-color: #E1EDD9 !important ;
+}
+.greencls{
+    background-color: #FCE4D6 !important ;
+}
+.variantcls{
+    background-color: #fadcdc !important;
+}*/
+.fornsize{   
+        font-size: 98%;
+ 
+}
+
+.slds-table thead th{
+
+    background-color: #212946 !important;
+    color: #ffffff;
+    border: 1px solid #fff;
+    padding: 10px 10px;
+    
+}
+
+.slds-table tbody th
+{
+    border: 1px solid #d9e2ed;
+    font-weight: bold;
+    padding-left: 10px;
+    
+}
+
+.slds-table:not(.slds-no-row-hover) tbody tr:hover>th,
+.slds-table:not(.slds-no-row-hover) tbody tr:hover>td,
+.slds-table_bordered:not(.slds-no-row-hover) tbody tr:hover>td:not(.slds-has-focus)
+{
+    background-color: #ffff99;
+    color:#000000;
+}

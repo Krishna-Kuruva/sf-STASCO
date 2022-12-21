@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Margin_Short_Allowances__c</fullName>
+    <externalId>false</externalId>
+    <formula>CO2_B2B_Target_CO2_Volume__c * B2B_CO2_Probability__c* CO2_B2B_Margin_T__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This is the margin on the annual shortfall only</inlineHelpText>
+    <label>CO2 - Margin Short/long</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

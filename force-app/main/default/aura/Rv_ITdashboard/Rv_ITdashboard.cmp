@@ -1,0 +1,581 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" 
+                access="global"
+                controller="Rv_ITdashboardController">
+    <!--
+	Version : 0.0
+	Author	: Soumyajit
+	Date	: 25-Jun-2019
+	Details	: Dashboard for IT
+	-->
+    <!--Event Declaration starts here-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Event Declaration ends here-->
+    
+    <!--Attribute Declaration starts here-->
+    <aura:attribute name="PageName" type="String" />
+    <aura:attribute name="DealSectionName" type="String" />
+    <aura:attribute name="DaveSectionName" type="String" />
+    <aura:attribute name="MRCUploadSectionName" type="String" />
+    <aura:attribute name="LiveSectionName" type="String" />
+    <aura:attribute name="BatchSectionName" type="String" />
+    
+    <aura:attribute name="BatchDetails" type="List" />
+    <aura:attribute name="NumOfTablesBatchSection" type="Integer" default="2" />
+    <aura:attribute name="BatchActionAllowed" type="Boolean" default="false"/>
+    <aura:attribute name="RunRefreshAllowed" type="Boolean" default="false"/>
+    <aura:attribute name="ShowRunAllButton" type="Boolean" default="false"/>
+    <aura:attribute name="ShowStopAllButton" type="Boolean" default="false"/>
+    <aura:attribute name="isPostRefreshOpen" type="Boolean" default="false"/>
+    <aura:attribute name="PriceDetails" type="List" />
+    <aura:attribute name="NumOfTablesPriceSection" type="Integer" default="4" />
+    <aura:attribute name="DealDetails" type="List" />
+    <aura:attribute name="NumOfTablesDealSection" type="Integer" default="3" />
+    <aura:attribute name="HedgeDetails" type="List" />
+    <aura:attribute name="MRCUploadDetails" type="List" />
+    <aura:attribute name="PageRefreshInterval" type="Integer" default="30" />
+    <aura:attribute name="PageRefreshedAt" type="String" />
+    <aura:attribute name="RefreshIntervalId" type="String" />
+    <aura:attribute name="OverallStatus" type="Boolean" default="false"/>
+    <aura:attribute name="OverallError" type="List"/>
+    
+    <!--Fix_301484_26Dec2019_Soumyajit starts-->
+    <aura:attribute name="DailyCheckSectionName" type="String"/>
+    <aura:attribute name="DailyCheckDetails" type="List" />
+    <aura:attribute name="NumOfTablesDailyCheckSection" type="Integer" default="2" />
+    <!--Fix_301484_26Dec2019_Soumyajit ends-->
+    
+    <!--Fix_PBI-517826_08Jun2020_Lakshmi_Starts-->
+    <aura:attribute name="ShowMonths" type="Boolean" default="false"/>
+    <aura:attribute name="RelatedQuote" type="String" />
+    <aura:attribute name="IceMonthsList" type="List"/>
+    <aura:attribute name="IceMonthsColumns" type="List" 
+                    default="[	{ label: 'Ice Month Name', fieldName: 'icemonth' , type: 'text'},
+                                { label: 'Quote Name', fieldName: 'QuoteName', type: 'text' },
+                                { label: 'Start Date', fieldName: 'StartDate', type: 'date' },
+                                { label: 'End Date', fieldName: 'EndDate', type: 'date'}
+                             ]"
+                    />
+    <!--Fix_PBI-517826_08Jun2020_Lakshmi_Ends-->
+    
+    <!--Attribute Declaration ends here-->
+    
+    <!--Spinner starts here-->
+    <div class="slds-align--absolute-center">
+        <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide" alternativeText="Loading" />
+    </div>
+    <!--Spinner ends here-->
+    
+    <!--Page Header starts here-->
+    <div class="slds-page-header slds-page-header_record-home" style="padding : 0.5rem 0.5rem;border: solid 2px #FFCC00;background-color: white;">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <lightning:icon iconName="standard:product_required" alternativeText="{!v.PageName}"/>
+            </div>
+            <div class="slds-media__body">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <h1>
+                    <span class="slds-page-header__title slds-truncate" title="{!v.PageName}">{!v.PageName}</span>
+                  </h1>
+                </div>
+              </div>
+              <p class="slds-page-header__name-meta">Dashboard to monitor Revolution Application</p>
+            </div>
+          </div>
+        </div>
+        <div class="slds-page-header__col-actions slds-align--absolute-center">
+        	<div class="slds-grid slds-gutters">
+            	<div class="slds-col">
+              		<span class="slds-truncate boldFont">Overall Status:</span>
+                </div>
+                <div class="slds-col"> 
+                    <aura:if isTrue="{! !v.OverallStatus}">
+                        <lightning:icon iconName="standard:task2" alternativeText="Success" size="xx-small" title="{!v.OverallError}"/>
+                        <aura:set attribute="else">
+                        	<lightning:icon iconName="standard:first_non_empty" alternativeText="Error" variant="error" size="xx-small" title="{!v.OverallError}"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <div class="slds-col"> 
+                </div>
+            </div>
+        </div>
+        <div class="slds-page-header__col-actions slds-align--absolute-center">
+        	<div class="slds-grid slds-gutters">
+            	<div class="slds-col">
+              		<span class="slds-truncate boldFont">Page Refresh Interval:</span>
+                </div>
+                <div class="slds-col"> 
+                    <span class="slds-truncate">{!v.PageRefreshInterval} Seconds</span>
+                </div>
+            </div>
+        </div>
+        <div class="slds-page-header__col-actions slds-align--absolute-center">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col"> 
+                </div>
+            	<div class="slds-col">
+            		<span class="slds-truncate boldFont">Last Refreshed At: </span>
+                </div>
+                <div class="slds-col">
+                    <span class="slds-truncate">{!v.PageRefreshedAt}</span>
+                </div>
+                <div class="slds-col"> 
+                </div>
+            </div>
+        </div>
+        <!--  
+        <div class="slds-page-header__col-actions">
+            <lightning:button label="Refresh" title="Force Refresh" iconName="utility:loop" iconPosition="left"  variant="brand" onclick="{!c.doRefresh}"/>
+        </div>-->
+          <aura:if isTrue="{!v.RunRefreshAllowed}">
+              <div class="slds-page-header__col-actions">
+                <lightning:button label="Run Post Refresh" title="Run Post Refresh" iconName="utility:loop" iconPosition="left"  variant="brand" onclick="{!c.openPostRefresh}"/>
+              </div>
+          </aura:if>
+      </div>
+    </div>
+    <!--Page Header ends here-->
+    
+		<!-- Section Post Refresh Pop-Up starts -->
+        <aura:if isTrue="{!v.isPostRefreshOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="postRefresh-modal-heading-01" aria-modal="true" aria-describedby="postRefresh-modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small" >
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closePostRefresh }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <h2 id="postRefresh-modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Run Post Refresh Scripts for Sandbox</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="postRefresh-modal-content-id-1">
+                        <c:rv_PostRefreshScript/>
+                    </div>
+                </div>
+            </section>
+        </aura:if>
+        <!-- Section Post Refresh Pop-Up ends -->
+    
+    <!--Page Body starts here-->
+    <div class="slds-grid slds-gutters">
+    	<div class="slds-col slds-size_9-of-12">
+            
+            <!--Deal Section starts here-->
+            <div class="slds-section slds-is-open" aura:id="DealSection">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action sectionButton">
+                        <span onclick="{!c.toggleSection}" data-auraId="DealSection">
+                                <lightning:icon iconName="utility:switch"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                        </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="{!v.DealSectionName}">{!v.DealSectionName}</span>
+                    </button>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+						<div class="slds-grid slds-gutters">
+                            <aura:iteration items="{!v.DealDetails}" var="dd">
+                                <div class="slds-col">
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                                        <thead></thead>
+                                        <tbody>
+                                            <aura:iteration items="{!dd.DataChunk}" var="ddl">
+                                                <tr class="slds-hint-parent">
+                                                    <td class="borderLeft headerColor">
+                                                        <aura:if isTrue="{!ddl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!ddl.DisplayLabel}">{!ddl.DisplayLabel}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!ddl.DisplayLabel}">{!ddl.DisplayLabel}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </td>
+                                                    <td class="borderRight">
+                                                        <aura:if isTrue="{!ddl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!ddl.DisplayValue}">{!ddl.DisplayValue}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!ddl.DisplayValue}">{!ddl.DisplayValue}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </td>
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </aura:iteration>
+                        </div>
+        			</div>
+    			</div>
+            <!--Deal Section ends here-->
+        </div>
+        
+        <div class="slds-col slds-size_3-of-12">
+            
+            <!--Dave Section starts here-->
+            <div class="slds-section slds-is-open" aura:id="DaveSection">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action sectionButton">
+                        <span onclick="{!c.toggleSection}" data-auraId="DaveSection">
+                                <lightning:icon iconName="utility:switch"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                        </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="{!v.DaveSectionName}">{!v.DaveSectionName}</span>
+                    </button>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+						<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                        	<thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="borderLeft" scope="col">
+                                    	<div class="slds-truncate" title="Grade">Grade Name</div>
+                                  	</th>
+                                    <th class="borderLeft" scope="col">
+                                    	<div class="slds-truncate" title="Volume">Hedge (Lots)</div>
+                                  	</th>
+                                    <th class="borderRight" scope="col">
+                                    	<div class="slds-truncate" title="Last Hedged At">Last Hedged At</div>
+                                  	</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.HedgeDetails}" var="hd">
+                                    <tr class="slds-hint-parent">
+                                        <td class="borderLeft headerColor">
+                                    		<div class="slds-truncate" title="{!hd.DisplayLabel}">{!hd.DisplayLabel}</div>
+                                  		</td>
+                                        <td class="borderLeft">
+                                            <div class="slds-truncate" title="{!hd.Hedge}">{!hd.Hedge}</div>
+                                        </td>
+                                        <td class="borderRight">
+                                            <div class="slds-truncate" title="{!hd.LastUpdateTime}">{!hd.LastUpdateTime}</div>
+                                        </td>
+                                    </tr>
+                                 </aura:iteration>
+                            </tbody>
+                        </table>
+        			</div>
+    			</div>
+            <!--Dave Section ends here-->
+        </div>
+    </div>
+        
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_9-of-12">
+            
+            <!--Price Section starts here-->
+            <div class="slds-section slds-is-open" aura:id="LivePriceSection">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action sectionButton">
+                        <span onclick="{!c.toggleSection}" data-auraId="LivePriceSection">
+                                <lightning:icon iconName="utility:switch"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                        </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="{!v.LiveSectionName}">{!v.LiveSectionName}</span>
+                    </button>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+						<div class="slds-grid slds-gutters">
+                            <aura:iteration items="{!v.PriceDetails}" var="pd">
+                                <div class="slds-col">
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                                        <thead></thead>
+                                        <tbody>
+                                            <aura:iteration items="{!pd.DataChunk}" var="pdl">
+                                                <tr class="slds-hint-parent">
+                                                    <td class="borderLeft headerColor">
+                                                        <aura:if isTrue="{!pdl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!pdl.DisplayLabel}">{!pdl.DisplayLabel}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!pdl.DisplayLabel}">{!pdl.DisplayLabel}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </td>
+                                                    <td class="borderRight">
+                                                        <aura:if isTrue="{!pdl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!pdl.LastUpdateTime}">{!pdl.LastUpdateTime}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!pdl.LastUpdateTime}">{!pdl.LastUpdateTime}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </td>
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </aura:iteration>
+                        </div>
+        			</div>
+    		</div>
+            <!--Price Section ends here-->
+        </div>
+            
+        <div class="slds-col slds-size_3-of-12">
+            
+            <!--MRC Upload Section starts here-->
+            <div class="slds-section slds-is-open" aura:id="MRCSection">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action sectionButton">
+                        <span onclick="{!c.toggleSection}" data-auraId="MRCSection">
+                                <lightning:icon iconName="utility:switch"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                        </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="{!v.MRCUploadSectionName}">{!v.MRCUploadSectionName}</span>
+                    </button>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+						<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                        	<thead></thead>
+                            <tbody>
+                                <aura:iteration items="{!v.MRCUploadDetails}" var="mud">
+                                    <tr class="slds-hint-parent">
+                                        <td class="borderLeft headerColor">
+                                            <div class="slds-truncate" title="{!mud.DisplayLabel}">{!mud.DisplayLabel}</div>
+                                        </td>
+                                        <td class="borderRight">
+                                            <!-- line updated by Dharmendra -->
+                                            <div class="slds-truncate" title="{!mud.DisplayValue}">{!mud.DisplayValue}</div>
+                                        </td>
+                                    </tr>
+                                 </aura:iteration>
+                            </tbody>
+                        </table>
+        		</div>
+    		</div>
+            <!--MRC Upload Section ends here-->
+        </div>
+    </div>
+    
+    <!--Fix_301484_26Dec2019_Soumyajit starts-->
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_12-of-12">
+            
+            <!--Daily Check Section starts here-->
+            <div class="slds-section slds-is-open" aura:id="DailyCheckSection">
+                <h3 class="slds-section__title">
+                    <button class="slds-button slds-section__title-action sectionButton">
+                        <span onclick="{!c.toggleSection}" data-auraId="DailyCheckSection">
+                                <lightning:icon iconName="utility:switch"
+                                                alternativeText="button icon"
+                                                size="x-small"
+                                                class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                        </span>
+                        <span class="slds-truncate slds-p-horizontal_small" title="{!v.DailyCheckSectionName}">{!v.DailyCheckSectionName}</span>
+                    </button>
+                </h3>
+                <div aria-hidden="false" class="slds-section__content">
+						<div class="slds-grid slds-gutters">
+                            <aura:iteration items="{!v.DailyCheckDetails}" var="dc">
+                                <div class="slds-col">
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                                        <thead></thead>
+                                        <tbody>
+                                            <aura:iteration items="{!dc.DataChunk}" var="dcl">
+                                                <tr class="slds-hint-parent">
+                                                    <td class="borderLeft headerColor">
+                                                        <aura:if isTrue="{!dcl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!dcl.DisplayLabel}">{!dcl.DisplayLabel}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!dcl.DisplayLabel}">{!dcl.DisplayLabel}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </td>
+                                                    <td class="borderRight">
+                                                        <aura:if isTrue="{!dcl.SendAlert}">
+                                                            <div class="slds-truncate alertColor" title="{!dcl.DisplayValue}">{!dcl.DisplayValue}</div>
+                                                            <aura:set attribute="else">
+                                                                <div class="slds-truncate" title="{!dcl.DisplayValue}">{!dcl.DisplayValue}</div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                         
+                                                    </td>
+                                                    <!--Fix_PBI-517826_08Jun2020_Lakshmi_Starts-->
+                                                     <!--Ice Months Button Starts here-->
+                                                    <aura:if isTrue="{!dcl.checkICEmonthdetails}">
+                                                	<td class="borderRight">
+                                                      <div class="slds-grid" style="width:30%;"> 
+                									<div class="slds-col slds-align_absolute-center">
+                            						<lightning:button class="slds-button slds-button_outline-brand slds-button_icon slds-button__icon_small slds-icon_xx-small" aura:id="Icemonths" name="{!dcl.QuoteName}" label="" iconName="utility:switch" iconPosition="right" title="Present and Future ICE Months" onclick="{!c.OpenIceMonthPopUp}"/>
+                       								 </div>
+                    								</div>    
+                                                    </td>
+                                                    </aura:if>
+                                                    <!--Ice Months Button Ends here-->
+	                              <!--Fix_PBI-517826_08Jun2020_Lakshmi_Ends-->
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </aura:iteration>
+                        </div>
+        			</div>
+    		</div>
+            <!--DailyCheck Section ends here-->
+        </div>
+    </div>
+    <!--Fix_301484_26Dec2019_Soumyajit ends-->
+    
+    <!--Fix_PBI-517826_08Jun2020_Lakshmi_Starts-->
+     <!--Ice Months Popup Starts here-->
+    <aura:if isTrue="{!v.ShowMonths}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small ">
+       		<div class="slds-modal__container slds-is-relative">
+                 <!-- Popup Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.CloseIceMonthPopUp }" alternativeText="close" variant="bare-inverse" iconClass="dark" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_small slds-hyphenate">
+                        <span class="slds-truncate slds-p-horizontal_small">Present and Future ICE Months for {!v.RelatedQuote}</span>
+                        </h2>
+                		
+                	</header>
+                 <!-- Popup Header Ends here-->
+                
+                <!--Popup Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_small reducesize" id="modal-content-id-1">
+                        
+                         			<lightning:datatable data="{! v.IceMonthsList }"     
+                         			columns="{! v.IceMonthsColumns }"     
+                             		keyField="id"    
+                         			hideCheckboxColumn="true"
+                         			showRowNumberColumn="true"
+                        			hideDefaultActions ="false"/>
+                    </div>
+                 <!--Popup Body Ends here-->
+                <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer slds-p-around_small">
+                            <lightning:button variant="neutral" 
+                                              label="Cancel"
+                                              title="Cancel"
+                                              onclick="{!c.CloseIceMonthPopUp}"/>
+                        </footer>
+                <!--Modal/Popup Box Footer Ends here-->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+     <!--Ice Months Popup Ends here-->
+   <!--Fix_PBI-517826_08Jun2020_Lakshmi_Ends-->
+    
+    <!--Batch Section starts here-->
+    <div class="slds-section slds-is-open" aura:id="BatchSection">
+        <h3 class="slds-section__title">
+            <button class="slds-button slds-section__title-action sectionButton">
+                <span onclick="{!c.toggleSection}" data-auraId="BatchSection">
+                        <lightning:icon iconName="utility:switch"
+                                        alternativeText="button icon"
+                                        size="x-small"
+                                        class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"/>
+                </span>
+                <span class="slds-truncate slds-p-horizontal_small" title="{!v.BatchSectionName}">{!v.BatchSectionName}</span>
+            </button>
+            <aura:if isTrue="{!v.BatchActionAllowed}">
+            	<div class="slds-grid" style="width:20%;"> 
+                    <aura:if isTrue="{! !v.ShowRunAllButton}">
+                        <div class="slds-col slds-align_absolute-center">
+                            <lightning:button class="slds-button slds-button_success" label="Run All" iconName="utility:play" iconPosition="left" title="Run All" name="RunAll" onclick="{!c.doStartStopAllBatch}" disabled="{!v.ShowRunAllButton}"/>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{! !v.ShowStopAllButton}">
+                        <div class="slds-col slds-align_absolute-center">
+                            <lightning:button class="slds-button slds-button_neutral" label="Stop All" iconName="utility:stop" iconPosition="left" title="Stop All" name="StopAll" onclick="{!c.doStartStopAllBatch}" disabled="{!v.ShowStopAllButton}"/>
+                        </div>
+                    </aura:if>
+                </div>
+            </aura:if>
+        </h3>
+        <div aria-hidden="false" class="slds-section__content">
+            <div class="slds-grid slds-gutters">
+                <aura:iteration items="{!v.BatchDetails}" var="bd">
+                    <div class="slds-col">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont" >
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="borderLeft" scope="col">
+                                            <div class="slds-truncate" title="Batch Name">Batch Name</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Next Run Time">Next Run Time</div>
+                                        </th>
+                                        <aura:if isTrue="{!v.BatchActionAllowed}">
+                                            <th class="borderRight" scope="col">
+                                                <div class="slds-truncate" title="Action" style="padding-right: 0rem;">Action</div>
+                                            </th>
+                                        </aura:if>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!bd.DataChunk}" var="bt">
+                                        <tr class="slds-hint-parent ">
+                                            <td data-label="Batch Name" class="borderLeft headerColor">
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-col" style="flex:0 1 auto;">
+                                                        <aura:if isTrue="{! (bt.Status =='SUCCESS')}">
+                                                            <lightning:icon iconName="standard:task2" alternativeText="Running" size="xx-small" title="Running"/>
+                                                            <aura:set attribute="else">
+                                                                <aura:if isTrue="{! (bt.Status =='EXECUTING')}">
+                                                                    <lightning:icon iconName="standard:business_hours" alternativeText="Executing" size="xx-small" title="Executing"/>
+                                                                    <aura:set attribute="else">
+                                                                        <lightning:icon iconName="standard:first_non_empty" alternativeText="Error" variant="error" size="xx-small" title="Stopped"/>
+                                                                    </aura:set>
+                                                                </aura:if>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div>
+                                                    <aura:if isTrue="{!bt.SendAlert}">
+                                                    	<div class="slds-col alertColor" title="{!bt.DisplayLabel}" style="flex:0 1 auto;">
+                                                        	{!bt.DisplayLabel}
+                                                        </div>
+                                                        <aura:set attribute="else">
+                                                            <div class="slds-col" title="{!bt.DisplayLabel}" style="flex:0 1 auto;">
+                                                        		{!bt.DisplayLabel}
+                                                    		</div>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </div>
+                                            </td>
+                                            <td data-label="Next Run Time">
+                                                <div class="slds-truncate" title="{!bt.NextRunTime}">{!bt.NextRunTime}</div>
+                                            </td>
+                                            <aura:if isTrue="{!v.BatchActionAllowed}">
+                                                <td data-label="Action" class="borderRight" style="padding-right: 0rem;">
+                                                    <div class="slds-truncate">
+                                                        <ul class="">
+                                                            <li>
+                                                                <aura:if isTrue="{!bt.isDashboard30secBatch}">
+                                                                    <lightning:button class="slds-button slds-button_success slds-button_icon slds-button__icon_small slds-icon_x-small" label="" iconName="utility:play" iconPosition="left" aura:id="Run" title="Run" name="{!bt.BatchName}" onclick="{!c.doSelectedBatchAction}" disabled="{! !(bt.Status =='NA')}"/>
+                                                                    <lightning:button class="slds-button slds-button_neutral slds-button_icon slds-button__icon_small slds-icon_x-small" label="" iconName="utility:stop" iconPosition="left" aura:id="Stop" title="Stop" name="{!bt.BatchName}" onclick="{!c.doSelectedBatchAction}" disabled="{! (bt.Status =='NA')}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <aura:if isTrue="{! !bt.OnlyAdhocRunAllowed}">
+                                                                            <lightning:button class="slds-button slds-button_success slds-button_icon slds-button__icon_small slds-icon_x-small" label="" iconName="utility:play" iconPosition="left" aura:id="Run" title="Run" name="{!bt.BatchName}" onclick="{!c.doSelectedBatchAction}" disabled="{! !(bt.Status =='NA')}"/>
+                                                                            <lightning:button class="slds-button slds-button_neutral slds-button_icon slds-button__icon_small slds-icon_x-small" label="" iconName="utility:stop" iconPosition="left" aura:id="Stop" title="Stop" name="{!bt.BatchID}" onclick="{!c.doSelectedBatchAction}" disabled="{! (bt.Status =='NA')}"/>
+                                                                        </aura:if>
+                                                                          <aura:if isTrue="{!bt.AdhocRunAllowed}">
+                                                                              <lightning:button class="slds-button slds-button_outline-brand slds-button_icon slds-button__icon_small slds-icon_x-small" label="" iconName="utility:loop" iconPosition="left" aura:id="RunAdhoc" title="Run Adhoc" name="{!bt.BatchName}" onclick="{!c.doSelectedBatchAction}" disabled="{! (bt.Status =='EXECUTING')}"/>
+                                                                          </aura:if>
+                                                                    </aura:set>
+                                                                </aura:if>
+                                                            </li>
+                                                      </ul>
+                                                    </div>
+                                                </td>
+                                            </aura:if>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                    </div>
+                </aura:iteration>
+            </div>
+        </div>
+    </div>
+    <!--Batch Section ends here-->
+    
+    <!--Page Body ends here-->
+</aura:component>

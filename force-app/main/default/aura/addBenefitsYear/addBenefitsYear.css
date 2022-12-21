@@ -1,0 +1,11 @@
+.THIS.scrollerSize {
+    height:100%;
+    width:100%;
+    margin-top:-12px;
+     text-align: left; 
+    border:1px;
+}
+.THIS table,.THIS th,.THIS td {
+  
+   width:200%;
+}

@@ -1,0 +1,39 @@
+*** DEAL DONE NOTIFICATION *** 
+
+Deal executed on {!Opportunity.Execution_Date__c} 
+Opportunity Owner: {!Opportunity.Risk_Marketer__c} 
+Account Manager: {!Opportunity.Account_Manager__c} 
+
+{!Opportunity.Shell_Entity__c}, {!Opportunity.Account} ({!Opportunity.Name})
+Deal Period: {!Opportunity.Start_Date__c} : {!Opportunity.CloseDate} 
+MOA Period :  {!Opportunity.Contract_Months_Remaining__c}
+____________________________________________________
+Volume (Tonnes) : {!Opportunity.Volume__c}
+Product: {!Opportunity.Product__c}{!
+Total Margin: {!Opportunity.Total_Margin__c} 
+Margin on deal $/t :{!Opportunity.Margin_MT__c}
+Price of Hedge $/Unit: {!Opportunity.Price_to_Customer__c} ({!Opportunity.Currency__c}) {!Opportunity.Currency_value__c} 
+_______________________________________________
+Overall Status:
+2019 target US$ for this customer:  {!Account.X2019_Target_in_US__c}
+Actual US$ to date: {!Account.Actual_Margin_2019__c}
+Actual total tonnes : {!Account.Actual_Volume_T_2019__c}
+________________________________________________
+PFE : {!Opportunity.PFE_USD__c}
+Contingent credit Limit  for customer : {!Account.Contingent_Credit__c}
+Existing PFE all deals: {!Account.Exisiting_PFE__c}
+Current M2M (excludes this deal):  {!Account.M2M_B2B__c}
+Number of live deals running: {!Account.Current_No_of_Deals__c}
+_________________________________________________
+***Deal Comments and MIM***
+
+Comments: {!Opportunity.Comments__c} 
+Deal confirmation: {!Opportunity.MIM__c} 
+_________________________________________________ 
+Service Fee & POV : 
+
+RM Service Fee : {!Opportunity.RM_Service_Fee__c}
+Total PoV : {!Opportunity.Total_PoV__c} 
+DEX Reference : {!Opportunity.DEX_Reference__c}
+_________________________________________________ 
+Click on the link to access the Opportunity directly: {!Opportunity.Link}

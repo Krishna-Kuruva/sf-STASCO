@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BET_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>* BET Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Draft</fullName>
+                <default>true</default>
+                <label>Draft</label>
+            </value>
+            <value>
+                <fullName>Ready for BDD Approver</fullName>
+                <default>false</default>
+                <label>Ready for BDD Approver</label>
+            </value>
+            <value>
+                <fullName>Review with BDD Approver</fullName>
+                <default>false</default>
+                <label>Review with BDD Approver</label>
+            </value>
+            <value>
+                <fullName>Ready for COF</fullName>
+                <default>false</default>
+                <label>Ready for COF</label>
+            </value>
+            <value>
+                <fullName>Review with COF</fullName>
+                <default>false</default>
+                <label>Review with COF</label>
+            </value>
+            <value>
+                <fullName>Ready to Onboard</fullName>
+                <default>false</default>
+                <label>Ready to Onboard</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+                <label>Submitted</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,44 @@
+<aura:component Controller="BenefitController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   <aura:attribute name="benefitByYear" type="Benefit_By_Year__c" />
+   <aura:attribute name="YearofBenefit" type="String"/>
+   <aura:registerEvent name="AddRowEvt" type="c:AddNewRowEvt"/> 
+   <aura:registerEvent name="DeleteRowEvt" type="c:DeleteRowEvt"/> 
+   <aura:attribute name="rowIndex" type="String"/>
+   <aura:attribute name="Year" type="List"/>
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+   <aura:attribute name="benfitYearDataChild" type="List" default=""/> 
+   <aura:attribute name="readOnly" type="Boolean" default="false"/>
+   <aura:attribute name="recordId" type="String" />
+   <aura:handler   event="c:AddErrorEvent" action="{!c.handleErrorNotifications}"/>
+    <tr>
+        <td style="width:50% ">
+            <lightning:select required="true" aura:id="Year" value="{!v.benefitByYear.Year__c}" onchange="{!c.changeYear}"  Name="Year" disabled="{!v.readOnly}" messageWhenValueMissing="Please Enter Mandatory Field">
+                <option value="">-- None --</option>
+                <aura:iteration items="{!v.Year}" var="lc" >
+                    <option text="{!lc.label}" label="{!lc.Name}" selected="{!lc.label==v.benefitByYear.Year__c}" />
+                </aura:iteration>
+            </lightning:select>                    
+        </td>
+        
+        <td style="width:50% ">
+            <lightning:input type="number" value="{!v.benefitByYear.Benefit_Amount__c}" disabled="{!v.readOnly}"  aura:id="Amount"  
+                          	 onchange="{!c.checkIfNotNumber}" required="true"
+                             messageWhenValueMissing ="Please Enter Mandatory Field"  formatter="currency" step="0.01" name="amount"/>    
+        </td>
+        <td>                  
+            <aura:if isTrue="{!v.rowIndex == 0}">
+                <a onclick="{!c.AddNewRow}">
+                    <lightning:icon iconName="utility:add" class="slds-icon slds-icon_small" size="small" alternativeText="add"/>
+                    <span class="slds-assistive-text">Add Icon</span>
+                </a>    
+                <aura:set attribute="else">
+                    <a onclick="{!c.removeRow}">
+                        <lightning:icon variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="icon"/>
+                        <span class="slds-assistive-text">Delete Icon</span>
+                    </a>
+                </aura:set> 
+            </aura:if>     
+        </td>
+    </tr>
+    <br/>
+</aura:component>

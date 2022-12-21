@@ -1,0 +1,120 @@
+.THIS.c-container {
+    border: 1px solid #FFD500;
+    background-color: white;
+    font-size:10px;
+}
+.THIS .icn svg{
+ fill: #C23934;   
+}
+.THIS .potype .slds-select{
+    width:250px;
+}
+.THIS .mrcNo .slds-select{
+    width:122.5px;
+}
+.THIS .inputBoxSize{
+    width:219.5px;
+}
+.THIS.exampleHolder{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.THIS .page-section {
+    border: solid 2px #FFD500;
+    padding: 1rem;
+    color:#C23934;
+    font-size:12px;
+}
+.THIS .completedTablePad{
+    padding-left:4px;
+    padding-right:4px;
+}
+.THIS .savedTablePad{
+    padding-left:4px;
+    padding-right:4px;
+    padding-bottom:8px;
+}
+.THIS .display-section {
+    border: solid 2px #FFD500;
+    padding: 2rem;
+    margin: 10px 0 20px 0;
+}
+.THIS .searchSoldTo{
+    font-size:15px;
+    color:#C23934;
+}
+.THIS .col-section {
+    padding: 1rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.THIS .page-main {
+    background: #f8f8f8;
+}
+.THIS .matchWidth {
+    width: 109%;
+}
+.THIS .shipTostyle{
+    width:65%;
+}
+.THIS .page-left,
+.THIS .page-right {
+    background: #f0efef;
+}
+.THIS .setRows{
+   display:inline; 
+}
+.THIS .putborder{
+   border: 1px solid black;  
+}
+.THIS .putAlert{
+    background: #FFCC00;  
+}
+
+.THIS .tsInput {
+    width: 70%;
+}
+
+.THIS .inTextNone
+{
+    display:none;
+}
+.THIS .tsInputHoverDD {
+   width: auto;
+   margin-top: 55px;
+}
+.THIS .showName{display:block;}
+.THIS .hidename{display:none;}
+.THIS .btnSet {
+    margin-left: 2rem;
+    margin-top: 1.35rem;
+}
+.THIS .salesPeriodSet{
+    padding-left: 1.5rem;
+    padding-right: 2.5rem;
+}
+.THIS table,.THIS th,.THIS td {
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid black;
+   border-collapse: collapse;  
+}
+.THIS .boxAlign{
+    margin-top: -10px;
+}
+/*FIX_PBI_287455_11thJuly_Lakshmi_Starts*/
+.THIS .colorchange{
+    color : red;
+}
+.THIS .slds-colorsuccess{
+    color : green;
+}
+/*FIX_PBI_287455_11thJuly_Lakshmi_Ends*/
+.THIS .gsap-error-info .slds-form-element__icon{
+    padding-top: 0px;
+}

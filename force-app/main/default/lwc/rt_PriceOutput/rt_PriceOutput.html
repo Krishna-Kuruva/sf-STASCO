@@ -1,0 +1,1107 @@
+<!--
+ - Created by Soumyajit.Jagadev on 09-Jul-20.
+ -->
+
+<!-- Turkey Price Output -->
+<template>
+
+    <div class="reducedFont">
+        <template if:false={spinnerLoad}>
+
+            <!--Header Section starts-->
+            <div class="slds-box slds-box_x-small bgGrey">
+                <template if:true={showPageHeader}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_11-of-12">
+                            <template if:true={showLimitFilter}>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_2-of-12 padding-left-1">
+                                        <lightning-combobox
+                                                name="limitSoldTo"
+                                                value={selectedSoldTo}
+                                                label="Limit Results To"
+                                                placeholder="Select Filter"
+                                                options={soldToList}
+                                                onchange={fetchLimitFilter}
+                                        ></lightning-combobox>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 padding-left-1" style="padding-top: 0.5%;">
+                                        <lightning-combobox
+                                                name="limitPlant"
+                                                value={selectedPlant}
+                                                label=""
+                                                placeholder="Select Filter"
+                                                options={plantList}
+                                                onchange={fetchLimitFilter}
+                                        ></lightning-combobox>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 padding-left-1" style="padding-top: 0.5%;">
+                                        <lightning-combobox
+                                                name="limitMaterial"
+                                                value={selectedMaterial}
+                                                label=""
+                                                placeholder="Select Filter"
+                                                options={materialList}
+                                                onchange={fetchLimitFilter}
+                                        ></lightning-combobox>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 padding-left-1" style="padding-top: 2%;width: 10%;">
+                                        <lightning-input
+                                                type="checkbox"
+                                                name="limitFailedOnes"
+                                                checked={limitFailedOnes}
+                                                label="Failed Checks"
+                                                onchange={checkboxChange}
+                                        ></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12" style="padding-top: 2%;">
+                                        <lightning-input
+                                                type="checkbox"
+                                                name="limitImports"
+                                                checked={limitImports}
+                                                label="Import Terminals"
+                                                onchange={checkboxChange}
+                                        ></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12">
+                                        <div class="slds-grid">
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input type="number"
+                                                                 step="0.01"
+                                                                 formatter="decimal"
+                                                                 name="globalDailyAdjustment"
+                                                                 label="Daily Adjustment"
+                                                                 value={globalDailyAdjustment}
+                                                                 onchange={textFldChange}
+                                                                 disabled={globalDailyAdjustmentDisabled}>
+                                                </lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2" style="padding-top: 7%;">
+                                                <template if:true={globalDailyAdjustmentDisabled}>
+                                                    <span class="">&nbsp;&nbsp;</span>
+                                                    <lightning-button-icon icon-name="utility:edit"
+                                                                           alternative-text="Edit"
+                                                                           data-name="edit"
+                                                                           name="globalDailyAdjustment"
+                                                                           size="small"
+                                                                           title="Edit"
+                                                                           variant="border-filled"
+                                                                           onclick={doButtonAction}>
+                                                    </lightning-button-icon>
+                                                </template>
+                                                <template if:false={globalDailyAdjustmentDisabled}>
+                                                    <span class="">&nbsp;&nbsp;</span>
+                                                    <lightning-button-icon icon-name="utility:save"
+                                                                           alternative-text="Save"
+                                                                           data-name="save"
+                                                                           name="globalDailyAdjustment"
+                                                                           size="small"
+                                                                           title="Save"
+                                                                           variant="border-filled"
+                                                                           onclick={doButtonAction}>
+                                                    </lightning-button-icon>
+                                                    <span class="">&nbsp;&nbsp;</span>
+                                                    <lightning-button-icon icon-name="utility:close"
+                                                                           alternative-text="Cancel"
+                                                                           data-name="cancel"
+                                                                           name="globalDailyAdjustment"
+                                                                           size="small"
+                                                                           title="Cancel Edit"
+                                                                           variant="border-filled"
+                                                                           onclick={doButtonAction}>
+                                                    </lightning-button-icon>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-12" >
+                                        <lightning-input type="number"
+                                                         step="0.01"
+                                                         formatter="percent-fixed"
+                                                         label="Margin Threshold"
+                                                         value={marginPercentage}
+                                                         disabled>
+                                        </lightning-input>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12">
+                            <div class="slds-float_right">
+                                <lightning-button-icon icon-name="utility:hide"
+                                                       alternative-text="Hide Filter"
+                                                       size="medium"
+                                                       title="Hide Filter"
+                                                       variant="border-filled"
+                                                       data-name="hide"
+                                                       onclick={openHidePageHeader}>
+                                </lightning-button-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <template if:true={showPriceData}>
+                        <br/>
+                    </template>
+                </template>
+                <template if:false={showPageHeader}>
+                    <template if:false={showPriceData}>
+                        <div class="slds-align--absolute-center">
+                            <lightning-button-group>
+                                <template if:false={isBatchRunning}>
+                                    <lightning-button label="Run Price Logic" title="Run Price Logic" onclick={runLogic}>
+                                    </lightning-button>
+                                </template>
+                                <lightning-button label="Refresh" title="Refresh" onclick={doRefresh}>
+                                </lightning-button>
+                                <!-- below button is added by Dharmendra on 5th Oct 2020 -->
+                                <lightning-button label="Run Aureus Deactivation" title="Run Aureus Deactivation" onclick={runRevContractDeactivation}></lightning-button>
+                            </lightning-button-group>
+                        </div>
+                    </template>
+                </template>
+
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_11-of-12">
+                        <div class="">
+                            <template if:true={showPriceData}>
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_3-of-12 padding-left-1">
+                                        <lightning-combobox
+                                                name="grpTypeSelect"
+                                                value={selectedFilter}
+                                                label="Group On"
+                                                placeholder="Select Group"
+                                                options={filterList}
+                                                onchange={fetchFilter}
+                                                variant="label-inline"
+                                        ></lightning-combobox>
+                                    </div>
+
+                                    <div class="slds-col slds-size_9-of-12">
+                                        <div class="slds-align--absolute-center">
+                                            <template if:true={isApprover}>
+                                                <span class="">&nbsp;&nbsp;</span>
+                                                <lightning-button-group>
+                                                    <template if:true={showApprovalAll}>
+                                                        <lightning-button label="Approve All" title="Approve All" icon-name="utility:approval" data-name="all" name="approve" onclick={doButtonAction}>
+                                                        </lightning-button>
+                                                    </template>
+                                                    <template if:true={showRejectAll}>
+                                                        <lightning-button variant="destructive-text" label="Reject All" title="Reject All" icon-name="utility:ban" data-name="all" name="reject" onclick={doButtonAction}>
+                                                        </lightning-button>
+                                                    </template>
+                                                </lightning-button-group>
+                                            </template>
+
+                                            <lightning-button-group>
+                                                <template if:true={showSendApproval}>
+                                                    <lightning-button label="Send For Approval" title="Send For Approval" icon-name="utility:send" onclick={submitForReview}>
+                                                    </lightning-button>
+                                                </template>
+                                                <template if:true={showDownloadOutput}>
+                                                    <lightning-button label="Download Output" title="Download Daily Price Change Output" icon-name="utility:text_template" onclick={openDownloadMsg}>
+                                                    </lightning-button>
+                                                </template>
+                                            </lightning-button-group>
+
+                                            <span class="">&nbsp;&nbsp;</span>
+                                            <lightning-button-group>
+                                                <template if:false={filterIsNone}>
+                                                    <template if:true={showExpandAll}>
+                                                        <lightning-button label="Expand All" title="Expand All" data-name="expand" onclick={toggleSection}>
+                                                        </lightning-button>
+                                                    </template>
+                                                    <template if:true={showCollapseAll}>
+                                                        <lightning-button label="Collapse All" title="Collapse All" data-name="collapse" onclick={toggleSection}>
+                                                        </lightning-button>
+                                                    </template>
+                                                </template>
+
+                                                <lightning-button label="Export" title="Export" data-name={exportReportID} onclick={download}>
+                                                </lightning-button>
+                                                <template if:false={isBatchRunning}>
+                                                    <lightning-button label="Recalculate Price" title="Recalculate Price" onclick={runLogic}>
+                                                    </lightning-button>
+                                                </template>
+                                                <template if:true={showCopySuggAmountBtn}>
+                                                    <lightning-button label="Make All 45/55 Match" title="Make All 45/55 Match Based On Suggested Amount" data-name="all" name="match" onclick={doButtonAction}>
+                                                    </lightning-button>
+                                                </template>
+                                                <lightning-button label="Refresh" title="Refresh" onclick={doRefresh}>
+                                                </lightning-button>
+                                                <!-- below button is added by Dharmendra on 5th Oct 2020 -->
+                                                <lightning-button label="Run Aureus Deactivation" title="Run Aureus Deactivation" onclick={runRevContractDeactivation}></lightning-button>
+                                            </lightning-button-group>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12">
+                        <template if:false={showPageHeader}>
+                            <div class="slds-float_right">
+                                <template if:true={showPriceData}>
+                                    <lightning-button-icon icon-name="utility:preview"
+                                                           alternative-text="Show Filter"
+                                                           size="medium"
+                                                           title="Show Filter"
+                                                           variant="border-filled"
+                                                           data-name="open"
+                                                           onclick={openHidePageHeader}>
+                                    </lightning-button-icon>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <!--Header Section ends-->
+
+            <!--page starts-->
+            <template if:true={showPriceData}>
+
+                <!--legend-->
+                <template if:true={showPageHeader}>
+                    <div class="slds-box slds-box_x-small bgWhite">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:number_input" alternative-text="Count" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Number of Rows">Number of Rows</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:task2" alternative-text="Match" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Satisfying 45/55 Check">Satisfying 45/55 Check</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:first_non_empty" alternative-text="Fail" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Not Satisfying 45/55 Check">Not Satisfying 45/55 Check</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:task" alternative-text="Under Review" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Under Review">Under Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:approval" alternative-text="Approved" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Approved">Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-6">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="slds-float_right">
+                                            <lightning-icon icon-name="standard:unmatched" alternative-text="Rejected" size="x-small"></lightning-icon>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_11-of-12">
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <span title="Rejected">Rejected</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="slds-scrollable" style={scrollableHeight}>
+                    <template for:each={priceData} for:item="pd" for:index="indx">
+                        <br key={pd.grp1Name}/>
+                        <div key={pd.grp1Name} class="slds-box slds-box_xx-small slds-section__title-action sectionHeader slds-grid" data-name="section" data-id={indx} onclick={toggleSection}>
+                            <div class="slds-col slds-size_3-of-12" data-name="section" data-id={indx}>
+                                <template if:false={pd.showSectionData}>
+                                    <lightning-button-icon icon-name="utility:chevronright" alternative-text="Click To Expand" data-name="section" data-id={indx} size="x-small" class="slds-button__icon_left" >
+                                    </lightning-button-icon>
+                                </template>
+                                <template if:true={pd.showSectionData}>
+                                    <lightning-button-icon icon-name="utility:chevrondown" alternative-text="Click To Collapse" data-name="section" data-id={indx} size="x-small" class="slds-button__icon_left">
+                                    </lightning-button-icon>
+                                </template>
+
+                                <template if:false={filterIsNone}>
+                                    <template if:false={filterIsDiscount}>
+                                        <a href={pd.grp1ID} data-id={indx} data-name="sectionName" class="slds-p-horizontal_small" target="_blank">{pd.grp1Name}</a>
+                                    </template>
+                                    <template if:true={filterIsDiscount}>
+                                        <span data-id={indx} data-name="sectionName" class="slds-p-horizontal_small">{pd.grp1Name}</span>
+                                    </template>
+                                </template>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12" data-name="section" data-id={indx}>
+                            </div>
+                            <div class="slds-col slds-size_3-of-12" data-name="section" data-id={indx}>
+                                <div class="slds-float_right">
+                                    <lightning-icon icon-name="standard:number_input" alternative-text="Count" size="x-small">
+                                    </lightning-icon>
+                                    <span class="slds-truncate slds-p-horizontal_small" title={pd.childCounter}>{pd.childCounter}</span>
+                                    <template if:true={pd.hasSuccess}>
+                                        <lightning-icon icon-name="standard:task2" alternative-text="Match" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-truncate slds-p-horizontal_small" title={pd.successCount}>{pd.successCount}</span>
+                                    </template>
+                                    <template if:true={pd.hasError}>
+                                        <lightning-icon icon-name="standard:first_non_empty" alternative-text="Fail" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-truncate slds-p-horizontal_small" title={pd.errorCount}>{pd.errorCount}</span>
+                                    </template>
+                                    <template if:true={pd.hasReview}>
+                                        <lightning-icon icon-name="standard:task" alternative-text="Under Review" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-truncate slds-p-horizontal_small" title={pd.reviewCount}>{pd.reviewCount}</span>
+                                    </template>
+                                    <template if:true={pd.hasApproval}>
+                                        <lightning-icon icon-name="standard:approval" alternative-text="Approved" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-truncate slds-p-horizontal_small" title={pd.approvalCount}>{pd.approvalCount}</span>
+                                    </template>
+                                    <template if:true={pd.hasReject}>
+                                        <lightning-icon icon-name="standard:unmatched" alternative-text="Rejected" size="x-small">
+                                        </lightning-icon>
+                                        <span class="slds-truncate slds-p-horizontal_small" title={pd.rejectCount}>{pd.rejectCount}</span>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template if:true={pd.showSectionData}>
+                            <div key={pd.grp1Name}>
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                        </th>
+                                        <template if:true={filterIsNone}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Sold-To">Sold-To</div>
+                                            </th>
+                                        </template>
+                                        <template if:true={filterIsDiscount}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Sold-To">Sold-To</div>
+                                            </th>
+                                        </template>
+                                        <th class="" scope="col">
+                                            <template if:true={filterIsNone}>
+                                                <div class="slds-truncate" title="Plant">Plant</div>
+                                            </template>
+                                            <template if:true={filterIsSoldTo}>
+                                                <div class="slds-truncate" title="Plant">Plant</div>
+                                            </template>
+                                            <template if:true={filterIsPlant}>
+                                                <div class="slds-truncate" title="Sold-To">Sold-To</div>
+                                            </template>
+                                            <template if:true={filterIsMaterial}>
+                                                <div class="slds-truncate" title="Sold-To">Sold-To</div>
+                                            </template>
+                                            <template if:true={filterIsDiscount}>
+                                                <div class="slds-truncate" title="Plant">Plant</div>
+                                            </template>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <template if:true={filterIsNone}>
+                                                <div class="slds-truncate" title="Material">Material</div>
+                                            </template>
+                                            <template if:true={filterIsSoldTo}>
+                                                <div class="slds-truncate" title="Material">Material</div>
+                                            </template>
+                                            <template if:true={filterIsPlant}>
+                                                <div class="slds-truncate" title="Material">Material</div>
+                                            </template>
+                                            <template if:true={filterIsMaterial}>
+                                                <div class="slds-truncate" title="Plant">Plant</div>
+                                            </template>
+                                            <template if:true={filterIsDiscount}>
+                                                <div class="slds-truncate" title="Material">Material</div>
+                                            </template>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Condition Type">Condition</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Amount">Amount</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Commercial Fuel Margin Share">CF Margin</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="YD07_YD06 Amount">YD07_YD06 Price</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Adjustment">Adjustment</div>
+                                        </th>
+                                        <template if:false={filterIsDiscount}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Discount Type">Discount Type</div>
+                                            </th>
+                                        </template>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Discounted Price">Discount</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Commercial Fuel Margin Share After Discount">Margin After Discount</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <template if:true={isApprover}>
+                                                <div class="slds-truncate" title="Submitter">Submitter</div>
+                                            </template>
+                                            <template if:false={isApprover}>
+                                                <div class="slds-truncate" title="Editor">Editor</div>
+                                            </template>
+                                        </th>
+                                        <template if:false={isApprover}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Approver">Approver</div>
+                                            </th>
+                                        </template>
+                                        <template if:true={isApprover}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Action">Action</div>
+                                            </th>
+                                        </template>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template for:each={pd.gridData} for:item="gr" for:index="grIndx">
+                                        <tr class="slds-hint-parent" key={gr.priceId} id={gr.priceId}>
+                                            <td title="">
+                                                <lightning-button-icon icon-name="utility:new_window"
+                                                                       alternative-text="Show Details"
+                                                                       data-id={gr.gridIndex}
+                                                                       data-name="view"
+                                                                       size="small"
+                                                                       title="Show Details"
+                                                                       variant="bare"
+                                                                       onclick={showPriceDetail}>
+                                                </lightning-button-icon>
+                                                <template if:false={isApprover}>
+                                                    <template if:true={gr.inReview}>
+                                                        <span class="">&nbsp;&nbsp;</span>
+                                                        <lightning-icon icon-name="utility:task" alternative-text="Under Review" title="Under Review" size="x-small"></lightning-icon>
+                                                    </template>
+                                                    <template if:true={gr.isApproved}>
+                                                        <span class="">&nbsp;&nbsp;</span>
+                                                        <lightning-icon icon-name="utility:approval" alternative-text="Approved" title="Approved" size="x-small"></lightning-icon>
+                                                    </template>
+                                                    <template if:true={gr.isRejected}>
+                                                        <span class="">&nbsp;&nbsp;</span>
+                                                        <lightning-icon icon-name="utility:ban" alternative-text="Rejected" title="Rejected" size="x-small"></lightning-icon>
+                                                    </template>
+                                                </template>
+                                            </td>
+                                            <template if:true={filterIsNone}>
+                                                <td title={gr.grp1Name}>
+                                                    <a href={gr.grp1ID} target="_blank">{gr.grp1Name}</a>
+                                                </td>
+                                            </template>
+                                            <td title={gr.grp2Name}>
+                                                <a href={gr.grp2ID} target="_blank">{gr.grp2Name}</a>
+                                            </td>
+                                            <td title={gr.grp3Name}>
+                                                <a href={gr.grp3ID} target="_blank">{gr.grp3Name}</a>
+                                            </td>
+                                            <template if:true={filterIsDiscount}>
+                                                <td title={gr.grp4Name}>
+                                                    <a href={gr.grp4ID} target="_blank">{gr.grp4Name}</a>
+                                                </td>
+                                            </template>
+                                            <td title="Condition Type">
+                                                {gr.condType}
+                                            </td>
+                                            <td title="Amount">
+                                                <lightning-formatted-number value={gr.amount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="4"></lightning-formatted-number>
+
+                                                <template if:false={gr.isLocked}>
+                                                    <span class="">&nbsp;&nbsp;</span>
+                                                    <lightning-button-icon icon-name="utility:edit"
+                                                                           alternative-text="Edit"
+                                                                           data-id={gr.gridIndex}
+                                                                           data-name="editAmount"
+                                                                           size="small"
+                                                                           title="Edit Amount"
+                                                                           variant="bare"
+                                                                           onclick={showPriceDetail}>
+                                                    </lightning-button-icon>
+                                                </template>
+                                            </td>
+                                            <td title="Commercial Fuel Margin Share">
+                                                <template if:true={gr.isMatch}>
+                                                    <span class="slds-text-color_success"><b><lightning-formatted-number value={gr.cfMargin} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</b></span>
+                                                </template>
+                                                <template if:false={gr.isMatch}>
+                                                    <span class="slds-text-color_error"><b><lightning-formatted-number value={gr.cfMargin} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</b></span>
+                                                </template>
+                                            </td>
+                                            <td title="YD07_YD06 Amount">
+                                                <template if:false={gr.hideYd06Amount}>
+                                                    <lightning-formatted-number value={gr.yd06Amount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                </template>
+                                                <template if:true={gr.hideYd06Amount}>
+                                                    <span>N/A</span>
+                                                </template>
+                                            </td>
+                                            <td title="Adjustment">
+                                                <template if:false={gr.hideAdjustment}>
+                                                    <lightning-formatted-number value={gr.adjustment} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+
+                                                    <template if:false={gr.isLocked}>
+                                                        <span class="">&nbsp;&nbsp;</span>
+                                                        <lightning-button-icon icon-name="utility:edit"
+                                                                               alternative-text="Edit"
+                                                                               data-id={gr.gridIndex}
+                                                                               data-name="editAdjustment"
+                                                                               size="small"
+                                                                               title="Edit Adjustment"
+                                                                               variant="bare"
+                                                                               onclick={showPriceDetail}>
+                                                        </lightning-button-icon>
+                                                    </template>
+                                                </template>
+                                                <template if:true={gr.hideAdjustment}>
+                                                    <span>N/A</span>
+                                                </template>
+                                            </td>
+                                            <template if:false={filterIsDiscount}>
+                                                <td title={gr.grp4Name}>
+                                                    {gr.grp4Name}
+                                                </td>
+                                            </template>
+                                            <td title="Discounted Price">
+                                                <template if:false={gr.hideTotalPostDiscount}>
+                                                    <lightning-formatted-number value={gr.totalPostDiscount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="4"></lightning-formatted-number>
+                                                </template>
+                                                <template if:true={gr.hideTotalPostDiscount}>
+                                                    <span>N/A</span>
+                                                </template>
+                                            </td>
+                                            <td title="Commercial Fuel Margin Share After Discount">
+                                                <template if:false={gr.hideCfMarginAfterDiscount}>
+                                                    <lightning-formatted-number value={gr.cfMarginAfterDiscount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%
+                                                </template>
+                                                <template if:true={gr.hideCfMarginAfterDiscount}>
+                                                    <span>N/A</span>
+                                                </template>
+                                            </td>
+                                            <td title="">
+                                                <template if:true={gr.showSubmitter}>
+                                                    <lightning-avatar src="" initials={gr.submitterInitials} fallback-icon-name="standard:avatar"  alternative-text={gr.submitter} size="x-small"></lightning-avatar>
+                                                </template>
+                                            </td>
+                                            <template if:false={isApprover}>
+                                                <td title="">
+                                                    <template if:true={gr.showApprover}>
+                                                        <lightning-avatar src="" initials={gr.approverInitials} fallback-icon-name="standard:avatar"  alternative-text={gr.approver} size="x-small"></lightning-avatar>
+                                                    </template>
+                                                </td>
+                                            </template>
+                                            <template if:true={isApprover}>
+                                                <td title="Action">
+                                                    <template if:false={gr.isApproved}>
+                                                        <lightning-button-icon icon-name="utility:approval"
+                                                                               alternative-text="Approval"
+                                                                               data-id={gr.gridIndex}
+                                                                               data-name="this"
+                                                                               name="approve"
+                                                                               size="x-small"
+                                                                               title="Approve"
+                                                                               variant="brand"
+                                                                               onclick={doButtonAction}>
+                                                        </lightning-button-icon>
+                                                        <span class="">&nbsp;&nbsp;</span>
+                                                    </template>
+                                                    <template if:false={gr.isRejected}>
+                                                        <lightning-button-icon icon-name="utility:ban"
+                                                                               alternative-text="Approval"
+                                                                               data-id={gr.gridIndex}
+                                                                               data-name="this"
+                                                                               name="reject"
+                                                                               size="x-small"
+                                                                               title="Reject"
+                                                                               variant="border-filled"
+                                                                               onclick={doButtonAction}>
+                                                        </lightning-button-icon>
+                                                    </template>
+                                                </td>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </template>
+
+                    </template>
+                </div>
+                <!--Price Details Pop-Out-->
+                <template if:true={showPriceDetails}>
+                    <section role="dialog"
+                             tabindex="-1"
+                             aria-labelledby="priceDetail-modal-heading-01"
+                             aria-modal="true"
+                             aria-describedby="priceDetail-modal-content-id-1"
+                             class="slds-modal slds-fade-in-open slds-modal_large" >
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header modalHeader">
+                                <lightning-button-icon icon-name="utility:close"
+                                                       onclick={hidePriceDetail}
+                                                       alternative-text="close"
+                                                       variant="bare-inverse"
+                                                       class="slds-modal__close">
+                                </lightning-button-icon>
+                                <h2 id="priceDetail-modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                    Price Details for {priceDetailData.soldToName} ~ {priceDetailData.plantName} ~ {priceDetailData.materialName}
+                                </h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium modalBody" id="priceDetail-modal-content-id-1" >
+                                <div class="slds-grid slds-box" >
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Sold-To :</b></td>
+                                                <td><a href={priceDetailData.soldToLink} target="_blank">{priceDetailData.soldToName}&nbsp;[{priceDetailData.soldToNumber}]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sold-To Type :</b></td>
+                                                <td>{priceDetailData.soldToType}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Payment Term :</b></td>
+                                                <td>{priceDetailData.paymentTerm}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Key Value :</b></td>
+                                                <td><a href={priceDetailData.keyValLink} target="_blank">{priceDetailData.keyVal}</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Condition Type :</b></td>
+                                                <td>{priceDetailData.condType}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Plant :</b></td>
+                                                <td><a href={priceDetailData.plantLink} target="_blank">{priceDetailData.plantName}&nbsp;[{priceDetailData.plantCode}]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Import Ratio :</b></td>
+                                                <td>
+                                                    <lightning-formatted-number value={priceDetailData.importRatio} format-style="percent" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Refinery Name :</b></td>
+                                                <td><a href={priceDetailData.refineryLink} target="_blank">{priceDetailData.refineryName}&nbsp;[{priceDetailData.refineryCode}]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Site Name :</b></td>
+                                                <td><a href={priceDetailData.siteLink} target="_blank">{priceDetailData.siteName}&nbsp;[{priceDetailData.siteCode}]</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Material Name :</b></td>
+                                                <td><a href={priceDetailData.materialLink} target="_blank">{priceDetailData.materialName}&nbsp;[{priceDetailData.materialCode}]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Material Sub-Grade :</b></td>
+                                                <td>{priceDetailData.materialSubGrade}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Material Grade :</b></td>
+                                                <td>{priceDetailData.materialGrade}</td>
+                                            </tr>
+                                            <tr>
+                                                <template if:true={isApprover}>
+                                                    <td><b>Submitted By :</b></td>
+                                                </template>
+                                                <template if:false={isApprover}>
+                                                    <td><b>Edited By :</b></td>
+                                                </template>
+                                                <td>{priceDetailData.submitter}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Approved By :</b></td>
+                                                <td>{priceDetailData.approver}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <br/>
+                                <div class="slds-grid slds-box" >
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Depot Price (w/o VAT) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.depotPrice} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Depot Price (w/o VAT, SCT & EMRA Fee) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.depotPrice_woTax} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Refinery Price (w/o VAT) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.refineryPrice} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Refinery Price (w/o VAT, SCT & EMRA Fee) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.refineryPrice_woTax} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Pump Price (w/o VAT) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.pumpPrice} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Pump Price (w/o VAT, SCT & EMRA Fee) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.pumpPrice_woTax} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Defined Depot Price (w/o VAT) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.definedDepotPrice} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Defined Refinery Price (w/o VAT) :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.definedRefineryPrice} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>EMRA Fee :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.emra} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>SCT :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.sct} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Depot ~ Refinery Difference :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.depotRefineryDiff} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Pump ~ Refinery Difference :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.pumpRefineryDiff} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Shell Margin Share :</b></td>
+                                                <td><lightning-formatted-number value={priceDetailData.shellMargin} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Commercial Fuel Margin Share :</b></td>
+                                                <td>
+                                                    <template if:true={priceDetailData.isMatch}>
+                                                        <span class="slds-text-color_success"><b><lightning-formatted-number value={priceDetailData.cfMargin} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</b></span>
+                                                    </template>
+                                                    <template if:false={priceDetailData.isMatch}>
+                                                        <span class="slds-text-color_error"><b><lightning-formatted-number value={priceDetailData.cfMargin} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</b></span>
+                                                    </template>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Discount Type :</b></td>
+                                                <td>{priceDetailData.discountType}</td>
+                                            </tr>
+                                            <template if:false={priceDetailData.hideTotalPostDiscount}>
+                                                <tr>
+                                                    <td><b>Discounted Price :</b></td>
+                                                    <td><lightning-formatted-number value={priceDetailData.totalPostDiscount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                                </tr>
+                                            </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="slds-col slds-size_1-of-3">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                            <tbody>
+                                            <tr>
+                                                <td><b>Amount :</b></td>
+                                                <td>
+                                                    <template if:false={priceDetailData.isLocked}>
+                                                        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style="padding-left: 0;">
+                                                                    <lightning-input variant="label-hidden"
+                                                                                     type="number"
+                                                                                     step="0.01"
+                                                                                     name="amount"
+                                                                                     label=""
+                                                                                     formatter="decimal"
+                                                                                     value={priceDetailData.amount}
+                                                                                     data-id={priceDetailData.gridIndex}
+                                                                                     data-name="amount"
+                                                                                     onchange={textFldChange}
+                                                                                     disabled={priceDetailData.amountInputDisabled}>
+                                                                    </lightning-input>
+                                                                </td>
+                                                                <td>
+                                                                    <template if:false={priceDetailData.amountInputDisabled}>
+                                                                        <span class="">&nbsp;&nbsp;</span>
+                                                                        <lightning-button-icon icon-name="utility:save"
+                                                                                               alternative-text="Save"
+                                                                                               data-id={priceDetailData.gridIndex}
+                                                                                               data-name="save"
+                                                                                               name="amount"
+                                                                                               size="small"
+                                                                                               title="Save Amount"
+                                                                                               variant="border-filled"
+                                                                                               onclick={doButtonAction}>
+                                                                        </lightning-button-icon>
+                                                                        <span class="">&nbsp;&nbsp;</span>
+                                                                        <lightning-button-icon icon-name="utility:close"
+                                                                                               alternative-text="Cancel"
+                                                                                               data-id={priceDetailData.gridIndex}
+                                                                                               data-name="cancel"
+                                                                                               name="amount"
+                                                                                               size="small"
+                                                                                               title="Cancel Edit"
+                                                                                               variant="border-filled"
+                                                                                               onclick={doButtonAction}>
+                                                                        </lightning-button-icon>
+                                                                    </template>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </template>
+                                                    <template if:true={priceDetailData.isLocked}>
+                                                        <lightning-formatted-number value={priceDetailData.amount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                    </template>
+                                                </td>
+                                            </tr>
+                                            <template if:false={priceDetailData.isMatch}>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                            <span class="suggAmount">
+                                                                <i>Suggested Amount :&nbsp;&lt;= &nbsp;</i>
+                                                                <lightning-formatted-number value={priceDetailData.suggestedAmount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                            </span>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                            <tr>
+                                                <td></td>
+                                                <td><i>Aureus Amount :&nbsp;</i>
+                                                    <lightning-formatted-number value={priceDetailData.aureusAmount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                </td>
+                                            </tr>
+                                            <template if:false={priceDetailData.hideAdjustment}>
+                                                <tr>
+                                                    <td><b>Adjustment :</b></td>
+                                                    <td>
+                                                        <template if:false={priceDetailData.isLocked}>
+                                                            <table class="slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="padding-left: 0;">
+                                                                        <lightning-input variant="label-hidden"
+                                                                                         type="number"
+                                                                                         step="0.01"
+                                                                                         name="adjustment"
+                                                                                         label=""
+                                                                                         formatter="decimal"
+                                                                                         value={priceDetailData.adjustment}
+                                                                                         data-id={priceDetailData.gridIndex}
+                                                                                         data-name="adjustment"
+                                                                                         onchange={textFldChange}
+                                                                                         disabled={priceDetailData.adjustmentInputDisabled}>
+                                                                        </lightning-input>
+                                                                    </td>
+                                                                    <td>
+                                                                        <template if:false={priceDetailData.adjustmentInputDisabled}>
+                                                                            <span class="">&nbsp;&nbsp;</span>
+                                                                            <lightning-button-icon icon-name="utility:save"
+                                                                                                   alternative-text="Save"
+                                                                                                   data-id={priceDetailData.gridIndex}
+                                                                                                   data-name="save"
+                                                                                                   name="adjustment"
+                                                                                                   size="small"
+                                                                                                   title="Save Adjustment"
+                                                                                                   variant="border-filled"
+                                                                                                   onclick={doButtonAction}>
+                                                                            </lightning-button-icon>
+                                                                            <span class="">&nbsp;&nbsp;</span>
+                                                                            <lightning-button-icon icon-name="utility:close"
+                                                                                                   alternative-text="Cancel"
+                                                                                                   data-id={priceDetailData.gridIndex}
+                                                                                                   data-name="cancel"
+                                                                                                   name="adjustment"
+                                                                                                   size="small"
+                                                                                                   title="Cancel Edit"
+                                                                                                   variant="border-filled"
+                                                                                                   onclick={doButtonAction}>
+                                                                            </lightning-button-icon>
+                                                                        </template>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </template>
+                                                        <template if:true={priceDetailData.isLocked}>
+                                                            <lightning-formatted-number value={priceDetailData.adjustment} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+                                                        </template>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                            <span class="suggAmount">
+                                                                <i>
+                                                                    Daily Adjustment :&nbsp;
+                                                                    <lightning-formatted-number value={globalDailyAdjustment} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                                                </i>
+                                                            </span>
+                                                        <template if:false={priceDetailData.adjustmentInputDisabled}>
+                                                            <span class="">&nbsp;&nbsp;</span>
+                                                            <lightning-button-icon icon-name="utility:copy"
+                                                                                   alternative-text="Copy"
+                                                                                   data-id={priceDetailData.gridIndex}
+                                                                                   data-name="copy"
+                                                                                   name="adjustment"
+                                                                                   size="small"
+                                                                                   title="Copy"
+                                                                                   variant="bare"
+                                                                                   onclick={doButtonAction}>
+                                                            </lightning-button-icon>
+                                                        </template>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                            <template if:false={priceDetailData.hideYd06Amount}>
+                                                <tr>
+                                                    <td><b>YD07_YD06 Amount :</b></td>
+                                                    <td><lightning-formatted-number value={priceDetailData.yd06Amount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="4"></lightning-formatted-number></td>
+                                                </tr>
+                                            </template>
+                                            <template if:false={priceDetailData.hideCfMarginAfterDiscount}>
+                                                <tr>
+                                                    <td><b>Margin After Discount :</b></td>
+                                                    <td><lightning-formatted-number value={priceDetailData.cfMarginAfterDiscount} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>%</td>
+                                                </tr>
+                                            </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="slds-modal__footer modalFooter">
+                                <lightning-button variant="neutral" label="Close" title="Close" icon-name="utility:close" onclick={hidePriceDetail}>
+                                </lightning-button>
+                            </footer>
+                        </div>
+                    </section>
+                </template>
+
+            </template>
+
+            <!--Download Message Pop-out-->
+            <template if:true={showDownloadMsg}>
+                <section role="dialog"
+                         tabindex="-1"
+                         aria-labelledby="DownloadMsg-modal-heading-01"
+                         aria-modal="true"
+                         aria-describedby="DownloadMsg-modal-content-id-1"
+                         class="slds-modal slds-fade-in-open slds-modal_small" >
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header modalHeader">
+                            <lightning-button-icon icon-name="utility:close"
+                                                   onclick={hideDownloadMsg}
+                                                   alternative-text="close"
+                                                   variant="bare-inverse"
+                                                   class="slds-modal__close">
+                            </lightning-button-icon>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium modalBody" id="DownloadMsg-modal-content-id-1" >
+                            <div class="slds-align--absolute-center">
+                                <span class="">Output Will Be Generated Only For Approved Price(s)</span>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer modalFooter">
+                            <lightning-button variant="Success" label="Proceed" title="Proceed" data-name={outputReportID} onclick={download}>
+                            </lightning-button>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={hideDownloadMsg}>
+                            </lightning-button>
+                        </footer>
+                    </div>
+                </section>
+            </template>
+
+        </template>
+
+        <template if:true={spinnerLoad}>
+            <div class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+
+                    <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                        {spinnerMessage}
+                    </p>
+                </div>
+            </div>
+        </template>
+    </div>
+
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Revolution_Account_Access</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( NOT(ISNEW()), $RecordType.DeveloperName = &apos;Revolution&apos;, NOT($Profile.Name = &apos;Revolution (Platform)&apos;),NOT($Profile.Name = &apos;System Administrator&apos;),NOT($Profile.Name = &apos;Integration Profile&apos;))</errorConditionFormula>
+    <errorMessage>This account belongs to Revolution. Please contact Revolution System Administrator to update it.</errorMessage>
+</ValidationRule>

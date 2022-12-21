@@ -1,0 +1,23 @@
+<messaging:emailTemplate subject="Deal - {!relatedTo.SfItemShtNo__c} No Response from GSAP" recipientType="User" relatedToType="SAP_Staging__c">
+    <messaging:HtmlEmailBody >
+        Hi, <br/><br/>
+        
+                There are no response from GSAP after a deal  <b>{!relatedTo.SfItemShtNo__c}</b> has been created.
+                <br/>
+                Details are as below :<br/><br/>
+                <b>MRC No :</b> {!relatedTo.SapMrcNo__c}-{!relatedTo.MrcItemNo__c}<br/>
+                <b>Sold To Name :</b> {!relatedTo.SoldToName__c}<br/>
+                <b>Ship To Name :</b> {!relatedTo.Ship_TO_Name__c}<br/>
+                <b>Material No  :</b> {!relatedTo.MaterialNo__c}<br/>
+                <b>Status       :</b> {!relatedTo.StatusInd__c}<br/>
+                <b>Contract Start Date  :</b> {!relatedTo.ContStartDate__c}<br/>
+                <b>Contract End Date  :</b> {!relatedTo.ContEndDate__c}<br/>
+                <b>Quantity     :</b> {!relatedTo.Quantity__c}/{!relatedTo.QuantityUom__c}<br/>
+                <b>Sales Price  :</b> {!relatedTo.SalesPrice__c} {!relatedTo.CurrencyKey__c}/{!relatedTo.CondPUnt__c} {!relatedTo.CondUnit__c}<br/>
+                <br/><br/>
+                This is an auto generated email, Please do not reply.
+                <br/><br/>
+        Thanks,<br/>
+        Revolution Team
+    </messaging:HtmlEmailBody>
+</messaging:emailTemplate>

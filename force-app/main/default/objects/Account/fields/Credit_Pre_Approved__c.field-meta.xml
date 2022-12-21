@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Pre_Approved__c</fullName>
+    <description>Has the business pre-approved credit?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter info on when the CCL was approved by credit and date and any other info</inlineHelpText>
+    <label>Credit Pre-Approved</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

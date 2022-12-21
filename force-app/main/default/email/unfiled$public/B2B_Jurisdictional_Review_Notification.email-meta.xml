@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>B2B Jurisdiction Review with {!Opportunity.Name}</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>B2B Jurisdictional Review Notification</name>
+    <style>none</style>
+    <subject>Jurisdiction to be Reviewed before {!Opportunity.Review_Date__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

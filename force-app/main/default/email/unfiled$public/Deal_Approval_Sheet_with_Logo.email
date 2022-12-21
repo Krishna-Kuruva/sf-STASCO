@@ -1,0 +1,30 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<P><FONT face=Arial,Sans-Serif size=2>As per the Manual of Authorities, your approval or support is required to close this Risk Marketing deal. The details of the deal are: <BR><BR><FONT face=Arial,Sans-Serif size=4><STRONG>{!Opportunity.Account}</STRONG></FONT></FONT></P><FONT face=Arial,Sans-Serif><STRONG></STRONG>
+<P><BR></FONT><FONT face=Arial,Sans-Serif><FONT size=2><FONT color=#000066><FONT color=#000099><FONT color=#000099><STRONG><FONT face=Arial,Sans-Serif size=3>ACCOUNT INFORMATION</FONT></STRONG></FONT></FONT></FONT></FONT></FONT></P>
+<P><FONT size=2></FONT><FONT face=Arial,Sans-Serif><FONT size=2><BR></FONT></FONT><FONT face=Arial,Sans-Serif size=2>Account Name: {!Opportunity.Account} <BR>Parent Account: {!Account.Parent} <BR>Industry: {!Account.Industry} <BR></FONT></P>
+<P><FONT face=Arial,Sans-Serif size=2><FONT size=3><FONT face=Arial,Sans-Serif><BR></FONT></FONT>B2B Account Manager: {!Account.B2B_Account_Manager__c} <BR>Shell Account Manager: {!Account.Acct_Mgr__c} <BR>Master Agreement: {!Account.Master_Agreement__c} <BR>Registered Country: {!Account.Registered_Country__c} <BR>Region: {!Account.Sector__c}&nbsp;</P>
+<P>&nbsp;</P>
+<P><FONT color=#000099 size=3><STRONG>PROPOSED DEAL</STRONG></FONT></P>
+<P><BR>Product: {!Opportunity.Product__c} <BR>Volume Unit: {!Opportunity.Volume_Unit__c} <BR>Delivery Location: {!Opportunity.Delivery_Location__c} <BR>Volume MT: {!Opportunity.Volume__c} <BR>Start Date: {!Opportunity.Start_Date__c} <BR>End Date: {!Opportunity.CloseDate} <BR>Expected Execution Date: {!Opportunity.Execution_Date__c} <BR>Pricing Month: {!Opportunity.Pricing_Month__c} <BR><BR>USD Cost of Hedge: {!Opportunity.Price_to_Customer__c} <BR>Currency: {!Opportunity.Currency__c} <BR>Local Currency Cost of Hedge: {!Opportunity.Currency_value__c} <BR>ForEx: {!Opportunity.ForEx__c} <BR>Margin $/T: {!Opportunity.Margin_MT__c} <BR>Total Margin: {!Opportunity.Total_Margin__c} <BR>PFE on Deal (USD): {!Opportunity.PFE_USD__c} </P>
+<P>&nbsp;</P>
+<P>Length of Deal (Months): {!Opportunity.Number_of_Months__c}</P>
+<P>No. of Exposed Months from Execution Date: {!Opportunity.Execution_date_Start_date__c}</P>
+<P><BR></FONT><FONT face=Arial,Sans-Serif size=2><STRONG><FONT color=#000099 size=3>RATIONALE</FONT></STRONG><FONT face=Arial,Sans-Serif size=2><FONT size=3></P>
+<P><BR></FONT><FONT color=#000000>{!Opportunity.Comments__c}</FONT></P>
+<P></FONT><FONT size=3>&nbsp;</FONT></P>
+<P><FONT color=#000099><STRONG><FONT size=3>B2B CREDIT</FONT></STRONG></FONT></P><STRONG><FONT color=#000099 size=3></FONT></STRONG>
+<P><BR>Rating: {!Account.Rating} <BR>Credit Pre-Approved: {!Account.Credit_Pre_Approved__c} <BR>Contingent Credit Limit: {!Account.Contingent_Credit__c} <BR>Credit Line Expiry: {!Account.Credit_Line_Expiry__c}&nbsp;</P>
+<P><BR>PFE Approved: {!Account.Contingent_Credit__c} <BR>Existing PFE: {!Account.Exisiting_PFE__c} <BR>PFE Remaining: {!Account.PFE_REmaining__c} <BR><BR>M2M: {!Account.M2M_B2B__c} as of {!Account.M2M_Date__c} <BR>CCL less M2M: {!Account.CCL_vs_M2M__c} </P>
+<P><BR>Current No. of Deals: {!Account.Current_No_of_Deals__c} </P>
+<P>&nbsp;</P>
+<P><STRONG><FONT color=#000099 size=3>B2B RESULTS</FONT></STRONG></P>
+<P><BR>Potential Contribution: {!Account.Potential_Contribution__c} <BR>2009 Target $: {!Account.X2008_Target__c} <BR><BR>Actual Margin $ 2009: {!Account.00N20000001cDxJ} <BR>Actual Volume (T) 2009: {!Account.00N20000001cLtR} <BR>2009 - Ave $/tonne: {!Account.X2009_Ave_tonne__c} <BR>No. of Deals Done 2009: {!Account.00N20000001cLtS} <BR><BR>Actual Margin $ 2008: {!Account.00N20000001MBCS} <BR>Actual Volume (T) 2008: {!Account.00N20000001MBBo} <BR>2008 - Ave $/tonne: {!Account.X2008_tonne__c} <BR>No. of Deals Done 2008: {!Account.00N20000001MOXk}&nbsp;<BR><BR><STRONG><FONT color=#000099 size=3>B2B TARGET INFORMATION</FONT></STRONG><FONT face=Arial,Sans-Serif size=2></P>
+<P><BR>Total Customer Demand: {!Account.Customer__c} <BR>Target RM Volume: {!Account.Target_volume__c} <BR>Unit: {!Account.Unit__c} <BR><BR>Priority B2B: {!Account.Priority__c} <BR>Prospect Stage: {!Account.Prospect_Stage__c} <BR>Probability: {!Account.Probability__c}%<BR>Expected Margin: {!Account.Expected_Margin_MT__c}&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Click on the link below to access the Shell Manual of Authorities Website:</P>
+<P><A href="http://sww-moa.shell.com/home/default.aspx"><FONT color=#000000>http://sww-moa.shell.com/home/default.aspx</FONT></A></P></FONT></FONT>]]></td>
+</tr>
+</table>

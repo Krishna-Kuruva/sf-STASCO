@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OLF_First_Activation_Date_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>(RecordType.Name == &apos;Revolution&apos; || RecordType.Name == &apos;Revolution Ship-To Account&apos;)
+&amp;&amp; NOT( ISNEW() ) 
+&amp;&amp; NOT(ISNULL(PRIORVALUE(OLF_First_Activation_Date__c)))
+&amp;&amp; ISCHANGED(OLF_First_Activation_Date__c)</errorConditionFormula>
+    <errorDisplayField>OLF_First_Activation_Date__c</errorDisplayField>
+    <errorMessage>OLF First Activation Date is not editable</errorMessage>
+</ValidationRule>

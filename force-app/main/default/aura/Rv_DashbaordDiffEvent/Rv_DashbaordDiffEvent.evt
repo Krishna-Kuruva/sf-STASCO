@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Dashbaord Diffrential Table Event" >
+    <aura:attribute name="QuoteName" type="Object"/>
+</aura:event>

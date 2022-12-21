@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2012_Target_C3_US__c</fullName>
+    <externalId>false</externalId>
+    <formula>X2012_Target_volumes__c  *  X2012_Target_tonne_margin__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This is the multiplication of Volume (Tonnes) by C3/tonne</inlineHelpText>
+    <label>2012 - Target C3 (US$)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

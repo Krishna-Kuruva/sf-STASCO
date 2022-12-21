@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Document_Type__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Document Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>3rd Party Report</fullName>
+                <default>true</default>
+                <label>3rd Party Report</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>VAT Sign Off</fullName>
+                <default>false</default>
+                <label>VAT Sign Off</label>
+            </value>
+            <value>
+                <fullName>W-8</fullName>
+                <default>false</default>
+                <label>W-8</label>
+            </value>
+            <value>
+                <fullName>W-9</fullName>
+                <default>false</default>
+                <label>W-9</label>
+            </value>
+            <value>
+                <fullName>Exemption Certificates</fullName>
+                <default>false</default>
+                <label>Exemption Certificates</label>
+            </value>
+            <value>
+                <fullName>Vessel Report</fullName>
+                <default>false</default>
+                <label>Vessel Report</label>
+            </value>
+            <value>
+                <fullName>Other Screening Document</fullName>
+                <default>false</default>
+                <label>Other Screening Document</label>
+            </value>
+            <value>
+                <fullName>Banking Details</fullName>
+                <default>false</default>
+                <label>Banking Details</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

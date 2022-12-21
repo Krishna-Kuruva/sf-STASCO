@@ -1,0 +1,57 @@
+*** Please can you support the PFE for {!Opportunity.Account} *** 
+
+Shell Entity: {!Opportunity.Shell_Entity__c}
+Full Customer Name: {!Opportunity.Account} 
+Account Manager: {!Opportunity.Account_Manager__c}
+
+{!Opportunity.Comments__c} 
+PFE value: ${!Opportunity.PFE_USD__c} USD
+
+
+***** Proposed Response Deadline from Credit:   {!Opportunity.Execution_Date__c} *****
+
+
+*****        Deal details            *******
+Product Type : {!Opportunity.Product__c}
+
+Number of Deal(s): {!Opportunity.Number_of_Deals__c}
+Term of Deal(s):  {!Opportunity.Start_Date__c} : {!Opportunity.CloseDate}
+Expected Margin US$/unit: {!Opportunity.Margin_MT__c}  {!Opportunity.Volume_Unit__c}
+
+
+
+Number of months from today to start of deal :  {!Opportunity .Execution_date_Start_date__c} 
+Total Volume (add units)     :  {!Opportunity.Volume__c}
+Monthly Maximum Volume (Units/month)  :  {!Opportunity.Monthly_Maximum_Volume__c}
+Avg Price per Unit  US$/ XX   :  {!Opportunity.Price_to_Customer__c}
+
+
+Number of Existing Deals:  
+PFE Estimate of Existing Deals: 
+
+
+Deal rationale
+The volume is {!Opportunity.Exisiting_Replacement__c}  and {!Opportunity.Estimate_for_Exisiting__c}{!Opportunity.Estimate_for_replacement__c} % estimated that it will be done.
+The customer would like to to a fixed Price deal becuase {!Opportunity.Fixed_Price_Contracts_are_used_for__c}
+
+Comments: {!Opportunity.Comments__c}
+
+*** Risk Marketing deals history  ***
+
+2010
+Volume   : {!Account.Actual_Volume_kt_2010__c}
+Number of deals     : {!Account.00N200000029kBh}
+
+2009
+Volume   : {!Account.Actual_Volume_kt_2009__c}
+Number of deals     : {!Account.00N20000001cLtS}
+
+2008
+Volume   : {!Account.00N20000001MBBo}
+Number of deals     : {!Account.00N20000001MOXk}
+
+*******
+
+If you have additional questions regarding the estimated volumes of exisiting or incremental business please contact the {!Opportunity.Account_Manager__c}.
+
+If you have any questions on how to apply the PFE to the credit analysis, please contact Don Hayes, Roger Kagy

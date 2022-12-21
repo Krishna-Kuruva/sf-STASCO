@@ -1,0 +1,17 @@
+/**
+ * Created by Dhriti.GhoshMoulick on 8/9/2021.
+ 
+ .c-container{
+    background-color:white;
+    font-size:12px;
+}
+ .THIS .select-auto-width > .slds-form-element__control > .slds-select_container{
+     display: inline-block;
+ }*/
+
+ :host{
+
+    --lwc-formLabelFontSize:11px;
+    --lwc-fontSize3:10px;
+    --lwc-spacingXSmall:4px;
+ }

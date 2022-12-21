@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>STUSCO BNK</label>
+    <protected>false</protected>
+    <values>
+        <field>Entity_Type__c</field>
+        <value xsi:type="xsd:string">Bank</value>
+    </values>
+    <values>
+        <field>Primary_Source__c</field>
+        <value xsi:type="xsd:string">Bankers Almanac</value>
+    </values>
+    <values>
+        <field>Region__c</field>
+        <value xsi:type="xsd:string">STUSCO</value>
+    </values>
+    <values>
+        <field>Secondary_Source__c</field>
+        <value xsi:type="xsd:string">Orbis</value>
+    </values>
+    <values>
+        <field>Tertiary_Source__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Ver_Source__c</field>
+        <value xsi:type="xsd:string">IRS</value>
+    </values>
+</CustomMetadata>

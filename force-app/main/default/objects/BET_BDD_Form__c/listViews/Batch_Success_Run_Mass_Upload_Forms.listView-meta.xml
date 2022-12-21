@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Batch_Success_Run_Mass_Upload_Forms</fullName>
+    <columns>NAME</columns>
+    <columns>BDD_Line_of_Business__c</columns>
+    <columns>BDD_Entity_Type__c</columns>
+    <columns>BDD_Onboard_Type__c</columns>
+    <columns>GT_BDD_Business_Division__c</columns>
+    <columns>GT_Trading_Name__c</columns>
+    <columns>GT_Legal_Name__c</columns>
+    <columns>Assigned_COF__c</columns>
+    <columns>BDD_Approver__c</columns>
+    <columns>BDD_Eligible_Status__c</columns>
+    <columns>BET_Status__c</columns>
+    <columns>GoldTier_Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>IsSuccessInBulkBatch__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>BET_BDD_Form__c.MASS_UPLOAD_WONA_NEW_CPT_BANK_FORM,BET_BDD_Form__c.MASS_UPLOAD_WONA_NEW_INDIVIDUAL_FORM</value>
+    </filters>
+    <label>Batch Success Run - Mass Upload Forms</label>
+    <sharedTo>
+        <group>BET_Bulk_Upload_Users</group>
+    </sharedTo>
+</ListView>

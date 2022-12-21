@@ -1,0 +1,21 @@
+.THIS .bet-btnGray{
+	background-color:#7e7e7e !important;
+	border-color:#7e7e7e !important;     
+}
+
+.THIS .slds-tabs_default__link{
+    text-decoration-line:none !important;
+}
+.THIS .bet-home-input{
+    padding-left:20px;
+    padding-right:20px;
+    margin-top:10px;
+}
+
+.THIS .slds-form-element__label{
+    font-size: 14px;
+}
+
+.THIS .bet-search-res{
+    padding-left:20px;
+}

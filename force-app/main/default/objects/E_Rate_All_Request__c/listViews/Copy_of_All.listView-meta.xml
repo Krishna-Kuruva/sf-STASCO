@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All</fullName>
+    <columns>NAME</columns>
+    <columns>MDN_Request__c</columns>
+    <columns>Request_Type__c</columns>
+    <columns>Counterparty_Name__c</columns>
+    <columns>Request_Reason__c</columns>
+    <columns>System_Group__c</columns>
+    <columns>System_ID__c</columns>
+    <columns>Request_Status__c</columns>
+    <columns>Date_Approved_DD_MM_YYYY__c</columns>
+    <columns>Date_Actioned_DD_MM_YYYY__c</columns>
+    <columns>Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>E_Rate_All_Request__c.System_Group</value>
+    </filters>
+    <filters>
+        <field>System_Group__c</field>
+        <operation>equals</operation>
+        <value>ALIGNE</value>
+    </filters>
+    <filters>
+        <field>Request_Status__c</field>
+        <operation>equals</operation>
+        <value>In Progress</value>
+    </filters>
+    <label>In Progress - Aligne</label>
+</ListView>

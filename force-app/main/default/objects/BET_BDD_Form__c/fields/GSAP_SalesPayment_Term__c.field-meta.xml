@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_SalesPayment_Term__c</fullName>
+    <externalId>false</externalId>
+    <label>* Sales Payment Term</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>H001 - 5 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H001 - 5 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H002 - 10 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H002 - 10 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H003 - 15 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H003 - 15 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H004 - 20 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H004 - 20 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H005 - 30 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H005 - 30 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H006 - Twice Monthly Fixed Day 15th</fullName>
+                <default>false</default>
+                <label>H006 - Twice Monthly Fixed Day 15th</label>
+            </value>
+            <value>
+                <fullName>H006 - Twice Monthly Fixed Day 31st</fullName>
+                <default>false</default>
+                <label>H006 - Twice Monthly Fixed Day 31st</label>
+            </value>
+            <value>
+                <fullName>H007 - 10th of Next Month</fullName>
+                <default>false</default>
+                <label>H007 - 10th of Next Month</label>
+            </value>
+            <value>
+                <fullName>H008 - 6th of 2nd Following Month</fullName>
+                <default>false</default>
+                <label>H008 - 6th of 2nd Following Month</label>
+            </value>
+            <value>
+                <fullName>H009 - 15th of 3rd Following Month</fullName>
+                <default>false</default>
+                <label>H009 - 15th of 3rd Following Month</label>
+            </value>
+            <value>
+                <fullName>H010 - 3 Monthly Fixed Date 10th Day</fullName>
+                <default>false</default>
+                <label>H010 - 3 Monthly Fixed Date 10th Day</label>
+            </value>
+            <value>
+                <fullName>H010 - 3 Monthly Fixed Date 20th Day</fullName>
+                <default>false</default>
+                <label>H010 - 3 Monthly Fixed Date 20th Day</label>
+            </value>
+            <value>
+                <fullName>H010 - 3 Monthly Fixed Date 31st Day</fullName>
+                <default>false</default>
+                <label>H010 - 3 Monthly Fixed Date 31st Day</label>
+            </value>
+            <value>
+                <fullName>H011 - 5 Calendar Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H011 - 5 Calendar Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H012 - 10 Calendar Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H012 - 10 Calendar Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H013 - 20 Calendar Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H013 - 20 Calendar Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H014 - 30 Calendar Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H014 - 30 Calendar Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H015 - Twice Monthly Fixed Day 20th of Month</fullName>
+                <default>false</default>
+                <label>H015 - Twice Monthly Fixed Day 20th of Month</label>
+            </value>
+            <value>
+                <fullName>H015 - Twice Monthly Fixed Day 5th Next Month</fullName>
+                <default>false</default>
+                <label>H015 - Twice Monthly Fixed Day 5th Next Month</label>
+            </value>
+            <value>
+                <fullName>H016 - 2 Working Days After Invoice</fullName>
+                <default>false</default>
+                <label>H016 - 2 Working Days After Invoice</label>
+            </value>
+            <value>
+                <fullName>H017 - 29 Working Days After Bill Of Lading</fullName>
+                <default>false</default>
+                <label>H017 - 29 Working Days After Bill Of Lading</label>
+            </value>
+            <value>
+                <fullName>H112 - 112  days from invoice date</fullName>
+                <default>false</default>
+                <label>H112 - 112  days from invoice date</label>
+            </value>
+            <value>
+                <fullName>HB00 - Immediate Payment at Date on Invoice</fullName>
+                <default>false</default>
+                <label>HB00 - Immediate Payment at Date on Invoice</label>
+            </value>
+            <value>
+                <fullName>HB03 - 3 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB03 - 3 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB05 - 5 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB05 - 5 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB06 - 6 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB06 - 6 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB07 - 7 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB07 - 7 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB08 - 8 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB08 - 8 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB09 - 9 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB09 - 9 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB10 - 10 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB10 - 10 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB14 - 14 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB14 - 14 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB18 - Due 18 days from Bill of Lading</fullName>
+                <default>false</default>
+                <label>HB18 - Due 18 days from Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HB21 - 21 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB21 - 21 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB25 - 25 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB25 - 25 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB29 - 29 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB29 - 29 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB30 - 30 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB30 - 30 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB45 - 45 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB45 - 45 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HB60 - 60 Calendar days after Delivery Date</fullName>
+                <default>false</default>
+                <label>HB60 - 60 Calendar days after Delivery Date</label>
+            </value>
+            <value>
+                <fullName>HC02 - 2 Working days from Invoice Receipt</fullName>
+                <default>false</default>
+                <label>HC02 - 2 Working days from Invoice Receipt</label>
+            </value>
+            <value>
+                <fullName>HC03 - 3 Working days from Invoice Date Receipt</fullName>
+                <default>false</default>
+                <label>HC03 - 3 Working days from Invoice Date Receipt</label>
+            </value>
+            <value>
+                <fullName>HC05 - 5 Working days from Invoice Date Receipt</fullName>
+                <default>false</default>
+                <label>HC05 - 5 Working days from Invoice Date Receipt</label>
+            </value>
+            <value>
+                <fullName>HC07 - 7 Working days from Invoice Receipt Date</fullName>
+                <default>false</default>
+                <label>HC07 - 7 Working days from Invoice Receipt Date</label>
+            </value>
+            <value>
+                <fullName>HC10 - 10 Working days from Invoice Receipt Date</fullName>
+                <default>false</default>
+                <label>HC10 - 10 Working days from Invoice Receipt Date</label>
+            </value>
+            <value>
+                <fullName>HC14 - Fixed day 14th of the Month</fullName>
+                <default>false</default>
+                <label>HC14 - Fixed day 14th of the Month</label>
+            </value>
+            <value>
+                <fullName>HC14 - Fixed day 28th of the Month</fullName>
+                <default>false</default>
+                <label>HC14 - Fixed day 28th of the Month</label>
+            </value>
+            <value>
+                <fullName>HC14 - Fixed day 14th of the next Month</fullName>
+                <default>false</default>
+                <label>HC14 - Fixed day 14th of the next Month</label>
+            </value>
+            <value>
+                <fullName>HD14 - 14 days from Invoice date</fullName>
+                <default>false</default>
+                <label>HD14 - 14 days from Invoice date</label>
+            </value>
+            <value>
+                <fullName>HD30 - 30 days from Invoice date</fullName>
+                <default>false</default>
+                <label>HD30 - 30 days from Invoice date</label>
+            </value>
+            <value>
+                <fullName>HD45 - 45 days from Invoice date</fullName>
+                <default>false</default>
+                <label>HD45 - 45 days from Invoice date</label>
+            </value>
+            <value>
+                <fullName>HD60 - 60 days from Invoice date</fullName>
+                <default>false</default>
+                <label>HD60 - 60 days from Invoice date</label>
+            </value>
+            <value>
+                <fullName>HD75 - 75 days from invoice date</fullName>
+                <default>false</default>
+                <label>HD75 - 75 days from invoice date</label>
+            </value>
+            <value>
+                <fullName>HG03 - 3 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG03 - 3 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG05 - 5 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG05 - 5 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG06 - 6 Calendar Days after Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG06 - 6 Calendar Days after Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG07 - 7 Calendar Days after Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG07 - 7 Calendar Days after Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG08 - 8 Calendar Days after Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG08 - 8 Calendar Days after Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG10 - 10 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG10 - 10 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG12 - 12 Calendar Days after Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG12 - 12 Calendar Days after Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG14 - 14 Calendar Days after Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG14 - 14 Calendar Days after Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG15 - 15 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG15 - 15 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG20 - 20 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG20 - 20 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG30 - 30 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG30 - 30 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HG45 - 45 calendar days after bill of lading</fullName>
+                <default>false</default>
+                <label>HG45 - 45 calendar days after bill of lading</label>
+            </value>
+            <value>
+                <fullName>HG60 - 60 Calendar Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HG60 - 60 Calendar Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HGXX - XX Calendar days after Bill of Lading (Tupras only</fullName>
+                <default>false</default>
+                <label>HGXX - XX Calendar days after Bill of Lading (Tupras only</label>
+            </value>
+            <value>
+                <fullName>HH03 - Day 3 of next month</fullName>
+                <default>false</default>
+                <label>HH03 - Day 3 of next month</label>
+            </value>
+            <value>
+                <fullName>HH05 - Day 5 of next month</fullName>
+                <default>false</default>
+                <label>HH05 - Day 5 of next month</label>
+            </value>
+            <value>
+                <fullName>HH07 - Day 7 of next month</fullName>
+                <default>false</default>
+                <label>HH07 - Day 7 of next month</label>
+            </value>
+            <value>
+                <fullName>HH10 - Day 10 of next month</fullName>
+                <default>false</default>
+                <label>HH10 - Day 10 of next month</label>
+            </value>
+            <value>
+                <fullName>HH15 - Day 15 of next month</fullName>
+                <default>false</default>
+                <label>HH15 - Day 15 of next month</label>
+            </value>
+            <value>
+                <fullName>HH20 - Day 20 of next month</fullName>
+                <default>false</default>
+                <label>HH20 - Day 20 of next month</label>
+            </value>
+            <value>
+                <fullName>HH21 - Day 21 of next month</fullName>
+                <default>false</default>
+                <label>HH21 - Day 21 of next month</label>
+            </value>
+            <value>
+                <fullName>HH24 - Day 24 of next month</fullName>
+                <default>false</default>
+                <label>HH24 - Day 24 of next month</label>
+            </value>
+            <value>
+                <fullName>HH25 - Day 25 of next month</fullName>
+                <default>false</default>
+                <label>HH25 - Day 25 of next month</label>
+            </value>
+            <value>
+                <fullName>HH30 - Day 30 of next month</fullName>
+                <default>false</default>
+                <label>HH30 - Day 30 of next month</label>
+            </value>
+            <value>
+                <fullName>HI00 - Due date according to GTN contract</fullName>
+                <default>false</default>
+                <label>HI00 - Due date according to GTN contract</label>
+            </value>
+            <value>
+                <fullName>HI06 - 6 Calendar days of 2nd Following Month</fullName>
+                <default>false</default>
+                <label>HI06 - 6 Calendar days of 2nd Following Month</label>
+            </value>
+            <value>
+                <fullName>HI12 - Day 12 of the month</fullName>
+                <default>false</default>
+                <label>HI12 - Day 12 of the month</label>
+            </value>
+            <value>
+                <fullName>HI15 - Day 15 of Month + 2</fullName>
+                <default>false</default>
+                <label>HI15 - Day 15 of Month + 2</label>
+            </value>
+            <value>
+                <fullName>HI16 - Day 16 of next month</fullName>
+                <default>false</default>
+                <label>HI16 - Day 16 of next month</label>
+            </value>
+            <value>
+                <fullName>HI25 - Day 25 of the month</fullName>
+                <default>false</default>
+                <label>HI25 - Day 25 of the month</label>
+            </value>
+            <value>
+                <fullName>HI45 - Day 45 after month end</fullName>
+                <default>false</default>
+                <label>HI45 - Day 45 after month end</label>
+            </value>
+            <value>
+                <fullName>HI78 - 78 days from invoice date</fullName>
+                <default>false</default>
+                <label>HI78 - 78 days from invoice date</label>
+            </value>
+            <value>
+                <fullName>HI83 - 83 days from invoice date</fullName>
+                <default>false</default>
+                <label>HI83 - 83 days from invoice date</label>
+            </value>
+            <value>
+                <fullName>HI86 - 86 days from invoice date</fullName>
+                <default>false</default>
+                <label>HI86 - 86 days from invoice date</label>
+            </value>
+            <value>
+                <fullName>HJ05 - 5 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ05 - 5 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ10 - 10 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ10 - 10 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ15 - 15 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ15 - 15 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ20 - 20 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ20 - 20 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HJ30 - 30 Working Days After Bill of Lading</fullName>
+                <default>false</default>
+                <label>HJ30 - 30 Working Days After Bill of Lading</label>
+            </value>
+            <value>
+                <fullName>HK15 - 15 Calendar days of 3rd Following Month</fullName>
+                <default>false</default>
+                <label>HK15 - 15 Calendar days of 3rd Following Month</label>
+            </value>
+            <value>
+                <fullName>HK90 - 90 Calendar Days after month end of delivery</fullName>
+                <default>false</default>
+                <label>HK90 - 90 Calendar Days after month end of delivery</label>
+            </value>
+            <value>
+                <fullName>HL07 - 7 Working days after Month of Delivery</fullName>
+                <default>false</default>
+                <label>HL07 - 7 Working days after Month of Delivery</label>
+            </value>
+            <value>
+                <fullName>HM14 - Friday plus 14 days</fullName>
+                <default>false</default>
+                <label>HM14 - Friday plus 14 days</label>
+            </value>
+            <value>
+                <fullName>HP05 - End of Pricing + 5 working days</fullName>
+                <default>false</default>
+                <label>HP05 - End of Pricing + 5 working days</label>
+            </value>
+            <value>
+                <fullName>HX15 - 15th of month following the date of the invoice</fullName>
+                <default>false</default>
+                <label>HX15 - 15th of month following the date of the invoice</label>
+            </value>
+            <value>
+                <fullName>HX30 - HX30</fullName>
+                <default>false</default>
+                <label>HX30 - HX30</label>
+            </value>
+            <value>
+                <fullName>YB01 - US ERS 1 Day from Invoice Date</fullName>
+                <default>false</default>
+                <label>YB01 - US ERS 1 Day from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YB02 - 2% 14D,Net 30D from Invoice Date</fullName>
+                <default>false</default>
+                <label>YB02 - 2% 14D,Net 30D from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YB03 - 3% 14D,Net 30D from Invoice Date</fullName>
+                <default>false</default>
+                <label>YB03 - 3% 14D,Net 30D from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YB07 - US ERS 7 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YB07 - US ERS 7 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YB14 - 14 days from the date of invoice</fullName>
+                <default>false</default>
+                <label>YB14 - 14 days from the date of invoice</label>
+            </value>
+            <value>
+                <fullName>YB15 - 15 DAYS FROM INVOICE DATE</fullName>
+                <default>false</default>
+                <label>YB15 - 15 DAYS FROM INVOICE DATE</label>
+            </value>
+            <value>
+                <fullName>YB20 - US ERS 20 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YB20 - US ERS 20 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YB30 - 30 DAYS FROM INVOICE DATE</fullName>
+                <default>false</default>
+                <label>YB30 - 30 DAYS FROM INVOICE DATE</label>
+            </value>
+            <value>
+                <fullName>YB40 - POLAND</fullName>
+                <default>false</default>
+                <label>YB40 - POLAND</label>
+            </value>
+            <value>
+                <fullName>YB45 - PAYABLE 45 DAYS FROM INVOICE DATE</fullName>
+                <default>false</default>
+                <label>YB45 - PAYABLE 45 DAYS FROM INVOICE DATE</label>
+            </value>
+            <value>
+                <fullName>YB46 - CA RE 1st of the month following date of invoice</fullName>
+                <default>false</default>
+                <label>YB46 - CA RE 1st of the month following date of invoice</label>
+            </value>
+            <value>
+                <fullName>YB47 - CA Custom Broker Pmnt</fullName>
+                <default>false</default>
+                <label>YB47 - CA Custom Broker Pmnt</label>
+            </value>
+            <value>
+                <fullName>YB90 - 90 DAYS FROM INVOICE DATE</fullName>
+                <default>false</default>
+                <label>YB90 - 90 DAYS FROM INVOICE DATE</label>
+            </value>
+            <value>
+                <fullName>YBLT - 120 DAYS FROM INVOICE DATE</fullName>
+                <default>false</default>
+                <label>YBLT - 120 DAYS FROM INVOICE DATE</label>
+            </value>
+            <value>
+                <fullName>YC00 - Immediate on Receipt of Correctly Presented INV</fullName>
+                <default>false</default>
+                <label>YC00 - Immediate on Receipt of Correctly Presented INV</label>
+            </value>
+            <value>
+                <fullName>YC01 - 1 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC01 - 1 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC02 - 2 Days from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC02 - 2 Days from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC07 - 7 Days from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC07 - 7 Days from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC14 - 14 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC14 - 14 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC15 - 2% 14D,Net 30D from Invoice Receipt</fullName>
+                <default>false</default>
+                <label>YC15 - 2% 14D,Net 30D from Invoice Receipt</label>
+            </value>
+            <value>
+                <fullName>YC16 - 3% 14D,Net 30D from Invoice Receipt</fullName>
+                <default>false</default>
+                <label>YC16 - 3% 14D,Net 30D from Invoice Receipt</label>
+            </value>
+            <value>
+                <fullName>YC20 - 20 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC20 - 20 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC30 - 30 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC30 - 30 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC35 - BE Only</fullName>
+                <default>false</default>
+                <label>YC35 - BE Only</label>
+            </value>
+            <value>
+                <fullName>YC45 - 45 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC45 - 45 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YC46 - 3% 10D,Net 30D from Invoice Receipt</fullName>
+                <default>false</default>
+                <label>YC46 - 3% 10D,Net 30D from Invoice Receipt</label>
+            </value>
+            <value>
+                <fullName>YC60 - 60 Day from Receipt of Correctly Presented invoice</fullName>
+                <default>false</default>
+                <label>YC60 - 60 Day from Receipt of Correctly Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YH15 - Net 15 days from end of month</fullName>
+                <default>false</default>
+                <label>YH15 - Net 15 days from end of month</label>
+            </value>
+            <value>
+                <fullName>YH20 - 20th of Next Month Date Correct Presented invoice</fullName>
+                <default>false</default>
+                <label>YH20 - 20th of Next Month Date Correct Presented invoice</label>
+            </value>
+            <value>
+                <fullName>YH30 - 30 of the month following date of invoice</fullName>
+                <default>false</default>
+                <label>YH30 - 30 of the month following date of invoice</label>
+            </value>
+            <value>
+                <fullName>YHIG - 15 of the month following date of invoice</fullName>
+                <default>false</default>
+                <label>YHIG - 15 of the month following date of invoice</label>
+            </value>
+            <value>
+                <fullName>YL01 - D 15 of the following month from month of loading</fullName>
+                <default>false</default>
+                <label>YL01 - D 15 of the following month from month of loading</label>
+            </value>
+            <value>
+                <fullName>YM01 - 15 days Receipt of Correctly Presented Invoice EM</fullName>
+                <default>false</default>
+                <label>YM01 - 15 days Receipt of Correctly Presented Invoice EM</label>
+            </value>
+            <value>
+                <fullName>YM08 - 15 days Receipt of Correctly Presented Invoice WM</fullName>
+                <default>false</default>
+                <label>YM08 - 15 days Receipt of Correctly Presented Invoice WM</label>
+            </value>
+            <value>
+                <fullName>YM16 - 30 days Receipt of Correctly Presented Invoice EM</fullName>
+                <default>false</default>
+                <label>YM16 - 30 days Receipt of Correctly Presented Invoice EM</label>
+            </value>
+            <value>
+                <fullName>YM23 - 30 days Receipt of Correctly Presented Invoice WM</fullName>
+                <default>false</default>
+                <label>YM23 - 30 days Receipt of Correctly Presented Invoice WM</label>
+            </value>
+            <value>
+                <fullName>YM31 - 45 days Receipt of Correctly Presented Invoice EM</fullName>
+                <default>false</default>
+                <label>YM31 - 45 days Receipt of Correctly Presented Invoice EM</label>
+            </value>
+            <value>
+                <fullName>YM38 - 45 days Receipt of Correctly Presented Invoice WM</fullName>
+                <default>false</default>
+                <label>YM38 - 45 days Receipt of Correctly Presented Invoice WM</label>
+            </value>
+            <value>
+                <fullName>YO14 - 14 days from the date of invoice with Pymt Block</fullName>
+                <default>false</default>
+                <label>YO14 - 14 days from the date of invoice with Pymt Block</label>
+            </value>
+            <value>
+                <fullName>YO15 - 15 Days from Invoice Date with Pymt Block</fullName>
+                <default>false</default>
+                <label>YO15 - 15 Days from Invoice Date with Pymt Block</label>
+            </value>
+            <value>
+                <fullName>YO20 - 20 Days from Invoice Date with Pymt Block</fullName>
+                <default>false</default>
+                <label>YO20 - 20 Days from Invoice Date with Pymt Block</label>
+            </value>
+            <value>
+                <fullName>YO30 - 30 Days from Invoice Date with Pymt Block</fullName>
+                <default>false</default>
+                <label>YO30 - 30 Days from Invoice Date with Pymt Block</label>
+            </value>
+            <value>
+                <fullName>YO45 - Payable 45 Days from Invoice Date with Pymt Block</fullName>
+                <default>false</default>
+                <label>YO45 - Payable 45 Days from Invoice Date with Pymt Block</label>
+            </value>
+            <value>
+                <fullName>YP07 - 7 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YP07 - 7 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YP14 - 14 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YP14 - 14 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YP20 - 20 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YP20 - 20 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YP30 - 30 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YP30 - 30 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YP43 - CN only</fullName>
+                <default>false</default>
+                <label>YP43 - CN only</label>
+            </value>
+            <value>
+                <fullName>YP45 - 45 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YP45 - 45 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YQ07 - 7 Days frm Recpt of Correctly Presentd Inv with PB</fullName>
+                <default>false</default>
+                <label>YQ07 - 7 Days frm Recpt of Correctly Presentd Inv with PB</label>
+            </value>
+            <value>
+                <fullName>YQ14 - 14 Day frm Recpt of Correctly Presentd Inv with PB</fullName>
+                <default>false</default>
+                <label>YQ14 - 14 Day frm Recpt of Correctly Presentd Inv with PB</label>
+            </value>
+            <value>
+                <fullName>YQ30 - 30 Day frm Recpt of Correctly Presentd Inv with PB</fullName>
+                <default>false</default>
+                <label>YQ30 - 30 Day frm Recpt of Correctly Presentd Inv with PB</label>
+            </value>
+            <value>
+                <fullName>YQ60 - 60 Day frm Recpt of Correctly Presentd Inv with PB</fullName>
+                <default>false</default>
+                <label>YQ60 - 60 Day frm Recpt of Correctly Presentd Inv with PB</label>
+            </value>
+            <value>
+                <fullName>YU01 - US ERS 1% 10 Days, 45 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YU01 - US ERS 1% 10 Days, 45 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YU10 - US ERS 1% 10 Days, 30 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YU10 - US ERS 1% 10 Days, 30 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YU15 - US ERS 1.5% 10 Days, 30 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YU15 - US ERS 1.5% 10 Days, 30 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YU30 - US ERS 2% 30 days, 45 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YU30 - US ERS 2% 30 days, 45 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YUB2 - US ERS 2 Days from Invoice Date</fullName>
+                <default>false</default>
+                <label>YUB2 - US ERS 2 Days from Invoice Date</label>
+            </value>
+            <value>
+                <fullName>YX01 - 1% 10 Days, 45 Days from correctly presented invoi</fullName>
+                <default>false</default>
+                <label>YX01 - 1% 10 Days, 45 Days from correctly presented invoi</label>
+            </value>
+            <value>
+                <fullName>YX02 - If paid in 7 days 2% discount, if not  30 days net</fullName>
+                <default>false</default>
+                <label>YX02 - If paid in 7 days 2% discount, if not  30 days net</label>
+            </value>
+            <value>
+                <fullName>YX10 - 1% 10 Days, 30 Days from correctly presented invoi</fullName>
+                <default>false</default>
+                <label>YX10 - 1% 10 Days, 30 Days from correctly presented invoi</label>
+            </value>
+            <value>
+                <fullName>YX15 - 1.5% 10 Days, 30 Days from correctly presented inv</fullName>
+                <default>false</default>
+                <label>YX15 - 1.5% 10 Days, 30 Days from correctly presented inv</label>
+            </value>
+            <value>
+                <fullName>YX20 - 2% 10 Days, 30 Days from correctly presented invoi</fullName>
+                <default>false</default>
+                <label>YX20 - 2% 10 Days, 30 Days from correctly presented invoi</label>
+            </value>
+            <value>
+                <fullName>YX30 - 2% 30 days, 45 Days from correctly presented invoi</fullName>
+                <default>false</default>
+                <label>YX30 - 2% 30 days, 45 Days from correctly presented invoi</label>
+            </value>
+            <value>
+                <fullName>YZ07 - 7 Days Receipt of Correctly Presented invoice ERS</fullName>
+                <default>false</default>
+                <label>YZ07 - 7 Days Receipt of Correctly Presented invoice ERS</label>
+            </value>
+            <value>
+                <fullName>YZ10 - Payment 10th of each month</fullName>
+                <default>false</default>
+                <label>YZ10 - Payment 10th of each month</label>
+            </value>
+            <value>
+                <fullName>YZ14 - 14 Days Receipt of Correctly Presented invoice ERS</fullName>
+                <default>false</default>
+                <label>YZ14 - 14 Days Receipt of Correctly Presented invoice ERS</label>
+            </value>
+            <value>
+                <fullName>YZ20 - 20 Days Receipt of Correctly Presented Invoice ERS</fullName>
+                <default>false</default>
+                <label>YZ20 - 20 Days Receipt of Correctly Presented Invoice ERS</label>
+            </value>
+            <value>
+                <fullName>YZ30 - 30 Days Receipt of Correctly Presented Invoice ERS</fullName>
+                <default>false</default>
+                <label>YZ30 - 30 Days Receipt of Correctly Presented Invoice ERS</label>
+            </value>
+            <value>
+                <fullName>YZ45 - 45 Days Receipt of Correctly Presented Invoice ERS</fullName>
+                <default>false</default>
+                <label>YZ45 - 45 Days Receipt of Correctly Presented Invoice ERS</label>
+            </value>
+            <value>
+                <fullName>YZ60 - 60 days from invoice received date,with pmt blk</fullName>
+                <default>false</default>
+                <label>YZ60 - 60 days from invoice received date,with pmt blk</label>
+            </value>
+            <value>
+                <fullName>YZ90 - 90 days from invoice received date,with pmt blk</fullName>
+                <default>false</default>
+                <label>YZ90 - 90 days from invoice received date,with pmt blk</label>
+            </value>
+            <value>
+                <fullName>Z000 - Net 0 Days</fullName>
+                <default>false</default>
+                <label>Z000 - Net 0 Days</label>
+            </value>
+            <value>
+                <fullName>Z001 - Net 0 Days Payment Before Delivery</fullName>
+                <default>false</default>
+                <label>Z001 - Net 0 Days Payment Before Delivery</label>
+            </value>
+            <value>
+                <fullName>Z002 - Net 0 Days Payment on Delivery</fullName>
+                <default>false</default>
+                <label>Z002 - Net 0 Days Payment on Delivery</label>
+            </value>
+            <value>
+                <fullName>Z003 - Net 3 Days</fullName>
+                <default>false</default>
+                <label>Z003 - Net 3 Days</label>
+            </value>
+            <value>
+                <fullName>Z004 - Net 7 Days</fullName>
+                <default>false</default>
+                <label>Z004 - Net 7 Days</label>
+            </value>
+            <value>
+                <fullName>Z005 - Net 10 Days</fullName>
+                <default>false</default>
+                <label>Z005 - Net 10 Days</label>
+            </value>
+            <value>
+                <fullName>Z008 - Net 14 Days</fullName>
+                <default>false</default>
+                <label>Z008 - Net 14 Days</label>
+            </value>
+            <value>
+                <fullName>Z011 - Net 21 Days</fullName>
+                <default>false</default>
+                <label>Z011 - Net 21 Days</label>
+            </value>
+            <value>
+                <fullName>Z014 - Net 25 Days</fullName>
+                <default>false</default>
+                <label>Z014 - Net 25 Days</label>
+            </value>
+            <value>
+                <fullName>Z017 - Net 30 Days</fullName>
+                <default>false</default>
+                <label>Z017 - Net 30 Days</label>
+            </value>
+            <value>
+                <fullName>Z020 - Twice Monthly Fixed date</fullName>
+                <default>false</default>
+                <label>Z020 - Twice Monthly Fixed date</label>
+            </value>
+            <value>
+                <fullName>Z021 - Net 45 Days</fullName>
+                <default>false</default>
+                <label>Z021 - Net 45 Days</label>
+            </value>
+            <value>
+                <fullName>Z022 - Net 60 Days</fullName>
+                <default>false</default>
+                <label>Z022 - Net 60 Days</label>
+            </value>
+            <value>
+                <fullName>Z023 - Net 90 Days</fullName>
+                <default>false</default>
+                <label>Z023 - Net 90 Days</label>
+            </value>
+            <value>
+                <fullName>Z024 - Net 120 Days</fullName>
+                <default>false</default>
+                <label>Z024 - Net 120 Days</label>
+            </value>
+            <value>
+                <fullName>Z025 - Day 7 after month end</fullName>
+                <default>false</default>
+                <label>Z025 - Day 7 after month end</label>
+            </value>
+            <value>
+                <fullName>Z026 - Day 15 after month end</fullName>
+                <default>false</default>
+                <label>Z026 - Day 15 after month end</label>
+            </value>
+            <value>
+                <fullName>Z027 - Day 20 after month end</fullName>
+                <default>false</default>
+                <label>Z027 - Day 20 after month end</label>
+            </value>
+            <value>
+                <fullName>Z028 - Day 21 after month end</fullName>
+                <default>false</default>
+                <label>Z028 - Day 21 after month end</label>
+            </value>
+            <value>
+                <fullName>Z029 - Day 30 after month end</fullName>
+                <default>false</default>
+                <label>Z029 - Day 30 after month end</label>
+            </value>
+            <value>
+                <fullName>Z030 - Day 45 after month end</fullName>
+                <default>false</default>
+                <label>Z030 - Day 45 after month end</label>
+            </value>
+            <value>
+                <fullName>Z031 - Day 60 after month end</fullName>
+                <default>false</default>
+                <label>Z031 - Day 60 after month end</label>
+            </value>
+            <value>
+                <fullName>Z032 - Day 90 after month end</fullName>
+                <default>false</default>
+                <label>Z032 - Day 90 after month end</label>
+            </value>
+            <value>
+                <fullName>Z033 - Net 60 Days Instalment Agreement</fullName>
+                <default>false</default>
+                <label>Z033 - Net 60 Days Instalment Agreement</label>
+            </value>
+            <value>
+                <fullName>Z034 - 1% Discount 10 days, Net 30 Days</fullName>
+                <default>false</default>
+                <label>Z034 - 1% Discount 10 days, Net 30 Days</label>
+            </value>
+            <value>
+                <fullName>Z035 - 2% Discount 14 days, Net 30 Days</fullName>
+                <default>false</default>
+                <label>Z035 - 2% Discount 14 days, Net 30 Days</label>
+            </value>
+            <value>
+                <fullName>Z036 - 3% Discount 7 days, Net 30 Days</fullName>
+                <default>false</default>
+                <label>Z036 - 3% Discount 7 days, Net 30 Days</label>
+            </value>
+            <value>
+                <fullName>Z037 - 1% 10 day of next month 20 day of next month</fullName>
+                <default>false</default>
+                <label>Z037 - 1% 10 day of next month 20 day of next month</label>
+            </value>
+            <value>
+                <fullName>Z038 - Net 5 Days</fullName>
+                <default>false</default>
+                <label>Z038 - Net 5 Days</label>
+            </value>
+            <value>
+                <fullName>Z039 - Net 15 days</fullName>
+                <default>false</default>
+                <label>Z039 - Net 15 days</label>
+            </value>
+            <value>
+                <fullName>Z040 - 30 days after half month</fullName>
+                <default>false</default>
+                <label>Z040 - 30 days after half month</label>
+            </value>
+            <value>
+                <fullName>Z041 - Net 1 Day</fullName>
+                <default>false</default>
+                <label>Z041 - Net 1 Day</label>
+            </value>
+            <value>
+                <fullName>Z042 - Last day of 1st month after delivery</fullName>
+                <default>false</default>
+                <label>Z042 - Last day of 1st month after delivery</label>
+            </value>
+            <value>
+                <fullName>Z043 - Last day of 2nd month after delivery</fullName>
+                <default>false</default>
+                <label>Z043 - Last day of 2nd month after delivery</label>
+            </value>
+            <value>
+                <fullName>Z044 - Last day of 3rd month after delivery</fullName>
+                <default>false</default>
+                <label>Z044 - Last day of 3rd month after delivery</label>
+            </value>
+            <value>
+                <fullName>Z045 - Day 25 of Next Month</fullName>
+                <default>false</default>
+                <label>Z045 - Day 25 of Next Month</label>
+            </value>
+            <value>
+                <fullName>Z046 - Net 75 Days</fullName>
+                <default>false</default>
+                <label>Z046 - Net 75 Days</label>
+            </value>
+            <value>
+                <fullName>Z047 - 1st day of next month</fullName>
+                <default>false</default>
+                <label>Z047 - 1st day of next month</label>
+            </value>
+            <value>
+                <fullName>Z078 - 5th in following 2nd month</fullName>
+                <default>false</default>
+                <label>Z078 - 5th in following 2nd month</label>
+            </value>
+            <value>
+                <fullName>Z079 - Month end of the following month</fullName>
+                <default>false</default>
+                <label>Z079 - Month end of the following month</label>
+            </value>
+            <value>
+                <fullName>Z079 - Month end of the following 2nd month</fullName>
+                <default>false</default>
+                <label>Z079 - Month end of the following 2nd month</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

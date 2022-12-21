@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Upload Document" icon-name="action:add_file">
+        <div class="slds-align_absolute-center">
+            <lightning-file-upload label="Upload/override supporting document"
+                                name="fileUploader"
+                                accept={acceptedFormats}
+                                record-id={recordId}
+                                onuploadfinished={handleUploadFinished}>
+            </lightning-file-upload>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name = "iconNameAtt" type = "String" default = "utility:chevrondown" />
+    <aura:attribute name = "showLinks" type = "Boolean" default = "true" />
+    <h3 class="test-id__section-header-button slds-section__title-action slds-button" style="font-size:1rem" 
+        onclick="{! c.handleClick }"> 
+        <lightning:buttonIcon iconName="{!v.iconNameAtt}" variant="container" />
+        <span class="test-id__section-header-title slds-truncate">
+            USEFUL LINKS
+        </span>
+    </h3>
+    
+    <aura:if isTrue="{!v.showLinks}">
+        <div class="slds-var-p-left_large slds-var-p-top_medium slds-var-p-bottom_large">
+            <div>
+                <lightning:formattedUrl value="https://eu001-sp.shell.com/sites/AAFAA1940/SiteCollectionDocuments/KYC%20Standards.pdf#search=kyc%20standard" 
+                                        label="T &amp; S Counterparty KYC Standard" 
+                                        target="_blank" />
+            </div>
+            <div class="slds-var-p-top_small">
+                <lightning:formattedUrl value="https://eu001-sp.shell.com/sites/AAFAA1940/EDD%20Countries%20List/Allitems.aspx"
+                                        label="Financial Crime EDD Country List" 
+                                        target="_blank" />
+            </div>
+            <div class="slds-var-p-top_small">
+                <lightning:formattedUrl value="https://eu001-sp.shell.com/sites/AAFAA5055/Home/CLCM Documents/Forms/AllItems.aspx?id=/sites/AAFAA5055/Home/CLCM Documents/COF Capability Building/Training/COF WI and Overall Training/BDD Automation SOP.pdf&amp;parent=/sites/AAFAA5055/Home/CLCM Documents/COF Capability Building/Training/COF WI and Overall Training"
+                                        label="BDD Standard Operating Procedures" 
+                                        target="_blank" />
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

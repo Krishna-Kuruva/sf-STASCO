@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EU_ETS_Net_Position_2008__c</fullName>
+    <description>Net EU ETS position for 2008.</description>
+    <externalId>false</externalId>
+    <formula>EU_ETS_Allocation_2008__c  -  EU_ETS_Emissions_2008__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Net EU ETS position for 2008.</inlineHelpText>
+    <label>EU ETS Net Position 2008</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

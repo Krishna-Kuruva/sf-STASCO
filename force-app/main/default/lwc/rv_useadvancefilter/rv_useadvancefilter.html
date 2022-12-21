@@ -1,0 +1,171 @@
+<template>
+    <lightning-layout multiple-rows="true" horizontal-align="spread" >
+        <lightning-layout-item class="" size="2">
+            <lightning-input type="checkbox" 
+                 label="Use Advanced Filter" 
+                 name="useAdvancedFilter"
+                 value={useAdvancedFilter}
+                 onchange={handleChange} style="margin-top: 30px;"></lightning-input>
+        </lightning-layout-item>
+        <template if:false={sAdvanceFilter}>
+            <lightning-layout-item class="" size="2">
+                <legend class="slds-form-element__legend slds-form-element__label">Created On</legend>
+                <lightning-combobox variant="label-hidden"
+                     label="Created On" 
+                     name="createdOn"
+                     value={createdOn}
+                     onchange={handleChange}
+                    options={createdOnOptions}></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1"></lightning-layout-item>
+            <lightning-layout-item class="" size="2">
+                <legend class="slds-form-element__legend slds-form-element__label">Status</legend>
+                <lightning-combobox name="status"
+                                    label="Status"
+                                    variant="label-hidden"
+                                    value={advStatus}
+                                    placeholder="--Select--"
+                                    options={statusOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="5"></lightning-layout-item>
+        </template>
+        <template if:true={sAdvanceFilter}>
+            <lightning-layout-item class="" size="1">
+                <lightning-input type="checkbox" 
+                     label="Internet Sales" 
+                     name="internetSales"
+                     value={internetSales}
+                     onchange={handleChange} style="margin-top: 30px;white-space: nowrap;"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <!--<lightning-input type="Date"
+                     label="Start Date" 
+                     name="startDate"
+                     value={startDate}
+                     onchange={handleChange}></lightning-input>-->
+                     
+                <lightning-input type="date"
+                                 name="startDate"
+                                 label="Start Date"
+                                 value={startDte}
+                                 date-style="short" onchange={handleChange}>
+                </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <lightning-input type="date" 
+                     label="End Date" 
+                     name="endDate"
+                     value={endDte} date-style="short"
+                     onchange={handleChange}></lightning-input>
+            </lightning-layout-item>
+           <!--test<lightning-layout-item class="" size="1">
+                <lightning-input type="Date" 
+                     label="Created By" 
+                     name="createdBy"
+                     value={createdBy}
+                     onchange={handleChange}></lightning-input>
+            </lightning-layout-item>-->
+            <lightning-layout-item class="" size="1">
+                <legend class="slds-form-element__legend slds-form-element__label">Created By</legend>
+                <!--<lightning-combobox name="createdBy"
+                                    label="Created By"
+                                    variant="label-hidden"
+                                    value={advcreatedBy}
+                                    placeholder="--Select--"
+                                    options={createdByOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>-->
+                  <div style="clear: left;"></div>
+                <c-rv_reusable-custom-dropdown-with-search-lwc options={createdByOptions} 
+                        value={advcreatedBy}
+                        label="Created By" 
+                        onchange={handleChange}></c-rv_reusable-custom-dropdown-with-search-lwc>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <legend class="slds-form-element__legend slds-form-element__label">Status</legend>
+                <lightning-combobox name="status"
+                                    label="Status"
+                                    variant="label-hidden"
+                                    value={advStatus}
+                                    placeholder="--Select--"
+                                    options={statusOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <legend class="slds-form-element__legend slds-form-element__label">Sold To</legend>
+                <div style="clear: left;"></div>
+                <!--<lightning-combobox name="soldTo"
+                                    label="Sold To"
+                                    variant="label-hidden"
+                                    value={advSoldTo}
+                                    placeholder="--Select--"
+                                    options={soldToOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>-->
+
+                <!--<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+                    <lightning-input id="input" value={searchInput}  onclick={SearchClick} onchange={ChangeSearchInput}
+                        variant="label-hidden" aria-autocomplete="list" role="textbox" autocomplete="off"
+                        placeholder={placeHolder} type="text">
+                    </lightning-input>
+                    <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right"
+                        >
+                        <lightning-icon icon-name="utility:down" size="x-small" ></lightning-icon>
+                        <span class="slds-assistive-text">Click to open the List</span>
+                    </span>
+                </div>
+
+                <div id="listbox-id-1"
+                                                class="zindexHigh slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                                role="listbox">
+                    <div class="slds-size_2-of-2 slds-popover__body slds-popover__body_small">
+                            
+                            <template for:each={displayList} for:item="Item">
+                               <span key={Item.value}>
+                                        <lightning-input type="checkbox" label={Item.label} value={Item.value} checked={Item.selected}  onchange={handleCheckboxChange}></lightning-input>
+                                </span>
+                            </template>   
+                        </div>
+                    </div>-->    
+                
+                <c-rv_reusable-custom-dropdown-with-search-lwc options={soldToOptions} 
+                    value={advSoldTo}
+                     label="soldTo" 
+                    onchange={handleChange}></c-rv_reusable-custom-dropdown-with-search-lwc>
+               
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <legend class="slds-form-element__legend slds-form-element__label">SHT No</legend>
+                <div style="clear: left;"></div>
+                <!--<lightning-combobox name="shtNo"
+                                    label="SHT No"
+                                    variant="label-hidden"
+                                    value={advShtNo}
+                                    placeholder="--Select--"
+                                    options={shtNoOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>-->
+                <c-rv_reusable-custom-dropdown-with-search-lwc options={shtNoOptions} 
+                        value={advShtNo}
+                        label="SHT No" 
+                        onchange={handleChange}></c-rv_reusable-custom-dropdown-with-search-lwc>
+                
+            </lightning-layout-item>
+            <lightning-layout-item class="" size="1">
+                <legend class="slds-form-element__legend slds-form-element__label">PO Type</legend>
+                <lightning-combobox name="poType"
+                                    label="PO Type"
+                                    variant="label-hidden"
+                                    value={advpoType}
+                                    placeholder="--Select--"
+                                    options={poTypeOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>
+                
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

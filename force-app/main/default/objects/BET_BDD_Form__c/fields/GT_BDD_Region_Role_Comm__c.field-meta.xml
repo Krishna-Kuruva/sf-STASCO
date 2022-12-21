@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_BDD_Region_Role_Comm__c</fullName>
+    <externalId>false</externalId>
+    <label>* BDD Region | Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ANZPI | Bank for LC</fullName>
+                <default>false</default>
+                <label>ANZPI | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>ANZPI | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>ANZPI | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>ANZPI | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>ANZPI | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>ANZPI | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>ANZPI | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>ANZPI | End User</fullName>
+                <default>false</default>
+                <label>ANZPI | End User</label>
+            </value>
+            <value>
+                <fullName>ANZPI | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>ANZPI | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>ANZPI | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>ANZPI | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Storage</fullName>
+                <default>false</default>
+                <label>ANZPI | Storage</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Terminalling</fullName>
+                <default>false</default>
+                <label>ANZPI | Terminalling</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>ANZPI | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>ANZPI | TSO/DSO</fullName>
+                <default>false</default>
+                <label>ANZPI | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>APAC | Bank for LC</fullName>
+                <default>false</default>
+                <label>APAC | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>APAC | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>APAC | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>APAC | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>APAC | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>APAC | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>APAC | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>APAC | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>APAC | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>APAC | End User</fullName>
+                <default>false</default>
+                <label>APAC | End User</label>
+            </value>
+            <value>
+                <fullName>APAC | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>APAC | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>APAC | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>APAC | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>APAC | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>APAC | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>APAC | Storage</fullName>
+                <default>false</default>
+                <label>APAC | Storage</label>
+            </value>
+            <value>
+                <fullName>APAC | Terminalling</fullName>
+                <default>false</default>
+                <label>APAC | Terminalling</label>
+            </value>
+            <value>
+                <fullName>APAC | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>APAC | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>APAC | TSO/DSO</fullName>
+                <default>false</default>
+                <label>APAC | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Bank for LC</fullName>
+                <default>false</default>
+                <label>ERCIS | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>ERCIS | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>ERCIS | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>ERCIS | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>ERCIS | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>ERCIS | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>ERCIS | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>ERCIS | End User</fullName>
+                <default>false</default>
+                <label>ERCIS | End User</label>
+            </value>
+            <value>
+                <fullName>ERCIS | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>ERCIS | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>ERCIS | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>ERCIS | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Storage</fullName>
+                <default>false</default>
+                <label>ERCIS | Storage</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Terminalling</fullName>
+                <default>false</default>
+                <label>ERCIS | Terminalling</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>ERCIS | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>ERCIS | TSO/DSO</fullName>
+                <default>false</default>
+                <label>ERCIS | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>LATAM | Bank for LC</fullName>
+                <default>false</default>
+                <label>LATAM | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>LATAM | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>LATAM | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>LATAM | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>LATAM | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>LATAM | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>LATAM | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>LATAM | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>LATAM | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>LATAM | End User</fullName>
+                <default>false</default>
+                <label>LATAM | End User</label>
+            </value>
+            <value>
+                <fullName>LATAM | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>LATAM | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>LATAM | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>LATAM | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>LATAM | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>LATAM | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>LATAM | Storage</fullName>
+                <default>false</default>
+                <label>LATAM | Storage</label>
+            </value>
+            <value>
+                <fullName>LATAM | Terminalling</fullName>
+                <default>false</default>
+                <label>LATAM | Terminalling</label>
+            </value>
+            <value>
+                <fullName>LATAM | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>LATAM | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>LATAM | TSO/DSO</fullName>
+                <default>false</default>
+                <label>LATAM | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>MEA | Bank for LC</fullName>
+                <default>false</default>
+                <label>MEA | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>MEA | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>MEA | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>MEA | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>MEA | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>MEA | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>MEA | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>MEA | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>MEA | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>MEA | End User</fullName>
+                <default>false</default>
+                <label>MEA | End User</label>
+            </value>
+            <value>
+                <fullName>MEA | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>MEA | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>MEA | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>MEA | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>MEA | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>MEA | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>MEA | Storage</fullName>
+                <default>false</default>
+                <label>MEA | Storage</label>
+            </value>
+            <value>
+                <fullName>MEA | Terminalling</fullName>
+                <default>false</default>
+                <label>MEA | Terminalling</label>
+            </value>
+            <value>
+                <fullName>MEA | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>MEA | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>MEA | TSO/DSO</fullName>
+                <default>false</default>
+                <label>MEA | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>NA | Bank for LC</fullName>
+                <default>false</default>
+                <label>NA | Bank for LC</label>
+            </value>
+            <value>
+                <fullName>NA | Bunker Fuels End User</fullName>
+                <default>false</default>
+                <label>NA | Bunker Fuels End User</label>
+            </value>
+            <value>
+                <fullName>NA | C&amp;I Physical End User</fullName>
+                <default>false</default>
+                <label>NA | C&amp;I Physical End User</label>
+            </value>
+            <value>
+                <fullName>NA | C&amp;I Physical Resellers</fullName>
+                <default>false</default>
+                <label>NA | C&amp;I Physical Resellers</label>
+            </value>
+            <value>
+                <fullName>NA | Commercial Fuels End User</fullName>
+                <default>false</default>
+                <label>NA | Commercial Fuels End User</label>
+            </value>
+            <value>
+                <fullName>NA | End User</fullName>
+                <default>false</default>
+                <label>NA | End User</label>
+            </value>
+            <value>
+                <fullName>NA | JV / Majority Shell-owned (Non-Trading)</fullName>
+                <default>false</default>
+                <label>NA | JV / Majority Shell-owned (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>NA | Leaseholders/Crude Lease</fullName>
+                <default>false</default>
+                <label>NA | Leaseholders/Crude Lease</label>
+            </value>
+            <value>
+                <fullName>NA | Shipping - Basic</fullName>
+                <default>false</default>
+                <label>NA | Shipping - Basic</label>
+            </value>
+            <value>
+                <fullName>NA | Storage</fullName>
+                <default>false</default>
+                <label>NA | Storage</label>
+            </value>
+            <value>
+                <fullName>NA | Terminalling</fullName>
+                <default>false</default>
+                <label>NA | Terminalling</label>
+            </value>
+            <value>
+                <fullName>NA | Transportation(non-shipping)</fullName>
+                <default>false</default>
+                <label>NA | Transportation(non-shipping)</label>
+            </value>
+            <value>
+                <fullName>NA | TSO/DSO</fullName>
+                <default>false</default>
+                <label>NA | TSO/DSO</label>
+            </value>
+            <value>
+                <fullName>WORLDWIDE | Vessel</fullName>
+                <default>false</default>
+                <label>WORLDWIDE | Vessel</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Storage | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Storage | Gas</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>ANZPI | TSO/DSO | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | TSO/DSO | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Terminalling | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Terminalling | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Transportation (non-shipping) | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Transportation (non-shipping) | Gas</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>ANZPI | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ANZPI | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>APAC | Bank for LC | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Bank for LC | N/A</label>
+            </value>
+            <value>
+                <fullName>APAC | C&amp;I Physical End-User | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | C&amp;I Physical End-User | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>APAC | Commerical Fuels End-User | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Commerical Fuels End-User | Products</label>
+            </value>
+            <value>
+                <fullName>APAC | Exchange Members Only | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Exchange Members Only | Crude</label>
+            </value>
+            <value>
+                <fullName>APAC | Exchange Members Only | Gas &amp; Power or Emissions or Coal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Exchange Members Only | Gas &amp; Power or Emissions or Coal</label>
+            </value>
+            <value>
+                <fullName>APAC | Exchange Members Only | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Exchange Members Only | LNG</label>
+            </value>
+            <value>
+                <fullName>APAC | Exchange Members Only | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Exchange Members Only | Products</label>
+            </value>
+            <value>
+                <fullName>APAC | JV Majority Shell-owned | All Commodities</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | JV Majority Shell-owned | All Commodities</label>
+            </value>
+            <value>
+                <fullName>APAC | Leaseholder/Crude Lease | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Leaseholder/Crude Lease | Crude</label>
+            </value>
+            <value>
+                <fullName>APAC | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>APAC | Storage | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Storage | Gas</label>
+            </value>
+            <value>
+                <fullName>APAC | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>APAC | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>APAC | TSO/DSO | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | TSO/DSO | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>APAC | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>APAC | Terminalling | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Terminalling | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>APAC | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>APAC | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>APAC | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>APAC | Transportation (non-shipping) | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Transportation (non-shipping) | Gas</label>
+            </value>
+            <value>
+                <fullName>APAC | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>APAC | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>APAC | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>Bunkering | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bunkering | Products</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Bank for LC | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Bank for LC | N/A</label>
+            </value>
+            <value>
+                <fullName>ERCIS | C&amp;I Physical End-User | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | C&amp;I Physical End-User | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Commerical Fuels End-User | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Commerical Fuels End-User | Products</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Exchange Members Only | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Exchange Members Only | Crude</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Exchange Members Only | Gas &amp; Power or Emissions or Coal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Exchange Members Only | Gas &amp; Power or Emissions or Coal</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Exchange Members Only | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Exchange Members Only | LNG</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Exchange Members Only | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Exchange Members Only | Products</label>
+            </value>
+            <value>
+                <fullName>ERCIS | JV Majority Shell-owned | All Commodities</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | JV Majority Shell-owned | All Commodities</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Leaseholder/Crude Lease | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Leaseholder/Crude Lease | Crude</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Storage | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Storage | Gas</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>ERCIS | TSO/DSO | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | TSO/DSO | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Terminalling | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Terminalling | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Transportation (non-shipping) | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Transportation (non-shipping) | Gas</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>ERCIS | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ERCIS | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>End User | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>End User | LNG</label>
+            </value>
+            <value>
+                <fullName>LATAM | Bank for LC | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Bank for LC | N/A</label>
+            </value>
+            <value>
+                <fullName>LATAM | C&amp;I Physical End-User | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | C&amp;I Physical End-User | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>LATAM | Commerical Fuels End-User | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Commerical Fuels End-User | Products</label>
+            </value>
+            <value>
+                <fullName>LATAM | Exchange Members Only | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Exchange Members Only | Crude</label>
+            </value>
+            <value>
+                <fullName>LATAM | Exchange Members Only | Gas &amp; Power or Emissions or Coal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Exchange Members Only | Gas &amp; Power or Emissions or Coal</label>
+            </value>
+            <value>
+                <fullName>LATAM | Exchange Members Only | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Exchange Members Only | LNG</label>
+            </value>
+            <value>
+                <fullName>LATAM | Exchange Members Only | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Exchange Members Only | Products</label>
+            </value>
+            <value>
+                <fullName>LATAM | JV Majority Shell-owned | All Commodities</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | JV Majority Shell-owned | All Commodities</label>
+            </value>
+            <value>
+                <fullName>LATAM | Leaseholder/Crude Lease | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Leaseholder/Crude Lease | Crude</label>
+            </value>
+            <value>
+                <fullName>LATAM | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>LATAM | Storage | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Storage | Gas</label>
+            </value>
+            <value>
+                <fullName>LATAM | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>LATAM | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>LATAM | TSO/DSO | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | TSO/DSO | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>LATAM | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>LATAM | Terminalling | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Terminalling | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>LATAM | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>LATAM | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>LATAM | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>LATAM | Transportation (non-shipping) | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Transportation (non-shipping) | Gas</label>
+            </value>
+            <value>
+                <fullName>LATAM | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>LATAM | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LATAM | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>MEA | Bank for LC | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Bank for LC | N/A</label>
+            </value>
+            <value>
+                <fullName>MEA | Commerical Fuels End-User | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Commerical Fuels End-User | Products</label>
+            </value>
+            <value>
+                <fullName>MEA | Exchange Members Only | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Exchange Members Only | Crude</label>
+            </value>
+            <value>
+                <fullName>MEA | Exchange Members Only | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Exchange Members Only | LNG</label>
+            </value>
+            <value>
+                <fullName>MEA | Exchange Members Only | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Exchange Members Only | Products</label>
+            </value>
+            <value>
+                <fullName>MEA | Leaseholder/Crude Lease | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Leaseholder/Crude Lease | Crude</label>
+            </value>
+            <value>
+                <fullName>MEA | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>MEA | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>MEA | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>MEA | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>MEA | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>MEA | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>MEA | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>MEA | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>MEA | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MEA | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>NA | Bank for LC | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Bank for LC | N/A</label>
+            </value>
+            <value>
+                <fullName>NA | C&amp;I Physical End-User | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | C&amp;I Physical End-User | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>NA | Commerical Fuels End-User | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Commerical Fuels End-User | Products</label>
+            </value>
+            <value>
+                <fullName>NA | Exchange Members Only | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Exchange Members Only | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Exchange Members Only | Gas &amp; Power or Emissions or Coal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Exchange Members Only | Gas &amp; Power or Emissions or Coal</label>
+            </value>
+            <value>
+                <fullName>NA | Exchange Members Only | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Exchange Members Only | LNG</label>
+            </value>
+            <value>
+                <fullName>NA | Exchange Members Only | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Exchange Members Only | Products</label>
+            </value>
+            <value>
+                <fullName>NA | JV Majority Shell-owned | All Commodities</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | JV Majority Shell-owned | All Commodities</label>
+            </value>
+            <value>
+                <fullName>NA | Leaseholder/Crude Lease | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Leaseholder/Crude Lease | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Royalty Payee | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Royalty Payee | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Storage | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Storage | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Storage | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Storage | Gas</label>
+            </value>
+            <value>
+                <fullName>NA | Storage | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Storage | LNG</label>
+            </value>
+            <value>
+                <fullName>NA | Storage | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Storage | Products</label>
+            </value>
+            <value>
+                <fullName>NA | TSO/DSO | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | TSO/DSO | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>NA | Terminalling | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Terminalling | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Terminalling | Gas &amp; Power</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Terminalling | Gas &amp; Power</label>
+            </value>
+            <value>
+                <fullName>NA | Terminalling | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Terminalling | LNG</label>
+            </value>
+            <value>
+                <fullName>NA | Terminalling | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Terminalling | Products</label>
+            </value>
+            <value>
+                <fullName>NA | Transportation (non-shipping) | Crude</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Transportation (non-shipping) | Crude</label>
+            </value>
+            <value>
+                <fullName>NA | Transportation (non-shipping) | Gas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Transportation (non-shipping) | Gas</label>
+            </value>
+            <value>
+                <fullName>NA | Transportation (non-shipping) | LNG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Transportation (non-shipping) | LNG</label>
+            </value>
+            <value>
+                <fullName>NA | Transportation (non-shipping) | Products</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NA | Transportation (non-shipping) | Products</label>
+            </value>
+            <value>
+                <fullName>Worldwide | Cargo Inspector | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Worldwide | Cargo Inspector | N/A</label>
+            </value>
+            <value>
+                <fullName>Worldwide | Ship Manager | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Worldwide | Ship Manager | N/A</label>
+            </value>
+            <value>
+                <fullName>Worldwide | Ship Owner | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Worldwide | Ship Owner | N/A</label>
+            </value>
+            <value>
+                <fullName>Worldwide | Vessel | N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Worldwide | Vessel | N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

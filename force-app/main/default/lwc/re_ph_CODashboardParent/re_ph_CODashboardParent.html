@@ -1,0 +1,492 @@
+<template>
+    <div class="reducedFont slds-p-around_xx-small">
+        <!--on loading message  start-->
+        <template if:true={spinnerLoad}>
+            <div class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+
+                    <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                        {spinnerMessage}
+                    </p>
+                </div>
+            </div>
+
+        </template>
+        <!--on loading message end-->
+        <template if:false={userselcted}>
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div style="width: 50%;" class="slds-modal__container setModal">
+                    <header class="slds-modal__header" style="background-color: #212946;color: #ffffff;padding: 10px;">
+                        <h2 id="modal-heading" class="slds-text-heading_medium slds-hyphenate">Select User</h2>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closePopUp}>
+                            <lightning-icon icon-name="utility:close"
+                                            alternative-text="close"
+                                            variant="inverse"
+                                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_small slds-grid" style="height: 25%;min-height: fit-content;display: flex;
+                    justify-content: center;" id="modal-content-id">
+                        <lightning-combobox
+                                variant="label-hidden"
+                                class="textblack slds-var-p-left_small slds-size_1-of-3"
+                                style="zoom: 75%;"
+                                name="SelectUser"
+                                value={trackuser}
+                                label="Select User"
+                                placeholder="Select User"
+                                options={userlist}
+                                onchange={selectuser} >
+                        </lightning-combobox>
+                        <lightning-button class="textblack textfont"
+                                          label="Proceed"
+                                          title="Proceed"
+                                          style="margin-left:12px"
+                                          onclick={opendashboard}>
+                        </lightning-button>
+                        <template if:true={isApprover}>
+                            <lightning-button class="textblack textfont"
+                                              label="Generate Weekly Data" title="Generate Weekly Data" onclick={generateCustomerOpps}>
+                            </lightning-button> &nbsp;&nbsp;&nbsp;
+                            <lightning-button class="textblack textfont"
+                                              label="Generate MidWeek Data" title="Generate MidWeek Data" onclick={generateMidWeek}>
+                            </lightning-button>&nbsp;&nbsp;&nbsp;
+                            <lightning-button class="textblack textfont"
+                                              label="Update New Contracts" title="Update New Contracts" onclick={newContCustOpps}>
+                            </lightning-button>
+                        </template>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!-- Modal/Popup Box ends here-->
+        </template>
+        <template if:true={userselcted}>
+            <!--Header Section starts-->
+            <div style="height:100%">
+                <div class="blockscolor slds-box slds-p-around_none slds-m-around_xxx-small">
+                    <div class="slds-grid" style="padding: 15px 5px">
+                        <div class="slds-size_1-of-12 slds-p-left_xx-small">
+                            <template if:false={advanceOption}>
+                                <lightning-icon onclick={showadvanceFilter} class=" slds-m-top_xxx-small"
+                                                icon-name="utility:hide" size="xx-small" alternative-text="More Option"
+                                                title="More Option"></lightning-icon>
+                            </template>
+                            <template if:true={advanceOption}>
+                                <lightning-icon onclick={showadvanceFilter} class=" slds-m-top_xxx-small"
+                                                icon-name="utility:preview" size="xx-small" alternative-text="More Option"
+                                                title="More Option"></lightning-icon>
+                            </template>
+                        </div>
+                        <div class="slds-size_2-of-12 slds-p-left_xx-small">
+                            <p> CBU :
+                                <lightning-formatted-date-time
+                                        value={cbupublishDate}></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                        <div class="slds-size_1-of-12  "></div>
+                        <template if:false={hideCtrltBut}>
+                            <div class="slds-size_5-of-12 ">
+                                <lightning-button-group class="slds-float_right">
+                                    <template if:true={isApprover}>
+                                        <lightning-button class="textblack textfont" disabled={exportButton}
+                                                          label="Export" title="Export"
+                                                          onclick={exportdata}></lightning-button>
+                                    </template>
+                                    <lightning-button class="textblack textfont" label="Save " title="Save"
+                                                      onclick={RecalculatePrice}></lightning-button>
+
+                                    <!--<lightning-button class="textblack textfont" label="Recalculate"
+                                                       title="Recalculate"
+                                                       onclick={RecalculatePriceLocal}></lightning-button>-->
+
+                                    <lightning-button class="textblack textfont " icon-name="utility:refresh"
+                                                      onclick={connectedCallback}></lightning-button>
+                                </lightning-button-group>
+
+                                <lightning-button-group class="slds-p-right_xx-small slds-float_right">
+
+                                    <template if:false={isApprover}>
+                                        <lightning-button class="textblack textfont" label="Send For Approval"
+                                                          title="Send For Approval" icon-name="utility:send"
+                                                          onclick={submitForReview}>
+                                        </lightning-button>
+                                        <lightning-button class="textblack textfont"
+                                                          label="Mass update" title="Mass Update"  name="popUpPriceUpdate"
+                                                          onclick={updatePricevalue}>
+                                        </lightning-button>
+                                    </template>
+
+                                    <template if:true={isApprover}>
+                                        <lightning-button class="textblack textfont" label="Approve" title="Approved"
+                                                          onclick={approveOrreject}></lightning-button>
+                                        <lightning-button class="textblack textfont" label="Reject" title="Rejected"
+                                                          onclick={approveOrreject}></lightning-button>
+
+                                    </template>
+
+                                </lightning-button-group>
+                                <!--<lightning-button class="textblack textfont slds-m-around_xxx-small" label="Mass update"
+                                                    title="Mass Update" name="popUpPriceUpdate"
+                                                    onclick={updatePricevalue}></lightning-button> -->
+
+                            </div>
+
+                            <div class="slds-size_1-of-12  ">
+                                <template if:true={isApprover}>
+                                    <lightning-button label="GSAP retry" disabled={retryButton} variant="label-hidden"
+                                                      icon-name="standard:sales_cadence" title="Non-primary action"
+                                                      onclick={retryToGSAP}
+                                                      class="slds-m-left_x-small textfont"></lightning-button>
+                                </template>
+                            </div>
+                            <div class="slds-size_1-of-12  ">
+                                <lightning-button label="Download" variant="label-hidden"
+                                                  icon-name="utility:download" title="Non-primary action"
+                                                  onclick={downloadCSV}
+                                                  class="slds-m-left_x-small textfont"></lightning-button>
+                            </div>
+
+
+                            <div class="slds-size_1-of-12 slds-p-left_xx-small ">
+                                <lightning-icon onclick={showfilterpopup}
+                                                class=" slds-m-top_xxx-small slds-float_right"
+                                                icon-name="utility:filterList" size="x-small"
+                                                alternative-text="Filter" title="Filter">
+                                </lightning-icon>
+                            </div>
+                        </template>
+                    </div>
+                    <!--Header Section End-->
+
+                    <!--legend Start -->
+                    <template if:true={advanceOption}>
+                        <div class="slds-box slds-p-around_none">
+                            <div class="slds-grid" style="padding: 15px 5px;">
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account NS " style="padding-top: 0.1rem;" title="Not Submitted">NS</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Not Submitted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account SB " style="padding-top: 0.1rem;" title="Submitted">SB</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Submitted STL</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account SB " style="padding-top: 0.1rem;" title="Submitted">SS</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Support STL</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account SB " style="padding-top: 0.1rem;" title="Submitted">SP</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Support PM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account AP " style="padding-top: 0.1rem;" title="Approved">AP</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Approved</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12 ">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account RJ " style="padding-top: 0.1rem;" title="Rejected">RJ</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Rejected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account AA " style="padding-top: 0.1rem;" title="Auto Approved">AA</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Auto Approved</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12 slds-m-left_xx-small">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account RU " style="padding-top: 0.1rem;" title="Ready to Upload">RU</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Ready to Upload</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12 slds-m-left_xx-small">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account UP " style="padding-top: 0.1rem;" title="Uploaded">UP</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Uploaded</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account FA " style="padding-top: 0.1rem;" title="Failed">FA</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Failed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_2-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-12">
+                                           <span class="slds-avatar avatar" >
+                                               <abbr class="slds-avatar__initials slds-icon-standard-account UN " style="padding-top: 0.1rem;" title="Failed">UN</abbr>
+                                           </span>
+                                        </div>
+                                        <div class="slds-col slds-size_10-of-12">
+                                            <p class="slds-p-top_xxx-small ">Upload not allowed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!--legend End-->
+                </div>
+
+                <div class="slds-grid slds-wrap" >
+                    <!--Child Component to load table-->
+                    <div data-id="divblock">
+                        <div class="slds-col"  >
+                            <div class="slds-p-around_none">
+                                <c-re_-P-H_-C-O-Dashboardchild -cust-data = {dataToChild}  loginuser={loginuser}
+                                                               approvebutton={isApprover} hidectrlbut={hideCtrltBut}
+                                                               onchangeseller={updatemaindata} isolddate = {isolddate}
+                                                                onsavedetail={savedetailchanges}>
+                                </c-re_-P-H_-C-O-Dashboardchild>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Child Component to load table-->
+                    <!--Filter section Strat here-->
+                    <template if:true={showPageHeader}>
+                        <div class="slds-col slds-box slds-p-around_small filteroption" >
+                            <div class="slds-grid slds-border_bottom">
+                                <div class="slds-size_11-of-12">
+                                    <b><h2 id="modal-heading-01" style="font-size: small;">Select
+                                        Filters</h2></b>
+                                </div>
+                                <div class="slds-float_right slds-size_1-of-12">
+                                    <lightning-icon size="small" class="textblack textfont " icon-name="utility:close"
+                                                    title="Close" onclick={closeModal}>
+                                    </lightning-icon>
+                                </div>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>Calculation Model</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="calmodel"
+                                        value={trackCalModel}
+                                        label="calmodel"
+                                        placeholder="All"
+                                        options={calculationMod}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+
+                            <div class="slds-float-left">
+                                <b><c-researchpicklist
+                                        picklistvalues={customerName}
+                                        labelname='Customer Name'
+                                        onslectedvalues={customerSelected}
+                                        seletedvaluefromparent={selectedcustomerName}
+                                >
+                                </c-researchpicklist></b>
+                            </div>
+                            <div class="slds-float-left ">
+                                <label class='slds-m-around_x-small'><b>Location</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="Plant"
+                                        value={trackFilterplant}
+                                        label="Plant"
+                                        placeholder="All"
+                                        options={plantList}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>Material</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="Material"
+                                        value={trackFilterMat}
+                                        label="Material"
+                                        placeholder="All"
+                                        options={material}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>Sold To</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="Soldto"
+                                        value={trackSoldto}
+                                        label="Soldto"
+                                        placeholder="All"
+                                        options={soldTo}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>AM Code</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="AMCode"
+                                        value={trackAMcode}
+                                        label="AMCode"
+                                        placeholder="All"
+                                        options={amcode}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>Status</b></label>
+                                <lightning-combobox
+                                        variant="label-hidden"
+                                        class="textblack"
+                                        name="Status"
+                                        value={trackStatus}
+                                        label="Status"
+                                        placeholder="All"
+                                        options={statusFilter}
+                                        onchange={CustomerTypeFilter}
+                                        dropdown-alignment="auto"
+                                ></lightning-combobox>
+                            </div>
+                            <div class="slds-float-left">
+                                <label class='slds-m-around_x-small'><b>Date Filter</b></label>
+                                <lightning-input type="date" variant="label-hidden" value={dateFilterValue}
+                                onblur={filterBasedOnDate} name="DateFilter"
+                                label=""></lightning-input>
+                            </div>
+                        </div>
+                    </template>
+                    <!--Filter section End here-->
+                    <!--Mass Update on filtered records-->
+                    <template if:true={updatePrice}>
+                        <section role="dialog" tabindex="-1" aria-label="Mass Update" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container" style="width: 30%;">
+                                <header class="modeltempdiscount slds-modal__header " style="background-color: #212946;color: #ffffff;padding: 10px;">
+                                    <h1 class="slds-text-heading_small">Mass update</h1>
+                                </header>
+                                <div class=" popUptempDicount slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <table class="modeltempdiscount slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center;"><b>Fields</b></td>
+                                            <td><b>Confirm</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Reference Period</td>
+                                            <td> <lightning-combobox
+                                                    style="zoom: 70%;font-size: small;"
+                                                    variant="label-hidden"
+                                                    name="refperiodupdate"
+                                                    value={globalrefperiod}
+                                                    options={refoptions}
+                                                    onchange={updatePricevalue} onblur={cancelInline}></lightning-combobox></td>
+                                            <td><lightning-input type="checkbox" label="" name="refperiodConfrim" checked={refperCheckBox} onchange={updatePricevalue}></lightning-input></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Valid From</td>
+                                            <td> <lightning-input type="date" min={validFromMin} max={validFromMax} onblur={checkData} onchange={updatePricevalue} name="ValidFrom" value={globalValidFrom} ></lightning-input></td>
+                                            <td><lightning-input type="checkbox" label="" name="ValidFromConfrim" checked={ValidFromCheckBox} onchange={updatePricevalue}></lightning-input></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Valid To</td>
+                                            <td> <lightning-input type="date" min={validToMin} max={validToMax} onblur={checkData} onchange={updatePricevalue}  name="ValidTo" value={globalValidDate} ></lightning-input></td>
+                                            <td><lightning-input type="checkbox" label="" name="ValidToConfrim" checked={ValidToCheckBox} onchange={updatePricevalue}></lightning-input></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <footer class="modeltempdiscount slds-modal__footer">
+                                    <lightning-button  label="Cancel" title="Cancel"  name="Cancel" onclick={updatePricevalue}></lightning-button>
+                                    <lightning-button class="slds-m-left_x-small" variant="brand" label="Save" title="Save"  name="Save" onclick={updatePricevalue}></lightning-button>
+
+                                </footer>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

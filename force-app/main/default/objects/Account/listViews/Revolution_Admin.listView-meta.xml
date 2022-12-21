@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revolution_Admin</fullName>
+    <columns>Sold_To_Number__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Has_MRC__c</columns>
+    <columns>Rv_Available_for_OLF__c</columns>
+    <columns>Rv_Olf_Customer_Email__c</columns>
+    <columns>Rv_Credit_Limit__c</columns>
+    <columns>Rv_Credit_Limit_Updated__c</columns>
+    <columns>Rv_Credit_Available__c</columns>
+    <columns>Rv_Sales_Atp_IGO__c</columns>
+    <columns>Rv_Sales_Atp_AGO__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Revolution</value>
+    </filters>
+    <filters>
+        <field>Rv_DE01_Deletion_Flag__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Rv_AT01_Deletion_Flag__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Revolution Admin</label>
+</ListView>

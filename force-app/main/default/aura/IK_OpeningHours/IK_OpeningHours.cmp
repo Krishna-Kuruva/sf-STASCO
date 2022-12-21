@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable" >
+    <div class="c-container">
+        <a href="{!$Label.c.Opening_Hours}" target="_new">Opening hours(please click here)</a> <br/>
+    </div>
+</aura:component>

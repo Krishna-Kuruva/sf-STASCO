@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Instert what category</inlineHelpText>
+    <label>GC - Business Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NA</fullName>
+                <default>true</default>
+                <label>NA</label>
+            </value>
+            <value>
+                <fullName>CF- Unbranded Resellers</fullName>
+                <default>false</default>
+                <label>CF- Unbranded Resellers</label>
+            </value>
+            <value>
+                <fullName>CF- Branded Resellers</fullName>
+                <default>false</default>
+                <label>CF- Branded Resellers</label>
+            </value>
+            <value>
+                <fullName>CF- Corporate</fullName>
+                <default>false</default>
+                <label>CF- Corporate</label>
+            </value>
+            <value>
+                <fullName>SAV- Global Carriers</fullName>
+                <default>false</default>
+                <label>SAV- Global Carriers</label>
+            </value>
+            <value>
+                <fullName>SAV- Special Carriers</fullName>
+                <default>false</default>
+                <label>SAV- Special Carriers</label>
+            </value>
+            <value>
+                <fullName>SAV -General Aviation</fullName>
+                <default>false</default>
+                <label>SAV -General Aviation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

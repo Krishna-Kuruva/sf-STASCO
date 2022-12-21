@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SLA_BUSINESS_DAYS__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(Entries_in_MDN_Request__c &gt; 200, Urgent__c), CEILING(Entries_in_MDN_Request__c * 0.05),
+IF(Entries_in_MDN_Request__c &gt; 200, CEILING(Entries_in_MDN_Request__c * 0.075),
+IF(AND(Entries_in_MDN_Request__c &lt; 201, Entries_in_MDN_Request__c &gt; 10, Urgent__c), 10,
+IF(AND(Entries_in_MDN_Request__c &lt; 201, Entries_in_MDN_Request__c &gt; 10), 15,
+IF(AND(Entries_in_MDN_Request__c &lt; 11, Entries_in_MDN_Request__c &gt; 2), 4,
+IF(AND(Entries_in_MDN_Request__c &gt; 0, ISPICKVAL(Reason_Type__c, &quot;DNDB - Sanctions&quot;)),1,
+IF(AND(Entries_in_MDN_Request__c &gt; 0, Urgent__c),2,
+IF(OR(Entries_in_MDN_Request__c = 0, ISBLANK(Entries_in_MDN_Request__c)),NULL,
+3))))))))</formula>
+    <label>SLA Business Days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

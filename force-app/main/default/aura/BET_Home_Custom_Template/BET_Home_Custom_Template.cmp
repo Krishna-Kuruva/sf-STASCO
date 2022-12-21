@@ -1,0 +1,11 @@
+<aura:component implements="lightning:homeTemplate" description="Single column page template">
+    <aura:attribute name="main" type="Aura.Component[]" />
+    <div>
+        <lightning:layout>
+            <lightning:layoutItem flexibility="grow"
+                                  class="">
+                {!v.main}
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

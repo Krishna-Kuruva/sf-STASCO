@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ATP_Refresh__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Check this checkbox to refresh the value of Live(00-14)(Tons)</description>
+    <externalId>false</externalId>
+    <label>Reset Live(00-14)(Tons)</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

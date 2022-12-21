@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This permission will control access for BET Mass Upload Functionality.</description>
+    <isLicensed>false</isLicensed>
+    <label>BET Mass Upload Permission</label>
+</CustomPermission>

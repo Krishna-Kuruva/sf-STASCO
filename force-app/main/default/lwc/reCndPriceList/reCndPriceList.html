@@ -1,0 +1,597 @@
+<template>
+ 
+    <div if:true={showPopUp}>
+        <c-re-cnd-modal-pop-up  validfrom={validFromDate} 
+                                validto={validToDate}
+                                adjustment-screen=true
+                                onmassedit={handleMassEdit}
+                                onclosepopup={closePopUp}>
+        </c-re-cnd-modal-pop-up>
+    </div>
+    <div if:true={saveWarning}>
+        <c-re-cnd-modal-pop-up  show-save-warning=true
+                                validfrom={validFromDate} 
+                                validto={validToDate}
+                                onsaveandgeneratesfj={handleSave}
+                                onclosepopup={closePopUp}>
+        </c-re-cnd-modal-pop-up>
+    </div>
+    <div if:true={filterOption}>
+        <c-re-cnd-modal-pop-up  filter-label={filterLabel}
+                                is-retry={isRetry}
+                                is-g-s-a-p={isGSAP}
+                                show-customer-type-options=true
+                                ongsapselection={handleCustomerTypes}
+                                onclosepopup={closePopUp}>
+        </c-re-cnd-modal-pop-up>
+    </div>
+    <div if:true={showMailList}>
+        <c-re-cnd-modal-pop-up  show-mail-list={showMailList}
+                                selected-date={datefilter}
+                                pop-up-width="modalHeightLarge"
+                                onclosepopup={closePopUp}>
+        </c-re-cnd-modal-pop-up>
+    </div>
+    <div if:true={downloadOption}>
+        <c-re-cnd-modal-pop-up  download-gsap-file=true
+                                is-g-s-a-p={isGSAP}
+                                is-sap-upload={isSapUpload}
+                                is-anothr-sap-uplod-in-progres={isAnothrSapUplodInProgres}
+                                job-run-name={jobRunName}
+                                job-run-start-dt-time={jobRunStartDtTime}
+                                onsapdownloadselection={handleCustomerTypes}
+                                onclosepopup={closePopUp}>
+        </c-re-cnd-modal-pop-up>
+    </div>    
+    <!--Button Bar-->
+    <div class="slds-p-around_xxx-small slds-grid slds-m-bottom_xxx-small buttonBar">
+        <div class="slds-col slds-p-around_xxx-small">
+            <template if:true={showStatusBar}>
+                <lightning-button-icon icon-name="utility:preview"  variant="bare" onclick={hideStatusBar} alternative-text="Settings" title="Settings"></lightning-button-icon>
+                
+            </template>
+            <template if:false={showStatusBar}>
+                <lightning-button-icon icon-name="utility:hide"  variant="bare" onclick={handleShowStatusBar} alternative-text="Settings" title="Settings"></lightning-button-icon>
+                
+            </template>
+        </div>
+        <div class="slds-col slds-p-around_xxx-small"><b>Selected Date-{datefilter}</b></div>
+        <div class="slds-col slds-p-around_xxx-small"><b>Effective From-{validFromDate}</b></div>
+        <div class="slds-col slds-p-around_xxx-small"><b>Effective To-{validToDate}</b></div>
+        <div class="slds-col">
+            <template if:true={pricingAccess} >
+                <!--<c-re-cnd-report selected-date={datefilter}></c-re-cnd-report>-->
+           
+                <lightning-button-group>
+                    <lightning-button variant="bare" label="Mass Update"  disabled={disableButtons} onclick={openPopForMassUpdate} class="buttonHeight"></lightning-button>
+                    <lightning-button variant="bare" label="Generate SFJ Prices" disabled={disableSFJButton} onclick={generateSFJPrices} class="buttonHeight"></lightning-button>
+                </lightning-button-group>
+            </template>
+
+            <template if:true={gsapAccess} >
+                <lightning-button-group>
+                    <lightning-button variant="bare" label="Upload to SAP"  disabled={disableButtons}  onclick={GSAPOptions} ></lightning-button>
+                    <lightning-button variant="bare" label="Retry Upload"  disabled={disableButtons}  onclick={GSAPOptions} ></lightning-button>
+                    <lightning-button variant="bare" label="Download SAP Files" disabled={disableDwldButton} onclick={DownloadOptions} ></lightning-button>
+                </lightning-button-group>
+            </template>
+        </div>
+
+        <div class="slds-col ">
+          <template if:true={pricingAccess} >
+            <lightning-button-group>
+            <lightning-button-icon icon-name="utility:mark_all_as_read"  variant="border-filled" disabled={disableButtons}  onclick={showIntegrityCheck} alternative-text="Integrity Check" title="Integrity Check"></lightning-button-icon>   
+            <lightning-button-icon icon-name="utility:kanban"  variant="border-filled" disabled={disableButtons}  onclick={showCompetitorReport} alternative-text="Competitor" title="Competitor"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:save"  variant="border-filled" disabled={disableButtons}  onclick={showSaveWarning} alternative-text="Save Changes" title="Save Changes"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:email"  variant="border-filled" disabled={disableButtons}  onclick={showMail} alternative-text="Send Email" title="Send Email"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:filterList"  variant="border-filled" onclick={toogleFilter} alternative-text="Settings" title="Settings"></lightning-button-icon>
+            </lightning-button-group>
+          </template>
+
+          <template if:true={gsapAccess} >
+            <template if:false={pricingAccess} >
+                <lightning-button-icon icon-name="utility:filterList"  variant="border-filled" onclick={toogleFilter} alternative-text="Settings" title="Settings"></lightning-button-icon>
+            </template>
+          </template>
+        </div>
+    </div>
+
+    <!--Status Bar-->
+    <template if:true={showStatusBar}>  
+        <div class="slds-p-around_xxx-small slds-m-bottom_xxx-small buttonBar">
+            <div class="slds-grid ">
+            
+                <div class="slds-col ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <span class="slds-avatar avatar" >
+                            <abbr class="slds-avatar__initials slds-icon-standard-account  DR" style="padding-top: 0.1rem;" title="Draft">DR</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Draft</p>
+                        </div>
+                    </div>
+                </div>
+            
+            
+                <div class="slds-col ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account RU " style="padding-top: 0.1rem;" title="Ready to Upload">RU</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Ready to Upload</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <span class="slds-avatar avatar" >
+                            <abbr class="slds-avatar__initials slds-icon-standard-account UP " style="padding-top: 0.1rem;" title="Uploaded">UP</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Uploaded</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <span class="slds-avatar avatar" >
+                            <abbr class="slds-avatar__initials slds-icon-standard-account FA " style="padding-top: 0.1rem;" title="Failed">FA</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Failed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <span class="slds-avatar avatar" >
+                            <abbr class="slds-avatar__initials slds-icon-standard-account UN " style="padding-top: 0.1rem;" title="Failed">UN</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small ">Upload not allowed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template if:true={isLoadingGSAP} >
+    <div class="slds-p-around_xxx-small slds-grid slds-m-bottom_xxx-small buttonBar">
+        <div class="slds-col slds-size_2-of-3 slds-align_absolute-center slds-p-around_xxx-small redFont">
+
+            <b>Records Loading to SAP, please wait...!!!</b>
+        </div>
+        
+        <template if:true={showProgress}>
+            <div class="slds-col slds-size_1-of-3 slds-p-around_xxx-small" > <b>Progress Status: {totalProcessed}/{totalUpload}</b></div>
+        </template>
+
+        <template if:false={showProgress} >
+            <div class="slds-col slds-size_1-of-3 slds-p-around_xxx-small" > <b>Progress Status: Initializing....</b></div>
+        </template>
+    </div>
+    </template>
+    <!--DISPLAY SPINNER-->
+<div class="TableDiv">
+    <template if:true={isLoading} >
+        <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+        </lightning-spinner>
+    </template>
+
+
+    <template if:false={isLoading} >
+
+        <div class={tableClass}>
+            <table class="slds-table slds-table_bordered slds-table_col-bordered ">
+                <thead>
+                    <tr>
+                        <!--<th>No</th>-->
+                        <template if:true={pricingAccess} >
+                        <th><lightning-input type="checkbox" variant="label-hidden" label="Select All" 
+                            onchange={selectAll}
+                            checked={isAllSelected} name="input1">
+                            </lightning-input>
+                        </th>
+                        
+                        <th>-</th>
+                        </template>
+                        <template if:true={isSFJ}>
+                            <th><b>Ship To</b></th>
+                        </template>
+                        <template if:false={isSFJ}>
+                            <th><b>Location </b></th>
+                        </template>
+                        <th><b>Product </b></th>
+                        <th><b>Rack</b></th>
+                        <th><b>Classification</b></th>
+                        <th><b>Customer Type</b></th>
+                        <th><b>Product Group</b></th>                        
+
+                        <template if:true={pricingAccess}>
+                        <template if:false={isSFJ}>
+                            <th><b>Is only appli. to SFJ?</b></th>
+                            <th><b>Is Base?</b></th>                            
+                        </template>
+                        <th title="Old Base Price"><b>Old Price</b></th>
+                        <th><b>Market Move</b></th>
+                        <th><b>Adjustment</b></th>
+                        <template if:true={allowEditForDate}>
+                            <th>Price Before</th>
+                        </template>
+                        </template>
+
+                        <template if:false={pricingAccess}>
+                            <template if:false={isSFJ}>
+                                <th><b>Is only appli. to SFJ?</b></th>                                                       
+                            </template>
+                        </template>
+
+                        <th><b>Final Price</b></th>
+
+                        <template if:true={pricingAccess} >
+                        <template if:true={updateTodayPrice}>
+                            <template if:true={allowEditForDate}>
+                            <template if:false={isSFJ}> 
+                                <th><b>ESSO Price</b></th>
+                                <th><b>Suncor Price</b></th>
+                                <th><b>Valero Price</b></th>
+                                <th><b>Parkland Price</b></th>
+                            </template>
+                            </template>
+                        </template>                       
+                        
+                        <template if:false={allowEditForDate}>
+                            <template if:false={isSFJ}> 
+                                <th><b>ESSO Price</b></th>
+                                <th><b>Suncor Price</b></th>
+                                <th><b>Valero Price</b></th>
+                                <th><b>Parkland Price</b></th>
+                            </template>
+                        </template>
+                        </template>
+                        <th><b>Status</b></th>
+                       <!-- <th>Comment</th>-->
+                    </tr>
+                </thead>
+      
+                <tbody>
+                    <template if:true={noRecord}>
+                        <tr><td colspan="19"><div class="warningFont">NO RECORD FOUND!!</div></td></tr>
+                    </template>
+
+                    <template for:each={listToShow} for:item="cp" for:index="index">
+                        <tr key={cp.Id}>
+                            <!--<td>{index}</td>-->
+                            <template if:true={pricingAccess} >
+                            <td>
+                                <lightning-input    type="checkbox" variant="label-hidden" 
+                                        label="Select All" name="isSelected" 
+                                        value={index} data-record-id={cp.Id}
+                                        onchange={selectRecord} checked={cp.isSelected} >
+                                </lightning-input>
+                            </td>
+
+                        
+                            <template if:false={cp.isDetail}>
+                            <td><lightning-button-icon icon-name="utility:chevronright"
+                            alternative-text="Show Details"
+                            data-record-id={cp.Id}
+                            size="small"
+                            value={index}
+                            title="Show Details"
+                            variant="bare"
+                            onclick={showDetailSection}>
+                            </lightning-button-icon>
+                            </td> 
+                            </template>
+                            <template if:true={cp.isDetail}>
+                            <td><lightning-button-icon 
+                            icon-name="utility:chevrondown"
+                            alternative-text="Show Details"
+                            data-record-id={cp.Id}
+                            size="medium"
+                            value={index}
+                            title="Show Details"
+                            variant="bare"
+                            onclick={closeDetail}>
+                            </lightning-button-icon>
+                            </td> 
+                            </template>
+                        </template>
+                   
+                    <template if:true={isSFJ}>
+                        <td>{cp.ShipTo}&nbsp;&nbsp;&nbsp;<lightning-helptext content={cp.ShipToNumbr}></lightning-helptext></td>
+                    </template>
+                    <template if:false={isSFJ}>
+                        <td>{cp.Location}&nbsp;&nbsp;&nbsp;<lightning-helptext content={cp.locationCode}></lightning-helptext></td>
+                    </template>
+                    
+                    <td>{cp.Product}&nbsp;&nbsp;&nbsp;<lightning-helptext content={cp.productDescription}></lightning-helptext></td>
+                    <td>{cp.Rack}</td>
+                    <td>{cp.Classification}</td>
+                    <td>{cp.Group}</td>
+                    <td>{cp.productGroup}</td>  
+  
+                <template if:true={pricingAccess}>
+                    <template if:false={isSFJ}>
+                    <td>{cp.isOnlySFJ}</td>
+                    <td>{cp.isBaseProduct}</td>                   
+                    </template>
+                    <td>{cp.oldBase}</td>
+                    <td>{cp.marketMove}</td>
+                    <td class="slds-p-right_medium adjustStyle ">
+                        <span class={cp.changedClass}>
+                        <template if:true={allowEditForDate}>
+                            <template if:true={isSFJ}>
+                                <template if:true={pricingAccess} >
+                                    <lightning-formatted-number value={cp.Adjustment} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                                    <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:edit"
+                                    alternative-text="Edit"
+                                    data-record-id={cp.id}
+                                    value={index}
+                                    size="small"
+                                    title="Edit Adjustment"
+                                    variant="bare"
+                                    onclick={openPopUp}>
+                                   </lightning-button-icon>
+                                </template>
+                                <template if:false={pricingAccess}>
+                                    {cp.Adjustment}
+                                </template>
+                            </template>
+                            <template if:false={isSFJ}>
+                                <template if:true={pricingAccess} >
+                                    <lightning-formatted-number value={cp.Adjustment} maximum-fraction-digits="2"
+                                     minimum-fraction-digits="2"></lightning-formatted-number>
+                                     <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:edit"
+                                     alternative-text="Edit"
+                                     data-record-id={cp.id}
+                                     value={index}
+                                     size="small"
+                                     title="Edit Adjustment"
+                                     variant="bare"
+                                     onclick={openPopUp}>
+                                    </lightning-button-icon>
+                                </template>
+                                <template if:false={pricingAccess}>
+                                    {cp.Adjustment}
+                                </template>
+                            </template>
+                        </template>
+    
+                        <template if:false={allowEditForDate}>
+                            {cp.Adjustment} 
+                        </template>
+                    </span>
+                    </td>
+                    <template if:true={allowEditForDate}>
+                        <td>{cp.valueBefore}</td>
+                    </template>
+                </template>
+
+                <template if:false={pricingAccess}>
+                    <template if:false={isSFJ}>
+                        <td>{cp.isOnlySFJ}</td>
+                    </template>
+                </template>  
+
+                <td><b>{cp.finalValue}</b></td>
+
+                <template if:true={pricingAccess} >
+                    <template if:true={updateTodayPrice}>
+                        <template if:true={allowEditForDate}>
+                        <template if:false={isSFJ}>  
+                        <td>{cp.supp1}</td>
+                        <td>{cp.supp2}</td>
+                        <td>{cp.supp3}</td>
+                        <td>{cp.supp4}</td>
+                        </template>
+                        </template>
+                    </template>
+                    <template if:false={allowEditForDate}>
+                        <template if:false={isSFJ}> 
+                            <td>{cp.supp1}</td>
+                        <td>{cp.supp2}</td>
+                        <td>{cp.supp3}</td>
+                        <td>{cp.supp4}</td>
+                        </template>
+                    </template>
+                </template>
+                    <td>
+                        <span class="slds-avatar avatar" >                                    
+                            <abbr class={cp.statusClass} >{cp.Status}</abbr>                                   
+                        </span>  
+                    </td>
+                    <!--<td>{cp.Comment}</td>-->
+                </tr>
+            </template>
+          </tbody>
+        </table>
+      </div> 
+    </template>
+
+
+<!-- Start -->      
+<div>
+    <template if:true={isPrceDiscrepancyExists}>
+        <div class="demo-only" onkeyup={handleKeyPress}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">  
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+                           <strong>CA Dashboard Vs Price Execution Price Data Integrity Check</strong>
+                        </h2>                       
+                    </header>                      
+                    <div class="slds-modal__content modalPopupBody">
+                        <template if:true={isPrceDiscrepancyExists}>
+                            <div class="slds-grid slds-size_1-of-2 headerGasolinepadding">                    
+                                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                                    <div class="slds-col slds-p-around_small">
+                                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                                <thead> 
+                                                    <tr class="slds-line-height_reset mainheadings" style="font-size: medium;"> 
+                                                        <th class="slds-p-left_large" scope="col" colspan="4">
+                                                            <div class="slds-align_absolute-center" style="width:110px;">Gasoline</div>
+                                                        </th>                                                         
+                                                    </tr>                                    
+                                                    <tr class="slds-line-height_reset mainheadings" style="font-size: medium;">
+                                                        <th class="slds-p-left_large" scope="col" colspan="1">
+                                                            <div class="slds-align_absolute-left" style="width:110px;">Rack</div>
+                                                        </th>                             
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">CA Dashboard Price</div>
+                                                        </th>
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">Price Execution Price</div>
+                                                        </th>
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">Difference</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>    
+                                                <tbody>
+                                                    <template if:true={isGosolineResult}>
+                                                        <template for:each={gosolinePrceDiscrpcyResult} for:item="gosolineResult">
+                                                            <tr key={gosolineResult.rack} class={gosolineResult.stylClas}> 
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                                        <lightning-formatted-text value={gosolineResult.rack}></lightning-formatted-text>                
+                                                                    </div>
+                                                                </td>                                         
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={gosolineResult.caPrice} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                  
+                                                                    </div>
+                                                                </td>
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={gosolineResult.pePrice} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                                    </div>
+                                                                </td>
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={gosolineResult.capaDiff} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                             
+                                                                    </div>
+                                                                </td>  											
+                                                            </tr>
+                                                        </template>
+                                                    </template>
+                                                    <template if:false={isGosolineResult}>
+                                                        <tr class="slds-hint-parent mainheadings"> 
+                                                            <td class="slds-cell-wrap" colspan="4"><p>All the Gasoline Racks in the Price Execution prices are matching with CA Dashboard prices!</p></td> 
+                                                        </tr> 
+                                                    </template>
+                                                </tbody>
+                                            </table>                         
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                                    <div class="slds-col slds-p-around_small">
+                                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right slds-border_top">
+                                                <thead> 
+                                                    <tr class="slds-line-height_reset mainheadings" style="font-size: medium;"> 
+                                                        <th class="slds-p-left_large" scope="col" colspan="4">
+                                                            <div class="slds-align_absolute-center" style="width:110px;">Gas Oil (Diesel)</div>
+                                                        </th>                                                         
+                                                    </tr>                                  
+                                                    <tr class="slds-line-height_reset mainheadings" style="font-size: medium;">
+                                                        <th class="slds-p-left_large " scope="col" colspan="1">
+                                                            <div class="slds-align_absolute-left" style="width:110px;">Rack</div>
+                                                        </th>                                   
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">CA Dashboard Price</div>
+                                                        </th>
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">Price Execution Price</div>
+                                                        </th>
+                                                        <th scope="col" colspan="1">
+                                                            <div class="slds-truncate slds-align_absolute-center">Difference</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>    
+                                                <tbody>
+                                                    <template if:true={isDieselResult}>
+                                                        <template for:each={gosoilPrceDiscrpcyResult} for:item="dieselResult">
+                                                            <tr key={dieselResult.rack} class={dieselResult.stylClas}> 
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                                        <lightning-formatted-text value={dieselResult.rack}></lightning-formatted-text>                                                
+                                                                    </div>
+                                                                </td>
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={dieselResult.caPrice} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                                    </div>
+                                                                </td>
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={dieselResult.pePrice} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                  
+                                                                    </div>
+                                                                </td>
+                                                                <td scope="col" colspan="1">
+                                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                                        <lightning-formatted-number value={dieselResult.capaDiff} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                             
+                                                                    </div>
+                                                                </td>  											
+                                                            </tr>
+                                                        </template>
+                                                    </template>
+                                                    <template if:false={isDieselResult}>
+                                                        <tr class="slds-hint-parent mainheadings"> 
+                                                            <td class="slds-cell-wrap" colspan="4"><p>All the Gas Oil Racks in the Price Execution prices are matching with CA Dashboard prices!</p></td> 
+                                                        </tr> 
+                                                    </template>
+                                                </tbody>
+                                            </table>                         
+                                        </div>
+                                    </div>
+                                </div>            
+                            </div>
+                        </template>                            
+                    </div>                   
+                    <div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal}>Ok</button>									
+                        </footer>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+</div>    
+
+<!-- End -->    
+
+<template if:true={showDetails}>
+  <div class="slds-p-top_xx-small slds-p-bottom_xx-small">
+<c-re-c-n-d-price-detail    selected-record={selectedRecord}
+                            is-s-f-j={isSFJ}
+                            allow-edit-for-date={allowEditForDate}
+                            cp-adjust-access={pricingAccess}
+                            disable-buttons={disableButtons}
+                            pb-adjust-access={pricingAccess}
+                            version-list={versionsList}
+                            onchangeadjustment={getNewValuesFromDetail}
+                            onclosedetail={closeDetail}>
+</c-re-c-n-d-price-detail>
+</div>
+</template>
+</div>
+</template>

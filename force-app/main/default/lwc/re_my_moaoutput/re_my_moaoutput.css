@@ -1,0 +1,12 @@
+.slds-box{
+    border : 2px solid #FFCC00 !important;
+    padding-right: 0.01rem;
+    padding-bottom: 0.01rem;
+    padding-left: 0.01rem;
+}
+.h2{
+    font-size: larger !important;
+}
+.slds-select{
+    min-width: 150px;
+}

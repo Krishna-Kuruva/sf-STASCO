@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_BDD_Business_Division__c</fullName>
+    <externalId>false</externalId>
+    <label>* BDD Business Division</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crude Global</fullName>
+                <default>false</default>
+                <label>Crude Global</label>
+            </value>
+            <value>
+                <fullName>Global Finance</fullName>
+                <default>false</default>
+                <label>Global Finance</label>
+            </value>
+            <value>
+                <fullName>Global Operations</fullName>
+                <default>false</default>
+                <label>Global Operations</label>
+            </value>
+            <value>
+                <fullName>JV Majority Shell-owned</fullName>
+                <default>false</default>
+                <label>JV Majority Shell-owned</label>
+            </value>
+            <value>
+                <fullName>Legal Counsel</fullName>
+                <default>false</default>
+                <label>Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Products Global</fullName>
+                <default>false</default>
+                <label>Products Global</label>
+            </value>
+            <value>
+                <fullName>Shell Energy Americas</fullName>
+                <default>false</default>
+                <label>Shell Energy Americas</label>
+            </value>
+            <value>
+                <fullName>Shell Energy Asia</fullName>
+                <default>false</default>
+                <label>Shell Energy Asia</label>
+            </value>
+            <value>
+                <fullName>Shell Energy Australia</fullName>
+                <default>false</default>
+                <label>Shell Energy Australia</label>
+            </value>
+            <value>
+                <fullName>Shell Energy Europe</fullName>
+                <default>false</default>
+                <label>Shell Energy Europe</label>
+            </value>
+            <value>
+                <fullName>Shell Energy LNG</fullName>
+                <default>false</default>
+                <label>Shell Energy LNG</label>
+            </value>
+            <value>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+                <label>Shipping</label>
+            </value>
+            <value>
+                <fullName>Shell Energy MEA</fullName>
+                <default>false</default>
+                <label>Shell Energy MEA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

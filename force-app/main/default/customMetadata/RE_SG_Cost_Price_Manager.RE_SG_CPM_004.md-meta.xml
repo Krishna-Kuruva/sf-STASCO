@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CPM-004</label>
+    <protected>false</protected>
+    <values>
+        <field>RE_SG_Dist_Disc_Percentage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_SG_Dist_Disc_Quote__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_SG_HCV_Quote_1_Percent__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>RE_SG_HCV_Quote_1__c</field>
+        <value xsi:type="xsd:string">Kero</value>
+    </values>
+    <values>
+        <field>RE_SG_HCV_Quote_2_Percent__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_SG_HCV_Quote_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_SG_Market_Premium_Percent__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>RE_SG_Market_Premium_Quote__c</field>
+        <value xsi:type="xsd:string">Kero Premium</value>
+    </values>
+    <values>
+        <field>RE_SG_Oil_Loss_Percent__c</field>
+        <value xsi:type="xsd:double">0.1</value>
+    </values>
+    <values>
+        <field>RE_SG_Plant__c</field>
+        <value xsi:type="xsd:string">Pandan</value>
+    </values>
+    <values>
+        <field>RE_SG_Product__c</field>
+        <value xsi:type="xsd:string">Kero</value>
+    </values>
+    <values>
+        <field>RE_SG_Valid_From__c</field>
+        <value xsi:type="xsd:date">2021-12-31</value>
+    </values>
+    <values>
+        <field>RE_SG_Valid_To__c</field>
+        <value xsi:type="xsd:date">2022-12-31</value>
+    </values>
+</CustomMetadata>

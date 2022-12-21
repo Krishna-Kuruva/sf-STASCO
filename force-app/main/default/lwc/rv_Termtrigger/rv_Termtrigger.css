@@ -1,0 +1,64 @@
+.c-container {
+    font-size: 12px;
+}
+
+.THIS .select-auto-width>.slds-form-element__control>.slds-select_container {    
+    display: inline-block;
+}
+
+.THIS .alignleft {
+    float: left;
+}
+
+.THIS .alignright {
+    float: right;
+}
+
+.offerdeal-box {
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.tableFixHead {
+    overflow: auto;
+    height: auto;
+    max-height: 500px;
+}
+
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableCaption {
+    font-weight: 16px;
+    color: #610808;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.tableCaptionBottom {
+    font-weight: 16px;
+    color: #610808;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.tableFixHead th {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+
+.readonly-page {
+    pointer-events: none;
+}
+
+/*.THIS .slds-section > .sectionCss{
+    justify-content: space-between;
+    display: flex !important;
+    flex-direction: row;
+    background-color: lightgrey;
+}*/

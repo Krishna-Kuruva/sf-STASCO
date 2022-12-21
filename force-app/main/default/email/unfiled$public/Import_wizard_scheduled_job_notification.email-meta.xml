@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used for notifying users after import wizard scheduled job is completed.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Import wizard scheduled job notification</name>
+    <style>none</style>
+    <subject>{!RT_ImportLog__c.ImportType__c} upload completed.</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

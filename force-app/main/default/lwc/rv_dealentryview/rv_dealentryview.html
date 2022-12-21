@@ -1,0 +1,462 @@
+<!--
+ - Created by===========> Swarna.Makam on 12/26/2021.
+ -->
+
+<!-- RvDealentryview -->
+<template>
+    <!--<template if:true={show}>-->
+    <template if:true={hideCreateDealsSection}>
+        <template if:false={dealEntrySHTData.length}>
+            <p style="font-weight:bold;color:Red;">{dealEntrySHTDataAvailability}</p>
+        </template>
+        <template if:true={dealEntrySHTData.length}>
+        <lightning-layout-item padding="around-small" size="12">
+        <div class="slds-grid tableFixHead scrollbarEdit" >
+            <div class={dealEntryCss}>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer ">
+                        <thead>
+                        <tr class="slds-text-title_caps">
+                            <!--<th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                SHT No
+                            </th>
+                            <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                MRC No
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                Sold To
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                Ship To
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                PO Type
+                            </th>--><!--slds-color__background_gray-5-->
+                            <th class="putborderHeader slds-cell-wrap  " scope="col">
+                                Plant
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Plant Code
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Grade
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Mat No
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Sales(cbm)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Online ATP(cbm)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Phone ATP(cbm)
+                            </th>
+                            <th
+                            
+                            
+                            
+                            
+                            class="putborderHeader slds-cell-wrap " scope="col">
+                                BSP (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                LAP (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Margin (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                stand.OTM (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Final OTM (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap" scope="col">
+                                Last Offer
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Volume CBM
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Sales Price (€/100L)
+                            </th>
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Deal Margin (€/100L)
+                            </th>
+
+                            <th class="putborderHeader slds-cell-wrap " scope="col">
+                                Comment
+                            </th>
+
+                        </tr>
+                        </thead>
+                       
+                        <!--GetMRCData::[{"accId":"0012500001RIxCsAAL","accName":"ADOLF ROTH GMBH & CO","atpLive":8284,"atpVoltoBeReduced":true,
+                        "finalbspCal":78.73,"finalSalesPriceCal":78.73,"grade":"AGO B7","isGsapDealCancelOn":true,"isGsapDealCreateOn":true,
+                        "isPricingTaxed":true,"isVolToBeHedged":true,"isZeroPriceDeal":false,"landedCostCal":38.88,"location":"D229",
+                        "locationId":"a0M25000009IoR6EAK","locationName":"Godorf Shell Gantry","materialName":"TP AGO 10ppmS B7 UdUm Low Dose dealer DE",
+                        "materialNo":"1685","mrcId":"a0N25000006hnPjEAI","mrcName":"0321492213-106229","OTM":78.73,"pricingCondition":"YP23",
+                        "retroAtpVoltoBeReduced":false,"retroGsapDealCancelOn":true,"retroGsapDealCreateOn":true,"retroVolToBeHedged":false,
+                        "salesOrg":"AT01","shipToNumber":"0012567495"}]-->
+                        <template for:each={dealEntrySHTData} for:item="mrc" for:index="indx">
+                        
+                            <tr key={mrc} data-mrc= {mrc.mrcNo} class="slds-hint-parent">
+                                <td data-label="MrcNo" style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{mrc.mrcNo}</td>
+                        </tr>
+                        <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex"> 
+                            <tbody class="bgGrey" key = "{cmPlant.location}" data-plant = {cmPlant.location}>
+                            <tr>
+                            <td data-label="PlantName" rowspan = {cmPlant.rowspan} >{cmPlant.location}</td>
+                            <td data-label="PlantId" rowspan = {cmPlant.rowspan}  >{cmPlant.locationCode}</td>
+                                
+                            </tr>
+                                    <template for:each={cmPlant.gradeGroup} for:item="cmPlantGrade" for:index="gIndex">
+                                        <tr data-grade= {cmPlantGrade.grade} key={cmPlantGrade}>
+                                        <td  data-label="GRADE" style="font-weight:bold;">{cmPlantGrade.grade}  </td> 
+                                        <td  data-label="MAT NO">{cmPlantGrade.materialNo}  </td>  
+                                        <td data-label="SALES(CBM)">{cmPlantGrade.dailySales}</td>
+                                        <td  data-label="ONLINE ATP(CBM)">{cmPlantGrade.onlineATP}  </td>
+                                        <td  data-label="PHONE ATP(CBM)"> {cmPlantGrade.phoneATP}</td>  
+                                        <td  data-label="BSP">{cmPlantGrade.finalbspCal}  </td>  
+                                        <td  data-label="LAP(/100L)"> {cmPlantGrade.finalSalesPriceCal}</td>  
+                                        <td  data-label="MARGIN"> {cmPlantGrade.dealmargin} </td>  
+                                        <td  data-label="STAND.OTM">
+                                            <template if:true= {cmPlantGrade.showOTM}>
+                                                {cmPlantGrade.otm}
+                                            </template>
+                                        </td>  
+                                        <td  data-label="FINAL OTM" style="font-weight:bold">
+                                             <template if:true={cmPlantGrade.showFinalOTM}>    
+                                            {cmPlantGrade.finalOTM}
+                                           </template>
+                                            </td>
+                                        <td  data-label="LAST OFFER">{cmPlantGrade.lastOfferedPrice}</td>
+                                        <td  data-label="VOLUME CBM"> 
+                                            <template if:false= {cmPlantGrade.mogas}>
+                                                <lightning-input type="number"  step=".01" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.volumeCBM}  onchange={onchangeTriggerVolume}>
+                                                </lightning-input>
+                                            </template>
+                                                <template if:true= {cmPlantGrade.mogas}>
+                                                    <lightning-input  data-plant= {pIndex} data-mrc = {indx} data-id= {cmPlantGrade.mogasId} value={cmPlantGrade.mogasSummation} disabled>
+                                                    </lightning-input>
+                                                </template>
+                                        </td>  
+                                        <td data-label="SALES PRICE">
+                                            <template if:false= {cmPlantGrade.mogas}>
+                                                <lightning-input  type="number" step=".01" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.pricePerVol}  onchange={onchangeTriggerSP}>
+                                                </lightning-input>
+                                            </template>
+                                        </td>
+                                        
+                                        <td data-label="SALES MARGIN">{cmPlantGrade.salesMargin}</td>
+                                        <td data-label="COMMENT">
+                                            <template if:false= {cmPlantGrade.mogas}>
+                                                <lightning-textarea data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.Comment}  onchange={onchangeDealComment} max-length="255">
+                                                </lightning-textarea>
+                                            </template>
+                                        </td>
+                                </tr>
+                                    </template>
+                                </tbody>
+                            </template>
+                        </template>
+                        
+                    </table>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12"></lightning-layout-item>
+        <lightning-layout>
+            <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
+            <lightning-layout-item  size="1">
+                <lightning-button variant="brand" label="Save" name="Save" disabled={isDisabled} 
+                onclick={saveSHTFromDealEntry} style="display: flex;justify-content: flex-end;margin-top:-10px"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        </template>
+    </template>
+     <template if:true={isLoading}>
+        <div class="slds-p-around_x-large">
+            <lightning-spinner alternative-text="Loading" class="slds-is-fixed" size="medium" variant="brand"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-layout-item size="12"></lightning-layout-item>
+    <template if:true={savedDealEntrySHTData.length}>
+    <lightning-layout-item padding="around-small" size="12" >
+        <h3 style=" font-weight: 700;padding: 10px;color: black;background-color: rgb(246, 250, 213);border: 1px solid #b5b6b9;margin-top: 10px;margin-bottom:10px;border-radius:4px;">
+            Saved Deals</h3>
+     </lightning-layout-item>
+    
+    <lightning-layout-item padding="around-small" size="12">
+        <div class={dealEntryCss}>
+            <div class="slds-grid " >
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer ">
+                    <thead>
+                    <tr class="slds-text-title_caps">
+                        <th class="putborderHeader slds-cell-wrap  " scope="col">
+                            MRC No
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Sold To
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Ship To
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            PO Type
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Plant
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Grade
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Mat No
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Contract Start
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Contract End
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Volume CBM
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            SP €/100L
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            MARGIN €/100L
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap" scope="col">
+                            PSP €/100L
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Comment
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap " scope="col">
+                            Action
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <template if:true={savedDealEntrySHTData}>
+                    <template for:each={savedDealEntrySHTData} for:item="mrc" for:index="indx">
+                       
+                        <tr key={mrc} data-mrc= {mrc.MrcNo} class="slds-hint-parent">
+                           
+                            <td data-label="MrcNo" >{mrc.MrcNo}</td>
+                            <td data-label="Customer">{mrc.Customer}</td>
+                            <td data-label="shipToNumber">{mrc.shipToNumber}</td>
+                            <td data-label="poType">{mrc.poType}</td>
+                            <td data-label="location" >{mrc.location}</td>
+                            <td data-label="GRADE" >{mrc.product}</td>
+                            <td  data-label="MAT NO">{mrc.materialNo}  </td>  
+                            <td data-label="SALES(CBM)">{mrc.c_StartDate}</td>
+                            <td  data-label="ONLINE ATP(CBM)">{mrc.c_EndDate}  </td>
+                            <td  data-label="VOLUME CBM"> 
+                                <lightning-input  step=".01" data-id={indx}  value={mrc.volCbm} onchange={onUpdateTriggerVolume}>
+                                </lightning-input>
+                            </td>
+                           <!--td data-label="VOLUME CBM">
+                                <template if:true={mrc.salesPriceCheck}>
+                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} 
+                                                value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={spPerCondBlack}>
+                                    </lightning-input>
+                                </template>
+                                <template if:false={mrc.salesPriceCheck}>
+                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} 
+                                                    value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={spPerCondRed}>
+                                    </lightning-input>
+                                </template>
+                            </td-->
+							<td  data-label="VOLUME CBM"> 
+                                <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={mrc.spColor}> 
+                                 </lightning-input>
+                            </td>
+                            <td  data-label="PHONE ATP(CBM)"> {mrc.targetMargin}</td>  
+                            <td  data-label="BSP">{mrc.msp}  </td>  
+                            
+                            <td data-label="COMMENT">
+                                <lightning-textarea data-id={indx} value={mrc.Comment}  onchange={onUpdateDealComment} max-length="255">
+                                </lightning-textarea>
+                            </td>
+                            <td data-label="Action">
+                                <lightning-button label="Cancel" name="Cancel" data-recid ={mrc.shtRecordId} onclick={cancelSavedSHTDeal}
+                                disabled={confirmCancelDisable}></lightning-button>
+                            </td>
+                            
+                     </tr>
+                    </template>
+                </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-layout-item>
+    <lightning-layout>
+        <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <lightning-button label="Confirm" name="Confirm Deals" onclick={confirmSavedDeals} variant="brand" style="display: flex;justify-content: flex-end;" 
+            disabled={confirmCancelDisable}></lightning-button>
+        </lightning-layout-item>
+        
+    </lightning-layout>
+    </template>
+     <lightning-layout-item size="12"></lightning-layout-item>
+    <lightning-layout-item size="12">
+        <!--<h3>Completed Deals</h3>-->
+        <h3 style=" font-weight: 700;padding: 10px;color: black;background-color: rgb(246, 250, 213);border: 1px solid #b5b6b9;margin-top: 10px;margin-bottom:10px;border-radius:4px;">Completed Deals</h3>
+    </lightning-layout-item>
+        <template if:true={reloadCompletedDeals}>
+            <lightning-layout-item>
+                <c-rv_useadvancefilter></c-rv_useadvancefilter>
+            </lightning-layout-item>
+            <lightning-layout-item class={completedDealCss}>
+                <c-rv_termtriggercompledtedeals></c-rv_termtriggercompledtedeals>
+            </lightning-layout-item>
+        </template>
+    <!--</template>-->
+    <template if:true={spCheckModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 70% !important;max-width: 70rem !important;">
+             <!-- modal header start -->
+               <header class="slds-modal__header">
+                  <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleClickReview}>
+                     <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                     <span class="slds-assistive-text">Close</span>
+                  </button>
+                  <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">SP €/100L is lesser than PSP for below Deal(s). Do you want to proceed?</h2>
+               </header>
+           
+               <!-- modal body start -->
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="overflow-x: scroll;">
+                     <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <!--<th class="" scope="col">
+                                    <div class="slds-truncate">
+                                        <lightning-input onchange={allSelected} type="checkbox"></lightning-input>
+                                    </div>
+                                </th>-->
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="MRC No">MRC No</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Sold To">Sold To</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="SHIP-TO NO">SHIP-TO NO</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="PLANT">PLANT</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="GRADE">GRADE</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="MAT. NO">MAT. NO</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="CONTRACT START">CONTRACT START</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="CONTRACT END">CONTRACT END</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="VOLUME CBM">VOLUME CBM</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="SP €/100L">SP €/100L</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="PSP">PSP</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="MARGIN €/100L">MARGIN €/100L</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--[{"bsp":39.99,"Comment":"16- sc-SD","contractEndDate":"2021-09-27","contractStartDate":"2021-09-26",
+                            "Customer":"CHRISTIAN OHREM GMBH","CustomerId":"0012500001RIxDuAAL","dealStatus":"Saved","isZeroPriceDeal":false,
+                            "location":"Godorf Shell Gantry","locationId":"a0M25000009IoR6EAK",
+                            "materialName":"TP AGO 10ppmS B7 UdUm Low Dose dealer DE","materialNo":"1685","MrcId":"a0N25000006hnRNEAY",
+                            "MrcNo":"0320078090-111229","msp":39.99,"otm":0,"poType":"TSFP","product":"AGO B7","selected":true,
+                            "shipToNumber":"0011176945","shtNo":"SHT - 209268","shtRecordId":"a0V25000003h10iEAA","spPer100L":16.5,
+                            "targetMargin":0,"volCbm":18},{"bsp":70.18,"Comment":"afsdfs","contractEndDate":"2021-09-27",
+                            "contractStartDate":"2021-09-26","Customer":"CHRISTIAN OHREM GMBH","CustomerId":"0012500001RIxDuAAL",
+                            "dealStatus":"Saved","isZeroPriceDeal":false,"location":"Godorf Shell Gantry","locationId":"a0M25000009IoR6EAK",
+                            "materialName":"TP ULG 98 10ppmS E5 Udy Umk Low Dose DE","materialNo":"1642","MrcId":"a0N25000006hnRGEAY",
+                            "MrcNo":"0320078090-114229","msp":70.18,"otm":0,"poType":"TSFP","product":"ULG98","selected":true,
+                            "shipToNumber":"0011176945","shtNo":"SHT - 209267","shtRecordId":"a0V25000003h105EAA","spPer100L":13,
+                            "targetMargin":0,"volCbm":13}]-->
+                            <template for:each={correctionOnSavedDeal} for:item="conrrdeal">
+                                <tr key={conrrdeal.MrcNo}>
+                                    <!--<th scope="col">
+                                        <div>
+                                            <lightning-input type="checkbox" value={conrrdeal.MrcNo} data-id={conrrdeal.MrcNo}></lightning-input>
+                                        </div>
+                                    </th>-->
+                                    <th scope="col">
+                                        <div>{conrrdeal.MrcNo}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.Customer}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.shipToNumber}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.location}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.product}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.materialNo}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.contractStartDate}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.contractEndDate}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.volCbm}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div style={conrrdeal.spColor}>{conrrdeal.spPer100L}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.msp}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{conrrdeal.targetMargin}</div>
+                                    </th>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+               </div>
+     
+               <!-- modal footer start-->
+               <footer class="slds-modal__footer">
+                  <button class="slds-button slds-button_neutral" onclick={handleClickReview}>No, Review it</button>
+                  <lightning-button variant="brand" label="Yes, Confirm" title="Yes, Confirm" onclick={handleClickConfirm}></lightning-button>
+               </footer>
+            
+            </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

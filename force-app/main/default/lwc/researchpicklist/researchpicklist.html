@@ -1,0 +1,57 @@
+<template>   
+    <div class="slds-form-element reducedFont">        
+         <label class='slds-m-around_x-small'>{labelname}</label>
+         <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" 
+                aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-has-focus" 
+                    role="none">
+                    <!-- Search input-->
+                        <lightning-input id="input" name="Seacrh" style = "font-size: 13px"
+                        value={searchInput} onclick={showselected} onchange={onchangeSearchInput} variant="label-hidden" aria-autocomplete="list" role="textbox"
+                        autocomplete="off" placeholder={placeHolder} type="search">
+                        </lightning-input>
+                    <!-- Search input-->
+
+                    <!--Search result start-->
+                        <div class="serachresult">
+                            <template if:true={isDisplayMessage}>
+                                <lightning-card>No records found.</lightning-card>
+                            </template> 
+                            <template if:false={isDisplayMessage}>
+                                <template if:true={isDialogDisplay}>
+                                    <section aria-describedby="dialog-body-id-26" aria-label="Language Options" 
+                                         class="slds-popover slds-popover_full-width" id="popover-unique-id-02" role="dialog">
+                                        <div class="slds-popover__body slds-popover__body_small" id="dialog-body-id-26">
+                                            <fieldset class="slds-form-element">   
+                                                <lightning-checkbox-group name="Checkbox Group"   
+                                                                                          
+                                                    options={items}
+                                                    value={value}
+                                                    onchange={handleCheckboxChange}>
+                                                </lightning-checkbox-group>
+                                            </fieldset>
+                                        </div>
+                                        <footer class="searchfooter slds-text-align_right">
+                                            <lightning-button-group class="slds-text-align_right">
+                                            <lightning-button label="Clear" title="Clear" 
+                                                    onclick={handleCancelClick} class="slds-m-left_x-small"></lightning-button>
+                                            <lightning-button variant="brand" label="Update" title="Update"
+                                                    onclick={handleDoneClick} class="slds-m-left_x-small"></lightning-button>  
+                                                </lightning-button-group>                              
+                                        </footer>
+                                        
+                                    </section>                                               
+                                </template>
+                            </template>
+                        </div>
+                        <!--Serach result End-->
+
+                     </div>   
+                </div>
+            </div>     
+         </div>
+
+    </div>
+</template>

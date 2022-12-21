@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Deal Approval Sheet Email Template with Letterhead Logo - US</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Deal_Approval_Sheet_Test_Michelle_Letterhead</letterhead>
+    <name>Deal Approval Sheet - with Logo - US</name>
+    <style>freeForm</style>
+    <subject>Approval/Support Required for Risk Marketing Deal for Customer: {!Opportunity.Account}</subject>
+    <textOnly>As per the Manual of Authorities, your approval or support is required to close this Risk Marketing deal. The details of the deal are: 
+
+{!Opportunity.Account}
+
+ACCOUNT INFORMATION
+
+Account Name: {!Opportunity.Account} 
+Parent Account: {!Account.Parent} 
+Industry: {!Account.Industry} 
+
+
+B2B Account Manager: {!Account.B2B_Account_Manager__c} 
+Shell Account Manager: {!Account.Acct_Mgr__c} 
+Master Agreement: {!Account.Master_Agreement__c} 
+Registered Country: {!Account.Registered_Country__c} 
+Region: {!Account.Sector__c} 
+
+B2B TARGET INFORMATION
+
+Total Customer Demand: {!Account.Customer__c} 
+Target RM Volume: {!Account.Target_volume__c} 
+Unit: {!Account.Unit__c} 
+
+Priority B2B: {!Account.Priority__c} 
+Prospect Stage: {!Account.Prospect_Stage__c} 
+Probability: {!Account.Probability__c}%
+Expected Margin: {!Account.Expected_Margin_MT__c} 
+
+B2B RESULTS
+
+Potential Contribution: {!Account.Potential_Contribution__c} 
+2009 Target $: {!Account.X2008_Target__c} 
+
+Actual Margin $ 2009: {!Account.00N20000001cDxJ} 
+Actual Volume (T) 2009: {!Account.00N20000001cLtR} 
+2009 - Ave $/tonne: {!Account.X2009_Ave_tonne__c} 
+No. of Deals Done 2009: {!Account.00N20000001cLtS} 
+
+Actual Margin $ 2008: {!Account.00N20000001MBCS} 
+Actual Volume (T) 2008: {!Account.00N20000001MBBo} 
+2008 - Ave $/tonne: {!Account.X2008_tonne__c} 
+No. of Deals Done 2008: {!Account.00N20000001MOXk} 
+
+B2B CREDIT
+
+Rating: {!Account.Rating} 
+Credit Pre-Approved: {!Account.Credit_Pre_Approved__c} 
+Contingent Credit Limit: {!Account.Contingent_Credit__c} 
+Credit Line Expiry: {!Account.Credit_Line_Expiry__c} 
+
+PFE Approved: {!Account.Contingent_Credit__c} 
+Existing PFE: {!Account.Exisiting_PFE__c} 
+PFE Remaining: {!Account.PFE_REmaining__c} 
+
+M2M: {!Account.M2M_B2B__c} as of {!Account.M2M_Date__c} 
+CCL less M2M: {!Account.CCL_vs_M2M__c} 
+
+Current No. of Deals: {!Account.Current_No_of_Deals__c} 
+
+OPPORTUNITY DETAIL
+
+Product: {!Opportunity.Product__c} 
+Volume Unit: {!Opportunity.Volume_Unit__c} 
+Delivery Location: {!Opportunity.Delivery_Location__c} 
+Volume MT: {!Opportunity.Volume__c} 
+Start Date: {!Opportunity.Start_Date__c} 
+End Date: {!Opportunity.CloseDate} 
+Expected Execution Date: {!Opportunity.Execution_Date__c} 
+Pricing Month: {!Opportunity.Pricing_Month__c} 
+
+USD Cost of Hedge: {!Opportunity.Price_to_Customer__c} 
+Currency: {!Opportunity.Currency__c} 
+Local Currency Cost of Hedge: {!Opportunity.Currency_value__c} 
+ForEx: {!Opportunity.ForEx__c} 
+Margin $/T: {!Opportunity.Margin_MT__c} 
+Total Margin: {!Opportunity.Total_Margin__c} 
+PFE on Deal (USD): {!Opportunity.PFE_USD__c} 
+
+RATIONALE FOR DEAL REQUIRING HIGHER LEVEL APPROVAL
+
+{!Opportunity.Comments__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

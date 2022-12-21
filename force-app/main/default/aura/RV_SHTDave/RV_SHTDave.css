@@ -1,0 +1,34 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.THIS .page-section {
+    border: solid 2px #FFCC00;
+    padding: 1rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.cRV_SHTDave.main{
+  position:absolute;
+  width:450px;
+  height:240px;
+  border:1px solid black;
+  padding:10px;
+}
+.cRV_SHTDave.main > div{
+  float:right;
+  margin:10px;
+}
+.cRV_SHTDave.d1{
+  width:200px;
+  height:200px;
+  border:1px solid red;
+}
+.cRV_SHTDave.d2{
+  width:200px;
+  height:200px;
+  border:1px solid blue;
+}

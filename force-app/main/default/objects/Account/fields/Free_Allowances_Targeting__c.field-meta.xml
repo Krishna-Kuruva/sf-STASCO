@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Free_Allowances_Targeting__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter how many tonnes you are targeting to trade</inlineHelpText>
+    <label>Free Allowances Target (T)</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

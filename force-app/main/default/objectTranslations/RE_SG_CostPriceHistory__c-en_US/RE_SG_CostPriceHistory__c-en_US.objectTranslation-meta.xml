@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cost Price History - Singapore</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cost Price History - Singapore</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Conga_Composer_RESGConga_Solution</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Conga_Composer_Singapore_CBU_Costing_Output</name>
+    </webLinks>
+</CustomObjectTranslation>

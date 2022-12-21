@@ -1,0 +1,3 @@
+Hi,   
+CO Steer for the product  {!RE_Route_Backbone__c.RE_Product_Name__c} is 
+{!RE_Route_Backbone__c.RE_CO_Steer__c} {!RE_Route_Backbone__c.RE_MY_CO_Steer_Unit__c}.

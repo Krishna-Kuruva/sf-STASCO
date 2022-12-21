@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Request_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Applicable</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Request_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Previously Actioned</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>No Not Applicable</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>CASE(
+MOD([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c  - DATE(1900, 1, 7), 7),
+0, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + FLOOR(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c - 1)/5)*2,
+1, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + FLOOR(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c)/5)*2,
+2, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + FLOOR(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + 1)/5)*2,
+3, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + FLOOR(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + 2)/5)*2,
+4, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + FLOOR(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + 3)/5)*2,
+5, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + CEILING(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c)/5)*2,
+6, ([E_Rate_All_Request__c].Date_Approved_DD_MM_YYYY__c ) - IF([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c&gt;0,1,0) + [E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c + CEILING(([E_Rate_All_Request__c].SLA_BUSINESS_DAYS__c)/5)*2,
+NULL)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_6921069396</name>
+        <dataType>Date</dataType>
+        <expression>CASE(
+MOD({!myVariable_current.Date_Approved_DD_MM_YYYY__c}  - DATE(1900, 1, 7), 7),
+0, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + FLOOR(({!myVariable_current.SLA_BUSINESS_DAYS__c} - 1)/5)*2,
+1, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + FLOOR(({!myVariable_current.SLA_BUSINESS_DAYS__c})/5)*2,
+2, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + FLOOR(({!myVariable_current.SLA_BUSINESS_DAYS__c} + 1)/5)*2,
+3, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + FLOOR(({!myVariable_current.SLA_BUSINESS_DAYS__c} + 2)/5)*2,
+4, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + FLOOR(({!myVariable_current.SLA_BUSINESS_DAYS__c} + 3)/5)*2,
+5, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + CEILING(({!myVariable_current.SLA_BUSINESS_DAYS__c})/5)*2,
+6, ({!myVariable_current.Date_Approved_DD_MM_YYYY__c} ) - IF({!myVariable_current.SLA_BUSINESS_DAYS__c}&gt;0,1,0) + {!myVariable_current.SLA_BUSINESS_DAYS__c} + CEILING(({!myVariable_current.SLA_BUSINESS_DAYS__c})/5)*2,
+NULL)</expression>
+    </formulas>
+    <interviewLabel>SLA_Due_Date_Calculator-5_InterviewLabel</interviewLabel>
+    <label>SLA Due Date Calculator</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>E_Rate_All_Request__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>RecursiveCountVariable</name>
+        <value>
+            <elementReference>RecursiveCountVariable</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[E_Rate_All_Request__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>SLA Due Date Calculate</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>SLA Due Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>SLA_Due_Date__c</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_6921069396</elementReference>
+            </value>
+        </inputAssignments>
+        <object>E_Rate_All_Request__c</object>
+    </recordUpdates>
+    <startElementReference>myDecision</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>E_Rate_All_Request__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>E_Rate_All_Request__c</objectType>
+    </variables>
+    <variables>
+        <name>RecursiveCountVariable</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ARGUS</label>
+    <protected>false</protected>
+    <values>
+        <field>Alert_Disable_End_Time__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Alert_Disable_Start_Time__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Alert_Interval__c</field>
+        <value xsi:type="xsd:string">180</value>
+    </values>
+    <values>
+        <field>Alert_Message__c</field>
+        <value xsi:type="xsd:string">Live ARGUS Price has not been updated for the day</value>
+    </values>
+    <values>
+        <field>Alert_Needed__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Alert_Time__c</field>
+        <value xsi:type="xsd:string">23</value>
+    </values>
+    <values>
+        <field>Alert_Value_Reverse_Check__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Alert_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Alert_on_Weekend__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Controller_Value_Return_Type__c</field>
+        <value xsi:type="xsd:string">DateTime</value>
+    </values>
+    <values>
+        <field>Controller_Value__c</field>
+        <value xsi:type="xsd:string">select max(lastmodifieddate)rslt from Reuters_Quotes__c where Quote_Name__c like &apos;%Argus%&apos; and lastmodifieddate &gt;= LAST_N_DAYS:7</value>
+    </values>
+    <values>
+        <field>Display_Label__c</field>
+        <value xsi:type="xsd:string">ARGUS OMR</value>
+    </values>
+    <values>
+        <field>Display_Order__c</field>
+        <value xsi:type="xsd:double">7.0</value>
+    </values>
+    <values>
+        <field>Invisible_on_Dashboard__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Repeat_Alert_Frequency__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Repeat_Alert__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Save_Error__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Section_Name__c</field>
+        <value xsi:type="xsd:string">Price</value>
+    </values>
+    <values>
+        <field>StopOLF__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Time_Zone__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

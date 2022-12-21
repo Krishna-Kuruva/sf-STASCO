@@ -1,0 +1,5 @@
+The B2B Account Manager has been created or edited
+
+The B2B Account Manger for this account is {!Account.B2B_Account_Manager__c} and the  {!Account.Industry}Account Manager is {!Account.Acct_Mgr__c}.
+
+Last Modified by {!Account.LastModifiedBy}

@@ -1,0 +1,37 @@
+As per the Manual of Authorities your approval is required to close this Risk Marketing deal. The details of the deal are:
+
+Account Manager for this account:  {!Account.Acct_Mgr__c}
+
+{!Opportunity.Shell_Entity__c}, {!Opportunity.Account} ({!Opportunity.Name})
+Deal Period: {!Opportunity.Start_Date__c} : {!Opportunity.CloseDate} 
+MOA Period :  {!Opportunity.Contract_Months_Remaining__c}
+
+____________________________________________________
+Monthly Max Volume (Tonnes) : {!Monthly_Maximum_Volume__c}
+Product: {!Opportunity.Product__c}
+Location: {!Opportunity.Delivery_Location__c}
+Min Margin on deal $/t :{!Opportunity.Margin_MT__c}
+Price to Customer $/Unit: {!Opportunity.Price_to_Customer__c} ({!Opportunity.Currency__c}) {!Opportunity.Currency_value__c} 
+
+____________________________________________________
+Current Credit Status of the Deal
+
+Nominal Credit In Place: Yes
+Total Potential Future Exposure for this Deal: {!Opportunity.PFE_USD__c}
+Current Exposure on {!Account.Current_No_of_Deals__c} Live Deals as of TODAY(): {!Account.Exisiting_PFE__c}
+
+____________________________________________________
+History of Past RM Deals with {!Opportunity.Account}
+
+Total Volume (Tonnes)
+2009: {!Account.00N20000001cLtR}
+2008: {!Account.00N20000001MBBo}
+2007: {!Account.Actual_Volume_T_2007__c}
+
+Total Margin (USD)
+2009: {!Account.00N20000001cDxJ}
+2008: {!Account.00N20000001MBCS}
+2007: {!Account.Actual_Margin_2007__c}
+
+
+Click on the link to access the Opportunity directly: {!Opportunity.Link}

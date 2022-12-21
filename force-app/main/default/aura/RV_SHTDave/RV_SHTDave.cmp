@@ -1,0 +1,115 @@
+<aura:component controller="RV_SHTDave" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="salesHedgeLst" type="Object"/>
+    <aura:attribute name="salesHedgeLstTemp" type="Object"/>
+    <aura:attribute name="salesHedgecolumnsLs" type="List"/>
+    
+    <aura:attribute name="TotalExposureLst" type="SHT_Dave_Master__c[]"/>
+    <aura:attribute name="TotalExposureLstTemp" type="SHT_Dave_Master__c[]"/>
+    <aura:attribute name="TotalExposurecolumnsLs" type="List"/>
+    <aura:attribute name="filterValue" type="set"/>
+    <aura:attribute name="productType" type="String"/>
+    <aura:attribute name="masterProductName" type="String"/>
+    <aura:attribute name="selectedTransaction" type="String"/>
+    <aura:attribute name="filterValueTransaction" type="List"/>
+    <aura:attribute name="SHTDaveMasterProduct" type="List"/>
+    <aura:attribute name="sortedBy" type="String"/>
+    <aura:attribute name="sortDirection" type="String"/>
+    
+    <aura:attribute name="sortedByMaster" type="String"/>
+    <aura:attribute name="sortDirectionMaster" type="String"/>
+    
+    <aura:attribute name="hedgeEntry" type="integer" /> 
+    <aura:attribute name="MasterTableSync" type="String" />
+    <aura:attribute name="disableSubmit" type="boolean" default="false" />
+    <aura:attribute name="subscription" type="Map" />
+    <aura:attribute name="subscriptionMasters" type="Map" />
+  <!--  <lightning:input aura:id="channel" label="channel" name="channel" type="text" value="/event/Rv_SubscribeToSHT__e"/> -->
+    <aura:attribute name="channel" type="String" default="/event/Rv_SubscribeToSHT__e"/>
+    <aura:attribute name="channelMasters" type="String" default="/event/Rv_SubscribeToShtDave__e"/>
+    
+  <!--  <lightning:button label="Subscribe" onclick="{! c.subscribe }" />
+    <lightning:button label="Unsubscribe" onclick="{! c.unsubscribe }" disabled="{!empty(v.subscription)}"/>
+		-->
+
+    <lightning:empApi aura:id="empApi"/>
+    <lightning:empApi aura:id="newEmpApi"/>
+    
+    
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <div class="c-container">
+        
+        <div class="page-section page-header slds-m-bottom--large slds-m-top--small slds-m-left--small slds-m-right--small">
+            <strong>Total Exposure </strong>
+        </div>
+         <div class="slds-col slds-m-top--small slds-m-left--small">
+             <ui:outputText value="{!v.MasterTableSync}"  />
+        </div>
+        
+        <div class="slds-grid" style="height:150px">
+            <div class="slds-col slds-m-top--small slds-m-left--small" style="width:80%">
+                <lightning:datatable data="{! v.TotalExposureLst }" 
+                                     columns="{! v.TotalExposurecolumnsLs }" 
+                                     keyField="Id"
+                                     hideCheckboxColumn="true" onsort="{!c.updateColumnSorting }" sortedBy="{!v.sortedByMaster}" 
+                                     sortedDirection="{!v.sortDirectionMaster}" defaultSortDirection="desc"/>
+            </div>
+            <div class="slds-col" style="width:20%">
+            </div>
+            <!-- lightning:datatable goes here -->
+            <div class="slds-col" style="width:30%">
+                <div >
+                    <div  class="slds-form-element slds-size_1-of-2 slds-m-left--small slds-m-bottom--small">
+                        <lightning:select name="zGender" label="Select Product to Hedge" aura:id="masterProduct" value="{!v.masterProductName}"  required="true" >
+                            <aura:iteration items="{!v.SHTDaveMasterProduct}" var="item">
+                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /> 
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div  class="slds-form-element slds-size_1-of-2 slds-m-left--small slds-m-bottom--small">
+                        <ui:inputNumber label="Hedge Entry" value="{!v.hedgeEntry}" format=".0000" aura:id="hedgeEntry" required="true" />
+                    </div>                 
+                </div>
+                
+                
+                <div class="slds-grid slds-m-top--small slds-m-left--small"  >
+                    <!--AdditionalFix_166256_29Apr2019_Soumyajit starts-->
+                    <!--<lightning:button variant="brand" label="Submit" onclick="{! c.insertManualHedge }" />-->
+                    <lightning:button variant="brand" label="Submit" onclick="{! c.insertManualHedge }" disabled="{!v.disableSubmit}"/>
+                    <!--AdditionalFix_166256_29Apr2019_Soumyajit ends-->
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-m-top--small slds-m-left--small"  >
+        </div>
+        <div class="page-section page-header slds-m-bottom--large slds-m-top--large slds-m-left--small slds-m-right--small">
+            <strong>Sales/Hedge Transactions </strong>
+        </div>
+        
+        <div class="slds-grid" style="width:50%" >
+            <div class="slds-form-element slds-size_1-of-4 slds-m-top--small slds-m-left--small" >
+                <lightning:select name="zGender" label="Select Product" aura:id="path_1_Fields" value="{!v.productType}" onchange="{!c.onchangeProduct}">
+                    <aura:iteration items="{!v.filterValue}" var="item">
+                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" /> 
+                    </aura:iteration>
+                </lightning:select>
+            </div>
+            
+            <div class="slds-form-element slds-size_1-of-4 slds-m-top--small slds-m-left--small" >
+                <lightning:select name="zGender" label="Select Transaction Type" aura:id="path_1_Fields" value="{!v.selectedTransaction}" onchange="{!c.onchangeProduct}">
+                    <aura:iteration items="{!v.filterValueTransaction}" var="item">
+                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}" />
+                    </aura:iteration>
+                </lightning:select>
+            </div>
+        </div>
+        
+        <div class="slds-table slds-m-top--small slds-m-left--small slds-m-right--small slds-m-bottom--large ">
+            <lightning:datatable data="{! v.salesHedgeLst }" 
+                                 columns="{! v.salesHedgecolumnsLs }" 
+                                 keyField="Id"
+                                 hideCheckboxColumn="true" onsort="{!c.updateColumnSortingChildObj }" 
+                                 sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortDirection}" defaultSortDirection="desc"/>
+            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_OI_Business_Roles__c</fullName>
+    <externalId>false</externalId>
+    <label>* Business Roles</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aggregators</fullName>
+                <default>false</default>
+                <label>Aggregators</label>
+            </value>
+            <value>
+                <fullName>BANK</fullName>
+                <default>false</default>
+                <label>BANK</label>
+            </value>
+            <value>
+                <fullName>BROKER</fullName>
+                <default>false</default>
+                <label>BROKER</label>
+            </value>
+            <value>
+                <fullName>Bunker Fuel End User</fullName>
+                <default>false</default>
+                <label>Bunker Fuel End User</label>
+            </value>
+            <value>
+                <fullName>BUNKERS BROKER</fullName>
+                <default>false</default>
+                <label>BUNKERS BROKER</label>
+            </value>
+            <value>
+                <fullName>C&amp;I</fullName>
+                <default>false</default>
+                <label>C&amp;I</label>
+            </value>
+            <value>
+                <fullName>CARGO INSPECTOR</fullName>
+                <default>false</default>
+                <label>CARGO INSPECTOR</label>
+            </value>
+            <value>
+                <fullName>CASH MARGINING</fullName>
+                <default>false</default>
+                <label>CASH MARGINING</label>
+            </value>
+            <value>
+                <fullName>CEM</fullName>
+                <default>false</default>
+                <label>CEM</label>
+            </value>
+            <value>
+                <fullName>CHARTERER</fullName>
+                <default>false</default>
+                <label>CHARTERER</label>
+            </value>
+            <value>
+                <fullName>CLEARHOUSE</fullName>
+                <default>false</default>
+                <label>CLEARHOUSE</label>
+            </value>
+            <value>
+                <fullName>COSTS (DEX &amp; SAP)</fullName>
+                <default>false</default>
+                <label>COSTS (DEX &amp; SAP)</label>
+            </value>
+            <value>
+                <fullName>DIRECT CONSULTANTS</fullName>
+                <default>false</default>
+                <label>DIRECT CONSULTANTS</label>
+            </value>
+            <value>
+                <fullName>DISP OFC</fullName>
+                <default>false</default>
+                <label>DISP OFC</label>
+            </value>
+            <value>
+                <fullName>DISTRIBTR</fullName>
+                <default>false</default>
+                <label>DISTRIBTR</label>
+            </value>
+            <value>
+                <fullName>END USER</fullName>
+                <default>false</default>
+                <label>END USER</label>
+            </value>
+            <value>
+                <fullName>ESP</fullName>
+                <default>false</default>
+                <label>ESP</label>
+            </value>
+            <value>
+                <fullName>EXCHANGE</fullName>
+                <default>false</default>
+                <label>EXCHANGE</label>
+            </value>
+            <value>
+                <fullName>FED GOVT</fullName>
+                <default>false</default>
+                <label>FED GOVT</label>
+            </value>
+            <value>
+                <fullName>FED PWR MK</fullName>
+                <default>false</default>
+                <label>FED PWR MK</label>
+            </value>
+            <value>
+                <fullName>G&amp;A VENDOR</fullName>
+                <default>false</default>
+                <label>G&amp;A VENDOR</label>
+            </value>
+            <value>
+                <fullName>G&amp;T</fullName>
+                <default>false</default>
+                <label>G&amp;T</label>
+            </value>
+            <value>
+                <fullName>GENERAL SHIPPING SERVICE</fullName>
+                <default>false</default>
+                <label>GENERAL SHIPPING SERVICE</label>
+            </value>
+            <value>
+                <fullName>Generator</fullName>
+                <default>false</default>
+                <label>Generator</label>
+            </value>
+            <value>
+                <fullName>GOVERNMENT ENTITY</fullName>
+                <default>false</default>
+                <label>GOVERNMENT ENTITY</label>
+            </value>
+            <value>
+                <fullName>GOVERNMENT INTERMEDIARIES</fullName>
+                <default>false</default>
+                <label>GOVERNMENT INTERMEDIARIES</label>
+            </value>
+            <value>
+                <fullName>GUARANTOR / PARENT ACCOUNT ONLY</fullName>
+                <default>false</default>
+                <label>GUARANTOR / PARENT ACCOUNT ONLY</label>
+            </value>
+            <value>
+                <fullName>IBT</fullName>
+                <default>false</default>
+                <label>IBT</label>
+            </value>
+            <value>
+                <fullName>INDIRECT CONSULTANTS</fullName>
+                <default>false</default>
+                <label>INDIRECT CONSULTANTS</label>
+            </value>
+            <value>
+                <fullName>INDUSTRIAL</fullName>
+                <default>false</default>
+                <label>INDUSTRIAL</label>
+            </value>
+            <value>
+                <fullName>Industrial / Commercial</fullName>
+                <default>false</default>
+                <label>Industrial / Commercial</label>
+            </value>
+            <value>
+                <fullName>ISO</fullName>
+                <default>false</default>
+                <label>ISO</label>
+            </value>
+            <value>
+                <fullName>JNT ACT AG</fullName>
+                <default>false</default>
+                <label>JNT ACT AG</label>
+            </value>
+            <value>
+                <fullName>JOINT VENTURE PARTNERS</fullName>
+                <default>false</default>
+                <label>JOINT VENTURE PARTNERS</label>
+            </value>
+            <value>
+                <fullName>LDC</fullName>
+                <default>false</default>
+                <label>LDC</label>
+            </value>
+            <value>
+                <fullName>MARKETER</fullName>
+                <default>false</default>
+                <label>MARKETER</label>
+            </value>
+            <value>
+                <fullName>MUNICIPAL</fullName>
+                <default>false</default>
+                <label>MUNICIPAL</label>
+            </value>
+            <value>
+                <fullName>NETTING</fullName>
+                <default>false</default>
+                <label>NETTING</label>
+            </value>
+            <value>
+                <fullName>PIPELINE</fullName>
+                <default>false</default>
+                <label>PIPELINE</label>
+            </value>
+            <value>
+                <fullName>PLATFORM</fullName>
+                <default>false</default>
+                <label>PLATFORM</label>
+            </value>
+            <value>
+                <fullName>POOL</fullName>
+                <default>false</default>
+                <label>POOL</label>
+            </value>
+            <value>
+                <fullName>PORT AGENT</fullName>
+                <default>false</default>
+                <label>PORT AGENT</label>
+            </value>
+            <value>
+                <fullName>PORT AGENT 3RD PARTY</fullName>
+                <default>false</default>
+                <label>PORT AGENT 3RD PARTY</label>
+            </value>
+            <value>
+                <fullName>PRODUCER</fullName>
+                <default>false</default>
+                <label>PRODUCER</label>
+            </value>
+            <value>
+                <fullName>PUB AUTH</fullName>
+                <default>false</default>
+                <label>PUB AUTH</label>
+            </value>
+            <value>
+                <fullName>QUALIFIED SCHEDULING ENTITY</fullName>
+                <default>false</default>
+                <label>QUALIFIED SCHEDULING ENTITY</label>
+            </value>
+            <value>
+                <fullName>RESELLER</fullName>
+                <default>false</default>
+                <label>RESELLER</label>
+            </value>
+            <value>
+                <fullName>SHELL AFFILIATE</fullName>
+                <default>false</default>
+                <label>SHELL AFFILIATE</label>
+            </value>
+            <value>
+                <fullName>SHIP MANAGER</fullName>
+                <default>false</default>
+                <label>SHIP MANAGER</label>
+            </value>
+            <value>
+                <fullName>SHIP OWNER</fullName>
+                <default>false</default>
+                <label>SHIP OWNER</label>
+            </value>
+            <value>
+                <fullName>Ship Owner (SIRE Inspection)</fullName>
+                <default>false</default>
+                <label>Ship Owner (SIRE Inspection)</label>
+            </value>
+            <value>
+                <fullName>SHIPPER</fullName>
+                <default>false</default>
+                <label>SHIPPER</label>
+            </value>
+            <value>
+                <fullName>SHIP TO SHIP PROVIDER</fullName>
+                <default>false</default>
+                <label>SHIP TO SHIP PROVIDER</label>
+            </value>
+            <value>
+                <fullName>STORAGE</fullName>
+                <default>false</default>
+                <label>STORAGE</label>
+            </value>
+            <value>
+                <fullName>TAX_AUTH</fullName>
+                <default>false</default>
+                <label>TAX_AUTH</label>
+            </value>
+            <value>
+                <fullName>TOLL</fullName>
+                <default>false</default>
+                <label>TOLL</label>
+            </value>
+            <value>
+                <fullName>TRADING</fullName>
+                <default>false</default>
+                <label>TRADING</label>
+            </value>
+            <value>
+                <fullName>TRANCO</fullName>
+                <default>false</default>
+                <label>TRANCO</label>
+            </value>
+            <value>
+                <fullName>TRANSPORTATION</fullName>
+                <default>false</default>
+                <label>TRANSPORTATION</label>
+            </value>
+            <value>
+                <fullName>TSO / DSO</fullName>
+                <default>false</default>
+                <label>TSO / DSO</label>
+            </value>
+            <value>
+                <fullName>UTILITY</fullName>
+                <default>false</default>
+                <label>UTILITY</label>
+            </value>
+            <value>
+                <fullName>Wholesale</fullName>
+                <default>false</default>
+                <label>Wholesale</label>
+            </value>
+            <value>
+                <fullName>WSP</fullName>
+                <default>false</default>
+                <label>WSP</label>
+            </value>
+            <value>
+                <fullName>FEEDSTOCK PROVIDER</fullName>
+                <default>false</default>
+                <label>FEEDSTOCK PROVIDER</label>
+            </value>
+            <value>
+                <fullName>SPV</fullName>
+                <default>false</default>
+                <label>SPV</label>
+            </value>
+            <value>
+                <fullName>Bunker Fuel End Sser</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bunker Fuel End Sser</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

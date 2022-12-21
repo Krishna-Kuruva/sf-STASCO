@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Agreement__c</fullName>
+    <externalId>false</externalId>
+    <label>Master Agreement</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>In negotiation</fullName>
+                <default>false</default>
+                <label>In negotiation</label>
+            </value>
+            <value>
+                <fullName>Not applicable</fullName>
+                <default>false</default>
+                <label>Not applicable</label>
+            </value>
+            <value>
+                <fullName>Not signed</fullName>
+                <default>true</default>
+                <label>Not signed</label>
+            </value>
+            <value>
+                <fullName>Signed (see notes)</fullName>
+                <default>false</default>
+                <label>Signed (see notes)</label>
+            </value>
+            <value>
+                <fullName>Signed and attached</fullName>
+                <default>false</default>
+                <label>Signed and attached</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

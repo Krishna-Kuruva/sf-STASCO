@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_OI_Desk_Assign__c</fullName>
+    <externalId>false</externalId>
+    <label>* Desk Assign</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bio Diesel</fullName>
+                <default>false</default>
+                <label>Bio Diesel</label>
+            </value>
+            <value>
+                <fullName>Bio Ethanol</fullName>
+                <default>false</default>
+                <label>Bio Ethanol</label>
+            </value>
+            <value>
+                <fullName>Bunkering</fullName>
+                <default>false</default>
+                <label>Bunkering</label>
+            </value>
+            <value>
+                <fullName>Canada</fullName>
+                <default>false</default>
+                <label>Canada</label>
+            </value>
+            <value>
+                <fullName>Chem Feed / Aromatics</fullName>
+                <default>false</default>
+                <label>Chem Feed / Aromatics</label>
+            </value>
+            <value>
+                <fullName>ChemFeeds</fullName>
+                <default>false</default>
+                <label>ChemFeeds</label>
+            </value>
+            <value>
+                <fullName>ChemProducts</fullName>
+                <default>false</default>
+                <label>ChemProducts</label>
+            </value>
+            <value>
+                <fullName>Co2 (Emissions)</fullName>
+                <default>false</default>
+                <label>Co2 (Emissions)</label>
+            </value>
+            <value>
+                <fullName>Crude Africa/Med/Caspian</fullName>
+                <default>false</default>
+                <label>Crude Africa/Med/Caspian</label>
+            </value>
+            <value>
+                <fullName>Crude AM</fullName>
+                <default>false</default>
+                <label>Crude AM</label>
+            </value>
+            <value>
+                <fullName>Crude Bulk – Lease</fullName>
+                <default>false</default>
+                <label>Crude Bulk – Lease</label>
+            </value>
+            <value>
+                <fullName>Crude Bulk – Offshore</fullName>
+                <default>false</default>
+                <label>Crude Bulk – Offshore</label>
+            </value>
+            <value>
+                <fullName>Crude Bulk – Onshore</fullName>
+                <default>false</default>
+                <label>Crude Bulk – Onshore</label>
+            </value>
+            <value>
+                <fullName>Crude Bulk - STC</fullName>
+                <default>false</default>
+                <label>Crude Bulk - STC</label>
+            </value>
+            <value>
+                <fullName>Crude East</fullName>
+                <default>false</default>
+                <label>Crude East</label>
+            </value>
+            <value>
+                <fullName>Crude Europe/E of Suez/Russia</fullName>
+                <default>false</default>
+                <label>Crude Europe/E of Suez/Russia</label>
+            </value>
+            <value>
+                <fullName>Crude Feedstocks</fullName>
+                <default>false</default>
+                <label>Crude Feedstocks</label>
+            </value>
+            <value>
+                <fullName>Crude Lease – Oil (STC)</fullName>
+                <default>false</default>
+                <label>Crude Lease – Oil (STC)</label>
+            </value>
+            <value>
+                <fullName>Crude Lease – Oil (US)</fullName>
+                <default>false</default>
+                <label>Crude Lease – Oil (US)</label>
+            </value>
+            <value>
+                <fullName>Crude Lease – Trucking (STC)</fullName>
+                <default>false</default>
+                <label>Crude Lease – Trucking (STC)</label>
+            </value>
+            <value>
+                <fullName>Crude Lease – Trucking (US)</fullName>
+                <default>false</default>
+                <label>Crude Lease – Trucking (US)</label>
+            </value>
+            <value>
+                <fullName>Crude Risk Management</fullName>
+                <default>false</default>
+                <label>Crude Risk Management</label>
+            </value>
+            <value>
+                <fullName>Crude Royalty Lease</fullName>
+                <default>false</default>
+                <label>Crude Royalty Lease</label>
+            </value>
+            <value>
+                <fullName>Crude STRU</fullName>
+                <default>false</default>
+                <label>Crude STRU</label>
+            </value>
+            <value>
+                <fullName>Crude SWST</fullName>
+                <default>false</default>
+                <label>Crude SWST</label>
+            </value>
+            <value>
+                <fullName>Crude Transportation (non-Trucking)</fullName>
+                <default>false</default>
+                <label>Crude Transportation (non-Trucking)</label>
+            </value>
+            <value>
+                <fullName>DLNG</fullName>
+                <default>false</default>
+                <label>DLNG</label>
+            </value>
+            <value>
+                <fullName>E/S Africa</fullName>
+                <default>false</default>
+                <label>E/S Africa</label>
+            </value>
+            <value>
+                <fullName>East Retail</fullName>
+                <default>false</default>
+                <label>East Retail</label>
+            </value>
+            <value>
+                <fullName>East Wholesale</fullName>
+                <default>false</default>
+                <label>East Wholesale</label>
+            </value>
+            <value>
+                <fullName>Emissions</fullName>
+                <default>false</default>
+                <label>Emissions</label>
+            </value>
+            <value>
+                <fullName>Freight Crude</fullName>
+                <default>false</default>
+                <label>Freight Crude</label>
+            </value>
+            <value>
+                <fullName>Freight Products</fullName>
+                <default>false</default>
+                <label>Freight Products</label>
+            </value>
+            <value>
+                <fullName>Fuel Oil</fullName>
+                <default>false</default>
+                <label>Fuel Oil</label>
+            </value>
+            <value>
+                <fullName>Gas</fullName>
+                <default>false</default>
+                <label>Gas</label>
+            </value>
+            <value>
+                <fullName>Gas - North West - DO NOT USE</fullName>
+                <default>false</default>
+                <label>Gas - North West - DO NOT USE</label>
+            </value>
+            <value>
+                <fullName>Gas - South East - DO NOT USE</fullName>
+                <default>false</default>
+                <label>Gas - South East - DO NOT USE</label>
+            </value>
+            <value>
+                <fullName>HCDM (SOPUS S&amp;D)</fullName>
+                <default>false</default>
+                <label>HCDM (SOPUS S&amp;D)</label>
+            </value>
+            <value>
+                <fullName>Jet</fullName>
+                <default>false</default>
+                <label>Jet</label>
+            </value>
+            <value>
+                <fullName>LNG</fullName>
+                <default>false</default>
+                <label>LNG</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>LPG Domestic</fullName>
+                <default>false</default>
+                <label>LPG Domestic</label>
+            </value>
+            <value>
+                <fullName>LPG Exports</fullName>
+                <default>false</default>
+                <label>LPG Exports</label>
+            </value>
+            <value>
+                <fullName>Marine Fuel Sales</fullName>
+                <default>false</default>
+                <label>Marine Fuel Sales</label>
+            </value>
+            <value>
+                <fullName>Middle Distillates</fullName>
+                <default>false</default>
+                <label>Middle Distillates</label>
+            </value>
+            <value>
+                <fullName>Mogas / Gasoline</fullName>
+                <default>false</default>
+                <label>Mogas / Gasoline</label>
+            </value>
+            <value>
+                <fullName>North</fullName>
+                <default>false</default>
+                <label>North</label>
+            </value>
+            <value>
+                <fullName>Oil Risk Marketing</fullName>
+                <default>false</default>
+                <label>Oil Risk Marketing</label>
+            </value>
+            <value>
+                <fullName>Options</fullName>
+                <default>false</default>
+                <label>Options</label>
+            </value>
+            <value>
+                <fullName>Other - General &amp; Admin Vendor</fullName>
+                <default>false</default>
+                <label>Other - General &amp; Admin Vendor</label>
+            </value>
+            <value>
+                <fullName>Other - Shipping</fullName>
+                <default>false</default>
+                <label>Other - Shipping</label>
+            </value>
+            <value>
+                <fullName>Power</fullName>
+                <default>false</default>
+                <label>Power</label>
+            </value>
+            <value>
+                <fullName>Power - North West - DO NOT USE</fullName>
+                <default>false</default>
+                <label>Power - North West - DO NOT USE</label>
+            </value>
+            <value>
+                <fullName>Products Derviatives</fullName>
+                <default>false</default>
+                <label>Products Derviatives</label>
+            </value>
+            <value>
+                <fullName>SCAPSA (Argentina)</fullName>
+                <default>false</default>
+                <label>SCAPSA (Argentina)</label>
+            </value>
+            <value>
+                <fullName>Shell Energy Brazil</fullName>
+                <default>false</default>
+                <label>Shell Energy Brazil</label>
+            </value>
+            <value>
+                <fullName>Shell Mexico</fullName>
+                <default>false</default>
+                <label>Shell Mexico</label>
+            </value>
+            <value>
+                <fullName>Shell Mexico Gas Natural</fullName>
+                <default>false</default>
+                <label>Shell Mexico Gas Natural</label>
+            </value>
+            <value>
+                <fullName>Shell Trading Mexico</fullName>
+                <default>false</default>
+                <label>Shell Trading Mexico</label>
+            </value>
+            <value>
+                <fullName>South</fullName>
+                <default>false</default>
+                <label>South</label>
+            </value>
+            <value>
+                <fullName>Specialities (Bitumen/base oils/Wax)</fullName>
+                <default>false</default>
+                <label>Specialities (Bitumen/base oils/Wax)</label>
+            </value>
+            <value>
+                <fullName>STRM</fullName>
+                <default>false</default>
+                <label>STRM</label>
+            </value>
+            <value>
+                <fullName>West Retail</fullName>
+                <default>false</default>
+                <label>West Retail</label>
+            </value>
+            <value>
+                <fullName>West Wholesale</fullName>
+                <default>false</default>
+                <label>West Wholesale</label>
+            </value>
+            <value>
+                <fullName>Low Carbon Fuels</fullName>
+                <default>false</default>
+                <label>Low Carbon Fuels</label>
+            </value>
+            <value>
+                <fullName>Products Derivatives</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Products Derivatives</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

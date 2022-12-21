@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RE SAP Contract</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RE SAP Contracts</value>
+    </caseValues>
+    <layouts>
+        <layout>RT Contract Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Malaysia</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Singapore</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Turkey</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

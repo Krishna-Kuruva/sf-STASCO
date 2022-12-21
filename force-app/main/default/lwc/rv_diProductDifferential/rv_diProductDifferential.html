@@ -1,0 +1,58 @@
+<template>
+    <lightning-card class="productDifferential">
+        <div class="tableOuter">
+             <!--Product Differentials  class="slds-grid slds-gutters slds-grid_align-spread slds-p-horizontal_xx-small"-->
+            <!-- prod deployment -->
+             <div class="scrollbarEdit" style="overflow:auto;height:208px;margin-top: -25px;padding: 10px 10px 0px;">
+								  <div class="slds-p-bottom_x-small"> <h6 style="font-size: 12px;"> <strong>Product Differential</strong></h6></div>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered editTable">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <template for:each={columns} for:item="col">
+                                <th key={col} colspan=1 scope="col">
+                                    {col}
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+                            <tbody>
+                            <template for:each={ProdDiffLeftLst} for:item="prod">
+                                <tr key={prod.Id}>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Name}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Cargoes__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.prev_Day_Cargo__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Barges__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.prev_Day_Barge__c}</td>
+                                </tr>
+                            </template>
+                        </tbody> 
+                    
+                </table>
+                <br/>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered editTable">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <template for:each={columns} for:item="col">
+                                <th key={col} colspan=1 scope="col">
+                                    {col}
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+                            <tbody>
+                            <template for:each={ProdDiffRightLst} for:item="prod">
+                                <tr key={prod.Id}>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Name}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Cargoes__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.prev_Day_Cargo__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.Barges__c}</td>
+                                    <td class="slds-truncate slds-cell-wrap" key={prod.Id} colspan=1 scope="col">{prod.prev_Day_Barge__c}</td>
+                                </tr>
+                            </template>
+                        </tbody> 
+                    
+                </table>
+            </div>
+        </div>
+</lightning-card>
+</template>

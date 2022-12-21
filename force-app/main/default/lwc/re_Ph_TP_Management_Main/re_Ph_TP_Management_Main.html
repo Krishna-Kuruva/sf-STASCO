@@ -1,0 +1,127 @@
+<!-- LWC Component Name: re_Ph_TP_Management_Main       -->
+<!-- Author: K. Nandeeswara Raju (n.kondur@shell.com)   -->
+<!-- Created Date : 09-Aug-2022                         -->
+<!-- Purpose: This componet used behind the TP Management tab for Philippines -->
+<!-- Modifcation #1 : Nandeeswara Raju (n.kondur@shell.com) - 29-Aug-2022 - Removed Some Commented Code -->
+<!-- Modifcation #2 : Nandeeswara Raju (n.kondur@shell.com) - 19-Aug-2022 - Added download button -->
+<!-- Modifcation #1 : By Whom - Date - Purpose -->
+<template>
+
+    <!-- Page Header -->
+    <div class="slds-page-header slds-page-header_record-home" style="padding: 5px;">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <lightning-layout multiple-rows horizontal-align="center">
+                    <lightning-layout-item size="3" small-device-size="12" medium-device-size="4" large-device-size="3">
+                        <div class="slds-media slds-var-p-top_small">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="standard:instore_locations" alternative-text="TP Management" size="large"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-page-header__name slds-var-m-top_xxx-small slds-var-m-bottom_xxx-small" >
+                                    <div class="slds-page-header__name-title">
+                                        <h1>
+                                            <span class="slds-text-heading_medium" title="TP Management">TP Management</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <p class="slds-page-header__name-meta">Philippines</p>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" small-device-size="12" medium-device-size="4" large-device-size="6">
+                        <lightning-layout multiple-rows horizontal-align="center">
+                            <template if:true={withValueSelected}>
+                                <lightning-layout-item class="slds-var-p-right_medium" size="6" small-device-size="12" medium-device-size="12" large-device-size="6" >
+                                    <c-re-search-lookup lookup-ref=0 
+                                                        obj-name="RE_Location__c" 
+                                                        icon-name="custom:custom25" 
+                                                        label-name="Location Name" 
+                                                        placeholder="Search Philippine Location" 
+                                                        onlookup={handleLookUp} 
+                                                        filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Location_Code__c" 
+                                                        custom-icon-image={locationIcon}
+                                                        selected-record={selectedLocationDetail}></c-re-search-lookup>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-var-p-right_medium" size="6" small-device-size="12" medium-device-size="12" large-device-size="6">
+                                    <c-re-search-lookup lookup-ref=1 
+                                                        obj-name="RE_Product__c" 
+                                                        icon-name="custom:custom6" 
+                                                        label-name="Product Name" 
+                                                        placeholder="Search Philippine Product" 
+                                                        onlookup={handleLookUp} 
+                                                        filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Material__c" 
+                                                        custom-icon-image={productsIcon}
+                                                        selected-record={selectedProductDetail}></c-re-search-lookup>
+                                </lightning-layout-item>
+                            </template>
+                            <template if:false={withValueSelected}>
+                                <lightning-layout-item class="slds-var-p-right_medium" size="6" small-device-size="12" medium-device-size="12" large-device-size="6" >
+                                    <c-re-search-lookup lookup-ref=0 
+                                                        obj-name="RE_Location__c" 
+                                                        icon-name="custom:custom25" 
+                                                        label-name="Location Name" 
+                                                        placeholder="Search Philippine Location" 
+                                                        onlookup={handleLookUp} 
+                                                        filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Location_Code__c" 
+                                                        custom-icon-image={locationIcon}
+                                                        selected-record={selectedLocationDetail}></c-re-search-lookup>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-var-p-right_medium" size="6" small-device-size="12" medium-device-size="12" large-device-size="6">
+                                    <c-re-search-lookup lookup-ref=1 
+                                                        obj-name="RE_Product__c" 
+                                                        icon-name="custom:custom6" 
+                                                        label-name="Product Name" 
+                                                        placeholder="Search Philippine Product" 
+                                                        onlookup={handleLookUp} 
+                                                        filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Material__c" 
+                                                        custom-icon-image={productsIcon}
+                                                        selected-record={selectedProductDetail}></c-re-search-lookup>
+                                </lightning-layout-item>
+                            </template>
+                            
+                        </lightning-layout>
+                        
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="2" small-device-size="3" medium-device-size="2" large-device-size="2">
+                        <lightning-layout multiple-rows horizontal-align="end">
+                            <lightning-layout-item class="slds-var-p-top_medium slds-var-p-left_medium slds-var-p-bottom_medium">
+                                <lightning-input data-id="newOrCloneToggle" title={toggleTitle} type="toggle" variant="label-hidden" name="New Or Clone" message-toggle-active="Clone"
+                                message-toggle-inactive="New Or Update" onchange={handleNewOrCloneToggle} disabled={disableToggle} checked={isChecked}></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="1" small-device-size="3" medium-device-size="2" large-device-size="1">
+                        <lightning-layout multiple-rows horizontal-align="center">
+                            <lightning-layout-item class="slds-var-p-around_small slds-var-p-bottom_medium">
+                                <span onclick={handleTPRecordDownload}>
+                                    <lightning-icon class="css_TP_Download_Icon" icon-name="action:download" variant="success" size="small"></lightning-icon>
+                                </span>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </div>
+
+    <!-- TP New Screen -->
+    <div class="outerBodyContainer">
+        <!-- Component Name: re_ph_tp_NewOrClone -->
+        <c-re_ph_tp-_-new-or-clone  product-id={selectedProductId} 
+                                    location-id={selectedLocationId} 
+                                    show-new-or-clone-section={showTPNewOrCloneSection} 
+                                    is-clone-screen={isClone} 
+                                    oncontroltoggle={controlNewCloneToggle} 
+                                    onrecordcreation={displayNewRecord}
+                                    oncancel={handleCancelButton}
+                                    show-spinner={showSpinner}></c-re_ph_tp-_-new-or-clone>
+    </div>
+
+</template>

@@ -1,0 +1,199 @@
+.modeltemp{         
+    /*background: rgb(99 118 135);
+    background-color: #7d98b3;*/
+    border-radius: 0;
+    color: black;
+    background-color: #f3f2f2;
+  
+}
+.testing .slds-form-element__control .slds-input{
+    padding: 0px;
+    line-height: 1rem;
+    min-height: 1.35rem;
+    width: 75%;
+}
+
+.Backgroundcls{
+    background:#f3f2f2;
+    /*background: #c5d3e0;*/
+}
+.popUpcolor{
+    background: white;
+}
+/* .borderToBox{
+   border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}*/
+.bordertop{
+    padding: 4px;
+    padding-top: 6px;
+    /*background: rgb(51, 87, 121);*/
+}
+
+.headerPadding{
+    padding-top: 2%;
+    padding-top: 2%;
+    background-color: rgb(51, 87, 121);
+    position: relative;
+}
+.headercell{
+    /*min-height: 7%;*/
+    background-color: rgb(51, 87, 121);
+    border-left: 1px solid white;
+    color:white;
+}
+.headercolor{
+    background-color: rgb(51, 87, 121);
+    border-left: 1px solid white;
+    color:white;
+}
+.tabledata{ 
+    background-color: #f3f2f2;
+    /*background-color:rgb(51, 87, 121);
+    border-radius: 3px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;*/
+
+}
+.datatblbg{
+    background-color: #f0efef;
+    text-align: left;
+    min-height: 8%;
+    /*background-color: rgb(51, 87, 121);
+    border-left: 1px solid white;
+    color:white;
+    text-align: center;
+    min-height: 8%;*/
+    
+}
+.celldata{
+    background-color: rgb(250 250 250 / 63%);
+    color: black;
+    border-bottom: 1px solid #fff;
+    /*
+    background-color: #7d98b3a1;
+    color: black;
+    border-bottom: 1px solid white;*/
+}
+.forntsize{
+    font-size: 9px;
+    text-align: center;
+}
+.colorback{
+    color: white;
+}
+.tableLayout{
+    table-layout:fixed;
+    width:100%;
+}
+.checkboxwidth{
+    width: 2.5%;
+}
+.customerName{
+    width: 12%;
+}
+.expand{
+    width:1.5%;
+    padding: 0%;
+}
+
+.plant{
+    width:4%
+}
+.material{
+    width: 4%;
+}
+.region{
+    width: 6%;
+}
+.stdDis{
+    width: 4.5%;
+}
+.dateTem{
+    width: 6%;
+}
+.fornttotable{
+    
+    font-size: 10px;
+}
+.status{
+    width: 3%;
+}
+.inlineEdit{
+    float: left;
+    width: 85%;
+    zoom: 0.6;
+    font-size: 16px;
+}
+.saveandCancel{
+    zoom: 0.7;
+    font-size: 16px;
+}
+.rowdesing{
+    white-space: nowrap;
+    position: relative;
+    padding: 1px;
+    border: 1px dashed #e7d8d8cc;
+    padding-left: 6px;
+}
+.stddisc{
+    width: 5%;
+}
+.controlIconSize{
+    zoom: .80;
+}
+.forntsize9{
+    font-size: 9px;
+}
+.NS{
+    background-color: #cece0e;
+}
+.SB{
+    background-color: #cece0e;
+}
+.SS{
+    background-color: #cece0e;
+}
+.SP{
+    background-color: #cece0e;
+}
+.AP{
+    background-color: #4bca81;;
+}
+.RJ{
+    background-color: #c23934;
+}
+.AA{
+    background-color: #4bca81;;
+}
+.RU{
+    background-color: #0070d2;
+}
+.FA{
+    background-color: #c23934;
+}
+.UP{
+    background-color: #4bca81;
+}
+.UN{
+    background-color: #4bca81;
+}
+.avatar{
+    width: 1.2rem;
+    height: 1rem;
+    font-size: .65rem;
+    border-radius: 20%;
+}
+
+/* For Scrolling */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+   display: none !important;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4);
+}

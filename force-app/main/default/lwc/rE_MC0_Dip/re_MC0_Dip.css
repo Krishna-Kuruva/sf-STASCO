@@ -1,0 +1,23 @@
+.slds-card__header{
+    padding: 0%;
+} 
+.buttonsection{
+    display: flex;
+    justify-content: flex-end;
+}
+.setTable.slds-table thead th{
+    background-color: #212946!important;
+    color: #ffffff;
+    box-shadow: none!important;
+    font-size: 1rem;
+    border: 1px solid #fff;
+}
+
+.slds-table_bordered tbody th{
+    border: 1px solid #d9e2ed;
+    font-weight: bold;
+} 
+.slds-table_bordered tbody td{
+    border: 1px solid #d9e2ed;
+    font-weight: bold;
+}

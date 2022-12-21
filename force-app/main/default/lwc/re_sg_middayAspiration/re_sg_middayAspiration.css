@@ -1,0 +1,7 @@
+.setTable.slds-table thead th{
+    background-color: #212946!important;
+    color: #ffffff;
+    box-shadow: none!important;
+    font-size: 1rem;
+    border: 1px solid #fff;
+}

@@ -1,0 +1,124 @@
+<!--
+ - Created by Dharmendra.Singh2 on 8/16/2021.
+ -->
+
+<!-- Rv Customer Information -->
+<template>
+    <lightning-card class="slds-card__tile customerInformation" style="margin-bottom:5px"  title="CUSTOMER INFO" aria-busy="true" icon-name="action:user">
+        <div style="min-height:17rem;width:auto;">
+            <template if:true={accountLinked}>
+                <lightning-record-view-form
+                        class=""
+                        record-id={recordId}
+                        object-api-name="Account">
+                        <lightning-layout size="12" class="infoText" style="padding-bottom:0px;color:black;font-weight: bold;">
+                            <lightning-layout-item size="12">
+                                <lightning-output-field style="font-weight: bold;" field-name= "Rv_Credit_Available__c" class="slds-text-title_bold creditStyle" if:true={currentCredit}>
+                                </lightning-output-field>
+                            </lightning-layout-item>
+                            
+                        </lightning-layout>
+                        <!--
+                        <lightning-layout size="12" class="infoText" style="padding-bottom:0px">
+                            <lightning-layout-item size="12">
+                                
+                                <legend class="slds-form-element__legend slds-form-element__label">% Credit open to trade</legend>
+                                <p class="slds-form-element__control slds-text-title_bold" style={percentageColoring}>{creditPercentage}</p>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    -->
+                </lightning-record-view-form>
+                <template if:true={contactRecordId}>
+                    <lightning-record-view-form class="" object-api-name="Contact" record-id={contactRecordId}>
+                        <lightning-output-field field-name={Phone} class="slds-text-title_bold infoText" >
+                        </lightning-output-field>
+                        <lightning-output-field field-name={Name} class="slds-text-title_bold infoText">
+                        </lightning-output-field>
+                        <lightning-output-field field-name={Email} class="slds-text-title_bold infoText">
+                        </lightning-output-field>
+                    </lightning-record-view-form>
+                </template>
+                <template if:false={contactRecordId}>
+                    <div class="noSelectText">
+                    <div>
+                        </br>
+                        <p class="slds-text-color_destructive slds-text-color_weak" style="font-weight: 600;">Contact information not available!</p>
+                    </div>
+                  </div>
+                </template>
+
+            </template>
+            <template if:false={accountLinked}>
+                <div class="noSelectText">
+                <div>
+                    <p class="slds-text-color_destructive slds-text-color_weak" style="font-weight: 600;">Account not selected!</p>
+                </div>
+                
+                <div class="slds-form-element__help slds-combobox_container__icon slds-align-bottom" style="font-weight: 400;color: #18222e">
+                    <p class="slds-form-element__help">Please select an account to view credit and contact information.</p>
+                </div>
+              </div>
+            </template>
+        </div>
+    </lightning-card>
+    <lightning-card title="ONLINE SALES INFO" aria-busy="true" class="slds-card__tile customerInformation" icon-name="action:info">
+        <!-- Prod deployment -->
+        <div style="min-height:11.4rem;width:auto">
+            <template if:true={accountLinked}>
+                <div class="infoText">
+                <span>
+                    <label class="slds-card__header-title slds-text-title_bold">OLF Customer:
+                </label>
+                <template if:true={accountLinked}>
+                    <div class="center-right slds-text-color_weak margin-right" if:true={olfActive}>
+                        <p class="slds-text-align_left slds-text-color_success slds-text-title_bold">YES</p>
+                    </div>
+                    <div class="center-right slds-text-color_weak margin-right" if:false={olfActive}>
+                        <p class="slds-text-align_left slds-text-color_destructive slds-text-title_bold">NO</p>
+                    </div>
+                </template>
+                <template if:false={accountLinked}>
+                    <div class="center-right slds-text-color_weak">
+                        <p class="slds-text-align_right slds-text-color_error">Select a customer!</p>
+                    </div>
+                </template>
+                </span>
+            </div>
+            <div class="infoText">
+                <label class="slds-card__header-title slds-text-title_bold">Last online deals:
+                </label>
+                <template if:true={deals}>
+                    <template for:each={deals} for:item="deal" class="slds-box">
+
+                        <div key={deal.Id} class="center-right slds-text-color_weak">
+                            <p  style="font-size: 12px;color:#000000;" key={deal.Id}>
+                                <lightning-formatted-date-time key={deal.Id} value={deal.CreatedDate} year="2-digit" month="short" day="2-digit" hour="numeric"
+                                                               weekday="long" hour12="true"></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                    </template>
+                </template>
+                <template if:false= {deals}>
+                    
+                    <div class="center-right slds-text-color_weak" style="font-weight: 600;">
+                        <p class="slds-text-align_left slds-text-color_error slds-text-title_bold">No deals to display!</p>
+                    </div>
+                
+                </template>
+            </div>
+            </template>
+            <template if:false={accountLinked}>
+                <div class="noSelectText">
+                <div>
+                    <p class="slds-text-color_destructive slds-text-color_weak" style="font-weight: 600;">Account not selected!</p>
+                </div>
+               
+                <div class="slds-form-element__help slds-combobox_container__icon slds-align-bottom" style="font-weight: 400;color: #18222e">
+                    <p class="slds-form-element__help">Please select an account to see online sales information.</p>
+                </div>
+              </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

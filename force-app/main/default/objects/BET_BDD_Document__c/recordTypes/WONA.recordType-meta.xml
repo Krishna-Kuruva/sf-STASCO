@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WONA</fullName>
+    <active>true</active>
+    <label>WONA</label>
+    <picklistValues>
+        <picklist>BET_Doc_Status__c</picklist>
+        <values>
+            <fullName>Available in SharePoint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deleted Successfully</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Ready to Delete</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BET_Document_Type__c</picklist>
+        <values>
+            <fullName>3rd Party Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VAT Sign Off</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BET_Document__c</picklist>
+        <values>
+            <fullName>3rd Party Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking Details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bilingual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Statement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax ID Verify</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax ID Wavier</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BET_Section__c</picklist>
+        <values>
+            <fullName>GT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MDN</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BET_Source__c</picklist>
+        <values>
+            <fullName>Bankers Almanac</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orbis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>VIES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BET_Upload_Status__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

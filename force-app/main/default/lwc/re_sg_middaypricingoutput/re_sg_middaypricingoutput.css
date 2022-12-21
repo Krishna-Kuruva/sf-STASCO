@@ -1,0 +1,12 @@
+/** 
+ * Created by Souvik.Kundu on 6/17/2020. 
+ */
+.lowerbox {
+    height: 380px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.lowerbox tbody{
+  overflow: auto;
+  height: 380px;
+}

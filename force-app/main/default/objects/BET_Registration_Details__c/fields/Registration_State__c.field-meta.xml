@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registration_State__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Registration State</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>(1 OR 2) AND (3 AND 4 AND 5)</booleanFilter>
+        <filterItems>
+            <field>$Source.Registration_Country__c</field>
+            <operation>equals</operation>
+            <value>United States</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Registration_Country__c</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </filterItems>
+        <filterItems>
+            <field>BET_BDD_Country_vs_States__c.Enable_for_GT__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>BET_BDD_Country_vs_States__c.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>State</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Registration_Country__c</field>
+            <operation>equals</operation>
+            <valueField>BET_BDD_Country_vs_States__c.Country__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>BET_BDD_Country_vs_States__c</referenceTo>
+    <relationshipLabel>BDD Registration Details</relationshipLabel>
+    <relationshipName>BDD_Registration_Details</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

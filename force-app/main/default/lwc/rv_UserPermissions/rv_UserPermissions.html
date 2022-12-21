@@ -1,0 +1,400 @@
+<template>
+    <!--
+	Version : 0.0
+	Author	: Soumyajit
+	Date	: 24-Feb-2020
+	Details	: Revolution Users Permissions View
+    -->
+
+    <!--ExcelExport component calling-->
+        <c-rv_-excel-export
+        header-list={xlsHeader}
+        filename={filename}
+        worksheet-name-list={workSheetNameList}
+        sheet-data={xlsData}
+    ></c-rv_-excel-export>
+
+    <!--Page starts here-->
+    <div class="c-container">
+            <div if:true={pageViewAllowed}>
+
+                <!--Header starts here-->
+               <div class="slds-page-header slds-page-header_record-home page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-col slds-size_8-of-12">
+                                <div class="slds-media header-top-pad">
+                                    <div class="slds-media__figure">
+                                    <lightning-icon icon-name="standard:user_role" alternative-text="User Permissions" title=""></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                    <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                                        <div class="slds-page-header__name-title">
+                                        <h1>
+                                            <span class="slds-page-header__title slds-truncate">User Permissions</span>
+                                        </h1>
+                                        </div>
+                                    </div>
+                                    <p class="slds-page-header__name-meta"><b>Application Name </b>: {appName}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-col slds-size_6-of-12 "></div>
+
+                            <!--Filter option starts here-->
+                            <div class="slds-col slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <lightning-combobox
+                                    name="fetchDetails"
+                                    value="value"
+                                    label="Fetch details based on"
+                                    placeholder="Select Filter"
+                                    options={filterList}
+                                    onchange={fetchFilter}
+                                    disabled={filterDisabled}
+                                    required
+                                ></lightning-combobox>
+                            </div>
+                            <!--Filter option ends here-->
+
+                            <div class="slds-col slds-col slds-size_6-of-12 "></div>
+
+                            <div class="slds-col slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <div if:true={showExportButton}>
+                                    <lightning-button variant="brand" label={exportButtonLabel} title={exportButtonLabel} onclick={exportPage} class="slds-m-left_x-small">
+                                    </lightning-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Header ends here-->
+
+                <div if:true={showProfiles}>
+                    <br/>
+                    <template if:false={profileSpinnerLoaded}>
+                        <!--ProfileList Section starts here-->
+                        <div id="ProfileList" class="slds-grid slds-size_12-of-12">
+                            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                <div class="page-section ">
+                                    <h2><b>Profiles</b></h2>
+                                </div>
+                                <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                    <div id="ProfileListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                        <div id="ProfileListSection" class="slds-col slds-size_12-of-12 height-200">
+                                                <lightning-datatable data={profileList} 
+                                                                columns={profileListColumn}
+                                                                key-field="keyID"
+                                                                selected-rows={selectedProfileRows}
+                                                                max-row-selection={maxProfileListRowSelection}
+                                                                onrowselection={viewDetails}>
+                                                </lightning-datatable>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--ProfileList Section ends here-->
+                    </template>
+                    <template if:true={profileSpinnerLoaded}>
+                        <div class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+
+                                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                    Fetching Profiles
+                                </p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div if:true={showPermission}>
+                    <br/>
+                    <template if:false={permitSpinnerLoaded}>
+                        <!--PermissionList Section starts here-->
+                        <div id="PermissionList" class="slds-grid slds-size_12-of-12">
+                            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                <div class="page-section ">
+                                    <h2><b>Permission Sets</b></h2>
+                                </div>
+                            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                <div id="PermissionListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                    <div id="PermissionListSection" class="slds-col slds-size_12-of-12 height-200">
+                                            <lightning-datatable data={permissionList} 
+                                                            columns={permissionListColumn} 
+                                                            key-field="keyID"
+                                                            selected-rows={selectedPermissionRows}
+                                                            max-row-selection={maxPermissionListRowSelection}
+                                                            onrowselection={viewDetails}>
+                                            </lightning-datatable>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--PermissionList Section ends here-->
+                    </template>
+                    <template if:true={permitSpinnerLoaded}>
+                        <div class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+
+                                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                    Fetching Permission Sets
+                                </p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div if:true={showUsers}>
+                    <br/>
+                    <template if:false={userSpinnerLoaded}>
+                        <!--UserList Section starts here-->
+                        <div id="UserList" class="slds-grid slds-size_12-of-12">
+                            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                <div class="page-section ">
+                                    <h2><b>Users</b></h2>
+                                </div>
+                            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                <div if:true={hasUser}>
+                                    <div id="UserListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                        <div id="UserListSection" class="slds-col slds-size_12-of-12 height-300">
+                                                <lightning-datatable data={userList} 
+                                                                columns={userListColumn} 
+                                                                key-field="keyID"
+                                                                selected-rows={selectedUserRows}
+                                                                max-row-selection={maxUserListRowSelection}
+                                                                onrowselection={viewDetails}
+                                                                hide-checkbox-column={hideUserSelectable}>
+                                                </lightning-datatable>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div if:false={hasUser}>
+                                    <span>No Users Assigned</span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--UserList Section ends here-->
+                    </template>
+                    <template if:true={userSpinnerLoaded}>
+                        <div class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+
+                                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                    Fetching Users & User Permissions
+                                </p>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div if:true={userDetailView}>
+                        
+                        <div if:true={showUserGrpPermit}>
+                            <template if:false={permGrpSpinnerLoaded}>
+                                <div class="slds-grid">
+                                    <!--User Permission Section starts here-->
+                                    <div class="slds-col slds-p-around_small slds-size_1-of-2">
+                                        <div class="page-section ">
+                                            <h2><b>Permission Sets Assigned</b></h2>
+                                    </div>
+                                        <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                            <div if:true={hasPermSet}>
+                                                    <div id="PermListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                                        <div id="PermListSection" class="slds-col slds-size_12-of-12 height-150">
+                                                                <lightning-datatable data={userPermList}
+                                                                                columns={userPermListColumn}
+                                                                                key-field="Name"
+                                                                                hide-checkbox-column=true>
+                                                                </lightning-datatable>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div if:false={hasPermSet}>
+                                                    <span>No Permission Set Assigned</span>
+                                                </div>
+                                            </div>
+                                </div>
+                                <!--User Permission Section ends here-->
+
+                                <!--User Groups Section starts here-->
+                                <div class="slds-col slds-p-around_small slds-size_1-of-2">
+                                        <div class="page-section ">
+                                            <h2><b>Groups Assigned</b></h2>
+                                        </div>
+                                    <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                        <div if:true={hasGrp}>
+                                                <div id="GrpListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                                    <div id="GrpListSection" class="slds-col slds-size_12-of-12 height-150">
+                                                            <lightning-datatable data={userGrpList}
+                                                                            columns={userGrpListColumn}
+                                                                            key-field="Name"
+                                                                            hide-checkbox-column=true>
+                                                            </lightning-datatable>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div if:false={hasGrp}>
+                                                <span>No Groups Assigned</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--User Groups Section ends here-->
+
+                                </div>
+                            </template>
+                            <template if:true={permGrpSpinnerLoaded}>
+                                <div class="slds-spinner_container">
+                                    <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+
+                                        <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                            Fetching User Permission Sets & Groups
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <template if:false={tabSpinnerLoaded}>
+                            <!--Tab Section starts here-->
+                            <div id="TabList" class="slds-grid slds-size_12-of-12">
+                                <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                    <div class="page-section ">
+                                        <h2><b>Tabs</b></h2>
+                                    </div>
+                                    <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                        <div if:true={hasTab}>
+                                            <div id="TabListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                                <div id="TabListSection" class="slds-col slds-size_12-of-12 height-200">
+                                                    <lightning-datatable data={tabList}
+                                                                         columns={tabListColumn}
+                                                                         key-field="keyID"
+                                                                         hide-checkbox-column=true>
+                                                    </lightning-datatable>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div if:false={hasTab}>
+                                            <span>No Tabs Assigned</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Tab Section ends here-->
+                        </template>
+                        <template if:true={tabSpinnerLoaded}>
+                            <div class="slds-spinner_container">
+                                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+
+                                    <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                        Fetching Tabs
+                                    </p>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div if:true={showObjects}>
+                            <div class="slds-grid ">
+                                <!--ObjectList Section starts here-->
+                                <div class="slds-col slds-p-around_small slds-size_2-of-3">
+                                    <div class="page-section ">
+                                        <h2><b>Object Permissions</b></h2>
+                                   </div>
+                                   <template if:false={objectSpinnerLoaded}>
+                                        <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                            <div id="ObjectListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                                <div id="ObjectListSection" class="slds-col slds-size_12-of-12 height-500">
+                                                        <lightning-datatable  data={objectList} 
+                                                                        columns={objectListColumn}
+                                                                        key-field="Name"
+                                                                        selected-rows={selectedObjectRows}
+                                                                        max-row-selection={maxObjectListRowSelection}
+                                                                        onrowselection={viewFieldPermission}>
+                                                        </lightning-datatable>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:true={objectSpinnerLoaded}>
+                                        <div class="slds-spinner_container">
+                                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+
+                                                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                                    Fetching Objects
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </template>
+                               </div>
+                               <!--ObjectList Section ends here-->
+
+                               <!--FieldList Section starts here-->
+                               <div class="slds-col slds-p-around_small slds-size_1-of-3">
+                                    <div class="page-section ">
+                                        <h2><b>Field Permissions</b></h2>
+                                    </div>
+                                    <template if:false={fieldSpinnerLoaded}>
+                                        <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                                            <div if:true={showFieldPermission}>
+                                                <div id="FieldListGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                                                    <div id="FieldListSection" class="slds-col slds-size_12-of-12 height-500">
+                                                            <lightning-datatable data={fieldList} 
+                                                                            columns={fieldListColumn}
+                                                                            key-field="Name"
+                                                                            hide-checkbox-column=true>
+                                                            </lightning-datatable>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div if:false={showFieldPermission}>
+                                                <span>Select one object to view field permissions</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:true={fieldSpinnerLoaded}>
+                                        <div class="slds-spinner_container">
+                                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+
+                                                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                                    Fetching Object Fields
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                               <!--FieldList Section ends here-->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div if:true={showMessage}>
+                <span class="slds-align--absolute-center">{message}</span>
+            </div>
+    </div>
+    <!--Page ends here-->
+</template>

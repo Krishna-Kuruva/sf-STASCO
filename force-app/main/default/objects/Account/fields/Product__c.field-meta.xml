@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <description>Customer trades</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What does this customer trade?</inlineHelpText>
+    <label>Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AA - Gasoil 0.5 SGP Cargo</fullName>
+                <default>false</default>
+                <label>AA - Gasoil 0.5 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>AA - High Sulpher FO 180 SGP Cargo</fullName>
+                <default>false</default>
+                <label>AA - High Sulpher FO 180 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>AA - High Sulpher FO 380 SGP Cargo</fullName>
+                <default>false</default>
+                <label>AA - High Sulpher FO 380 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>AA - Jet Kero SGP Cargo</fullName>
+                <default>false</default>
+                <label>AA - Jet Kero SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Butane</fullName>
+                <default>false</default>
+                <label>Butane</label>
+            </value>
+            <value>
+                <fullName>CR - Dubai</fullName>
+                <default>false</default>
+                <label>CR - Dubai</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 1.0 CIF Genoa Cargo</fullName>
+                <default>false</default>
+                <label>EU - Fuel 1.0 CIF Genoa Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 1.0 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Fuel 1.0 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 1.0 FOB NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Fuel 1.0 FOB NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 1.0 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>EU - Fuel 1.0 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>EU- Fuel 3.5 CIF Genoa</fullName>
+                <default>false</default>
+                <label>EU- Fuel 3.5 CIF Genoa</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 3.5 FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>EU - Fuel 3.5 FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Fuel 3.5 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>EU - Fuel 3.5 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil 0.2 CIF MED Cargo</fullName>
+                <default>false</default>
+                <label>EU - Gasoil 0.2 CIF MED Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil 0.2 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Gasoil 0.2 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil 0.2 FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>EU - Gasoil 0.2 FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil 0.2 FOB NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Gasoil 0.2 FOB NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil 0.2 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>EU - Gasoil 0.2 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>EU - Gasoil EN590 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Gasoil EN590 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Jet Kero CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>EU - Jet Kero CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Jet Kero FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>EU - Jet Kero FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>EU - Naphta CIF NWE Physical</fullName>
+                <default>false</default>
+                <label>EU - Naphta CIF NWE Physical</label>
+            </value>
+            <value>
+                <fullName>EU - ULSD 10ppm Fob Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>EU - ULSD 10ppm Fob Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>IPE - Brent</fullName>
+                <default>false</default>
+                <label>IPE - Brent</label>
+            </value>
+            <value>
+                <fullName>IPE - Gasoil</fullName>
+                <default>false</default>
+                <label>IPE - Gasoil</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>Propane</fullName>
+                <default>false</default>
+                <label>Propane</label>
+            </value>
+            <value>
+                <fullName>ARGUS EURO BOB OXY vs PLATTS NPH CC NWE</fullName>
+                <default>false</default>
+                <label>ARGUS EURO BOB OXY vs PLATTS NPH CC NWE</label>
+            </value>
+            <value>
+                <fullName>380 CST SINGAPORE FUEL OIL</fullName>
+                <default>false</default>
+                <label>380 CST SINGAPORE FUEL OIL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

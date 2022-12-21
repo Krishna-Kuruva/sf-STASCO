@@ -1,0 +1,9 @@
+<aura:component controller="RE_CovamoController" implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global">  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="showCovamoForm" type="Boolean" />
+    <aura:attribute name="checkUserInQueue" type="Boolean" />
+    <aura:attribute name="status" type="Boolean" />
+	<aura:if isTrue="{!v.showCovamoForm}">
+    <c:re_Covamo_Form recordId="{!v.recordId}"/>
+        </aura:if> 
+</aura:component>

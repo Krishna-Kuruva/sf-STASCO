@@ -1,0 +1,450 @@
+<template>
+    <lightning-tabset active-tab-value={tabVals}>
+     
+        <lightning-tab label="Covamo" value="Tab1" >
+      
+        <div class="slds-p-around_x-small slds-box divClass">
+        
+            <div class="slds-p-around_x-small slds-box"><strong>KEY VALUATION ASSUMPTIONS</strong>
+              
+               <template if:true={recordId}>
+                <lightning-button style="float: right;margin-top: -5px;"
+                slot="actions" variant="brand-outline" 
+                label="New Covamo" onclick={refreshCovamo} ></lightning-button>
+            </template>
+            </div> <br>
+            <div class="slds-p-around_x-small slds-box">
+                <b>Analysis Period Setting : ANNUAL MODEL</b>
+                <template if:true={SetCol}>        
+                    <div class="slds-grid slds-gutters">	
+                        
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input required type="text" label="Contract Name" name="Contract_Name__c" value={SetCol.Contract_Name__c} onchange={handleChange}  class="covInput"></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input required type="text" label="Customer Name" name="Customer_Name__c" value={SetCol.Customer_Name__c} onchange={handleChange} class="covInput"></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <!--lightning-input required type=date label="Valuation Start Year" name="Valuation_Start_Year__c" value={SetCol.Valuation_Start_Year__c} onchange={handleChange}></lightning-input-->
+                            
+                            <lightning-combobox
+                                name="RE_Valuation_Start_Year__c"
+                                label="Valuation Start Year"
+                                value={SetCol.RE_Valuation_Start_Year__c}
+                                placeholder="Select Progress"
+                                options={valuationenddata}
+                                onchange={handleChange}
+                                class="covInput"
+                                >
+                            </lightning-combobox>
+                            <!--<select class="slds-select" onchange={handleStartChange}>
+                                <template for:each={valuationstartdata} for:item="dataitems">
+                                    <option key={dataitems.value} value={dataitems.value} selected={startyearval}>{dataitems.value}</option>
+                                </template>
+                               </select>-->
+                        </div>
+                                                    <!--lightning-input required type=date label="Valuation End Year" name="Valuation_End_Year__c" value={SetCol.Valuation_End_Year__c} onchange={handleChange}></lightning-input-->
+
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-combobox
+                                name="RE_Valuation_End_Year__c"
+                                label="Valuation End Year"
+                                value={SetCol.RE_Valuation_End_Year__c}
+                                placeholder="Select Progress"
+                                options={valuationenddata}
+                                onchange={handleChange}
+                                class="covInput"
+                                >
+                    </lightning-combobox>
+                            <!--<select class="slds-select" onchange={handleEndChange}>
+                                <template for:each={valuationenddata} for:item="dataitems">
+                                    <option key={dataitems.value} value={dataitems.value}>{dataitems.value}</option>
+                                </template>
+                              </select>-->
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input type="text" label="Local Currency" name="Local_Currency__c" value={SetCol.Local_Currency__c} onchange={handleChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input type="text" label="Base Unit" name="Base_Unit__c" value={SetCol.Base_Unit__c} onchange={handleChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            
+                                <lightning-input type="number" label="Exchange Rate (USD/LC)" name="Exchange_Rate__c" step="0.0001" value={SetCol.Exchange_Rate__c} onchange={handleChange}></lightning-input>
+                           
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <template if:true={isAM}>
+                            <lightning-input disabled required type="number" label="Inflation Rate (%)"  step="0.01" name="Inflation_Rate__c" value={SetCol.Inflation_Rate__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        <template if:false={isAM}>
+                            <lightning-input required type="number" label="Inflation Rate (%)"  step="0.01" name="Inflation_Rate__c" value={SetCol.Inflation_Rate__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-4">
+                            <template if:true={isAM}>
+                            <lightning-input disabled type="number" label="Weighted Average Cost of Capital (%)"  step="0.01"  name="Weighted_Avearge_Percentage__c" value={SetCol.Weighted_Avearge_Percentage__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        <template if:false={isAM}>
+                            <lightning-input type="number" label="Weighted Average Cost of Capital (%)"  step="0.01"  name="Weighted_Avearge_Percentage__c" value={SetCol.Weighted_Avearge_Percentage__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <template if:true={isAM}>
+                            <lightning-input disabled required type="number" label="VAT Percentage (%)" name="VAT_Percentage__c"  step="0"  value={SetCol.VAT_Percentage__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        <template if:false={isAM}>
+                            <lightning-input required type="number" label="VAT Percentage (%)" name="VAT_Percentage__c"  step="0"  value={SetCol.VAT_Percentage__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <template if:true={isAM}>
+                            <lightning-input disabled required type="number" label="VAT Payment Days (Days)"  step="0"  name="Payment_Days__c" value={SetCol.Payment_Days__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        <template if:false={isAM}>
+                            <lightning-input required type="number" label="VAT Payment Days (Days)"  step="0"  name="Payment_Days__c" value={SetCol.Payment_Days__c} onchange={handleChange}></lightning-input>
+                        </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input type="number" label="Income Tax Payable Days (Days)" name="Income_Tax_Payable_Days__c"  step="0"  value={SetCol.Income_Tax_Payable_Days__c} onchange={handleChange}></lightning-input>
+                        </div>
+                    </div>   
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input type="number" label="Income Tax Payable Percentage (%)"  step="0"  name="Income_Tax_Payable_Percentage__c" value={SetCol.Income_Tax_Payable_Percentage__c} onchange={handleChange}></lightning-input>
+                        </div>
+                    </div>
+                </template>
+            </div>  
+      
+        <lightning-button style="float: right;" icon-position="right"
+        icon-name="utility:save"
+        slot="actions" variant="brand-outline" 
+        label="Add Assumption Per Year" onclick={openModal} ></lightning-button>
+        <br/>
+         <!-- modal start -->        
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header slds-box">
+                        <strong>Calculating Weighted Average Costs</strong>
+                        <!--
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                        </button>-->
+                    </header>
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium slds-box" id="modal-content-id-1">
+                        <template if:false={isShow}>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-size_1-of-2">
+                                    Product
+                                    <select class="slds-select" id="select-01" onchange={onProductValueSelection}>
+                                        <option value="--Select--">--Select--</option>
+                                        <template for:each={productList} for:item="picklistItem" for:index=index>
+                                            <option key={picklistItem} value={index}>
+                                            {picklistItem.Name}
+                                            </option>
+                                        </template>
+                                    </select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    Type
+                                    <select class="slds-select" id="select-02"  onchange={onTypeValueSelection}>
+                                        <option value="--Select--">--Select--</option>
+                                        <option value="Offer">Offer</option>
+                                        <option value="Backstop">Backstop</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--c-re-product-location product={product} location-list={locationList}></c-re-product-location-->
+                            <!--lightning-button variant="base" label="Calculate" onclick={getCalculations}></lightning-button-->
+                            <template if:true={showlocation}>
+                                <div>
+                                    <strong><h2><label class="slds-form-element__label" for="select-01">Locations</label> <label style="margin-right: 235px; float: right" class="slds-form-element__label" for="select-02">Volume</label></h2></strong>
+                                </div>
+                            <div style="height:200px; overflow: inherit;">
+            
+                                <template for:each={locationList} for:item="location">
+                                    <div key={location.RE_Depot_Name__r.Id}>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input type="text" name={location.RE_Depot_Name__r.Name} disabled value={location.RE_Depot_Name__r.Name} ></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2">
+                                                <lightning-input onchange={saveValue} type="text" name={location.RE_Depot_Name__r.Name}></lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        </template>
+                        <template if:true={isShow}>
+                        <c-re-covamo-child exchange-rate={SetCol.Exchange_Rate__c} cov-details-set={SetDetailsCol} is-new={isnew} is-index={isindex} is-a-m={isAM} onaddcovamodataset={addcovamodataset} onaddupdatecovamodataset={addeditcovamodataset}  volumeset={datavolume}></c-re-covamo-child>
+                        </template>
+                        <template if:true={isLoading}>
+                            <div class="spinner">
+                            <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+                        </div>
+                        </template>
+                        <!--    
+                    <template if:true={isNewset}>
+                    <c-re-covamo-child title-vals={covInitiateDetails}  is-new={isNewset} onaddcovamodetails={handleaddcovamodetails}></c-re-covamo-child>
+                    </template>
+                    <template if:false={isNewset}>
+                    <c-re-covamo-child title-vals={covInitiateDetails} is-new={isNewset} record-index={detailsCount}  onaddcovamodetails={handleaddcovamodetails} onaddeditcovamodetails={handleeditcovamodetails}></c-re-covamo-child>
+                    </template>
+                -->
+                    </div>
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                    <template if:true={showCalculateButton}>
+                        <button class="slds-button slds-button_neutral" onclick={getCalculations}>Calculate</button>
+                    </template>
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    <!-- modal end -->
+    <br/>
+    <div class="slds-p-around_x-small slds-box"><strong>KEY ASSUMPTIONS PER YEAR</strong></div> <br>
+    <div class="slds-p-around_x-small slds-box">
+    <table style="font-size: xx-small;">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Type</th>
+            <th>Product</th> 
+            <th>Volume (Litre)</th>           
+            <th>Mops (USD/Litre)</th>
+            <th>Market Premium (MYR/Litre)</th>
+            <th>Freight (MYR/Litre)</th>
+            <th>S/H Cost (MYR/Litre)</th>
+            <th>Oil Gain/Loss (MYR/Litre)</th>
+            <th>Hedging Cost (MYR/Litre)</th>
+            <th>Breakbulk Cost (MYR/Litre)</th>
+            <th>Other Cost (MYR/Litre)</th>
+            <th>Secondary Transport (MYR/Litre)</th>
+            <th>Premium Price Out (MYR/Litre)</th>
+            <th>UNIT C3 (USD/Litre)</th>
+            <th>Receivables (Days)</th>
+        </tr>
+    </thead>
+        <tbody>
+       <template for:each={covamoupdateddataset} for:item="temp" for:index="index">
+        <tr key={temp}>
+            <td>
+                <lightning-icon style="margin-right: 10px;" id={index} onclick={editcovamodataset} icon-name="utility:edit" size="xx-small" alternative-text="Edit" title="Edit"></lightning-icon>
+    
+                <lightning-icon id={index} onclick={deletecovamodataset} icon-name="utility:delete" size=" xx-small" alternative-text="Delete" title="Delete"></lightning-icon>
+            </td>
+            <td>{temp.comHeader.Type__c}</td>
+            <td>{temp.comHeader.Product_Name__c}</td>
+            <td>{temp.comHeader.Volume__c}</td>
+            <td><lightning-formatted-number value={temp.comHeader.MOPS__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Market_Premium__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Freight__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Handling_Cost__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Oil_Loss__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Hedging_Cost__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Breakbulk_Cost__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Miscellaneous_Cost__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Secondary_Transport__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Expected_Premium_Price_Out__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td><lightning-formatted-number value={temp.comHeader.Unit_C3__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+            <td>{temp.comHeader.Receivables_Days__c}</td>
+     <!--   <td>
+                <lightning-input disabled type="text"  name="Product_Name__c" value={temp.comHeader.Product_Name__c} ></lightning-input>
+            </td>
+            <td>
+                <lightning-input disabled type=text name="Type__c" value={temp.comHeader.Type__c} ></lightning-input>
+            </td>
+            <td>
+                <lightning-input disabled type="number"  name="Volume__c" value={temp.comHeader.Volume__c} ></lightning-input>
+            </td>
+            <td>
+                <lightning-input disabled type=number  name="Purchase_Margin__c" value={temp.comHeader.Purchase_Margin__c} ></lightning-input>
+            </td>
+            <td>
+                <lightning-input disabled type=number  name="Transportation_Margin__c" value={temp.comHeader.Transportation_Margin__c} ></lightning-input>
+            </td>
+            <td>
+                <lightning-input disabled type=number name="Total_Sales_Margin__c" value={temp.comHeader.Total_Sales_Margin__c} ></lightning-input>
+            </td>
+             <td>
+                <lightning-input disabled type=number  name="Excise_Fee__c" value={temp.comHeader.Excise_Fee__c} ></lightning-input>
+            </td>-->
+        </tr>
+       </template>
+    </tbody>
+    </table>
+    </div>
+    <br/>
+     <!--  <lightning-button label="Calculate" onclick={openFinanceSummaryModal} ></lightning-button> handlesave-->
+       <div style="text-align: center;">
+     <lightning-button style="margin-right: 10px;" label="Mail Draft" onclick={openFinanceSummaryConfirmationModal}></lightning-button>
+     <lightning-button style="margin-right: 10px;" label="Save & Calculate" onclick={handlesave}></lightning-button>
+     <lightning-button label="Submit" onclick={openFinanceSummarySaveConfirmationModal}></lightning-button>
+    </div>
+    <template if:true={isLoadingOnSave}>
+        <div class="spinner">
+        <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+    </div>
+    </template>
+       <br><br>
+       <template if:true={isFinanceModalOpen}>
+       <div class="slds-p-around_x-small slds-box"><strong>Overall FINANCIAL SUMMARY</strong></div> <br>
+       <div class="slds-p-around_x-small slds-box">
+            <table style="font-size: xx-small;">
+                <thead>
+                    <th>Type</th>
+                    <th>Total Volume (Litre)</th>
+                    <th>Product/Price Premium (MYR/Litre)</th>
+                    <th>Unit C3 (USD/Litre)</th>
+                    <th>Total C3 Margin (USD '000)</th>
+                    <th>Total C5 Cash Contribution (USD '000)</th>
+                    <th>Total NIBIAT (USD '000)</th>
+                    <th>NPV (000 USD)</th>
+                    <th>ROACE (%)</th>
+                    <th>VIR DENOMINATOR - NPV (USD '000)</th>
+                    <th>VIR (000 USD)</th>
+                </thead>
+                <tbody>
+                    
+                        <template for:each={financialdatavalset} for:item="items">
+                            <tr key={items}>
+                                <td>{items.covamoFS.Type__c}</td>
+                                <td>{items.covamoFS.Product_Volume__c}</td>
+                                <td>
+                                    <table>
+                                    <template for:each={items.covamoProds} for:item="itemsVal">
+                                        <tr key={itemsVal} style="font-size: xx-small;">
+                                            <td>{itemsVal.RE_Product__r.Name}</td>
+                                            <td><lightning-formatted-number value={itemsVal.Expected_Premium_Price_Out__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        </tr>
+                                    </template>
+                                    </table>  
+    
+                                </td>
+                                <td><lightning-formatted-number value={items.covamoFS.Unit_C3__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.C3_Margin__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.Total_C5_Cash_Contribution__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.NIBIAT__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.NPV__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.ROACE__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.VIR_DENOMINATOR_NPV__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td><lightning-formatted-number value={items.covamoFS.VIR__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                            </tr>
+    
+                        </template>
+                    
+                </tbody>
+            </table>
+        </div>
+            <br>
+            <div class="slds-p-around_x-small slds-box"><strong>YEARLY FINANCIAL SUMMARY</strong></div> <br>
+            <div class="slds-p-around_x-small slds-box">
+            <template for:each={financialupdatedyearset} for:item="tempValss" >
+                <br key={tempValss}>
+                <div key={tempValss} style="background: gainsboro"><strong >{tempValss.type}</strong></div>
+                <div key={tempValss} class="testClass" style="overflow-y: auto;font-size: xx-small;">
+                    
+                    <table style="font-size: xx-small;">
+                        <thead>
+                            <th>Year</th>
+                            <th>Total Volume (Litre)</th>
+                            <th>C3 Margin<br>(USD '000)</th>
+                            <th>C5 Cash Contribution<br>(USD '000)</th>
+                            <th>C10 NIBIAT CCS<br>(USD '000)</th>
+                            <th>Working Capital Movements<br>(USD '000)</th>
+                            <th>Net Cash Flow <br>(USD '000)</th>
+                            <th>Net Cash Flow- RT (W/O Inflation)<br>(USD '000)</th>
+                            <th>NPV (USD '000)</th>
+                            <th>Capital Employed<br>(USD '000)</th>
+                            <th>Average ROACE (%)</th>
+                            <th>VIR DENOMINATOR (USD '000)</th>
+                            <th>VIR DENOMINATOR - NPV<br>(USD '000)</th>
+                            <!--<th>VIR (USD)</th>-->
+                            <th>BDF Amortization (USD '000)</th>
+                        </thead>
+                        <tbody>
+                            
+                                <template for:each={tempValss.vals} for:item="items">
+                                    <tr key={items}>
+                                        <td>
+                                            {items.Year__c}
+                                        </td>
+                                        <td>{items.Volume__c}</td>
+                                        <td><lightning-formatted-number value={items.C3_Margin__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.C5_Cash_Contribution__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.C10_NIBIAT_CCS__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.Working_Capital_Movements__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.Net_Cash_Flow__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.Net_Cash_Flow_RT_W_O_Inflation__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        
+                                        <td><lightning-formatted-number value={items.NPV__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.Capital_Employed__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        
+                                        <td><lightning-formatted-number value={items.Average_ROACE__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.VIR_Denominator__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={items.VIR_DENOMINATOR_NPV__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                        <!--<td><lightning-formatted-number value={items.VIR__c} maximum-fraction-digits="2"></lightning-formatted-number></td>-->
+                                        <td><lightning-formatted-number value={items.BDF_Amortization__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                    </tr>
+                    
+                                </template>
+                            
+                        </tbody>
+                    </table><!--
+                    <template for:each={tempValss.sumset} for:item="valsets">
+                        {valsets.NPVOffer},{valsets.ROACHEOffer},{valsets.VUINPVOffer},{valsets.VIROffer}
+                    </template>
+                -->
+                    </div>
+            </template>
+        </div>
+        </template>
+    
+        <template if:true={isshowConfirmModel}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div  class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                      <strong>Note: Make sure, you have calculated Financial Summary before processing to Next, After submittion you can not modify COVAMO record.</strong>
+                        </div>
+                        <footer class="slds-modal__footer">
+                        <div style="text-align: center;">         
+                            <lightning-button style="margin-right: 15px;" label="Proceed" onclick={activatecovamo}></lightning-button>
+                            <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+                        </div>
+                        </footer>
+                        </div>
+            </section>
+        </template>
+                    
+        </div>
+    </lightning-tab>
+    <lightning-tab label="Covamo History" value="Tab2" onclick={tabselectchange}>
+        <div class="divClass slds-p-around_x-small slds-box">
+            
+            <c-re-cvamo-header is-a-m={isAM}></c-re-cvamo-header>
+        </div>
+    </lightning-tab>
+    </lightning-tabset>
+    <!--
+    <div class="testClass" style="width: 99%;overflow-y: auto;font-size: xx-small;">
+    <c-re-covamo-cost-management></c-re-covamo-cost-management>
+    </div>-->
+    
+    </template>

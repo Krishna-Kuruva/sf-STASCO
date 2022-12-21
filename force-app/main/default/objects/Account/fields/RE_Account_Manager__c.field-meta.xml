@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Account_Manager__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Account Manager</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>2 AND (1 OR 3)</booleanFilter>
+        <filterItems>
+            <field>RT_Setting__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>MY Code Value Mapping</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.Type__c</field>
+            <operation>contains</operation>
+            <value>AM</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>PH Code Value Mapping</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>RT_Setting__c</referenceTo>
+    <relationshipLabel>Accounts (Account Manager)</relationshipLabel>
+    <relationshipName>RE_Account_Manager</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CFM_Email_Id__c</fullName>
+    <description>Cluster Finance Manager Email ID</description>
+    <externalId>false</externalId>
+    <label>CFM Email Id</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>CFM_Contact__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A.Bailly@shell.com</fullName>
+                <default>false</default>
+                <label>A.Bailly@shell.com</label>
+            </value>
+            <value>
+                <fullName>A.Payot@shell.com</fullName>
+                <default>false</default>
+                <label>A.Payot@shell.com</label>
+            </value>
+            <value>
+                <fullName>Alexandra.Stevens@shell.com</fullName>
+                <default>false</default>
+                <label>Alexandra.Stevens@shell.com</label>
+            </value>
+            <value>
+                <fullName>Andrew.A.Tan@shell.com</fullName>
+                <default>false</default>
+                <label>Andrew.A.Tan@shell.com</label>
+            </value>
+            <value>
+                <fullName>Deborah.Stewart@shell.com</fullName>
+                <default>false</default>
+                <label>Deborah.Stewart@shell.com</label>
+            </value>
+            <value>
+                <fullName>Elda.Ho@shell.com</fullName>
+                <default>false</default>
+                <label>Elda.Ho@shell.com</label>
+            </value>
+            <value>
+                <fullName>Jan.Rode@shell.com</fullName>
+                <default>false</default>
+                <label>Jan.Rode@shell.com</label>
+            </value>
+            <value>
+                <fullName>Jessica.Ching@shell.com</fullName>
+                <default>false</default>
+                <label>Jessica.Ching@shell.com</label>
+            </value>
+            <value>
+                <fullName>Joern.Schmidt@shell.com</fullName>
+                <default>false</default>
+                <label>Joern.Schmidt@shell.com</label>
+            </value>
+            <value>
+                <fullName>Kashif.Arshad@shell.com</fullName>
+                <default>false</default>
+                <label>Kashif.Arshad@shell.com</label>
+            </value>
+            <value>
+                <fullName>M.Norulaiza@shell.com</fullName>
+                <default>false</default>
+                <label>M.Norulaiza@shell.com</label>
+            </value>
+            <value>
+                <fullName>Mine.Dindar@shell.com</fullName>
+                <default>false</default>
+                <label>Mine.Dindar@shell.com</label>
+            </value>
+            <value>
+                <fullName>Nadia.KadirBawah@shell.com</fullName>
+                <default>false</default>
+                <label>Nadia.KadirBawah@shell.com</label>
+            </value>
+            <value>
+                <fullName>Nguyen-thi.dung@shell.com</fullName>
+                <default>false</default>
+                <label>Nguyen-thi.dung@shell.com</label>
+            </value>
+            <value>
+                <fullName>Rona.Lynch@shell.om</fullName>
+                <default>false</default>
+                <label>Rona.Lynch@shell.om</label>
+            </value>
+            <value>
+                <fullName>Smile.Gillegean@shell.com</fullName>
+                <default>false</default>
+                <label>Smile.Gillegean@shell.com</label>
+            </value>
+            <value>
+                <fullName>Stewart.Waters@shell.com</fullName>
+                <default>false</default>
+                <label>Stewart.Waters@shell.com</label>
+            </value>
+            <value>
+                <fullName>Valerie.Kay@shell.com</fullName>
+                <default>false</default>
+                <label>Valerie.Kay@shell.com</label>
+            </value>
+            <value>
+                <fullName>W.Udompongsanont@shell.com</fullName>
+                <default>false</default>
+                <label>W.Udompongsanont@shell.com</label>
+            </value>
+            <value>
+                <fullName>Ray.A.Mccarthy@shell.com</fullName>
+                <default>false</default>
+                <label>Ray.A.Mccarthy@shell.com</label>
+            </value>
+            <value>
+                <fullName>Yvonne.Phua@shell.com</fullName>
+                <default>false</default>
+                <label>Yvonne.Phua@shell.com</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Kashif Arshad</controllingFieldValue>
+            <valueName>Kashif.Arshad@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Yvonne.Phua@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Norulaiza  Norulaiza</controllingFieldValue>
+            <valueName>M.Norulaiza@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mine Dindar</controllingFieldValue>
+            <valueName>Mine.Dindar@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nadia KadirBawah</controllingFieldValue>
+            <valueName>Nadia.KadirBawah@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nguyen-thi dung</controllingFieldValue>
+            <valueName>Nguyen-thi.dung@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rona Lynch</controllingFieldValue>
+            <valueName>Rona.Lynch@shell.om</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Smile Gillegean</controllingFieldValue>
+            <valueName>Smile.Gillegean@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stewart Waters</controllingFieldValue>
+            <valueName>Stewart.Waters@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Valerie Kay</controllingFieldValue>
+            <valueName>Valerie.Kay@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alexendre Bailly</controllingFieldValue>
+            <valueName>A.Bailly@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Arnaud Payot</controllingFieldValue>
+            <valueName>A.Payot@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Alexandra Stevens</controllingFieldValue>
+            <valueName>Alexandra.Stevens@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Andrew Tan</controllingFieldValue>
+            <valueName>Andrew.A.Tan@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deborah Stewart</controllingFieldValue>
+            <valueName>Deborah.Stewart@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Elda Ho</controllingFieldValue>
+            <valueName>Elda.Ho@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Jan Rode</controllingFieldValue>
+            <valueName>Jan.Rode@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Jessica Ching</controllingFieldValue>
+            <valueName>Jessica.Ching@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wimon Udompongsanont</controllingFieldValue>
+            <valueName>W.Udompongsanont@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Joern Schmidt</controllingFieldValue>
+            <valueName>Joern.Schmidt@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ray Mccarthy</controllingFieldValue>
+            <valueName>Ray.A.Mccarthy@shell.com</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

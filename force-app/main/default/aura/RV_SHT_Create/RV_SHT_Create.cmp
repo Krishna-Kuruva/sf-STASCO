@@ -1,0 +1,926 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global" controller="RV_SHT_CreateController">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <aura:attribute name="MRCList" type="MRC__c[]" />
+    <aura:attribute name="matchedRecords" type="List" />
+    <aura:attribute name="mrcFilLst" type="List" />
+    <aura:attribute name="plantFilLst" type="List" />
+    <aura:attribute name="reasonList" type="List"/>
+    <aura:attribute name="MRCValues" type="List"/>
+    <aura:attribute name="SHTCompList" type="List"/>
+    <aura:attribute name="SHTSaveList" type="List"/> 
+    <aura:attribute name="Location" type="String" />
+    <aura:attribute name="selDeal" type="String" />
+    <aura:attribute name="volAvailable" type="String" />
+    <aura:attribute name="lookupMRCNo" type="String" />
+    <aura:attribute name="lookupShipToNo" type="String" />
+    <aura:attribute name="PSPValue" type="String" />
+    <aura:attribute name="status" type="String" default="Completed"/>
+    <aura:attribute name="Product" type="String" />
+    <aura:attribute name="soldTo" type="String" />
+    <aura:attribute name="shipTo" type="String" />
+    <aura:attribute name="poType" type="String" />
+    <aura:attribute name="plant" type="String" />
+    <aura:attribute name="mot" type="String" />
+    <aura:attribute name="soldToName" type="String" default="Sold To"/>
+    <aura:attribute name="entrySource" type="String" />
+    <aura:attribute name="lookupSoldTo" type="String" />
+    <aura:attribute name="lookupSoldToId" type="String" />
+    <aura:attribute name="mrcNumberFil" type="String" />
+    <aura:attribute name="plantFil" type="String" />
+    <aura:attribute name="Quantitiy" type="Decimal" />
+    <aura:attribute name="ContractStartDate" type="Date" />
+    <aura:attribute name="ContractLastPossibleDate" type="Date" />
+    <aura:attribute name="ClonedContractStartDate" type="Date" />
+    <aura:attribute name="ContractEndDate" type="Date" />
+    <aura:attribute name="ClonedContractEndDate" type="Date" />
+    <aura:attribute name="LiftingWindow" type="Decimal" default='10'/>
+    <aura:attribute name="TrancheValue" type="String" default='ATP1'/>
+    <aura:attribute name="recordSaveError" type="String"/>
+    <aura:attribute name="gradeList" type="List" />
+    <aura:attribute name="entrySrcList" type="List" />
+    <aura:attribute name="mrcNoList" type="List" />
+    <aura:attribute name="mrcNumber" type="String" />
+    <aura:attribute name="createdBy" type="String" default="Me"/>
+    <aura:attribute name="shipToList" type="List" />
+    <aura:attribute name="plantLst" type="List" />
+    <aura:attribute name="poTypeLst" type="List" />
+    <aura:attribute name="motLst" type="List" />
+    <aura:attribute name="userList" type="List" />
+    <aura:attribute name="locationList" type="List" />
+    <aura:attribute name="intervalList" type="List" />
+    <aura:attribute name="statusList" type="List" />
+    <aura:attribute name="accntList" type="List" />
+    <aura:attribute name="trancheList" type="List" />
+    <aura:attribute name="regionList" type="List" /> 
+    <aura:attribute name="region" type="String" default="N" />
+    <aura:attribute name="interval" type="String" default="TODAY" />
+    <aura:attribute name="SHTList" type="Object[]"/>
+    <aura:attribute name="validDateError" type="boolean" default="false"/>
+    <aura:attribute name="validPriceError" type="boolean" default="false"/>
+    <aura:attribute name="validDateSaveError" type="boolean" default="false"/>
+    <aura:attribute name="validSaveError" type="boolean" default="false"/>
+    <aura:attribute name="validEndDateSaveError" type="boolean" default="false"/>
+    <aura:attribute name="retailMix" type="boolean" default="false"/>
+    <aura:attribute name="showAGO" type="boolean" default="true" />
+    <aura:attribute name="showIGO" type="boolean" default="true" />    
+    <aura:attribute name="showMOGAS" type="boolean" default="true" />
+    <aura:attribute name="disableRetMix" type="boolean" default="false" />
+    <aura:attribute name="disableSaveonSerach" type="boolean" default="false" /> 
+    <!--AdditionalFix_166256_29Apr2019_Soumyajit starts-->
+    <aura:attribute name="disableCancelOnSearch" type="boolean" default="false" />
+    <aura:attribute name="disableConfirmOnSearch" type="boolean" default="false" />
+    <aura:attribute name="disableCommentOnConfirmedDeals" type="boolean" default="false" />
+    <aura:attribute name="disableCancelOnConfirmedDeals" type="boolean" default="false" />
+    <!--AdditionalFix_166256_29Apr2019_Soumyajit ends-->
+    <!--START - Rahul Sharma | Date - 21-Jul-2020 : Adding additional attrbute to filter OLF deals-->
+    <aura:attribute name="OLFOnly" type="Boolean" default="false"/>
+    <!--END - Rahul Sharma | Date - 21-Jul-2020 : Adding additional attrbute to filter OLF deals-->
+    <!--Fix_170853_13May2019_Soumyajit starts-->
+    <aura:attribute name="UseAdvanceFilter" type="boolean" default="false" />
+    <aura:attribute name="AdvanceFilterFirstTimeCheck" type="boolean" default="true" />
+    <aura:attribute name="SelectSHTNoList" type="List" default="" />
+    <aura:attribute name="SelectSHTNo" type="String" default="" />
+    <aura:attribute name="DisableSelectSHTNo" type="boolean" default="true" />
+    <aura:attribute name="SelectSoldToList" type="List" default="" />
+    <aura:attribute name="SelectSoldTo" type="String" default="" />
+    <aura:attribute name="SelectCreatedStartDate" type="Date" default="TODAY" />  
+    <aura:attribute name="SelectCreatedEndDate" type="Date" default="TODAY" />
+    <aura:attribute name="OldSelectCreatedStartDate" type="Date" default="TODAY" />
+    <aura:attribute name="OldSelectCreatedEndDate" type="Date" default="TODAY" />
+    <aura:attribute name="OldSelectCreatedBy" type="String" default="" />
+    <aura:attribute name="OldSelectStatus" type="String" default="" />
+    <aura:attribute name="OldSelectSoldTo" type="String" default="" />
+    <aura:attribute name="startDateValidationError" type="boolean" default="false"/>
+    <aura:attribute name="startDateValidationErrorMsg" type="String" default=""/>
+	<aura:attribute name="endDateValidationError" type="boolean" default="false"/>
+    <aura:attribute name="endDateValidationErrorMsg" type="String" default=""/>
+    <!--Fix_170853_13May2019_Soumyajit ends-->
+    <!--270192_OLFDealCancel_08Jul2019_Soumyajit starts-->
+    <aura:attribute name="InternetSales" type="boolean" default="false" />
+    <aura:attribute name="OldInternetSales" type="boolean" default="false" />
+    <!--270192_OLFDealCancel_08Jul2019_Soumyajit ends-->
+    <!--Fix_329724_10Oct2019_Soumyajit starts-->
+    <aura:attribute name="isSPConfirmOpen" type="boolean" default="false"/>
+    <aura:attribute name="SHTConfirmSavedList" type="List"/>
+    <aura:attribute name="ConfirmSkipMaterials" type="String" default = "{!$Label.c.Rv_SalesCaptureConfirmSkipMaterials}"/>	<!--AdditionalFix_329724_25Nov2019_Soumyajit-->
+    <!--Fix_329724_10Oct2019_Soumyajit ends-->
+    <!--START - Rahul Sharma | Date = 29-Jan-2021 | PBI-702438 : Added new attributes for PO Type advance filter-->
+    <aura:attribute name="selectedPoTypeAdv" type="String" default=""/>
+    <aura:attribute name="poTypeListAdv" type="List" default=""/>
+    <aura:attribute name="oldSelectedPoTypeAdv" type="String" default=""/>
+    <aura:attribute name="searchFilterWrap" type="Object"/>
+    <aura:attribute name="customerNames" type="String" default=""/>
+     <!--END - Rahul Sharma | Date = 29-Jan-2021 | PBI-702438 : Added new attributes for PO Type advance filter-->
+     	
+    <aura:handler name="choose" event="c:AutoCompleteChooseEvent" action="{!c.setChosen}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+
+    <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide "  alternativeText="Loading"/>
+
+    <div class="c-container">
+     
+           
+            <!-- SEARCH SECTION -->
+            <lightning:layout multipleRows="true" horizontalAlign="spread" verticalAlign="start">
+                <lightning:layoutItem padding="around-small" size="12" class="slds-list--horizontal">
+                    <!--SEARCH START Enter MRC No Text Field-->       
+                    <lightning:layoutItem padding="horizontal-small" size="3" >
+                        <!-- Enter MRC No Text Field-->
+                        
+                        
+                        <div class="slds-grid slds-wrap slds-size_4-of-4 ">
+                            <ui:inputText aura:id="mrcno"  class="slds-truncate slds-input "  label="MRC Number" placeholder="MRC Number" value="{!v.lookupMRCNo}"  keyup="{!c.searchEvents}"/>
+                        </div>
+                         <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        <!-- Enter Ship to No Text Field-->   
+                        <div class="slds-grid slds-wrap slds-size_4-of-4 ">
+                            <ui:inputText aura:id="shipToNum" class="slds-truncate slds-input "  label="ShipTo Number" placeholder="ShipTo Number" value="{!v.lookupShipToNo}" blur="{!c.resetSearchShipTo}" keyup="{!c.searchShipToAccs}" updateOn="keyup"/> 
+                        </div>
+                        
+                         <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        
+                        <!-- Enter Accounyt Name/Sold to TypeAhead/LookUp --> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">
+                            <ui:inputText aura:id="soldToName" class="slds-select slds-p-right_small matchWidth" label="Customer" placeholder="SoldTo Name" change="{!c.removeChosen}" value="{!v.lookupSoldTo}" keyup="{!c.doSearchSoldTo}" updateOn="keyup" blur="{!c.setFocusOnSrchBtn}" /> 
+                            <aura:if isTrue="{!v.matchedRecords.length == 0 ? false : true}">
+                                <div aura:id="searchBox" class="tsInputHoverDD  slds-clear slds-m-bottom--small showName slds-lookup__menu slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-4 slds-lookup__menu showName" role="listbox" >
+                                    <ul class="slds-lookup__list" role="presentation"> 
+                                        <aura:iteration var="record" items="{!v.matchedRecords}">
+                                            <span>
+                                                <c:AutoCompleteComponent record="{!record}"/>
+                                            </span> 
+                                        </aura:iteration>
+                                    </ul>
+                                </div>
+                            </aura:if> 
+                        </div>  
+                           
+                    </lightning:layoutItem>
+                    <!-- SEARCH END -->
+                    <!-- PICKLIST TO BE DISPLYED WHEN ACCOUNT SEARCH -->
+                    <lightning:layoutItem padding="horizontal-small" size="3" >
+                       
+                        
+                        <aura:if isTrue="{!and(v.poTypeLst != NULL ,v.poTypeLst.length > 0)}">
+                            
+                            <div class="slds-grid slds-wrap slds-size_4-of-4 potype" onkeyup="{!c.setFocusOnSrchBtn}">
+                                <!--START - Rahul Sharma | Date - 21-Jan-2021 : Made PO Tpye required -->
+                                <lightning:select name="PO Type" label="PO Type" aura:id="poType" value="{!v.poType}" onchange="{!c.getMoreFilters}" required="true" >
+                                <!--END - Rahul Sharma | Date - 21-Jan-2021 : Made PO Tpye required -->
+                                    <aura:iteration items="{!v.poTypeLst}" var="item">
+                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"  />
+                                    </aura:iteration> 
+                                </lightning:select>
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{!and(v.plantLst != NULL ,v.plantLst.length > 0)}">                           
+                            <div class="slds-grid slds-wrap slds-size_4-of-4 slds-p-top_x-small potype">
+                                <lightning:select name="Plant" label="Plant" aura:id="plant" value="{!v.plant}" onchange="{!c.resetMrcMot}">
+                                    <aura:iteration items="{!v.plantLst}" var="item">
+                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"  />
+                                    </aura:iteration> 
+                                </lightning:select>
+                            </div>
+						 <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        </aura:if>
+                        
+                    
+                            <div class="slds-list_horizontal">
+                                  <aura:if isTrue="{!and(v.mrcNoList != NULL ,v.mrcNoList.length > 0)}"> 
+                                      <div class="mrcNo">
+                                    <lightning:select name="MRC Number" label="MRC Number" aura:id="mrcNumber" value="{!v.mrcNumber}" onchange="{!c.resetPlantMot}"  >
+                                        <aura:iteration items="{!v.mrcNoList}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"  />
+                                        </aura:iteration> 
+                                    </lightning:select>
+                                      </div>
+                                </aura:if>
+                                <aura:if isTrue="{!and(v.motLst != NULL ,v.motLst.length > 0)}">
+                                   
+                                   <div class="slds-p-left_xx-small mrcNo">
+                                        <lightning:select name="MOT" label="MOT" aura:id="MOT" value="{!v.mot}" onchange="{!c.resetPlantMrc}"  >
+                                            <aura:iteration items="{!v.motLst}" var="item">
+                                                <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"  />
+                                            </aura:iteration> 
+                                        </lightning:select> 
+                                    </div>
+                                  
+                                </aura:if>
+                            </div>
+   
+                    </lightning:layoutItem>
+                    
+                    
+                    <lightning:layoutItem padding="horizontal-small" size="3" >
+                        <!-- <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>  -->
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">
+                            <ui:inputDate  format="DD.MM.YYYY" aura:id="ContractDate" label="Contract Start Date" value="{!v.ContractStartDate}"  required="true" change="{!c.calculateDays}"/> 
+                        </div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">
+                            <!--Fix_252970_30Apr2019_Soumyajit starts-->
+                            <!--<ui:inputDate aura:id="ContractEndDate" format="DD.MM.YYYY"  label="Contract End Date" value="{!v.ContractEndDate}" required="true" change="{!c.getMaxDate}" />--> 
+                            <!--FixReverted_252970_07Aug2019_Soumyajit-->
+                            <!--<ui:inputDate aura:id="ContractEndDate" format="DD.MM.YYYY"  label="Contract End Date" value="{!v.ContractEndDate}" required="true" change="{!c.getMaxDate}" disabled="{!v.disableContractEndDate}"/> -->
+                            <ui:inputDate aura:id="ContractEndDate" format="DD.MM.YYYY"  label="Contract End Date" value="{!v.ContractEndDate}" required="true" change="{!c.getMaxDate}"/> 
+                            <!--FixReverted_252970_07Aug2019_Soumyajit-->
+                            <!--Fix_252970_30Apr2019_Soumyajit ends-->
+                        </div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4 " style="width:100%;">
+                            <div class="slds-grid slds-wrap slds-size_1-of-2 " style="width:100%;">
+                                <lightning:select name="selectVal" label="Sales Period" aura:id="trancheSelect" value="{!v.TrancheValue}" disabled="true" required="true">
+                                    <aura:iteration items="{!v.trancheList}" var="item">
+                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                                
+                                <lightning:button aura:id="search" disabled="{!v.validDateError}" variant="brand" class="btnSet" label="Search" title="" onclick="{!c.getPlantSHTData}" />     
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="horizontal-small" size="3" >
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div> 
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">&nbsp;</div>
+                        <div class="slds-grid slds-wrap slds-size_4-of-4">
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" class="slds-list--horizontal">
+                    <lightning:layoutItem size="6" class="slds-list--horizontal">             
+                        <lightning:layoutItem padding="around-small" class="slds-size_1-of-4" >
+                            <lightning:input type="checkbox" aura:id="showAGO" label="IGO" name="showIGO" checked="{!v.showIGO}" onchange="{!c.igoOnChange}"/>        
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small"  class="slds-size_1-of-4" >
+                            <lightning:input type="checkbox" aura:id="showAGO" label="AGO" name="showAGO" checked="{!v.showAGO}" onchange="{!c.agoOnChange}"/>        
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small" class="slds-size_1-of-4"  >
+                            <lightning:input type="checkbox" aura:id="showAGO" label="MOGAS" name="showMOGAS" checked="{!v.showMOGAS}" onchange="{!c.mogasOnChange}"/>        
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small" class="slds-size_1-of-4"  >
+                            <lightning:input type="checkbox" aura:id="showUGL" label="Retail Mix" name="Retail Mix" checked="{!v.retailMix}" onchange="{!c.onChange}" disabled="{!v.disableRetMix}"/>        
+                        </lightning:layoutItem> 
+                        <!--START - Rahul Sharma | Date - 21-Jul-2020 : Adding additional check to filter OLF deals-->
+                        <lightning:layoutItem padding="around-small" class="slds-size_1-of-4"  >
+                            <lightning:input type="checkbox" aura:id="showUGL" label="OLF MRC only" name="OLF MRC only" checked="{!v.OLFOnly}" onchange="{!c.onChange}"/>        
+                        </lightning:layoutItem> 
+                        <!--END - Rahul Sharma | Date - 21-Jul-2020 : Adding additional check to filter OLF deals-->
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" > 
+                        <aura:if isTrue="{!and(v.MRCValues != NULL ,v.MRCValues.length>0 )}">
+                            <div class="slds-float_right slds-p-around_small">
+                                <!--<lightning:button variant="brand" label="Save" title="" onclick="{!c.saveEnteredDeals}" disabled="{!v.disableSaveonSerach}"/>-->	<!--Fix_174551_27Nov2019_Soumyajit-->
+                                <lightning:button variant="brand" label="Save" title="" onclick="{!c.saveEnteredDeals}" disabled="{!(v.disableSaveonSerach || v.validDateError)}"/> <!--Fix_174551_27Nov2019_Soumyajit-->
+                            </div>
+                        </aura:if>
+                    </lightning:layoutItem>
+                </lightning:layoutItem>
+                
+                
+            </lightning:layout>
+            
+            <!-- END OF SEARCH SECTION -->
+            
+            <!-- SECTION 2 SHT MAIN TABLE START -->
+            <aura:if isTrue="{!and(v.MRCValues != NULL ,v.MRCValues.length>0 )}">
+                
+                <lightning:layout multipleRows="true" horizontalAlign="space" >     
+                    <lightning:layoutItem padding="horizontal-small" size="12">
+                        <div class="row">
+                            
+                            <div class="slds-align-absolute-center">
+                                <!--START - Rahul Sharma | Date - 04-Feb-2021 | PBI-702438 : Adding list of customers based received based on Ship-To Number search-->
+                                <!--h2><b>  <p class="slds-p-horizontal_x-small searchSoldTo" >CUSTOMER : {!v.MRCValues[0].accName}</p></b></h2-->
+                                <h2><b>  <p class="slds-p-horizontal_x-small searchSoldTo" >CUSTOMER(S) : {!v.customerNames}</p></b></h2>
+                                <!--END - Rahul Sharma | Date - 04-Feb-2021 | PBI-702438 : Adding list of customers based received based on Ship-To Number search-->
+                            </div>
+                            <div class="slds-grid " >
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped ">
+                                    
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">MRC NO  
+                                            </th>
+                                            <th scope="col" class="putborderHeader  slds-color__background_gray-5">SHIP-TO NO   
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Plant CODE   
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Plant Name    
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">GRADE    
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">MAT. NO  
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">ATP CBM
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">
+                                                <div class="slds-truncate" title="BSP">BSP</div>
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">
+                                                <div class="slds-truncate" title="PSP">PSP</div>
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">VOLUME CBM     
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">SP €/100L   
+                                            </th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Comment    
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <aura:iteration indexVar="index" items="{!v.MRCValues}" var="item">
+                                            <!--    <aura:if isTrue="{!item.productType == 'AGO'}">  -->
+                                            <tr id ="{!index}" >
+                                                <!-- COMMON-->
+                                                <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.mrcName}"/>
+                                                </td>
+                                                
+                                                <td scope="row" class="putborderHeader ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.shipToNumber}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.location}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.locationName}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader slds-cell-wrap">
+                                                    <ui:outputText class="slds-truncate" value="{!item.grade}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.materialNo}"/> &nbsp; 
+                                                    <lightning:icon iconName="utility:info"  alternativeText="Material Name" title="{!item.materialName}" size="xx-small" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap" aura:id="atpAGO" value="{!item.atpLive}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputNumber class="slds-truncate"  aura:id="bspAGO" value="{!item.finalbspCal}" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputNumber class="slds-truncate"  aura:id="pspAGO" value="{!item.finalSalesPriceCal}" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader slds-cell-wrap">
+                                                    <ui:inputNumber class="slds-truncate slds-cell-wrap" aura:id="cbmAGO" value="{!item.volumeCBM}" />
+                                                </td>
+                                                <td scope="row" class=" slds-cell-wrap">
+                                                  
+                                                    <ui:inputNumber class="slds-truncate slds-cell-wrap " aura:id="priceAGO" value="{!item.pricePerVol}" disabled="{!item.isZeroPriceDeal}" />
+                                                </td>
+                                                <td scope="row" class=" slds-cell-wrap">
+                                                    <ui:inputTextArea class="slds-truncate slds-cell-wrap"
+                                                                      labelClass="inTextNone"
+                                                                      value="{!item.Comment}"  maxlength="254" />
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>  
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem  size="12">
+                        <div class="slds-float_right slds-p-around_small">
+                            <!--<lightning:button variant="brand" label="Save" title="" onclick="{!c.saveEnteredDeals}" disabled="{!v.disableSaveonSerach}"/>-->	<!--Fix_174551_27Nov2019_Soumyajit-->
+                            <lightning:button variant="brand" label="Save" title="" onclick="{!c.saveEnteredDeals}" disabled="{!(v.disableSaveonSerach || v.validDateError)}"/> <!--Fix_174551_27Nov2019_Soumyajit-->
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+ </aura:if>
+            
+            <!-- SECTION 3 SAVED TABLE --> 
+            <aura:if isTrue="{!and(v.SHTSaveList != NULL ,v.SHTSaveList.length > 0)}">
+                <lightning:layout multipleRows="true" horizontalAlign="spread">
+                    <lightning:layoutItem class="savedTablePad" size="12" >
+                        <div class="page-section page-header">
+                            <h2><b>My Saved Deals</b></h2>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="completedTablePad" size="12" >
+                        <div class="slds-grid">
+                            <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">MRC No</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">SOLD TO</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">SHIP TO</th>
+                                        <!--START - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">PO Type</th>
+                                        <!--END - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">PLANT</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">GRADE</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">MAT NO.</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5  putborderHeader">Contract Start</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">Contract End</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed  slds-color__background_gray-5  slds-cell-shrink putborderHeader">Volume CBM</th>
+                                        <!--Change SalesPrice €/100L to SP €/100L and removed slds-cell-shrink __Lakshmi -->
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap  putborderHeader">SP €/100L</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 slds-cell-wrap putborderHeader">MARGIN €/100L</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 slds-cell-wrap putborderHeader">PSP €/100L</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 putborderHeader">Comment</th>
+                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-cell-wrap slds-color__background_gray-5 ">Action</th>     
+                                    </tr>
+                                </thead>
+                                <tbody>  
+                                    <aura:iteration items="{!v.SHTSaveList}" var="item">
+                                        <tr>
+                                            <td scope="row" class="putborderHeader slds-cell-wrap">
+                                                <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.MrcNo}"/>
+                                            </td>  
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.Customer}"/>
+                                            </td>
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.shipToNumber}"/>
+                                            </td>  
+                                            <!--START - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.poType}"/>
+                                            </td>  
+                                            <!--END - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                            <!--FIX_PBI_170867_15thJuly_Lakshmi-->
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.location}"/></B>
+                                            </td>  
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate" value="{!item.product}"/>
+                                            </td>
+                                            <!--FIX_PBI_170867_15thJuly_Lakshmi-->
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:outputText class="slds-truncate" value="{!item.materialNo}"/></B> &nbsp;
+                                                <lightning:icon iconName="utility:info" alternativeText="Material Name" title="{!item.materialName}" size="xx-small" />
+                                            </td>
+                                            <td scope="row" class="putborderHeader ">
+                                                <ui:outputDate format="DD.MM.YYYY" value="{!item.contractStartDate}" />
+                                            </td>
+                                            <td scope="row" class="putborderHeader ">
+                                                <ui:outputDate format="DD.MM.YYYY" value="{!item.contractEndDate}" />
+                                            </td>
+                                            <!--FIX_PBI_170867_15thJuly_Lakshmi-->
+                                            <td scope="row" class="putborderHeader">
+                                                <B><ui:inputNumber class="slds-truncate " value="{!item.volCbm}"  /></B>
+                                            </td>
+                                            <!--FIX_PBI_287455_11thJuly_Lakshmi_Starts
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:inputNumber class="slds-truncate" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/>
+                                            </td>-->        
+                                            <!-- START - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in red colour even to material no. 3805-->
+                                            <aura:if isTrue="{!and(!or(!lessthan(item.spPer100L, item.msp), item.msp==null))}">                    
+                                            <!--aura:if isTrue="{!and(!or(!lessthan(item.spPer100L, item.msp), item.msp==null), item.materialNo != '3805')}"-->
+                                                <td scope="row" class="putborderHeader">
+                                                    <B>
+                                                        <b><ui:inputNumber class="slds-truncate colorchange" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>
+                                                    </B>
+                                                </td>
+                                                <!--<aura:set attribute="else">
+                                                    <td scope="row" class="putborderHeader">
+                                                                                    
+                                                    <B><ui:inputNumber class="slds-truncate slds-colorsuccess" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></B>
+                                                                                        
+                                                    </td>
+                                                    </aura:set>-->
+                                            </aura:if>
+                                            <!-- END - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in red colour even to material no. 3805-->
+                                            <!-- START - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in green colour even to material no. 3805-->
+                                            <!--aura:if isTrue="{!and(or(!lessthan(item.spPer100L, item.msp), item.msp==null), item.materialNo != '3805')}"-->
+                                            <aura:if isTrue="{!or(!lessthan(item.spPer100L, item.msp), item.msp==null)}">
+                                                <td scope="row" class="putborderHeader">
+                                                    <B>
+                                                        <b><ui:inputNumber class="slds-truncate slds-colorsuccess" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>
+                                                    </B>
+                                                </td>
+                                            </aura:if>
+                                            <!--aura:if isTrue="{!item.materialNo == '3805'}">
+                                            <td scope="row" class="putborderHeader">
+                                                <b><ui:inputNumber class="slds-truncate " value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>
+                                            </td>
+                                            </aura:if-->
+                                            <!-- END - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in green colour even to material no. 3805-->
+                                            
+											<!--FIX_PBI_287455_11thJuly_Lakshmi_Ends-->
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate" value="{!item.targetMargin}"/>
+                                            </td>
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:outputText class="slds-truncate" value="{!item.msp}"/>
+                                            </td>
+                                            <td scope="row" class="putborderHeader">
+                                                <ui:inputTextArea class="slds-truncate slds-cell-wrap"
+                                                                  labelClass="inTextNone" value="{!item.Comment}" label="" maxlength="254" />
+                                            </td>
+                                            <td scope="row" class="putborderHeader">
+                                                <!--AdditionalFix_166256_29Apr2019_Soumyajit starts-->
+                                                <!--<lightning:button tabindex="{!index}" variant="destructive" label="Cancel" aura:id="{!index}" name="{!item.shtRecordId}" onclick="{!c.cancelSelSavedDeal}"  />-->
+                                                <lightning:button tabindex="{!index}" variant="destructive" label="Cancel" aura:id="{!index}" name="{!item.shtRecordId}" onclick="{!c.cancelSelSavedDeal}"  disabled="{!v.disableCancelOnSearch}"/>
+                                                <!--AdditionalFix_166256_29Apr2019_Soumyajit ends-->
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-float_right slds-p-top_medium">
+                            
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small"  size="12" >
+                        <div class="slds-float_right">
+                            <!--AdditionalFix_166256_29Apr2019_Soumyajit starts-->
+                            <!--<lightning:button variant="brand"  label="Confirm Deals" title="" onclick="{!c.saveSavedDeals}" />-->
+                            <!--Fix_329724_10Oct2019_Soumyajit starts-->
+                            <!--<lightning:button variant="brand"  label="Confirm Deals" title="" onclick="{!c.saveSavedDeals}" disabled="{!v.disableConfirmOnSearch}"/>-->
+                            <lightning:button variant="brand"  label="Confirm Deals" title="" onclick="{!c.openSPConfirmPopUp}" disabled="{!v.disableConfirmOnSearch}"/>
+                            <!--Fix_329724_10Oct2019_Soumyajit ends-->
+                            <!--AdditionalFix_166256_29Apr2019_Soumyajit ends-->
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout> 
+           
+           <!--Fix_329724_10Oct2019_Soumyajit starts-->
+           <!-- Section SP check confirmation -->
+           <aura:if isTrue="{!v.isSPConfirmOpen}">
+             
+            <!-- Confirmation Popup starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+                <div class="slds-modal__container">
+                    <!-- Confirmation Popup Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeSPConfirmPopUp }" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">SP €/100L is lesser than PSP for below Deal(s). Do you want to proceed?</h2>
+                    </header>
+                    <!--Confirmation Popup Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped ">    
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5 putborderLeft">MRC NO</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">SOLD TO</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">SHIP-TO NO</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Plant</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">GRADE</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">MAT. NO</th> 
+                                        	<th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Contract Start</th>
+                                        	<th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">Contract End</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">VOLUME CBM</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">SP €/100L</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">PSP</th>
+                                            <th scope="col" class="putborderHeader slds-cell-wrap slds-color__background_gray-5">MARGIN €/100L</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <aura:iteration items="{!v.SHTConfirmSavedList}" var="item">
+                                            <tr>
+                                                <td scope="row" class="putborderHeader putborderLeft">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.MrcNo}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.Customer}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.shipToNumber}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.location}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader slds-cell-wrap">
+                                                    <ui:outputText class="slds-truncate" value="{!item.product}"/>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.materialNo}"/> &nbsp; 
+                                                    <lightning:icon iconName="utility:info"  alternativeText="Material Name" title="{!item.materialName}" size="xx-small" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputDate format="DD.MM.YYYY" value="{!item.contractStartDate}" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputDate format="DD.MM.YYYY" value="{!item.contractEndDate}" />
+                                                </td>
+                                                <td scope="row" class="putborderHeader slds-cell-wrap">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap" value="{!item.volCbm}" />
+                                                </td>
+                                                <td scope="row" class=" slds-cell-wrap">
+                                                    <b><ui:outputNumber class="slds-truncate slds-cell-wrap colorchange" value="{!item.spPer100L}" /></b>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <b><ui:outputNumber class="slds-truncate" value="{!item.msp}" /></b>
+                                                </td>
+                                                <td scope="row" class="putborderHeader">
+                                                    <ui:outputText class="slds-truncate" value="{!item.targetMargin}"/>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>  
+                    	</table>
+                    </div>
+                    <!--Confirmation Popup Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="No, Review it" title="No, Review it" onclick="{!c.closeSPConfirmPopUp}"/>
+                        <lightning:button variant="brand" label="Yes, Confirm" title="Yes, Confirm" onclick="{!c.saveSavedDeals}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!-- Confirmation Popup ends here-->
+               
+        </aura:if>
+        <!--Fix_329724_10Oct2019_Soumyajit ends-->
+                
+ </aura:if>
+            
+            <!-- SECTION 4 COMPLETED TABLE -->
+            <lightning:layout multipleRows="true" horizontalAlign="spread" >
+                <lightning:layoutItem class="completedTablePad" size="12" >
+                    <div class="page-section page-header">
+                        <!--Fix_170853_13May2019_Soumyajit Starts-->
+                        <!--<h2><b>My Completed Deals</b></h2>-->
+                        <h2><b>Completed Deals</b></h2>
+                        <!--Fix_170853_13May2019_Soumyajit Ends-->
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-small" flexibility="auto, no-grow"  size="12" >
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-p-around_x-small" style="display:flex;align-items:center;">
+                            <lightning:input type="checkbox" aura:id="UseAdvanceFilter" label="Use Advanced Filter" name="Use Advance Filter" checked="{!v.UseAdvanceFilter}" onchange="{!c.showAdvanceFilters}"/>  <!--Fix_PBI_403668_Lakshmi_12202019-->
+                        </div>
+                        <!--Advance Filters-->
+                        <aura:if isTrue="{!v.UseAdvanceFilter}">
+                            <!--270192_OLFDealCancel_08Jul2019_Soumyajit starts-->
+                            <div class="slds-col slds-p-around_x-small" style="display:flex;align-items:center;">
+                                <lightning:input type="checkbox" aura:id="InternetSales" label="Internet Sales" name="Internet Sales" checked="{!v.InternetSales}" onfocus="{!c.storeOldSelectFilters}" onchange="{!c.showAdvanceFilters}"/>  
+                            </div>
+                            <!--270192_OLFDealCancel_08Jul2019_Soumyajit ends-->
+                            <div class="slds-col slds-p-around_x-small" style="font-size:12px;padding:0.8rem;">
+                                <ui:inputDate  format="DD.MM.YYYY" aura:id="SelectCreatedStartDateID" label="Start Date" value="{!v.SelectCreatedStartDate}"  focus="{!c.storeOldSelectFilters}" change="{!c.showAdvanceFilters}" displayDatePicker="true" required="true"/>
+                                <aura:if isTrue="{!v.startDateValidationError}">
+                                    <div class="slds-text-color_error slds-p-left_x-small">
+                                        {!v.startDateValidationErrorMsg}
+                                    </div>
+                                </aura:if>
+                            </div>
+                            <div class="slds-col slds-p-around_x-small" style="font-size:12px;padding:0.8rem;">
+                                <ui:inputDate  format="DD.MM.YYYY" aura:id="SelectCreatedEndDateID" label="End Date" value="{!v.SelectCreatedEndDate}"  focus="{!c.storeOldSelectFilters}" change="{!c.showAdvanceFilters}" displayDatePicker="true" required="true"/>
+                                <aura:if isTrue="{!v.endDateValidationError}">
+                                    <div class="slds-text-color_error slds-p-left_x-small">
+                                        {!v.endDateValidationErrorMsg}
+                                    </div>
+                                </aura:if>
+                            </div>
+                            <div class="slds-col slds-p-around_x-small">
+                                <lightning:select name="status" label="Created By" aura:id="status" value="{!v.createdBy}" onchange="{!c.showAdvanceFilters}" onfocus="{!c.storeOldSelectFilters}" required="true">
+                                <aura:iteration items="{!v.userList}" var="item">
+                                    <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                </aura:iteration> 
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-p-around_x-small">
+                                <lightning:select name="status" label="Status" aura:id="status" value="{!v.status}" onchange="{!c.showAdvanceFilters}" onfocus="{!c.storeOldSelectFilters}" required="true">
+                                    <aura:iteration items="{!v.statusList}" var="item">
+                                        <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                    </aura:iteration> 
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-p-around_x-small">
+                                <lightning:select name="Sold To" label="Sold To" aura:id="SelectSoldToID" value="{!v.SelectSoldTo}" onchange="{!c.showAdvanceFilters}" required="true" onfocus="{!c.storeOldSelectFilters}">
+                                    <option value="ALL">ALL</option>
+                                        <aura:iteration items="{!v.SelectSoldToList}" var="st">
+                                            <option text="{!st}" value="{!st}"/>
+                                        </aura:iteration> 
+                                </lightning:select>
+                            </div>      
+                            <div class="slds-col  slds-p-around_x-small">
+                                <lightning:select name="SHT No" label="SHT No" aura:id="SelectSHTNoID" value="{!v.SelectSHTNo}" onchange="{!c.showAdvanceFilters}" disabled="{!v.DisableSelectSHTNo}">
+                                    <option value="ALL">ALL</option>
+                                        <aura:iteration items="{!v.SelectSHTNoList}" var="sht">
+                                            <option text="{!sht}" value="{!sht}"/>
+                                        </aura:iteration> 
+                                </lightning:select>
+                            </div>
+                            <div class="slds-col slds-p-vertical_x-small">
+                                <lightning:helptext content="Select a 'Sold To' value (other than 'ALL') to get list of SHT No(s)"/>
+                            </div>
+                            <!--START - Rahul Sharma | Date - 29-Jan-2021 | PBI-702438 : Added advance filter ffor PO Type-->
+                            <div class="slds-col slds-p-around_x-small">
+                            <lightning:select name="poType" label="PO Type" aura:id="selectPoType" value="{!v.selectedPoTypeAdv}" onchange="{!c.showAdvanceFilters}" onfocus="{!c.storeOldSelectFilters}">
+                                <option value="ALL">ALL</option>
+                                    <aura:iteration items="{!v.poTypeListAdv}" var="poType">
+                                        <option text="{!poType}" value="{!poType}"/>
+                                    </aura:iteration> 
+                            </lightning:select>
+                            </div>
+                            <!--END - Rahul Sharma | Date - 29-Jan-2021 | PBI-702438 : Added advance filter ffor PO Type-->
+                            <!--Normal Filters-->
+                            <aura:set attribute="else">
+                                <div class="slds-col slds-p-around_x-small">
+                                    <lightning:select name="region" label="Created On" aura:id="interval" value="{!v.interval}" onchange="{!c.getCompletedSHT}" required="true">
+                                        <aura:iteration items="{!v.intervalList}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration> 
+                                    </lightning:select>
+                                </div>
+                                <div class="slds-col slds-p-around_x-small">
+                                    <lightning:select name="status" label="Status" aura:id="status" value="{!v.status}" onchange="{!c.getCompletedSHT}" onfocus="{!c.storeOldSelectFilters}" required="true">
+                                        <aura:iteration items="{!v.statusList}" var="item">
+                                            <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"/>
+                                        </aura:iteration> 
+                                    </lightning:select>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        <!--Fix_170853_13May2019_Soumyajit Ends-->
+                    </div>
+                </lightning:layoutItem>
+                            <lightning:layoutItem size="12" flexibility="auto, no-grow" class="completedTablePad">
+                                <lightning:layoutItem size="12" flexibility="auto, no-grow"  >
+                                    <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-max-medium-table--stacked">
+                                        <thead>
+                                            <tr class="slds-text-title_caps">
+                                                <th scope="col" class="slds-truncate slds-color__background_gray-5 putborderHeader putborderLeft">SHT No</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">MRC No</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Sold To</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Ship To</th>
+                                                <!--START - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">PO Type</th>
+                                                <!--END - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                                <th scope="col" class="slds-truncate slds-cell-fixed  slds-color__background_gray-5 slds-cell-wrap putborderHeader">Plant</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Grade Mat.No </th>
+                                              <!--  <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Mat No.</th> -->
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Contract Start</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Contract End</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Volume CBM</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">SP €/100L</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Margin  €/100L</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">PSP  €/100L</th>
+                                                <!--START - PBI-702438 | Rahul Sharma | Date - 22-Jan-2021 : Updated label from GSAP Contract to GSAP Response -->
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">GSAP Response</th>
+                                                <!--END - PBI-702438 | Rahul Sharma | Date - 22-Jan-2021 : Updated label from GSAP Contract to GSAP Response -->
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 slds-cell-wrap putborderHeader">Comment</th>
+                                                <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Reason</th>
+                                                <aura:if isTrue="{!or(v.status =='Completed',v.status =='Auto-Completed' )}">
+                                                    
+                                                    <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Action</th>
+                                                    <aura:set attribute="else">
+                                                        
+                                                        <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Status</th>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <aura:iteration items="{!v.SHTCompList}" var="item">
+                                                <tr>
+                                                    <td scope="row" class="putborderHeader putborderLeft">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.shtNo}"/>
+                                                    </td> 
+                                                    <td scope="row" class="putborderHeader ">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.MrcNo}"/>
+                                                    </td>  
+                                                    <td scope="row" class="putborderHeader ">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.Customer}"/>
+                                                    </td>  
+                                                    <td scope="row" class="putborderHeader ">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.shipToNumber}"/>
+                                                    </td> 
+                                                    <!--START - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.poType}"/>
+                                                    </td>  
+                                                    <!--END - PBI-702438 | Rahul Sharma | Date - 29-Jan-2021 : Added PO Type in the table -->
+                                                    <td scope="row" class="putborderHeader ">
+                                                        <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.location}"/>
+                                                    </td>  
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputText class="slds-truncate" value="{!item.product}"/><br/>
+                                                        <ui:outputText class="slds-truncate" value="{!item.materialNo}"/> &nbsp;
+                                                        <lightning:icon iconName="utility:info"  alternativeText="Material Name" title="{!item.materialName}" size="xx-small" />
+                                                    </td>
+                                                  <!--  <td scope="row" class="putborderHeader">
+                                                        <ui:outputText class="slds-truncate" value="{!item.materialNo}"/> &nbsp;
+                                                        <lightning:icon iconName="utility:info"  alternativeText="Material Name" title="{!item.materialName}" size="xx-small" />
+                                                    </td> -->
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputdate class="slds-truncate" format="DD.MM.YYYY" value="{!item.contractStartDate}"/>
+                                                    </td> 
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputdate class="slds-truncate" format="DD.MM.YYYY" value="{!item.contractEndDate}"/>
+                                                    </td>
+                                                    <!--FIX_PBI_170931_11thJuly_Lakshmi_Starts-->
+                                                    <td scope="row" class="putborderHeader">
+                                                    <b><ui:outputNumber class="slds-truncate" value="{!item.volCbm}"/></b>
+                                                    </td> 
+                                                    <!-- User Entered Price-->
+                                                   <!--FIX_PBI_170931_11thJuly_Lakshmi_Starts-->
+                                                  <!--  <td scope="row" class="putborderHeader">
+                                                        <ui:outputNumber class="slds-truncate" value="{!item.spPer100L}" />
+                                                    </td> -->
+                                                    <!-- START - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in red colour even to material no. 3805-->  
+                                                    <aura:if isTrue="{!and(!or(!lessthan(item.spPer100L, item.msp), item.msp==null))}">
+                                                    <!--aura:if isTrue="{!and(!or(!lessthan(item.spPer100L, item.msp), item.msp==null), item.materialNo != '3805')}"-->
+                                                        <td scope="row" class="putborderHeader">          
+                                                        <b><ui:inputNumber class="slds-truncate colorchange" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>     
+                                                        </td>
+                                                            <!--<aura:set attribute="else">
+                                                        <td scope="row" class="putborderHeader">    
+                                                            <B><ui:inputNumber class="slds-truncate slds-colorsuccess" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></B>           
+                                                        </td>
+                                                            </aura:set>-->
+                                                    </aura:if>
+                                                    <!-- END - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in red colour even to material no. 3805-->
+                                                    <!-- START - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in green colour even to material no. 3805-->
+                                                    <!--aura:if isTrue="{!and(or(!lessthan(item.spPer100L, item.msp), item.msp==null), item.materialNo != '3805')}"-->
+                                                    <aura:if isTrue="{!or(!lessthan(item.spPer100L, item.msp), item.msp==null)}">
+                                                        <td scope="row" class="putborderHeader">                    
+                                                            <b><ui:inputNumber class="slds-truncate slds-colorsuccess" value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>                                                  
+                                                        </td>       			
+                                                    </aura:if>
+                                                    <!--aura:if isTrue="{!item.materialNo == '3805'}">
+                                                        <td scope="row" class="putborderHeader">                                                     
+                                                            <b><ui:inputNumber class="slds-truncate " value="{!item.spPer100L}" disabled="{!item.isZeroPriceDeal}"/></b>                                                        
+                                                        </td>             			
+                                                    </aura-->
+                                                    <!-- END - Rahul Sharma | Date - 20-Jan-2021 : Removed the filter to show price in green colour even to material no. 3805-->
+                                                    
+                                                     <!--FIX_PBI_170931_11thJuly_Lakshmi_Ends-->
+                                                    
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputNumber class="slds-truncate" value="{!item.targetMargin}" format="0.00"/>
+                                                    </td>
+                                                    <td scope="row" class="putborderHeader">
+                                                        <ui:outputNumber class="slds-truncate" value="{!item.msp}" format="0.00"/>
+                                                    </td>
+                                                    <td scope="row" class="putborderHeader">
+                                                        <!--START - PBI-702438 | Rahul Sharma | Date - 22-Jan-2021 : Add coondition to show GSAP error message if GSAP no is not received-->
+                                                        <aura:if isTrue="{!not(empty(item.gsapContract))}">
+                                                            <ui:outputText class="slds-truncate" value="{!item.gsapContract}"/>
+                                                            <aura:set attribute="else">
+                                                                <aura:if isTrue="{!empty(item.gsapError)}">
+                                                                    <!--ui:outputText class="slds-truncate" value="Pending"/-->
+                                                                    <aura:set attribute="else">
+                                                                        <ui:outputText class="slds-truncate slds-text-color_error" value="Error"/>
+                                                                        <span class="gsap-error-info slds-p-left_xx-small">
+                                                                            <lightning:helptext content="{!item.gsapError}" iconName="utility:info" iconVariant="error"/>
+                                                                        </span>
+                                                                    </aura:set>
+                                                                </aura:if>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        <!--END - PBI-702438 | Rahul Sharma | Date - 22-Jan-2021 : Add coondition to show GSAP error message if GSAP no is not received-->
+                                                    </td>
+                                                    <td scope="row" class="slds-cell-wrap putborderHeader">
+                                                        <div class="boxAlign">
+                                                         <lightning:textarea class="slds-truncate slds-cell-wrap"
+                                                                  labelClass="inTextNone" value="{!item.Comment}" label="" maxlength="254" name="{!item.shtRecordId}" onblur="{!c.saveComment}" disabled="{!v.disableCommentOnConfirmedDeals}"/>
+                                                        </div>
+                                                   </td>
+                                                    <aura:if isTrue="{!or(v.status =='Completed',v.status =='Auto-Completed' )}">
+                                                        <td scope="row" class="putborderHeader">
+                                                            <div class="boxAlign">
+                                                            <lightning:select name="Reason"  aura:id="Reason" value="{!item.cancellationReason}">
+                                                                <aura:iteration items="{!v.reasonList}" var="item">
+                                                                    <option text="{!item.label}" value="{!item.value}" selected="{!item.selected}"  />
+                                                                </aura:iteration> 
+                                                            </lightning:select>
+                                                            </div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader">
+                                                            <!--AdditionalFix_166256_29Apr2019_Soumyajit starts-->
+                                                            <!--<lightning:button tabindex="{!index}" variant="destructive" label="Cancel" aura:id="{!index}" name="{!item.shtRecordId}" onclick="{!c.cancelSelCompDeal}"  />-->
+                                                            <lightning:button tabindex="{!index}" variant="destructive" label="Cancel" aura:id="{!index}" name="{!item.shtRecordId}" onclick="{!c.cancelSelCompDeal}" disabled="{!v.disableCancelOnConfirmedDeals}" />
+                                                            <!--AdditionalFix_166256_29Apr2019_Soumyajit ends-->
+                                                        </td>
+                                                        <aura:set attribute="else">
+                                                            <td scope="row" class="putborderHeader">
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.cancellationReason}"/>
+                                                            </td>
+                                                            <td scope="row" class="putborderHeader">
+                                                                <ui:outputText class="slds-truncate" value="{!item.dealStatus}"/> 
+                                                                
+                                                                <!--   <lightning:textarea name="myTextArea" value="item.Comment" label="Comment" maxlength="254" />  -->
+                                                            </td>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                    
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </lightning:layoutItem>
+                            </lightning:layoutItem>
+                      
+              
+                <lightning:layoutItem padding="around-small" size="12" >
+                </lightning:layoutItem>
+</lightning:layout>
+            
+        
+    </div>
+</aura:component>

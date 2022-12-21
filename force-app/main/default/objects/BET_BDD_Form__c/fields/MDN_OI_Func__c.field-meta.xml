@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_OI_Func__c</fullName>
+    <externalId>false</externalId>
+    <label>* Function</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Agency Activities</fullName>
+                <default>false</default>
+                <label>Agency Activities</label>
+            </value>
+            <value>
+                <fullName>Carrier</fullName>
+                <default>false</default>
+                <label>Carrier</label>
+            </value>
+            <value>
+                <fullName>Clearing Broking</fullName>
+                <default>false</default>
+                <label>Clearing Broking</label>
+            </value>
+            <value>
+                <fullName>Exchange Pit</fullName>
+                <default>false</default>
+                <label>Exchange Pit</label>
+            </value>
+            <value>
+                <fullName>Execution Trading</fullName>
+                <default>false</default>
+                <label>Execution Trading</label>
+            </value>
+            <value>
+                <fullName>Guarantor</fullName>
+                <default>false</default>
+                <label>Guarantor</label>
+            </value>
+            <value>
+                <fullName>Holding (Bank/Warehouse)</fullName>
+                <default>false</default>
+                <label>Holding (Bank/Warehouse)</label>
+            </value>
+            <value>
+                <fullName>Internal Scheduling</fullName>
+                <default>false</default>
+                <label>Internal Scheduling</label>
+            </value>
+            <value>
+                <fullName>Internal Trading</fullName>
+                <default>false</default>
+                <label>Internal Trading</label>
+            </value>
+            <value>
+                <fullName>Issuer</fullName>
+                <default>false</default>
+                <label>Issuer</label>
+            </value>
+            <value>
+                <fullName>Office</fullName>
+                <default>false</default>
+                <label>Office</label>
+            </value>
+            <value>
+                <fullName>OTC Broking</fullName>
+                <default>false</default>
+                <label>OTC Broking</label>
+            </value>
+            <value>
+                <fullName>OTC Clearing Broker</fullName>
+                <default>false</default>
+                <label>OTC Clearing Broker</label>
+            </value>
+            <value>
+                <fullName>Reference Entity</fullName>
+                <default>false</default>
+                <label>Reference Entity</label>
+            </value>
+            <value>
+                <fullName>Settling (Back Office)</fullName>
+                <default>false</default>
+                <label>Settling (Back Office)</label>
+            </value>
+            <value>
+                <fullName>Tax Jurisdiction</fullName>
+                <default>false</default>
+                <label>Tax Jurisdiction</label>
+            </value>
+            <value>
+                <fullName>Trading</fullName>
+                <default>false</default>
+                <label>Trading</label>
+            </value>
+            <value>
+                <fullName>Transmission Provider</fullName>
+                <default>false</default>
+                <label>Transmission Provider</label>
+            </value>
+            <value>
+                <fullName>Underwriter</fullName>
+                <default>false</default>
+                <label>Underwriter</label>
+            </value>
+            <value>
+                <fullName>GUARANTOR / PARENT ACCOUNT ONLY</fullName>
+                <default>false</default>
+                <label>GUARANTOR / PARENT ACCOUNT ONLY</label>
+            </value>
+            <value>
+                <fullName>CHARTERER</fullName>
+                <default>false</default>
+                <label>CHARTERER</label>
+            </value>
+            <value>
+                <fullName>PORT AGENT</fullName>
+                <default>false</default>
+                <label>PORT AGENT</label>
+            </value>
+            <value>
+                <fullName>SHIP MANAGER</fullName>
+                <default>false</default>
+                <label>SHIP MANAGER</label>
+            </value>
+            <value>
+                <fullName>SHIP TO SHIP PROVIDER</fullName>
+                <default>false</default>
+                <label>SHIP TO SHIP PROVIDER</label>
+            </value>
+            <value>
+                <fullName>SHIP OWNER</fullName>
+                <default>false</default>
+                <label>SHIP OWNER</label>
+            </value>
+            <value>
+                <fullName>BANK</fullName>
+                <default>false</default>
+                <label>BANK</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

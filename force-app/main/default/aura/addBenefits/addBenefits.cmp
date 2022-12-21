@@ -1,0 +1,125 @@
+<aura:component controller="BenefitController" implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,flexipage:availableForRecordHome,lightning:actionOverride,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="benefits" type="Benefit__c"  default="{'sobjectType': 'Benefit__c'}"/>
+    <aura:attribute name="benefitByYearList" type="List"/>
+    <aura:attribute name="ImpactedUnit" type="List"/>
+    <aura:attribute name="selLevel" type="String" default=""/>
+    <aura:attribute name="diablePicklist" type="Boolean" default="false"/>
+    <aura:attribute name="L1" type="List"/>
+    <aura:attribute name="Year" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="AddRowEvt" event="c:AddNewRowEvt" action="{!c.addNewRow}"/>
+    <aura:handler name="DeleteRowEvt" event="c:DeleteRowEvt" action="{!c.removeDeletedRow}"/>
+    <aura:attribute name="benfitYearData" type="List" default="{}"/> 
+    <aura:attribute name="readOnly" type="Boolean" default="false"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute  name="IncudedLE" type="Boolean" default="false"/>
+    <aura:attribute name="RecordType" type="String" default=""/>
+    <aura:registerEvent name="navEvt" type="force:navigateToSObject"/> 
+    <aura:handler event="force:navigateToSObject" action="{!c.navigatetoSObject}"/>
+    <aura:dependency resource="markup://force:navigateToSObject" type="EVENT"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:registerEvent name="ErrorNotifications" type="c:AddErrorEvent"/>
+    
+
+    
+    
+    <ui:scrollerWrapper class="scrollerSize">
+        <div class="slds-page-header slds-align_absolute-center dockedHeader"> 
+            <lightning:buttonGroup>                    
+                <aura:if isTrue="{!v.readOnly}">
+                    <lightning:button class="slds-button slds-button_brand" onclick="{!c.edit}">Edit</lightning:button>&nbsp;
+                    <lightning:button class="slds-button slds-button_neutral" onclick="{!c.navigatetoSObject}">Back</lightning:button> &nbsp;
+                    <aura:set attribute="else">
+                        <lightning:button class="slds-button slds-button_neutral" onclick="{!c.navigatetoListView}">Cancel</lightning:button> &nbsp;
+                        <lightning:button class="slds-button slds-button_brand" onclick="{!c.saveData}">Save</lightning:button>&nbsp;
+                    </aura:set>
+                </aura:if>
+            </lightning:buttonGroup>
+        </div>         
+        
+        
+        <br/><br/><br/>
+        <div class="slds-size_1-of-1 slds-medium-size_6-of-6 slds-large-size_10-of-12 slds-align_absolute-center marginHeader">
+            <table class="slds-table slds-max-medium-table_stacked-horizontal  slds-table_fixed-layout" style="max-width:50%">
+                <thead>
+                	<tr>
+                        <th colspan="10" >
+                            Add Benefits
+                        </th>
+                    
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="10" >
+                            <lightning:input label="Benefit Name" value="{!v.benefits.Name}" aura:id="Name" disabled="{!v.readOnly}"/>
+                        </td>
+                    </tr>
+                    <aura:if isTrue="{!v.L1.length!=0}" >
+                        <tr>  
+                            <td colspan="10">                              
+                                <lightning:select aura:id="L1Type"   name="L1Type" label="L1Type" disabled="{!v.readOnly}" value="{!v.benefits.L1_Type__c}" >                          
+                                    <option value="">-- None --</option>
+                                    <aura:iteration items="{!v.L1}" var="lc">
+                                        <option text="{!lc.label}" label="{!lc.Name}"  selected="{!lc.label==v.benefits.L1_Type__c}"/>
+    
+
+
+                                    </aura:iteration>
+                                </lightning:select>                    
+                            </td>
+                        </tr>
+                        <tr style="border:2px;color;red;"> 
+                            <br/>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-13 slds-p-right_x-small">
+                                    <p>&nbsp;&nbsp;Included In LE?</p>
+                                </div>
+                                <div class="slds-col slds-size_1-of-12">
+                                    <lightning:input style="float:left;" type="checkbox" label=""   name="IncludedLE"   class="myCheckbox"
+                                                                     aura:id="IncludedLE"   checked="{!v.benefits.Included_In_LE__c}"  onchange="{!c.IncludeLEVal}" disabled="{!v.readOnly}"/>
+                                </div>
+    						</div>
+                            <br/>
+                        </tr>  
+                    </aura:if>
+                    <tr>  
+                        <td colspan="10">
+                            <lightning:select aura:id="ImpactedUnit"   name="impUnit" label="Impacted Unit" disabled="{!v.readOnly}" value="{!v.benefits.Impacted_Unit__c}" >                          
+                                <option value="">-- None --</option>
+                                <aura:iteration items="{!v.ImpactedUnit}" var="lc">
+                                    <option text="{!lc.label}" label="{!lc.Name}" selected="{!lc.label==v.benefits.Impacted_Unit__c}" />
+                                </aura:iteration>
+                            </lightning:select>                    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <br/><br/><br/>
+            <!-- empty table to keep space between 2 tables. Intentional empty table -->
+            <table style="width:10%"/>
+            
+            <table  class="slds-table slds-table--bordered">
+                <thead>
+                    <tr>
+                        <th style="width:10%">Year</th>                          
+                        <th>Benefit Amount</th> 
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.benefitByYearList}" var="item" indexVar="index">                       
+                        <c:addBenefitsYear benefitByYear="{!item}" rowIndex="{!index}" readOnly="{!v.readOnly}" />                        
+                    </aura:iteration>   
+                    
+                    
+                    
+                </tbody>
+            </table>
+            
+            <br/>  
+        </div>        
+    </ui:scrollerWrapper>
+</aura:component>

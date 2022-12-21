@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ConnectionStatusActive</label>
+    <protected>false</protected>
+    <values>
+        <field>EMAIL_CC__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EMAIL_CSS__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EMAIL_FOOTER__c</field>
+        <value xsi:type="xsd:string">&lt;br/&gt;Regards
+&lt;br/&gt;Revolution System Administrator
+&lt;br/&gt;&lt;br/&gt;Note: This is a system generated E-mail. Please do not reply.</value>
+    </values>
+    <values>
+        <field>EMAIL_HEADER__c</field>
+        <value xsi:type="xsd:string">Greetings!&lt;br/&gt;&lt;br/&gt;
+The OLF interface has been activated by {!MODIFIED_USERNAME} at {!MODIFIED_TIME}.&lt;br/&gt;
+Reason: {!REASON}&lt;br/&gt;</value>
+    </values>
+    <values>
+        <field>EMAIL_SUBJECT__c</field>
+        <value xsi:type="xsd:string">OLF Connection Activated</value>
+    </values>
+    <values>
+        <field>EMAIL_TEMPLATE__c</field>
+        <value xsi:type="xsd:string">&lt;html&gt;
+&lt;head&gt;&lt;style&gt;{!EMAIL_CSS__C}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+{!EMAIL_HEADER__C}
+{!EMAIL_FOOTER__C}
+&lt;/body&gt;
+&lt;/html&gt;</value>
+    </values>
+    <values>
+        <field>EMAIL_TO__c</field>
+        <value xsi:type="xsd:string">andreas.heeschen@shell.com;Inger.Lueth@shell.com;marc.reinke@shell.com;Linda.Luedde@shell.com</value>
+    </values>
+    <values>
+        <field>TABEL_HEADER__c</field>
+        <value xsi:type="xsd:string">&lt;tr&gt;&lt;/tr&gt;</value>
+    </values>
+</CustomMetadata>

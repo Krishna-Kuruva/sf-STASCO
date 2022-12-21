@@ -1,0 +1,16 @@
+<aura:component>
+     <aura:attribute name="showLocType" type="String"/>
+    <aura:attribute name="taxType" type="String" />
+    <aura:attribute name="contractStartDate" type="Date" />
+    <aura:attribute name="contractEndDate" type="Date" />
+    <aura:attribute name="selChannel" type="List"  />
+    <aura:attribute name="selMOT" type="List" />
+    <!--Fix_469777_07Apr2020_Soumyajit starts-->
+    <!--<aura:attribute name="vfHost" type="String" default="{!$Label.c.Rv_Dashboard_VF_URL}"/>
+    <iframe src="{! v.vfHost + v.selChannel +'&amp;mot=' + v.selMOT +'&amp;contractStartDate=' +v.contractStartDate +'&amp;contractEndDate=' +v.contractEndDate+'&amp;taxType=' +v.taxType +'&amp;showLocType=' +v.showLocType}"
+            width="100%" height="550px;" frameBorder="0"/>-->
+    <aura:attribute name="vfHost" type="String" />
+    <iframe src="{! v.vfHost + '/apex/RV_DIDashboardPage?channel=' + v.selChannel +'&amp;mot=' + v.selMOT +'&amp;contractStartDate=' +v.contractStartDate +'&amp;contractEndDate=' +v.contractEndDate+'&amp;taxType=' +v.taxType +'&amp;showLocType=' +v.showLocType}"
+            width="100%" height="550px;" frameBorder="0"/>
+    <!--Fix_469777_07Apr2020_Soumyajit ends-->
+</aura:component>

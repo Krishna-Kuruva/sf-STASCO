@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>B2B_CO2_Probability__c</fullName>
+    <description>B2B CO2 Trading Probability of deal being executed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>B2B CO2 Trading Probability of deal being executed.</inlineHelpText>
+    <label>CO2 Probability - Short</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

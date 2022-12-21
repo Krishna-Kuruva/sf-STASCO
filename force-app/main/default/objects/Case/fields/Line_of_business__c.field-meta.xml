@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Line_of_business__c</fullName>
+    <externalId>false</externalId>
+    <label>Line of business</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Shell_Entity_Name__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aviation</fullName>
+                <default>false</default>
+                <label>Aviation</label>
+            </value>
+            <value>
+                <fullName>Bitumen</fullName>
+                <default>false</default>
+                <label>Bitumen</label>
+            </value>
+            <value>
+                <fullName>Commercial Fuels</fullName>
+                <default>false</default>
+                <label>Commercial Fuels</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>Marine</fullName>
+                <default>false</default>
+                <label>Marine</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Shell UK Ltd</controllingFieldValue>
+            <controllingFieldValue>Shell Vietnam</controllingFieldValue>
+            <controllingFieldValue>Societe des Petroles Shell</controllingFieldValue>
+            <controllingFieldValue>Shell CZECH Republic AS</controllingFieldValue>
+            <controllingFieldValue>DANSK Shell</controllingFieldValue>
+            <controllingFieldValue>PT Shell Indonesia</controllingFieldValue>
+            <controllingFieldValue>Shell Deutscheland Oil GMBH</controllingFieldValue>
+            <controllingFieldValue>Shell Eastern Petroleum Limited</controllingFieldValue>
+            <controllingFieldValue>Shell Eastern Trading (Pte) Limited</controllingFieldValue>
+            <controllingFieldValue>Shell Hong Kong Limited</controllingFieldValue>
+            <controllingFieldValue>Shell Malasyia Trading Sendirian Bhd</controllingFieldValue>
+            <controllingFieldValue>Shell Switzerland</controllingFieldValue>
+            <controllingFieldValue>Shell Thailand</controllingFieldValue>
+            <controllingFieldValue>Shell Timur Sdn Bhd</controllingFieldValue>
+            <valueName>Bitumen</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>THE SHELL COMPANY OF AUSTRALIA LTD</controllingFieldValue>
+            <controllingFieldValue>Shell Company of Turkey</controllingFieldValue>
+            <controllingFieldValue>DANSK Shell</controllingFieldValue>
+            <controllingFieldValue>Pilipinas Shell Petroleum Corporation</controllingFieldValue>
+            <controllingFieldValue>Shell Marketing Middle East</controllingFieldValue>
+            <controllingFieldValue>Shell Thailand</controllingFieldValue>
+            <valueName>Aviation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>THE SHELL COMPANY OF AUSTRALIA LTD</controllingFieldValue>
+            <controllingFieldValue>DANSK Shell</controllingFieldValue>
+            <controllingFieldValue>Pilipinas Shell Petroleum Corporation</controllingFieldValue>
+            <controllingFieldValue>Shell Deutscheland Oil GMBH</controllingFieldValue>
+            <controllingFieldValue>Shell Malasyia Trading Sendirian Bhd</controllingFieldValue>
+            <controllingFieldValue>Shell Thailand</controllingFieldValue>
+            <controllingFieldValue>Shell Timur Sdn Bhd</controllingFieldValue>
+            <valueName>Commercial Fuels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Butagazs</controllingFieldValue>
+            <valueName>LPG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pilipinas Shell Petroleum Corporation</controllingFieldValue>
+            <controllingFieldValue>Shell Eastern Trading (Pte) Limited</controllingFieldValue>
+            <controllingFieldValue>Shell South Africa Marketing (PTY) Limited</controllingFieldValue>
+            <valueName>Marine</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

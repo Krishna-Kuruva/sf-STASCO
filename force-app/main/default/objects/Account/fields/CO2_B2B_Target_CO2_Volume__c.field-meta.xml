@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_B2B_Target_CO2_Volume__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Input in Tonnes of CO2. This is used to as an input to estimate the potential volume we can sell</inlineHelpText>
+    <label>CO2 B2B - Target Volume</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

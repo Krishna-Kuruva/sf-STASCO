@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bank_Financial</fullName>
+    <columns>ACCOUNT.INDUSTRY</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>Account_Status__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Registered_Country__c</columns>
+    <columns>Credit_Rating__c</columns>
+    <columns>X2020_Paper_Margin__c</columns>
+    <columns>X2020_Paper_Volume__c</columns>
+    <columns>X2019_Paper_Margin__c</columns>
+    <columns>X2019_Paper_Volume__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.INDUSTRY</field>
+        <operation>equals</operation>
+        <value>Banking</value>
+    </filters>
+    <filters>
+        <field>Account_Status__c</field>
+        <operation>equals</operation>
+        <value>Set up &amp; Active</value>
+    </filters>
+    <label>Bank/Financial</label>
+    <language>en_US</language>
+</ListView>

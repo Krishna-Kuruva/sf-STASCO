@@ -1,0 +1,3 @@
+<design:component >
+    <design:attribute name="maxDaysForResend" label="Maximum Days Before" description="Set number days from today, before which GSAP contract data failed to be submitted to OLF."/>
+</design:component>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_CD_State_Province_Region_Lkp__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>* State/Province/Region</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <errorMessage>Please enter a valid state for the specified country.</errorMessage>
+        <filterItems>
+            <field>$Source.MDN_CD_Country_of_Inc__c</field>
+            <operation>equals</operation>
+            <valueField>BET_BDD_Country_vs_States__c.Country__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>BET_BDD_Country_vs_States__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>State</value>
+        </filterItems>
+        <filterItems>
+            <field>BET_BDD_Country_vs_States__c.Enable_for_MDN__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>BET_BDD_Country_vs_States__c</referenceTo>
+    <relationshipLabel>BDD Forms</relationshipLabel>
+    <relationshipName>BDD_Forms</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

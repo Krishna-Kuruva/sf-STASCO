@@ -1,0 +1,35 @@
+.outerBodyContainer{
+    background-color: #212946;
+    padding: 5px;
+    margin-top: var(--lwc-varSpacingVerticalXSmall, spacingXSmall);
+}
+
+:host {
+    --slds-c-checkbox-toggle-color-background: #748197;
+}
+
+.css_TP_Download_Icon:hover{
+    cursor: pointer;
+}
+
+.css_TP_Download_Icon:hover:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.css_TP_Download_Icon:after{
+    content: 'Click to Download TP Records';
+    position: absolute;
+    transform: translateX(-60%) translateY(-120%);
+    padding: 4px 6px 6px 4px;
+    color: white;
+    background-image: linear-gradient(to right, #032d60,#032d60);
+    display: inline-block;
+    border-radius: 5px;
+    opacity: 0;
+    z-index: 99999;
+    visibility: hidden;
+    text-align: center;
+    width: 10em;
+    transition: 100ms ease-in;
+}

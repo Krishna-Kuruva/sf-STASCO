@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ATP</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ATP</value>
+    </caseValues>
+    <layouts>
+        <layout>ATP Layout</layout>
+        <sections>
+            <label></label>
+            <section>ATP Split (Tranche 1)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ATP Split (Tranche 2)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>ATP Split (Tranche 3)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Daily Availability</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Lifting Dates and Comments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Sales and Availability</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Batch</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Reset</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Contract_Start_Date_cant_be_in_the_past</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Export</name>
+    </webLinks>
+</CustomObjectTranslation>

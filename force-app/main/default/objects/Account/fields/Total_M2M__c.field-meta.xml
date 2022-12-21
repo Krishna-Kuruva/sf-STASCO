@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_M2M__c</fullName>
+    <description>Total M2M for open B2B RM &amp; B2B CO2 deals.</description>
+    <externalId>false</externalId>
+    <formula>M2M_for_CO2__c  +  M2M_B2B__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Total M2M for open B2B RM &amp; B2B CO2 deals.</inlineHelpText>
+    <label>Total M2M</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

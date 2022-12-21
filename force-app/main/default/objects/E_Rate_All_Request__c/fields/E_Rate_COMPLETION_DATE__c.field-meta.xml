@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E_Rate_COMPLETION_DATE__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(E_RATED__c=&quot;Y&quot; &amp;&amp; NOT(ISBLANK(Latest_Actioned_Date__c)),TEXT(YEAR(Latest_Actioned_Date__c))&amp;&quot;/&quot;&amp;IF(MONTH(Latest_Actioned_Date__c)&lt;10,&quot;0&quot;&amp;TEXT(MONTH(Latest_Actioned_Date__c)),TEXT(MONTH(Latest_Actioned_Date__c)))&amp;&quot;/&quot;&amp;IF(DAY(Latest_Actioned_Date__c)&lt;10,&quot;0&quot;&amp;TEXT(DAY(Latest_Actioned_Date__c)),TEXT(DAY(Latest_Actioned_Date__c))),&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>E-Rate COMPLETION DATE</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

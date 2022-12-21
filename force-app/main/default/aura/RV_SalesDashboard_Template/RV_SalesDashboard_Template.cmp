@@ -1,0 +1,112 @@
+<!--
+    Component Name  :   RV_SalesDashboard_Template
+    Date            :   25-May-2021
+    Developer       :   Rahul Sharma
+    Description     :   Custom lightning page template for Revolution DACH's Sales Dashboard.
+-->
+<aura:component implements="lightning:appHomeTemplate" description="Custom regions.">
+    <aura:attribute name="topCol1" type="Aura.Component[]"/>
+    <aura:attribute name="topCol2" type="Aura.Component[]"/>
+    <aura:attribute name="topCol3" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4Row1" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4Row12" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4_1Row2" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4_2Row2" type="Aura.Component[]"/>
+    <aura:attribute name="topCol4Row3" type="Aura.Component[]"/>
+    <aura:attribute name="bottomCol1" type="Aura.Component[]"/>
+
+    <div>
+        <!--START - Top region-->
+        <lightning:layout>
+            <!--Top Column 1--><!--class="slds-p-right_xx-small"-->
+            <lightning:layoutItem flexibility="grow"
+                                  size="4" class="padding20">
+               
+                <div class="borderOuterFilter">
+                     <div class="slds-p-bottom_xx-small"><h6 class="slds-text-heading_small sectionHeading"><b>FILTER SELECTION</b></h6></div>
+                {!v.topCol1}
+                </div>    
+            </lightning:layoutItem>
+            <!--Top Column 2
+            <lightning:layoutItem flexibility="grow"
+                                  size="2" class="padding3">
+                {!v.topCol2}
+            </lightning:layoutItem>-->
+            <!--Top Column 3 Row 1
+            <lightning:layoutItem flexibility="grow"
+                                  size="2" class="padding3">
+                {!v.topCol3}
+            </lightning:layoutItem>-->
+            <lightning:layoutItem flexibility="grow"
+                                  size="4" class="padding20">
+               
+                <div class="borderOuter">
+                    <div class="slds-p-bottom_xx-small"><h6 class="slds-text-heading_small sectionHeading"><b>KEY INFORMATION</b></h6></div>
+                    <lightning:layout>
+                    <lightning:layoutItem flexibility="grow"
+                                          size="6" class="paddingR">
+                         {!v.topCol2}
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="grow"
+                                            size="6">
+                         {!v.topCol3}
+                    </lightning:layoutItem>
+                </lightning:layout>
+                    
+                </div>
+             </lightning:layoutItem>   
+            <lightning:layoutItem flexibility="grow"
+                                  size="4">
+                
+                <div class="borderOuter">
+                    <div class="slds-p-bottom_xx-small"><h6 class="slds-text-heading_small sectionHeading"><b>MARKET INFORMATION</b></h6></div>
+                <!--<lightning:layout>
+                    <!-Top Column 4 Row 1-><!-class="slds-p-bottom_xx-small"
+                    <lightning:layoutItem flexibility="grow"
+                                          size="12">
+                        {!v.topCol4Row1}
+                    </lightning:layoutItem>
+                </lightning:layout>-->
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="grow"
+                                          size="6" class="paddingR">
+                        {!v.topCol4Row1}
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="grow"
+                                            size="6">
+                        {!v.topCol4Row12}
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <lightning:layout>
+                    <!--Top Column 4.1 Row 2--><!--class="slds-p-right_xx-small"-->
+                    <lightning:layoutItem flexibility="grow"
+                                          size="6">
+                        {!v.topCol4_1Row2}
+                    </lightning:layoutItem>
+                    <!--Top Column 4.2 Row 2-->
+                    <lightning:layoutItem flexibility="grow"
+                                          size="6">
+                        {!v.topCol4_2Row2}
+                    </lightning:layoutItem>
+                </lightning:layout>
+                <!--Top Column 4 Row 3-->
+                <lightning:layout><!--class="slds-p-top_xx-small"-->
+                    <lightning:layoutItem flexibility="grow"
+                                          size="12" class="slds-m-top_small">
+                        {!v.topCol4Row3}
+                    </lightning:layoutItem>
+                </lightning:layout>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <!--END - Top region-->
+        <!--START - Bottom region-->
+        <lightning:layout><!--class="slds-p-top_xx-small"-->
+            <lightning:layoutItem flexibility="grow" size="12">
+                {!v.bottomCol1}
+            </lightning:layoutItem>
+        </lightning:layout>
+        <!--END - Bottom region-->
+    </div>
+</aura:component>

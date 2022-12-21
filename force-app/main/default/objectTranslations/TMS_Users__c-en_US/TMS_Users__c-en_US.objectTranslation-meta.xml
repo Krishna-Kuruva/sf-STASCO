@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>TMS User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>TMS Users</value>
+    </caseValues>
+    <layouts>
+        <layout>TMS User Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>TMS_User_Details</name>
+    </quickActions>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>User_Record</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

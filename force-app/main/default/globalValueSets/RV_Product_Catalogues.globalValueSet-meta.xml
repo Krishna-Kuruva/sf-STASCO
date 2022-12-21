@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AGO B0</fullName>
+        <default>false</default>
+        <label>AGO B0</label>
+    </customValue>
+    <customValue>
+        <fullName>AGO B0 CH</fullName>
+        <default>false</default>
+        <label>AGO B0 CH</label>
+    </customValue>
+    <customValue>
+        <fullName>AGO B7</fullName>
+        <default>false</default>
+        <label>AGO B7</label>
+    </customValue>
+    <customValue>
+        <fullName>AGO VPD</fullName>
+        <default>false</default>
+        <label>AGO VPD</label>
+    </customValue>
+    <customValue>
+        <fullName>GTL B0</fullName>
+        <default>false</default>
+        <label>GTL B0</label>
+    </customValue>
+    <customValue>
+        <fullName>GTL B7</fullName>
+        <default>false</default>
+        <label>GTL B7</label>
+    </customValue>
+    <customValue>
+        <fullName>IGO 1000ppm</fullName>
+        <default>false</default>
+        <label>IGO 1000ppm</label>
+    </customValue>
+    <customValue>
+        <fullName>IGO 10ppm</fullName>
+        <default>false</default>
+        <label>IGO 10ppm</label>
+    </customValue>
+    <customValue>
+        <fullName>IGO 50ppm</fullName>
+        <default>false</default>
+        <label>IGO 50ppm</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG100 VP</fullName>
+        <default>false</default>
+        <label>ULG100 VP</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG95_BOB_E10</fullName>
+        <default>false</default>
+        <label>ULG95_BOB_E10</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG95_BOB_E5</fullName>
+        <default>false</default>
+        <label>ULG95_BOB_E5</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG95 E0</fullName>
+        <default>false</default>
+        <label>ULG95 E0</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG95 E10</fullName>
+        <default>false</default>
+        <label>ULG95 E10</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG95 E5</fullName>
+        <default>false</default>
+        <label>ULG95 E5</label>
+    </customValue>
+    <customValue>
+        <fullName>ULG98</fullName>
+        <default>false</default>
+        <label>ULG98</label>
+    </customValue>
+    <masterLabel>RV_Product Catalogues</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

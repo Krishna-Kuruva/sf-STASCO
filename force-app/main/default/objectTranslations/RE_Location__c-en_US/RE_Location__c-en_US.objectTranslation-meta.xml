@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RE Location</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RE Locations</value>
+    </caseValues>
+    <layouts>
+        <layout>Location Layout Canada</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>RT Location Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Canada</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Malaysia</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Philippines</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Singapore</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Thailand</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Turkey</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

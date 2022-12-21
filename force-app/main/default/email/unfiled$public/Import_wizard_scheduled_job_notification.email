@@ -1,0 +1,14 @@
+Hi,
+
+The data upload scheduled via import wizard has been processed. 
+Summary of upload: 
+
+Upload Status : {!RT_ImportLog__c.ImportStatus__c}
+Successfully uploaded : {!RT_ImportLog__c.SuccessCount__c}
+Errors (if any) :  {!RT_ImportLog__c.ErrorCount__c}
+
+For more details, please refer log {!RT_ImportLog__c.Name} in salesforce or click here {!RT_ImportLog__c.Link}. 
+This is an auto generated email, Please do not reply.
+
+Thanks,
+Revolution Team

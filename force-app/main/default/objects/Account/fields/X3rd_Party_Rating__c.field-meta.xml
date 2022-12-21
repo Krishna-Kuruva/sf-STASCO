@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X3rd_Party_Rating__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the credit rating set by an external rating agency or Shell synthetic?</description>
+    <externalId>false</externalId>
+    <label>3rd Party Rating?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

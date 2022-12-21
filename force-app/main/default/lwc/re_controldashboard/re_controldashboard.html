@@ -1,0 +1,212 @@
+<template> 
+    <div class="slds-align--absolute-center">
+        <lightning-spinner variant="brand" size="large" class="slds-hide" alternative-text="Loading">
+        </lightning-spinner>
+    </div>
+
+    <div class="zoomout">
+        <!--Page Header starts here-->
+        <div class="slds-page-header slds-page-header_record-home header-item">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="standard:product_required" alternative-text={pageName}>
+                            </lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span class="slds-page-header__title slds-truncate"
+                                            title={PageName}>{pageName}</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <p class="slds-page-header__name-meta">Dashboard to monitor Revolution East Application</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">Page Refresh Interval:</span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate">{pageRefreshInterval} Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">Last Refreshed At: </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate">{pageRefreshedAt}</span>
+                        </div>
+                        <div class="slds-col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+
+      <div class="body-space">
+  <div class="accordion"> 
+<div class="item item-one slds-is-open">
+
+ <div class="slds-accordion__summary">
+        <h2 class="slds-accordion__summary-heading slds-button slds-section__title-action sectionButton heading">
+          <button data-value="one" class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="referenceId-45" aria-expanded="true" title="Accordion summary" onclick={handleAccordionOne}>
+                                      <lightning-icon class="slds-button__icon_leftslds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" icon-name="utility:switch" size="xx-small"></lightning-icon>
+            <span class="slds-accordion__summary-content title">Settlement Quotes Last Updated At (GMT +8)</span>
+          </button>
+        </h2>
+      </div>
+      <div class="slds-accordion__content" id="referenceId-45">
+          <div class="flex" style="justify-content: space-around;">
+              <div class="flex-width">
+                  <div class="header-border">
+                      <span>MALAYSIA
+                      </span>
+                  </div>
+                  <div class="table reducedFont">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                           <template for:each={malaysiaList} for:item="acc">
+                                <tr key={acc.key}>
+                            <td class="header-bold">{acc.key}</td>
+                            <td>{acc.value}</td>
+                        </tr>
+                           </template>
+                      </table>
+                  </div>
+              </div>
+
+              <div class="flex-width">
+            <div class="header-border">
+                      <span>PHILIPPINES
+                      </span>
+                  </div>
+                   <div class="table reducedFont">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                           <template for:each={philippinesList} for:item="acc">
+                                <tr key={acc.key}>
+                            <td class="header-bold">{acc.key}</td>
+                            <td>{acc.value}</td>
+                        </tr>
+                           </template>
+                      </table>
+                  </div>
+              </div>
+
+              <div class="flex-width">
+                <div class="header-border">
+                      <span>SINGAPORE
+                      </span>
+                  </div>
+                    <div class="table reducedFont">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                           <template for:each={singaporeList} for:item="acc">
+                                <tr key={acc.key}>
+                            <td class="header-bold">{acc.key}</td>
+                            <td>{acc.value}</td>
+                        </tr>
+                           </template>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+</div>
+
+<div class="item item-two slds-is-open">
+
+ <div class="slds-accordion__summary">
+        <h2 class="slds-accordion__summary-heading slds-button slds-section__title-action sectionButton heading">
+          <button data-value="two" class="slds-button slds-button_reset slds-accordion__summary-action" aria-controls="referenceId-45" aria-expanded="true" title="Accordion summary" onclick={handleAccordionOne}>
+                                      <lightning-icon class="slds-button__icon_leftslds-accordion__summary-action-icon slds-button__icon slds-button__icon_left" icon-name="utility:switch" size="x-small"></lightning-icon>
+            <span class="slds-accordion__summary-content title">Batch Jobs - Automated Jobs</span>
+          </button>
+        </h2>
+      </div>
+      <div class="slds-accordion__content" id="referenceId-46">
+                    <div class="flex">
+
+              <div class="left">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont">
+                        <thead>
+                          <tr class="slds-line-height_reset">
+                            <th class="slds-truncate borderLeft">Batch Name</th>
+                            <th class="slds-truncate borderLeft">Country</th>
+                            <th class="slds-truncate borderRight">Last Run Time</th>
+                          </tr>
+                           <template for:each={batchJobsListOne} for:item="accItem">
+                             <tr class={accItem.color} key={accItem.Name}>
+                            <td class="header-bold borderLeft">
+                                 <template if:true={accItem.icon}>
+                                    <template if:true={accItem.IsSuccess}>
+                         <lightning-icon style="margin-right: 10px;" icon-name="standard:task2" alternative-text="Running" size="xx-small" title="Running"></lightning-icon>
+                                </template>
+                                <template if:false={accItem.IsSuccess}>
+                         <lightning-icon style="margin-right: 10px;" icon-name="standard:first_non_empty" alternative-text="Running" size="xx-small" title="Running"></lightning-icon>
+                                </template>
+                                 </template>
+                                <span>
+                                {accItem.Name}
+                                </span></td>
+                            <td class="header-bold borderLeft">{accItem.CountryName}</td>
+                            <td class="header-bold borderRight">{accItem.CreatedDate}</td>
+                        </tr>
+                           </template>
+                        </thead>
+                      </table>
+                  </div>
+
+  <div class="left">
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered reducedFont">
+                        <thead>
+                          <tr class="slds-line-height_reset">
+                            <th class="slds-truncate borderLeft">Batch Name</th>
+                            <th class="slds-truncate borderLeft">Country</th>
+                            <th class="slds-truncate borderRight">Last Run Time</th>
+                          </tr>
+                           <template for:each={batchJobsListTwo} for:item="accItem">
+                             <tr class={accItem.color} key={accItem.Name}>
+                            <td class="header-bold borderLeft">
+                                 <template if:true={accItem.icon}>
+                                <template if:true={accItem.IsSuccess}>
+                         <lightning-icon style="margin-right: 10px;" icon-name="standard:task2" alternative-text="Running" size="xx-small" title="Running"></lightning-icon>
+                                </template>
+                                <template if:false={accItem.IsSuccess}>
+                         <lightning-icon style="margin-right: 10px;" icon-name="standard:first_non_empty" alternative-text="Running" size="xx-small" title="Running"></lightning-icon>
+                                </template>
+                                 </template>
+                                <span>
+                                {accItem.Name}
+                                </span>
+                                </td>
+                            <td class="header-bold borderLeft">{accItem.CountryName}</td>
+                            <td class="header-bold borderRight">{accItem.CreatedDate}</td>
+                        </tr>
+                           </template>
+                        </thead>
+                      </table>
+                  </div>
+
+                    </div>
+        
+      </div>
+
+</div>
+
+  </div>
+      </div>
+
+    </div>
+</template>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Create_Matrix</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Active__c</columns>
+    <columns>Region__c</columns>
+    <columns>Entity_Type__c</columns>
+    <columns>Primary_Source__c</columns>
+    <columns>Secondary_Source__c</columns>
+    <columns>Verification_Source__c</columns>
+    <columns>Document_Category__c</columns>
+    <columns>Document_Type__c</columns>
+    <columns>Document_Creation_Source__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Auto Create Matrix - All</label>
+    <language>en_US</language>
+</ListView>

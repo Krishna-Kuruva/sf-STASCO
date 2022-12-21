@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_OI_Company_Multi__c</fullName>
+    <externalId>false</externalId>
+    <label>* Company (Multi)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>STASCO - Agent for STIL</fullName>
+                <default>false</default>
+                <label>STASCO - Agent for STIL</label>
+            </value>
+            <value>
+                <fullName>SEEL - Shell Energy Europe Ltd</fullName>
+                <default>false</default>
+                <label>SEEL - Shell Energy Europe Ltd</label>
+            </value>
+            <value>
+                <fullName>SELNG - Shell Eastern LNG</fullName>
+                <default>false</default>
+                <label>SELNG - Shell Eastern LNG</label>
+            </value>
+            <value>
+                <fullName>SIETCO - (SETL) Shell Int East Trading</fullName>
+                <default>false</default>
+                <label>SIETCO - (SETL) Shell Int East Trading</label>
+            </value>
+            <value>
+                <fullName>SITME - (SITM) Shell Int Trading Middle East</fullName>
+                <default>false</default>
+                <label>SITME - (SITM) Shell Int Trading Middle East</label>
+            </value>
+            <value>
+                <fullName>SJT - Shell Japan Trading Ltd</fullName>
+                <default>false</default>
+                <label>SJT - Shell Japan Trading Ltd</label>
+            </value>
+            <value>
+                <fullName>SMLNG - (SLNG) Shell Intl Trdg M.E. LNG</fullName>
+                <default>false</default>
+                <label>SMLNG - (SLNG) Shell Intl Trdg M.E. LNG</label>
+            </value>
+            <value>
+                <fullName>STR - Shell Trading Rotterdam</fullName>
+                <default>false</default>
+                <label>STR - Shell Trading Rotterdam</label>
+            </value>
+            <value>
+                <fullName>STRU - Shell Trading Russia</fullName>
+                <default>false</default>
+                <label>STRU - Shell Trading Russia</label>
+            </value>
+            <value>
+                <fullName>STS - Shell Trading Switzerland</fullName>
+                <default>false</default>
+                <label>STS - Shell Trading Switzerland</label>
+            </value>
+            <value>
+                <fullName>SWLNG - DO NOT USE – Use SHLNG</fullName>
+                <default>false</default>
+                <label>SWLNG - DO NOT USE – Use SHLNG</label>
+            </value>
+            <value>
+                <fullName>SWST - Shell Western Supply &amp; Trading</fullName>
+                <default>false</default>
+                <label>SWST - Shell Western Supply &amp; Trading</label>
+            </value>
+            <value>
+                <fullName>SHTAP - Shell Gas Trading (Asic Pacific)</fullName>
+                <default>false</default>
+                <label>SHTAP - Shell Gas Trading (Asic Pacific)</label>
+            </value>
+            <value>
+                <fullName>SRLT - Shell Response Ltd</fullName>
+                <default>false</default>
+                <label>SRLT - Shell Response Ltd</label>
+            </value>
+            <value>
+                <fullName>STSL - Shell Tankers S’pore Ltd</fullName>
+                <default>false</default>
+                <label>STSL - Shell Tankers S’pore Ltd</label>
+            </value>
+            <value>
+                <fullName>STASCO - Shell Intl T. &amp; S. Co Ltd-back office only</fullName>
+                <default>false</default>
+                <label>STASCO - Shell Intl T. &amp; S. Co Ltd-back office only</label>
+            </value>
+            <value>
+                <fullName>STBR - STASCO Branch</fullName>
+                <default>false</default>
+                <label>STBR - STASCO Branch</label>
+            </value>
+            <value>
+                <fullName>STEP - Shell Trading Emissions Products</fullName>
+                <default>false</default>
+                <label>STEP - Shell Trading Emissions Products</label>
+            </value>
+            <value>
+                <fullName>SUKEP - (SUKT) Shell UK Trading</fullName>
+                <default>false</default>
+                <label>SUKEP - (SUKT) Shell UK Trading</label>
+            </value>
+            <value>
+                <fullName>STSG - Shell Tankers S&apos;pore Gas</fullName>
+                <default>false</default>
+                <label>STSG - Shell Tankers S&apos;pore Gas</label>
+            </value>
+            <value>
+                <fullName>E001 - Enterprise Oil Limited</fullName>
+                <default>false</default>
+                <label>E001 - Enterprise Oil Limited</label>
+            </value>
+            <value>
+                <fullName>E002 - Enterprise Oil UK Ltd</fullName>
+                <default>false</default>
+                <label>E002 - Enterprise Oil UK Ltd</label>
+            </value>
+            <value>
+                <fullName>E003 - Shell EP Offshore Venture</fullName>
+                <default>false</default>
+                <label>E003 - Shell EP Offshore Venture</label>
+            </value>
+            <value>
+                <fullName>E004 - Enterprise Petroleum Ltd</fullName>
+                <default>false</default>
+                <label>E004 - Enterprise Petroleum Ltd</label>
+            </value>
+            <value>
+                <fullName>E005 - SAXON Oil (Miller) Ltd</fullName>
+                <default>false</default>
+                <label>E005 - SAXON Oil (Miller) Ltd</label>
+            </value>
+            <value>
+                <fullName>E006 - Enterprise Oil Norge AS</fullName>
+                <default>false</default>
+                <label>E006 - Enterprise Oil Norge AS</label>
+            </value>
+            <value>
+                <fullName>SUOS - Shell upstream Oseas Serv</fullName>
+                <default>false</default>
+                <label>SUOS - Shell upstream Oseas Serv</label>
+            </value>
+            <value>
+                <fullName>SCUK - Shell Clair UK Limited</fullName>
+                <default>false</default>
+                <label>SCUK - Shell Clair UK Limited</label>
+            </value>
+            <value>
+                <fullName>SEMKG - For WONA Gas line</fullName>
+                <default>false</default>
+                <label>SEMKG - For WONA Gas line</label>
+            </value>
+            <value>
+                <fullName>STAP - Shell Tankers Australia Pty Ltd</fullName>
+                <default>false</default>
+                <label>STAP - Shell Tankers Australia Pty Ltd</label>
+            </value>
+            <value>
+                <fullName>TLNG - Trident LNG</fullName>
+                <default>false</default>
+                <label>TLNG - Trident LNG</label>
+            </value>
+            <value>
+                <fullName>SILS - Shell International LNG Supply</fullName>
+                <default>false</default>
+                <label>SILS - Shell International LNG Supply</label>
+            </value>
+            <value>
+                <fullName>RLNG - Shell Spain LNG</fullName>
+                <default>false</default>
+                <label>RLNG - Shell Spain LNG</label>
+            </value>
+            <value>
+                <fullName>SECL - Shell Energy China Ltd</fullName>
+                <default>false</default>
+                <label>SECL - Shell Energy China Ltd</label>
+            </value>
+            <value>
+                <fullName>SCLNG - Shell Energy China Ltd (LNG)</fullName>
+                <default>false</default>
+                <label>SCLNG - Shell Energy China Ltd (LNG)</label>
+            </value>
+            <value>
+                <fullName>SHLNG - Shell Western LNG BV</fullName>
+                <default>false</default>
+                <label>SHLNG - Shell Western LNG BV</label>
+            </value>
+            <value>
+                <fullName>SUPPLY - Supply Only</fullName>
+                <default>false</default>
+                <label>SUPPLY - Supply Only</label>
+            </value>
+            <value>
+                <fullName>SAT1 - STISA (PTY) Limited</fullName>
+                <default>false</default>
+                <label>SAT1 - STISA (PTY) Limited</label>
+            </value>
+            <value>
+                <fullName>SAT2 - Sekelo Oil Trading (PTY) Limited</fullName>
+                <default>false</default>
+                <label>SAT2 - Sekelo Oil Trading (PTY) Limited</label>
+            </value>
+            <value>
+                <fullName>SAT - Shell Austria Gesellshaft</fullName>
+                <default>false</default>
+                <label>SAT - Shell Austria Gesellshaft</label>
+            </value>
+            <value>
+                <fullName>SEEP - Shell Eastern Environmental Products</fullName>
+                <default>false</default>
+                <label>SEEP - Shell Eastern Environmental Products</label>
+            </value>
+            <value>
+                <fullName>SEAS - Shell Enerji Anonim Sirketi</fullName>
+                <default>false</default>
+                <label>SEAS - Shell Enerji Anonim Sirketi</label>
+            </value>
+            <value>
+                <fullName>SEIT - Shell Energia Italia</fullName>
+                <default>false</default>
+                <label>SEIT - Shell Energia Italia</label>
+            </value>
+            <value>
+                <fullName>SEMKG - Shell Erdgas Marketing GMBH &amp; CO</fullName>
+                <default>false</default>
+                <label>SEMKG - Shell Erdgas Marketing GMBH &amp; CO</label>
+            </value>
+            <value>
+                <fullName>SESA - Shell Espana AS</fullName>
+                <default>false</default>
+                <label>SESA - Shell Espana AS</label>
+            </value>
+            <value>
+                <fullName>SEU - Shell Energy Ukraine LLC</fullName>
+                <default>false</default>
+                <label>SEU - Shell Energy Ukraine LLC</label>
+            </value>
+            <value>
+                <fullName>SSK - Shell Slovakia</fullName>
+                <default>false</default>
+                <label>SSK - Shell Slovakia</label>
+            </value>
+            <value>
+                <fullName>DLNG - Downstream LNG</fullName>
+                <default>false</default>
+                <label>DLNG - Downstream LNG</label>
+            </value>
+            <value>
+                <fullName>BSL1 - Brazil Shipping I Limited</fullName>
+                <default>false</default>
+                <label>BSL1 - Brazil Shipping I Limited</label>
+            </value>
+            <value>
+                <fullName>BGGS - BG GAS SERVICES LIMITED</fullName>
+                <default>false</default>
+                <label>BGGS - BG GAS SERVICES LIMITED</label>
+            </value>
+            <value>
+                <fullName>SCCO - CI Shell Comercializadora Colombia</fullName>
+                <default>false</default>
+                <label>SCCO - CI Shell Comercializadora Colombia</label>
+            </value>
+            <value>
+                <fullName>DGM - Developing Gas Markets</fullName>
+                <default>false</default>
+                <label>DGM - Developing Gas Markets</label>
+            </value>
+            <value>
+                <fullName>BGGM - BG Gas Marketing, Limited</fullName>
+                <default>false</default>
+                <label>BGGM - BG Gas Marketing, Limited</label>
+            </value>
+            <value>
+                <fullName>BGSA - BG South Asia LNG Limited</fullName>
+                <default>false</default>
+                <label>BGSA - BG South Asia LNG Limited</label>
+            </value>
+            <value>
+                <fullName>BGGC - BG Gulf Coast LNG, LLC</fullName>
+                <default>false</default>
+                <label>BGGC - BG Gulf Coast LNG, LLC</label>
+            </value>
+            <value>
+                <fullName>BGGE - BG Global Energy Ltd Singapore Branch</fullName>
+                <default>false</default>
+                <label>BGGE - BG Global Energy Ltd Singapore Branch</label>
+            </value>
+            <value>
+                <fullName>BGLS - BG LNG Services, LLC</fullName>
+                <default>false</default>
+                <label>BGLS - BG LNG Services, LLC</label>
+            </value>
+            <value>
+                <fullName>BGTS - BG LNG Trading LLC Singapore</fullName>
+                <default>false</default>
+                <label>BGTS - BG LNG Trading LLC Singapore</label>
+            </value>
+            <value>
+                <fullName>BGEG - BG Equatorial Guinea Ltd</fullName>
+                <default>false</default>
+                <label>BGEG - BG Equatorial Guinea Ltd</label>
+            </value>
+            <value>
+                <fullName>SEAU - Shell Energy Australia</fullName>
+                <default>false</default>
+                <label>SEAU - Shell Energy Australia</label>
+            </value>
+            <value>
+                <fullName>SETI - Shell Energy India</fullName>
+                <default>false</default>
+                <label>SETI - Shell Energy India</label>
+            </value>
+            <value>
+                <fullName>SG02 - Shell Eastern Trading (Pte Ltd) Singapore</fullName>
+                <default>false</default>
+                <label>SG02 - Shell Eastern Trading (Pte Ltd) Singapore</label>
+            </value>
+            <value>
+                <fullName>SG39 - Shell Gas Marketing Pte Ltd Singapore</fullName>
+                <default>false</default>
+                <label>SG39 - Shell Gas Marketing Pte Ltd Singapore</label>
+            </value>
+            <value>
+                <fullName>SECO - Shell Energy (China) Ltd</fullName>
+                <default>false</default>
+                <label>SECO - Shell Energy (China) Ltd</label>
+            </value>
+            <value>
+                <fullName>QGC - Queensland Gas Company</fullName>
+                <default>false</default>
+                <label>QGC - Queensland Gas Company</label>
+            </value>
+            <value>
+                <fullName>BGMS - BG Methane Service Limited</fullName>
+                <default>false</default>
+                <label>BGMS - BG Methane Service Limited</label>
+            </value>
+            <value>
+                <fullName>STUK - Shell Tankers United Kingdom</fullName>
+                <default>false</default>
+                <label>STUK - Shell Tankers United Kingdom</label>
+            </value>
+            <value>
+                <fullName>SNALNG - Shell NA LNG</fullName>
+                <default>false</default>
+                <label>SNALNG - Shell NA LNG</label>
+            </value>
+            <value>
+                <fullName>1984 - BG LNG Trading LLC</fullName>
+                <default>false</default>
+                <label>1984 - BG LNG Trading LLC</label>
+            </value>
+            <value>
+                <fullName>SEDG - Shell Energy Deutschland GmBH</fullName>
+                <default>false</default>
+                <label>SEDG - Shell Energy Deutschland GmBH</label>
+            </value>
+            <value>
+                <fullName>XXXX - SMGN (Shell Mexico Gas Natural)</fullName>
+                <default>false</default>
+                <label>XXXX - SMGN (Shell Mexico Gas Natural)</label>
+            </value>
+            <value>
+                <fullName>SEEBV - Shell Energy Europe BV</fullName>
+                <default>false</default>
+                <label>SEEBV - Shell Energy Europe BV</label>
+            </value>
+            <value>
+                <fullName>SEJP - Shell Energy Japan</fullName>
+                <default>false</default>
+                <label>SEJP - Shell Energy Japan</label>
+            </value>
+            <value>
+                <fullName>SEPH - Shell Energy Philippines</fullName>
+                <default>false</default>
+                <label>SEPH - Shell Energy Philippines</label>
+            </value>
+            <value>
+                <fullName>SEID - PT Shell LNG Indonesia</fullName>
+                <default>false</default>
+                <label>SEID - PT Shell LNG Indonesia</label>
+            </value>
+            <value>
+                <fullName>SEI2 - Shell Energy India Private Limited</fullName>
+                <default>false</default>
+                <label>SEI2 - Shell Energy India Private Limited</label>
+            </value>
+            <value>
+                <fullName>DTAL - Derivates Trading Atlantic Limited</fullName>
+                <default>false</default>
+                <label>DTAL - Derivates Trading Atlantic Limited</label>
+            </value>
+            <value>
+                <fullName>STEV - Shell Trd Env. Vol Products</fullName>
+                <default>false</default>
+                <label>STEV - Shell Trd Env. Vol Products</label>
+            </value>
+            <value>
+                <fullName>1089 - Shell Energy Brazil Liquids</fullName>
+                <default>false</default>
+                <label>1089 - Shell Energy Brazil Liquids</label>
+            </value>
+            <value>
+                <fullName>ERM - Shell Energy Retail Pty Ltd</fullName>
+                <default>false</default>
+                <label>ERM - Shell Energy Retail Pty Ltd</label>
+            </value>
+            <value>
+                <fullName>SAEP - Shell Energy Environmental Products Australia PTY LTD</fullName>
+                <default>false</default>
+                <label>SAEP - Shell Energy Environmental Products Australia PTY LTD</label>
+            </value>
+            <value>
+                <fullName>SEGL - Shell Energy Ghana Limited</fullName>
+                <default>false</default>
+                <label>SEGL - Shell Energy Ghana Limited</label>
+            </value>
+            <value>
+                <fullName>SEMY - Shell Energy Malaysia</fullName>
+                <default>false</default>
+                <label>SEMY - Shell Energy Malaysia</label>
+            </value>
+            <value>
+                <fullName>STBZ - Shell Trading Brasil LTDA</fullName>
+                <default>false</default>
+                <label>STBZ - Shell Trading Brasil LTDA</label>
+            </value>
+            <value>
+                <fullName>SEIP - Shell Energy India Power</fullName>
+                <default>false</default>
+                <label>SEIP - Shell Energy India Power</label>
+            </value>
+            <value>
+                <fullName>WCSG - Walloons Coal Seam Gas Company Ltd</fullName>
+                <default>false</default>
+                <label>WCSG - Walloons Coal Seam Gas Company Ltd</label>
+            </value>
+            <value>
+                <fullName>STGB - Shell Trd Env Prodts-GBP</fullName>
+                <default>false</default>
+                <label>STGB - Shell Trd Env Prodts-GBP</label>
+            </value>
+            <value>
+                <fullName>BGGB - BG Great Britain</fullName>
+                <default>false</default>
+                <label>BGGB - BG Great Britain</label>
+            </value>
+            <value>
+                <fullName>SGN - Shell Gas Nigeria B.V.</fullName>
+                <default>false</default>
+                <label>SGN - Shell Gas Nigeria B.V.</label>
+            </value>
+            <value>
+                <fullName>SERE - Shell Energy Europe B.V.(Renewables and Energy Solutions)</fullName>
+                <default>false</default>
+                <label>SERE - Shell Energy Europe B.V.(Renewables and Energy Solutions)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

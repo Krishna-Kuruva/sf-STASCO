@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Core_Business_Act__c</fullName>
+    <externalId>false</externalId>
+    <label>* Core Business Activity</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Agents/Inspectors</fullName>
+                <default>false</default>
+                <label>Agents/Inspectors</label>
+            </value>
+            <value>
+                <fullName>Brokers - Clearing</fullName>
+                <default>false</default>
+                <label>Brokers - Clearing</label>
+            </value>
+            <value>
+                <fullName>Brokers - Execution Only</fullName>
+                <default>false</default>
+                <label>Brokers - Execution Only</label>
+            </value>
+            <value>
+                <fullName>Brokers - inter dealer</fullName>
+                <default>false</default>
+                <label>Brokers - inter dealer</label>
+            </value>
+            <value>
+                <fullName>Financial Firms (e.g. banks, building societies)</fullName>
+                <default>false</default>
+                <label>Financial Firms (e.g. banks, building societies)</label>
+            </value>
+            <value>
+                <fullName>Leaseholders</fullName>
+                <default>false</default>
+                <label>Leaseholders</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Producers</fullName>
+                <default>false</default>
+                <label>Producers</label>
+            </value>
+            <value>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+                <label>Shipping</label>
+            </value>
+            <value>
+                <fullName>Storage/Transportation (non Shipping)</fullName>
+                <default>false</default>
+                <label>Storage/Transportation (non Shipping)</label>
+            </value>
+            <value>
+                <fullName>Trading houses</fullName>
+                <default>false</default>
+                <label>Trading houses</label>
+            </value>
+            <value>
+                <fullName>User/End User</fullName>
+                <default>false</default>
+                <label>User/End User</label>
+            </value>
+            <value>
+                <fullName>Utilities</fullName>
+                <default>false</default>
+                <label>Utilities</label>
+            </value>
+            <value>
+                <fullName>Wholesale Customer</fullName>
+                <default>false</default>
+                <label>Wholesale Customer</label>
+            </value>
+            <value>
+                <fullName>Business Introducer - Agents &amp; Intermediaries</fullName>
+                <default>false</default>
+                <label>Business Introducer - Agents &amp; Intermediaries</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

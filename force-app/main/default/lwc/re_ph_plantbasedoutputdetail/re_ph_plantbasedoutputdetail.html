@@ -1,0 +1,76 @@
+<template>
+    <div class="zoomout">    
+        <template if:true={loaded}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>   
+        <div class="slds-box slds-scrollable_x">
+            <table class="tabangoTable slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped fontsize">
+                <thead>
+                    <template for:each = {dateData} for:item = "dateitem">
+                        <tr key={dateitem.datetype} class="phTab slds-line-height_reset">
+                            <th class="slds-size_2-of-12" scope="col"></th>
+                            <th class="slds-size_1-of-12 cls1" scope="col">{dateitem.datetype} :</th>
+                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col" >{dateitem.M1Date}</th>
+                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col" >{dateitem.M2Date}</th>
+                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col">{dateitem.W1Date}</th>
+                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col">{dateitem.W2Date}</th>
+                            <th class="slds-size_1-of-12 cls6 tableheader" scope="col">{dateitem.D1Date}</th>
+                            <th class="slds-size_1-of-12 cls7 tableheader" scope="col">{dateitem.D2Date}</th>
+                            <th class="slds-size_1-of-12 cls8 tableheader" scope="col">{dateitem.WTDDate}</th>
+                            <th class="slds-size_1-of-12 cls9 tableheader" scope="col">{dateitem.MTDDate}</th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                            <th class="slds-size_1-of-12  " scope="col"></th>
+                        </tr>
+                    </template>
+                    <!--<tr class="slds-line-height_reset">
+                        <th scope="col"></th>
+                    </tr>-->
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_2-of-12 clsplant" scope="col">Pricing Period</th>
+                        <th class="slds-size_1-of-12 cls1 tableheader" scope="col"></th>
+                        <th class="slds-size_1-of-12 cls2 tableheader" scope="col" >M-1</th>
+                        <th class="slds-size_1-of-12 cls3 tableheader" scope="col" >M-2</th>
+                        <th class="slds-size_1-of-12 cls4 tableheader" scope="col">W-1</th>
+                        <th class="slds-size_1-of-12 cls5 tableheader" scope="col">W-2</th>
+                        <th class="slds-size_1-of-12 cls6 tableheader" scope="col">D-1</th>
+                        <th class="slds-size_1-of-12 cls7 tableheader" scope="col">D-2</th>
+                        <th class="slds-size_1-of-12 cls8 tableheader" scope="col">WTD</th>
+                        <th class="slds-size_1-of-12 cls9 tableheader" scope="col">MTD</th>
+                        <th class="slds-size_1-of-12 cls10 tableheader" scope="col">(W-1)-(W-2)</th>
+                        <th class="slds-size_1-of-12 cls11 tableheader" scope="col">(D-1)-(M-1)</th>
+                        <th class="slds-size_1-of-12 cls2 tableheader" scope="col">(D-1)-(w-1)</th>
+                        <th class="slds-size_1-of-12 cls3 tableheader" scope="col">(D-1)-(D-2)</th>
+                        <th class="slds-size_1-of-12 cls4 tableheader" scope="col">(D-1)-WTD</th>
+                        <th class="slds-size_1-of-12 cls5 tableheader" scope="col">WTD-(w-1)</th>
+                    </tr>
+                </thead>
+                <tbody class="setText">
+                    <template for:each = {costList} for:item = "ldcData">
+                        <tr key={ldcData.product}>
+                            <th class="slds-size_2-of-12 clsplant">{ldcData.product}</th>
+                            <th class="slds-size_1-of-12 cls1 tableheader">{ldcData.productcode}</th>
+                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col"><lightning-formatted-number value={ldcData.M1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col"><lightning-formatted-number value={ldcData.M2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col"><lightning-formatted-number value={ldcData.W1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col"><lightning-formatted-number value={ldcData.W2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls6 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls7 tableheader" scope="col"><lightning-formatted-number value={ldcData.D2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls8 tableheader" scope="col"><lightning-formatted-number value={ldcData.WTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls9 tableheader" scope="col"><lightning-formatted-number value={ldcData.MTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls10 tableheader" scope="col"><lightning-formatted-number value={ldcData.W1VSW2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls11 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSM1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSW1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSD2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSWTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col"><lightning-formatted-number value={ldcData.WTDVSW1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+</template>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>default</label>
+    <protected>false</protected>
+    <values>
+        <field>EMAIL_CC__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EMAIL_CSS__c</field>
+        <value xsi:type="xsd:string">table {border-collapse:collapse;width: 60%;}table, td, th {border:1px solid black;text-align:left;}</value>
+    </values>
+    <values>
+        <field>EMAIL_FOOTER__c</field>
+        <value xsi:type="xsd:string">&lt;br/&gt;&lt;br/&gt;Regards
+&lt;br/&gt;Revolution System Administrator
+&lt;br/&gt;&lt;br/&gt;Note: This is a system generated E-mail. Please do not reply.</value>
+    </values>
+    <values>
+        <field>EMAIL_HEADER__c</field>
+        <value xsi:type="xsd:string">Greetings!&lt;br/&gt;&lt;br/&gt;
+Please take necessary action(s) for below alert(s).&lt;br/&gt;&lt;br/&gt;</value>
+    </values>
+    <values>
+        <field>EMAIL_SUBJECT__c</field>
+        <value xsi:type="xsd:string">Revolution IT Dashboard Alert</value>
+    </values>
+    <values>
+        <field>EMAIL_TEMPLATE__c</field>
+        <value xsi:type="xsd:string">&lt;html&gt; 
+&lt;head&gt;&lt;style&gt;{!EMAIL_CSS__C}&lt;/style&gt;&lt;/head&gt; 
+&lt;body&gt; 
+{!EMAIL_HEADER__C} 
+&lt;table&gt;  
+&lt;!--&lt;TABLE_BODY/&gt;--&gt; 
+&lt;/table&gt; 
+{!EMAIL_FOOTER__C} 
+&lt;/body&gt; 
+&lt;/html&gt;</value>
+    </values>
+    <values>
+        <field>EMAIL_TO__c</field>
+        <value xsi:type="xsd:string">EMAIL TO has changed from andreas.heeschen@shell.com;Ganesh.G.Bhat@shell.com;Melina.Meiring@shell.com; alexandra.schiller@shell.com; Inger.Lueth@shell.com; GXSDECFCPD@shell.com; Matthias.Zimbrich@shell.com; Dennis.Gerken@shell.com;gurkaran.singh@shell.com; j.srivastava@shell.com; N.Kondur@shell.com;mika.tiusanen@shell.com;
+Victor.mukherjee@shell.com;
+p.gurujula@shell.com;nilima.ganvir@shell.com;Mrunal.Vyawahare@shell.com;sahil.mujbaile@shell.com;linda.luedde@shell.com</value>
+    </values>
+</CustomMetadata>

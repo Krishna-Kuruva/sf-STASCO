@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_Customer_Sector__c</fullName>
+    <externalId>false</externalId>
+    <label>* Customer Sector</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Asphalt PlanT - 10199 - Asphalt Plant</fullName>
+                <default>false</default>
+                <label>Asphalt PlanT - 10199 - Asphalt Plant</label>
+            </value>
+            <value>
+                <fullName>Asset Owner - 10202 - Private Asset or BOT</fullName>
+                <default>false</default>
+                <label>Asset Owner - 10202 - Private Asset or BOT</label>
+            </value>
+            <value>
+                <fullName>Asset Owner - 10203 - Public Authority</fullName>
+                <default>false</default>
+                <label>Asset Owner - 10203 - Public Authority</label>
+            </value>
+            <value>
+                <fullName>AVN FLIGHT SUPPORT COMPANIES - 10084 - AV Umb. Fuel Orgs</fullName>
+                <default>false</default>
+                <label>AVN FLIGHT SUPPORT COMPANIES - 10084 - AV Umb. Fuel Orgs</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10091 - AV GA Orig Equip Man</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10091 - AV GA Orig Equip Man</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10092 - AV GA Repair/Ohaul</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10092 - AV GA Repair/Ohaul</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10093 - AV GA Other</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10093 - AV GA Other</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10130 - AV GA Commercial</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10130 - AV GA Commercial</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10131 - AV GA Business Jets</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10131 - AV GA Business Jets</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10132 - AV GA Priv Fly/Trng</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10132 - AV GA Priv Fly/Trng</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10133 - AV GA Agent Reseller</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10133 - AV GA Agent Reseller</label>
+            </value>
+            <value>
+                <fullName>AVN GENERAL AVIATION - 10134 - AV GA Fixed Base Op</fullName>
+                <default>false</default>
+                <label>AVN GENERAL AVIATION - 10134 - AV GA Fixed Base Op</label>
+            </value>
+            <value>
+                <fullName>AVN GLOBAL AIRLINE - 10077 - AV Glb Avn Other</fullName>
+                <default>false</default>
+                <label>AVN GLOBAL AIRLINE - 10077 - AV Glb Avn Other</label>
+            </value>
+            <value>
+                <fullName>AVN GLOBAL AIRLINE - 10140 - AV Glb Avn Passenger</fullName>
+                <default>false</default>
+                <label>AVN GLOBAL AIRLINE - 10140 - AV Glb Avn Passenger</label>
+            </value>
+            <value>
+                <fullName>AVN GLOBAL AIRLINE - 10141 - AV Glb Avn Cargo</fullName>
+                <default>false</default>
+                <label>AVN GLOBAL AIRLINE - 10141 - AV Glb Avn Cargo</label>
+            </value>
+            <value>
+                <fullName>AVN MANUFACTURING - 10053 - AV Manufacturing</fullName>
+                <default>false</default>
+                <label>AVN MANUFACTURING - 10053 - AV Manufacturing</label>
+            </value>
+            <value>
+                <fullName>AVN OTHER - 10061 - AV Other</fullName>
+                <default>false</default>
+                <label>AVN OTHER - 10061 - AV Other</label>
+            </value>
+            <value>
+                <fullName>AVN SPEC CARRIER - 10078 - AV SC Cargo</fullName>
+                <default>false</default>
+                <label>AVN SPEC CARRIER - 10078 - AV SC Cargo</label>
+            </value>
+            <value>
+                <fullName>AVN SPEC CARRIER - 10079 - AV SC Charter</fullName>
+                <default>false</default>
+                <label>AVN SPEC CARRIER - 10079 - AV SC Charter</label>
+            </value>
+            <value>
+                <fullName>AVN SPEC CARRIER - 10080 - AV SC Intl Sched.</fullName>
+                <default>false</default>
+                <label>AVN SPEC CARRIER - 10080 - AV SC Intl Sched.</label>
+            </value>
+            <value>
+                <fullName>AVN SPEC CARRIER - 10081 - AV SC LowCostNoFrill</fullName>
+                <default>false</default>
+                <label>AVN SPEC CARRIER - 10081 - AV SC LowCostNoFrill</label>
+            </value>
+            <value>
+                <fullName>AVN SPEC CARRIER - 10082 - AV SC Regionl/Feeder</fullName>
+                <default>false</default>
+                <label>AVN SPEC CARRIER - 10082 - AV SC Regionl/Feeder</label>
+            </value>
+            <value>
+                <fullName>BASE OILS - 10156 - Base Oils</fullName>
+                <default>false</default>
+                <label>BASE OILS - 10156 - Base Oils</label>
+            </value>
+            <value>
+                <fullName>Bus, Fin &amp; Admin - 10120 - General business</fullName>
+                <default>false</default>
+                <label>Bus, Fin &amp; Admin - 10120 - General business</label>
+            </value>
+            <value>
+                <fullName>Bus, Fin &amp; Admin - 10121 - Finance and admin</fullName>
+                <default>false</default>
+                <label>Bus, Fin &amp; Admin - 10121 - Finance and admin</label>
+            </value>
+            <value>
+                <fullName>Bus, Fin &amp; Admin - 10122 - Government orgs</fullName>
+                <default>false</default>
+                <label>Bus, Fin &amp; Admin - 10122 - Government orgs</label>
+            </value>
+            <value>
+                <fullName>Concrete Manuf - 10204 - Recycler/Tech Soln</fullName>
+                <default>false</default>
+                <label>Concrete Manuf - 10204 - Recycler/Tech Soln</label>
+            </value>
+            <value>
+                <fullName>Concrete Manuf - 10205 - Regular Precast</fullName>
+                <default>false</default>
+                <label>Concrete Manuf - 10205 - Regular Precast</label>
+            </value>
+            <value>
+                <fullName>CRT HAULIERS - 10094 - CRT Long Haul Fleets</fullName>
+                <default>false</default>
+                <label>CRT HAULIERS - 10094 - CRT Long Haul Fleets</label>
+            </value>
+            <value>
+                <fullName>CRT HAULIERS - 10095 - CRT Short Haul Fleet</fullName>
+                <default>false</default>
+                <label>CRT HAULIERS - 10095 - CRT Short Haul Fleet</label>
+            </value>
+            <value>
+                <fullName>CRT/FLEET - 10043 - C/F – Bus and Coach</fullName>
+                <default>false</default>
+                <label>CRT/FLEET - 10043 - C/F – Bus and Coach</label>
+            </value>
+            <value>
+                <fullName>CRT/FLEET - 10044 - C/F - Govern &amp; Other</fullName>
+                <default>false</default>
+                <label>CRT/FLEET - 10044 - C/F - Govern &amp; Other</label>
+            </value>
+            <value>
+                <fullName>CRT/FLEET - 10045 - C/F - Owner driver</fullName>
+                <default>false</default>
+                <label>CRT/FLEET - 10045 - C/F - Owner driver</label>
+            </value>
+            <value>
+                <fullName>CRT/FLEET - 10057 - CRT/Fleet - Fleet</fullName>
+                <default>false</default>
+                <label>CRT/FLEET - 10057 - CRT/Fleet - Fleet</label>
+            </value>
+            <value>
+                <fullName>DOMESTIC - 10049 - Domestic</fullName>
+                <default>false</default>
+                <label>DOMESTIC - 10049 - Domestic</label>
+            </value>
+            <value>
+                <fullName>FOOD &amp; BEVERAGES - 10016 - Food &amp; Beverages</fullName>
+                <default>false</default>
+                <label>FOOD &amp; BEVERAGES - 10016 - Food &amp; Beverages</label>
+            </value>
+            <value>
+                <fullName>Industrial Bitumen - 10196 - Roofing</fullName>
+                <default>false</default>
+                <label>Industrial Bitumen - 10196 - Roofing</label>
+            </value>
+            <value>
+                <fullName>Industrial Bitumen - 10197 - Other Ind Bit Apps</fullName>
+                <default>false</default>
+                <label>Industrial Bitumen - 10197 - Other Ind Bit Apps</label>
+            </value>
+            <value>
+                <fullName>Industrial ChemicaL - 10198 - Industrial Chemical</fullName>
+                <default>false</default>
+                <label>Industrial ChemicaL - 10198 - Industrial Chemical</label>
+            </value>
+            <value>
+                <fullName>LUB AGRICULTURE - 10066 - Agri. - End Consumer</fullName>
+                <default>false</default>
+                <label>LUB AGRICULTURE - 10066 - Agri. - End Consumer</label>
+            </value>
+            <value>
+                <fullName>LUB AGRICULTURE - 10170 - Agriculture - FWS</fullName>
+                <default>false</default>
+                <label>LUB AGRICULTURE - 10170 - Agriculture - FWS</label>
+            </value>
+            <value>
+                <fullName>LUB AGRICULTURE - 10171 - LUB Agri OEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB AGRICULTURE - 10171 - LUB Agri OEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB AGRICULTURE - 10215 - LUB Agri OEM FF</fullName>
+                <default>false</default>
+                <label>LUB AGRICULTURE - 10215 - LUB Agri OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10009 - LUB Auto OEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10009 - LUB Auto OEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10010 - MCO OEM</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10010 - MCO OEM</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10150 - LUB AutoTruck Retail</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10150 - LUB AutoTruck Retail</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10151 - LUB Fast Lubes</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10151 - LUB Fast Lubes</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10152 - Auto - FWS</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10152 - Auto - FWS</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10154 - LUB IWS Chains</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10154 - LUB IWS Chains</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10165 - OEM - Other vehicles</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10165 - OEM - Other vehicles</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10213 - LUB Fast Fit</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10213 - LUB Fast Fit</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO - 10217 - LUB Auto OEM FF</fullName>
+                <default>false</default>
+                <label>LUB AUTO - 10217 - LUB Auto OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO COMPONENTS - 10052 - LUB AutoComp Fact&amp;Pt</fullName>
+                <default>false</default>
+                <label>LUB AUTO COMPONENTS - 10052 - LUB AutoComp Fact&amp;Pt</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO COMPONENTS - 10172 - LUB Auto Comp OEM FF</fullName>
+                <default>false</default>
+                <label>LUB AUTO COMPONENTS - 10172 - LUB Auto Comp OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB AUTO COMPONENTS - 10219 - LUB AutoComOEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB AUTO COMPONENTS - 10219 - LUB AutoComOEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB CEMENT - 10167 - LUB Cement</fullName>
+                <default>false</default>
+                <label>LUB CEMENT - 10167 - LUB Cement</label>
+            </value>
+            <value>
+                <fullName>LUB CHEMICALS - 10208 - LUB Chemicals</fullName>
+                <default>false</default>
+                <label>LUB CHEMICALS - 10208 - LUB Chemicals</label>
+            </value>
+            <value>
+                <fullName>LUB CONSTRUCTION - 10029 - Construction roads</fullName>
+                <default>false</default>
+                <label>LUB CONSTRUCTION - 10029 - Construction roads</label>
+            </value>
+            <value>
+                <fullName>LUB CONSTRUCTION - 10063 - LUB Const OEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB CONSTRUCTION - 10063 - LUB Const OEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB CONSTRUCTION - 10174 - Const-Const/Contract</fullName>
+                <default>false</default>
+                <label>LUB CONSTRUCTION - 10174 - Const-Const/Contract</label>
+            </value>
+            <value>
+                <fullName>LUB CONSTRUCTION - 10175 - Const-Heavy Eqp Rent</fullName>
+                <default>false</default>
+                <label>LUB CONSTRUCTION - 10175 - Const-Heavy Eqp Rent</label>
+            </value>
+            <value>
+                <fullName>LUB CONSTRUCTION - 10212 - LUB Const OEM FF</fullName>
+                <default>false</default>
+                <label>LUB CONSTRUCTION - 10212 - LUB Const OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB DISTRIBUTOR - 10157 - LUB Distributor</fullName>
+                <default>false</default>
+                <label>LUB DISTRIBUTOR - 10157 - LUB Distributor</label>
+            </value>
+            <value>
+                <fullName>LUB FLEET - 10209 - LUB Fleet</fullName>
+                <default>false</default>
+                <label>LUB FLEET - 10209 - LUB Fleet</label>
+            </value>
+            <value>
+                <fullName>LUB GENERAL MANUFACTURING - 10073 - LUB Gen Man OEM FF</fullName>
+                <default>false</default>
+                <label>LUB GENERAL MANUFACTURING - 10073 - LUB Gen Man OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB GENERAL MANUFACTURING - 10181 - LUB Gen.Man Fact&amp;Plt</fullName>
+                <default>false</default>
+                <label>LUB GENERAL MANUFACTURING - 10181 - LUB Gen.Man Fact&amp;Plt</label>
+            </value>
+            <value>
+                <fullName>LUB GENERAL MANUFACTURING - 10182 - LUB Gen.Man OEM A/Mk</fullName>
+                <default>false</default>
+                <label>LUB GENERAL MANUFACTURING - 10182 - LUB Gen.Man OEM A/Mk</label>
+            </value>
+            <value>
+                <fullName>LUB GENERAL RETAIL CHAINS - 10123 - LUB Gen Retail Chain</fullName>
+                <default>false</default>
+                <label>LUB GENERAL RETAIL CHAINS - 10123 - LUB Gen Retail Chain</label>
+            </value>
+            <value>
+                <fullName>LUB MCO - 10048 - LUB MCO OEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB MCO - 10048 - LUB MCO OEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB MCO - 10214 - LUB MCO OEM FF</fullName>
+                <default>false</default>
+                <label>LUB MCO - 10214 - LUB MCO OEM FF</label>
+            </value>
+            <value>
+                <fullName>LUB METALS - 10033 - LUB Metals</fullName>
+                <default>false</default>
+                <label>LUB METALS - 10033 - LUB Metals</label>
+            </value>
+            <value>
+                <fullName>LUB MINING - 10027 - LUB Mining</fullName>
+                <default>false</default>
+                <label>LUB MINING - 10027 - LUB Mining</label>
+            </value>
+            <value>
+                <fullName>LUB OIL &amp; GAS - 10210 - LUB Oil &amp; Gas</fullName>
+                <default>false</default>
+                <label>LUB OIL &amp; GAS - 10210 - LUB Oil &amp; Gas</label>
+            </value>
+            <value>
+                <fullName>LUB OTHER - 10065 - LUB Other</fullName>
+                <default>false</default>
+                <label>LUB OTHER - 10065 - LUB Other</label>
+            </value>
+            <value>
+                <fullName>LUB PAPER &amp; PULP - 10185 - LUB Paper &amp; Pulp</fullName>
+                <default>false</default>
+                <label>LUB PAPER &amp; PULP - 10185 - LUB Paper &amp; Pulp</label>
+            </value>
+            <value>
+                <fullName>LUB POWER - 10030 - LUB Power</fullName>
+                <default>false</default>
+                <label>LUB POWER - 10030 - LUB Power</label>
+            </value>
+            <value>
+                <fullName>LUB RAIL - 10058 - LUB Rail</fullName>
+                <default>false</default>
+                <label>LUB RAIL - 10058 - LUB Rail</label>
+            </value>
+            <value>
+                <fullName>LUB SHELL RETAIL - 10159 - LUB SHELL RETAIL</fullName>
+                <default>false</default>
+                <label>LUB SHELL RETAIL - 10159 - LUB SHELL RETAIL</label>
+            </value>
+            <value>
+                <fullName>LUB TRUCK - 10153 - LUB Truck OEM A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB TRUCK - 10153 - LUB Truck OEM A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB TRUCK - 10155 - Truck-OEM inc A/Mkt</fullName>
+                <default>false</default>
+                <label>LUB TRUCK - 10155 - Truck-OEM inc A/Mkt</label>
+            </value>
+            <value>
+                <fullName>LUB TRUCK - 10216 - LUB Truck OEM FF</fullName>
+                <default>false</default>
+                <label>LUB TRUCK - 10216 - LUB Truck OEM FF</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10026 - Ship Management Comp</fullName>
+                <default>false</default>
+                <label>MARINE - 10026 - Ship Management Comp</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10062 - Marine other</fullName>
+                <default>false</default>
+                <label>MARINE - 10062 - Marine other</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10072 - Marine manufacturing</fullName>
+                <default>false</default>
+                <label>MARINE - 10072 - Marine manufacturing</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10099 - Tanker</fullName>
+                <default>false</default>
+                <label>MARINE - 10099 - Tanker</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10100 - Cruise</fullName>
+                <default>false</default>
+                <label>MARINE - 10100 - Cruise</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10101 - Liner - container</fullName>
+                <default>false</default>
+                <label>MARINE - 10101 - Liner - container</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10102 - Bulker</fullName>
+                <default>false</default>
+                <label>MARINE - 10102 - Bulker</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10103 - Trader-ie Fuel Trade</fullName>
+                <default>false</default>
+                <label>MARINE - 10103 - Trader-ie Fuel Trade</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10104 - Fishing</fullName>
+                <default>false</default>
+                <label>MARINE - 10104 - Fishing</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10105 - Dredging</fullName>
+                <default>false</default>
+                <label>MARINE - 10105 - Dredging</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10106 - RO-RO</fullName>
+                <default>false</default>
+                <label>MARINE - 10106 - RO-RO</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10107 - Ferry</fullName>
+                <default>false</default>
+                <label>MARINE - 10107 - Ferry</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10108 - Offshore</fullName>
+                <default>false</default>
+                <label>MARINE - 10108 - Offshore</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10109 - Reefer</fullName>
+                <default>false</default>
+                <label>MARINE - 10109 - Reefer</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10110 - Barge</fullName>
+                <default>false</default>
+                <label>MARINE - 10110 - Barge</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10112 - Car carrier</fullName>
+                <default>false</default>
+                <label>MARINE - 10112 - Car carrier</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10113 - Harbour services</fullName>
+                <default>false</default>
+                <label>MARINE - 10113 - Harbour services</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10114 - Navy/CG/Defence</fullName>
+                <default>false</default>
+                <label>MARINE - 10114 - Navy/CG/Defence</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10115 - Gen Mixed Cargo</fullName>
+                <default>false</default>
+                <label>MARINE - 10115 - Gen Mixed Cargo</label>
+            </value>
+            <value>
+                <fullName>MARINE - 10116 - Leisure</fullName>
+                <default>false</default>
+                <label>MARINE - 10116 - Leisure</label>
+            </value>
+            <value>
+                <fullName>Metal Miner - 10207 - Metal miner</fullName>
+                <default>false</default>
+                <label>Metal Miner - 10207 - Metal miner</label>
+            </value>
+            <value>
+                <fullName>MILITARY GOVERNMENT - 10083 - Military/Government</fullName>
+                <default>false</default>
+                <label>MILITARY GOVERNMENT - 10083 - Military/Government</label>
+            </value>
+            <value>
+                <fullName>MOTORIST - 10050 - Motorist</fullName>
+                <default>false</default>
+                <label>MOTORIST - 10050 - Motorist</label>
+            </value>
+            <value>
+                <fullName>OTHER INDUSTRY - 10055 - Other Industry</fullName>
+                <default>false</default>
+                <label>OTHER INDUSTRY - 10055 - Other Industry</label>
+            </value>
+            <value>
+                <fullName>People &amp; environment - 10125 - Sporting</fullName>
+                <default>false</default>
+                <label>People &amp; environment - 10125 - Sporting</label>
+            </value>
+            <value>
+                <fullName>People &amp; environment - 10126 - Cultural</fullName>
+                <default>false</default>
+                <label>People &amp; environment - 10126 - Cultural</label>
+            </value>
+            <value>
+                <fullName>People &amp; environment - 10127 - Organisations</fullName>
+                <default>false</default>
+                <label>People &amp; environment - 10127 - Organisations</label>
+            </value>
+            <value>
+                <fullName>People &amp; environment - 10128 - Human services</fullName>
+                <default>false</default>
+                <label>People &amp; environment - 10128 - Human services</label>
+            </value>
+            <value>
+                <fullName>Phos Mine/Fert Manuf - 10206 - Phos Mine/Fert Manuf</fullName>
+                <default>false</default>
+                <label>Phos Mine/Fert Manuf - 10206 - Phos Mine/Fert Manuf</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10168 - PO Additive Company</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10168 - PO Additive Company</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10176 - PO Construction</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10176 - PO Construction</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10177 - PO Cosmetic/pharma</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10177 - PO Cosmetic/pharma</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10178 - PO Agriculture</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10178 - PO Agriculture</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10179 - PO Defoamer/Coating</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10179 - PO Defoamer/Coating</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10180 - Fertiliser</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10180 - Fertiliser</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10183 - Mining PO</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10183 - Mining PO</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10186 - PO Petroleum Jelly</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10186 - PO Petroleum Jelly</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10188 - PO Printing Ink</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10188 - PO Printing Ink</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10189 - Surface Coating</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10189 - Surface Coating</label>
+            </value>
+            <value>
+                <fullName>PO CHEMICAL - 10191 - PO Textile &amp; Leather</fullName>
+                <default>false</default>
+                <label>PO CHEMICAL - 10191 - PO Textile &amp; Leather</label>
+            </value>
+            <value>
+                <fullName>PO OTHER - 10211 - PO OTHER</fullName>
+                <default>false</default>
+                <label>PO OTHER - 10211 - PO OTHER</label>
+            </value>
+            <value>
+                <fullName>PO PLASTIC - 10169 - PO Adhesives</fullName>
+                <default>false</default>
+                <label>PO PLASTIC - 10169 - PO Adhesives</label>
+            </value>
+            <value>
+                <fullName>PO PLASTIC - 10173 - PO Cable Fill</fullName>
+                <default>false</default>
+                <label>PO PLASTIC - 10173 - PO Cable Fill</label>
+            </value>
+            <value>
+                <fullName>PO PLASTIC - 10187 - PO Plastics</fullName>
+                <default>false</default>
+                <label>PO PLASTIC - 10187 - PO Plastics</label>
+            </value>
+            <value>
+                <fullName>PO PLASTIC - 10192 - PO TPE</fullName>
+                <default>false</default>
+                <label>PO PLASTIC - 10192 - PO TPE</label>
+            </value>
+            <value>
+                <fullName>PO RUBBER - 10184 - PO Non-Tyre Rubber</fullName>
+                <default>false</default>
+                <label>PO RUBBER - 10184 - PO Non-Tyre Rubber</label>
+            </value>
+            <value>
+                <fullName>PO RUBBER - 10193 - PO Tyres</fullName>
+                <default>false</default>
+                <label>PO RUBBER - 10193 - PO Tyres</label>
+            </value>
+            <value>
+                <fullName>POBOW Distributor - 10158 - Distributors - B2C</fullName>
+                <default>false</default>
+                <label>POBOW Distributor - 10158 - Distributors - B2C</label>
+            </value>
+            <value>
+                <fullName>POBOW Distributor - 10218 - POBOW Distributor</fullName>
+                <default>false</default>
+                <label>POBOW Distributor - 10218 - POBOW Distributor</label>
+            </value>
+            <value>
+                <fullName>Quarry - 10166 - Quarry</fullName>
+                <default>false</default>
+                <label>Quarry - 10166 - Quarry</label>
+            </value>
+            <value>
+                <fullName>Refinery/Terminal - 10195 - Refinery/Terminal</fullName>
+                <default>false</default>
+                <label>Refinery/Terminal - 10195 - Refinery/Terminal</label>
+            </value>
+            <value>
+                <fullName>Retail sales ex fuel - 10124 - Other commerce</fullName>
+                <default>false</default>
+                <label>Retail sales ex fuel - 10124 - Other commerce</label>
+            </value>
+            <value>
+                <fullName>Road Contractor - 10200 - General Contractor</fullName>
+                <default>false</default>
+                <label>Road Contractor - 10200 - General Contractor</label>
+            </value>
+            <value>
+                <fullName>Road Contractor - 10201 - Maintenance Contrac</fullName>
+                <default>false</default>
+                <label>Road Contractor - 10201 - Maintenance Contrac</label>
+            </value>
+            <value>
+                <fullName>Textile - 10190 - Textile</fullName>
+                <default>false</default>
+                <label>Textile - 10190 - Textile</label>
+            </value>
+            <value>
+                <fullName>Wholesale bitumen - 10160 - WholeBit-roads</fullName>
+                <default>false</default>
+                <label>Wholesale bitumen - 10160 - WholeBit-roads</label>
+            </value>
+            <value>
+                <fullName>Wholesale bitumen - 10161 - WholeBit-non-roads</fullName>
+                <default>false</default>
+                <label>Wholesale bitumen - 10161 - WholeBit-non-roads</label>
+            </value>
+            <value>
+                <fullName>Wholesale bitumen - 10194 - Wholesale bitumen</fullName>
+                <default>false</default>
+                <label>Wholesale bitumen - 10194 - Wholesale bitumen</label>
+            </value>
+            <value>
+                <fullName>WHOLESALE FUEL - 10070 - Wholesale Fuel</fullName>
+                <default>false</default>
+                <label>WHOLESALE FUEL - 10070 - Wholesale Fuel</label>
+            </value>
+            <value>
+                <fullName>WHOLESALE OTHER - 10060 - Wholesale Other</fullName>
+                <default>false</default>
+                <label>WHOLESALE OTHER - 10060 - Wholesale Other</label>
+            </value>
+            <value>
+                <fullName>N/A - 10032 - N/A</fullName>
+                <default>false</default>
+                <label>N/A - 10032 - N/A</label>
+            </value>
+            <value>
+                <fullName>N/A - 10034 - N/A</fullName>
+                <default>false</default>
+                <label>N/A - 10034 - N/A</label>
+            </value>
+            <value>
+                <fullName>N/A - 10076 - N/A</fullName>
+                <default>false</default>
+                <label>N/A - 10076 - N/A</label>
+            </value>
+            <value>
+                <fullName>N/A - 10098 - N/A</fullName>
+                <default>false</default>
+                <label>N/A - 10098 - N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

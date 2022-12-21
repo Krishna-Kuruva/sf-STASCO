@@ -1,0 +1,500 @@
+<template>            
+    <div class="reducedFont slds-p-around_xx-small"> 
+         <!--Header Section starts-->
+         <div class="blockscolor slds-box slds-p-around_none slds-m-around_xxx-small">
+             <div class="slds-box slds-p-around_none">
+                <template if:false={showPageHeader}>
+                    <div class="slds-grid ">
+                       <!-- <label class=" slds-m-top_x-small">Show Filter</label> -->
+                        <div class="slds-size_1-of-12 slds-p-left_xx-small"  >                    
+                            <lightning-icon onclick={showFilter} class="slds-m-left_xx-small slds-m-top_x-small" icon-name="utility:filterList" size="xx-small" alternative-text="Filter" title="Filter"></lightning-icon>
+                        </div> 
+                    </div> 
+                </template>
+                <template if:true={showPageHeader}>   
+                   <!-- <div class="slds-grid ">
+                         <label class="slds-m-top_x-small ">Hide Filter</label>
+                        <div class="slds-size_1-of-12 slds-p-left_xx-small"  >
+                            <lightning-icon onclick={showFilter} class="slds-m-left_xx-small slds-m-top_x-small " icon-name="utility:hide" size="xx-small" alternative-text="Filter" title="Filter"></lightning-icon>
+                        </div> 
+                    </div>  -->                     
+                    <div class="slds-grid " style="zoom: 0.90;">
+                        <div class="slds-size_1-of-12" style="width: 2%;">
+                            <div class="slds-size_1-of-12 slds-p-left_xx-small"  >
+                                <lightning-icon onclick={showFilter} class="slds-m-left_xx-small slds-m-top_x-small " icon-name="utility:hide" size="xx-small" alternative-text="Filter" title="Filter"></lightning-icon>
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-right_xx-small" style="width: 4%;">  
+                            <div class="slds-form-element">
+                                <template  if:true={cbuOutput}>
+                                    <label class='slds-m-around_x-small'>CBU</label>
+                                </template>
+                                <template  if:false={cbuOutput}>
+                                    <label class='slds-m-around_x-small'>MidDay</label>
+                                </template>
+                                <label class="slds-checkbox_toggle slds-grid">
+                                <span class="slds-form-element__label slds-m-bottom_none" ></span>
+                                <lightning-input type="checkbox" label="" checked={cbuOutput} onchange={cbuOutputView}></lightning-input>
+                                </label>
+                            </div>                                
+                        </div>
+                        <div class="slds-size_1-of-12  slds-p-top_x-small slds-p-left_xx-small slds-p-right_xx-small">
+                            <label class='slds-m-around_x-small'>CustomerType</label>
+                            <lightning-combobox
+                            variant="label-hidden"
+                            class="textblack"
+                            name="CustomerType"
+                            value="Reseller"
+                            label="CustomerType"
+                            placeholder="Select Customer Type"
+                            options={CustomerTypeList}
+                            onchange={CustomerTypeFilter}
+                            required></lightning-combobox>                        
+                        </div>
+                        <div class="slds-size_2-of-12 slds-p-top_x-small slds-p-right_xx-small " style="width: 13%;">
+                            <c-re_cnd_search-filter filter-label="Customer"
+                                                    data-my-id="filter1" 
+                                                    filter-search-text={custSearchText}
+                                                    filter-list-to-show={custListToShow}
+                                                    filter-list-to-search={custListToSearch}
+                                                    show-filter-group={showCustFilter}
+                                                    is-all={custAll}
+                                                    onfilterselect={handleCustSelect}
+                                                    onapplyfilter={handleApplyFilter}>
+                            
+                            </c-re_cnd_search-filter>
+                        </div>
+                        
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-right_xx-small " style="width: 13%;">
+                            <c-re_cnd_search-filter filter-label="Location"
+                                                     data-my-id="filter2" 
+                                                    filter-search-text={locSearchText}
+                                                    filter-list-to-show={locListToShow}
+                                                    filter-list-to-search={locListToSearch}
+                                                    show-filter-group={showLocFilter}
+                                                    is-all={locAll}
+                                                    onfilterselect={handleLocationSelect}
+                                                    onapplyfilter={handleApplyFilter}>
+                            </c-re_cnd_search-filter>
+                        </div>
+                        
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-right_xx-small " style="width: 13%;">
+                            <c-re_cnd_search-filter filter-label="Material"
+                                                    data-my-id="filter3" 
+                                                    filter-search-text={prodSearchText}
+                                                    filter-list-to-show={prodListToShow}
+                                                    filter-list-to-search={prodListToSearch}
+                                                    show-filter-group={showProdFilter}
+                                                    is-all={prodAll}
+                                                    onfilterselect={handleProductSelect}
+                                                    onapplyfilter={handleApplyFilter}>
+                            </c-re_cnd_search-filter>
+                        </div>
+
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-right_xx-small">
+                            <label class='slds-m-around_x-small'>Sold To</label>                 
+                            <lightning-combobox
+                            variant="label-hidden"
+                            class="textblack"
+                            name="Soldto"
+                            value={trackSoldto}
+                            label="Soldto"
+                            placeholder="All"
+                            options={soldTo}
+                            onchange={CustomerTypeFilter}
+                            ></lightning-combobox>
+                        </div>
+                            
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-right_xx-small " style="width: 13%;">
+                            <c-re_cnd_search-filter filter-label="AMCode"
+                                                    data-my-id="filter4" 
+                                                    filter-search-text={AMSearchText}
+                                                    filter-list-to-show={AMListToShow}
+                                                    filter-list-to-search={AMListToSearch}
+                                                    show-filter-group={showAMFilter}
+                                                    is-all={AMAll}
+                                                    onfilterselect={handleAMCodeSelect}
+                                                    onapplyfilter={handleApplyFilter}>
+                            </c-re_cnd_search-filter>
+                        </div>
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-left_xx-small slds-p-right_xx-small">
+                            <label class='slds-m-around_x-small'>Status</label> 
+                            <lightning-combobox
+                            variant="label-hidden"
+                            class="textblack"
+                            name="Status"
+                            value={trackStatus}
+                            label="Status"
+                            placeholder="All"
+                            options={statusFilter}
+                            onchange={CustomerTypeFilter}
+                            ></lightning-combobox>
+                        </div>   
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-left_xx-small slds-p-right_xx-small">
+                            <label class='slds-m-around_x-small'>Calculation Model</label> 
+                            <lightning-combobox
+                            variant="label-hidden"
+                            class="textblack"
+                            name="calmodel"
+                            value={trackCalModel}
+                            label="calmodel"
+                            placeholder="All"
+                            options={calculationMod}
+                            onchange={CustomerTypeFilter}
+                            ></lightning-combobox>
+                        </div>                     
+                        <div class="slds-size_1-of-12 slds-p-top_x-small slds-p-left_xx-small slds-p-right_xx-small" >                   
+                            <label class='slds-m-around_x-small'>Date Filter</label> 
+                            <template if:false={cbuOutput}>
+                                <lightning-input type="date"  min={dateFilterMin}  variant="label-hidden"  value={dateFilterValue} onblur={filterBasedOnDate}  name="DateFilter" label="" ></lightning-input>
+                            </template>
+                            <template  if:true={cbuOutput}>
+                                <lightning-input type="date"  variant="label-hidden"  value={dateFilterValue} onblur={filterBasedOnDate}  name="DateFilter" label="" ></lightning-input>
+                            </template>
+                        </div>              
+                        
+                    </div>
+                </template>
+            </div>
+            <div class="slds-box slds-p-around_none slds-m-around_xxx-small">
+                <template if:false={advanceOption} >
+                    <div class="slds-grid">
+                        <div class="slds-size_1-of-12 slds-p-left_xx-small"  >
+                            <lightning-icon onclick={showadvanceFilter} class=" slds-m-top_xxx-small" icon-name="utility:preview" size="xx-small" alternative-text="More Option" title="More Option"></lightning-icon>
+                        </div> 
+                    </div>
+                </template>
+                <template if:true={advanceOption} >                   
+                        <!--<div class="slds-grid">
+                            <div class="slds-size_1-of-12 slds-p-left_xx-small"  >
+                                <lightning-icon onclick={showadvanceFilter} class=" slds-m-top_xxx-small" icon-name="utility:preview" size="xx-small" alternative-text="More Option" title="More Option"></lightning-icon>
+                            </div> 
+                        </div>  -->                  
+                <div class="slds-grid">    
+                    <div class="slds-size_1-of-12 slds-p-left_xx-small"  >
+                        <lightning-icon onclick={showadvanceFilter} class=" slds-m-top_xxx-small" icon-name="utility:hide" size="xx-small" alternative-text="More Option" title="More Option"></lightning-icon>
+                    </div> 
+                    <div class="slds-size_2-of-12 slds-p-left_x-large">
+                        <template if:false={cbuOutput}>
+                            <p > MidDay  : <lightning-formatted-date-time value={MidDaypublishDate}></lightning-formatted-date-time> </p>
+                            <p > CBU  : <lightning-formatted-date-time value={cbupublishDate}></lightning-formatted-date-time> </p>                         
+                        </template>
+                        <template if:true={cbuOutput}>
+                            <p > CBU  : <lightning-formatted-date-time value={cbupublishDate}></lightning-formatted-date-time> </p>                         
+                            <p > MidDay  : <lightning-formatted-date-time value={MidDaypublishDate}></lightning-formatted-date-time> </p>
+                        </template>
+                    </div>            
+                    <template if:false={hideCtrltBut}>            
+                            <div class="slds-size_5-of-12 ">                                      
+                                    <lightning-button-group >
+                                        <template if:false={isApprover}>
+                                           
+                                        <lightning-button class="textblack textfont" label="Save " title="Save"  onclick={RecalculatePrice}></lightning-button> 
+                                    
+                                            <lightning-button class="textblack textfont" label="Recalculate" title="Recalculate"  onclick={RecalculatePriceLocal}></lightning-button> 
+                                        </template>
+                                        <lightning-button class="textblack textfont " icon-name="utility:refresh"  onclick={connectedCallback}></lightning-button>
+                                    </lightning-button-group>
+
+                                    <lightning-button-group class="slds-p-right_xx-small slds-float_left">
+                                        
+                                            <template if:false={isApprover}>
+                                                <lightning-button class="textblack textfont" label="Send For Approval" title="Send For Approval" icon-name="utility:send" onclick={submitForReview}>
+                                                </lightning-button>
+                                            </template> 
+
+                                            <template if:true={isApprover}>                        
+                                                <lightning-button class="textblack textfont"  label="Approve" title="Approved"  onclick={approveOrreject}></lightning-button>
+                                                <lightning-button class="textblack textfont"  label="Reject" title="Rejected"  onclick={approveOrreject}></lightning-button>
+                                            </template>
+                                        
+                                    </lightning-button-group>
+                                    <lightning-button class="textblack textfont slds-m-around_xxx-small" label="Mass update" title="Mass Update"  name="popUpPriceUpdate" onclick={updatePricevalue}></lightning-button>                                    
+
+                            </div>  
+                        <!-- <div class="slds-size_1-of-12 ">                   
+                                <lightning-button class="textblack textfont slds-m-around_xxx-small" label="Mass update" title="Mass Update"  name="popUpPriceUpdate" onclick={updatePricevalue}></lightning-button>                                    
+                            </div> -->
+                        
+                        <template if:false={isApprover}> 
+                            <div class="slds-size_1-of-12  ">
+                                    <lightning-button class="textblack textfont" disabled={exportButton} label="Export" title="Export"  onclick={exportdata}></lightning-button>
+                                </div>
+                            <template if:false={cbuOutput}>
+                                <div class="slds-size_1-of-12  ">
+                                    <lightning-button class="textfont"
+                                            label="Update Opps"                                            
+                                            icon-name="utility:text_template"
+                                            slot="actions"
+                                            onclick={checkNewContracts}
+                                            variant="label-hidden" >
+                                    </lightning-button> 
+                                </div>
+                            </template>
+                            <template if:true={cbuOutput}>
+                                <div class="slds-size_1-of-12  ">
+                                    <lightning-button
+                                        class="textfont"
+                                        label="Refresh CBU"
+                                        icon-name="utility:replace"
+                                        slot="actions"
+                                        onclick={refreshCBU}>
+                                    </lightning-button>                                    
+                                </div>
+                            </template>
+                            <div class="slds-size_1-of-12  ">
+                                <lightning-button  label="GSAP retry" disabled={retryButton} variant="label-hidden" icon-name="standard:sales_cadence" title="Non-primary action" onclick={retryToGSAP} class="slds-m-left_x-small textfont"></lightning-button>
+                            </div>
+                                                      
+                                                
+                        </template>
+                    </template> 
+                    <div class="slds-size_1-of-12  ">
+                        <lightning-button  label="Download" variant="label-hidden" icon-name="utility:download" title="Non-primary action" onclick={downloadCSV} class="slds-m-left_x-small textfont"></lightning-button>
+                    </div> 
+                </div>                     
+                </template>
+            </div> 
+        </div>
+          
+         <!--Header Section End-->
+         
+         <!--legend Start -->
+         <div class="blockscolor slds-p-around_none">
+            <div class="slds-grid blockscolor">    
+                <div class="slds-col slds-size_1-of-12"></div>            
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                           <!-- <lightning-avatar src="" initials="NS"  fallback-icon-name="standard:avatar"  alternative-text="NS" size="x-small"></lightning-avatar> -->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account NS " style="padding-top: 0.1rem;" title="Not Submitted">NS</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Not Submitted</p>
+                        </div>
+                    </div>
+                </div>
+               
+                
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="SB"  fallback-icon-name="standard:avatar"  alternative-text="SB" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account SB " style="padding-top: 0.1rem;" title="Submitted">SB</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Submitted PM</p>
+                        </div>
+                    </div>
+                </div> 
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="SB"  fallback-icon-name="standard:avatar"  alternative-text="SB" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account SB " style="padding-top: 0.1rem;" title="Submitted">SP</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Support PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="AP"  fallback-icon-name="standard:avatar"  alternative-text="AP" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account AP " style="padding-top: 0.1rem;" title="Approved">AP</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Approved</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12 ">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="RJ"  fallback-icon-name="standard:avatar"  alternative-text="RJ" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account RJ " style="padding-top: 0.1rem;" title="Rejected">RJ</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Rejected</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                           <!-- <lightning-avatar src="" initials="AA"  fallback-icon-name="standard:avatar"  alternative-text="AA" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account AA " style="padding-top: 0.1rem;" title="Auto Approved">AA</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Auto Approved</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12 slds-m-left_xx-small">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="RU"  fallback-icon-name="standard:avatar"  alternative-text="RU" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account RU " style="padding-top: 0.1rem;" title="Ready to Upload">RU</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Ready to Upload</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12 slds-m-left_xx-small">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="RU"  fallback-icon-name="standard:avatar"  alternative-text="RU" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account UP " style="padding-top: 0.1rem;" title="Uploaded">UP</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Uploaded</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="RU"  fallback-icon-name="standard:avatar"  alternative-text="RU" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account FA " style="padding-top: 0.1rem;" title="Failed">FA</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small slds-m-left_x-small">Failed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_2-of-12">
+                            <!--<lightning-avatar src="" initials="RU"  fallback-icon-name="standard:avatar"  alternative-text="RU" size="x-small"></lightning-avatar>-->
+                            <span class="slds-avatar avatar" >
+                                <abbr class="slds-avatar__initials slds-icon-standard-account UN " style="padding-top: 0.1rem;" title="Failed">UN</abbr>
+                            </span>
+                        </div>
+                        <div class="slds-col slds-size_10-of-12">
+                            <p class="slds-p-top_xxx-small ">Upload not allowed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+         <!--legend End-->
+         
+         <!--Reseller start here-->
+        <template if:false={showDirectOpp}>
+            <div class="childcomp slds-p-around_none slds-m-top_xx-small">
+                <c-re_custom-opp-reseller -cust-data={resellerToChild} loginuser={loginuser} approvebutton={isApprover} cbuoutput={cbuOutput}  hidectrlbut={hideCtrltBut} onchangeseller = {updatemaindata}></c-re_custom-opp-reseller>
+            </div>
+        </template>
+        <!--Reseller ends here-->
+
+         <!--Direct seller start-->
+         <template if:true={showDirectOpp}>
+            <div class="childcomp slds-p-around_none slds-m-top_xx-small">
+                <c-re_custom-opp-direct -cust-data={DirectToChild} loginuser={loginuser} approvebuttondirect={isApprover} cbuoutput={cbuOutput} hidectrlbut={hideCtrltBut} onchangedirect = {updatemaindatadirect}></c-re_custom-opp-direct>
+            </div>
+        </template>
+   
+         <!--Direct seller End-->
+
+         <!--Update temp discount based on filter(starts)-->
+         <template if:true={updatePrice}>
+            <section role="dialog" tabindex="-1" aria-label="Update temporary Discount" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style="width: 30%;">
+                    <header class="modeltempdiscount slds-modal__header ">
+                        <h1 class="slds-text-heading_small">Mass update</h1>
+                    </header>
+                <div class=" popUptempDicount slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <table class="modeltempdiscount slds-table slds-table_cell-buffer slds-table_header-hidden">
+                        <tbody>
+                            <template if:false={isApprover}>     
+                               <!--  <tr>
+                                    <td><b>Final Price</b></td>
+                                    <td><lightning-input type="number" step="0.01" variant="label-hidden" onblur={checkData} onchange={updatePricevalue} name="FinalPrice" value={globalFinalPrice}></lightning-input></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><b>Pricing Level</b></td>
+                                    <td><lightning-input type="number" onblur={checkData} placeholder="value for Direct customer if applicable " step="0" variant="label-hidden" onchange={updatePricevalue} name="PricingLevel" ></lightning-input></td>
+                                </tr>
+                                <tr>
+                                    <td><b> Valid To </b></td>
+                                    <td> <lightning-input type="date" min={nextdate} onchange={updatePricevalue} onblur={checkData} name="ValidTo" label="" ></lightning-input></td>
+                                </tr>-->
+                                <tr>
+                                    <td colspan="2" style="text-align: center;"><b>Fields</b></td>
+                                    <td><b>Confirm</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Final Price</td>
+                                    <td><lightning-input type="number" step="0.01" variant="label-hidden" onblur={checkData} onchange={updatePricevalue} name="FinalPrice" value={globalFinalPrice}></lightning-input></td>
+                                    <td><lightning-input type="checkbox" label="" name="FinalPriceConfirm"  checked={FinalPriceCheckBox} onchange={updatePricevalue} ></lightning-input></td>
+                                </tr>
+                                <tr>
+                                    <td>Valid From</td>
+                                    <td> <lightning-input type="date" min={validFromMin} max={validFromMax} onblur={checkData} onchange={updatePricevalue} name="ValidFrom" value={globalValidFrom} ></lightning-input></td>
+                                    <td><lightning-input type="checkbox" label="" name="ValidFromConfrim" checked={ValidFromCheckBox} onchange={updatePricevalue}></lightning-input></td>
+                                </tr>
+                                <tr>
+                                    <td>Valid To</td>
+                                    <td> <lightning-input type="date" min={validToMin} max={validToMax} onblur={checkData} onchange={updatePricevalue}  name="ValidTo" value={globalValidDate} ></lightning-input></td>
+                                    <td><lightning-input type="checkbox" label="" name="ValidToConfrim" checked={ValidToCheckBox} onchange={updatePricevalue}></lightning-input></td>
+                                </tr>
+                            </template>
+                            <tr>
+                                <td>Comments </td>
+                                <td colspan="2"><lightning-textarea name="comments"  onchange={updatePricevalue} variant="label-hidden" value={globalcomments}  ></lightning-textarea></td>
+                            </tr>                           
+                        </tbody>
+                    </table>   
+                </div>
+                <footer class="modeltempdiscount slds-modal__footer">
+                    <lightning-button  label="Cancel" title="Cancel"  name="Cancel" onclick={updatePricevalue}></lightning-button>                                    
+                    <lightning-button class="slds-m-left_x-small" variant="brand" label="Save" title="Save"  name="Save" onclick={updatePricevalue}></lightning-button>                                    
+
+                </footer>
+                </div>
+            </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+          </template>
+         <!--Update temp discount based on filter (ends)-->
+
+
+         <!--on loading message  start-->
+         <template if:true={spinnerLoad}>
+            <div class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+
+                    <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                        {spinnerMessage}
+                    </p>
+                </div>
+            </div>
+            
+        </template>
+         <!--on loading message end-->
+    </div>
+</template>

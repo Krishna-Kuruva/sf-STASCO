@@ -1,0 +1,35 @@
+*** DEAL DONE NOTIFICATION *** 
+
+The following Opportunity  has been created on {!Opportunity.CreatedDate} by:
+
+Customers Account Manager: {!Account.Acct_Mgr__c}
+Risk Marketer:   {!User.Name} 
+B2B RM account lead for this customer:  {!Account.B2B_Account_Manager__c}
+{!Opportunity.Shell_Entity__c}
+{!Opportunity.Account}
+Opportunity name: {!Opportunity.Name}
+Target C3 for this customer :   {!Account.Potential_Contribution__c}    vs  Actual C3 to date :  {!Account.00N20000003AVDc}
+_________________________________________
+Deal information:
+Months for MOA:   {!Opportunity.Contract_Months_Remaining__c}
+Deal Period: {!Opportunity.Start_Date__c} : {!Opportunity.CloseDate} 
+Product: {!Opportunity.Product__c}{!Opportunity.Actual_Product__c}
+Terminal: {!Opportunity.Terminal__c}
+Deal Volume: {!Opportunity.Volume__c} {!Opportunity.Total_Volume__c} 
+Total Margin: {!Opportunity.Total_Margin__c} 
+Price to Customer: {!Opportunity.Price_to_Customer__c} ({!Opportunity.Currency__c}) {!Opportunity.Currency_value__c} 
+Billing Gross or Nett     :   {! Opportunity.Gross_or_Nett_Billing__c}
+Margin per unit Cpg:  {!Opportunity.Margin_cpg__c}
+Margin estimate $/tonne : {!Opportunity.US_tonne__c}
+___________________________________________
+PFE on Deal : {!Opportunity.PFE_USD__c}
+Contingent Credit Limit: {!Account.Contingent_Credit__c}
+M2M on deals before this one: {!Account.M2M_B2B__c}
+PFE Remaining : {!Account.PFE_REmaining__c}
+
+_________________________________________
+Comments: {!Opportunity.Comments__c} 
+Deal confirmation with STASCO: {!Opportunity.MIM__c} 
+
+
+Click on the link to access the Opportunity directly: {!Opportunity.Link}

@@ -1,0 +1,35 @@
+.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.page-section {
+    border: solid 2px #8fc96e;
+    padding: 0.5rem;
+}
+.page-header
+{
+    padding : 0.5rem 0.5rem;
+    border: solid 2px #8fc96e;
+    background-color: white;
+}
+.header-top-pad
+{
+    padding-top: 0.4rem;
+}
+.height-200
+{
+    height: 200px;
+}
+.height-300
+{
+    height: 300px;
+}
+.height-500
+{
+    height: 500px;
+}
+.height-150
+{
+    height: 150px;
+}

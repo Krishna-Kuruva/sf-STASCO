@@ -1,0 +1,88 @@
+<template>
+   <lightning-input placeholder="Search Box" onchange={searchList}></lightning-input>
+
+   <lightning-card title="Covamo List">
+   
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+         <thead>
+            <tr class="slds-line-height_reset">
+              <th></th>
+               <th>Name</th>
+               <th>Contract Name</th>
+               <th>Customer Name</th>
+               <th>Status</th>
+               <th>Valuation Start Year</th>
+               <th>Valuation End Year</th>
+               <th>Record Owner</th>
+               <th>Created Date</th>
+            </tr>
+         </thead>
+         <template for:each={resultvalset} for:item="temp">
+         <tr key={temp.covHeaderData.Id}>     
+            
+               
+               <td>
+                  <template if:true={temp.showdiscard}>
+                     <lightning-icon id={temp.covHeaderData.Id} style="cursor: pointer;margin-right: 10px;" icon-name="utility:ban" size=" xx-small" alternative-text="Discard" title="Discard" onclick={discardcontract}></lightning-icon>
+                  </template>  
+                  <template if:true={temp.url}>
+                     <a href="#" id={temp.url} data-id={temp.covHeaderData.Id} onclick={openEdit}>Edit</a>                   
+                  </template>
+               </td>
+           <!--
+           <template if:false={temp.url}>
+               <td>
+                   
+               </td>
+           </template>-->
+            <td>
+               <a href="#" id={temp.covHeaderData.Id} onclick={opendata}>{temp.covHeaderData.Name}</a>
+               <!--<div id={temp.Id} onclick={opendata}>{temp.Name}</div>-->
+            </td>
+            <td><div>{temp.covHeaderData.Contract_Name__c}</div></td>
+            <td>
+               <div>{temp.covHeaderData.Customer_Name__c}</div>
+            </td>
+            <td>
+               <div>{temp.covHeaderData.Status__c}</div>
+            </td>
+            <td>
+               
+               <div>
+                  {temp.covHeaderData.RE_Valuation_Start_Year__c}
+               </div>
+            </td>
+            <td>
+               <div>
+                     {temp.covHeaderData.RE_Valuation_End_Year__c}
+              </div>
+            </td>
+            <td>
+               <div>{temp.covHeaderData.CreatedBy.Name}</div>
+            </td>
+           
+            <td>
+               {temp.covHeaderData.Created_Date__c}
+            </td>
+           
+         </tr>
+         </template>
+         
+            
+               
+              
+           
+        
+         
+      </table>
+   </lightning-card>
+   
+   <template if:true={showSpinner}>
+      <div class="spinner">
+      <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+  </div>
+  </template>
+   
+   
+     
+</template>

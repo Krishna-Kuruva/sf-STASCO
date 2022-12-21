@@ -1,0 +1,171 @@
+.blockscolor {
+  background: #f3f2f2;
+  font-size: 10px;
+}
+
+.buttonBar{
+background: #f3f2f2;
+  font-size: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-radius: 5px; 
+}
+.redFont
+{
+  color: red;
+}
+.detailStyle{
+  max-height:14rem;
+  min-height:5rem;
+}
+
+.adjustStyle
+{
+  width: 5rem;
+}
+.warningFont{
+font-size: 15px; 
+padding-left: 40rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.fixTableHeadfalse {
+  overflow-y: auto;
+  /*max-height: 20rem;*/
+  max-height:calc(68vh);
+  min-height: 6rem;
+  font-size: 10px;
+  background: #f3f2f2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  border-radius: 6px;
+}
+.fixTableHeadtrue {
+  overflow-y: auto;
+  /*max-height: 20rem;*/
+  max-height:40vh;
+  min-height: 6rem;
+  font-size: 10px;
+  background: #f3f2f2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  border-radius: 6px;
+}
+.fixTableHeadfalse thead th {
+  position: sticky;
+  top: 0;
+}
+.fixTableHeadtrue thead th {
+  position: sticky;
+  top: 0;
+}
+table {
+  border-collapse: collapse;        
+  width: 100%;
+}
+
+th,
+td {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: white;
+}
+th {
+  background: grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 2;
+ /* padding-left: 3px;*/
+}
+.DR{
+  background-color: #cece0e;
+}
+.RU{
+  background-color: #0070d2;
+}
+.FA{
+  background-color: #c23934;
+}
+.UP{
+  background-color: #4bca81;
+}
+.UN{
+  background-color: #4bca81;
+}
+.avatar{
+  width: 1.2rem;
+  height: 1rem;
+  font-size: .65rem;
+  border-radius: 20%;
+}
+
+.Adjustmenttrue
+{
+background-color: yellow;
+}
+
+.Adjustmentfalse
+{
+background-color: white;
+}
+
+.slds-modal__container { 
+  margin: 0 auto;
+  width: auto; 
+  height: auto;
+  min-width: auto;
+  max-width: 80rem !important;       
+} 
+.modalPopupBody{
+  position: relative;
+  display: inline-block;  
+  padding: 20px;
+}
+
+.headerGasolinepadding {   
+  margin: -1.8rem 0 !important;
+}
+.mainheadings
+{
+  border: ridge .1rem !important;
+}
+.torontoGasolinegrp
+{
+    background-color: rgb(221, 167, 136);    
+    border: ridge .1rem !important;
+}
+.montrealGasolinegrp
+{
+    background-color: rgb(112, 204, 204);    
+    border: ridge .1rem !important;
+}
+.vancouverGasolinegrp
+{
+    background-color: rgb(221, 145, 137);    
+    border: ridge .1rem !important;
+}
+.ottawaGasolinegrp
+{
+    background-color: rgb(211, 166, 187);    
+    border: ridge .1rem !important;
+}
+.sarniaGasolinegrp
+{
+    background-color: rgb(172, 182, 214);
+    border: ridge .1rem !important;
+}
+.edmontonGasolinegrp
+{
+    background-color: rgb(202, 202, 138);
+    border: ridge .1rem !important;
+}
+.notSpecifiedgrp
+{
+    background-color: rgb(151, 187, 130);
+    border: ridge .1rem !important;
+}

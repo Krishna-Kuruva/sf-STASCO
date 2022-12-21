@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TMS Ticket Closed Email</name>
+    <style>none</style>
+    <subject>Ticket {!TMS_Ticket_Information__c.Name} has been Closed</subject>
+    <textOnly>Hi {!TMS_Ticket_Information__c.OwnerFullName},
+
+This mail is to inform you that the below ticket has been resolved and closed.
+
+{!TMS_Ticket_Information__c.Link}Open the link using Google Chrome
+
+Ticket #DetailsResolution DetailsPerson Assigned
+{!TMS_Ticket_Information__c.Name}  {!TMS_Ticket_Information__c.Issue_Detail__c}  {!TMS_Ticket_Information__c.Resolution_Detail__c}  {!TMS_Ticket_Information__c.Case_Assigned_To__c}
+
+
+
+Many thanks,
+TMS Ticketing Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

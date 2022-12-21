@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BET_IDD_Link_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISBLANK(BET_IDD_Link__c)), (HYPERLINK(BET_IDD_Link__c, &quot;View&quot; , &quot;_blank&quot;)), &apos;&apos;)</formula>
+    <label>IDD Link</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

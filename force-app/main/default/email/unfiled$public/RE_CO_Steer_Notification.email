@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table border="1" cellpadding="5" cellspacing="0" height="250" width="650" style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 11.36px; background-color: rgb(248, 248, 248);"><tbody><tr><td class="previewCell" style="margin: auto; background-color: rgb(255, 255, 255); vertical-align: top; border-bottom: 0px none rgb(236, 236, 236); border-top-color: rgb(236, 236, 236); border-right-color: rgb(236, 236, 236); border-left-color: rgb(236, 236, 236);">Hi,<br><br>CO Steer for the product <b>{!RE_Route_Backbone__c.RE_Product_Name__c}</b> is <b>{!RE_Route_Backbone__c.RE_CO_Steer__c}</b>&nbsp;<b>{!RE_Route_Backbone__c.RE_MY_CO_Steer_Unit__c}</b>. It is applicable for the location <b>{!RE_Route_Backbone__c.RE_Destination_Name__c}</b> and source <b>{!RE_Route_Backbone__c.RE_Source_Name__c}</b>.<br><br>Click on this link to check the detail - {!RE_Route_Backbone__c.Link}<br><br>Thanks,<br>Revolution East Team</td></tr></tbody></table>]]></td>
+</tr>
+</table>

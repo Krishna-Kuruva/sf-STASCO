@@ -1,0 +1,143 @@
+<!-- LWC Component Name: reSearchLookup                 -->
+<!-- Author: K. Nandeeswara Raju (n.kondur@shell.com)   -->
+<!-- Created Date : 09-Aug-2022                         -->
+<!-- Modifcation #1 : Nandeeswara Raju (n.kondur@shell.com) - 29-Aug-2022 - Changing the Apex Controller to Re_SearchLookupController from RV_SearchLookupController -->
+<!-- Modifcation #1 : By Whom - Date - Purpose -->
+<template>
+    <div class="slds-form-element">
+        <template if:true={labelName}>
+            <label class="slds-form-element__label" for="combobox-id-1">{labelName}</label>
+        </template>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false"
+                     aria-haspopup="listbox" role="combobox" onmouseleave={handleBlur}>
+                    <template if:false={selectedRecord}>
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                             role="none">
+                             <lightning-icon class="slds-icon slds-input__icon slds-show" icon-name="utility:search" size="x-small" alternative-text="search"></lightning-icon>
+
+                            <span class="slds-icon_container slds-combobox__input-entity-icon">
+                                <template if:false={customIconImage}>
+                                    <lightning-icon class="slds-icon slds-current-color slds-icon_small slds-icon-text-default"
+                                                icon-name={iconName} size="small" title={objName}></lightning-icon>
+                                 </template>
+                                 <template if:true={customIconImage}>
+                                    <!-- <img height="20px" width="20px" src={customIconImage}> -->
+                                    <img class="slds-icon slds-current-color slds-icon_small slds-icon-text-default" src={customIconImage} title={objName}>
+                                 </template>
+                                <span class="slds-assistive-text"></span>
+                            </span>
+                            <input type="text"
+                                   oninput={handleInputChange}
+                                   required={isRequired}
+                                   class="slds-lookup__search-input slds-input leftPaddingClass"
+                                   id="combobox-id-1"
+                                   aria-autocomplete="list"
+                                   aria-controls="listbox-id-1"
+                                   autocomplete="off"
+                                   role="textbox"
+                                   placeholder={placeholder}
+                                   disabled={disabledVal}
+                                   onfocus={handleFocus} />
+                        </div>
+                        <div id="listbox-id-1" class={resultSectionStyle} role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical css_Lookup_Result" role="listbox">
+                                <lightning-spinner if:true={isLoading}
+                                                   alternative-text="Loading"
+                                                   size="small"
+                                                   variant="brand"></lightning-spinner>
+                                <template if:true={showMessage}><span class="slds-text-color_error slds-align_absolute-center slds-text-title_bold"> {showMessage}</span></template>
+                                <template if:true={searchResult} for:each={searchResult} for:item="record" for:index="index">
+                                    <li style="cursor: pointer;" onclick={handleSelect} role="presentation" class="slds-listbox__item" data-recordid={record.Id} key={record.Id}>
+                                        <div data-id={record.Id} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta css_Result_Line_Item" role="option">
+                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                <span class="slds-icon_container">
+                                                    <template if:false={customIconImage}>
+                                                        <lightning-icon class="slds-icon slds-current-color slds-icon_small slds-icon-text-default"
+                                                                    icon-name={iconName} size="small"></lightning-icon>
+                                                     </template>
+                                                     <template if:true={customIconImage}>
+                                                        <img height="20px" width="20px" src={customIconImage}>
+                                                     </template>
+                                                </span>
+                                            </span>
+                                            <template if:true={record.selected}>
+                                                <span class="slds-media__body slds-color__background_gray-4">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                        {record.FIELD1}
+                                                    </span>
+                                                    <template if:true={record.FIELD3}>
+                                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                                            <!-- {objectLabel} • &nbsp; {record.FIELD3} -->
+                                                            {record.FIELD3}
+                                                        </span>
+                                                    </template>
+                                                </span>
+                                            </template>
+                                            <template if:false={record.selected}>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                        {record.FIELD1}
+                                                    </span>
+                                                    <template if:true={record.FIELD3}>
+                                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                                            <!-- {objectLabel} • &nbsp; {record.FIELD3} -->
+                                                            {record.FIELD3}
+                                                        </span>
+                                                    </template>
+                                                </span>
+                                            </template>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                    <template if:true={selectedRecord}>
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right css_Lookup_Selected_Pill"
+                             role="none">
+                            <span class="slds-icon_container slds-combobox__input-entity-icon"
+                                  title={objectLabel}>
+                                  <template if:false={customIconImage}>
+                                    <lightning-icon class="slds-icon slds-current-color slds-icon_small slds-icon-text-default"
+                                                icon-name={iconName} size="small"></lightning-icon>
+                                 </template>
+                                 <template if:true={customIconImage}>
+                                    <img height="20px" width="20px" src={customIconImage}>
+                                 </template>
+                                <span class="slds-assistive-text">{objectLabel}</span>
+                            </span>
+
+                            <label>
+                                <input type="text"
+                                       class="slds-input slds-combobox__input slds-combobox__input-value"
+                                       id="combobox-id-5"
+                                       aria-controls="listbox-id-5"
+                                       disabled={disableSelectedValue}
+                                       autocomplete="off"
+                                       role="textbox"
+                                       readonly=""
+                                       value={selectedRecord.FIELD1}
+                                       title={selectedRecord.FIELD3}/>
+                            </label>
+                            <label>
+                                <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                                        title="Remove selected option"
+                                        onclick={handleClose}
+                                        disabled={disabledVal}>
+                                    <svg class="slds-button__icon"
+                                         aria-hidden="true">
+                                        <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close">
+                                        </use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Remove selected option</span>
+                                </button>
+                            </label>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

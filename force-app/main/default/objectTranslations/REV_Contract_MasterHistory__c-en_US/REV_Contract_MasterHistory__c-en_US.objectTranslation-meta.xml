@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>REV Contract Master History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>REV Contract Master History</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Ensure_value_population_for_fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RE_Check_active_contract</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RE_MY_Pricing_Structure</name>
+    </validationRules>
+</CustomObjectTranslation>

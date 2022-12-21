@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>Revolution_Turkey_Home_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Revolution Turkey</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>RE_Location__c</tabs>
+    <tabs>RE_Product__c</tabs>
+    <tabs>RE_Contract__c</tabs>
+    <tabs>RE_Route_Backbone__c</tabs>
+    <tabs>RT_Price_Book__c</tabs>
+    <tabs>REV_Contract_Master__c</tabs>
+    <tabs>RT_PriceDashboard</tabs>
+    <tabs>RT_ImportWizard</tabs>
+    <tabs>RT_Setting__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>BET RPA Self Authorize</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">3MVG9xqN3LZmHU7ny6tsIF9GFvsnTAj1e8bn1a9VAF6TL_Sv02mMCT7VTlyyQr.kpUYH5DCoMnD4BbT5WWvO7</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">3210B2948B57108BC3A9990274EA261659B54CFBBC3381D6D069AAB7F30C6943</value>
+    </values>
+    <values>
+        <field>Document_Category__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Document_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Endpoint_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Integration_Username__c</field>
+        <value xsi:type="xsd:string">betedp.integration@shell.com.betdev</value>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>URL_Extension__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Meeting/Visit Note</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Meeting/Visit Notes</value>
+    </caseValues>
+    <layouts>
+        <layout>Logged Call</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Meeting Notes</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Related POPSA</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Meeting/Visit Note Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Meeting Notes</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Related POPSA</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Logged_Calls</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Meeting_Note</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

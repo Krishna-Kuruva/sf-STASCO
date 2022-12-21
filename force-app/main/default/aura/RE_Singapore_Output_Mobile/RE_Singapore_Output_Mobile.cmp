@@ -1,0 +1,245 @@
+<aura:component controller="RE_SingaporeOutputController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >	
+    <aura:attribute name="yesterdaydate" type="Date" default=""/>
+    <aura:attribute name="todaydate" type="Date" default =""/>
+    <aura:attribute name="daybeforedate" type="Date" default =""/>
+     
+    <aura:attribute name="ExRateDetailsColumn" type="List" 
+                    default="[	{ label: '', fieldName: 'item'},
+                             { label: 'Daily', fieldName: 'dailyval', type: 'number' ,typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 4}},
+                             { label: 'D-1', fieldName: 'lastdayval', type: 'number' ,typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 4}},
+                             { label: 'Difference', fieldName: 'diff', type: 'number' ,typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 4}}
+                             ]"
+                    />
+    <aura:attribute name="ExRateDetails" type="List" default=""/>
+    <aura:attribute name="MOPSDetailsColumn" type="List" 
+                    default="[	{ label: 'MOPS', fieldName: 'item'},
+                             { label: 'Daily', fieldName: 'dailyval', type: 'number' ,typeAttributes: { maximumFractionDigits: 4,minimumFractionDigits : 2}},
+                             { label: 'D-1', fieldName: 'lastdayval', type: 'number' ,typeAttributes: { maximumFractionDigits: 4,minimumFractionDigits : 2}}                             
+                             ]"
+                    />
+    <aura:attribute name="MOPSDetails" type="List" default=""/>
+    <aura:attribute name="SpotSaleDetails" type="RE_SingaporeOutputController.mcldcWrap[]"/>
+    <aura:attribute name="SpotSaleProdDetails" type="List" default=""/>
+    <aura:attribute name="isRecalculate" type="Boolean" default="false"/>
+    <aura:attribute name="isValidProfile" type="Boolean" default="false"/>
+    <aura:attribute name="lastModifiedDate" type="DateTime" default = ""/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="c-container">
+        <!--Page Header starts here-->
+        <div class="slds-page-header slds-page-header_record-home slds-scrollable" style="padding : 0.5rem 0.5rem;border: solid 2px #FFCC00;background-color: white;">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning:icon iconName="standard:product_item_transaction" alternativeText="IT Dashboard" size="small"/>
+                        </div>
+                        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Commercial Main Products Daily CBU">Commercial Main Products Daily CBU</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <br/>                        
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">  
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">Last Published Date: </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{!v.lastModifiedDate}</b></span>
+                        </div>   
+                    </div>
+                </div></div>
+            <div class="slds-page-header__col-actions slds-align--absolute-center">
+                <div class="slds-grid slds-gutters">  
+                    <div class="slds-page-header__row">
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">CBU Date : </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{!v.todaydate}</b></span>
+                        </div>  
+                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+			<!--Page Header ends here -->
+			<lightning:layout horizontalAlign="space" multipleRows="true">  
+				<!--Spot Sale Section starts here-->
+				<div class="slds-grid slds-size_12-of-12">
+					<div class="slds-col slds-p-around_small slds-size_12-of-12">
+						<div class="page-section slds-align_absolute-center">
+							<h2><b>Costing Output</b></h2>
+						</div>
+						<br></br>
+						<div title="Cost output" class="slds-align_absolute-center"><b>Cost output (SGD CTS/LTR)</b></div>  
+						<div class="slds-col slds-p-around_small slds-size_12-of-12 slds-scrollable">
+							<div class="slds-grid slds-gutters slds-grid_vertical">  
+							  
+								<table class="slds-table slds-table_cell-buffer">
+									<thead>                                    
+										<tr class="slds-line-height_reset">
+											<th class="slds-p-left_large locColor tabls" scope="col" colspan="1">
+												<div class="slds-truncate slds-align_absolute-left">MOPS/Posting for Period</div>
+											</th> <!--
+											<th scope="col" class="locColor" colspan="1">
+												<div class="slds-truncate slds-align_absolute-center"></div>
+											</th> 
+                                            <th scope="col" class="" colspan="1">
+												<div class="slds-truncate slds-align_absolute-center">Daily Average LDC</div>
+											</th> -->
+											<th scope="col" colspan="1">
+												<div class="slds-truncate slds-align_absolute-center">MC0</div>
+											</th>
+											<th scope="col" colspan="1">
+												<div class="slds-truncate slds-align_absolute-center">Discounted MC0</div>
+											</th>
+											<th scope="col" colspan="1">
+												<div class="slds-truncate slds-align_absolute-center">+/- MC</div>
+											</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<aura:if isTrue="{!!empty(v.SpotSaleDetails)}">
+											<aura:iteration var="singcostData" items="{!v.SpotSaleDetails}" >
+												<tr class="addBorder">
+													<td  class="locColor tabls" scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-left">{!singcostData.prodName}</div>
+													</td>
+                                                    <!--
+                                                    <td scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-center">
+															                                                       
+														</div>
+                                                    </td>
+													<td scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-center">
+															<ui:outputNumber format="0.00" value="{!singcostData.laidDownCostSGD}"/>                                                        
+														</div>
+													</td>-->
+													<td scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-center">
+															<ui:outputNumber format="0.00" value="{!singcostData.marginalCostSGD}"/>
+														</div>
+													</td>
+													<td  scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-center">
+															<ui:outputNumber format="0.00" value="{!singcostData.mc0dipDisc}"/>
+														</div>
+													</td>
+													<td  scope="col" colspan="1">
+														<div class="slds-truncate slds-align_absolute-center">
+															<ui:outputNumber format="0.00" value="{!singcostData.mcDiff}"/>
+														</div>
+													</td>                                                
+												</tr>                                        
+											</aura:iteration>
+										</aura:if>
+									</tbody>
+								</table>                            
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Spot Sale Section ends here--> 
+                				<!--MOPS Section starts here-->
+				<div class="slds-grid slds-size_1-of-1">
+					<div class="slds-col slds-p-around_small slds-size_12-of-12">
+						<div class="page-section slds-align_absolute-center">
+							<h2><b>MOPS Data (in USD/BBL)</b></h2>
+						</div>
+						<div class="slds-col slds-p-around_small slds-size_12-of-12">
+							<div class="slds-grid slds-gutters slds-grid_vertical">
+								<div class="slds-col slds-size_12-of-12">
+									<lightning:datatable data="{! v.MOPSDetails }" 
+														 columns="{! v.MOPSDetailsColumn}" 
+														 keyField="Id"
+														 class="slds-scrollable_y truncate"
+														 hideCheckboxColumn="true"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--MOPS Section ends here-->
+				
+				<!-- Mid day Aspiration Table Start-->
+                <div class="slds-grid slds-size_1-of-1">
+					<div class="slds-col slds-p-around_small slds-size_12-of-12">
+						<div class="page-section slds-align_absolute-center">
+							<h2><b>Margin Aspiration for IGO 10ppm</b></h2>
+						</div>
+						<div>
+                       		<c:re_sg_middayAspiration showhaderval="false" isMidDayVal="false"></c:re_sg_middayAspiration>
+                        </div>
+                    </div>
+                </div>
+               		
+                <!-- Mid Day Aspiration Table End -->
+				<!-- Temperature Gain Starts -->
+				<div class="slds-grid slds-size_2-of-2 slds-p-around_small">
+                    <div class="slds-col  slds-size_2-of-2">
+                    <div class="page-section slds-page-header__col-actions">
+                         <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <span class="slds-truncate boldFont">Temperature Gain (USD/BB6)</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <span class="slds-truncate"><b>{!v.MOPSDetails[0].temperature}</b></span>
+                            </div>
+                            </div>
+                            <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <span class="slds-truncate boldFont">Temperature Gain (S cent/l)</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <span class="slds-truncate"><b>{!v.MOPSDetails[0].temperatureCTSL}</b></span>
+                            </div>
+                           </div>
+                    	</div>
+					</div>
+                 </div>
+                 <!-- Temperature Gain Ends -->
+            <!--Exchange Rate Section starts here-->
+            <div class="slds-grid slds-size_1-of-1">
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                    <div class="page-section slds-align_absolute-center">
+                        <h2><b>Exchange Rate : USD : S$</b></h2>
+                    </div>
+                    <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-grid_vertical">
+                            <div class="slds-col slds-size_12-of-12">
+                                <lightning:datatable data="{! v.ExRateDetails }" 
+                                                     columns="{! v.ExRateDetailsColumn}" 
+                                                     keyField="Id"
+                                                     class="slds-scrollable_y"
+                                                     hideCheckboxColumn="true"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <br></br>
+                    <div class="page-section slds-scrollable">
+                            <h2><b>MC0 Dip </b></h2>
+                        </div>
+                        <div class="slds-col slds-p-around_small slds-size_12-of-12 slds-scrollable">
+                            <div class="slds-grid slds-gutters slds-grid_vertical">
+                                <div class="slds-col slds-size_12-of-12">
+                                    <c:rE_MC0_Dip></c:rE_MC0_Dip>
+                                </div>
+                            </div>
+                        </div>-->
+                </div>
+            </div>
+            <!--Exchange Rate Section ends here-->				
+		</lightning:layout>
+    </div>
+</aura:component>

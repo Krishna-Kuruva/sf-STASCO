@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registration_ID_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Registration ID Type</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ACER Code</fullName>
+                <default>false</default>
+                <label>ACER Code</label>
+            </value>
+            <value>
+                <fullName>EIC</fullName>
+                <default>false</default>
+                <label>EIC</label>
+            </value>
+            <value>
+                <fullName>ISIN</fullName>
+                <default>false</default>
+                <label>ISIN</label>
+            </value>
+            <value>
+                <fullName>LEI</fullName>
+                <default>false</default>
+                <label>LEI</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Registration Number</fullName>
+                <default>false</default>
+                <label>Registration Number</label>
+            </value>
+            <value>
+                <fullName>Regulator ID</fullName>
+                <default>false</default>
+                <label>Regulator ID</label>
+            </value>
+            <value>
+                <fullName>Tax ID</fullName>
+                <default>false</default>
+                <label>Tax ID</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

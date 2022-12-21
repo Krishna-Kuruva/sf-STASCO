@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>STUSCO GT 3rdParty 3rdParty BANKER</label>
+    <protected>false</protected>
+    <values>
+        <field>Document_Category__c</field>
+        <value xsi:type="xsd:string">3rd Party Report</value>
+    </values>
+    <values>
+        <field>Document_Type__c</field>
+        <value xsi:type="xsd:string">3rd Party Report</value>
+    </values>
+    <values>
+        <field>Region__c</field>
+        <value xsi:type="xsd:string">STUSCO</value>
+    </values>
+    <values>
+        <field>Section__c</field>
+        <value xsi:type="xsd:string">GT</value>
+    </values>
+    <values>
+        <field>Source_ShortName__c</field>
+        <value xsi:type="xsd:string">Bankers</value>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:type="xsd:string">Bankers Almanac</value>
+    </values>
+</CustomMetadata>

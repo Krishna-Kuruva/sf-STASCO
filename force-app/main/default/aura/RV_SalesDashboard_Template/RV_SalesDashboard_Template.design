@@ -1,0 +1,16 @@
+<design:component label="Revolution's Sales Dashboard Template">
+    <flexipage:template >
+        <!-- The default width for the "left" region is "MEDIUM". In tablets,
+        the width is "SMALL" -->
+            <flexipage:region name="topCol1" label="Region Top Column 1" defaultWidth="MEDIUM"/>
+            <flexipage:region name="topCol2" label="Region Top Column 2" defaultWidth="SMALL"/>
+            <flexipage:region name="topCol3" label="Region Top Column 3" defaultWidth="SMALL"/>
+            <flexipage:region name="topCol4" label="Region Top Column 4" defaultWidth="MEDIUM"/>
+            <flexipage:region name="topCol4Row1" label="Region Top Column 4 Row 1" defaultWidth="MEDIUM"/>
+            <flexipage:region name="topCol4Row12" label="Region Top Column 4 Row 1.2" defaultWidth="MEDIUM"/>
+            <flexipage:region name="topCol4_1Row2" label="Region Top Column 4.1 Row 2" defaultWidth="SMALL"/>
+            <flexipage:region name="topCol4_2Row2" label="Region Top Column 4.2 Row 2" defaultWidth="SMALL"/>
+            <flexipage:region name="topCol4Row3" label="Region Top Column 4 Row 3" defaultWidth="MEDIUM"/>
+            <flexipage:region name="bottomCol1" label="Region Bottom" defaultWidth="LARGE"/>
+       </flexipage:template>
+</design:component>

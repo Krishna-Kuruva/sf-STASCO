@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;P&gt;&lt;IMG src=&quot;http://sww-brand.shell.com/new/images/uploaded/_trading.gif&quot;&gt;&lt;A href=&quot;http://sww.shell.com/trading&quot; target=_top&gt;&lt;/A&gt;&lt;/P&gt;</body>
+    <pageComponentType>imageOrNote</pageComponentType>
+</HomePageComponent>

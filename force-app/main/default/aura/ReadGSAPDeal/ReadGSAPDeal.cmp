@@ -1,0 +1,194 @@
+<aura:component implements="force:appHostable" controller="RV_ReadGSAPContractClass" >
+    <aura:attribute name="SAPContractNo" type="String" default=""/>
+    <aura:attribute name="readBodyWrapper" type="RV_ReadGSAPContractClass.innerClassDisplayRead" default=""/>
+    <div class="c-container">
+        <div class="slds-grid slds-gutters">
+          <div class="slds-col">
+            <span> 
+                    <lightning:input type="text" value="{!v.SAPContractNo}" name="Enter SAP ContractNo" label="Enter SAP ContractNo" /><br/>
+                    <lightning:button variant="brand" label="Read" title="Read" onclick="{! c.readGSAPVal }"/>  
+            </span>
+          </div>
+          <div class="slds-col">
+            <span></span>
+          </div>
+          <div class="slds-col">
+            <span></span>
+          </div>
+          <div class="slds-col">
+            <span></span>
+          </div>
+		</div>
+        <br/>
+        <aura:if isTrue="{!not(empty(v.readBodyWrapper))}">
+        	<table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped ">
+            <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            SapSalesContNo
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            shtHeader
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            contStartDate
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            contEndDate
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            createdDateSAP
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            createdTimeSAP
+                        </th>
+                        
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            changeDateSAP
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            soldTo
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            POType
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            SfItemShtNo
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            MaterialNo
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            Quantity
+                        </th>
+                        
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            QuantityUOM
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            OpenQuantity
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            RejectionReason
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            CondType
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            SalesPrice
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            CurrencyKey
+                        </th>
+                        
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            CondPUnt
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            CondUnit
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            PriceInd
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            PriceVar
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            TasLoadId
+                        </th>
+                        <th scope="col" class="putborderLeft slds-cell-wrap slds-color__background_gray-5 putborderHeader">
+                            Tas3rdPtyDel
+                        </th>
+                	</tr>
+                 </thead>
+                	<tbody>
+                         <aura:iteration indexVar="index" items="{!v.readBodyWrapper}" var="item">
+                             <tr>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.SapSalesContNo}"/>
+                                                </td>
+                            
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.shtHeader}"/>
+                                                </td>
+                            
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.contStartDate}"/>
+                                                </td>
+                            
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.contEndDate}"/> 
+                                                </td>
+                             
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CreationDateSap}"/>
+                                                </td>
+                            
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CreationTimeSap}"/>
+                                                </td>
+                                 
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.changeDateSAP}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.soldTo}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.POType}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.SfItemShtNo}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.MaterialNo}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.Quantity}"/>
+                                                </td>
+                                 
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.QuantityUOM}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.OpenQuantity}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.RejectionReason}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CondType}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.SalesPrice}"/>
+                                                </td>
+                                 <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CurrencyKey}"/>
+                                                </td>
+                                 
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CondPUnt}"/>
+                                                </td>
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.CondUnit}"/>
+                                                </td>
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.PriceInd}"/>
+                                                </td>
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.PriceVar}"/>
+                                                </td>
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.TasLoadId}"/>
+                                                </td>
+                                  <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!item.Tas3rdPtyDel}"/>
+                                                </td>
+                             </tr>
+                        </aura:iteration>
+                	</tbody>
+           
+        </table>
+        </aura:if>
+    </div>
+</aura:component>

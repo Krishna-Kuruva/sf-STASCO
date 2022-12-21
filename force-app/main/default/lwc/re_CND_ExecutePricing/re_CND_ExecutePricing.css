@@ -1,0 +1,124 @@
+.slds-th__action{ justify-content: center !important; }  
+.slds-grid_align-end { justify-content: center !important; }
+.slds-modal__container { 
+   	margin: 0 auto;
+    width: auto; 
+    height: auto;
+    min-width: auto;
+    max-width: 43rem !important;       
+} 
+.lightning-primitive-header-actions {
+    display: none;
+}
+.slds-box{
+    border: 1px solid #FFCC00 !important;
+} 
+.c-container {
+    border: 1px solid #d8dde6;
+    margin: 0px 0 0px 0; 
+    background-color: white;
+        zoom :  0.72; 
+}
+.page-section {
+    border: solid 2px #FFCC00;
+    padding: 0.5rem;
+}
+.borderLeft {
+    border-left: 1px solid rgb(217, 219, 221);
+}
+.addBorder {
+	border: ridge .1rem;
+}
+.slds-card__header{
+    padding: 0%;    
+    margin-bottom: 1px;
+}
+.buttonsection{
+    display: flex;
+    justify-content: flex-end;
+}
+.slds-card__body {    
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+.pricHead {
+    background-color: rgb(244, 246, 248);    
+}
+.headerToppadding {
+    margin: -0.6rem 0 !important;
+    --sds-c-accordion-color-border: #FFCC00 !important;    
+}
+.headerGasolinepadding {   
+    margin: -1.8rem 0 !important;
+}
+.headercolr {
+    background-color:white !important;   
+    height: -1.1rem 0 !important;
+    cursor: pointer;
+}
+.calMVbtnPadding {
+    margin: 0.80rem 0 !important;
+}
+.modalBody {
+    position: relative;
+    display: inline-block;   
+}
+.modalOPISBody{
+    position: relative;
+    display: inline-block;  
+}
+.gasolineColor {
+    background-color: #fce4d6;
+}
+.dieselColor {
+    background-color: #ddebf6;
+}
+.mVColor{
+    background-color: #e1edd9;
+}
+.exePricColor{
+    background-color: #fef2cc;
+}
+.torontoGasolinegrp
+{
+    background-color: rgb(221, 167, 136);    
+    border: ridge .1rem;
+}
+.montrealGasolinegrp
+{
+    background-color: rgb(112, 204, 204);    
+    border: ridge .1rem;
+}
+.vancouverGasolinegrp
+{
+    background-color: rgb(221, 145, 137);    
+    border: ridge .1rem;
+}
+.ottawaGasolinegrp
+{
+    background-color: rgb(211, 166, 187);    
+    border: ridge .1rem;
+}
+.sarniaGasolinegrp
+{
+    background-color: rgb(172, 182, 214);
+    border: ridge .1rem;
+}
+.edmontonGasolinegrp
+{
+    background-color: rgb(202, 202, 138);
+    border: ridge .1rem;
+}
+.notSpecifiedgrp
+{
+    background-color: rgb(151, 187, 130);
+    border: ridge .1rem;
+}
+.MVpopupPadding {   
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+.MVpopupLightngPadding {   
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.4rem !important;
+}

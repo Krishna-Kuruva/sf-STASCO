@@ -1,0 +1,39 @@
+<template>
+    <lightning-card> 
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="page-section page-header slds-box slds-align_absolute-center"> 
+                    <h2><b>Pricing Details</b></h2>
+                </div>
+                <br/>
+                <div class="slds-p-around_x-small slds-box">
+                    <div class="page-section page-header slds-p-left_small"> 
+                        <h2><b>Select Product : </b></h2>
+                    </div>
+                    <div class="slds-size_3-of-12 slds-p-left_small">
+                        <select class="slds-select" id="select-01" name = "optionSelect" onchange={changeHandler}  >
+                            <option value="All">All</option>
+                            <template for:each = {prodList} for:item="listViewItem">
+                                <option key={listViewItem.Name} value={listViewItem.Name}>{listViewItem.Name}</option>
+                            </template>
+                        </select>
+                    </div>
+                    <br/>
+                    <br/>
+                    <lightning-accordion allow-multiple-sections-open
+                                        onsectiontoggle={handleSectionToggle}
+                                        active-section-name={activeSections}>
+                        <template for:each={selectedprodList} for:item='item'>
+                            <lightning-accordion-section key={item.Name} name={item.Name} label={item.Name} id={item.Name}>   
+                                <div class="innerdiv" data-proditem={item.Name} style="display: none;">                        
+                                    <c-re_my_moaoutputdetail class ="childcls" 
+                                    id={item.Name} prod-name = {item.Name}></c-re_my_moaoutputdetail> 
+                                </div>                       
+                            </lightning-accordion-section>  
+                        </template>      
+                    </lightning-accordion>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

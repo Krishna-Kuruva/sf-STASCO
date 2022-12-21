@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDD_Text_Field_Number_Validation</fullName>
+    <active>true</active>
+    <description>Allow only numbers in text fields for Credit info Section</description>
+    <errorConditionFormula>OR(AND(MDN_BA_Bank_ABA_RNum__c != Null,NOT(ISNUMBER(MDN_BA_Bank_ABA_RNum__c))) , AND(MDN_BA_BankCode__c != Null,NOT(ISNUMBER(MDN_BA_BankCode__c))))</errorConditionFormula>
+    <errorMessage>&apos;Bank ABA or Routing Number&apos; , &apos;Bank Code&apos; Must be filled only with Numbers.</errorMessage>
+</ValidationRule>

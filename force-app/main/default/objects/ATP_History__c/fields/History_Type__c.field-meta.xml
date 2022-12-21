@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>History_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>History Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ATP</fullName>
+                <default>false</default>
+                <label>ATP</label>
+            </value>
+            <value>
+                <fullName>AMV</fullName>
+                <default>false</default>
+                <label>AMV</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

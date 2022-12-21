@@ -1,0 +1,73 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.THIS .page-section {
+    border: solid 2px #FFCC00;
+    padding: 0.5rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.THIS .CustomerSectionHeightEnlarge{
+  height:500px;
+}
+.THIS .CustomerSectionHeightReduce{
+  height:100px;
+}
+.THIS .OLFstatusGreen
+{
+    color:white;
+    font-weight:bold;
+    background-color:green;
+    border-style: none; /*UserActivateButton_Soumyajit_01Aug2019*/
+}
+.THIS .OLFstatusRed
+{
+    color:white;
+    font-weight:bold;
+    background-color:red;
+    border-style: none; /*UserActivateButton_Soumyajit_01Aug2019*/
+}
+/*UserActivateButton_Soumyajit_01Aug2019 starts*/
+.THIS .noPadding
+{
+    padding-right:0rem;
+    padding-left:0rem;
+}
+.THIS .buttonSmallText
+{
+    color:grey;
+    font-size:0.6rem;
+}
+/*UserActivateButton_Soumyajit_01Aug2019 ends*/
+/* Start | Surbhi Srivastava | Date  22-Jul-22 | PBI-(1343336)*/
+.THIS .OLFDatesWidth{
+    width : 125px;
+}
+/* End | Surbhi Srivastava | Date  22-Jul-22 | PBI-(1343336)*/
+/* Start | Surbhi Srivastava | Date  22-Jul-22 | PBI-(1387696)*/
+.THIS .slds-form-element__control { 
+     display:inline-block; 
+}
+/* End | Surbhi Srivastava | Date  22-Jul-22 | PBI-(1387696) */
+/* Start | Surbhi | Date 2-Aug-2022 | PBI-1366142 */ 
+.THIS .cust_OLFInactiveBtn{
+    margin-top: 22px;
+}
+.THIS .cust_OLFInactiveSaveCnclBtn{
+    margin-top: 8px;
+    margin-right: 14px;
+}
+.THIS .cust_OLFActiveSaveCnclBtn{
+    margin-top: 19px !important;   
+}
+.THIS .cust_tooltipPos{
+    margin-bottom: 33px;
+}
+.THIS .cust_InactiveTimeFld{
+    width:295.3px;
+} 
+/* End | Surbhi | Date 2-Aug-2022 | PBI-1366142 */

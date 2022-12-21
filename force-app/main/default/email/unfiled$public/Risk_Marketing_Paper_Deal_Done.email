@@ -1,0 +1,25 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;<font size="2">*** DEAL DONE NOTIFICATION *** </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Deal executed on {!Opportunity.CloseDate} by&nbsp;</font></font><font face="arial" size="2">{!Opportunity.Risk_Marketer__c}</font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Account Name : {!Opportunity.Account} <br>Book : {!Opportunity.Book__c} <br>Opportunity Name : {!Opportunity.Name} <br>Dex ref (with 3rd party) : {!Opportunity.DEX_ref__c} <br>BTB Dex ref (internal) : {!Opportunity.BTB_trader__c} </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Internal DEX ref (trading as principle) :&nbsp;{!Opportunity.DEX_ref_trading_as_principle_deals__c}</font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Volume (Tonnes) : {!Opportunity.Volume__c} <br>Margin/mt : {!Opportunity.Margin__c} <br>Amount : {!Opportunity.Amount} <br>Max Mar : {!Opportunity.Max_MAR__c} </font></p><p style="font-size: 12pt;"><font size="2" style="background-color: rgb(255, 255, 255);">ECL</font><font style="font-size: 12pt; background-color: rgb(255, 255, 255);">&nbsp;:</font><span style="font-size: small;">&nbsp;</span><font face="arial" size="2">{!Opportunity.ECL__c}</font></p><p style="font-size: 12pt;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; background-color: rgb(255, 255, 255);">ECL Multiple : {!Opportunity.ECL_Multiple__c}</span></p><p style="font-size: 12pt;"><span style="font-size: 12pt;">&nbsp;</span></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Tenor - from month : {!Opportunity.Tenor_from_month__c} <br>Tenor - to month : {!Opportunity.Tenor_to_month__c} <br>From year : {!Opportunity.From_year__c} <br>To year : {!Opportunity.To_year__c} <br>__________________________________________________ <br>MIM Confirmation : </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">{!Opportunity.Description} </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">{!Opportunity.Visuals__c} <br>__________________________________________________&nbsp;<br>Trade Recap&nbsp;: </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">{!Opportunity.Confirmation__c} </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">__________________________________________________ <br>RMAV : </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></p><p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial" size="2">Service Fee per unit : {!Opportunity.Service_Fee_per_Unit__c}</font></p><p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial" size="2">Service Fee (RMK) : {!Opportunity.Service_Fee_RMK__c}</font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">RMAV value per MT : {!Opportunity.OCAT_per_MT__c} <br>RMAV total value : {!Opportunity.OCAT_total__c} <br>RMAV confirm : {!Opportunity.OCAT_confirm__c} <br>__________________________________________________ </font></p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2"></font>&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="2">Click on the link to access the Opportunity directly: {!Opportunity.Link}</font></p>]]></td>
+</tr>
+</table>

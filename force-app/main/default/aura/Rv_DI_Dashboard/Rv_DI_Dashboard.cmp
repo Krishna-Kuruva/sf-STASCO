@@ -1,0 +1,551 @@
+<aura:component controller="Rv_DIDashboardController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name ="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="AllPlant" type="Revolution_Dashboard__c"/>
+    <aura:attribute name="ProdDiffLeftLst" type="Product_Differential__c[]"/>
+    <aura:attribute name="ProdDiffRightLst" type="Product_Differential__c[]"/>
+    <aura:attribute name="ProdDiffLeftLiveLst1" type="Product_Differential__c[]"/>
+    <aura:attribute name="ProdDiffLeftLiveLst2" type="Product_Differential__c[]"/>
+    <aura:attribute name="ProdDiffRightLiveLst1" type="Product_Differential__c[]"/>
+    <aura:attribute name="ProdDiffRightLiveLst2" type="Product_Differential__c[]"/>
+    <aura:attribute name="agoIgoLiveVs8Am" type="decimal"/>
+    <aura:attribute name="mogasLiveVs8am" type="decimal"/>
+    <aura:attribute name="spotDealsOnly" type="Boolean" default="false"/>
+    <aura:attribute name="validDateSelected" type="Boolean" default="true"/>
+    <aura:attribute name="mandatoryOptionSel" type="Boolean" default="true"/>
+    <aura:attribute name="showLocType" type="String" default="myLoc"/>
+    <aura:attribute name="selChannel" type="String"  default="DE01"/>
+    <aura:attribute name="taxType" type="String" default="taxed"/>
+    <aura:attribute name="contractStartDate" type="Date" />
+    <aura:attribute name="contractEndDate" type="Date" />
+    <aura:attribute name="ContractLastPossibleDate" type="Date" />
+     <aura:attribute name="todaysDate" type="Date" />
+    <aura:attribute name="LastRefreshedTime" type="Date" />
+    <aura:attribute name="pageURL" type="String" default=""/> <!--Fix_469777_07Apr2020_Soumyajit-->
+    <aura:attribute name="E5_Surcharge" type="String" />
+    <aura:attribute name="S98_Surcharge" type="String" />
+    <c:Rv_DashboardStreaming channel="/event/RV_PriceChange__e" onUpdate="{!c.handleMessage}"/>
+	<c:Rv_DashbaordFutureDiffStreaming channelDiff="/event/Rv_FutureDiffChange__e" onChange="{!c.updateFutDiffTable}"/>
+    
+    <aura:attribute name="optionsChannel" type="List" default="[
+                                                               {'label': 'AT', 'value': 'AT01'},
+                                                               {'label': 'DE', 'value': 'DE01'}
+                                                               ]"/>
+      <aura:attribute name="optionsMOT" type="List" default="[
+                                                               {'label': 'Truck', 'value': 'Truck'},
+                                                               {'label': 'Rail', 'value': 'Rail'},
+                                                               {'label': 'Barge', 'value': 'Barge'},
+                                                               {'label': 'ITT', 'value': 'ITT'}
+                                                               ]"/>
+    <!--
+	<aura:attribute name="selChannel" type="List"  default="DE01"/>
+    -->
+    <aura:attribute name="selMOT" type="List"  default="Truck"/>
+    <div class="c-container">
+        <lightning:layout horizontalAlign="spread" >
+            <lightning:layoutItem padding="around-small" class="slds-list_horizontal" size="12">
+                <lightning:layoutItem size="4" padding="horizontal-small">
+                   <p class="slds-form-element__label">SELECT FILTERS</p>
+                    <div class="slds-box">
+                        <div class="slds-list_horizontal">
+                            <!-- added by Dharmendra for select channel radio button : PBI328 -Start -->
+                           <!--  <lightning:layoutItem size="6">
+                                <B><lightning:checkboxGroup name="Select Channel"
+                                                            aura:id="channelgroup"                   
+                                                            label="Select Channel"
+                                                            options="{!v.optionsChannel }"                     
+                                                            value="{!v.selChannel }"
+                                                            onchange="{!c.ChanelChange }" 
+                                                            /></B>
+                            </lightning:layoutItem> commented this to change channel selection from checkbox to radio button	-->
+							 <lightning:layoutItem size="6">
+                                <div class="slds-size_4-of-4 slds-float_left">
+                                    <p class="slds-form-element__label">Select Channel</p> 
+                                </div>
+                                <div class="slds-size_4-of-4">  
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="AT01" name="channel" text="AT01" label="" change="{!c.ChanelChange}" />
+                                            <span class="slds-form-element__label">AT</span>
+                                        </label>
+                                    </div>
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="DE01" name="channel" label="" text="DE01" change="{!c.ChanelChange}" value="true" />
+                                            <span class="slds-form-element__label">DE</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                            <!-- added by Dharmendra for select channel radio button -End -->
+                            <lightning:layoutItem size="6">
+                                <div class="slds-size_4-of-4 slds-float_left">
+                                    <p class="slds-form-element__label">Select View</p> 
+                                </div>
+                                <div class="slds-size_4-of-4">  
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="myLoc" name="loc" text="myLoc" label="" change="{!c.onLocTypeChange}" value="true" />
+                                            <span class="slds-form-element__label">Show My Locations</span>
+                                        </label>
+                                    </div>
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="allLoc" name="loc" label="" text="allLoc" change="{!c.onLocTypeChange}" />
+                                            <span class="slds-form-element__label">Show All Locations</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                        </div>
+                          <div class="slds-list_horizontal">
+                            <lightning:layoutItem size="6">
+                                <B><lightning:checkboxGroup name="Select MOT"
+                                                            aura:id="channelgroup"                   
+                                                            label="Select MOT"
+                                                            options="{!v.optionsMOT}"                     
+                                                            value="{!v.selMOT }"
+                                                            onchange="{!c.MOTChange}" 
+                                                            /></B>
+                            </lightning:layoutItem>
+                              
+                            <lightning:layoutItem size="6">
+                                <div class="slds-size_4-of-4 slds-float_left">
+                                    <p class="slds-form-element__label">Select Energy Tax</p> 
+                                </div>
+                                <div class="slds-size_4-of-4">  
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="tax" name="tax" text="taxed" label="" change="{!c.onTaxSelChange}" value="true" />
+                                            <span class="slds-form-element__label">Taxed</span>
+                                        </label>
+                                    </div>
+                                    <div class="uiInput uiInputRadio uiInput--default uiInput--radio">
+                                        <label class="uiLabel-left form-element__label uiLabel">
+                                            <ui:inputRadio aura:id="untax" name="tax" label="" text="untaxed" change="{!c.onTaxSelChange}" />
+                                            <span class="slds-form-element__label">Untaxed</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                        </div>
+                        <aura:If isTrue="{! !v.spotDealsOnly}">
+                          <div class="slds-p-top_medium slds-list_horizontal">
+                              <lightning:layoutItem size="6">
+                                  <lightning:input type="date" name="input1" label="Contract Start Date" value="{!v.contractStartDate}" onchange="{!c.calculateDays}" disabled="{!v.spotDealsOnly}"/>
+                              </lightning:layoutItem>
+                              <lightning:layoutItem size="6">
+                                    <lightning:input type="date" name="input2" label="Contract End Date" value="{!v.contractEndDate}" onchange="{!c.calculateMaxDate}" disabled="{!v.spotDealsOnly}"/>
+                              </lightning:layoutItem>
+                        </div>
+                        </aura:If>
+                        <!--FIX_PBI_166259_Lakshmi_Starts
+                          <div class="slds-list_horizontal">
+                               <div class="slds-size_2-of-4 slds-p-top_medium spotDeal">
+                               	  <ui:inputCheckbox class="myCheckbox" aura:id="checkbox" value="{!v.spotDealsOnly}" label="Prompt Info Only" labelclass="checkBoxLabel" change="{!c.handleClick}"/>
+                              </div>
+                             <div class="slds-size_2-of-4 slds-p-top_medium  slds-clearfix slds-float_right">
+                                 <lightning:button variant="brand" label="Display Deals" title="Brand action" onclick="{! c.handleClick }" />
+                             </div> 
+                        </div>
+                         FIX_PBI_166259_Lakshmi_Ends-->   
+                    </div>
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem size="8">
+                   <p class="slds-form-element__label">LIVE </p>
+                    <div class="slds-box">
+                        <lightning:layoutItem size="12" class="slds-list_horizontal">
+                            <lightning:layoutItem size="6" padding="horizontal-small">
+                                <div class="slds-box agoIgoBgClr">
+                                    <div class="slds-list_horizontal">
+                                        <lightning:layoutItem size="6" padding="horizontal-small">
+                                            <div >
+                                            <table class="agoIgoBgClr ">
+                                                <tbody class="hovercolor">
+                                                    <aura:iteration items="{!v.ProdDiffLeftLiveLst1}" var="prdLst">
+                                                        <tr>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode"
+                                                                               value="{!prdLst.Display_Name__c}" />
+                                                            </td>
+                                                            <td scope="row" > 
+                                                                <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" 
+                                                                                 value="{!prdLst.Price__c}"  format="0.0000" />
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </aura:iteration>
+                                                    
+                                                </tbody>
+                                            </table> 
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem size="6" padding="horizontal-small">
+                                            <table class="agoIgoBgClr">
+                                                <tbody class="hovercolor">
+                                                    <aura:iteration items="{!v.ProdDiffLeftLiveLst2}" var="prdLst">
+                                                        <tr>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Display_Name__c}"/>
+                                                            </td>
+                                                            <td scope="row" >
+                                                                <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Price__c}"  format="0.0000"/>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </aura:iteration>
+                                                    
+                                                </tbody>
+                                            </table> 
+                                        </lightning:layoutItem>
+                                    </div>
+                                    <div class="slds-p-top_medium slds-list_horizontal">
+                                        <div class="slds-size_1-of-2 slds-text-align_left">
+                                          <b> AGO / IGO Live vs 8:00 €/100l </b> 
+                                        </div>  
+                                        
+                                         <div class="slds-size_1-of-2 slds-text-align_left">
+                                             <b><ui:outputNumber value="{!v.agoIgoLiveVs8Am}" format="0.0000"/> </b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" padding="horizontal-small">
+                                <div class="slds-box mogasLiveBgClr">
+                                    <div class="slds-list_horizontal">
+                                        <lightning:layoutItem size="6" padding="horizontal-small">
+                                            <table class="mogasLiveBgClr">
+                                                <tbody class="hovercolor" >
+                                                    <aura:iteration items="{!v.ProdDiffRightLiveLst1}" var="prdLst">
+                                                        <tr>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Display_Name__c}"/>
+                                                            </td>
+                                                            <td scope="row" >
+                                                                <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Price__c}" format=".0000"/>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </aura:iteration> 
+                                                </tbody>
+                                            </table> 
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem size="6" padding="horizontal-small">
+                                            <table class="mogasLiveBgClr">
+                                                <tbody class="hovercolor">
+                                                    <aura:iteration items="{!v.ProdDiffRightLiveLst2}" var="prdLst">
+                                                        <tr>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Display_Name__c}"/>
+                                                            </td>
+                                                            <td scope="row" >
+                                                                <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!prdLst.Price__c}" format="0.0000"/>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </aura:iteration> 
+                                                    <!-- added by Dharmendra to display surcharges on Dashboard : PBI328 Start-->
+                                                    <tr>
+                                                            <td scope="row" >
+                                                              <label class="slds-truncate slds-cell-wrap">E5 Surcharge </label>  
+                                                            </td>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  value="{!v.E5_Surcharge}" />
+                                                            </td>
+                                                            
+                                                        </tr>
+														<tr>
+                                                            <td scope="row" >
+                                                              <label class="slds-truncate slds-cell-wrap">S98 Surcharge </label>  
+                                                            </td>
+                                                            <td scope="row" >
+                                                                <ui:outputText class="slds-truncate slds-cell-wrap"  value="{!v.S98_Surcharge}" />
+                                                            </td>
+                                                            
+                                                        </tr>
+													<!-- added by Dharmendra : End-->
+                                                </tbody>
+                                            </table> 
+                                        </lightning:layoutItem>
+                                    </div>
+                                    <div class="slds-p-top_medium slds-list_horizontal">
+                                        <div class="slds-size_1-of-2 slds-text-align_left">
+                                            <b>Mogas Live vs 8:00 €/100l  </b> 
+                                        </div>  
+                                        
+                                        <div class="slds-size_1-of-2 slds-text-align_left">
+                                            <b><ui:outputNumber value="{!v.mogasLiveVs8am}" format="0.0000"/></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layoutItem>
+                         <lightning:layoutItem size="12" padding="around-small">
+                        
+                             <div class="slds-box prdDiffTable">
+                                 <div class="slds-list_horizontal putBorderClr">
+                                     <lightning:layoutItem size="6"> 
+                                         <table class="slds-table_bordered slds-table_col-bordered prdDiffTable ">
+                                             <thead>
+                                                 <th scope="col"><b>Product Differential</b> 
+                                                 </th>
+                                                 <th scope="col">Cargoes 
+                                                 </th>
+                                                 <th scope="col">Δ prev. Day 
+                                                 </th>
+                                                 <th scope="col">Barges
+                                                 </th>
+                                                 <th scope="col">Δ prev. Day
+                                                 </th>
+                                             </thead>
+                                             <tbody class="hovercolor">
+                                                  <aura:iteration items="{!v.ProdDiffLeftLst}" var="prdLst">
+                                                 <tr>
+                                                     <td>   
+                                                     <ui:outputText class="slds-truncate slds-cell-wrap"  value="{!prdLst.Name}" />   
+                                                     </td>
+                                                    <!--Code from line 309 to 319 changed by SOM for INC3466305, to display barges, cargoes values in 2 decimal place-->
+                                                     <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.Cargoes__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.prev_Day_Cargo__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.Barges__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.prev_Day_Barge__c}" format="0.00" />   
+                                                     </td>
+                                                     <!--Code change by SOM ends here-->
+                                                     
+                                                 </tr>
+                                                 </aura:iteration>
+                                             </tbody>
+                                         </table>
+                                     </lightning:layoutItem>
+                                      <lightning:layoutItem size="6"> 
+                                         <table class="slds-table_bordered slds-table_col-bordered prdDiffTable">
+                                             <thead>
+                                                 <th scope="col"><b>Product Differential</b> 
+                                                 </th>
+                                                 <th scope="col">Cargoes 
+                                                 </th>
+                                                 <th scope="col">Δ prev. Day 
+                                                 </th>
+                                                 <th scope="col">Barges
+                                                 </th>
+                                                 <th scope="col">Δ prev. Day
+                                                 </th>
+                                             </thead>
+                                             <tbody class="hovercolor">
+                                                 <aura:iteration items="{!v.ProdDiffRightLst}" var="prdLst">
+                                                 <tr>
+                                                     <td>   
+                                                     <ui:outputText class="slds-truncate slds-cell-wrap"  value="{!prdLst.Name}" />   
+                                                     </td>
+                                                    <!--Code from line 348 to 359 changed by SOM for INC3466305, to display barges, cargoes values in 2 decimal place-->
+                                                     <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.Cargoes__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.prev_Day_Cargo__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.Barges__c}" format="0.00" />   
+                                                     </td>
+                                                      <td>   
+                                                     <ui:outputNumber class="slds-truncate slds-cell-wrap"  value="{!prdLst.prev_Day_Barge__c}" format="0.00" />   
+                                                     </td>
+                                                     <!--Code change by SOM ends here-->
+
+                                                     
+                                                 </tr>
+                                                 </aura:iteration>
+                                             </tbody>
+                                         </table>
+                                     </lightning:layoutItem>
+                                 </div>
+                                 
+                             </div>
+                        </lightning:layoutItem>
+                        
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layoutItem>
+        </lightning:layout>
+          <lightning:layout horizontalAlign="spread" >
+             <lightning:layoutItem padding="around-small" size="12">
+                 <!-- Spot Deal Price -->
+                 <aura:If isTrue="{!v.mandatoryOptionSel}">
+                 	<aura:If isTrue="{!v.spotDealsOnly}">
+                      <div class="slds-box slds-box_x-small refreshBox">
+                     <p class="highlightDateTime"> ATP and Price Last Updated On: <ui:outputDateTime value="{!v.LastRefreshedTime}"/></p>
+                     </div>
+                        <!--Fix_170834_Soumyajit_17Apr2019 starts-->
+                        `<!--<div class="slds-grid slds-wrap slds-size_4-of-4 slds-scrollable borderTable">
+                      		<table class="slds-table slds-table_bordered slds-table_striped fontSize">
+                      	  <thead>
+                              <tr class="slds-text-title_caps">
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">PLANT</th>
+                                  <th scope="col" class="slds-truncate slds-cell-fixed putborder">Sales Channel</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom igoColor"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom igoColor">IGO</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom igoColor"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom igoColor"></th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborderLeft agoColor"></th>
+                                   <th scope="col"  class="slds-truncate slds-cell-fixed putborderTopBottom agoColor">AGO</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom agoColor"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom agoColor"></th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborderLeft mogasColor"></th>
+                                   <th scope="col"  class="slds-truncate slds-cell-fixed putborderTopBottom mogasColor">MOGAS</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom mogasColor"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom mogasColor"></th>
+                                  
+                                   
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborder agoColor">GTL</th>
+                              </tr>
+                              <tr class="slds-text-title_caps">
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder">BSP</th>
+                                 
+                                 
+                              </tr>
+                          </thead>-->
+                   <!--Updated Header to freeze with scroll-->
+            		<div class="slds-table--header-fixed_container" style="height:450px;">
+                     <div class="slds-grid slds-wrap slds-size_4-of-4 slds-scrollable_y borderTable" style="height:100%;">
+                         
+                         <!--Fix_170889_Lakshmi_02May2019 Starts add "bgColor bgColorodd class,removed slds-table and slds-table_striped"-->
+                      	<table class="slds-table_bordered bgColoreven bgColorodd sldstable fontSize slds-table--header-fixed" style="font-size:10px;">
+                            <!--Fix_170889_Lakshmi_02May2019 Ends-->
+                      	  <thead>
+                              <tr class="slds-text-title_caps">
+                                  <th scope="col"><div class="slds-truncate headerTopRowPlant" title="PLANT">&nbsp;PLANT</div></th>
+                                  <th scope="col" style="width:150px;"><div class="slds-truncate headerTopRowSales" title="Sales Channel">&nbsp;Sales Channel</div></th>
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowIgo" title="IGO">IGO</div></th>
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowAgo" title="AGO">AGO</div></th>
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowMogas" title="MOGAS">MOGAS</div></th>
+                                  <th scope="col" style="width:50px;"><div class="slds-truncate headerTopRowGTL" title="GTL">&nbsp;GTL</div></th>
+                              </tr> 
+                              <tr class="slds-text-title_caps">
+                                  <th scope="col"><div class="slds-truncate headerButtomRowBlank">&nbsp;</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRowBlank">&nbsp;</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>
+                                  <th scope="col" style="width:100px;"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>
+                                  <th scope="col" style="width:100px;"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>                                  
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>                                          
+                              </tr>
+                          </thead>
+                            <br/><br/>
+                          <!--Fix_170834_Soumyajit_17Apr2019 ends-->
+                            
+                            <!--Fix_170889_Lakshmi_02May2019 Starts-->
+                          <tbody class="hovercolor">
+                              
+                              <aura:iteration items="{!v.AllPlant}" var="indPlant">
+                              	<tr>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.Plant_Name__r.Name}" />
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputText class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.Sales_Channel__c}" />
+                                    </td>
+                                    
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.ATP1_Live_IGO__c}"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                        <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.BSP_IGO__c : indPlant.BSP_w_o_Tax_IGO__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.PSP_IGO__c : indPlant.PSP_w_o_Tax_IGO__c}" format=".00"/>
+                                    </td>
+                                    <!--Fix_260839_Lakshmi_17May2019 Starts-->
+                                    
+                                    <td scope="row" class="putborderHeader putborderLeft bold">
+                                        <!--<ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.OTM_IGO__c}" format=".00"/> -->
+                                        <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.OTM_IGO__c : indPlant.OTM_w_o_Tax_IGO__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.ATP1_Live_AGO__c}" />
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.BSP_AGO__c : indPlant.BSP_w_o_Tax_AGO__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.PSP_AGO__c : indPlant.PSP_w_o_Tax_AGO__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader  putborderLeft bold">
+                                                   <!-- <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.OTM_AGO__c}" format=".00"/> -->
+                                        	<ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.OTM_AGO__c : indPlant.OTM_w_o_Tax_AGO__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.ATP1_Live_MOGAS__c}" />
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.BSP_MOGAS__c : indPlant.BSP_w_o_Tax_MOGAS__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader putborderLeft ">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.PSP_MOGAS__c : indPlant.PSP_w_o_Tax_MOGAS__c}" format=".00"/>
+                                    </td>
+                                    <td scope="row" class="putborderHeader  putborderLeft bold">
+                                                    <!--<ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{!indPlant.OTM_MOGAS__c}" format=".00"/>-->
+                                        			<ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.OTM_MOGAS__c : indPlant.OTM_w_o_Tax_MOGAS__c}" format=".00"/>
+                                    </td>
+                                    <!--Fix_260839_Lakshmi_17May2019 Ends-->
+                                	<td scope="row" class="putborderLeft putborderRight">
+                                                    <ui:outputNumber class="slds-truncate slds-cell-wrap"  aura:id="mrcCode" value="{! v.taxType=='taxed' ? indPlant.BSP_GTL__c : indPlant.BSP_w_o_Tax_GTL__c}" format=".00"/>
+                                    </td>                                    
+                                </tr>
+                                  <!--Fix_170889_Lakshmi_02May2019 Ends-->
+                              </aura:iteration>
+                          </tbody>
+                      </table> 
+                 </div>
+                 <!--Fix_170834_Soumyajit_17Apr2019 starts-->
+                 </div>
+                 <!--Fix_170834_Soumyajit_17Apr2019 ends-->
+                        <aura:set attribute="else">
+                            <aura:If isTrue="{!v.validDateSelected}">
+                                <!--Fix_469777_07Apr2020_Soumyajit starts-->
+                                <!--<c:Rv_DI_Dashboard_Future showLocType="{!v.showLocType}" taxType="{!v.taxType}" selChannel="{!v.selChannel}" selMOT="{!v.selMOT}" contractStartDate="{!v.contractStartDate}" contractEndDate="{!v.contractEndDate}"/>-->
+                                <c:Rv_DI_Dashboard_Future showLocType="{!v.showLocType}" taxType="{!v.taxType}" selChannel="{!v.selChannel}" selMOT="{!v.selMOT}" contractStartDate="{!v.contractStartDate}" contractEndDate="{!v.contractEndDate}" vfHost="{!v.pageURL}"/>
+                                <!--Fix_469777_07Apr2020_Soumyajit ends-->
+                            </aura:If>
+                        </aura:set>
+                 </aura:If>
+                 </aura:If>
+            </lightning:layoutItem>
+              
+        </lightning:layout>
+    </div>
+</aura:component>

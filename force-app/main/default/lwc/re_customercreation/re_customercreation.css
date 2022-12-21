@@ -1,0 +1,17 @@
+.slds-box{
+    border : 2px solid #FFCC00 !important;
+    padding : 5px !important;  
+}
+.zoomout{
+    zoom : 0.75;
+    padding : 0px !important;
+    background : white;
+}
+.zoomin{
+    zoom : 1.25;
+}
+.tableBackground{
+    padding : 0px !important;
+    background : white;
+    font-size: 80%;
+}

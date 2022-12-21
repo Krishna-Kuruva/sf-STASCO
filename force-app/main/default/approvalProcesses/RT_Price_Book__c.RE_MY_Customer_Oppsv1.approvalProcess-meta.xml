@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>allInternalUsers</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>RE_Approver_Comments__c</field>
+        <field>RE_Final_Price_Rebate__c</field>
+        <field>RE_Margin_on_LDC__c</field>
+        <field>RE_Margin_on_MC__c</field>
+        <field>RE_Custom_Opp_Approve__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_Update_Approve</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>RE_update_Latest_price_dt</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Pricing Manager Approve required only</description>
+        <entryCriteria>
+            <formula>AND ( NOT ( ISBLANK( RE_ApprovalProcess__r.RE_User_Name__c )),
+( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )) , ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Submitted PM&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>PM Approve Only</label>
+        <name>PM_Approve_Only</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_Support_PM</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Pricing Manager and BM approve required</description>
+        <entryCriteria>
+            <formula>AND (NOT ( ISBLANK( RE_ApprovalProcess__r.RE_User_Name__c )),NOT ( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )), ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Submitted PM&apos;))</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Two level Approve PM</label>
+        <name>Two_level_Approve_PM</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>RE_BM_Approve</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>RE_Latest_price_dt_update</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>RE_customer_Opps</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Business manager Approve</description>
+        <entryCriteria>
+            <formula>AND ( NOT ( ISBLANK( RE_ApprovalProcess__r.RE_Delegate_Approver__c )) , ISPICKVAL( RE_Custom_Opp_Approve__c , &apos;Support PM&apos;))</formula>
+        </entryCriteria>
+        <label>level 2 BM</label>
+        <name>level_2_BM</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>RT_Price_Book__c.RecordType</field>
+            <operation>equals</operation>
+            <value>MY Price Book</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RT_Price_Book__c.RE_Custom_Opp_Approve__c</field>
+            <operation>equals</operation>
+            <value>Submitted PM</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>RE_Update_Reject</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>RE_MY_Customer Oppsv1</label>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

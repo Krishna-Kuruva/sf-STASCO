@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>ritesh.r.kumar4@shell.com</contactEmail>
+    <label>OLF</label>
+    <oauthConfig>
+        <callbackUrl>https://stasco--c.eu13.visual.force.com/apex/DemoPage</callbackUrl>
+        <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE3ybXkVXpZ59q73WbywS2gey7Cu7dCEjVSkzNWzLBunF1N488JAzQ6z.bDU_</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

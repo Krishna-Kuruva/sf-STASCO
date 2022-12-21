@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Customer_Group__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Customer Group (for Pricing Purpose)</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>RT_Setting__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>MY Code Value Mapping</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.Type__c</field>
+            <operation>equals</operation>
+            <value>MY Customer Group</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>RT_Setting__c</referenceTo>
+    <relationshipLabel>Accounts (Customer Group)</relationshipLabel>
+    <relationshipName>RE_Customer_Group</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

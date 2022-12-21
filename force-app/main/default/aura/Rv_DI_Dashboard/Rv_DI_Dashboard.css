@@ -1,0 +1,118 @@
+.THIS.c-container{
+    background-color:white;
+    font-size:10px;
+}
+.THIS .agoIgoBgClr{
+    background-color:#E1EDD9;
+}
+.THIS .mogasLiveBgClr{
+     background-color:#DDEBF6;
+}
+.THIS .prdDiffTable{
+     background-color:#FEF2CC;
+     border: 1px solid #d8dde6;
+     border:collapse;
+     
+  }
+.THIS .putBorderClr thead th{
+    background-color:#FEF2CC;
+}
+.THIS .borderTable .putborder{
+   border: 1px solid #a7a8aa; 
+   border-collapse: collapse;
+}
+.THIS .borderTable .putborderTopBottom{
+    border-top: 1px solid #a7a8aa;
+    border-bottom: 1px solid #a7a8aa;
+     border-collapse: collapse;
+}
+.THIS .borderTable .putborderLeft{
+   border-left: 1px solid #a7a8aa;
+    border-collapse: collapse;
+    font-weight:normal;
+    padding:4px 8px;
+    
+    
+}
+.THIS  .bold{
+    font-weight:bold !important;
+}
+.THIS .borderTable .putborderRight{
+   border-right: 1px solid #a7a8aa;
+    border-collapse: collapse;
+}
+
+.THIS .borderTable .putborderRow{
+   border-right: 1px solid #a7a8aa;
+    border-collapse: collapse;
+}
+.THIS .borderTable .table,.THIS th,.THIS td {
+   text-align:right;
+   vertical-align: top;
+    padding: 3px 3px;
+    line-height: 2.0;
+}
+.THIS .igoColor{
+    background-color:#FEF2CC;
+}
+.THIS .agoColor{
+     background-color:#FCE4D6
+}
+.THIS .mogasColor{
+     background-color:#DDEBF6;
+}
+.THIS .myCheckbox{
+  display: inline-block;
+  float: left;
+}
+.THIS .spotDeal .uiInput--default .form-element__label {
+    margin-left: 8px;
+    font-weight:bold;
+    font-size:12px;
+}
+.THIS .slds-form-element__label{
+    font-weight:bold;
+    font-size:12px;
+}
+.THIS .highlightDateTime{
+    font-weight:bold;
+    font-size:12px;
+}
+.THIS .refreshBox{
+     background-color:#E1EDD9;
+}
+.THIS .fontSize{
+    font-weight:bold;
+    font-size:12px;
+}
+/*Fix_170889_Lakshmi_02May2019 Starts*/
+.THIS .bgColoreven tr:nth-child(even){
+    
+     background-color:#F3F2F2;
+    
+ }
+.THIS .bgColorodd tr:nth-child(odd){
+    
+     background-color:#FFFFFF;
+    
+ }
+.THIS .hovercolor  tr:hover td{
+    background-color:#FFFF99;
+}
+
+
+
+/*Fix_170889_Lakshmi_02May2019 Ends*/
+
+/*Fix_170834_Soumyajit_17Apr2019 starts*/
+.THIS .headerTopRowPlant{position:absolute;top:0;min-height:2rem;width:20%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;font-size: .65rem;}
+.THIS .headerTopRowSales{position:absolute;top:0;min-height:2rem;width:15%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;font-size: .65rem;}
+.THIS .headerTopRowIgo{position:absolute;top:0;min-height:2rem;background-color:#FEF2CC;width:28%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;font-size: .65rem;}
+.THIS .headerTopRowAgo{position:absolute;top:0;min-height:2rem;background-color:#FCE4D6;width:25%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;font-size: .65rem;}
+.THIS .headerTopRowMogas{position:absolute;top:0;min-height:2rem;background-color:#DDEBF6;width:25%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;font-size: .65rem;}
+.THIS .headerTopRowGTL{position:absolute;top:0;min-height:2rem;background-color:#FEF2CC;width:10%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;border-right: 1px solid #a7a8aa;display: flex;align-items: center;font-size: .65rem;}
+
+.THIS .headerButtomRow{position:absolute;top:33px;min-height:1.8rem;background-color:#FFFFFF;width:10%;z-index:1;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;font-size: .65rem;}
+.THIS .headerButtomRowBlank{
+    position:absolute;top:33px;min-height:1.8rem;background-color:#FFFFFF;width:30%;z-index:1;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;font-size: .65rem;}
+/*Fix_170834_Soumyajit_17Apr2019 ends*/

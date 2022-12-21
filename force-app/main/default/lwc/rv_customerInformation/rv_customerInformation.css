@@ -1,0 +1,92 @@
+/**
+ * Created by Dharmendra.Singh2 on 8/30/2021.
+ */
+
+.c-container {
+    border: 1px solid #d8dde6;
+    margin: 5px 0 20px 0;
+}
+.page-section {
+    border: solid 1px #ccc;
+    padding: 1rem;
+}
+.page-header,
+.page-footer {
+    height: 50px;
+}
+.page-main {
+    background: #f8f8f8;
+}
+.page-left{
+    background: #f0efef;
+
+ }
+.page-right {
+    background: #f0efef;
+    height: 230px;
+
+}
+.page-padding{
+    padding-top: 2px;
+      padding-right: 2px;
+      padding-bottom: 2px;
+      padding-left: 2px;
+}
+.page-bottom_padding{
+    margin-bottom: 5px;
+}
+.page-fontsize{
+    font-size: 5px;
+}
+.page-lineheight{
+    display: inline-block;
+    max-width: 50%;
+    margin-bottom: .75rem;
+    padding-right: 10px;
+}
+.font-size{
+    font-size: 12px;
+}
+.slds-card__header{
+    display: none;
+}
+
+.noSelectText{
+    position: absolute;
+    top: 55%;
+    left: 10px;
+    transform: translate(0%, -50%);
+    right: 10px;
+    text-align: center;
+    padding: 10px;
+   
+}
+
+.infoText{
+
+    box-shadow: 0px 7px 10px 0 rgb(35 43 72 / 70%);
+    padding: 2px 5px 2px;
+    border-radius: 6px;
+    background-color:#ffffff;
+    margin-bottom: 2px;
+    border: 1px solid #d1d8e0;
+}
+
+:host {
+    --lwc-formLabelFontSize: 12px;
+    --lwc-colorTextLabel:#000000; 
+    --lwc-spacingXxSmall:0px;
+    --lwc-fontSize5: 12px !important;
+    --lwc-inputStaticFontSize: 11px !important;
+    --lwc-fontSize4: 12px !important;
+    --sds-c-icon-color-background:#212946;
+    --lwc-brandAccessible:#212946;
+    --lwc-brandAccessibleActive:#212946;
+    --lwc-squareIconMediumBoundary:20px;
+  --lwc-squareIconSmallBoundary:20px;
+}
+
+.creditStyle{
+    font-weight: 800;
+    font-size: 12px;
+}

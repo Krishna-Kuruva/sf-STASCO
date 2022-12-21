@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <!-- attributes -->
+    <aura:attribute name="edpData" type="Object"/>
+    <aura:attribute name="edpColumns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+    <aura:attribute name="sourceType" type="String" default=""/>
+    <aura:attribute name="sourceName" type="String" default=""/>
+    <!--<aura:attribute name="dataTableId" type="String" default=""/>-->
+    <aura:attribute name="componentId" type="String" default=""/>
+    <aura:registerEvent name="DataTableRowSelEvent" type="c:BET_DataTable_RowSel"/>
+    <aura:attribute name="showEdpResetBtn" type="Boolean" default="false"/> 
+    
+    <div style="clear:both">
+        <div class="slds-m-top_medium">
+            <span><b>{!v.sourceType} Source: </b> {!v.sourceName} </span>
+        </div>
+        <div style="height:312px;display:inline-block" class="slds-m-top_medium">
+            <aura:if isTrue="{!v.showEdpResetBtn}">
+                <lightning:button aura:id=""
+                                  label="Reset"
+                                  class="slds-m-bottom_medium bet-btnGray"
+                                  variant="brand"
+                                  onclick="{!c.ResetEDPResSelection}"/>
+            </aura:if>
+            <lightning:datatable
+                                 aura:id="bet-data-table"
+                                 keyField="id"
+                                 data="{! v.edpData }"
+                                 columns="{! v.edpColumns }"
+                                 maxRowSelection="{! v.maxRowSelection }"
+                                 onrowselection="{! c.sendRowDetailsToParentComponent }"
+                                 class = "slds-m-bottom_medium"
+                                 />
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,21 @@
+.slds-box{   
+    border : 2px solid #FFCC00 !important;
+}
+.h2{
+    font-size: larger !important;
+}
+.bluecls{
+    background-color: #FEF2CC !important ;
+}
+.redcls{
+    background-color: #E1EDD9 !important ;
+}
+.greencls{
+    background-color: #FCE4D6 !important ;
+}
+.othercls{
+    background-color: #DDEBF6 !important;
+}
+.variantcls{
+    background-color: #fadcdc !important;
+}

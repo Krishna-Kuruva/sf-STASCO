@@ -1,0 +1,300 @@
+<!-- LWC Component Name: re_PH_TP_NewOrClone -->
+<!-- Author: K. Nandeeswara Raju (n.kondur@shell.com) -->
+<!-- Created Date : 09-Aug-2022 -->
+<!-- Modifcation #1 : Nandeeswara Raju (n.kondur@shell.com) - 29-Aug-2022 - Removed Some Commented Code -->
+<!-- Modifcation #2 : Nandeeswara Raju (n.kondur@shell.com) - 10-Nov-2022 - Added default values to empty unit fields -->
+<!-- Modifcation #3 : Nandeeswara Raju (n.kondur@shell.com) - 10-Nov-2022 - Label name changes for Ocean Cost, PT%, SH% fields -->
+<template>
+    <template if:true={showSpinner}>
+        <div class="slds-spinner_container slds-is-fixed">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+                <p class="css_Spinner">
+                    <br /><strong>{spinnerMessage}</strong>
+                </p>
+            </div>
+        </div>
+    </template>
+
+    <div class="css_Main_Content_Div">
+        <template if:true={showNewOrCloneSection}>
+            <template if:true={dpbRecord}>
+                <template if:false={isCloneScreen}>
+                    <!-- If the matching Depot Pricing Backbone record exists. We can UPDATE UPDATE UPDATE record -->
+                    <lightning-record-edit-form object-api-name="RE_Depot_Pricing_Backbone__c" record-type-id={recordTypeId} record-id={dpbRecord.Id} onsubmit={handleSubmit} onsuccess={handleUpdateSuccess} onerror={handleError}>
+                        <lightning-messages></lightning-messages>
+                        <div class="slds-grid slds-wrap slds-var-p-around_xx-small">
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_Blend_Percentage__c" required="true"></lightning-input-field>
+                                <lightning-input-field field-name="RE_TH_HCV_Quote1_Percent__c" required="true"></lightning-input-field>
+                                <lightning-input-field field-name="RE_TH_HCV_Quote1__c" required="true"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Premium__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Fixed_Premium__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Fixed_Premium_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Conversion_Factor__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Quote__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Charges__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Charges_Unit__c" value={dpbRecord.RE_PH_Freight_Charges_Unit__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_Bio_Percent__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_1__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_2__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_3__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_Fixed__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_Fixed_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Primary_Transport_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Primary_Transport_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Small_Lot__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Demurrage__c"></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_Demurrage_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_FLC_Service_Fee__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_FLC_Service_Fee_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Terminal_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Wharfage_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Wharfage_Cost_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Fuel_Marking_Factor__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee_Unit__c"></lightning-input-field>
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_Ocean_Cost__c_Id_upd">Ocean GL%</label>
+                                    <lightning-input-field field-name="RE_PH_Ocean_Cost__c" id="RE_PH_Ocean_Cost__c_Id_upd" variant="label-hidden"></lightning-input-field>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_S_H__c_Id_upd">S&amp;H GL%</label>
+                                    <lightning-input-field field-name="RE_PH_S_H__c" id="RE_PH_S_H__c_Id_upd" variant="label-hidden"></lightning-input-field>
+                                </span>
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_PT_Percentage__c_Id_upd">PT GL%</label>
+                                    <lightning-input-field field-name="RE_PH_PT_Percentage__c" id="RE_PH_PT_Percentage__c_Id_upd" variant="label-hidden"></lightning-input-field>
+                                </span>
+                                <lightning-input-field field-name="RE_Insurance_Percentage__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Snh_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_SnH_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_Valid_From__c" required disabled={disableValidFromDateInput} onchange={reValidFromChangeHandler}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Valid_To__c" required></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost__c"></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_PQ_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_PQ_Cost_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Waterfront_Operations_Cost__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Waterfront_Operations_Cost_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee_Unit__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Port_Charges__c"></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Port_Charges_Unit__c"></lightning-input-field>
+                            </div>
+                        </div>
+
+                        <div class="slds-align_absolute-center css_Top_Border_PH">
+                            <lightning-button class="slds-var-m-around_xx-small" label="Cancel" onclick={handleCancel}></lightning-button>
+                            <lightning-button class="slds-var-m-around_xx-small" label="Update TP Record" type="submit" variant="brand" disabled={disableSubmitBtn} title={buttonTitle}></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </template>
+
+                <!-- Matching record exists and user is trying to CLONE CLONE CLONE it to create a new record -->
+                <template if:true={isCloneScreen}>
+                    <lightning-record-edit-form object-api-name="RE_Depot_Pricing_Backbone__c" record-type-id={recordTypeId} onsubmit={handleSubmit} onsuccess={handleUpdateSuccess} onerror={handleError}>
+                        <lightning-messages></lightning-messages>
+                        <div class="slds-grid slds-wrap slds-var-p-around_xx-small">
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <c-re-search-lookup lookup-ref=0 obj-name="RE_Location__c" icon-name="custom:custom25" 
+                                                        label-name="Location Name" placeholder="Search Philippine Location" 
+                                                        onlookup={handleLookUpSelection} filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Location_Code__c" custom-icon-image={locationIcon}
+                                                        selected-record={selectedLocationDetail}></c-re-search-lookup>
+                                </div>
+                                <lightning-input-field field-name="RE_PH_Blend_Percentage__c" required="true" value={dpbRecordClone.RE_PH_Blend_Percentage__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_TH_HCV_Quote1_Percent__c" required="true" value={dpbRecordClone.RE_TH_HCV_Quote1_Percent__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_TH_HCV_Quote1__c" required="true" value={dpbRecordClone.RE_TH_HCV_Quote1__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Premium__c" value={dpbRecordClone.RE_PH_Premium__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Fixed_Premium__c" value={dpbRecordClone.RE_Fixed_Premium__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Fixed_Premium_Unit__c" value={dpbRecordClone.RE_Fixed_Premium_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Conversion_Factor__c" value={dpbRecordClone.RE_PH_Freight_Conversion_Factor__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Quote__c"   value={dpbRecordClone.RE_PH_Freight_Quote__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Charges__c" value={dpbRecordClone.RE_PH_Freight_Charges__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Freight_Charges_Unit__c" value={dpbRecordClone.RE_PH_Freight_Charges_Unit__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <c-re-search-lookup lookup-ref=1 obj-name="RE_Product__c" icon-name="custom:custom6" 
+                                                        label-name="Product Name" placeholder="Search Philippine Product" 
+                                                        onlookup={handleLookUpSelection} filter-query="RecordType.Name='Philippines'"
+                                                        display-fields="Name,Id,RE_Material__c" custom-icon-image={productsIcon}
+                                                        selected-record={selectedProductDetail}></c-re-search-lookup>
+                                </div>
+                                <lightning-input-field field-name="RE_PH_Bio_Percent__c" value={dpbRecordClone.RE_PH_Bio_Percent__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_1__c" value={dpbRecordClone.RE_PH_BIO_1__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_2__c" value={dpbRecordClone.RE_PH_BIO_2__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_3__c" value={dpbRecordClone.RE_PH_BIO_3__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_Fixed__c" value={dpbRecordClone.RE_PH_BIO_Fixed__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_BIO_Fixed_Unit__c" value={dpbRecordClone.RE_PH_BIO_Fixed_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Primary_Transport_Cost__c" value={dpbRecordClone.RE_Primary_Transport_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Primary_Transport_Unit__c" value={dpbRecordClone.RE_Primary_Transport_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Small_Lot__c" value={dpbRecordClone.RE_PH_Small_Lot__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Demurrage__c" value={dpbRecordClone.RE_PH_Demurrage__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_Demurrage_Unit__c" value={dpbRecordClone.RE_PH_Demurrage_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_FLC_Service_Fee__c" value={dpbRecordClone.RE_PH_FLC_Service_Fee__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_FLC_Service_Fee_Unit__c" value={dpbRecordClone.RE_PH_FLC_Service_Fee_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Terminal_Cost__c" value={dpbRecordClone.RE_PH_Terminal_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Wharfage_Cost__c" value={dpbRecordClone.RE_PH_Wharfage_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Wharfage_Cost_Unit__c" value={dpbRecordClone.RE_PH_Wharfage_Cost_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Fuel_Marking_Factor__c" value={dpbRecordClone.RE_PH_Fuel_Marking_Factor__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee__c" value={dpbRecordClone.RE_PH_MISC_Fuel_Marking_Fee__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee_Unit__c" value={dpbRecordClone.RE_PH_MISC_Fuel_Marking_Fee_Unit__c}></lightning-input-field>
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_Ocean_Cost__c_Id_cln">Ocean GL%</label>
+                                    <lightning-input-field field-name="RE_PH_Ocean_Cost__c" value={dpbRecordClone.RE_PH_Ocean_Cost__c} id="RE_PH_Ocean_Cost__c_Id_cln" variant="label-hidden"></lightning-input-field>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_S_H__c_Id_cln">S&amp;H GL%</label>
+                                    <lightning-input-field field-name="RE_PH_S_H__c" value={dpbRecordClone.RE_PH_S_H__c} id="RE_PH_S_H__c_Id_cln" variant="label-hidden"></lightning-input-field>
+                                </span>
+                                <span class="slds-form-element_stacked slds-form-element">
+                                    <label class="slds-form-element__label" for="RE_PH_PT_Percentage__c_Id_cln">PT GL%</label>
+                                    <lightning-input-field field-name="RE_PH_PT_Percentage__c" value={dpbRecordClone.RE_PH_PT_Percentage__c} id="RE_PH_PT_Percentage__c_Id_cln" variant="label-hidden"></lightning-input-field>
+                                </span>
+                                <lightning-input-field field-name="RE_Insurance_Percentage__c" value={dpbRecordClone.RE_Insurance_Percentage__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Snh_Cost__c" value={dpbRecordClone.RE_Snh_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_SnH_Unit__c" value={dpbRecordClone.RE_SnH_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_Valid_From__c" value={reValidFromDate} required></lightning-input-field>
+                                <lightning-input-field field-name="RE_Valid_To__c" value={reValidToDate} required></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost__c" value={dpbRecordClone.RE_PH_MISC_Hosehandling_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost_Unit__c" value={dpbRecordClone.RE_PH_MISC_Hosehandling_Cost_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost__c" value={dpbRecordClone.RE_PH_MISC_Shifting_Cost__c}></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                                <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost_Unit__c" value={dpbRecordClone.RE_PH_MISC_Shifting_Cost_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_PQ_Cost__c" value={dpbRecordClone.RE_PH_MISC_PQ_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_PQ_Cost_Unit__c" value={dpbRecordClone.RE_PH_MISC_PQ_Cost_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Waterfront_Operations_Cost__c" value={dpbRecordClone.RE_PH_MISC_Waterfront_Operations_Cost__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_Waterfront_Operations_Cost_Unit__c" value={dpbRecordClone.RE_PH_Waterfront_Operations_Cost_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee__c" value={dpbRecordClone.RE_PH_MISC_Brokerage_Fee__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee_Unit__c" value={dpbRecordClone.RE_PH_MISC_Brokerage_Fee_Unit__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Port_Charges__c" value={dpbRecordClone.RE_PH_MISC_Port_Charges__c}></lightning-input-field>
+                                <lightning-input-field field-name="RE_PH_MISC_Port_Charges_Unit__c" value={dpbRecordClone.RE_PH_MISC_Port_Charges_Unit__c}></lightning-input-field>
+                            </div>
+                        </div>
+
+                        <div class="slds-align_absolute-center css_Top_Border_PH">
+                            <lightning-button class="slds-var-m-around_xx-small" label="Cancel" onclick={handleCancel}></lightning-button>
+                            <lightning-button class="slds-var-m-around_xx-small" label="Generate TP Record" type="submit" variant="brand" disabled={disableSubmitBtn} title={buttonTitle}></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </template>
+            </template>
+
+            <!-- If the matching Depot Pricing Backbone record doesnot exist. We will show NEW NEW NEW record creation form -->
+            <template if:false={dpbRecord}>
+                <lightning-record-edit-form object-api-name="RE_Depot_Pricing_Backbone__c" record-type-id={recordTypeId} onsubmit={createNewDPBRecord} onsuccess={handleCreateSuccess} onload={handleOnLoad}>
+                    <lightning-messages></lightning-messages>
+                    <div class="slds-grid slds-wrap slds-var-p-around_xx-small">
+                        <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                            <lightning-input-field field-name="RE_PH_Blend_Percentage__c" required="true"></lightning-input-field>
+                            <lightning-input-field field-name="RE_TH_HCV_Quote1_Percent__c" required="true"></lightning-input-field>
+                            <lightning-input-field field-name="RE_TH_HCV_Quote1__c" required="true"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Premium__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_Fixed_Premium__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_Fixed_Premium_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Freight_Conversion_Factor__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Freight_Quote__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Freight_Charges__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Freight_Charges_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                            <lightning-input-field field-name="RE_PH_Bio_Percent__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_BIO_1__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_BIO_2__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_BIO_3__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_BIO_Fixed__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_BIO_Fixed_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_Primary_Transport_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_Primary_Transport_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Small_Lot__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Demurrage__c"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                            <lightning-input-field field-name="RE_PH_Demurrage_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_FLC_Service_Fee__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_FLC_Service_Fee_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Terminal_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Wharfage_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Wharfage_Cost_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Fuel_Marking_Factor__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Fuel_Marking_Fee_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <span class="slds-form-element_stacked slds-form-element">
+                                <label class="slds-form-element__label" for="RE_PH_Ocean_Cost__c_Id_new">Ocean GL%</label>
+                                <lightning-input-field field-name="RE_PH_Ocean_Cost__c" id="RE_PH_Ocean_Cost__c_Id_new" variant="label-hidden"></lightning-input-field>
+                            </span>
+                            <!-- <lightning-input-field field-name="RE_PH_Ocean_Cost__c"></lightning-input-field> -->
+                        </div>
+                        <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                            <span class="slds-form-element_stacked slds-form-element">
+                                <label class="slds-form-element__label" for="RE_PH_S_H__c_Id_new">S&amp;H GL%</label>
+                                <lightning-input-field field-name="RE_PH_S_H__c" id="RE_PH_S_H__c_Id_new" variant="label-hidden"></lightning-input-field>
+                            </span>
+                            <span class="slds-form-element_stacked slds-form-element">
+                                <label class="slds-form-element__label" for="RE_PH_PT_Percentage__c_Id_new">PT GL%</label>
+                                <lightning-input-field field-name="RE_PH_PT_Percentage__c" id="RE_PH_PT_Percentage__c_Id_new" variant="label-hidden"></lightning-input-field>
+                            </span>
+                            <!-- <lightning-input-field field-name="RE_PH_S_H__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_PT_Percentage__c"></lightning-input-field> -->
+                            <lightning-input-field field-name="RE_Insurance_Percentage__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_Snh_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_SnH_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_Valid_From__c" value={reValidFromDate} required></lightning-input-field>
+                            <lightning-input-field field-name="RE_Valid_To__c" value={reValidToDate} required></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Hosehandling_Cost_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost__c"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-var-p-right_large slds-var-p-left_large slds-size_1-of-5 slds-small-size_2-of-4 slds-medium-size_2-of-4 slds-large-size_1-of-5">
+                            <lightning-input-field field-name="RE_PH_MISC_Shifting_Cost_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_PQ_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_PQ_Cost_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Waterfront_Operations_Cost__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_Waterfront_Operations_Cost_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Brokerage_Fee_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Port_Charges__c"></lightning-input-field>
+                            <lightning-input-field field-name="RE_PH_MISC_Port_Charges_Unit__c" value={defaultPHPPerL15}></lightning-input-field>
+                        </div>
+                    </div>
+
+                    <div class="slds-align_absolute-center css_Top_Border_PH">
+                        <lightning-button class="slds-var-m-around_xx-small" label="Cancel" onclick={handleCancel}></lightning-button>
+                        <lightning-button class="slds-var-m-around_xx-small" label="Generate TP Record" type="submit" variant="brand" disabled={disableSubmitBtn} title={buttonTitle}></lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+        </template>
+        <template if:false={showNewOrCloneSection}>
+            <span class="slds-text-color_error slds-align_absolute-center slds-text-title_bold slds-var-p-around_large">{errorMessage}</span>
+        </template>
+    </div>
+
+    <!-- Component to download the records in the Excel form -->
+    <c-re_-excel-export header-list={xlsHeader}
+                        header-list-obj={xlsHeaderObj}
+                        filename={filename}
+                        worksheet-name-list={workSheetNameList}
+                        sheet-data={xlsData}
+    ></c-re_-excel-export>
+</template>

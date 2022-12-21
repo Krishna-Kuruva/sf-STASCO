@@ -1,0 +1,56 @@
+.slds-box{
+    border : 2px solid #FFCC00 !important;
+    padding-right: 0.01rem;
+    padding-bottom: 0.01rem;
+    padding-left: 0.01rem;
+}
+.h2{
+    font-size: larger !important;
+}
+.bluecls{
+    background-color: #FEF2CC !important ;
+}
+.redcls{
+    background-color: #E1EDD9 !important ;
+}
+.greencls{
+    background-color: #FCE4D6 !important ;
+}
+.othercls{
+    background-color: #DDEBF6 !important;
+}
+.variantcls{
+    background-color: #fadcdc !important;
+}
+.locColor
+{
+	background-color:rgb(250, 250, 249) !important;
+}
+.slds-table tr>th:first-child{
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    min-width: fit-content;
+    padding-left: 0.01rem;
+    padding-right: 0.01rem;
+}
+.slds-table tr>td:first-child{
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    min-width: 8rem;
+    padding-left: 0.01rem;
+    padding-right: 0.01rem;
+}
+.slds-table tr>td:last-child{
+    padding-right: 1px;
+    padding-left: 1px;
+}
+.slds-button{
+    width: 75% !important;
+}
+.fontsize{
+    font-size: x-small !important;
+}

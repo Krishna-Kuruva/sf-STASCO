@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>   
+        <targetConfig targets="lightning__AppPage, lightning__RecordPage">
+            <property name="quoteNamesLeft" 
+                      type="String" 
+                      label="Quote Display Names to Show in Left"
+                      description="Enter quote display names. Seperate muliple values by comma"/>
+            <property name="quoteNamesRight" 
+                      type="String" 
+                      label="Quote Display Names to Show in Right"
+                      description="Enter quote display names. Seperate muliple values by comma"/>
+            <property name="quoteNamesBottom" 
+                      type="String" 
+                      label="Quote Display Names to Show in Bottom"
+                      description="Enter quote display names. Seperate muliple values by comma"/>
+            <property name="backgroundColor" 
+                      type="String" 
+                      label="Background Colour"
+                      description="Enter desired card background colour code"/>
+            <property name="quoteNamesLeftBottom"
+                        type="String"
+                        label="Currencies"
+                        default="Currencies"
+                        description="AGO Currencies"/>
+            <property name="prodDiffLeft" 
+                      type="String" 
+                      label="Product Differential to show in Left"
+                      description="Enter product differentials"/>
+            <property name="prodDiffRight" 
+                      type="String" 
+                      label="Product Differential to show in Right"
+                      description="Enter product differentials in Right"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

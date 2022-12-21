@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Legal_Form__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is auto-populated from &apos;Customer Entity Type | Classification&apos;</inlineHelpText>
+    <label>* Legal Form</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Association</fullName>
+                <default>false</default>
+                <label>Association</label>
+            </value>
+            <value>
+                <fullName>Co-operative</fullName>
+                <default>false</default>
+                <label>Co-operative</label>
+            </value>
+            <value>
+                <fullName>Fund</fullName>
+                <default>false</default>
+                <label>Fund</label>
+            </value>
+            <value>
+                <fullName>Individual/Sole-Trader</fullName>
+                <default>false</default>
+                <label>Individual/Sole-Trader</label>
+            </value>
+            <value>
+                <fullName>Partnership</fullName>
+                <default>false</default>
+                <label>Partnership</label>
+            </value>
+            <value>
+                <fullName>Private Company</fullName>
+                <default>false</default>
+                <label>Private Company</label>
+            </value>
+            <value>
+                <fullName>Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Trust/Foundation</fullName>
+                <default>false</default>
+                <label>Trust/Foundation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

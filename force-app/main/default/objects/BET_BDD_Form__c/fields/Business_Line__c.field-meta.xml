@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Line__c</fullName>
+    <externalId>false</externalId>
+    <label>* Business Line</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crude</fullName>
+                <default>false</default>
+                <label>Crude</label>
+            </value>
+            <value>
+                <fullName>Crude Lease Net</fullName>
+                <default>false</default>
+                <label>Crude Lease Net</label>
+            </value>
+            <value>
+                <fullName>Crude Lease NonNet</fullName>
+                <default>false</default>
+                <label>Crude Lease NonNet</label>
+            </value>
+            <value>
+                <fullName>Crude Lease Check</fullName>
+                <default>false</default>
+                <label>Crude Lease Check</label>
+            </value>
+            <value>
+                <fullName>Crude Lease Royalty</fullName>
+                <default>false</default>
+                <label>Crude Lease Royalty</label>
+            </value>
+            <value>
+                <fullName>Producer Financing</fullName>
+                <default>false</default>
+                <label>Producer Financing</label>
+            </value>
+            <value>
+                <fullName>Broker - Crude</fullName>
+                <default>false</default>
+                <label>Broker - Crude</label>
+            </value>
+            <value>
+                <fullName>Inspector</fullName>
+                <default>false</default>
+                <label>Inspector</label>
+            </value>
+            <value>
+                <fullName>Demurrage</fullName>
+                <default>false</default>
+                <label>Demurrage</label>
+            </value>
+            <value>
+                <fullName>Products</fullName>
+                <default>false</default>
+                <label>Products</label>
+            </value>
+            <value>
+                <fullName>Products NOC</fullName>
+                <default>false</default>
+                <label>Products NOC</label>
+            </value>
+            <value>
+                <fullName>Bunker</fullName>
+                <default>false</default>
+                <label>Bunker</label>
+            </value>
+            <value>
+                <fullName>Broker - Products</fullName>
+                <default>false</default>
+                <label>Broker - Products</label>
+            </value>
+            <value>
+                <fullName>Transport (Pipeline)</fullName>
+                <default>false</default>
+                <label>Transport (Pipeline)</label>
+            </value>
+            <value>
+                <fullName>Terminalling</fullName>
+                <default>false</default>
+                <label>Terminalling</label>
+            </value>
+            <value>
+                <fullName>Risk</fullName>
+                <default>false</default>
+                <label>Risk</label>
+            </value>
+            <value>
+                <fullName>Broker - Risk</fullName>
+                <default>false</default>
+                <label>Broker - Risk</label>
+            </value>
+            <value>
+                <fullName>Risk Marketing</fullName>
+                <default>false</default>
+                <label>Risk Marketing</label>
+            </value>
+            <value>
+                <fullName>Marine - Crude</fullName>
+                <default>false</default>
+                <label>Marine - Crude</label>
+            </value>
+            <value>
+                <fullName>Marine - Products</fullName>
+                <default>false</default>
+                <label>Marine - Products</label>
+            </value>
+            <value>
+                <fullName>SOPUS NOC</fullName>
+                <default>false</default>
+                <label>SOPUS NOC</label>
+            </value>
+            <value>
+                <fullName>Transmix - Do Not Use</fullName>
+                <default>false</default>
+                <label>Transmix - Do Not Use</label>
+            </value>
+            <value>
+                <fullName>COAL</fullName>
+                <default>false</default>
+                <label>COAL</label>
+            </value>
+            <value>
+                <fullName>CREDIT PARENT LINE</fullName>
+                <default>false</default>
+                <label>CREDIT PARENT LINE</label>
+            </value>
+            <value>
+                <fullName>Crude (Derivatives)</fullName>
+                <default>false</default>
+                <label>Crude (Derivatives)</label>
+            </value>
+            <value>
+                <fullName>Crude (Physical)</fullName>
+                <default>false</default>
+                <label>Crude (Physical)</label>
+            </value>
+            <value>
+                <fullName>Crude Freight</fullName>
+                <default>false</default>
+                <label>Crude Freight</label>
+            </value>
+            <value>
+                <fullName>EMISSIONS</fullName>
+                <default>false</default>
+                <label>EMISSIONS</label>
+            </value>
+            <value>
+                <fullName>FINANCIAL LNG</fullName>
+                <default>false</default>
+                <label>FINANCIAL LNG</label>
+            </value>
+            <value>
+                <fullName>GAS &amp; POWER</fullName>
+                <default>false</default>
+                <label>GAS &amp; POWER</label>
+            </value>
+            <value>
+                <fullName>GAS &amp; POWER DERIVATIVES</fullName>
+                <default>false</default>
+                <label>GAS &amp; POWER DERIVATIVES</label>
+            </value>
+            <value>
+                <fullName>GENERAL &amp; ADMINISTRATIVE VENDOR</fullName>
+                <default>false</default>
+                <label>GENERAL &amp; ADMINISTRATIVE VENDOR</label>
+            </value>
+            <value>
+                <fullName>LNG Freight</fullName>
+                <default>false</default>
+                <label>LNG Freight</label>
+            </value>
+            <value>
+                <fullName>LNG SHIPPING</fullName>
+                <default>false</default>
+                <label>LNG SHIPPING</label>
+            </value>
+            <value>
+                <fullName>OIL DERIVATIVES - Do Not Use</fullName>
+                <default>false</default>
+                <label>OIL DERIVATIVES - Do Not Use</label>
+            </value>
+            <value>
+                <fullName>OIL SHIPPING</fullName>
+                <default>false</default>
+                <label>OIL SHIPPING</label>
+            </value>
+            <value>
+                <fullName>PHYSICAL LNG</fullName>
+                <default>false</default>
+                <label>PHYSICAL LNG</label>
+            </value>
+            <value>
+                <fullName>PHYSICAL OIL - Do Not Use</fullName>
+                <default>false</default>
+                <label>PHYSICAL OIL - Do Not Use</label>
+            </value>
+            <value>
+                <fullName>Products (Derivatives)</fullName>
+                <default>false</default>
+                <label>Products (Derivatives)</label>
+            </value>
+            <value>
+                <fullName>Products (Physical)</fullName>
+                <default>false</default>
+                <label>Products (Physical)</label>
+            </value>
+            <value>
+                <fullName>Products Freight</fullName>
+                <default>false</default>
+                <label>Products Freight</label>
+            </value>
+            <value>
+                <fullName>NA Credit System</fullName>
+                <default>false</default>
+                <label>NA Credit System</label>
+            </value>
+            <value>
+                <fullName>NA Emissions Carbon</fullName>
+                <default>false</default>
+                <label>NA Emissions Carbon</label>
+            </value>
+            <value>
+                <fullName>NA Emissions Non-Carbon</fullName>
+                <default>false</default>
+                <label>NA Emissions Non-Carbon</label>
+            </value>
+            <value>
+                <fullName>NA G&amp;A</fullName>
+                <default>false</default>
+                <label>NA G&amp;A</label>
+            </value>
+            <value>
+                <fullName>NA Gas</fullName>
+                <default>false</default>
+                <label>NA Gas</label>
+            </value>
+            <value>
+                <fullName>NA Power</fullName>
+                <default>false</default>
+                <label>NA Power</label>
+            </value>
+            <value>
+                <fullName>NA Risk Gas</fullName>
+                <default>false</default>
+                <label>NA Risk Gas</label>
+            </value>
+            <value>
+                <fullName>NA Risk Others</fullName>
+                <default>false</default>
+                <label>NA Risk Others</label>
+            </value>
+            <value>
+                <fullName>NA Risk Power</fullName>
+                <default>false</default>
+                <label>NA Risk Power</label>
+            </value>
+            <value>
+                <fullName>NA Scheduling Only</fullName>
+                <default>false</default>
+                <label>NA Scheduling Only</label>
+            </value>
+            <value>
+                <fullName>North America LNG</fullName>
+                <default>false</default>
+                <label>North America LNG</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

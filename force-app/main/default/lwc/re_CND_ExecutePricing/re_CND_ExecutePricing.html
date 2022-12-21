@@ -1,0 +1,667 @@
+<template>
+    <div class="c-container">
+        <div class="slds-page-header slds-page-header_record-home" style="padding : 0.3rem 0.3rem;border: solid 2px #FFCC00;background-color: white;">
+            <div class="slds-page-header__row"> 
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="custom:custom41" alternative-text="Price Execution" size="small"></lightning-icon>
+                        </div>
+                        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Price Execution">Price Execution</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                &nbsp;&nbsp;&nbsp;            
+                <div class="page-section slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">                       
+                        <div class="slds-col">
+                            <span class="slds-truncate">
+                               <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                    <tr class="slds-line-height_reset slds-text-title center">
+                                        <th scope="col" rowspan="2" class="slds-p-left_large pricHead" style="font-size: medium;"><b>Latest Fx Rates(GMT)</b></th>
+                                        <th scope="col" class="pricHead" style="font-size: small;"><b>{prvFxDate}</b></th>
+                                        <th scope="col" class="pricHead" style="font-size: small;"><b>{latestFxDate}</b></th>                                                           
+                                    </tr>
+                                    <tr class="addBorder">                               
+                                        <td scope="col" class="slds-cell-wrap slds-border_left"><p>{prvFx}</p></td> 
+                                        <td scope="col" class="slds-cell-wrap"><p>{latestFx}</p></td>                                        
+                                    </tr>
+                                </table>    
+                            </span>
+                        </div>                                              
+                    </div>
+                </div>  
+                &nbsp; &nbsp; &nbsp; &nbsp;             
+                <div class="page-section slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">   
+                        <div class="slds-col"> 
+                        </div>                    
+                        <div class="slds-col">
+                            <span class="slds-truncate">
+                                <lightning-input label="Requested Date" data-id="requestedDate"
+                                type="date" required value={reqDt} max={reqDt} onchange={handleReqDtChange}>
+                               </lightning-input>
+                            </span>
+                        </div>                       
+                        <div class="slds-col">
+                            <span class="slds-truncate">
+                                <lightning-input label="Prices Effective From" data-id="effectiveFromDate"
+                                type="date" required value={reqFromDate} min={reqFromDate} max={reqFromDate} disabled={IsreqFromToDisabled}>
+                               </lightning-input>
+                            </span>
+                        </div>                        
+                        <div class="slds-col">
+                            <span class="slds-truncate">
+                                <lightning-input label="Prices Effective To" data-id="effectiveToDate"
+                                type="date" required value={reqToDate} min={reqFromDate} disabled={IsreqFromToDisabled} onchange={handleEffectvToDateChange} >
+                                </lightning-input>
+                            </span>
+                        </div> 
+                        <div class="slds-col"> 
+                        </div>                       
+                    </div>
+                </div>  
+                &nbsp; &nbsp; &nbsp; &nbsp;        
+                <div class="page-section slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col"> 
+                        </div>   
+                        <template if:true={userHasPriceExecuteAccess}>
+                            <div class="slds-col calMVbtnPadding">
+                                <span class="slds-truncate"><lightning-button variant="brand" label="Calculate Market Moves" onclick={opisSpotTikcrPopup} class="slds-m-left_x-small" disabled={isCalMVBttnActive}></lightning-button></span>
+                            </div> 
+                        </template>                    
+                        <template if:false={userHasPriceExecuteAccess}>
+                            <span class="slds-truncate"><lightning-button variant="brand" label="Calculate Market Moves" class="slds-m-left_x-small" disabled></lightning-button></span>
+                        </template>
+                        <div class="slds-col"> 
+                        </div>                     
+                    </div>
+                </div>   
+            </div>
+        </div> 
+        <div class="slds-grid slds-size_1-of-2">
+            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                <div class="page-section slds-align_absolute-center gasolineColor">
+                    <h1><b>Gasoline</b></h1>
+                </div>
+            </div>
+            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                <div class="page-section slds-align_absolute-center dieselColor">
+                    <h1><b>Gas Oil ( Diesel )</b></h1>
+                </div>
+            </div>
+        </div>    
+        <div class="slds-col slds-p-around_small slds-size_12-of-12 headercolr" onclick={toggleMQ}>
+            <div class="page-section slds-align_absolute-left mVColor">
+                <lightning-icon icon-name={iconMQName} title="Market Move Details">
+                </lightning-icon>
+                <span><b>Market Move</b></span>
+            </div>
+        </div>
+        <template if:true={showMVDetails}>
+            <div class="slds-grid slds-size_1-of-2 headerGasolinepadding">
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">               
+                    <div class="slds-col slds-p-around_small">
+                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                <thead>                                    
+                                    <tr class="slds-line-height_reset" style="font-size: medium;">
+                                        <th class="slds-p-left_large" scope="col" colspan="1">
+                                            <div class="slds-align_absolute-left" style="width:110px;" >Marker Name</div>
+                                        </th>                                   
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Value</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">% Delta</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Actual Delta</div>
+                                        </th>                                    
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >CAD Delta Cpl</div>
+                                        </th> 
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >% Delta From Prev Day</div>
+                                        </th>
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <template if:true={isGosolineMV}>
+                                        <template for:each={mvGosolineResult} for:item="mvGosoline">
+                                            <tr class="addBorder" key={mvGosoline.Id}> 
+                                                <td scope="col" colspan="1" style="background-color: ghostwhite;">
+                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                        <lightning-formatted-text value={mvGosoline.RE_CND_Marker_Name__c}></lightning-formatted-text>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvGosoline.RE_Price_Value__c} minimum-fraction-digits="4" maximum-fraction-digits="4"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvGosoline.RE_CND_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvGosoline.RE_CND_Actual_Delta__c} minimum-fraction-digits="4" maximum-fraction-digits="4"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvGosoline.RE_CND_CAD_Delta_cpl__c} minimum-fraction-digits="3" maximum-fraction-digits="3"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvGosoline.RE_CND_PrvDay_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                              
+                                                    </div>
+                                                </td>                                            
+                                            </tr>
+                                        </template>
+                                    </template>
+                                    <template if:false={isGosolineMV}>
+                                        <tr class="slds-hint-parent rowCls"> 
+                                            <td class="slds-cell-wrap" colspan="7"><p>There is no record(s) in the Requested Date!</p></td> 
+                                        </tr> 
+                                    </template>
+                                </tbody>
+                            </table>                         
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                    <div class="slds-col slds-p-around_small">
+                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                <thead>                                    
+                                    <tr class="slds-line-height_reset" style="font-size: medium;">
+                                        <th class="slds-p-left_large" scope="col" colspan="1">
+                                            <div class="slds-align_absolute-left" style="width:110px;" >Marker Name</div>
+                                        </th>                                   
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Value</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">% Delta</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Actual Delta</div>
+                                        </th>                                    
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >CAD Delta Cpl</div>
+                                        </th> 
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >% Delta From Prev Day</div>
+                                        </th>
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <template if:true={isDieselMV}>
+                                        <template for:each={mvDieselResult} for:item="mvDiesel">
+                                            <tr class="addBorder" key={mvDiesel.Id}> 
+                                                <td scope="col" colspan="1" style="background-color: ghostwhite;">
+                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                        <lightning-formatted-text value={mvDiesel.RE_CND_Marker_Name__c}></lightning-formatted-text>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvDiesel.RE_Price_Value__c} minimum-fraction-digits="4" maximum-fraction-digits="4"></lightning-formatted-number>                                                
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvDiesel.RE_CND_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvDiesel.RE_CND_Actual_Delta__c} minimum-fraction-digits="4" maximum-fraction-digits="4"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvDiesel.RE_CND_CAD_Delta_cpl__c} minimum-fraction-digits="3" maximum-fraction-digits="3"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvDiesel.RE_CND_PrvDay_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>                                            
+                                            </tr>                                       
+                                        </template> 
+                                        <template for:each={mvFxResult} for:item="mvFxRate">
+                                            <tr class="addBorder" key={mvFxRate.Id}> 
+                                                <td scope="col" colspan="1" style="background-color: ghostwhite;">
+                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                        <lightning-formatted-text value={mvFxRate.RE_CND_Marker_Name__c}></lightning-formatted-text>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvFxRate.RE_Price_Value__c} minimum-fraction-digits="5" maximum-fraction-digits="5"></lightning-formatted-number>                                                
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvFxRate.RE_CND_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvFxRate.RE_CND_Actual_Delta__c} minimum-fraction-digits="4" maximum-fraction-digits="4"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvFxRate.RE_CND_CAD_Delta_cpl__c} minimum-fraction-digits="3" maximum-fraction-digits="3"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={mvFxRate.RE_CND_PrvDay_Delta_Percentage__c} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>                                            
+                                            </tr>                                       
+                                        </template>
+                                        <tr class="slds-hint-parent rowCls"> 
+                                            <td class="slds-cell-wrap" colspan="6"><p>&nbsp;</p></td> 
+                                        </tr>                                        
+                                    </template>
+                                    <template if:false={isDieselMV}>
+                                        <tr class="slds-hint-parent rowCls"> 
+                                            <td class="slds-cell-wrap" colspan="7"><p>There is no record(s) in the Requested Date!</p></td> 
+                                        </tr> 
+                                    </template>
+                                </tbody>
+                            </table>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <div class="slds-col slds-p-around_small slds-size_12-of-12 headercolr" onclick={togglePA}>
+            <div class="page-section slds-align_absolute-left exePricColor">
+                <lightning-icon icon-name={iconPAName} title="Price Adjustment Details">
+                </lightning-icon>
+                <span><b>Price Adjustment</b></span>
+            </div>
+        </div>
+        <template if:true={showPADetails}>
+            <div class="slds-grid slds-size_1-of-2 headerGasolinepadding">                    
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                    <div class="slds-col slds-p-around_small ">
+                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                <thead>                                    
+                                    <tr class="slds-line-height_reset" style="font-size: medium;">
+                                        <th class="slds-p-left_large" scope="col" colspan="1">
+                                            <div class="slds-align_absolute-left" style="width:110px;" >Rack</div>
+                                        </th>                                   
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Today’s Price</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Market Move</div>
+                                        </th>
+                                        <th scope="col" colspan="1" style="width:80px;">
+                                            <div class="slds-truncate slds-align_absolute-center" >Competitive Adj</div>
+                                        </th>                                    
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Net Move</div>
+                                        </th> 
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >New End Price</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Difference</div>
+                                        </th>
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <template if:true={isGosolineMOA}>
+                                        <template for:each={moaGosolineResult} for:item="moaGosoline">
+                                            <tr key={moaGosoline.Id} class={moaGosoline.stylClas}> 
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                        <lightning-formatted-text value={moaGosoline.RE_CND_Rack__c}></lightning-formatted-text>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaGosoline.RE_CND_Today_s_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaGosoline.RE_CND_Market_Move__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-input variant="label-hidden" name={moaGosoline.Id} class={moaGosoline.Id} maximum-fraction-digits="2" type="number" step="0.01" value={moaGosoline.RE_CND_Competitive_Adj__c} onchange={handleGasolineCompAdjChange} disabled={IsreqFromToDisabled} required></lightning-input>													
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1" style="font-weight: bolder;">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaGosoline.RE_CND_Net_Move__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                              
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1" style="font-weight: bolder;">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaGosoline.RE_CND_New_End_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                              
+                                                    </div>
+                                                </td> 
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaGosoline.RE_CND_Difference__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                             
+                                                    </div>
+                                                </td>  											
+                                            </tr>
+                                        </template>
+                                    </template>
+                                    <template if:false={isGosolineMOA}>
+                                        <tr class="slds-hint-parent rowCls"> 
+                                            <td class="slds-cell-wrap" colspan="7"><p>There is no record(s) in the Requested Date!</p></td> 
+                                        </tr> 
+                                    </template>
+                                </tbody>
+                            </table>                         
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                    <div class="slds-col slds-p-around_small">
+                        <div class="slds-grid slds-gutters slds-grid_vertical slds-align_absolute-center">                   
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                                <thead>                                    
+                                    <tr class="slds-line-height_reset" style="font-size: medium;">
+                                        <th class="slds-p-left_large " scope="col" colspan="1">
+                                            <div class="slds-align_absolute-left" style="width:110px;">Rack</div>
+                                        </th>                                   
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Today’s Price</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center">Market Move</div>
+                                        </th>
+                                        <th scope="col" colspan="1" style="width:80px;">
+                                            <div class="slds-truncate slds-align_absolute-center" >Competitive Adj</div>
+                                        </th>                                    
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Net Move</div>
+                                        </th> 
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >New End Price</div>
+                                        </th>
+                                        <th scope="col" colspan="1">
+                                            <div class="slds-truncate slds-align_absolute-center" >Difference</div>
+                                        </th>
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <template if:true={isDieselMOA}>
+                                        <template for:each={moaDieselResult} for:item="moaDiesel">
+                                            <tr key={moaDiesel.Id} class={moaDiesel.stylClas}> 
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-left slds-text-title_bold"> 
+                                                        <lightning-formatted-text value={moaDiesel.RE_CND_Rack__c}></lightning-formatted-text>                                                
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaDiesel.RE_CND_Today_s_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                 
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaDiesel.RE_CND_Market_Move__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                                  
+                                                    </div>
+                                                </td>
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-input variant="label-hidden" name={moaDiesel.Id} class={moaDiesel.Id} maximum-fraction-digits="2" type="number" step="0.01" value={moaDiesel.RE_CND_Competitive_Adj__c} onchange={handleDieselCompAdjChange} disabled={IsreqFromToDisabled} required></lightning-input>													
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1" style="font-weight: bolder;">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaDiesel.RE_CND_Net_Move__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                              
+                                                    </div>
+                                                </td>  
+                                                <td scope="col" colspan="1" style="font-weight: bolder;">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaDiesel.RE_CND_New_End_Price__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                              
+                                                    </div>
+                                                </td> 
+                                                <td scope="col" colspan="1">
+                                                    <div class="slds-truncate slds-align_absolute-center"> 
+                                                        <lightning-formatted-number value={moaDiesel.RE_CND_Difference__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>                                             
+                                                    </div>
+                                                </td>  											
+                                            </tr>
+                                        </template>
+                                    </template>
+                                    <template if:false={isDieselMOA}>
+                                        <tr class="slds-hint-parent rowCls"> 
+                                            <td class="slds-cell-wrap" colspan="7"><p>There is no record(s) in the Requested Date!</p></td> 
+                                        </tr> 
+                                    </template>
+                                </tbody>
+                            </table>                         
+                        </div>
+                    </div>
+                </div>            
+            </div>                
+            <div class="slds-grid slds-size_1-of-1">
+                <div class="slds-col slds-p-around_small slds-size_12-of-12">                
+                    <div class="page-section slds-page-header__col-actions">
+                        <div class="slds-grid slds-gutters">                                         
+                            <div class="slds-col slds-page-header__col-title" >
+                                <span class="slds-truncate">
+                                    <template if:true={userHasPriceExecuteAccess}>
+                                        <lightning-layout-item flexibility="auto" padding="around-small">
+                                            <lightning-button variant="brand" label="Calculate Depot Pricing" onclick={depoPricingPopup} class="slds-m-left_x-small" style="float: right;" disabled={isCalExcBttnActive}></lightning-button>                     
+                                        </lightning-layout-item>
+                                    </template>
+                                    <template if:false={userHasPriceExecuteAccess}>
+                                        <lightning-layout-item flexibility="auto" padding="around-small">
+                                            <lightning-button variant="brand" label="Calculate Depot Pricing" class="slds-m-left_x-small" style="float: right;" disabled></lightning-button>                     
+                                        </lightning-layout-item>
+                                    </template>                                   
+                                </span>
+                            </div>                                        
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </template>
+    </div>
+    <div>
+        <template if:true={showModal}>
+            <div class="demo-only" onkeyup={handleKeyPress}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">                       
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse closebutn" title=Close onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate hdrtxtClr">
+                                <strong>Depot Pricing</strong>
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content modalBody">
+                            <template if:true={isLoading}>
+                                <lightning-spinner alternative-text="Loading" spinner-text="Please Wait..." size="medium" class="spinnerClass"></lightning-spinner>
+                            </template>                               
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                
+                                <lightning-layout horizontal-align="spread" multiple-rows="true" >
+                                    <lightning-layout-item size="12" >
+                                            <div class="slds-box slds-theme_shade MVpopupPadding">
+                                                <div class="slds-list_horizontal">
+                                                    <lightning-layout-item size="6" padding="around-small" >
+                                                        <lightning-input type="date" label="Prices Effective From" value={reqFromDate} disabled ></lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="6" padding="around-small">
+                                                        <lightning-input type="date" label="Prices Effective To" value={reqToDate} disabled ></lightning-input>
+                                                    </lightning-layout-item>
+                                                </div>   
+                                            </div>
+                                            <br>   
+                                            <template if:true={isDepotPricngJobExists}>
+                                                <p class="slds-text-heading_small slds-text-color_error"><strong>Calculate Depot Pricing Job Name: {jobRunName} commenced on {jobRunStartDtTime} (GMT) is in progress!</strong></p>
+                                                <br>
+                                                <p class="slds-text-heading_small slds-text-color_error"><strong>So please wait to complete that Job.</strong></p>
+                                            </template>  
+                                            <template if:false={isDepotPricngJobExists}>
+                                                <template if:true={isUplodedRecordExists}>
+                                                    <p class="slds-text-heading_small slds-text-color_error"><strong>Pricing is already calculated and records uploaded to SAP as well!</strong></p>
+                                                    <br>
+                                                    <p class="slds-text-heading_small slds-text-color_error"><strong>So please do further changes in CA Dashboard itself.</strong></p>
+                                                </template>     
+                                                <template if:false={isUplodedRecordExists}>
+                                                    <template if:false={isRecordExists}>
+                                                        <p class="slds-text-heading_small">Are you sure you want to Calculate Depot Pricing?</p>
+                                                     </template>
+                                                     <template if:true={isRecordExists}>
+                                                       <p class="slds-text-heading_small slds-text-color_error"><strong>Pricing is already calculated!</strong></p>
+                                                       <br>
+                                                       <p class="slds-text-heading_small slds-text-color_error">If you click <strong>Yes,</strong> all the existing Depot Pricing become <strong>Redundant.</strong></p>
+                                                     </template> 
+                                                </template>                    
+                                            </template>                                                           
+                                    </lightning-layout-item>
+                                </lightning-layout>                
+                            </div>                            
+                        </div>                            
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                            <button class="slds-button slds-button_brand" disabled={isYesBtnActive}  onclick={handleCalDepoPricing}>Yes</button> 
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>                
+        </template>
+    </div>
+    <div>
+        <template if:true={showOPISModal}>
+            <div class="demo-only" onkeyup={handleKeyPress}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">                       
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse closebutn" title=Close onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate hdrtxtClr">
+                               <strong>Market Move Calculation</strong>
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content modalOPISBody">
+                            <template if:true={isLoading}>
+                                <lightning-spinner alternative-text="Loading" spinner-text="Please Wait..." size="medium" class="spinnerClass"></lightning-spinner>
+                            </template> 
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">                                             
+                                <lightning-layout horizontal-align="spread" multiple-rows="true" >
+                                    <lightning-layout-item size="12" padding="horizontal-small">     
+                                        <div class="slds-box slds-theme_shade MVpopupPadding">                                 
+                                            <div class="slds-list_horizontal">
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding" >
+                                                    <lightning-input type="date" label="Prices Effective From" value={reqFromDate} disabled></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input type="date" label="Prices Effective To" value={reqToDate} disabled></lightning-input>
+                                                </lightning-layout-item>
+                                            </div>
+                                        </div> 
+                                        <br>
+                                        <div class="slds-box slds-theme_default MVpopupPadding">
+                                            <div class="slds-list_horizontal">
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input type="date" label="Current OPIS Spot Ticker" data-id="currOPISTrckrDate" max={currMaxDt} onchange={handleCurrOPISTrckrDateChange} ></lightning-input>
+                                                </lightning-layout-item>      
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">                                     
+                                                    <lightning-input label="Status" data-id="currOpisStatus" value={currOpisStatusMsg} disabled></lightning-input>
+                                                </lightning-layout-item>                                                                                    
+                                            </div>
+                                            <div class="slds-list_horizontal">
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input type="date" label="Current FxRate (GMT)" data-id="currFxRateDate" value={currFxRateDt} max={currMaxDt} onchange={handleCurrFxRateDateChange} disabled={isDisbldCurrFxRateDt} required={currFxRateReq}></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input label="FxRate" data-id="currFxRate" pattern="[0-9]*[.]?[0-9]+" message-when-pattern-mismatch="Numbers are only allowed" maxlength="8" type="decimal" value={currFxValue} disabled={isCurrFxExists} required={currFxRateReq}></lightning-input>													
+                                                </lightning-layout-item>
+                                            </div>
+                                        </div>
+                                        <br> 
+                                        <div class="slds-box slds-theme_default MVpopupPadding">     
+                                            <div class="slds-list_horizontal">
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input type="date" label="Previous OPIS Spot Ticker" data-id="prevOPISTrckrDate" max={currMaxDt} onchange={handlePrevOPISTrckrDateChange} ></lightning-input>
+                                                </lightning-layout-item>      
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input label="Status" data-id="prevOpisStatus" value={prevOpisStatusMsg} disabled></lightning-input>              
+                                                </lightning-layout-item>                                                                                    
+                                            </div>
+                                            <div class="slds-list_horizontal">
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input type="date" label="Previous FxRate (GMT)" data-id="prevFxRateDate" value={prvFxRateDt} max={currMaxDt} onchange={handlePrevFxRateDateChange} disabled={isDisbldPrevFxRateDt} required={prevFxRateReq}></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6" padding="around-small" class="MVpopupLightngPadding">
+                                                    <lightning-input label="FxRate" data-id="prevFxRate" pattern="[0-9]*[.]?[0-9]+" message-when-pattern-mismatch="Numbers are only allowed" maxlength="8" type="decimal" value={prvFxValue} disabled={isPrevFxExists} required={prevFxRateReq}></lightning-input>													
+                                                </lightning-layout-item>
+                                            </div>
+                                        </div>
+                                        <br>   
+                                        <template if:true={isMVCalcJobExists}>
+                                            <p class="slds-text-heading_small slds-text-color_error"><strong>Calculate Market Move Job Name: {jobRunName} commenced on {jobRunStartDtTime} (GMT) is in progress!</strong></p>
+                                            <br>
+                                            <p class="slds-text-heading_small slds-text-color_error"><strong>So please wait to complete that Job.</strong></p>
+                                        </template>   
+                                        <template if:false={isMVCalcJobExists}> 
+                                            <template if:true={isUplodedRecordExists}>
+                                                <p class="slds-text-heading_small slds-text-color_error"><strong>Pricing is already calculated and records uploaded to SAP as well!</strong></p>
+                                                <br>
+                                                <p class="slds-text-heading_small slds-text-color_error"><strong>So please do further changes in CA Dashboard itself.</strong></p>
+                                            </template>      
+                                            <template if:false={isUplodedRecordExists}>  
+                                                <template if:false={isMVRecordExists}>
+                                                    <p class="slds-text-heading_small">Are you sure you want to Calculate Market Move?</p>
+                                                </template>
+                                                <template if:true={isMVRecordExists}>
+                                                    <p class="slds-text-heading_small slds-text-color_error"><strong>Market Move is already calculated!</strong> If you click <strong>Proceed,</strong> all the existing Market Move with Depot Pricing(if any) become <strong>Redundant.</strong></p>
+                                                </template>  
+                                            </template>
+                                        </template>                                                                
+                                    </lightning-layout-item>
+                                </lightning-layout>                
+                            </div>                            
+                        </div>                            
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                            <button class="slds-button slds-button_brand" disabled={isProcedBtnActive} onclick={handleMarketMovesFromOPIS}>Proceed</button> 
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>                
+        </template>            
+    </div>
+    <template if:true={showSpinner}>
+        <div class="spinner">
+        <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+    </div>
+    </template>
+</template>

@@ -1,0 +1,86 @@
+<template>
+    <lightning-card>    
+        <template if:true={loaded}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>   
+        <div class="slds-p-around_x-small slds-box slds-scrollable">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered fontsize">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_1-of-9 locColor" scope="col">
+                            Region<div class="slds-float_right">Depot</div>
+                        </th>                       
+                        <th class="slds-size_1-of-9 bluecls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="product">CBU MC</div>
+                        </th>
+                        <th class="slds-size_1-of-9 redcls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="midday">MidDay price</div>
+                        </th>                        
+                        <th class="slds-size_1-of-9 greencls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="psp">PSP</div>
+                        </th>
+                        <th class="slds-size_1-of-12 othercls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="fnpsp">Challenged Price</div>
+                        </th>
+                        <th class="slds-size_2-of-9 variantcls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="remark">Remark</div>
+                        </th>
+                        <th class="slds-size_1-of-9 redcls" scope="col">
+                            <div class="slds-truncate slds-align_absolute-left" title="spa">Final PSP</div>
+                        </th>
+                        <th class="slds-size_1-of-12" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="challenge">Challenge</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each = {amvList} for:item = "itemval">                             
+                        <tr class="slds-hint-parent" key={itemval.Id}>
+                            <td class="slds-size_1-of-9 locColor">                                
+                                <lightning-formatted-text value={itemval.RE_Depot_Name__r.RE_Region_Name__c}></lightning-formatted-text>                                                           
+                                <lightning-formatted-text class = "slds-float_right" value={itemval.RE_Depot_Name__r.Name}></lightning-formatted-text>
+                            </td>
+                            <td class="slds-size_1-of-9 bluecls">                                
+                                <lightning-formatted-number value={itemval.RE_MC_Morning__c} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td>
+                            <td class="slds-size_1-of-9 redcls">                                
+                                <lightning-formatted-number value={itemval.RE_Prev_Mid_Day_price_out__c} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td>                            
+                            <td class="slds-size_1-of-9 greencls">                                
+                                <lightning-formatted-number value={itemval.RE_PSP__c} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td> 
+                            <td class="slds-size_1-of-12 othercls">
+                                <lightning-input variant="label-hidden" name={itemval.Id} class="mpinput" maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                    type = "number" step="0.01" value={itemval.RE_AM_Challenged_Price__c} onchange={handleAMPriceChange}>
+                                </lightning-input>
+                            </td>
+                            <td class="slds-size_2-of-9 variantcls">
+                                <lightning-textarea variant="label-hidden" name={itemval.Id} message-when-too-long="Too Long Text. Please Modify."
+                                    value={itemval.RE_AM_Comments__c} onchange={handleRemarkChange} style="min-width: 110px;"></lightning-textarea>
+                            </td>
+                            <td class="slds-size_1-of-9 redcls">                                
+                                <lightning-formatted-number value={itemval.RE_Final_PSP__c} maximum-fraction-digits="2"
+                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                            </td>                             
+                            <td class="slds-size_1-of-12 ">
+                                <lightning-button 
+                                    name={itemval.Id}
+                                    label="Challenge" 
+                                    icon-position="right"
+                                    icon-name="utility:question" 
+                                    slot="actions"
+                                    disabled={itemval.RE_isDisabled__c}
+                                    onclick={handleChallenge}
+                                    variant="brand-outline" >
+                                </lightning-button> 
+                            </td>                                                        
+                        </tr>                          
+                    </template>
+                </tbody>    
+            </table>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>dharmendra.singh2@shell.com</contactEmail>
+    <description>Connected app for loading MRC data from GSAP via mulesoft</description>
+    <label>GSAP Connected App</label>
+    <oauthConfig>
+        <callbackUrl>https://stasco--c.eu13.visual.force.com/apex/DemoPage</callbackUrl>
+        <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE9gJ2XwPIgA8Jt5sZQWu4fWbm1yVlE.gbvXzn4mPBgiqvyPyXTL_mmRww.pU</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0023</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:type="xsd:string">mark@parrysoundfuels.ca;martinbeauchamp@harnoisgroupepetrolier.com;marylene.vachon@filgo.ca;matt.stradiotti@northarm.bc.ca;mattdalke.chetpete@gmail.com;mfilali@costco.com;misephton@afdpetroleum.com;Monique.Brule@energiesonic.com;mouna@chalmersfuels.ca;Nancy.Gagne@filgo.ca;nancy.martin@costco.com;nick@chalmersfuels.ca;palmerstondispatch@chalmersfuels.ca;Pamela.Smith@parkland.ca;Price.Axxis@filgo.ca;Pricing.Commercial@parkland.ca;pricing@afdpetroleum.com;pricing@mcdougallcorp.com;psalome@4refuel.com;Renee.leclerc@filgo-sonic.ca;rjeffrey@edwardfuels.com;ron@econogas.ca;RRawlings@costco.com;russ.mcmahon@newgold.com;Sabrina.fortin@filgo.ca;SamanthaR@swpetroleum.ca;sandraallard@harnoisgroupepetrolier.com;sean_grotkowski@sunhills.ca;shannonmcdonald@edwardfuels.com;shawn.reynolds@econopetro.com;shell-rack@mcdougallcorp.com;Charisma.Egay@calgary.ca;</value>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">No Revised Pricing</value>
+    </values>
+</CustomMetadata>

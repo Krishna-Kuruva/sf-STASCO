@@ -1,0 +1,29 @@
+<template>
+	<lightning-card icon-name="utility:connected_apps" title="Manual EDP Search">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+        <div class="slds-form-element">
+            <div class="slds-p-horizontal_medium">
+                <lightning-input type="text"  placeholder={placeholder} onchange={handleSearchChange}>
+                </lightning-input>
+                <lightning-button variant="brand-outline" label="EDP Search" title="Edp Search" onclick={calledpsearch} class="slds-m-left_x-small"></lightning-button>
+            </div>
+		</div>
+        <div if:true={isLoading} class="slds-is-relative">
+            <lightning-spinner
+                alternative-text="Loading..." variant="brand">
+            </lightning-spinner>
+        </div>
+	</lightning-card>
+    <template if:true={showOrbisResultTable}>
+        <lightning-card  title="Search Result">
+            <lightning-button variant="brand-outline" label="Update Record with Orbis Data"  onclick={updaterecord} class="slds-m-left_x-small"></lightning-button>
+            <lightning-datatable
+                    key-field="id"
+                    max-row-selection="1"
+                    data={orbisresult}
+                    columns={columns}>
+            </lightning-datatable>
+        
+    </lightning-card>
+    </template>
+</template>

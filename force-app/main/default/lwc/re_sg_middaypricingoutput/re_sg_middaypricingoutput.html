@@ -1,0 +1,146 @@
+<template>
+    <lightning-card> 
+        <div class="slds-p-around_x-small slds-box"> 
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead> 
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-p-left_large" scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left" >MOPS for Period</div>
+                        </th> 
+                    <!--<th scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left">Midday LDC</div>
+                        </th>-->
+                        <th scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left">Midday MC</div>
+                        </th>
+                        <th scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left">Discounted MC0</div>
+                        </th>
+                        <th scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left">+/- Midday MC</div>
+                        </th> 
+                        <th scope="col" colspan="1">
+                            <div class="slds-truncate slds-align_absolute-left">+/- Morning MC</div>
+                        </th>                 
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={myList}>
+                        <template for:each = {myList} for:item = "item">
+                            <tr class="slds-hint-parent" key={item.prodName} >
+                                <td class="slds-size_3-of-10">
+                                    <lightning-formatted-text value={item.prodName}></lightning-formatted-text>
+                                </td>
+                            <!--<td class="slds-size_3-of-10 ">
+                                           <lightning-formatted-number  value={item.laidDownCostSGD} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>
+                                       </td>-->
+                                       <td class="slds-size_3-of-10 ">
+                                           <lightning-formatted-number  value={item.marginalCostSGD} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                       </td>
+                                       <td class="slds-size_3-of-10 ">
+                                           <lightning-formatted-number  value={item.mc0dipDisc} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                       </td>
+                                       <td class="slds-size_3-of-10 ">
+                                           <lightning-formatted-number  value={item.mcDiff} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                       </td>
+                                       <td class="slds-size_3-of-10 ">
+                                           <lightning-formatted-number  value={item.middayDiff} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number >
+                                       </td>
+                                   </tr>
+                               </template>
+                           </template>
+                       </tbody>
+                   </table>
+               </div>
+                   <br/>
+               <div class="slds-p-around_x-small slds-box">
+                   <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                       <thead>
+                           <template if:true={MOPSDetails}>
+                               <template for:each = {MOPSDetails} for:item = "item">
+                                   <tr class="slds-hint-parent" key={item.id} >
+                                       <td class="slds-size_3-of-12">
+                                           <span class="slds-truncate boldFont"><b>Temperature Gain (USD/BB6) :</b> </span>
+                                       </td>
+                                       <td class="slds-size_3-of-10 slds-truncate slds-align_absolute-left">
+                                           <lightning-formatted-number  value={item.RE_Temperature_Gain_USD_BB6__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>
+                                       </td>
+                                       <td class="slds-size_3-of-12">
+                                           <span class="slds-truncate boldFont"><b>Temperature Gain (S cent/l) : </b></span>
+                                       </td>
+                                       <td class="slds-size_3-of-10 slds-truncate slds-align_absolute-left">
+                                           <lightning-formatted-number  value={item.RE_Temperature_Gain_S_cent_l__c} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number>
+                                       </td>
+                                   </tr>
+                               </template>
+                           </template>
+                       </thead>
+                   </table>
+               </div>
+               <br/>
+               <div class="slds-grid slds-wrap">
+                   <div class="slds-size_1-of-2 slds-p-right_x-small slds-box lowerbox">
+                       <c-re_sg_midday-aspiration showhaderval="true" is-mid-day-val="true"></c-re_sg_midday-aspiration>
+                   </div>
+                   <div class="slds-size_1-of-2 slds-p-left_x-small slds-box lowerbox slds-scrollable_y">
+                       <lightning-card>
+                           <h2 class="slds-text-heading_medium slds-hyphenate slds-align_absolute-center">Midday Market Quotes</h2>
+                           <br/>
+                           <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                               <thead>
+                                   <tr class="slds-line-height_reset">
+                                       <th class="slds-p-left_large" scope="col" colspan="1">
+                                           <div class="slds-truncate slds-align_absolute-left" >MOPS/Premium</div>
+                                       </th>
+                                       <th class="slds-p-left_large" scope="col" colspan="1">
+                                           <div class="slds-truncate slds-align_absolute-left">Price (USD/BBL)</div>
+                                       </th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                   <template if:true={mymqList}>
+                                       <template for:each = {mymqList} for:item = "item">
+                                           <tr class="slds-hint-parent" key={item.id} >
+                                               <td class="slds-size_3-of-10">
+                                                   <lightning-formatted-text value={item.RE_Quote_Name__c}></lightning-formatted-text>
+                                               </td>
+                                               <td class="slds-size_3-of-10">
+                                                   <lightning-input variant="label-hidden" name={item.Id} class="mpinput" maximum-fraction-digits="4" minimum-fraction-digits="3"
+                                                   type = "number" step="0.0001" value={item.RE_Price__c} onchange={handlemarketpriceChange}>
+                                                   </lightning-input>
+                                               </td>
+                                           </tr>
+                                       </template>
+                                   </template>
+                               </tbody>
+                           </table>
+                           <br/>
+                           <div class="slds-modal__footer">
+                               <lightning-button
+                                   label="Save"
+                                   icon-name="utility:save"
+                                   slot="actions"
+                                   onclick={handleSave}
+                                   disabled={isdisabled}>
+                               </lightning-button>&nbsp;
+                               <lightning-button
+                                   label="Reset"
+                                   icon-name="utility:clear"
+                                   slot="actions"
+                                   onclick={handleCancel}>
+                               </lightning-button>
+                           </div>
+                       </lightning-card>
+                   </div>
+               </div>
+               <br/>
+               <div class="slds-modal__footer">
+                   <lightning-button
+                       label="Email"
+                       icon-name="utility:email"
+                       slot="actions"
+                       onclick={handleMail}>
+                   </lightning-button>
+               </div>
+           </lightning-card>
+       </template>

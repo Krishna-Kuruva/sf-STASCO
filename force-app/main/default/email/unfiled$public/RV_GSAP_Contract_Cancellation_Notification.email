@@ -1,0 +1,16 @@
+<p>Hi,
+</br></br>
+Contract Cancellation of Deal {!SAP_Staging__c.SfItemShtNo__c} is failed in GSAP. with below error. Please take appropriate action to add the contract in GSAP manually and update the Contract Number back into Salesforce.
+</br></br>
+Record: {!SAP_Staging__c.Link}
+</br></br>
+Error from GSAP:</br>
+{!SAP_Staging__c.Error_Processing_to_GSAP__c}
+</br></br>
+Possible Actions:</br>
+The deal did not get cancelled in GSAP, you might consider to cancel the deal manually in GSAP.
+</br></br>
+This is an auto generated email, Please do not reply.</br>
+</br>
+Thanks,</br>
+Revolution Team</p>

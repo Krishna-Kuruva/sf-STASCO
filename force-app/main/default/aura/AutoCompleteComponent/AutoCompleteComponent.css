@@ -1,0 +1,7 @@
+.THIS.cursorPointer:hover{
+    cursor: pointer;
+    background-color: #F2F4F4  ;
+}
+.THIS.cursorPointer{
+    padding-bottom:5px;
+}

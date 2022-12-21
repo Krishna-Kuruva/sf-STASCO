@@ -1,0 +1,316 @@
+<aura:component controller="RE_MalayasiaOutputController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" > 
+    <aura:attribute name="todaydate" type="Date" default =""/> 
+    <aura:attribute name="yesterdaydate" type="Date" default=""/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />  
+    <aura:attribute name="ExRateDetailsColumn" type="List" 
+                    default="[	{ label: 'FX Rate (MYR/USD)', fieldName: 'item'},
+                             { label: 'Daily', fieldName: 'dailyval',type: 'number',typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 4}},
+                             { label: 'D-1', fieldName: 'lastdayval',type: 'number',typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 4}}
+                             ]"
+                    />
+    <aura:attribute name="ExRateDetails" type="List" default="[]"/>
+    <aura:attribute name="MOPSDetailsColumn" type="List" 
+                    default="[	{ label: 'Product Name', fieldName: 'item'},
+                             { label: 'Daily Mops', fieldName: 'dailyval', type: 'number',typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 2}},
+                             { label: 'D-1 Mops', fieldName: 'lastdayval', type: 'number',typeAttributes: { maximumFractionDigits: 4, minimumFractionDigits : 2}}
+                             ]"
+                    />
+    <aura:attribute name="MOPSDetails" type="List" default=""/>
+    <aura:attribute name="peninsularcostData" type = "RE_MalayasiaOutputController.costDataWrapper[]" />
+    <aura:attribute name="SabahcostData" type = "RE_MalayasiaOutputController.costDataWrapper[]" />
+    <aura:attribute name="SarawakcostData" type = "RE_MalayasiaOutputController.costDataWrapper[]" />
+    <aura:attribute name="isRecalculate" type="Boolean" default="false"/>
+    <aura:attribute name="isValidProfile" type="Boolean" default="false"/>
+    <aura:attribute name="lastModifiedDate" type="DateTime" />
+    <aura:attribute name="classname" type="String" />
+    
+    
+    <div class="c-container">
+        <div class="slds-page-header slds-page-header_record-home slds-scrollable" style="padding : 0.5rem 0.5rem;border: solid 2px #FFCC00;background-color: white;">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning:icon iconName="standard:product_required" alternativeText="CBU Sheet" size="small"/>
+                        </div>
+                        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title" title="Commercial Fuels CBU 2020">Commercial Fuels CBU 2020</span>
+                                </h1>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <br/>            
+            
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">  
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">Last Published Date: </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{!v.lastModifiedDate}</b></span>
+                        </div>   
+                    </div>
+                </div></div>
+            <div class="slds-page-header__col-actions slds-align--absolute-center">
+                <div class="slds-grid slds-gutters">  
+                    <div class="slds-page-header__row">
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">CBU Date : </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{!v.todaydate}</b></span>
+                        </div>  
+                        
+                    </div>
+                </div>                
+            </div>
+        </div> 
+        
+        <br/><br/>
+        
+        <!--Weekly Section starts here-->
+        <div class="slds-grid slds-size_12-of-12">
+            <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                <div class="page-section slds-align_absolute-center">
+                    <h2><b>Daily Average (all values in MYR CTS/LTR)</b></h2>
+                </div>
+                <div class="slds-col slds-p-around_small slds-size_12-of-12 slds-scrollable">
+                    <div class="slds-grid slds-gutters slds-grid_vertical">
+                        <table class="slds-table slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="slds-p-left_small locColor" style="position: sticky!important" scope="col">
+                                        <div class="slds-truncate font-style" title="">Plant</div>
+                                    </th> 
+                                    <th class="slds-p-left_large keroseneColor" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Kerosene">Kerosene</div>
+                                    </th>
+                                    <th class="GasoilB7Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Gasoil B7 0.05% S">Gasoil B7 0.05% S</div>
+                                    </th>
+                                    <th class="GasoilB0Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Gasoil B0 0.05% S">Gasoil B0 0.05% S</div>
+                                    </th>
+                                    <th class="GasoilB7Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Gasoil B7 0.001% S">Gasoil B7 0.001% S</div>
+                                    </th>
+                                    <th class="ULG95Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Gasoil B0 0.001% S">Gasoil B0 0.001% S</div>
+                                    </th>
+                                    <th class="ULG97Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="ULG97">ULG97</div>
+                                    </th>
+                                    <th class="ULG95Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="ULG95">ULG95</div>
+                                    </th>
+                                    <th class="GasoilB7Color" scope="col" colspan="2">
+                                        <div class="slds-truncate slds-align_absolute-center" title="Gasoil E5 B20">Gasoil E5 B20</div>
+                                    </th>
+                                </tr>
+                                
+                            </thead>
+                            <tbody>
+                                <tr class="addBorder">
+                                    <th scope="row" class="slds-truncate secondHeader locColor" ><ui:outputText value="Peninsular"/></th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                </tr>
+                                
+                                <aura:if isTrue="{!!empty(v.peninsularcostData)}">
+                                    <aura:iteration var="costData" items="{!v.peninsularcostData}" >
+                                        <tr>
+                                            <aura:if isTrue="{!costData.mcorldc == 'MC'}">
+                                                <td scope="row" class="locColor"><ui:outputText value="{!costData.location}"/><ui:outputText value="{!costData.mcorldc}" class="locColor1"/></td>
+                                                <aura:set attribute = "else">
+                                                    <td scope="row" class="locColor"><ui:outputText class = "font-style" value="{!costData.location}"/><ui:outputText class="locColor1" value="{!costData.mcorldc}"/></td>
+                                                </aura:set>
+                                            </aura:if>
+                                            <!--<td scope="row" class="locColor"><ui:outputText value="{!costData.mcorldc}"/></td> -->
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber format="0.00" value="{!costData.kerocbu}"/></td> 
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber class="{!if(costData.kerodiff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.kerodiff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob705cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob705diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob705diff}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber format="0.00" value="{!costData.gob005cbu}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber class="{!if(costData.gob005diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob005diff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob7001cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob7001diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob7001diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.gob0001cbu >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber format="0.00" value="{!costData.mogas97cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber class="{!if(costData.mogas97diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas97diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.mogas95cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.mogas95diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas95diff}"/></td>
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.goe2b10cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.goe2b10diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.goe2b10diff}"/></td> 
+                                        </tr>
+                                    </aura:iteration>
+                                    <aura:set attribute = "else">
+                                        <td scope="row" class="" colspan="14"></td>
+                                    </aura:set>
+                                </aura:if>
+                                
+                                <tr class="addBorder">
+                                    <th scope="row" class="slds-truncate secondHeader locColor" colspan="2"><ui:outputText value="Sabah"/></th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                </tr>
+                                
+                                <aura:if isTrue="{!!empty(v.SabahcostData)}">
+                                    <aura:iteration var="costData" items="{!v.SabahcostData}" >
+                                        <tr>
+                                            <aura:if isTrue="{!costData.mcorldc == 'MC'}">
+                                                <td scope="row" class="locColor"><ui:outputText value="{!costData.location}"/><ui:outputText value="{!costData.mcorldc}" class="locColor1"/></td>
+                                                <aura:set attribute = "else">
+                                                    <td scope="row" class="locColor"><ui:outputText class = "font-style" value="{!costData.location}"/><ui:outputText class="locColor1" value="{!costData.mcorldc}"/></td>                                                
+                                                </aura:set>
+                                            </aura:if>
+                                            <!--<td scope="row" class="locColor"><ui:outputText value="{!costData.mcorldc}"/></td>-->
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber format="0.00" value="{!costData.kerocbu}"/></td> 
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber class="{!if(costData.kerodiff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.kerodiff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob705cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob705diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob705diff}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber format="0.00" value="{!costData.gob005cbu}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber class="{!if(costData.gob005diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob005diff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob7001cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob7001diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob7001diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.gob0001cbu >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber format="0.00" value="{!costData.mogas97cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber class="{!if(costData.mogas97diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas97diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.mogas95cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.mogas95diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas95diff}"/></td>
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.goe2b10cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.goe2b10diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.goe2b10diff}"/></td> 
+                                        </tr>
+                                    </aura:iteration>
+                                    <aura:set attribute = "else">
+                                        <td scope="row" class="" colspan="14"></td>
+                                    </aura:set>
+                                </aura:if>
+                                
+                                <tr class="addBorder">
+                                    <th scope="row" class="slds-truncate secondHeader locColor" colspan="2"><ui:outputText value="Sarawak"/></th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader keroseneColor" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB0Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG97Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader ULG95Color" scope="col" title="+/-">+/-</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="CBU">CBU</th>
+                                    <th class="slds-truncate secondHeader GasoilB7Color" scope="col" title="+/-">+/-</th>
+                                </tr>
+                                
+                                <aura:if isTrue="{!!empty(v.SarawakcostData)}">
+                                    <aura:iteration var="costData" items="{!v.SarawakcostData}" >
+                                        <tr>
+                                            <aura:if isTrue="{!costData.mcorldc == 'MC'}">
+                                                <td scope="row" class="locColor"><ui:outputText value="{!costData.location}"/><ui:outputText value="{!costData.mcorldc}" class="locColor1"/></td>
+                                                <aura:set attribute = "else">
+                                                    <td scope="row" class="locColor"><ui:outputText class = "font-style" value="{!costData.location}"/><ui:outputText class="locColor1" value="{!costData.mcorldc}"/></td>
+                                                </aura:set>
+                                            </aura:if>
+                                            <!--<td scope="row" class="locColor"><ui:outputText value="{!costData.mcorldc}"/></td>-->
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber format="0.00" value="{!costData.kerocbu}"/></td> 
+                                            <td scope="row" class="keroseneColor"><ui:outputNumber class="{!if(costData.kerodiff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.kerodiff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob705cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob705diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob705diff}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber format="0.00" value="{!costData.gob005cbu}"/></td> 
+                                            <td scope="row" class="GasoilB0Color"><ui:outputNumber class="{!if(costData.gob005diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob005diff}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.gob7001cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.gob7001diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob7001diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.gob0001cbu >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.gob0001cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber format="0.00" value="{!costData.mogas97cbu}"/></td> 
+                                            <td scope="row" class="ULG97Color"><ui:outputNumber class="{!if(costData.mogas97diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas97diff}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber format="0.00" value="{!costData.mogas95cbu}"/></td> 
+                                            <td scope="row" class="ULG95Color"><ui:outputNumber class="{!if(costData.mogas95diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.mogas95diff}"/></td>
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber format="0.00" value="{!costData.goe2b10cbu}"/></td> 
+                                            <td scope="row" class="GasoilB7Color"><ui:outputNumber class="{!if(costData.goe2b10diff >= 0 ,'slds-text-color_success','slds-text-color_error')}" format="0.00" value="{!costData.goe2b10diff}"/></td> 
+                                        </tr>
+                                    </aura:iteration>
+                                    <aura:set attribute = "else">
+                                        <td scope="row" class="" colspan="14"></td>
+                                    </aura:set>
+                                </aura:if>
+                            </tbody>
+                        </table>                                
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <br/>
+        
+        <div class="page-section slds-align_absolute-center">
+            <h2><b>FX Rate </b></h2>
+        </div>
+        <div class="slds-col slds-p-around_small slds-size_12-of-12">
+            <div class="slds-grid slds-gutters slds-grid_vertical">
+                <div class="slds-col slds-size_12-of-12">
+                    <lightning:datatable data="{! v.ExRateDetails }" 
+                                         columns="{! v.ExRateDetailsColumn}" 
+                                         keyField="Id"
+                                         class="slds-scrollable_y"
+                                         hideCheckboxColumn="true"/>
+                </div></div></div>
+        
+        <br/>
+        <div class="page-section slds-align_absolute-center">
+            <h2><b>MOPS Data (in USD/BBL)</b></h2>
+        </div>
+        <div class="slds-col slds-p-around_small slds-size_12-of-12">
+            <div class="slds-grid slds-gutters slds-grid_vertical">
+                <div class="slds-col slds-size_12-of-12">
+                    <lightning:datatable data="{! v.MOPSDetails }" 
+                                         columns="{! v.MOPSDetailsColumn}" 
+                                         keyField="Id"
+                                         class="slds-scrollable_y"
+                                         hideCheckboxColumn="true"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Weekly Section ends here-->
+</aura:component>

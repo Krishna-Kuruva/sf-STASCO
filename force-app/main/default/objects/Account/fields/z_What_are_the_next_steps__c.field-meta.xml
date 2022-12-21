@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>z_What_are_the_next_steps__c</fullName>
+    <externalId>false</externalId>
+    <label>z- What are the next steps</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Interested In Shell&apos;s Offer (Stop)</fullName>
+                <default>false</default>
+                <label>Not Interested In Shell&apos;s Offer (Stop)</label>
+            </value>
+            <value>
+                <fullName>Interested and wants more info</fullName>
+                <default>false</default>
+                <label>Interested and wants more info</label>
+            </value>
+            <value>
+                <fullName>Had detailed session to share CO2 CVP</fullName>
+                <default>false</default>
+                <label>Had detailed session to share CO2 CVP</label>
+            </value>
+            <value>
+                <fullName>Handed them the master Agreement</fullName>
+                <default>false</default>
+                <label>Handed them the master Agreement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

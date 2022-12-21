@@ -1,0 +1,13 @@
+/**
+ * Created by Soumyajit.Jagadev on 11-Jul-20.
+ */
+.pageHeader{color:#800080;}
+.sectionHeader{background-color:#F8F8F8;}
+.reducedFont{font-size: 11px;}
+.modalHeader{background-color: cadetblue;color: white;}
+.modalBody{border-color: cadetblue;border-width: 2px;border-style: solid;}
+.modalFooter{background-color: cadetblue;color: white;}
+.bgGrey{background-color: rgb(243, 242, 242);}
+.bgWhite{background-color: white;}
+.suggAmount{color: rgb(0, 112, 210);}
+.padding-left-1{padding-left: 1%;}

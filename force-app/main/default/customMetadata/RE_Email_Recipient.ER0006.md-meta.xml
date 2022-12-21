@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0006</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:type="xsd:string">4PricingCA@4Refuel.com;admin@exchangepetroleum.com;akirouac@4refuel.com;alain.lacas@energiesonic.com;arps@cantire.com;Badru@CentexPetroleum.com;groupeprixcarburants@harnoisenergies.com;Berthin.ouellet@filgo-sonic.ca;bgrenier@afdpetroleum.com;bob@hughespetroleum.com;BradA@swpetroleum.ca;brenda@chalmersfuels.ca;BrianM@swpetroleum.ca;cdngasdept.53@costco.com;Pricing.Group@ufa.com;change.notice@ufa.com;chetpete@pris.ca;claude.cloutier@newgold.com;csr@afdpetroleum.com;darren@hughespetroleum.com;davidshepherd@costco.com;debbie@econogas.ca;debbiemobile@econogas.ca;dispatch@hughespetroleum.com;doug.granger@grangerfuels.com;ErikL@swpetroleum.ca;ChantelB@swpetroleum.ca;kel-dispatch@afdpetroleum.com;David.joyce@calgary.ca;</value>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Shell Rack Customer Notification</value>
+    </values>
+</CustomMetadata>

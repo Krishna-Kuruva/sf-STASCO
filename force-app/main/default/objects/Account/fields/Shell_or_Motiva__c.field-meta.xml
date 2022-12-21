@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shell_or_Motiva__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>For USA only</inlineHelpText>
+    <label>Shell or Motiva</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Shell</fullName>
+                <default>true</default>
+                <label>Shell</label>
+            </value>
+            <value>
+                <fullName>Motiva</fullName>
+                <default>false</default>
+                <label>Motiva</label>
+            </value>
+            <value>
+                <fullName>Sopus</fullName>
+                <default>false</default>
+                <label>Sopus</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

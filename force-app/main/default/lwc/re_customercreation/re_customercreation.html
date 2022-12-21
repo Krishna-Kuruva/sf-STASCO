@@ -1,0 +1,200 @@
+<template>          
+    <div class = "zoomout">
+        <lightning-layout>          
+                    
+            <lightning-layout-item size="6" padding="around-small">
+                <div class="slds-var-p-left_x-small slds-var-p-right_xx-small slds-box" style="min-height: 500px;">
+                    <div>
+                        <h2 class="slds-text-heading_small slds-m-top_x-small slds-m-left_x-small"><b>Search Account name to update or to create a new contract for existing Account</b></h2>
+                        <div class="slds-grid slds-gutters slds-m-top_x-small slds-m-left_xxx-small">                                        
+                            <lightning-record-edit-form                        
+                                    object-api-name="Contact">                                
+                                    <div class="slds-col">
+                                        <lightning-input-field variant="label-hidden" value={selectedAccountID} onchange={storeAccountId} field-name="AccountId"  ></lightning-input-field>
+                                    </div>    
+                            </lightning-record-edit-form>
+                            <lightning-button  onclick={updateAccountId} label="Select"></lightning-button>           
+                            <lightning-button  onclick={clearAccountId} label="Clear"></lightning-button>  
+                        </div>
+                    </div>
+                    <br></br>
+                    <div style="border-top: 2px solid #FFCC00;" class="slds-m-top_xx-small">
+                        <h2  class="slds-text-heading_small slds-m-left_x-small slds-m-top_x-small"><b>Account Creation / Update</b></h2>
+                        <!--<lightning-record-form 
+                            record-id={recordId} 
+                            object-api-name="Account"
+                            fields={fields} 
+                            columns="2" 
+                            mode="edit" 
+                            onsuccess={handleSubmit}
+                            onsubmit={validateAndSubmit}
+                            density="compact">
+                        </lightning-record-form> -->
+
+                        <lightning-record-edit-form 
+                        data-id="AccountEditForm"
+                        object-api-name="Account"
+                        density="compact"
+                        columns="2" 
+                        record-id={recordId}
+                        record-type-id= {recordTypeId}
+                        onsuccess={handleSubmit}
+                        onerror = {disableloading}
+                        onsubmit={validateAndSubmit}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input-field field-name="Name"  required></lightning-input-field>
+                                    <lightning-input-field field-name="Customer_Type__c"  required></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Parent_Customer__c"  ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Account_Manager__c"  ></lightning-input-field>
+                                </div>
+                                <div class="slds-col"> 
+                                    <lightning-input-field field-name="RT_Active__c" checked></lightning-input-field>
+                                    <lightning-input-field field-name="AccountNumber"  required></lightning-input-field>
+                                    <lightning-input-field field-name="Type"  required></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Customer_Group__c"></lightning-input-field>
+                                </div>                        
+                            </div>
+                            <lightning-button class="slds-var-m-top_small slds-align_absolute-center"
+                                                    type="submit"
+                                                    label="Save"></lightning-button>              
+                        </lightning-record-edit-form>
+                    </div>  
+                </div>                
+            </lightning-layout-item>
+            <template if:true = {hasconrecordId}>
+                <lightning-layout-item size="6" padding="around-small">
+                    <div class="slds-var-p-left_xx-small slds-var-p-right_x-small slds-box" style="min-height: 475px;">
+                        <h2 class="slds-text-heading_small slds-align_absolute-center"><b>Contract Creation</b></h2>
+                        <lightning-record-edit-form 
+                            object-api-name="REV_Contract_Master__c"
+                            density="compact"
+                            columns="2" 
+                            onsuccess={handleContractSubmit}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input-field field-name="RE_Customer_Name__c" value={customerId} required></lightning-input-field>
+                                    <lightning-input-field field-name="RT_Plant_Desc__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="RT_Material_Desc__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="Country_Name__c"  value={country} disabled="true"></lightning-input-field>
+                                    <lightning-input-field field-name="Active__c" ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Tier__c" ></lightning-input-field>
+                                    <lightning-input-field field-name="List_Price_Tier__c" ></lightning-input-field>
+                                    <!--<lightning-input-field field-name="RE_Pricing_Level__c" ></lightning-input-field> -->                                   
+                                    <lightning-input-field field-name="RT_Valid_From__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="RT_Valid_To__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Round_Up__c" ></lightning-input-field>  
+                                </div>
+                                <div class="slds-col">                                
+                                    <lightning-input-field field-name="RE_Custom_Ops_Calculation__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Sales_Org__c" required></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Transport_Mode__c" ></lightning-input-field>                                   
+                                    <lightning-input-field field-name="RE_PH_Approval_Scheme__c" value={AppSchme} disabled="true" ></lightning-input-field>
+                                    
+                                    <p class="slds-p-left_x-large"> <span style="color: rgb(197, 1, 1);">Note:</span>  Below charges in MYR/100 L</p>
+                                    <lightning-input-field field-name="RE_Pricing_Levels__c" ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Transport_Charges__c" step="0.01" ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_DFOA_Charges__c" ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_Service_SurChg__c" ></lightning-input-field>                                    
+                                    <lightning-input-field field-name="RE_Rebate__c" ></lightning-input-field>
+                                    <lightning-input-field field-name="RE_BDF__c" ></lightning-input-field>
+                                    
+                                                                     
+                                </div>
+                            </div>               
+                            <lightning-button class="slds-var-m-top_small slds-align_absolute-center"
+                                            type="submit"
+                                            label="Create Contract"></lightning-button>
+                        </lightning-record-edit-form>
+                    </div>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item size="12" class="slds-var-p-bottom_xx-small slds-align_absolute-center">
+                <lightning-button label="New Customer" title="Create Customer/Refresh Page" icon-name=utility:save
+                    onclick={handlereferesh}>
+                </lightning-button> &nbsp; &nbsp; 
+                <template if:true = {hasrecordId}>
+                    <lightning-button label="Create Contract" title="Create Contract" icon-name=utility:save
+                        onclick={createcontractdata}>
+                    </lightning-button>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </div>
+    <div class="tableBackground">
+        <lightning-layout>
+            <template if:true = {isContract}> 
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-var-p-left_x-small slds-var-p-right_x-small slds-box" style="height: 300px;">
+                        <h2 class="slds-text-heading_small slds-align_absolute-center"><b>Contracts</b></h2>              
+                        <div class ="slds-scrollable"> 
+                            <lightning-datatable
+                               
+                                key-field="id"
+                                data={data}
+                                columns={columns}
+                                onrowaction={handleRowAction}
+                                hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>            
+                </lightning-layout-item>
+            </template>
+            <div class="zoomout">
+                <template if:true={isModalOpen}>
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                    <lightning-icon icon-name="utility:close"
+                                        alternative-text="close"
+                                        variant="nuetral"
+                                        size="small" 
+                                        onclick={closeModal}></lightning-icon>
+                                </button>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Contract Detail</h2>
+                            </header>                            
+                            <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                                <lightning-record-form 
+                                    record-id={contractId} 
+                                    object-api-name="REV_Contract_Master__c"
+                                    fields={contractfields} 
+                                    columns="2" 
+                                    mode="edit" 
+                                    onsuccess={handlecontractEdit}
+                                    oncancel={closeModal}
+                                    density="compact">
+                                </lightning-record-form>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Ok</button>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </template>
+            </div>
+        </lightning-layout>
+    </div>
+      <!--on loading message  start-->
+      <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+        
+    </template>
+     <!--on loading message end-->
+</template>

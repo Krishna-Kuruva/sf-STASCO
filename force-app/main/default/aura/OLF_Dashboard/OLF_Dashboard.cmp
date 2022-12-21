@@ -1,0 +1,540 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" 
+                access="global" 
+                controller="OLF_DashboardApexController">
+	<!--
+	Version : 0.0
+	Author	: Soumyajit
+	Date	: 03-May-2019
+	Details	: Dashboard for OLF
+	-->
+    <!--Event Declaration starts here-->
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Event Declaration ends here-->
+    
+    <!--Attribute Declaration starts here-->
+    <aura:attribute name="OLFStatus" type="Boolean" default="false"/>
+    <aura:attribute name="LastRequestFromOLF" type="String" default=""/>
+    <aura:attribute name="LastResponseFromRevolution" type="String" default=""/>
+    <aura:attribute name="CustomerList" type="List" default=""/>
+    <aura:attribute name="CustomerDetailsColumn" type="List" 
+                    default="[	{ label: 'Customer Name', fieldName: 'linkName' , type: 'url', typeAttributes: {label: { fieldName: 'Name'}, target: '_blank'}},
+                                { label: 'Sold-To', fieldName: 'SoldTo' },
+                                { label: 'Total Credit', fieldName: 'TotalCredit', type: 'number' },
+                                { label: 'Available Credit', fieldName: 'AvailableCredit', type: 'number' },
+                                { label: 'Available for OLF', fieldName: 'AvailableForOLF', type: 'boolean' },
+                             ]"
+                    />
+    <aura:attribute name="CustomerDetails" type="List" default=""/>
+    <aura:attribute name="HasMRC" type="Boolean" default="false"/>
+    <aura:attribute name="MaterialList" type="List" default=""/>
+    <aura:attribute name="LocationList" type="List" default=""/>
+    <aura:attribute name="MRCDetailsColumn" type="List" 
+                    default="[	{ label: 'MRC NAME', fieldName: 'MRClinkName' , type: 'url', typeAttributes: {label: { fieldName: 'Name'}, target: '_blank'}},
+                                { label: 'Customer', fieldName: 'SoldTolinkName' , type: 'url', typeAttributes: {label: { fieldName: 'SoldTo'}, target: '_blank'}},
+                             	{ label: 'Sales Org', fieldName: 'SalesOrg'},
+                             	{ label: 'Plant Name', fieldName: 'LocationlinkName' , type: 'url', typeAttributes: {label: { fieldName: 'Location'}, target: '_blank'}},
+                             	{ label: 'Product Name', fieldName: 'MateriallinkName' , type: 'url', typeAttributes: {label: { fieldName: 'Material'}, target: '_blank'}},
+                                { label: 'Handling Type', fieldName: 'HandlingType'},
+                                { label: 'Available for OLF', fieldName: 'AvailableForOLF', type: 'boolean' },
+                             ]"
+                    />
+    <aura:attribute name="MRCDetails" type="List" default=""/>   
+    <aura:attribute name="SelectCustomer" type="String" default="All"/>
+    <aura:attribute name="SelectMaterial" type="String" default="All"/>
+    <aura:attribute name="SelectLocation" type="String" default="All"/>
+    <!--327368_Soumyajit_09Aug2019 starts-->
+    <aura:attribute name="NextInactivationBatchTime" type="String" default="NA"/>
+    <!--327368_Soumyajit_09Aug2019 ends-->
+    
+    <!--ICELimit_Soumyajit_27Apr2020 starts-->
+    <aura:attribute name="ThresholdEditDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="ICEThreshold" type="Integer"/>
+    <!--ICELimit_Soumyajit_27Apr2020 ends-->
+    <!--START | Rahul Sharma | Date - 20-May-20 : New attributes for OLF GSAP Contract data push-->
+    <aura:attribute name="fromDate" type="DateTime"/>
+    <aura:attribute name="toDate" type="DateTime"/>
+    <aura:attribute name="minFromDate" type="DateTime"/>
+    <aura:attribute name="maxToDate" type="DateTime"/>
+    <aura:attribute name="maxDaysForResend" type="Integer" default="7"/>
+    <aura:attribute name="olfRetryValid" type="Boolean" default="true"/>
+    <aura:attribute name="openRetryModal" type="Boolean" default="false"/>
+    <aura:attribute name="olfMessage" type="String"/>
+    <aura:attribute name="enableRetry" type="Boolean" default="false"/>
+    <!--END | Rahul Sharma | Date - 20-May-20 : New attributes for OLF GSAP Contract data push-->
+    <!--START | Rahul Sharma | Date - 16-Oct-20 : New attributes for OLF lifting window/tranche setup-->
+    <aura:attribute name="trancheSetupList" type="List"/>
+    <aura:attribute name="trancheSetupLstBkp" type="List"/>
+    <aura:attribute name="editTranche" type="Boolean" default="false"/>
+    <aura:attribute name="trancheSetupValid" type="Boolean" default="true"/>
+    <aura:attribute name="openWaringPopup" type="Boolean" default="false"/>
+    <!--END | Rahul Sharma | Date - 16-Oct-20 : New attributes for OLF lifting window/tranche setup-->
+    <!--Start | Swarna | edit button restriction for PO users-->
+    <aura:attribute name="hasPO_Permission" type="Boolean" default="false"/>
+    <!--End-->
+    <!--Attribute Declaration ends here-->
+    <!-- START | Surbhi | Date 2-Aug-2022 : PBI-1366142 -->
+    <aura:attribute name="enableOLFInactvatnEditBtn" type="Boolean" default="false"/>
+    <aura:attribute name="hasUserClkOLFInactvatnEditBtn" type="Boolean" default="false"/>
+    <aura:attribute name="setOlfInactiveDt" type="DateTime" />
+    <aura:attribute name="showWaringPopup" type="Boolean" default="false" />
+    <aura:attribute name="OLFInactivationWarningMsg" type="String" default="" />
+    <aura:attribute name="hasInactiveDateEditPermission" type="Boolean" default="false" /> 
+    <aura:attribute name="inactiveDateSetupValid" type="Boolean" default="true" />
+    <!-- END | Surbhi | Date 2-Aug-2022 : PBI-1366142 -->
+    <!--Spinner starts here-->
+    <div class="slds-align--absolute-center">
+        <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide"  />
+    </div>
+    <!--Spinner ends here-->
+    
+    <!--Page starts here-->
+    <div class="c-container">
+        <lightning:layout horizontalAlign="space" multipleRows="true">
+            
+            <!--OLF CONNECTION Section starts here-->
+            <div aura:id="OLFCONNECTION" class="slds-grid slds-size_12-of-12">
+                <div class="slds-col slds-p-around_small slds-size_11-of-12">
+                    <div class="page-section ">
+                        <h2>
+                            <b>OLF CONNECTION</b>
+                            <span>&nbsp;: OLF interface details</span>
+                        </h2>
+                   </div>
+                    <div aura:id="masterGrid" class="slds-grid slds-gutters">
+                        	<!--UserActivateButton_Soumyajit_01Aug2019 starts-->
+                            <div aura:id="masterGridChild1" class="slds-col slds-size_1-of-12 slds-align_absolute-center noPadding">
+                                <div class="slds-grid slds-grid_vertical">
+                                    <div class="slds-col">
+                                		<label class="slds-form-element__label">Status :</label>
+                                    </div>
+                                    <aura:if isTrue="{!v.OLFStatus}">
+                                             <div class="slds-col">
+                                            	<lightning:button class="slds-form-element__control OLFstatusGreen" variant="brand" label="Active" onclick="{!c.userActivateDeactivate}" title="Click to Inactivate" name="STOP"/>
+                                            </div>
+                                             <div class="slds-col">
+                                                 <span class="buttonSmallText">Click to Inactivate</span>
+                                            </div>
+                                        <aura:set attribute="else">
+                                           <div class="slds-col">
+                                               <lightning:button class="slds-form-element__control OLFstatusRed" variant="brand" label="Inactive" onclick="{!c.userActivateDeactivate}" title="Click to Activate" name="START"/>
+                                            </div>
+                                             <div class="slds-col">
+                                                 <span class="buttonSmallText">Click to Activate</span>
+                                            </div>
+                                        </aura:set>
+                              		</aura:if>
+                                </div>
+                            </div>
+                            <div aura:id="masterGridChild2" class="slds-col slds-size_2-of-12 slds-align_absolute-center noPadding">
+                                <lightning:input disabled="true" value="{!v.LastRequestFromOLF}" label="Last Request From OLF :" />
+                            </div>
+                            <div aura:id="masterGridChild3" class="slds-col slds-size_2-of-12 slds-align_absolute-center noPadding">
+                                <lightning:input disabled="true" value="{!v.LastResponseFromRevolution}" label="Last Deal Creation Time :" />
+                            </div>
+                            <!-- START | Surbhi | Date 2-Aug-2022 : PBI-1366142 -->
+                            <aura:if isTrue="{!v.hasUserClkOLFInactvatnEditBtn}">
+                            <!--Visible when the user clicks on edit button-->
+                            <div  class="slds-col slds-size_3-of-12 slds-align_absolute-center noPadding"> 
+                                <lightning:input aura:id="inactiveDate" type="datetime" name="olfInactiveDate" 
+                                                 value="{!v.setOlfInactiveDt}"/>
+                                      
+                            </div>
+                            <div aura:id="saveCancelbtnId" class="cust_OLFInactiveSaveCnclBtn">
+                                <lightning:button class="slds-form-element__control cust_OLFInactiveBtn OLFstatusGreen" aura:id="saveOLFInactiveDate" 
+                                                  variant="brand" label="Save" onclick="{!c.validateInactiveTimeAndCreateSchdlrLogic}"
+                                                  disabled="{!not(v.inactiveDateSetupValid)}" />                 
+                                <lightning:button class="slds-form-element__control cust_OLFInactiveBtn" label="Cancel" variant="brand-outline" 
+                                                  onclick="{!c.handleEditCnclBtnLogicOfOLFInactiveDt}" aura:id="cancelOLFInactiveDate" disabled="false" />     
+                            </div> 
+                            <!--Visible when the page loads-->
+                            <aura:set attribute="else">
+                                <div aura:id="masterGridChild4" class="slds-col slds-size_3-of-12 slds-align_absolute-center noPadding cust_InactiveTimeFld">                                     
+                                    <lightning:input disabled="true" value="{!v.NextInactivationBatchTime}" label="Next Connection Auto-Inactivation Time:" />
+                                    <lightning:helptext class="cust_tooltipPos" content="{!$Label.c.RV_OLFInactiveDateHelptext}"/>
+                                    <lightning:button label="Edit" variant="brand" disabled="{!!v.hasInactiveDateEditPermission}" 
+                                                      class="slds-form-element__control cust_OLFInactiveBtn" onclick="{!c.handleEditCnclBtnLogicOfOLFInactiveDt}"></lightning:button> 
+                                    
+                                </div>
+                            </aura:set>  
+                        </aura:if>
+                        <!-- END | Surbhi | Date 2-Aug-2022 : PBI-1366142 -->
+                        	<!--UserActivateButton_Soumyajit_01Aug2019 ends-->
+                    </div>             
+                </div>
+            	<div class="slds-col slds-p-around_small slds-size_1-of-12 slds-float_right">
+                <lightning:button variant="brand" label="Refresh" onclick="{!c.refreshPage}"/>
+                </div>
+            </div>
+           <!--OLF CONNECTION Section ends here-->
+           
+           <!--ICELimit_Soumyajit_27Apr2020 starts-->
+           <!--Price Threshold Section starts here-->
+            <div aura:id="PRICETHRESHOLD" class="slds-grid slds-size_12-of-12">
+                <div aura:id="PRICETHRESHOLDINNER1" class="slds-col slds-p-around_small slds-size_11-of-12">
+                    <div class="page-section ">
+                        <h2>
+                            <b>OLF PRICE THRESHOLD</b>
+                            <span>&nbsp;: If price goes below this threshold, OLF connection will be disabled. Blank value is considered as no threshold.</span>
+                        </h2>
+                   </div>
+                    <div aura:id="priceGrid" class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                        <div aura:id="priceGridChild1" class="slds-col slds-size_2-of-12 slds-align_absolute-center noPadding">
+                        	<lightning:input type="number" disabled="{!v.ThresholdEditDisabled}" value="{!v.ICEThreshold}" label="ICE LGO (in $/ton) :" step="0.01"/>
+                        </div>
+                        <div class="slds-col slds-size_9-of-12">
+                        </div>
+                    </div>             
+                </div>
+                <div aura:id="PRICETHRESHOLDINNER2" class="slds-col slds-p-around_small slds-size_2-of-12 slds-float_right">
+                    <aura:if isTrue="{!v.ThresholdEditDisabled}">
+                        <aura:if isTrue="{!!v.hasPO_Permission}">
+                            <lightning:button class="slds-form-element__control" variant="brand" label="Edit" onclick="{!c.editThreshold}"/>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <lightning:button class="OLFstatusGreen" variant="success" label="Save" onclick="{!c.saveThreshold}"/>
+                            <lightning:button variant="brand-outline" label="Cancel" onclick="{!c.cancelSaveThreshold}"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+           <!--Price Threshold Section ends here-->
+           <!--ICELimit_Soumyajit_27Apr2020 ends-->
+           
+           <!--START | Rahul Sharma | Date - 20-May-20 : New section for OLF GSAP Contract data push-->
+           <div aura:id="GsapContractPushToOLF" 
+                class="slds-grid slds-size_12-of-12">
+                <div aura:id="GsapContractPushToOlfInner"
+                    class="slds-col slds-p-around_small slds-size_11-of-12">
+                    <div class="page-section ">
+                        <h2>
+                            <b>RE-ATTEMPT OLF CALLOUT</b>
+                            <span>&nbsp;: Send failed GSAP contract data to the OLF  for the selected time window.</span>
+                        </h2>
+                    </div>
+                    <div aura:id="inputGrid"
+                        class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                        <div aura:id="inputGridChild" 
+                            class="slds-col slds-size_3-of-12 slds-m-left_xx-large slds-p-left_xx-small slds-align_absolute-center">
+                            <lightning:input aura:id="fromDate"
+                                             type="datetime" 
+                                             name="fromDate" 
+                                             label="From Date" 
+                                             value="{!v.fromDate}" 
+                                             min="{!v.minFromDate}" 
+                                             max="{!v.toDate}"
+                                             required="true"
+                                             onchange="{!c.validateInput}"/>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12 noPadding">
+                        </div>
+                        <div aura:id="inputGridChild" 
+                             class="slds-col slds-size_3-of-12 slds-m-left_large slds-p-horizontal_xx-small slds-align_absolute-center">
+                            <lightning:input aura:id="toDate" 
+                                             type="datetime" 
+                                             name="toDate" 
+                                             label="To Date" 
+                                             value="{!v.toDate}" 
+                                             min="{!v.fromDate}" 
+                                             max="{!v.maxToDate}"
+                                             required="true"
+                                             onchange="{!c.validateInput}"/>
+                        </div>
+                        <div class="slds-col slds-size_5-of-12">
+                        </div>
+                    </div>             
+                </div>
+                <div aura:id="GsapContractPushToOlfInner"
+                    class="slds-col slds-p-around_small slds-size_2-of-12 slds-float_right">
+                    <lightning:button class="slds-form-element__control"
+                                      variant="brand" 
+                                      label="Resend" 
+                                      onclick="{!c.getCountOfGsapData}" 
+                                      disabled="{!not(v.olfRetryValid)}"/>
+                </div>
+            </div>
+            <!--END | Rahul Sharma | Date - 20-May-20 : New section for OLF GSAP Contract data push-->
+            
+            <!--START | Rahul Sharma | Date - 07-Oct-20 : Flexible lifting window starts here-->
+            <div aura:id="OlfFlexibleLiftingWindow" 
+                class="slds-grid slds-size_12-of-12">
+                <div aura:id="OlfFlexibleLiftingWindowInner"
+                     class="{!v.editTranche ? 'slds-col slds-p-around_small slds-size_10-of-12' : 'slds-col slds-p-around_small slds-size_11-of-12'}">
+                    <div class="page-section ">
+                        <h2>
+                            <b>LIFTING WINDOW SETUP</b>
+                             <!--START Srivastava,Date  15-Jul-22 : PBI-(1343336)-->
+                            <span>&nbsp;: Click on the edit button to configure start day and end day for OLF lifting windows.</span>
+                            <!--END Surbhi Srivastava,Date - 15-Jul-22 : PBI-1343336-->
+                        </h2>
+                    </div>
+                    <aura:iteration items="{!v.trancheSetupList}" var="trancheSetup" indexVar="index" start="0">
+                        <div aura:id="inputGrid"
+                             data-index="{!index}"
+                            class="slds-grid slds-gutters slds-grid_align-spread">
+                            <div aura:id="trancheOutputChild" 
+                                class="slds-col slds-size_2-of-12 slds-m-left_large slds-align-middle slds-m-top_small">
+                                {!trancheSetup.settingName}
+                            </div>
+                            <div aura:id="trancheInputChild"
+                                class="slds-col slds-size_3-of-12 slds-p-left_xx-small slds-align-middle">
+                                <!-- End | Mohan | Date 27-Jan-2022 |PBI (1043402) -->
+                                <!--START | Surbhi Srivastava | Date  18-Jul-22 | PBI-(1343336)-->
+                                <div
+                                    class="slds-col slds-size_5-of-12 slds-p-left_xx-small slds-align-left slds-float_left">
+                                    <lightning:input aura:id="trancheInputChild2" type="number" name="{!index}"
+                                        label="Start Day" value="{!trancheSetup.startDay}" required="true"
+                                        disabled="{!not(v.editTranche)}" min="0" maxlength="3" onchange="{!c.validateTrancheOnChange}" />               
+                                </div>
+                                <!-- Start | Mohan | Date 27-Jan-2022 |PBI (1043402) -->
+                                <div
+                                    class="slds-col slds-size_7-of-12 slds-p-left_xx-small slds-align-middle slds-float_left ">
+                                    <lightning:input aura:id="displayStartDate" type="date"
+                                        name="{!trancheSetup.startDate}" label="Start Date" required="true"
+                                        value="{!trancheSetup.startDate}" disabled="true" class="OLFDatesWidth"/>
+                                </div>
+                            </div>
+                            <div aura:id="trancheInputChild"
+                                class="slds-col slds-size_3-of-12 slds-p-horizontal_xx-small slds-align-middle">
+                                <!-- START | Mohan | Date 27-Jan-2022 |PBI (1043402) -->
+                                <div
+                                    class="slds-col slds-size_5-of-12 slds-p-left_xx-small slds-align-middle slds-float_left">
+                                    <lightning:input aura:id="trancheInputChild2" type="number" name="{!index}"
+                                        label="End Day" value="{!trancheSetup.endDay}" required="true"
+                                        disabled="{!not(v.editTranche)}" min="0" maxlength="3" onchange="{!c.validateTrancheOnChange}" />
+                                </div>                                                             
+                                <div
+                                    class="slds-col slds-size_7-of-12 slds-p-left_xx-small slds-align-left slds-float_left">
+                                    <lightning:input aura:id="displayEndDate" type="date" name="{!trancheSetup.endDate}"
+                                        label="End Date" required="true" value="{!trancheSetup.endDate}" disabled="true" class="OLFDatesWidth"/>
+                                </div>                                             
+                                <!-- End | Mohan | Date 27-Jan-2022 |PBI (1043402)-->
+                                <!--END | Surbhi Srivastava | Date  22-Jul-22 | PBI-(1343336)-->
+                            </div>
+                            <div class="slds-col slds-size_2-of-12 slds-p-horizontal_xx-small slds-align-middle slds-m-top_medium slds-form-element__control">
+                                <div class="slds-grid slds-grid_vertical">
+                                    <lightning:input name="enableTranche"
+                                                     label=""
+                                                     type="toggle"
+                                                     checked="{!trancheSetup.isActive}"
+                                                     messageToggleActive="Active"
+                                                     messageToggleInactive="Inactive"
+                                                     disabled="{!not(v.editTranche)}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </aura:iteration>             
+                </div>
+                <div aura:id="GsapContractPushToOlfInner2"
+                    class="slds-col slds-p-around_small slds-size_2-of-12 slds-float_right">
+                    <aura:if isTrue="{!not(v.editTranche)}">
+                        <aura:if isTrue="{!!v.hasPO_Permission}">
+                            <lightning:button class="slds-form-element__control"
+                                            variant="brand" 
+                                            label="Edit" 
+                                            onclick="{!c.toggleTrancheSetting}" 
+                                            disabled="false"/>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <lightning:button class="slds-form-element__control OLFstatusGreen"
+                                              aura:id="saveTranche"
+                                              variant="brand" 
+                                              label="Save" 
+                                              onclick="{!c.verifytranchesForOLF}" 
+                                              disabled="{!not(v.trancheSetupValid)}"/>
+                            <lightning:button class="slds-form-element__control"
+                                              label="Cancel" 
+                                              variant="brand-outline"
+                                              onclick="{!c.toggleTrancheSetting}" 
+                                              disabled="false"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+            <!--END | Rahul Sharma | Date - 07-Oct-20 : Flexible lifting window ends here-->
+           <aura:if isTrue="{!v.OLFStatus}">
+           <!--CUSTOMER Section starts here-->
+           		<div aura:id="CUSTOMER" class="slds-grid slds-size_12-of-12">
+                    <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                        <div class="page-section ">
+                            <h2>
+                                <b>CUSTOMER</b>
+                                <span>&nbsp;: Customer(s) available for online deal</span>
+                            </h2>
+                       </div>
+                       <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                           <div aura:id="customerGrid" class="slds-grid slds-gutters slds-grid_vertical">
+                               <div aura:id="CustomerHeader" class="slds-col slds-p-around_small slds-size_3-of-12 slds-float_left">
+                                <lightning:select name="selectCustomer" label="Select Customer" onchange="{!c.getSelCustDtl}" value="{!v.SelectCustomer}">
+                                    <option value="ALL">All</option>
+                                    <aura:iteration items="{!v.CustomerList}" var="custSel">
+                                        <option value="{!custSel}" text="{!custSel}"></option>
+                                    </aura:iteration>
+                                </lightning:select>
+                               </div>
+                               <div aura:id="CustomerSection" class="slds-col slds-size_12-of-12 CustomerSectionHeightEnlarge">
+                                     <lightning:datatable data="{! v.CustomerDetails }" 
+                                                     columns="{! v.CustomerDetailsColumn}" 
+                                                     keyField="Id"
+                                                     class="slds-scrollable_y"
+                                                     hideCheckboxColumn="true"/>
+                               </div>
+                           </div>
+                        </div>
+                   </div>
+                </div>
+           <!--CUSTOMER Section ends here-->
+            
+           <!--MRC Section starts here-->
+           <aura:if isTrue="{!v.HasMRC}">
+               <div aura:id="MRC" class="slds-grid slds-size_12-of-12">
+                    <div class="slds-col slds-p-around_small slds-size_12-of-12">
+                        <div class="page-section ">
+                            <h2>
+                                <b>MRC</b>
+                                <span>&nbsp;: MRC(s) available for online deal</span>
+                            </h2>
+                        </div>
+                        <div aura:id="MRCHeader" class="slds-grid">
+                    		<div class="slds-col slds-p-around_small slds-size_3-of-12 slds-float_left">
+                                 <lightning:select name="selectMaterial" label="Select Material" onchange="{!c.getSelMRCDtl}" value="{!v.SelectMaterial}">
+                                    <option value="ALL">All</option>
+                                    <aura:iteration items="{!v.MaterialList}" var="mat">
+                                        <option value="{!mat}" text="{!mat}"></option>
+                                    </aura:iteration>
+                                </lightning:select>
+                        	</div>
+                            <div class="slds-col slds-p-around_small slds-size_3-of-12 slds-float_left">
+                               <lightning:select name="selectLocation" label="Select Location" onchange="{!c.getSelMRCDtl}" value="{!v.SelectLocation}">  
+                                    <option value="ALL">All</option>
+                                    <aura:iteration items="{!v.LocationList}" var="loc">
+                                        <option value="{!loc}" text="{!loc}"></option>
+                                    </aura:iteration>
+                               </lightning:select>
+                            </div>
+                        </div>
+                       <div aura:id="MRCSection" class="slds-p-around_medium" style="height:400px;">
+                            <lightning:datatable data="{!v.MRCDetails}" 
+                                             columns="{! v.MRCDetailsColumn}" 
+                                             keyField="Id"
+                                             class="slds-scrollable_y"
+                                             hideCheckboxColumn="true" />-
+                       </div>
+                    </div>
+             	</div>
+            </aura:if>
+            <!--MRC Section ends here-->
+            </aura:if>
+         </lightning:layout>
+         <!--START | Rahul Sharma | Date - 20-May-20 : Modal Popup for OLF GSAP Contract data push-->
+         <div class="slds-m-around_xx-large">
+            <aura:if isTrue="{!v.openRetryModal}">           
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><b>Confirm</b></h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p class="slds-align_absolute-center"><b>
+                            {!v.olfMessage}
+                                </b>
+                            </p>
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" 
+                                              label="Cancel"
+                                              title="Cancel"
+                                              onclick="{!c.closeModel}"/>
+                            <lightning:button variant="brand" 
+                                              label="Confirm"
+                                              title="Confirm"
+                                              onclick="{!c.retryCallout}"
+                                              disabled="{!not(v.enableRetry)}"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>
+        <!--END | Rahul Sharma | Date - 20-May-20 : Modal Popup for OLF GSAP Contract data push-->
+
+        <!--START | Rahul Sharma | Date - 20-May-20 : Modal Popup for Tranche inactive confirmation via Lifting Window Setting-->
+        <div class="slds-m-around_xx-large">
+            <aura:if isTrue="{!v.openWaringPopup}">           
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><b>Warning!</b></h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p class="slds-align_absolute-center"><b>
+                                Deactivating all lifting windows will also deactivate the OLF connection. Are you sure?
+                                </b>
+                            </p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" 
+                                              label="Cancel"
+                                              title="Cancel"
+                                              onclick="{!c.closeModel}"/>
+                            <lightning:button variant="brand" 
+                                              label="Confirm"
+                                              title="Confirm"
+                                              onclick="{!c.updateTranches}"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>
+        <!--END | Rahul Sharma | Date - 20-May-20 : Modal Popup for Tranche inactive confirmation via Lifting Window Setting-->
+    <!--START | Surbhi Srivastava | Date - 04-Aug-2022 | PBI-1366142 | Generic Model -->
+        <div class="slds-m-around_xx-large">
+            <aura:if isTrue="{!v.showWaringPopup}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><b>Confirmation</b>
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-align--absolute-center">
+                                <lightning:spinner aura:id="spinnerModel" variant="brand" size="large" class="slds-hide" />
+                            </div>
+                            <p class="slds-align_absolute-center"><b>
+                                   {!v.OLFInactivationWarningMsg}
+                                </b>
+                            </p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral" label="No" title="No"
+                                onclick="{!c.closeModel}" />
+                            <lightning:button variant="brand" label="Yes" title="Yes"
+                                onclick="{!c.userConfirmatnToschdleOLFInactiveTime}" />
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+        </div>
+        <!--END | Surbhi Srivastava | Date - 04-Aug-2022 | PBI-1366142-->
+    </div>
+    <!--Page ends here-->
+</aura:component>

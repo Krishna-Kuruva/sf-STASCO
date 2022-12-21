@@ -1,0 +1,125 @@
+<template>  
+    <div class="slds-var-p-around_x-small slds-box slds-scrollable">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+            <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-size_1-of-12" scope="col">
+                    <div class="slds-truncate slds-float_left" title="region">Region</div>
+                </th>
+                <th class="slds-size_1-of-12" scope="col">
+                    <div class="slds-truncate slds-float_left" title="depot">Depot</div>
+                </th>
+                <th class="slds-size_1-of-12 bluecls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="product">CBU MC</div>
+                </th>
+                <th class="slds-size_1-of-12 redcls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="midday">Midday(D-1)</div>
+                </th>
+                <th class="slds-size_1-of-12 greencls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="bsp">BSP</div>
+                </th>
+                <th class="slds-size_1-of-12 othercls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="tmrgn">Target Margin</div>
+                </th>
+                <th class="slds-size_1-of-12 variantcls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="psp">PSP</div>
+                </th>
+                <th class="slds-size_1-of-12 bluecls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="psp">Midday(D)</div>
+                </th>
+                <th class="slds-size_1-of-12 greencls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="fnpsp">Shell Price</div>
+                </th>
+                    <th class="slds-size_1-of-12 greencls" scope="col">
+                        <div class="slds-truncate slds-float_left" title="fnpsp">Plant Price</div>
+                    </th>
+                <th class="slds-size_2-of-12 redcls" scope="col">
+                    <div class="slds-truncate slds-float_left" title="remark">Remarks</div>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <template for:each = {amvList} for:item = "itemval">
+                <tr class="slds-hint-parent" key={itemval.Id}>
+                    <td class="slds-size_1-of-12">
+                        <lightning-formatted-text value={itemval.RE_Depot_Name__r.RE_Region_Name__c}></lightning-formatted-text>
+                    </td>
+                    <td class="slds-size_1-of-12">
+                        <lightning-formatted-text value={itemval.RE_Depot_Name__r.Name}></lightning-formatted-text>
+                    </td>
+                    <td class="slds-size_1-of-12 bluecls">
+                        <lightning-formatted-number value={itemval.RE_MC_Morning__c} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                    <td class="slds-size_1-of-12 redcls">
+                        <lightning-formatted-number value={itemval.RE_Prev_Mid_Day_price_out__c} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                    <td class="slds-size_1-of-12 greencls">
+                        <lightning-formatted-number value={itemval.RE_Today_s_BSP__c} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                    <td class="slds-size_1-of-12 othercls">
+                        <lightning-formatted-number value={itemval.RE_Target_Margin__c} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                    <td class="slds-size_1-of-12 variantcls">
+                        <lightning-formatted-number value={itemval.RE_PSP__c} maximum-fraction-digits="2"
+                                                    minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                    <!--td class="slds-size_1-of-12 bluecls">
+                        <lightning-formatted-number value={itemval.RE_AM_Challenged_Price__c}  maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td-->
+                    <td class="slds-size_1-of-12 bluecls">
+                        <lightning-formatted-number maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                                    value={itemval.RE_Mid_Day_price_out__c}></lightning-formatted-number>
+                    </td>
+                    <template if:true={hasReadAccess}>
+                        <td class="slds-size_1-of-12 greencls">
+                            <lightning-input variant="label-hidden" name={itemval.Id} maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                             type = "number" step="0.01" value={itemval.RE_Final_PSP__c} onchange={handlePSPChange}>
+                            </lightning-input>
+                        </td>
+                           <td class="slds-size_1-of-12 greencls">
+                            <lightning-input variant="label-hidden" name={itemval.Id} maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                type = "number" step="0.01" value={itemval.RE_Price_Value__c} onchange={handlePantprice}>
+                            </lightning-input>
+                        </td>
+                        <td class="slds-size_2-of-12 redcls">
+                            <lightning-input type= "text" variant="label-hidden" name={itemval.Id} message-when-too-long="Too Long Text. Please Modify."
+                                             value={itemval.RE_Remark__c} onchange={handleRemarkChange}></lightning-input>
+                        </td>
+                    </template>
+                    <template if:false={hasReadAccess}>
+                        <td class="slds-size_1-of-12 greencls">
+                            <lightning-input disabled variant="label-hidden" name={itemval.Id} maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                             type = "number" step="0.01" value={itemval.RE_Final_PSP__c} onchange={handlePSPChange}>
+                               </lightning-input>
+                           </td>
+                           <td class="slds-size_1-of-12 greencls">
+                               <lightning-input disabled variant="label-hidden" name={itemval.Id} maximum-fraction-digits="2" minimum-fraction-digits="2"
+                                    type = "number" step="0.01" value={itemval.RE_Price_Value__c} onchange={handlePantprice}>
+                            </lightning-input>
+                        </td>
+                        <td class="slds-size_2-of-12 redcls">
+                            <lightning-input disabled type= "text" variant="label-hidden" name={itemval.Id} message-when-too-long="Too Long Text. Please Modify."
+                                             value={itemval.RE_Remark__c} onchange={handleRemarkChange}>
+                            </lightning-input>
+                        </td>
+                    </template>
+                    <!--td class="slds-size_1-of-12 othercls">
+                        <lightning-formatted-number value={itemval.RE_Spot_Price_Adj__c}  maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td-->
+                    <!--td class="slds-size_1-of-12 variantcls">
+                        <lightning-formatted-number value={itemval.RE_Agreed_PSP__c}  maximum-fraction-digits="2"
+                            minimum-fraction-digits="2"></lightning-formatted-number>
+                    </td-->
+                </tr>
+            </template>
+            </tbody>
+        </table>
+    </div>
+</template>

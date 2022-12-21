@@ -1,0 +1,26 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.THIS .page-section {
+    border: solid 2px #FFCC00;
+    padding: 0.5rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.THIS .slds-form-element__row {
+    display: -webkit-inline-box;
+}
+.THIS .myCheckbox{
+  display: inline-block;
+  float: left;
+}
+.THIS .slds-theme_backgroundColor-lightblue {
+    background-color: lightblue;
+}
+.THIS .slds-theme_backgroundColor-lightgreen {
+    background-color: #FFCC00;
+}

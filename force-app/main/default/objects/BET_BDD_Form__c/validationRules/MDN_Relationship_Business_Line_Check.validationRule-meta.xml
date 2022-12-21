@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_Relationship_Business_Line_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND ( OR(RecordType.DeveloperName =&apos;SENA_NEW_CPTBNK&apos;,RecordType.DeveloperName =&apos;SENA_NEW_IND&apos;),
+					 ISPICKVAL(MDN_CP_Rel_Desc__c, &apos;Guarantor Only&apos;), 
+				    OR (INCLUDES(MDN_OI_BusLine_multi__c, &apos;NA G&amp;A&apos;),
+											  INCLUDES(MDN_OI_BusLine_multi__c, &apos;NA Credit Parent Line&apos;)))</errorConditionFormula>
+    <errorDisplayField>MDN_OI_BusLine_multi__c</errorDisplayField>
+    <errorMessage>If Counterparty Relationship Description is &quot;Guarantor Only&quot;, then Business Line can not be &quot;NA G&amp;A&quot; or &quot;NA Credit Parent Line&quot;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Benefit_Sum__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Benefit Sum</label>
+    <summarizedField>Benefit_By_Year__c.Benefit_Amount__c</summarizedField>
+    <summaryForeignKey>Benefit_By_Year__c.Benefit__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

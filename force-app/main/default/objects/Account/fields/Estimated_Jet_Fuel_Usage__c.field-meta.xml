@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Jet_Fuel_Usage__c</fullName>
+    <description>Estimated Jet Fuel Usage based on expected 2012 EU ETS Emissions. Note - Only covers flights into, out of, or within the EU.</description>
+    <externalId>false</externalId>
+    <formula>Aviation_Expected_2012_Emissions__c  / 3.15</formula>
+    <inlineHelpText>Estimated Jet Fuel Usage based on expected 2012 EU ETS Emissions. Note - Only covers flights into, out of, or within the EU.</inlineHelpText>
+    <label>Estimated Jet Fuel Usage (MT)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Contribution__c</fullName>
+    <externalId>false</externalId>
+    <formula>Target_volume__c * Expected_Margin_MT__c * Probability__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculation: How much $ do you think we can make from the customer per annum via  risk marketing fixed deals</inlineHelpText>
+    <label>Potential Contribution</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

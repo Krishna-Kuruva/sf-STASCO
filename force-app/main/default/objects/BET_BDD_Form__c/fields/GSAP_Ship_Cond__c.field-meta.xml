@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_Ship_Cond__c</fullName>
+    <externalId>false</externalId>
+    <label>* Shipping Conditions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>10 Road Pickup</fullName>
+                <default>false</default>
+                <label>10 Road Pickup</label>
+            </value>
+            <value>
+                <fullName>11 Road Delivery</fullName>
+                <default>false</default>
+                <label>11 Road Delivery</label>
+            </value>
+            <value>
+                <fullName>20 Rail Pickup</fullName>
+                <default>false</default>
+                <label>20 Rail Pickup</label>
+            </value>
+            <value>
+                <fullName>21 Rail Delivery</fullName>
+                <default>false</default>
+                <label>21 Rail Delivery</label>
+            </value>
+            <value>
+                <fullName>30 Vessel Pickup</fullName>
+                <default>false</default>
+                <label>30 Vessel Pickup</label>
+            </value>
+            <value>
+                <fullName>40 Barge Pickup</fullName>
+                <default>false</default>
+                <label>40 Barge Pickup</label>
+            </value>
+            <value>
+                <fullName>41 Barge Delivery</fullName>
+                <default>false</default>
+                <label>41 Barge Delivery</label>
+            </value>
+            <value>
+                <fullName>51 Aviation Delivery</fullName>
+                <default>false</default>
+                <label>51 Aviation Delivery</label>
+            </value>
+            <value>
+                <fullName>52 Into Plane Delivery</fullName>
+                <default>false</default>
+                <label>52 Into Plane Delivery</label>
+            </value>
+            <value>
+                <fullName>70 Pipeline Pickup</fullName>
+                <default>false</default>
+                <label>70 Pipeline Pickup</label>
+            </value>
+            <value>
+                <fullName>71 Pipeline Delivery</fullName>
+                <default>false</default>
+                <label>71 Pipeline Delivery</label>
+            </value>
+            <value>
+                <fullName>80 In-Tank</fullName>
+                <default>false</default>
+                <label>80 In-Tank</label>
+            </value>
+            <value>
+                <fullName>91 APO/STO Multi Mode</fullName>
+                <default>false</default>
+                <label>91 APO/STO Multi Mode</label>
+            </value>
+            <value>
+                <fullName>31 Vessel Delivery</fullName>
+                <default>false</default>
+                <label>31 Vessel Delivery</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

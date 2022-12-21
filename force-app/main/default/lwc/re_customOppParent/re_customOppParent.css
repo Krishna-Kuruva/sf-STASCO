@@ -1,0 +1,93 @@
+.reducedFont{          
+    font-size: 10px;
+    /*background: rgb(30 67 102);*/
+    
+    background-color: #212946;
+    padding: 10px;
+    border-radius: 5px;
+}
+.textcolor{
+    color: white;
+}
+.blockscolor {
+    /*background: #f3f2f2;*/
+    background-color: #f2f5f9;
+    border-radius: 10px;
+    border: 4px solid rgba(255,255,255,.125);
+    box-shadow: -8px 7px 20px 0 rgb(255 255 255 / 25%);
+    margin-bottom: 20px;
+    /*
+    background-color: #7d98b3;
+    border-right: 2px solid #fff;
+    border-top: 2px solid white;*/
+}
+.childcomp{
+    margin-top: 0.6%;
+}
+.textblack{
+    color: black;
+}
+.buttonplace{
+    display: flex;
+    justify-content: flex-end;
+}
+.modeltempdiscount{
+    /*background: rgb(99 118 135);*/
+    background-color: #f3f2f2;
+    border-radius: 0;
+    color: black;
+}
+.popUptempDicount{
+    background: #f3f2f2;
+}
+
+.NS{
+    background-color: #cece0e;
+}
+.SB{
+    background-color: #cece0e;
+}
+.AP{
+    background-color: #4bca81;;
+}
+.RJ{
+    background-color: #c23934;
+}
+.AA{
+    background-color: #4bca81;;
+}
+.RU{
+    background-color: #0070d2;
+}
+.FA{
+    background-color: #c23934;
+}
+.UP{
+    background-color: #4bca81;
+}
+.UN{
+    background-color: #4bca81;
+}
+.avatar{
+    width: 1.2rem;
+    height: 1rem;
+    font-size: .65rem;
+    border-radius: 20%;
+}
+.textfont{
+    font-size: 128%;
+    zoom: 0.75;
+}
+
+/* For Scrolling */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+   display: none !important;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4);
+}

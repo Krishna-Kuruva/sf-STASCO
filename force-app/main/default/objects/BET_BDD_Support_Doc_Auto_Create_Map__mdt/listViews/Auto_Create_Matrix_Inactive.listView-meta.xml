@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Create_Matrix_Inactive</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Region__c</columns>
+    <columns>Entity_Type__c</columns>
+    <columns>Primary_Source__c</columns>
+    <columns>Secondary_Source__c</columns>
+    <columns>Verification_Source__c</columns>
+    <columns>Document_Category__c</columns>
+    <columns>Document_Type__c</columns>
+    <columns>Document_Creation_Source__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Auto Create Matrix - Inactive</label>
+    <language>en_US</language>
+</ListView>

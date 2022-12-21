@@ -1,0 +1,52 @@
+<template>
+      
+    <!--<lightning-combobox label="Select Product" options={getproductLists.data}  onchange={setSelValue} value={filters}></lightning-combobox>-->
+    <!--<label>Select Product &nbsp;&nbsp;</label>
+    <select name={filters} onchange={setSelValue} class="selOpt">
+        
+        <template for:each={productLists.data} for:item="items">
+            <option key={items} value={items}>{items}</option>
+        </template>
+    </select>-->
+    <div class="slds-p-around_xx-small">
+    <strong> 
+        Month Average : &nbsp;&nbsp;
+        <lightning-formatted-number value={monthavgs} maximum-fraction-digits=2></lightning-formatted-number>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        W-1 : &nbsp;&nbsp;&nbsp;
+        <c-regainlosschildformatednumber value={weeklydiff} ></c-regainlosschildformatednumber>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M-1 : &nbsp;&nbsp;
+        <c-regainlosschildformatednumber value={monthlydiff}></c-regainlosschildformatednumber>
+        <br></br>
+        Temperature Gain (USD/BB6)  : &nbsp;&nbsp;
+        <lightning-formatted-number value={temperature_Gain_USD} maximum-fraction-digits="3"
+                                                minimum-fraction-digits="3"></lightning-formatted-number>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Temperature Gain (MYR cent/l) : &nbsp;&nbsp;&nbsp;
+        <lightning-formatted-number value={temperature_Gain_MYR} maximum-fraction-digits="3"
+        minimum-fraction-digits="3"></lightning-formatted-number>
+        
+        <br></br>
+       MTD Position (In/Out) Money for the month : &nbsp;&nbsp;
+        <c-regainlosschildformatednumber value={mtdposition}></c-regainlosschildformatednumber>
+    </strong>
+    <lightning-datatable
+        key-field="id"
+        data={gainWrapperList.data}
+        columns={columns}
+        hide-checkbox-column="true"
+        default-sort-direction="false"
+        >
+    </lightning-datatable>
+    </div><!--
+    <br/>
+    <lightning-datatable
+        key-field="id"
+        data={gainlossData.data}
+        columns={gainlosscolumns}
+        hide-checkbox-column="true"
+        default-sort-direction="false"
+        >
+    </lightning-datatable>-->
+</template>

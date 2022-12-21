@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Document_Matrix</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Region__c</columns>
+    <columns>Section__c</columns>
+    <columns>Document_Category__c</columns>
+    <columns>Document_Type__c</columns>
+    <columns>Source__c</columns>
+    <columns>Source_ShortName__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Document Matrix</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,85 @@
+<template>
+
+    <lightning-card title="Approve - Mass Uploaded Records">
+        <div class="slds-m-around_medium">
+            <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small"
+                label="Search record with Form Name or Full Legal Name" value={searchKey}>
+            </lightning-input>
+        </div>
+        <div class="slds-p-left_xx-large">
+            <lightning-button variant="Neutral" label="Approve Selected" title="Approve Selected"
+                onclick={openConfirmModalLwc} slot="actions" icon-position="right" icon-name="utility:save">
+            </lightning-button>
+        </div>
+
+        <c-bet-confirmation-dialog title='Confirm Approval'
+            message='Do you want to proceed with approving all the selected records?'
+            confirm-label='Yes' cancel-label='No' visible={isConfirmDialogVisible} original-message={originalMessage}
+            name="confirmModal" onconfirmmodalbuttonclick={handleconfirmModalButtonclick}>
+        </c-bet-confirmation-dialog>
+
+        <div class="slds-m-around_medium">
+            <lightning-datatable data-id="table" key-field="Id" data={data} columns={columns} sorted-by={sortedBy}
+                sorted-direction={sortedDirection} onrowselection={onRowSelection} selected-rows={allSelectedRows}
+                onsort={sortColumns}>
+            </lightning-datatable>
+
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                        onclick={nextHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+
+    <template if:true={showModal}>
+        <section aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class="demo-only" style="padding:0.5rem;background:#16325c">
+                    <div class="slds-text-color_inverse">Approval Status</div>
+                </div>
+
+                <template if:true={showRespSuccessTable}>
+                    <div class="slds-modal__content">
+                        <div class="slds-p-around_small">
+                            <p>{apexRespSuccessCount} records updated successfully</p><br />
+                            <div style="height: 100px;">
+                                <lightning-datatable key-field="id" data={apexRespSuccessList} columns={sucessColumns}
+                                    hide-checkbox-column="true">
+                                </lightning-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={showRespFailedTable}>
+                    <div class="slds-modal__content">
+                        <div class="slds-p-around_small">
+                            <p>{apexRespFailedCount} records failed with errors</p>
+                            <div style="height: 100px;">
+                                <lightning-datatable key-field="id" data={apexRespFailedList} columns={failedColumns}
+                                    hide-checkbox-column="true">
+                                </lightning-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand" label="Close" onclick={closeModal} class="slds-p-around_x-small">
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+    </template>
+
+</template>

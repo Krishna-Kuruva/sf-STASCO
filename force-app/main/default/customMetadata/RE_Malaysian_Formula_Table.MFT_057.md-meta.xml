@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MFT-057</label>
+    <protected>false</protected>
+    <values>
+        <field>RE_MY_Bio_Loss_Percentage__c</field>
+        <value xsi:type="xsd:double">0.12</value>
+    </values>
+    <values>
+        <field>RE_MY_Bio_Quote_1__c</field>
+        <value xsi:type="xsd:string">RBDPO</value>
+    </values>
+    <values>
+        <field>RE_MY_Bio_Quote_2__c</field>
+        <value xsi:type="xsd:string">POME (SBH)</value>
+    </values>
+    <values>
+        <field>RE_MY_Bio_Quote_3__c</field>
+        <value xsi:type="xsd:string">Green Palm (SBH)</value>
+    </values>
+    <values>
+        <field>RE_MY_Bio_Quote_Percentage__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>RE_MY_BreakBulk_Premium_Quote_Percentage__c</field>
+        <value xsi:type="xsd:double">87.0</value>
+    </values>
+    <values>
+        <field>RE_MY_BreakBulk_Premium_Quote__c</field>
+        <value xsi:type="xsd:string">Breakbulk Premium</value>
+    </values>
+    <values>
+        <field>RE_MY_Fixed_Premium_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Fixed_Premium__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_HCV_Quote_Percentage__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>RE_MY_HCV_Quote__c</field>
+        <value xsi:type="xsd:string">Gasoil 0.001% S</value>
+    </values>
+    <values>
+        <field>RE_MY_HCV_Surcharges__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>RE_MY_MR_Cost_Percentage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_MR_Demurrage_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_MR_Demurrage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_MR_Frieght_Quote__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Market_Premium_Percentage__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>RE_MY_Market_Premium_Quote__c</field>
+        <value xsi:type="xsd:string">Gasoil 0.001% Premium</value>
+    </values>
+    <values>
+        <field>RE_MY_Oil_Loss_Percentage__c</field>
+        <value xsi:type="xsd:double">0.12</value>
+    </values>
+    <values>
+        <field>RE_MY_Plant__c</field>
+        <value xsi:type="xsd:string">Tawau</value>
+    </values>
+    <values>
+        <field>RE_MY_Port_Charges_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Port_Charges__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Product__c</field>
+        <value xsi:type="xsd:string">IGO 10 ppm B0</value>
+    </values>
+    <values>
+        <field>RE_MY_Region__c</field>
+        <value xsi:type="xsd:string">Sabah</value>
+    </values>
+    <values>
+        <field>RE_MY_Small_lot_percentage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Small_lot_premium_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Small_lot_premium__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_TP_Premium_Percentage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_TP_Premium_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_TP_Premium__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RE_MY_Valid_From__c</field>
+        <value xsi:type="xsd:date">2021-12-31</value>
+    </values>
+    <values>
+        <field>RE_MY_Valid_To__c</field>
+        <value xsi:type="xsd:date">2022-12-31</value>
+    </values>
+</CustomMetadata>

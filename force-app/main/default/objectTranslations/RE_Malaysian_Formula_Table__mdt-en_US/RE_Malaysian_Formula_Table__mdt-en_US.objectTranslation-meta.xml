@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RE_MY_Malaysian Formula Table</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RE_MY_Malaysian Formula Table</value>
+    </caseValues>
+    <layouts>
+        <layout>Malaysian Formula Table Layout</layout>
+        <sections>
+            <label></label>
+            <section>Bio Quote Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Breakbulk Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Formula Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Hydrocarbon Quote Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>MR Freight Cost Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Market Premium Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Oil Loss &amp; Bio Loss Info</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Port Charges</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Small Lot Infio</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Transfer Price Premium Info</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

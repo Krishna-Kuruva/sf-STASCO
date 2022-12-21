@@ -1,0 +1,115 @@
+/**
+ * Created by Dharmendra.Singh2 on 8/30/2021.
+ */
+ .navigation-container {
+  width: 60%;
+  display: flex;
+  flex-flow: row nowrap;
+  /*justify-content: space-evenly;*/
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+.space-around {
+  justify-content: space-around;
+}
+.space-between {
+  justify-content: space-between;
+}
+
+.nav {
+  font-family: 'Roboto', serif;
+  font-size: 2vw;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #000000;
+  padding-left: auto;
+  padding-right: auto;
+  line-height: 1em;
+  object-fit: contain;
+  text-decoration: none;
+}
+
+.nav:hover {
+  color: #096e67;
+}
+.wraptext {
+  overflow-wrap: break-word;
+}
+.button {
+      font-size: 8pt;
+      font-family: tahoma;
+      margin-top: 1px;
+      margin-right: 2px;
+      position:above;
+  }
+
+  .notesBox{
+
+    margin: 0px 5px 15px;
+    height: auto;
+    width: auto;
+    box-shadow: 0px 7px 7px 0 rgb(35 43 72 / 70%);
+    border-radius: 10px;
+    background-color: #e6ebf3;
+    padding: 10px;
+
+  }
+
+  .notesBox p{
+
+    word-break: break-all;
+    font-size: 11px;
+    font-weight: 400;
+    color: #181818;
+  }
+  
+  .noSelectText{
+    position: absolute;
+    top: 55%;
+    left: 10px;
+    transform: translate(0%, -50%);
+    right: 10px;
+    text-align: center;
+    padding: 10px;
+   
+}
+
+:host{
+  --sds-c-icon-color-background:#212946;
+  --lwc-brandAccessible:#212946;
+  --lwc-brandAccessibleActive:#212946;
+  --lwc-fontSize5: 12px !important;
+  --lwc-fontSize4: 12px !important;
+  --lwc-squareIconMediumBoundary:20px;
+  --lwc-squareIconSmallBoundary:20px;
+}
+
+
+.scrollbarEdit::-webkit-scrollbar-track
+{
+	 box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #D9D9D9 ;
+}
+
+.scrollbarEdit::-webkit-scrollbar
+{
+	width: 10px;
+		height:10px;
+	background-color: #D9D9D9 ;
+}
+
+.scrollbarEdit::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #A6A6A6;
+}

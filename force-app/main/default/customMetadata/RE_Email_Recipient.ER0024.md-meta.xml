@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0024</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:type="xsd:string">stacey@northarm.bc.ca;stephane.asselin@energiesonic.com;stephen@manitoulinfuels.com;Supply.Pricing@parkland.ca;t.friesen@rrfns.com;tina@hughespetroleum.com;tkennedy@4refuel.com;Vanessa_Ranco@viarail.ca;vendorpricing@econopetro.com;Yannick.Manach@energiesonic.com;Jeff.Urquhart@circlek.com;Colin.Carroll@circlek.com;</value>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">No Revised Pricing</value>
+    </values>
+</CustomMetadata>

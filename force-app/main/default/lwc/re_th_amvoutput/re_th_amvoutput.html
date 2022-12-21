@@ -1,0 +1,93 @@
+<template>   
+    <div class="zoomout">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12">
+                <div class="slds-var-p-left_x-small slds-var-p-right_x-small">
+                    <div class="slds-var-p-left_small slds-var-p-right_small slds-box">
+                        <div class=" slds-grid slds-card-wrapper slds-theme_default slds-p-around_none">
+                            <div class="slds-col textfont slds-var-m-around_x-small slds-var-p-left_large" style= "margin-top: 20px;">
+                                <h2><b>Pricing Details</b></h2>
+                           </div>
+                           <div class="slds-col slds-var-m-around_x-small">
+                            <div class=" textfont slds-grid page-section page-header">
+                                <div class="textcolorV1  slds-size_3-of-12 " style= "margin-top: 20px;">
+                                    <h2><b>Select Product : </b></h2>  
+                                </div>
+                                <div class="slds-size_5-of-12 ">
+                                    <c-researchpicklist
+                                    picklistvalues={CustomerTypeList}
+                                    labelname=''
+                                    onslectedvalues={customerSelected}
+                                    >
+                                    </c-researchpicklist>   
+                              </div>
+                            </div>
+                           </div>
+                        <div>
+                            
+                        </div>
+                           <div class="slds-col slds-var-m-around_x-small buttonplace">
+                                    <lightning-button class="textfont"
+                                    label="Confirm"
+                                    icon-position="right"
+                                    icon-name="utility:save"
+                                    slot="actions"
+                                    onclick={handlesave}
+                                    variant="brand-outline" >
+                                </lightning-button> &nbsp;
+                           </div>
+                        </div>
+                        <lightning-accordion allow-multiple-sections-open
+                                            onsectiontoggle={handleSectionToggle}
+                                            active-section-name={activeSections} >
+                            <template for:each={selectedprodList} for:item='item'>
+                                <lightning-accordion-section key={item.Name} name={item.Name} label={item.Name} id={item.Name}>
+                                    <div class="innerdiv" data-proditem={item.Name} style="display: none;">
+                                        <c-re_th_amvoutputdetail class ="childcls" onpspchanged = {handlepspchanged}
+                                        id={item.Name} prod-name = {item.Name}></c-re_th_amvoutputdetail>
+                                    </div>
+                                </lightning-accordion-section>
+                            </template>
+                        </lightning-accordion>
+                        <br/>
+                        <div class="slds-modal__footer">
+                            <lightning-button class="textfont"
+                                label="Confirm"
+                                icon-position="right"
+                                icon-name="utility:save"
+                                slot="actions"
+                                onclick={handlesave}
+                                variant="brand-outline" >
+                            </lightning-button> &nbsp;
+                            
+                            <template if:true={isModalOpen}>
+                                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                    <div class="slds-modal__container">
+                                        <header class="slds-modal__header">
+                                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                                <lightning-icon icon-name="utility:close"
+                                                                alternative-text="close"
+                                                                variant="inverse"
+                                                                size="small" ></lightning-icon>
+                                                <span class="slds-assistive-text">Close</span>
+                                            </button>
+                                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Send Mail to AM</h2>
+                                        </header>
+                                        <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                                            <b style="float: left; font-size: medium">You are about to send mail to AM.</b>
+                                        </div>
+                                        <footer class="slds-modal__footer">
+                                            <button class="slds-button slds-button_neutral slds-button_outline-brand " onclick={closeModal} title="Cancel" >Cancel</button>
+                                            <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                                        </footer>
+                                    </div>
+                                </section>
+                                <div class="slds-backdrop slds-backdrop_open"></div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        </div>   
+</template>

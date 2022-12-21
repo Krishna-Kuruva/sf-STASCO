@@ -1,0 +1,3 @@
+Hi,    
+The Spot Price Adjustment for  the product {!RE_Depot_Pricing_Backbone__c.RE_Product_Name__c} of Depot {!RE_Depot_Pricing_Backbone__c.RE_Depot_Name__c} is 
+{!RE_Depot_Pricing_Backbone__c.RE_Spot_Price_Adjustment__c} {!RE_Depot_Pricing_Backbone__c.RE_Spot_Price_Adjustment_Unit__c}.

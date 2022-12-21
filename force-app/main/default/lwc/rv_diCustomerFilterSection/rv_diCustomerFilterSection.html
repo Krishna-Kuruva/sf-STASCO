@@ -1,0 +1,518 @@
+<template>
+    <lightning-card class="filterSelection">
+        <!--START ------------- Customer search section-->
+        <template if:true={showCustomerSearch}>
+            <lightning-layout>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-horizontal_x-small slds-p-vertical_x-small">
+                    <c-rv_search-lookup obj-name="Account"
+                                        icon-name="standard:account"
+                                        label-name=""
+                                        placeholder="Search customer..."
+                                        fields="Name, Sold_To_Number__c, Rv_Olf_Customer_Email__c"
+                                        display-fields="Name, Sold_To_Number__c, Rv_Olf_Customer_Email__c"
+                                        onkeyup={handleArrowPress}
+                                        onlookup={handleLookup}
+                                        current-record-id="Account"
+                                        filter-query={customerFilter}
+                                        in-search-group="Name">
+                    </c-rv_search-lookup>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+        <!--END -- Customer search section-->
+        <!--START -- Filter Section Row 2-->
+        <lightning-layout horizontal-align="spread" 
+                          multiple-rows>
+            <template if:true={showMrcSearch}>
+                <lightning-layout-item flexibility="auto" class="slds-p-left_x-small slds-p-vertical_x-small" size="6">
+                    <legend class="slds-form-element__legend slds-form-element__label">MRC Number</legend>
+                    <span onkeypress={Key_event}>
+                        <!--legend class="slds-form-element__legend slds-form-element__label">MRC Number</legend-->
+                        <lightning-input type="text"  class="slds-input slds-has-focus slds-form-element__control"
+                            onchange={checkmrcnumber} data-record-id={inputMRCVal} id="mrcNumber" style="padding:0px;border: none;"
+                            aria-autocomplete="list" value={inputMRCVal} placeholder="Search MRC...">
+                        </lightning-input>
+                    </span>
+                </lightning-layout-item>
+                <!--lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_x-small slds-p-vertical_x-small"
+                                       size="6">
+                    <legend class="slds-form-element__legend slds-form-element__label">MRC Number</legend>
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                    <template if:false={mrcHeader}>
+                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                            <input type="text" class="slds-input slds-combobox__input slds-has-focus" id="combobox-id-12" aria-autocomplete="list" 
+                                                aria-controls="listbox-id-10" autocomplete="off" role="textbox" onkeyup={handleMrcInput} placeholder="Search MRC..." />
+                                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                                    <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <template if:true={mrcDropDown}>
+                                        <div id="listbox-id-10" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template if:true={mrcSearchOpts} for:each={mrcSearchOpts} for:item="mrcHead">
+                                                    <div key={mrcHead}>
+                                                        <li role="presentation" class="slds-listbox__item" data-record-id={mrcHead} onclick={handleSelectMrc}>
+                                                            <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option">
+                                                                <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate" title={mrcHead}>
+                                                                        {mrcHead}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                        </template>
+                                    </template>
+                                    <template if:true={mrcHeader}>
+                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                            <input type="text" 
+                                                   class="slds-input slds-combobox__input slds-combobox__input-value" 
+                                                    id="combobox-id-5" 
+                                                    aria-controls="listbox-id-5"  
+                                                    disabled
+                                                    autocomplete="off" 
+                                                    role="textbox" 
+                                                    placeholder="Select an Option…" 
+                                                    readonly="" 
+                                                    value={mrcHeader}/>
+                                            <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" 
+                                                    title="Remove selected option" 
+                                                    onclick={handleDeselectMrc}>
+                                                <svg class="slds-button__icon" 
+                                                     aria-hidden="true">
+                                                    <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                                <span class="slds-assistive-text">Remove selected option</span>
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-layout-item-->
+               <!-- <template if:true={energyTax}>
+                    <lightning-layout-item flexibility="auto" 
+                                    class="slds-p-left_x-small slds-p-vertical_x-small"
+                                    size="6">
+                    
+                    <lightning-radio-group name="tranche"
+                                        label="Tranche"
+                                        options={trancheOptions}
+                                        value={trancheVal}
+                                        type="radio">
+                    </lightning-radio-group>
+                    </lightning-layout-item>
+                </template>-->
+               <!-- <template if:false={mrcHeader}>
+                <lightning-layout-item flexibility="auto" 
+                                    class="slds-p-horizontal_xx-small slds-p-vertical_x-small"
+                                    size="6">
+                    <lightning-checkbox-group name="productFilter"
+                                                label="Product"
+                                                options={productOptions}
+                                                value={productVal}
+                                                onchange={handleChange}>
+                    </lightning-checkbox-group>
+                    <lightning-input type="checkbox" 
+                                        label="Retail Mix" 
+                                        name="retailMix"
+                                        value={retailMix}
+                                        onchange={handleChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+                </template>-->
+                <template if:true={mrcOptions}>
+                    <lightning-layout-item flexibility="auto" 
+                                    class="slds-p-horizontal_xx-small slds-p-vertical_x-small"
+                                    size="6">
+                    <lightning-checkbox-group name="productFilter"
+                                                label="Product"
+                                                options={productOptions}
+                                                value={productVal}
+                                                onchange={handleChange}>
+                    </lightning-checkbox-group>
+                    <lightning-input type="checkbox" 
+                                        label="Retail Mix" 
+                                        name="retailMix"
+                                        value={retailSelectedMix}
+                                        onchange={handleChange}>
+                    </lightning-input>
+                </lightning-layout-item>
+                </template>
+        </template>
+           <!--//SK <template if:true={showSoldToSearch}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-horizontal_x-small slds-p-vertical_x-small"
+                                       size="6">
+                    <legend class="slds-form-element__legend slds-form-element__label">Sold To</legend>
+                    <c-rv_search-lookup obj-name="Account"
+                                        icon-name="standard:account"
+                                        label-name=""
+                                        placeholder="Search Sold-To..."
+                                        fields="Name, Sold_To_Number__c, Rv_Olf_Customer_Email__c"
+                                        display-fields="Sold_To_Number__c, Name, Rv_Olf_Customer_Email__c"
+                                        onlookup={handleLookup}
+                                        current-record-id="Account"
+                                        filter-query={soldToFilter}>
+                    </c-rv_search-lookup>
+                </lightning-layout-item>
+            </template>//SK-->
+            <template if:true={poTypeRow2}>
+                <template if:true={poTypeOptions}>
+                    <lightning-layout-item flexibility="auto" 
+                                           class="slds-p-horizontal_x-small slds-p-vertical_x-small"
+                                           size="6">
+                        <legend class="slds-form-element__legend slds-form-element__label">PO Type</legend>
+                        <lightning-combobox name="poTypeFilter"
+                                            label="PO Type"
+                                            variant="label-hidden"
+                                            value={poTypeVal}
+                                            placeholder="--Select--"
+                                            options={poTypeOptions}
+                                            onchange={handleChange}>
+                        </lightning-combobox>
+                    </lightning-layout-item>
+                </template>
+            </template>
+        </lightning-layout>
+        <!--END - Filter Section Row 2-->
+        <!--START - Filter Section Row 3-->
+        <lightning-layout horizontal-align="spread" multiple-rows>
+            <template if:true={mrcOptions}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_x-small slds-p-vertical_x-small"
+                                       size="4">
+                    <legend class="slds-form-element__legend slds-form-element__label">MRC</legend>
+                  <!--    <lightning-combobox name="mrcFilter"
+                                        label="MRC"
+                                        variant="label-hidden"
+                                        value={mrcSelectedVal}
+                                        placeholder="--Select--"
+                                        options={mrcOptions}
+                                        onchange={handleValueChange}>
+                    </lightning-combobox>
+                -->
+                    
+                <template if:true={mrcSelectedVal} >
+                    <c-rv_multiselectdropdown
+                         if:true={mrcOptions}
+                         
+                         options={mrcOptions}
+                         values ={mrcSelectedVal}
+                         onvaluechange={handleValueChange} 
+                         >
+                     </c-rv_multiselectdropdown>
+                 </template>
+                        <br/>
+                    <!--<lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small" 
+                                   size="4">-->
+                <!--<legend class="slds-form-element__legend slds-form-element__label">OLF MRC</legend>-->
+                <lightning-input type="checkbox" 
+                                 label="OLF MRC Only" 
+                                 name="olfMrcOnly"
+                                 checked={olfMrcOnlyVal}
+                                 onchange={handleChange}>
+                </lightning-input>
+            <!--</lightning-layout-item>-->
+
+                </lightning-layout-item>
+            </template>
+            <template if:true={shipToNumOptions}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_x-small slds-p-vertical_x-small"
+                                       size="4">
+                    <legend class="slds-form-element__legend slds-form-element__label">Ship To</legend>
+                    <template if:true={shipToSelectedVal}>
+                     <c-rv_multiselectdropdown
+                        if:true={shipToOptions} 
+                        options={shipToOptions}
+                        values={shipToSelectedVal}
+                        onvaluechange={handleshipToValueChange} 
+                        > 
+                    </c-rv_multiselectdropdown>
+                    </template>
+                    <!-- Commented for: 1306836 <lightning-combobox name="shipToFilter"
+                                        label="Ship To"
+                                        variant="label-hidden"
+                                        value={shipToNumVal}
+                                        placeholder="--Select--"
+                                        options={shipToNumOptions}
+                                        onchange={handleChange} >
+                    </lightning-combobox> -->
+                    
+                    <!--<c-rv_multiselectdropdown
+                        if:true={shipToNumOptions} 
+                        options={shipToNumOptions}
+                        onvaluechange={handleshipToValueChange} 
+                        >
+                    </c-rv_multiselectdropdown>-->
+                        <br/>
+                </lightning-layout-item>
+            </template>
+            <template if:false={poTypeRow2}>
+                <template if:true={poTypeOptions}>
+                    <lightning-layout-item flexibility="auto" 
+                                           class="slds-p-horizontal_x-small slds-p-vertical_x-small"
+                                           size="4">
+                        <legend class="slds-form-element__legend slds-form-element__label">PO Type</legend>
+                        <lightning-combobox name="poTypeFilter"
+                                            label="PO Type"
+                                            variant="label-hidden"
+                                            value={poTypeVal}
+                                            placeholder="--Select--"
+                                            options={poTypeOptions}
+                                            onchange={handleChange}>
+                        </lightning-combobox>
+                    </lightning-layout-item>
+                </template>
+            </template>
+        </lightning-layout>
+        <!--END -  Filter Section Row 3-->
+        <!--START -  Filter Section Row 4-->
+        <lightning-layout horizontal-align="spread" 
+                          multiple-rows>
+            
+                          <template if:true={depotOptions}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_x-small slds-p-vertical_x-small"
+                                       size="4">
+                    <legend class="slds-form-element__legend slds-form-element__label">Depot</legend>
+                <!--  <lightning-combobox name="depotFilter"
+                                        label="Depot"
+                                        variant="label-hidden"
+                                        value={depotVal}
+                                        placeholder="--Select--"
+                                        options={depotOptions}
+                                        onchange={handleChange}>
+                
+                    </lightning-combobox> --> 
+                    <template if:true={depotSelectedVal}>
+                   <c-rv_multiselectdropdown
+                        if:true={depotOptions} 
+                        options={depotOptions}
+                        values={depotSelectedVal}
+                        onvaluechange={handleDepotValueChange} 
+                        >
+                    </c-rv_multiselectdropdown>
+                </template>
+                </lightning-layout-item>
+            </template>
+            <template if:true={salesOrgOptions}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_xx-small slds-p-vertical_x-small"
+                                       size="2">
+                    <lightning-checkbox-group name="salesOrgFilter"
+                                            label="Sales Org"
+                                            options={salesOrgOptions}
+                                            value={salesOrgVal}
+                                            onchange={handleChange}>
+                    </lightning-checkbox-group>
+                </lightning-layout-item>
+            </template>
+            <template if:true={motOptions}>
+                <lightning-layout-item flexibility="auto" 
+                                       class="slds-p-left_xxx-small slds-p-vertical_x-small"
+                                       size="2">
+                    <lightning-checkbox-group name="motFilter"
+                                              label="MOT"
+                                              options={motOptions}
+                                              value={motVal}
+                                              style="white-space: nowrap;"
+                                              onchange={handleChange} data-id="motFilter">
+                    </lightning-checkbox-group>
+                </lightning-layout-item>
+            
+            <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-horizontal_xxx-small slds-p-vertical_x-small"
+                                   size="2">
+                <!--lightning-checkbox-group name="productFilter"
+                                            label="Product"
+                                            options={productOptions}
+                                            value={productVal}
+                                            onchange={handleChange}>
+                </lightning-checkbox-group-->
+                <legend class="slds-form-element__legend slds-form-element__label">Product</legend>
+                <lightning-input type="checkbox" 
+                                    label="IGO" 
+                                    name="igo"
+                                    checked={igoSelected}
+                                    style="white-space: nowrap;"
+                                    onchange={handleChange}>
+                </lightning-input>
+                <lightning-input type="checkbox" 
+                                    label="AGO" 
+                                    name="ago"
+                                    checked={agoSelected}
+                                    style="white-space: nowrap;"
+                                    onchange={handleChange}>
+                </lightning-input>
+                <lightning-input type="checkbox" 
+                                    label="MOGAS" 
+                                    name="mogas"
+                                    checked={mogasSelected}
+                                    style="white-space: nowrap;"
+                                    onchange={handleChange}>
+                </lightning-input>
+                <lightning-input type="checkbox" 
+                                    label="Retail Mix" 
+                                    name="retailMix"
+                                    checked={retailSelectedMix}
+                                    style="white-space: nowrap;"
+                                    onchange={handleChange}>
+                </lightning-input>
+            </lightning-layout-item>
+			<!-- ASHISH: COMMENTING FOR PBI: 1355504  will be uncommented later																   
+            <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_xxx-small slds-p-vertical_x-small"
+                                   size="2">
+                <lightning-radio-group name="energyTaxFilter"
+                                       label="Energy Tax"
+                                       options={energyTaxOptions}
+                                       value={energyTaxVal}
+                                       type="radio"
+                                       onchange={handleChange}>
+                </lightning-radio-group>
+            </lightning-layout-item>-->
+            </template>
+        </lightning-layout>
+        <!--END -  Filter Section Row 2-->
+        <!--START -  Filter Section Row 3
+        <template if:false={energyTax}>
+        <lightning-layout>
+            <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small"
+                                   size="3">
+                <lightning-radio-group name="energyTaxFilter"
+                                       label="Energy Tax"
+                                       options={energyTaxOptions}
+                                       value={energyTaxVal}
+                                       type="radio"
+                                       onchange={handleChange}>
+                </lightning-radio-group>
+            </lightning-layout-item>-->
+            <!--<lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small" 
+                                   size="4">
+                <legend class="slds-form-element__legend slds-form-element__label">OLF MRC</legend>
+                <lightning-input type="checkbox" 
+                                 label="OLF MRC Only" 
+                                 name="olfMrcOnly"
+                                 value="olfMrcOnlyVal"
+                                 onchange={handleChange}>
+                </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small"
+                                   size="3">
+                <lightning-radio-group name="tranche"
+                                       label="Tranche"
+                                       options={trancheOptions}
+                                       value={trancheVal}
+                                       type="radio">
+                </lightning-radio-group>
+            </lightning-layout-item>
+        </lightning-layout>
+         END -  Filter Section Row 3
+        </template>-->
+         <!--START -  Filter Section Row 3-->
+        <lightning-layout horizontal-align="spread">
+            <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small">
+                <lightning-layout horizontal-align="spread">
+                    <legend class="slds-form-element__legend slds-form-element__label">Contract Dates</legend>
+                </lightning-layout>
+                <lightning-layout horizontal-align="spread">
+                    <lightning-layout-item flexibility="auto"
+                                           class="slds-p-left_xx-small"
+                                           size="4">
+                        <!-- Added Handle change event in both start date & end date//SK-->
+                        <lightning-layout>
+                            <lightning-input class="stDate"
+                                             type="date" 
+                                             name="startDate" 
+                                             label="Start Date" 
+                                             value={startDateVal} 
+                                             date-style="short" onchange={handleChange}>
+                            </lightning-input>
+                        </lightning-layout>
+                        <template if:false={durationError}>
+                            <lightning-layout>
+                                <p style="font-size: 10px;">Duration: {contractDuration} days</p>
+                            </lightning-layout>
+                        </template>
+                        <template if:true={durationError}>
+                            <lightning-layout>
+                                <p style="font-size: 10px;color:red;">{contractDuration}</p>
+                            </lightning-layout>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto"
+                                           class="slds-p-left_xx-small"
+                                           size="4">
+                         <lightning-input class="edDate" 
+                                          type="date"
+                                          name="endDate" 
+                                          label="End Date" 
+                                          value={endDateVal} 
+                                          disabled={endDateDisabled}
+                                          date-style="short" onchange={handleChange}>
+                        </lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto" 
+                                   class="slds-p-left_x-small slds-p-vertical_x-small"
+                                   size="3">
+                        <lightning-radio-group name="tranche"
+                                            label="Tranche"
+                                            options={trancheOptions}
+                                            value={trancheVal}
+                                            type="radio" disabled>
+                        </lightning-radio-group>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout horizontal-align="spread" style="justify-content: center;">
+                    <lightning-layout-item flexibility="auto" 
+                                           class="slds-p-left_x-small slds-p-vertical_large"
+                                           size="4">
+                        <lightning-layout horizontal-align="end">
+                            <lightning-button name="searchDeals"
+                                              label="Search"
+                                              variant="brand" disabled={searchBtn}
+                                              style="width: 100%;"
+                                             onclick={searchOffers1}>
+                            </lightning-button>
+                        </lightning-layout>
+                       <!-- <lightning-layout horizontal-align="end">
+                            <a onclick={saveFilter}>
+                                Save this filter
+                            </a>
+                        </lightning-layout>-->
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-left_x-small slds-p-vertical_large slds-text-align_center"
+                                            flexibility="auto" size="4">
+                            <a onclick={saveFilter} class="slds-button slds-button_outline-brand">
+                                     Save this filter
+                            </a>
+                    </lightning-layout-item>
+                   <!-- <lightning-layout-item class="slds-p-left_x-small slds-p-vertical_large"
+                                            flexibility="auto" size="4">
+                         <lightning-button label="Refresh"  variant="destructive" onclick={refreshComponent}></lightning-button>                   
+                    </lightning-layout-item>-->
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout> 
+         <!--END -  Filter Section Row 5-->
+    </lightning-card>
+</template>

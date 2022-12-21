@@ -1,0 +1,62 @@
+<template>
+    <lightning-card class="live-card-outer" >
+        <lightning-layout horizontal-align="spread">
+            <template if:true={quoteListBottom}>
+                <lightning-layout-item class="slds-p-horizontal_xxx-small slds-p-top_x-small  slds-size_12-of-12">
+                    <template for:each={quoteListBottom}
+                              for:item="quote">
+                        <lightning-layout horizontal-align="spread" key={quote.Id}>
+                            <lightning-layout-item class="slds-p-right_small" size="8">
+                                <b style="font-size: 10px;">{quote.Display_Name__c}</b>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="4">
+                                <b style="color:Green;font-size: 10px;">
+                                    <lightning-formatted-number value={quote.Price__c} minimum-fraction-digits="4" 
+                                                                maximum-fraction-digits="4" >
+                                    </lightning-formatted-number>
+                                </b>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+        <lightning-layout horizontal-align="spread" ><!--style="margin-top: -25px;"-->
+            <template if:true={quoteListLeft}>
+                <lightning-layout-item class="slds-p-horizontal_xxx-small slds-size_12-of-12 mogas">
+                    <template for:each={quoteListLeft} 
+                              for:item="quote">
+                        <lightning-layout horizontal-align="spread" class="mogas-item" key={quote.Id}>
+                            <lightning-layout-item class="slds-p-right_small textSet" size="8">
+                                <!-- prod deployment -->
+                                {quote.Display_Name__c} 
+                            </lightning-layout-item>
+                            <lightning-layout-item size="4" class="textSet">
+                                <lightning-formatted-number value={quote.Price__c}  
+                                                        minimum-fraction-digits="4" maximum-fraction-digits="4">
+                                </lightning-formatted-number>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>                    
+                </lightning-layout-item>
+            </template>
+            <template if:true={quoteListRight}>
+                <lightning-layout-item class="slds-p-horizontal_x-small">
+                    <template for:each={quoteListRight} 
+                              for:item="quote">
+                        <lightning-layout horizontal-align="spread" key={quote.Id}>
+                            <lightning-layout-item class="slds-p-right_small " size="8">
+                                {quote.Display_Name__c}
+                            </lightning-layout-item>
+                            <lightning-layout-item size="4">
+                                <lightning-formatted-number value={quote.Price__c} 
+                                                        minimum-fraction-digits="4" maximum-fraction-digits="4" >
+                                </lightning-formatted-number>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>   
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </lightning-card>          
+</template>

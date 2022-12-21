@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shell_Entity_Name__c</fullName>
+    <externalId>false</externalId>
+    <label>Shell Entity Name</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Belgian Shell NV</fullName>
+                <default>false</default>
+                <label>Belgian Shell NV</label>
+            </value>
+            <value>
+                <fullName>Belgian Shell SA</fullName>
+                <default>false</default>
+                <label>Belgian Shell SA</label>
+            </value>
+            <value>
+                <fullName>Butagazs</fullName>
+                <default>false</default>
+                <label>Butagazs</label>
+            </value>
+            <value>
+                <fullName>DANSK Shell</fullName>
+                <default>false</default>
+                <label>DANSK Shell</label>
+            </value>
+            <value>
+                <fullName>Irish Shell</fullName>
+                <default>false</default>
+                <label>Irish Shell</label>
+            </value>
+            <value>
+                <fullName>Motiva Enterprises LLC</fullName>
+                <default>false</default>
+                <label>Motiva Enterprises LLC</label>
+            </value>
+            <value>
+                <fullName>OY Shell AB</fullName>
+                <default>false</default>
+                <label>OY Shell AB</label>
+            </value>
+            <value>
+                <fullName>Pilipinas Shell Petroleum Corporation</fullName>
+                <default>false</default>
+                <label>Pilipinas Shell Petroleum Corporation</label>
+            </value>
+            <value>
+                <fullName>PT Shell Indonesia</fullName>
+                <default>false</default>
+                <label>PT Shell Indonesia</label>
+            </value>
+            <value>
+                <fullName>Sannes AB</fullName>
+                <default>false</default>
+                <label>Sannes AB</label>
+            </value>
+            <value>
+                <fullName>Shell Austria Gesellschaft MBH</fullName>
+                <default>false</default>
+                <label>Shell Austria Gesellschaft MBH</label>
+            </value>
+            <value>
+                <fullName>Shell Aviation</fullName>
+                <default>false</default>
+                <label>Shell Aviation</label>
+            </value>
+            <value>
+                <fullName>Shell Aviation Ireland Limited</fullName>
+                <default>false</default>
+                <label>Shell Aviation Ireland Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Canada Energy</fullName>
+                <default>false</default>
+                <label>Shell Canada Energy</label>
+            </value>
+            <value>
+                <fullName>Shell Canada Products</fullName>
+                <default>false</default>
+                <label>Shell Canada Products</label>
+            </value>
+            <value>
+                <fullName>Shell Chile Sociedad Anonima Comercial</fullName>
+                <default>false</default>
+                <label>Shell Chile Sociedad Anonima Comercial</label>
+            </value>
+            <value>
+                <fullName>Shell Compagnia de Argentina</fullName>
+                <default>false</default>
+                <label>Shell Compagnia de Argentina</label>
+            </value>
+            <value>
+                <fullName>Shell Company of Turkey</fullName>
+                <default>false</default>
+                <label>Shell Company of Turkey</label>
+            </value>
+            <value>
+                <fullName>Shell CZECH Republic AS</fullName>
+                <default>false</default>
+                <label>Shell CZECH Republic AS</label>
+            </value>
+            <value>
+                <fullName>Shell Deutscheland Oil GMBH</fullName>
+                <default>false</default>
+                <label>Shell Deutscheland Oil GMBH</label>
+            </value>
+            <value>
+                <fullName>Shell Direct GMBH</fullName>
+                <default>false</default>
+                <label>Shell Direct GMBH</label>
+            </value>
+            <value>
+                <fullName>Shell Eastern Petroleum Limited</fullName>
+                <default>false</default>
+                <label>Shell Eastern Petroleum Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Eastern Trading (Pte) Limited</fullName>
+                <default>false</default>
+                <label>Shell Eastern Trading (Pte) Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Espana SA</fullName>
+                <default>false</default>
+                <label>Shell Espana SA</label>
+            </value>
+            <value>
+                <fullName>SHELL GAS LTD - UK</fullName>
+                <default>false</default>
+                <label>SHELL GAS LTD - UK</label>
+            </value>
+            <value>
+                <fullName>Shell Hellas AE Oil and Chemicals Co</fullName>
+                <default>false</default>
+                <label>Shell Hellas AE Oil and Chemicals Co</label>
+            </value>
+            <value>
+                <fullName>Shell Hong Kong Limited</fullName>
+                <default>false</default>
+                <label>Shell Hong Kong Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Italia SPA</fullName>
+                <default>false</default>
+                <label>Shell Italia SPA</label>
+            </value>
+            <value>
+                <fullName>Shell Malasyia Trading Sendirian Bhd</fullName>
+                <default>false</default>
+                <label>Shell Malasyia Trading Sendirian Bhd</label>
+            </value>
+            <value>
+                <fullName>Shell Marine Product Limited</fullName>
+                <default>false</default>
+                <label>Shell Marine Product Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Marine Products - USA</fullName>
+                <default>false</default>
+                <label>Shell Marine Products - USA</label>
+            </value>
+            <value>
+                <fullName>Shell Marketing Middle East</fullName>
+                <default>false</default>
+                <label>Shell Marketing Middle East</label>
+            </value>
+            <value>
+                <fullName>Shell Nederland Raffinaderij BV</fullName>
+                <default>false</default>
+                <label>Shell Nederland Raffinaderij BV</label>
+            </value>
+            <value>
+                <fullName>Shell Nederland Verkoopmaatschappij</fullName>
+                <default>false</default>
+                <label>Shell Nederland Verkoopmaatschappij</label>
+            </value>
+            <value>
+                <fullName>Shell New Zealand Ltd</fullName>
+                <default>false</default>
+                <label>Shell New Zealand Ltd</label>
+            </value>
+            <value>
+                <fullName>Shell Norway</fullName>
+                <default>false</default>
+                <label>Shell Norway</label>
+            </value>
+            <value>
+                <fullName>Shell Oil Products US</fullName>
+                <default>false</default>
+                <label>Shell Oil Products US</label>
+            </value>
+            <value>
+                <fullName>Shell Oman Marketing Company</fullName>
+                <default>false</default>
+                <label>Shell Oman Marketing Company</label>
+            </value>
+            <value>
+                <fullName>Shell South Africa Marketing (PTY) Limited</fullName>
+                <default>false</default>
+                <label>Shell South Africa Marketing (PTY) Limited</label>
+            </value>
+            <value>
+                <fullName>Shell Switzerland</fullName>
+                <default>false</default>
+                <label>Shell Switzerland</label>
+            </value>
+            <value>
+                <fullName>Shell Thailand</fullName>
+                <default>false</default>
+                <label>Shell Thailand</label>
+            </value>
+            <value>
+                <fullName>Shell Timur Sdn Bhd</fullName>
+                <default>false</default>
+                <label>Shell Timur Sdn Bhd</label>
+            </value>
+            <value>
+                <fullName>Shell Trading</fullName>
+                <default>false</default>
+                <label>Shell Trading</label>
+            </value>
+            <value>
+                <fullName>Shell Trading Rotterdam (STR)</fullName>
+                <default>false</default>
+                <label>Shell Trading Rotterdam (STR)</label>
+            </value>
+            <value>
+                <fullName>Shell UK Ltd</fullName>
+                <default>false</default>
+                <label>Shell UK Ltd</label>
+            </value>
+            <value>
+                <fullName>Shell Vietnam</fullName>
+                <default>false</default>
+                <label>Shell Vietnam</label>
+            </value>
+            <value>
+                <fullName>Societe des Petroles Shell</fullName>
+                <default>false</default>
+                <label>Societe des Petroles Shell</label>
+            </value>
+            <value>
+                <fullName>Svenska Shell</fullName>
+                <default>false</default>
+                <label>Svenska Shell</label>
+            </value>
+            <value>
+                <fullName>THE SHELL COMPANY OF AUSTRALIA LTD</fullName>
+                <default>false</default>
+                <label>THE SHELL COMPANY OF AUSTRALIA LTD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

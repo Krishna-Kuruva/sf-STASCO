@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Entity_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is auto-populated from &apos;Customer Entity Type | Classification&apos;</inlineHelpText>
+    <label>* Entity Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bank/Financial Institution</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer</fullName>
+                <default>false</default>
+                <label>Broker Dealer</label>
+            </value>
+            <value>
+                <fullName>Central Bank</fullName>
+                <default>false</default>
+                <label>Central Bank</label>
+            </value>
+            <value>
+                <fullName>Fund</fullName>
+                <default>false</default>
+                <label>Fund</label>
+            </value>
+            <value>
+                <fullName>Government Organisation</fullName>
+                <default>false</default>
+                <label>Government Organisation</label>
+            </value>
+            <value>
+                <fullName>Individual</fullName>
+                <default>false</default>
+                <label>Individual</label>
+            </value>
+            <value>
+                <fullName>Insurance Company</fullName>
+                <default>false</default>
+                <label>Insurance Company</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor</fullName>
+                <default>false</default>
+                <label>Investment Advisor</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure</fullName>
+                <default>false</default>
+                <label>Market Infrastructure</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business</fullName>
+                <default>false</default>
+                <label>Non-Financial Business</label>
+            </value>
+            <value>
+                <fullName>Trust</fullName>
+                <default>false</default>
+                <label>Trust</label>
+            </value>
+            <value>
+                <fullName>Vessel</fullName>
+                <default>false</default>
+                <label>Vessel</label>
+            </value>
+            <value>
+                <fullName>Branch</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Branch</label>
+            </value>
+            <value>
+                <fullName>Government Intermediary</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Government Intermediary</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

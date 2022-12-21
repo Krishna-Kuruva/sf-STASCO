@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>used in apex class: BET_BDD_Search_Controller to get the data source mapping based on the region and entity type</description>
+    <label>BET EDP Source Mapping</label>
+    <pluralLabel>BET EDP Source Mapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

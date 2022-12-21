@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RV GSAP Contract Cancellation Notification</name>
+    <style>none</style>
+    <subject>Deal {!SAP_Staging__c.SfItemShtNo__c} - failed to cancel a contract in GSAP</subject>
+    <textOnly>Hi,  Contract Creation of Deal {!SAP_Staging__c.SfItemShtNo__c} is failed in GSAP. with below error. Please take appropriate action to add the contract in GSAP manually and update the Contract Number back into Salesforce.  Record: {!SAP_Staging__c.Link}  Error from GSAP: {!SAP_Staging__c.Error_Processing_to_GSAP__c}  Possible Actions:
+The deal did not get cancelled in GSAP, you might consider to cancel the deal manually in GSAP. This is an auto generated email, Please do not reply.  Thanks, Revolution Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

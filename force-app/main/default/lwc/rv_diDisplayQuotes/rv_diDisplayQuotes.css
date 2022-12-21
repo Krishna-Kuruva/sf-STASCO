@@ -1,0 +1,26 @@
+/*:host{
+    --card-background: rgb(255, 255, 255);
+  }*/
+
+  :host{
+    --sds-c-card-color-background:#f2f5f9;
+     --sds-c-card-header-spacing-block-start: none;
+     --sds-c-card-header-spacing-block-end: none;
+     --sds-c-card-header-spacing-inline-end: none;
+     --sds-c-card-body-spacing-block-start: 0px;
+     --sds-c-card-body-spacing-block-end: 5px;
+   }
+ 
+ .textSet{
+     font-size: 11px;
+     padding: 0px 0px 4px;
+     font-weight: 400;
+     color: #181818;
+     
+ }
+ 
+ /*.live-card-outer{
+     min-height: 400px;
+     background: var(--card-background);
+    /*  margin-top: -25px; */
+ /*}*/

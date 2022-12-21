@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Edm E10 vs Chic CBOB</fullName>
+        <default>false</default>
+        <label>Edm E10 vs Chic CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>Edm E10 vs USGC CBOB</fullName>
+        <default>false</default>
+        <label>Edm E10 vs USGC CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>Edm E10 vs USGC ULSD</fullName>
+        <default>false</default>
+        <label>Edm E10 vs USGC ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Edm ULSD vs Chic ULSD</fullName>
+        <default>false</default>
+        <label>Edm ULSD vs Chic ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto E10 vs Chi CBOB</fullName>
+        <default>false</default>
+        <label>Toronto E10 vs Chi CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto E10 vs NYH CBOB</fullName>
+        <default>false</default>
+        <label>Toronto E10 vs NYH CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto ULSD vs Chi CBOB</fullName>
+        <default>false</default>
+        <label>Toronto ULSD vs Chi CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto ULSD vs NYH ULSD</fullName>
+        <default>false</default>
+        <label>Toronto ULSD vs NYH ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Ontario Gas Import Differential</fullName>
+        <default>false</default>
+        <label>Ontario Gas Import Differential</label>
+    </customValue>
+    <customValue>
+        <fullName>Ontario Diesel Import Differential</fullName>
+        <default>false</default>
+        <label>Ontario Diesel Import Differential</label>
+    </customValue>
+    <customValue>
+        <fullName>Ethanol Margin E100</fullName>
+        <default>false</default>
+        <label>Ethanol Margin E100</label>
+    </customValue>
+    <customValue>
+        <fullName>Biofuels Margin B100</fullName>
+        <default>false</default>
+        <label>Biofuels Margin B100</label>
+    </customValue>
+    <customValue>
+        <fullName>Sarnia Cracks</fullName>
+        <default>false</default>
+        <label>Sarnia Cracks</label>
+    </customValue>
+    <customValue>
+        <fullName>Scotford Cracks</fullName>
+        <default>false</default>
+        <label>Scotford Cracks</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto ULSD Vs Chi ULSD</fullName>
+        <default>false</default>
+        <label>Toronto ULSD Vs Chi ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Edm ULSD vs USGC ULSD</fullName>
+        <default>false</default>
+        <label>Edm ULSD vs USGC ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Indicative2 Supply margin (cpl)</fullName>
+        <default>false</default>
+        <label>Indicative2 Supply margin (cpl)</label>
+    </customValue>
+    <customValue>
+        <fullName>MTL ULSD Export differential</fullName>
+        <default>false</default>
+        <label>MTL ULSD Export differential</label>
+    </customValue>
+    <customValue>
+        <fullName>Montreal ULSD Margins</fullName>
+        <default>false</default>
+        <label>Montreal ULSD Margins</label>
+    </customValue>
+    <customValue>
+        <fullName>MTL E10 vs NYH CBOB</fullName>
+        <default>false</default>
+        <label>MTL E10 vs NYH CBOB</label>
+    </customValue>
+    <customValue>
+        <fullName>MTL ULSD vs NYH ULSD</fullName>
+        <default>false</default>
+        <label>MTL ULSD vs NYH ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver gasoline margins</fullName>
+        <default>false</default>
+        <label>Vancouver gasoline margins</label>
+    </customValue>
+    <customValue>
+        <fullName>ULSD Import/Export differential</fullName>
+        <default>false</default>
+        <label>ULSD Import/Export differential</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver E10 vs PNW Sub Octane</fullName>
+        <default>false</default>
+        <label>Vancouver E10 vs PNW Sub Octane</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver ULSD vs PNW ULSD</fullName>
+        <default>false</default>
+        <label>Vancouver ULSD vs PNW ULSD</label>
+    </customValue>
+    <customValue>
+        <fullName>Gasoline Spreads</fullName>
+        <default>false</default>
+        <label>Gasoline Spreads</label>
+    </customValue>
+    <customValue>
+        <fullName>Ethanol Spreads</fullName>
+        <default>false</default>
+        <label>Ethanol Spreads</label>
+    </customValue>
+    <customValue>
+        <fullName>NYH ULSD Spreads</fullName>
+        <default>false</default>
+        <label>NYH ULSD Spreads</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell Canada Gas Rack</fullName>
+        <default>false</default>
+        <label>Shell Canada Gas Rack</label>
+    </customValue>
+    <customValue>
+        <fullName>Shell Canada ULSD Rack</fullName>
+        <default>false</default>
+        <label>Shell Canada ULSD Rack</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto to Montreal differentials</fullName>
+        <default>false</default>
+        <label>Toronto to Montreal differentials</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver E10 Vs PNW SubOctane</fullName>
+        <default>false</default>
+        <label>Vancouver E10 Vs PNW SubOctane</label>
+    </customValue>
+    <customValue>
+        <fullName>RackChangeNotification</fullName>
+        <default>false</default>
+        <label>RackChangeNotification</label>
+    </customValue>
+    <customValue>
+        <fullName>RackCustomerNotification</fullName>
+        <default>false</default>
+        <label>RackCustomerNotification</label>
+    </customValue>
+    <customValue>
+        <fullName>NewBAPP</fullName>
+        <default>false</default>
+        <label>NewBAPP</label>
+    </customValue>
+    <customValue>
+        <fullName>CanadianRackPricing</fullName>
+        <default>false</default>
+        <label>CanadianRackPricing</label>
+    </customValue>
+    <customValue>
+        <fullName>BrandedNotificationChangeAmount</fullName>
+        <default>false</default>
+        <label>BrandedNotificationChangeAmount</label>
+    </customValue>
+    <customValue>
+        <fullName>BrandedNotificationExternalWeb</fullName>
+        <default>false</default>
+        <label>BrandedNotificationExternalWeb</label>
+    </customValue>
+    <description>This global picklist contains names of all reports used in Canada reports</description>
+    <masterLabel>RE_CND_Report_Names</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

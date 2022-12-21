@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X00_NAF_Actions_on_closure__c</fullName>
+    <externalId>false</externalId>
+    <label>00 - NAF Actions on closure</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer not contacted - wait till they call in</fullName>
+                <default>true</default>
+                <label>Customer not contacted - wait till they call in</label>
+            </value>
+            <value>
+                <fullName>Customer OK - only need to keep performing on contact</fullName>
+                <default>false</default>
+                <label>Customer OK - only need to keep performing on contact</label>
+            </value>
+            <value>
+                <fullName>Customer OK - No further actions required</fullName>
+                <default>false</default>
+                <label>Customer OK - No further actions required</label>
+            </value>
+            <value>
+                <fullName>Urgent Issues - high priotity</fullName>
+                <default>false</default>
+                <label>Urgent Issues - high priotity</label>
+            </value>
+            <value>
+                <fullName>Further follow up required - by Risk marketer</fullName>
+                <default>false</default>
+                <label>Further follow up required - by Risk marketer</label>
+            </value>
+            <value>
+                <fullName>Further follow up required - by NAF account manger</fullName>
+                <default>false</default>
+                <label>Further follow up required - by NAF account manger</label>
+            </value>
+            <value>
+                <fullName>Further follow up required - by NAF Management</fullName>
+                <default>false</default>
+                <label>Further follow up required - by NAF Management</label>
+            </value>
+            <value>
+                <fullName>To call still - Risk marketer to call</fullName>
+                <default>false</default>
+                <label>To call still - Risk marketer to call</label>
+            </value>
+            <value>
+                <fullName>To call still - Account Manager</fullName>
+                <default>false</default>
+                <label>To call still - Account Manager</label>
+            </value>
+            <value>
+                <fullName>Action to be clarified</fullName>
+                <default>false</default>
+                <label>Action to be clarified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

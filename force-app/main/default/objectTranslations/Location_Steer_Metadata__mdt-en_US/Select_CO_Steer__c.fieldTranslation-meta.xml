@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Select_CO_Steer__c</name>
+    <picklistValues>
+        <masterLabel>AGO-Ludwigshafen</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IGO-Ludwigshafen</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MOGAS-Godorf</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MOGAS-Karlsruhe</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

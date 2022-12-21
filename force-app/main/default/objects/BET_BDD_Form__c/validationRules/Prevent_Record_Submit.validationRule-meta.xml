@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Record_Submit</fullName>
+    <active>true</active>
+    <description>Stop users other than RPA team to submit bdd form</description>
+    <errorConditionFormula>IF( AND( TEXT(BET_Status__c) == &apos;Submitted&apos; , NOT($Permission.Ignore_Validation_Rules)), true, false)</errorConditionFormula>
+    <errorMessage>Invalid BET Status selection</errorMessage>
+</ValidationRule>

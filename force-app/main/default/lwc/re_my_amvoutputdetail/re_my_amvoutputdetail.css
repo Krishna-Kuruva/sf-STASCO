@@ -1,0 +1,48 @@
+.slds-box{
+    /*border : 2px solid #FFCC00 !important;*/ 
+    padding: 0px;
+}
+.h2{
+    font-size: larger !important;
+}
+/*
+.bluecls{
+    background-color: #FEF2CC !important ;
+}
+.redcls{
+    background-color: #E1EDD9 !important ;
+}
+.greencls{
+    background-color: #FCE4D6 !important ;
+}
+.othercls{
+    background-color: #DDEBF6 !important;
+}
+.variantcls{
+    background-color: #fadcdc !important;
+}*/
+
+.slds-table thead th{
+
+    background-color: #212946 !important;
+    color: #ffffff;
+    border: 1px solid #fff;
+    padding: 10px 10px;
+    font-size: 1rem;
+}
+
+.slds-table tbody td
+{
+    border: 1px solid #d9e2ed;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.slds-table:not(.slds-no-row-hover) tbody tr:hover>th,
+.slds-table:not(.slds-no-row-hover) tbody tr:hover>td,
+.slds-table_bordered:not(.slds-no-row-hover) tbody tr:hover>td:not(.slds-has-focus)
+{
+    background-color: #ffff99;
+    color:#000000;
+}

@@ -1,0 +1,404 @@
+<!--
+ - Created by Soumyajit.Jagadev on 15-Jun-20.
+ -->
+
+<!-- Rt Import Mapping -->
+<template>
+    <template if:false={spinnerLoaded}>
+
+        <template if:true={showCreateType}>
+            <div class="modalAreaHeight">
+                <div class="slds-grid" if:false={showMapFileUploader}>
+                    <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                        <lightning-combobox
+                                name="setCloneType"
+                                value={selectedCloneType}
+                                label="Clone From"
+                                placeholder="Select Mapping"
+                                options={cloneList}
+                                onchange={setDropSelection}
+                        ></lightning-combobox>
+                        <template if:true={showCreateClone}>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="brand" label="Proceed" title="Proceed" icon-name="utility:copy" onclick={createClone}>
+                            </lightning-button>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                        <lightning-button variant="brand-outline" label="Create From Mapping File" title="Create From Mapping File" icon-name="utility:upload" onclick={createFromFile}>
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                        <lightning-button variant="brand-outline" label="Create Manually" title="Create Manually" icon-name="utility:magicwand" onclick={createNew}>
+                        </lightning-button>
+                    </div>
+                </div>
+                <template if:true={showMapFileUploader}>
+                    <div class="slds-box bgWhite">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <div class="slds-p-around_medium lgc-bg">
+                                    <lightning-input type="file" label="Upload Mapping File" onchange={handleMapFileChange}></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 slds-align--absolute-center" if:true={mapFileSelected}>
+                                <span>{mapFileName} is Selected for Upload</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <lightning-button variant="brand" label="Upload" title="Upload Selected File" onclick={handleMapFileSave}>
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:false={showCreateType}>
+            <div class="slds-float_right">
+
+                <template if:true={showObjectBtns}>
+                    <template if:true={isAdmin}>
+                        <template if:true={showObject}>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="brand-outline" label="Define/Update Field Mapping(s)" title="Define/Update Field Mapping(s)" icon-name="utility:filter" onclick={confirmObject}>
+                            </lightning-button>
+                        </template>
+                        <template if:true={showFields}>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="destructive-text" label="Review Mapping Object" title="Review Mapping Object" icon-name="utility:skip_back" onclick={resetObject}>
+                            </lightning-button>
+                        </template>
+                    </template>
+                </template>
+
+                <template if:false={showObjectBtns}>
+                    <template if:true={showObject}>
+                        <span class="">&nbsp;&nbsp;</span>
+                        <lightning-button variant="brand-outline" label="View Field Mapping(s)" title="View Field Mapping(s)" icon-name="utility:filter" onclick={viewFields}>
+                         </lightning-button>
+                    </template>
+                    <template if:true={showFields}>
+                        <span class="">&nbsp;&nbsp;</span>
+                        <lightning-button variant="brand-outline" label="View Mapping Object" title="View Mapping Object" icon-name="utility:back" onclick={hideFields}>
+                        </lightning-button>
+                    </template>
+                </template>
+
+                <template if:true={isAdmin}>
+                    <template if:true={showEditBtn}>
+                        <span class="">&nbsp;&nbsp;</span>
+                        <lightning-button variant="brand-outline" label="Edit" title="Edit Mapping" icon-name="utility:edit" onclick={editMap} >
+                        </lightning-button>
+                    </template>
+                    <template if:true={showDelBtn}>
+                        <span class="">&nbsp;&nbsp;</span>
+                        <lightning-button variant="destructive" label="Delete" title="Delete Mapping" icon-name="utility:delete" onclick={deleteMap}>
+                        </lightning-button>
+                    </template>
+                    <template if:true={showSaveBtn}>
+                        <span class="">&nbsp;&nbsp;</span>
+                        <lightning-button variant="success" label="Save" title="Save Mapping" icon-name="utility:save" onclick={saveMap}>
+                        </lightning-button>
+                    </template>
+                </template>
+            </div>
+
+            <template if:true={showObject}>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-input type="text" label="Import Type Name" name="mappingName" value={mappingName} onchange={textFldChange} disabled={mappingInputDisabled} required></lightning-input>
+                        </div>
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-combobox
+                                    name="objSelect"
+                                    value={objectAPIname}
+                                    label="Mapped Object"
+                                    placeholder="Select Object"
+                                    options={objectList}
+                                    onchange={setDropSelection}
+                                    disabled={mappingInputDisabled}
+                                    required
+                            ></lightning-combobox>
+                        </div>
+                        <template if:true={hasRecordType}>
+                            <div class="slds-p-around_medium lgc-bg">
+                                <lightning-combobox
+                                        name="recTypeSelect"
+                                        value={selectedRecordType}
+                                        label="RecordType Filter"
+                                        placeholder="Select RecordType"
+                                        options={recTypeList}
+                                        onchange={setDropSelection}
+                                        disabled={mappingInputDisabled}
+                                ></lightning-combobox>
+                            </div>
+                        </template>
+                        <template if:true={isAdmin}>
+                            <template if:true={hasCustomLogic}>
+                                <template if:true={showSaveBtn}>
+                                    <div class="slds-p-around_medium lgc-bg">
+                                        <lightning-button variant="brand-outline" label="View Class Example" title="View Class Example" icon-name="utility:preview" onclick={viewExample}>
+                                        </lightning-button>
+                                    </div>
+                                </template>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" >
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-input type="text" label="Description" name="mappingDescription"  value={mappingDescription} onchange={textFldChange} disabled={mappingInputDisabled}></lightning-input>
+                        </div>
+                        <template if:true={isAdmin}>
+                            <div class="slds-p-around_medium lgc-bg">
+                                <lightning-input type="text" label="Mapped Object API Name" value={objectAPIname} disabled></lightning-input>
+                            </div>
+                        </template>
+                        <template if:true={isAdmin}>
+                            <div class="slds-p-around_medium lgc-bg">
+                                <lightning-input type="checkbox" label="Consider Today's Date as Identifier?" name="considerToday" checked={considerToday} onchange={checkboxChange} disabled={mappingInputDisabled}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-p-around_medium lgc-bg">
+                                <lightning-input type="checkbox" label="Has Custom Logic?" name="hasCustomLogic" checked={hasCustomLogic} onchange={checkboxChange} disabled={mappingInputDisabled}>
+                                </lightning-input>
+                            </div>
+                            <template if:true={hasCustomLogic}>
+                                <div class="slds-p-around_medium lgc-bg">
+                                    <lightning-combobox
+                                            name="apexSelect"
+                                            value={selectedApexName}
+                                            label="Apex Class Name (that Implements 'Callable')"
+                                            placeholder="Select Apex Class"
+                                            options={apexList}
+                                            onchange={setDropSelection}
+                                            disabled={mappingInputDisabled}
+                                    ></lightning-combobox>
+                                </div>
+                                <div class="slds-p-around_medium lgc-bg">
+                                    <lightning-input type="text" label="Apex Method Name" name="apexMethodName" value={apexMethodName} onchange={textFldChange} disabled={mappingInputDisabled}></lightning-input>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Section Example Pop-Up starts -->
+                <div if:true={showExample}>
+                    <section role="dialog"
+                             tabindex="-1"
+                             aria-labelledby="Example-modal-heading-01"
+                             aria-modal="true"
+                             aria-describedby="Example-modal-content-id-1"
+                             class="slds-modal slds-fade-in-open slds-modal_medium" >
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header modalHeader">
+                                <lightning-button-icon icon-name="utility:close"
+                                                       onclick={hideExample}
+                                                       alternative-text="close"
+                                                       variant="bare-inverse"
+                                                       class="slds-modal__close">
+                                </lightning-button-icon>
+                                <h2 id="Mapping-modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                    Callable Class Example Required for Customization
+                                </h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium modalAreaHeight" id="Example-modal-content-id-1" >
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <textarea disabled="" class="modalTextArea">
+                                            {classExample}
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="slds-modal__footer modalHeader">
+                                <lightning-button variant="neutral" label="Close" title="Close" icon-name="utility:close" onclick={hideExample}>
+                                </lightning-button>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+                <!-- Section Example Pop-Up ends -->
+
+            </template>
+
+            <template if:true={showFields}>
+
+                <h1 class="">
+                    <span class="slds-page-header__title slds-truncate" title="Field Mapping(s) of {mappingName}">Field Mapping(s) of {mappingName}</span>
+                </h1>
+
+                <br/>
+                <template if:true={isAdmin}>
+                    <template if:false={fieldInputDisabled}>
+                        <div class="slds-float_right">
+                            <div class="slds-p-bottom_small">
+                                <h1 class="">Add Row
+                                    <lightning-button-icon icon-name="utility:add" size="medium" variant="bare" alternative-text="Add" data-name="fieldAdd" onclick={addRow}>
+                                    </lightning-button-icon>
+                                </h1>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+
+                        <div style="height: 300px;">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Source Column Number">Source Column Number</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Is Constant Value?">Is Constant Value?</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Source Column">Source Column</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Identifier?">Is Identifier?</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Field Info"></div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Mapped Field">Mapped Field</div>
+                                        </th>
+                                        <template if:true={isAdmin}>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mapped Field API Name">Mapped Field API Name</div>
+                                            </th>
+                                        </template>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Referred Object">Referred Object</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Referred Field">Referred Field</div>
+                                        </th>
+                                        <template if:true={isAdmin}>
+                                            <template if:false={fieldInputDisabled}>
+                                                <th class="" scope="col">
+                                                    <div class="slds-truncate" title="Action">Action</div>
+                                                </th>
+                                            </template>
+                                        </template>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={typeMapList} for:item="tyMap" for:index="indx">
+                                        <tr class="slds-hint-parent" key={tyMap.mapNum} id={tyMap.mapNum}>
+                                            <td title="Source Column Number">
+                                                <template if:false={tyMap.IsFixedValue}>
+                                                    <lightning-input variant="label-hidden" type="number" name="OrderNum" label="" value={tyMap.OrderNum} data-id={indx} onchange={textFldChange} step="1" disabled={fieldInputDisabled}>
+                                                    </lightning-input>
+                                                </template>
+                                            </td>
+                                            <td title="Is Constant Value?">
+                                                <lightning-input variant="label-hidden" type="checkbox" name="IsFixedValue" label="" checked={tyMap.IsFixedValue} data-id={indx} onchange={checkboxChange} disabled={fieldInputDisabled}>
+                                                </lightning-input>
+                                            </td>
+                                            <td title="Source Column">
+                                                <lightning-input variant="label-hidden" type ="text" name="SourceCol" label="" value={tyMap.SourceCol} data-id={indx} onchange={textFldChange} disabled={fieldInputDisabled}>
+                                                </lightning-input>
+                                            </td>
+                                            <td title="Identifier?">
+                                                <lightning-input variant="label-hidden" type="checkbox" name="Identifier" label="" checked={tyMap.Identifier} data-id={indx} onchange={checkboxChange} disabled={fieldInputDisabled}>
+                                                </lightning-input>
+                                            </td>
+                                            <td title="Field Info">
+                                                <template if:true={tyMap.isDate}>
+                                                    <lightning-helptext content="Accepted Format : YYYY-MM-DD"></lightning-helptext>
+                                                </template>
+                                                <template if:true={tyMap.isDateTime}>
+                                                    <lightning-helptext content="Accepted Format : YYYY-MM-DD hh:mm:ss"></lightning-helptext>
+                                                </template>
+                                                <template if:true={tyMap.isBoolean}>
+                                                    <lightning-helptext content="Accepted Value : TRUE/FALSE or 1/0"></lightning-helptext>
+                                                </template>
+                                            </td>
+                                            <td title="Mapped Field">
+                                                <lightning-combobox
+                                                        name="fieldSelect"
+                                                        data-id={indx}
+                                                        value={tyMap.FieldAPIName}
+                                                        label=""
+                                                        variant="label-hidden"
+                                                        placeholder="Select Field"
+                                                        options={fieldList}
+                                                        onchange={setDropSelection}
+                                                        disabled={fieldInputDisabled}
+                                                >
+                                                </lightning-combobox>
+                                            </td>
+                                            <template if:true={isAdmin}>
+                                                <td title="Mapped Field API Name">
+                                                    <lightning-input variant="label-hidden" type ="text" name="FieldAPIName" label="" value={tyMap.FieldAPIName} disabled>
+                                                    </lightning-input>
+                                                </td>
+                                            </template>
+                                            <td title="Referred Object">
+                                                <template if:false={tyMap.IsFixedValue}>
+                                                    <template if:true={tyMap.HasReference}>
+                                                        <lightning-input variant="label-hidden" type ="text" name="refObjectName" label="" value={tyMap.ReferenceTo} disabled>
+                                                        </lightning-input>
+                                                    </template>
+                                                </template>
+                                            </td>
+                                            <td title="Referred Field">
+                                                <template if:false={tyMap.IsFixedValue}>
+                                                    <template if:true={tyMap.HasReference}>
+                                                        <lightning-combobox
+                                                                name="refFieldSelect"
+                                                                data-id={indx}
+                                                                value={tyMap.ReferenceToFieldAPIName}
+                                                                label=""
+                                                                variant="label-hidden"
+                                                                placeholder="Select Field"
+                                                                options={tyMap.ReferenceToFieldList}
+                                                                onchange={setDropSelection}
+                                                                disabled={fieldInputDisabled}
+                                                        ></lightning-combobox>
+                                                    </template>
+                                                </template>
+                                            </td>
+                                            <template if:true={isAdmin}>
+                                                <template if:false={fieldInputDisabled}>
+                                                    <td data-label="Action">
+                                                        <lightning-button-icon icon-name="utility:delete"
+                                                                               data-id={indx}
+                                                                               data-name="fieldRemove"
+                                                                               size="small"
+                                                                               title="Delete"
+                                                                               class="slds-m-left_xx-small"
+                                                                               onclick={removeRow}>
+                                                        </lightning-button-icon>
+                                                    </td>
+                                                </template>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+
+            </template>
+
+        </template>
+    </template>
+
+    <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+    </template>
+</template>

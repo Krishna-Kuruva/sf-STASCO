@@ -1,0 +1,68 @@
+:host {
+    --sds-c-textarea-sizing-min-height: 32px;
+    --slds-c-textarea-sizing-min-height: 32px;
+    --slds-c-textarea-spacing-block-end: 0px;
+    --slds-c-textarea-spacing-block-start: 0px;
+    --slds-c-textarea-spacing-inline-end: 2px;
+    --slds-c-textarea-spacing-inline-start: 2px;    
+}
+.tableFixHead {
+    overflow: auto;
+    height: auto;
+    max-height: 500px;
+    border: 2px solid #d1d8e0;    
+
+
+}
+
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.tableFixHead th {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+
+.bgGrey {
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.bgGrey:nth-child(odd) {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 0 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.scrollbarEdit::-webkit-scrollbar-track
+{
+	 box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #D9D9D9 ;
+}
+
+.scrollbarEdit::-webkit-scrollbar
+{
+	width: 10px;
+		height:10px;
+	background-color: #D9D9D9 ;
+}
+
+.scrollbarEdit::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #A6A6A6;
+}
+.readonly-page {
+    pointer-events: none;
+}

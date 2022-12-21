@@ -1,0 +1,74 @@
+<template>
+    <lightning-card>           
+        <div class="slds-p-around_none">
+           
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered setTable">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="slds-size_5-of-10 thBg" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title=""></div>
+                        </th>                                            
+                        <th class="slds-size_3-of-10 thBg" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="publishedDate">Published Date</div>
+                        </th>
+                        <th class="slds-size_2-of-10 thBg" scope="col">
+                            <div class="slds-truncate slds-align_absolute-center" title="price">Price</div>
+                        </th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                            <tr class="slds-line-height_reset">
+                                <td class="slds-size_5-of-10">
+                                    <div class="slds-truncate slds-align_absolute-center" title="prodName">IGO 10 PPM</div>
+                                </td>
+
+                                <td class="slds-size_3-of-10">
+                                    <div class="slds-truncate slds-align_absolute-center" title="prodName">{publishDate1}</div>
+                                </td>                             
+                                
+                                <td class="slds-size_2-of-10"> 
+                                    <lightning-input variant="label-hidden"  class = "input-1" type = "number" step ="0.0001" value={price1} onchange={handlepriceChange1}>
+                                    </lightning-input>
+                                </td>
+                                
+                            </tr>
+							<tr class="slds-line-height_reset">
+                                <td class="slds-size_3-of-10">
+                                    <div class="slds-truncate slds-align_absolute-center" title="prodName">IGO 10 PPM</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div class="slds-truncate slds-align_absolute-center" title="prodName">{publishDate2}</div>
+                                </td>                             
+                                
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input variant="label-hidden"  class = "input_3" type = "number" step ="0.0001" value={price2} onchange={handlepriceChange2}>
+                                    </lightning-input>
+                                </td>                             
+                            </tr>
+                                                                                           
+                </tbody>
+            </table>   
+            <br/>   
+            
+            <div class="slds-modal__footer" style="background-color: #ffffff;border:none;box-shadow: none;">
+                <template if:true ={error_attribute}><div class="error-text-styling"> Price is required.</div></template>
+                <template if:false ={error_attribute}><div class="error-text-styling"></div></template>
+                <lightning-button 
+                    label={toggleSaveLabel} 
+                    icon-name="utility:save" 
+                    slot="actions"
+                    variant="brand"
+                    onclick={handleSave}
+                    disabled={isdisabled}>
+                </lightning-button>&nbsp;
+                <lightning-button 
+                    label="Cancel" 
+                    icon-name="utility:cancel" 
+                    slot="actions"
+                    variant="destructive"
+                    onclick={handleCancel}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

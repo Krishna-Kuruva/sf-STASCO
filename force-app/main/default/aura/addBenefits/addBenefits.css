@@ -1,0 +1,13 @@
+.THIS table,.THIS th,.THIS td {  
+   width:200%;
+  
+}
+.THIS .dockedHeader{
+    position:fixed;
+    width:100%;
+    z-index:98;
+    height:40px;
+    margin-top:-3px;
+    background-color:white;
+   
+}

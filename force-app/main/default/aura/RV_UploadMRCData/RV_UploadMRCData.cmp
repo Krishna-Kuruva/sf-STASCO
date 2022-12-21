@@ -1,0 +1,46 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" controller="RV_MRCDataUploadController" access="global" >
+    
+    <aura:attribute name="showLoadingSpinner" type="boolean" default="false" />
+    <aura:attribute name="fileName" type="String" default="No File Selected.." />
+    <aura:attribute name="errorList" type="List" />
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    
+    <div class="slds-align--absolute-center">
+        <lightning:spinner aura:id="spinner" variant="brand" size="large" class="slds-hide"/>
+	</div>
+    <lightning:input aura:id="fileId" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload Attachment" multiple="false"/>
+    
+    <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
+    <aura:if isTrue="{!(v.errorList.length != 0)}">
+    <div class="slds-grid slds-wrap slds-size_3-of-4 " >
+        <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-max-medium-table--stacked">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col" class="slds-truncate fixed-width finished slds-color__background_gray-5 putborderHeader putborderLeft">Field</th>
+                    <th scope="col" class="slds-truncate slds-cell-fixed slds-color__background_gray-5 putborderHeader">Error Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.errorList}" var="item">
+                    <tr>
+                        <td scope="row" class="putborderHeader putborderLeft">
+                        	<ui:outputText class="slds-truncate " value="{!item.id}"/>
+                        </td>
+                        <td scope="row" class="putborderHeader putborderLeft">
+                            <ui:outputText class="slds-truncate slds-cell-wrap" value="{!item.errorMsg}"/>
+                        </td>  
+                    </tr>
+                </aura:iteration>
+                
+            </tbody>
+        </table>
+    </div>
+    </aura:if>
+    <aura:if isTrue="{!v.showLoadingSpinner}">
+        <div class="slds-text-body_small slds-text-color_error">Uploading...</div>
+    </aura:if>
+   
+	<br/>
+	<button class="slds-button slds-button_brand" onclick="{!c.doSave}">Save MRC Data</button>	
+</aura:component>

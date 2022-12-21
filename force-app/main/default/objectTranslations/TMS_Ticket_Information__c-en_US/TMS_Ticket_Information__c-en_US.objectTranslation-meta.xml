@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>TMS Ticket Information</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>TMS Tickets</value>
+    </caseValues>
+    <layouts>
+        <layout>LSS Team Page Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Ticket Management</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Updates</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>TMS_Ticket_Information Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Ticket Management</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Updates</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>LSS_Ticket</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>TMS_Ticket</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Assign_Close</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Assigned_OnHold</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Assigning_ticket</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Assigning_ticket_start</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Closing_Ticket</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Why_on_Hold_if_Status_on_Hold</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>New_Ticket</name>
+    </webLinks>
+</CustomObjectTranslation>

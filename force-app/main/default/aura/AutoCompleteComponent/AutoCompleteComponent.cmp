@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:registerEvent name="choose" type="c:AutoCompleteChooseEvent"/>
+	<aura:attribute name="record" type="List"/>
+    <li onclick="{!c.chooseItem}" class="slds-dropdown__item slds-has-icon--left cursorPointer" role="menuitem option">
+        <span class="slds-truncate">{!v.record.Name}</span>  
+    </li>      
+</aura:component>

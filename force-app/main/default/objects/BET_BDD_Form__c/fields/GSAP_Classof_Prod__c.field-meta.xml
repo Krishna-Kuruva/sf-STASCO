@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAP_Classof_Prod__c</fullName>
+    <externalId>false</externalId>
+    <label>* Class of Product</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2 - Fuels</fullName>
+                <default>false</default>
+                <label>2 - Fuels</label>
+            </value>
+            <value>
+                <fullName>5 - LPG</fullName>
+                <default>false</default>
+                <label>5 - LPG</label>
+            </value>
+            <value>
+                <fullName>9 - Crude</fullName>
+                <default>false</default>
+                <label>9 - Crude</label>
+            </value>
+            <value>
+                <fullName>14 - Sulphur</fullName>
+                <default>false</default>
+                <label>14 - Sulphur</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

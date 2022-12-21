@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Covamo Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Covamo Details</value>
+    </caseValues>
+    <layouts>
+        <layout>Covamo Detail Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Backstop</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Offer</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

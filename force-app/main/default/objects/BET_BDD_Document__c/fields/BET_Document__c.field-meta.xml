@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BET_Document__c</fullName>
+    <externalId>false</externalId>
+    <label>Document</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>3rd Party Report</fullName>
+                <default>false</default>
+                <label>3rd Party Report</label>
+            </value>
+            <value>
+                <fullName>Financial Statement</fullName>
+                <default>false</default>
+                <label>Financial Statement</label>
+            </value>
+            <value>
+                <fullName>Tax ID Verify</fullName>
+                <default>false</default>
+                <label>Tax ID Verify</label>
+            </value>
+            <value>
+                <fullName>Tax ID Wavier</fullName>
+                <default>false</default>
+                <label>Tax ID Wavier</label>
+            </value>
+            <value>
+                <fullName>Bilingual</fullName>
+                <default>false</default>
+                <label>Bilingual</label>
+            </value>
+            <value>
+                <fullName>Tax ID</fullName>
+                <default>false</default>
+                <label>Tax ID</label>
+            </value>
+            <value>
+                <fullName>Credit Boost Approval</fullName>
+                <default>false</default>
+                <label>Credit Boost Approval</label>
+            </value>
+            <value>
+                <fullName>Vessel Report</fullName>
+                <default>false</default>
+                <label>Vessel Report</label>
+            </value>
+            <value>
+                <fullName>OFAC IMO Check</fullName>
+                <default>false</default>
+                <label>OFAC IMO Check</label>
+            </value>
+            <value>
+                <fullName>Banking Details</fullName>
+                <default>false</default>
+                <label>Banking Details</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

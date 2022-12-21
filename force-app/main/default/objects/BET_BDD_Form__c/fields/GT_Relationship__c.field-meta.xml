@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Relationship__c</fullName>
+    <externalId>false</externalId>
+    <label>* Relationship</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>GT_Type_Of_RelationShip__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>End User</fullName>
+                <default>false</default>
+                <label>End User</label>
+            </value>
+            <value>
+                <fullName>Exchange Member</fullName>
+                <default>false</default>
+                <label>Exchange Member</label>
+            </value>
+            <value>
+                <fullName>Leaseholder</fullName>
+                <default>false</default>
+                <label>Leaseholder</label>
+            </value>
+            <value>
+                <fullName>Letter of Credit Bank</fullName>
+                <default>false</default>
+                <label>Letter of Credit Bank</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Pipes &amp; Wires</fullName>
+                <default>false</default>
+                <label>Pipes &amp; Wires</label>
+            </value>
+            <value>
+                <fullName>Shell Internal (Non-Trading)</fullName>
+                <default>false</default>
+                <label>Shell Internal (Non-Trading)</label>
+            </value>
+            <value>
+                <fullName>Shell Internal (Trading)</fullName>
+                <default>false</default>
+                <label>Shell Internal (Trading)</label>
+            </value>
+            <value>
+                <fullName>Shipping (all)</fullName>
+                <default>false</default>
+                <label>Shipping (all)</label>
+            </value>
+            <value>
+                <fullName>Trading Platform</fullName>
+                <default>false</default>
+                <label>Trading Platform</label>
+            </value>
+            <value>
+                <fullName>Vendor</fullName>
+                <default>false</default>
+                <label>Vendor</label>
+            </value>
+            <value>
+                <fullName>Brokerage Services</fullName>
+                <default>false</default>
+                <label>Brokerage Services</label>
+            </value>
+            <value>
+                <fullName>GSS Supply</fullName>
+                <default>false</default>
+                <label>GSS Supply</label>
+            </value>
+            <value>
+                <fullName>Trading</fullName>
+                <default>false</default>
+                <label>Trading</label>
+            </value>
+            <value>
+                <fullName>Royalty Payee</fullName>
+                <default>false</default>
+                <label>Royalty Payee</label>
+            </value>
+            <value>
+                <fullName>Transportation (Non-Shipping)</fullName>
+                <default>false</default>
+                <label>Transportation (Non-Shipping)</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>End User</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Exchange Member</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Exchange Member</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Leaseholder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Letter of Credit Bank</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Pipes &amp; Wires</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Shell Internal (Non-Trading)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Shell Internal (Trading)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <controllingFieldValue>Technical Operator</controllingFieldValue>
+            <controllingFieldValue>Vessel</controllingFieldValue>
+            <valueName>Shipping (all)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Exchange Member</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Trading Platform</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Vendor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>GSS Supply</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Basic Customer</controllingFieldValue>
+            <valueName>Transportation (Non-Shipping)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Brokerage Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Basic Customer</controllingFieldValue>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <valueName>Trading</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Prospect</controllingFieldValue>
+            <controllingFieldValue>Royalty Payee</controllingFieldValue>
+            <valueName>Royalty Payee</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

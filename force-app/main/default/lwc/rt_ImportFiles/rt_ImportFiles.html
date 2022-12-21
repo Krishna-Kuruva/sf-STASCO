@@ -1,0 +1,424 @@
+<!--
+ - Created by Soumyajit.Jagadev on 08-Jun-20.
+ -->
+
+<!-- Rt Import Files -->
+<template>
+    <template if:false={spinnerLoaded}>
+        <!-- Section Application Pop-Up starts -->
+            <div if:true={showAppFilter}>
+                <section role="dialog"
+                         tabindex="-1"
+                         aria-labelledby="Application-modal-heading-01"
+                         aria-modal="true"
+                         aria-describedby="Application-modal-content-id-1"
+                         class="slds-modal slds-fade-in-open slds-modal_small" >
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header bgGrey">
+                            <lightning-button-icon icon-name="utility:close"
+                                                   onclick={closeAppFilter}
+                                                   alternative-text="close"
+                                                   variant="bare-inverse"
+                                                   class="slds-modal__close">
+                            </lightning-button-icon>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="Application-modal-content-id-1">
+                            <div class="slds-align--absolute-center" style="height: 200px; width: 100%;">
+                                <lightning-combobox
+                                        name="appSelect"
+                                        value={selectedAppFilter}
+                                        label="Application Name"
+                                        placeholder="Select Application"
+                                        options={appList}
+                                        onchange={setAppName}
+                                        required
+                                ></lightning-combobox>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button variant="brand" label="Proceed" title="Proceed" icon-name="utility:like" onclick={fetchAppData} disabled={disableAppProceedBtn}>
+                                </lightning-button>
+                                <template if:true={spinnerLoad}>
+                                    <div class="slds-spinner_container">
+                                        <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                            <span class="slds-assistive-text">Loading</span>
+                                            <div class="slds-spinner__dot-a"></div>
+                                            <div class="slds-spinner__dot-b"></div>
+
+                                            <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                                                {spinnerMessage}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button variant="neutral" label="Close" title="Close" icon-name="utility:close" onclick={closeAppFilter}>
+                            </lightning-button>
+                        </footer>
+                    </div>
+                </section>
+            </div>
+        <!-- Section Application Pop-Up ends -->
+
+        <!--Page starts here-->
+        <div class="" if:false={showAppFilter}>
+            <div if:true={pageViewAllowed}>
+
+                <!--Header starts here-->
+                <div class="slds-page-header slds-page-header_record-home page-header">
+                    <div class="slds-page-header__row slds-grid">
+                            <div class="slds-col slds-size_3-of-12">
+                                <div class="slds-media header-top-pad">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon icon-name="action:upload" alternative-text="Import Wizard" title=""></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span class="slds-page-header__title slds-truncate">File Import Wizard</span>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                        <p class="slds-page-header__name-meta"><b>Application Name </b>: {appName}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_9-of-12">
+                                <!--Filter option starts here-->
+                                <div class="slds-align--absolute-center">
+                                    <lightning-combobox
+                                            name="fileTypeSelect"
+                                            value={selectedFilter}
+                                            label="Import Type"
+                                            placeholder="Select Filter"
+                                            options={filterList}
+                                            onchange={fetchFilter}
+                                            disabled={filterDisabled}
+                                            required
+                                    ></lightning-combobox>
+                                    <span class="">&nbsp;&nbsp;</span>
+                                    <lightning-button variant="brand" label="Confirm" title="Confirm File Type" icon-name="utility:like" onclick={confirmSelection} disabled={disableConfirmBtn} class="slds-m-left_x-small">
+                                    </lightning-button>
+                                    <lightning-button variant="destructive-text" label="Reset" title="Reset Selection" icon-name="utility:refresh" onclick={resetSelection} disabled={disableResetBtn} class="slds-m-left_x-small">
+                                    </lightning-button>
+                                    <template if:true={showViewMappingBtn}>
+                                        <span class="">&nbsp;&nbsp;</span>
+                                        <lightning-button label="View Mapping" title="View Mapping" icon-name="utility:preview" onclick={viewMapping} class="">
+                                        </lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <!--Header ends here-->
+
+                <template if:false={hideAdminBtns}>
+                    <br/>
+                    <div class="slds-box bgGrey">
+                        <div class="slds-align--absolute-center">
+                            <template if:true={isAdmin}>
+                                <template if:true={showExportMapping}>
+                                    <span class="">&nbsp;&nbsp;</span>
+                                    <lightning-button label="Export Mapping" title="Export Mapping" icon-name="utility:download" onclick={exportMapping}>
+                                    </lightning-button>
+                                </template>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button label="Define New Import" title="Define New Import" icon-name="utility:add" onclick={createMapping} class="">
+                                </lightning-button>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button label="Manage All Imports" title="Manage All Imports" icon-name="utility:component_customization" onclick={navigateToTab}>
+                                </lightning-button>
+                            </template>
+                            <template if:false={isAdmin}>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button label="View All Imports" title="View All Imports" icon-name="utility:matrix" onclick={navigateToTab}>
+                                </lightning-button>
+                            </template>
+                            <template if:false={byPassAppFilter}>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button label="Change Application" title="Change Application" icon-name="utility:apps" onclick={openAppFilter}>
+                                </lightning-button>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+
+                <br/>
+                <div class="slds-box bgGrey">
+                    <lightning-progress-indicator current-step={progressTrack} type="base" variant="base">
+                        <lightning-progress-step label="Import Type Selection" value="1"></lightning-progress-step>
+                        <lightning-progress-step label="Upload File" value="2"></lightning-progress-step>
+                        <lightning-progress-step label="Preview Uploaded Data" value="3"></lightning-progress-step>
+                        <lightning-progress-step label="Confirm Upload" value="4"></lightning-progress-step>
+                        <lightning-progress-step label="Process Completed" value="5"></lightning-progress-step>
+                    </lightning-progress-indicator>
+                </div>
+
+                <!-- Section Mapping Pop-Up starts -->
+                <div if:true={showMapping}>
+                    <section role="dialog"
+                             tabindex="-1"
+                             aria-labelledby="Mapping-modal-heading-01"
+                             aria-modal="true"
+                             aria-describedby="Mapping-modal-content-id-1"
+                             class="slds-modal slds-fade-in-open slds-modal_large" >
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header bgGrey">
+                                <lightning-button-icon icon-name="utility:close"
+                                                       onclick={hideMapping}
+                                                       alternative-text="close"
+                                                       variant="bare-inverse"
+                                                       class="slds-modal__close">
+                                </lightning-button-icon>
+                                <h2 id="Mapping-modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                    Import Type Mapping Details
+                                </h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="Mapping-modal-content-id-1">
+                                <c-rt_-import-mapping
+                                        app-name={selectedAppFilter}
+                                        mode={mappingMode}
+                                        mapping-type-id={mappingTypeID}
+                                        is-admin={isAdmin}
+                                        clone-list={filterList}
+                                        clone-import-list={importList}
+                                        onclose={handleCloseEvent}
+                                ></c-rt_-import-mapping>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button variant="neutral" label="Close" title="Close" icon-name="utility:close" onclick={hideMapping}>
+                                </lightning-button>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+                <!-- Section Mapping Pop-Up ends -->
+
+                <div if:true={showUploader}>
+                    <br/>
+                    <div class="slds-box bgWhite">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-5 slds-align--absolute-center">
+                                <div class="slds-p-around_medium lgc-bg">
+                                    <lightning-input type="file" variant="label-hidden" label="" accept=".csv" onchange={handleFileChange}></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-5 slds-align--absolute-center" if:true={fileSelected}>
+                                <span>{fileName} is Selected for Upload</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-5 slds-align--absolute-center">
+                                <lightning-button variant="brand" label="Upload Now" title="Upload Selected File Now" icon-name="utility:upload" data-name="NOW" onclick={handleSave} disabled={disableUploadBtn} >
+                                </lightning-button>
+                            </div>
+                            <div class="slds-col slds-size_1-of-5 slds-align--absolute-center">
+                                <lightning-button variant="brand" label="Upload In Background" title="Upload Selected File In Background" icon-name="utility:clock" data-name="QUEUE" onclick={handleSave} disabled={disableUploadBtn} >
+                                </lightning-button>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-helptext content="Recommended For File Having More Than 100 Records"></lightning-helptext>
+                            </div>
+                            <div if:true={displaySchedulingOption} class="slds-col slds-size_1-of-5 slds-align--absolute-center">
+                                <lightning-button variant="brand" label="Scheduled Upload" title="Schedule processing of file" icon-name="utility:clock" data-name="SCHEDULED" onclick={handleSave} disabled={disableUploadBtn} >
+                                </lightning-button>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-helptext content="Recommended For scheduled uploads"></lightning-helptext>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div if:true={showPreview}>
+                    <br/>
+                    <div class="slds-box bgWhite">
+
+                        <div class="slds-align--absolute-center">
+                            <lightning-button variant="brand" label="Proceed" title="Proceed to Upload into System" icon-name="utility:save" onclick={finalConfirm}>
+                            </lightning-button>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="brand-outline" label="Cancel" title="Cancel Upload" icon-name="utility:close" onclick={cancelUpload}>
+                            </lightning-button>
+                        </div>
+                        <br/>
+
+                        <div class="slds-section slds-is-open">
+                            <h3 class="slds-section__title">
+                                <button class="slds-button slds-section__title-action">
+                                    <span>
+                                            <lightning-icon icon-name="utility:switch"
+                                                            alternative-text="button icon"
+                                                            size="x-small"
+                                                            class="slds-section__title-action-icon slds-button__icon slds-button__icon_left">
+                                            </lightning-icon>
+                                    </span>
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Preview Data">Preview Data</span>
+                                </button>
+                            </h3>
+                        </div>
+                        <br/>
+
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-3 ">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="colorBox rowNumCol"></div>
+                                    </div>
+                                    <div class="slds-col slds-size_3-of-12">
+                                        <span title="Row Number">Row Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 ">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="colorBox headerCol"></div>
+                                    </div>
+                                    <div class="slds-col slds-size_3-of-12">
+                                        <span title="File Header">File Header</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 ">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-12">
+                                        <div class="colorBox mappingCol"></div>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12">
+                                        <span title="Column Mapping Found">Column Mapping Found</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+
+                            <div class="slds-scrollable">
+                                <table class="slds-table_bordered slds-table_col-bordered">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <template for:each={dataGrid.headerRow} for:item='head'>
+                                                <th key={head.value} class={head.thClass}>
+                                                    <div class={head.divClass} title={head.value}>{head.value}</div>
+                                                </th>
+                                            </template>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <template for:each={dataGrid.bodyRow} for:item='row'>
+                                            <tr class="slds-hint-parent" key={row.rowKey}>
+                                                <template for:each={row.rowCol} for:item='col'>
+                                                    <td key={col.value} class={col.tdClass}>
+                                                        <div class={col.divClass} title={col.value}>{col.value}</div>
+                                                    </td>
+                                                </template>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        <br/>
+                        <div class="slds-align--absolute-center">
+                            <lightning-button variant="brand" label="Proceed" title="Proceed to Upload into System" icon-name="utility:save" onclick={finalConfirm}>
+                            </lightning-button>
+                            <span class="">&nbsp;&nbsp;</span>
+                            <lightning-button variant="brand-outline" label="Cancel" title="Cancel Upload" icon-name="utility:close" onclick={cancelUpload}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+
+                <div if:true={showResults}>
+                <br/>
+                <div class="slds-box bgWhite">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                            <lightning-button variant="brand-outline" label="View Log" title="View Log" onclick={viewLog}>
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <lightning-button-icon
+                                                icon-name="doctype:csv"
+                                                name="Success"
+                                                title="Download Success File"
+                                                onclick={downloadCSVFile}
+                                                alternative-text="Success">
+                                </lightning-button-icon>
+                               <span class="" title="Download Success File">&nbsp;&nbsp;Success File</span>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-align--absolute-center">
+                                <lightning-button-icon
+                                            icon-name="doctype:unknown"
+                                            name="Error"
+                                            title="Download Error File"
+                                            onclick={downloadCSVFile}
+                                            alternative-text="Error">
+                                </lightning-button-icon>
+                                <span class="" title="Download Error File">&nbsp;&nbsp;Error File</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div if:true={showRecentLogs}>
+                    <br/>
+                    <div class="slds-box bgWhite">
+
+                        <div class="slds-section slds-is-open">
+                            <h3 class="slds-section__title">
+                                <button class="slds-button slds-section__title-action">
+                                    <span>
+                                            <lightning-icon icon-name="utility:switch"
+                                                            alternative-text="button icon"
+                                                            size="x-small"
+                                                            class="slds-section__title-action-icon slds-button__icon slds-button__icon_left">
+                                            </lightning-icon>
+                                    </span>
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Recent Uploads">Recent Uploads</span>
+                                </button>
+                                <span class="">&nbsp;&nbsp;</span>
+                                <lightning-button variant="brand" label="Refresh" title="Refresh" icon-name="utility:refresh" onclick={getRecentUploads}>
+                                </lightning-button><span class="">&nbsp;&nbsp;</span>
+                                <lightning-button  variant="brand" label="All" title="All Logs" icon-name="" onclick={openLogs}>
+                                </lightning-button>
+                            </h3>
+                        </div>
+                        <br/>
+
+                        <div class="slds-scrollable" style="height:170px;">
+                            <lightning-datatable data={recentLogList}
+                                                 columns={recentLogColumn}
+                                                 key-field="Name"
+                                                 hide-checkbox-column=true>
+                            </lightning-datatable>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div if:true={showMessage}>
+                <span class="slds-align--absolute-center">{message}</span>
+                <br/>
+                <div class="slds-align--absolute-center">
+                    <lightning-button label="Change Application" title="Change Application" icon-name="utility:apps" onclick={openAppFilter}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+        <!--Page ends here-->
+    </template>
+
+    <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+    </template>
+</template>

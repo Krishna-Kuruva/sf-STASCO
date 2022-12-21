@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Lock_For_BDD_Approval</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT($Permission.APXTConga4__Composer_Custom_Permission), ISPICKVAL(BET_Status__c, &apos;Ready for BDD Approver&apos;))</errorConditionFormula>
+    <errorMessage>Record is locked for approval</errorMessage>
+</ValidationRule>

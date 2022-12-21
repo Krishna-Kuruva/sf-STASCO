@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>T_CF_2010__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the averge Commercial Fuels $/tonne C3 for the Country.</inlineHelpText>
+    <label>Country $/T - CF - 2010</label>
+    <precision>6</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

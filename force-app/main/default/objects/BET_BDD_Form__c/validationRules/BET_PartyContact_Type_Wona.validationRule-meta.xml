@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BET_PartyContact_Type_Wona</fullName>
+    <active>true</active>
+    <description>This rule is added to validate forms against entering none for wona party contact type</description>
+    <errorConditionFormula>IF( AND(TEXT(BDD_Line_of_Business__c) == &apos;WONA&apos;, TEXT(MDN_PC_Type__c) == Null) , true, false)</errorConditionFormula>
+    <errorDisplayField>MDN_PC_Type__c</errorDisplayField>
+    <errorMessage>Type cannot be None</errorMessage>
+</ValidationRule>

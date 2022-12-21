@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MOGAS-Schwedt-PCK-Export</label>
+    <protected>false</protected>
+    <values>
+        <field>Differential_Value_1__c</field>
+        <value xsi:type="xsd:string">Platts FOB Barge Eurobob (high)</value>
+    </values>
+    <values>
+        <field>Differential_Value_2__c</field>
+        <value xsi:type="xsd:string">Platts CIF Cargo NWE Gasoline 10ppm (high)</value>
+    </values>
+    <values>
+        <field>Factor_Route_1__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Factor_Route_2__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Origination_Steer_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Plant_Code__c</field>
+        <value xsi:type="xsd:string">D028</value>
+    </values>
+    <values>
+        <field>Product_Sub_Group__c</field>
+        <value xsi:type="xsd:string">MOGAS</value>
+    </values>
+    <values>
+        <field>Route_1__c</field>
+        <value xsi:type="xsd:string">MOGAS-E5_Shell_Karlsruhe_Rail_Altmannshofen</value>
+    </values>
+    <values>
+        <field>Route_2__c</field>
+        <value xsi:type="xsd:string">MOGAS-E5_Shell_Schwedt-PCK_Rail_Altmannshofen</value>
+    </values>
+    <values>
+        <field>Scenario__c</field>
+        <value xsi:type="xsd:string">Export</value>
+    </values>
+    <values>
+        <field>Select_CO_Steer__c</field>
+        <value xsi:type="xsd:string">MOGAS-Karlsruhe</value>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:type="xsd:string">Schwedt-PCK</value>
+    </values>
+</CustomMetadata>

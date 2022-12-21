@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Exposure Management Deal with {!Opportunity.Account}</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WONA Exposure Mgmt Deal</name>
+    <style>none</style>
+    <subject>Exposure Management deal done- {!Opportunity.Risk_Marketer__c} ; Customer:  {!Opportunity.Account} ; C3Margin  {!Opportunity.Total_Margin__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

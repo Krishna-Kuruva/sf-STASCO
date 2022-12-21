@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_to_Use_PFE_or_M2M__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( PFE_REmaining__c &lt;  CCL_vs_M2M__c ,  &quot;Use PFE Remaining  for the next deal&apos;s PFE calculation&quot; ,  &quot;Use CCL less M2M for the next deal&apos;s PFE calculation&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>When reviewing how much Contigent Credit Limit (CCL) is still available you need to look both at the PFE remaining or CCL - M2M. If the PFE remain is greater than the CCL-M2M then it means that M2M is greater thena the combined PFE&apos;s.</inlineHelpText>
+    <label>What to Use - PFE or M2M</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

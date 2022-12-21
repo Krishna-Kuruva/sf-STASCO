@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ADMIN_Online_ATP3_In_Tons</fullName>
+    <columns>Batch2__c</columns>
+    <columns>NAME</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Location__c</columns>
+    <columns>Grade_Level2__c</columns>
+    <columns>ATP3__c</columns>
+    <columns>Min_Daily_Split_Vol_ATP3__c</columns>
+    <columns>Split_Volume_Per_ATP3__c</columns>
+    <columns>Min_Online_Volume_ATP3__c</columns>
+    <columns>Max_Online_Volume_ATP3__c</columns>
+    <columns>Live_Online_ATP3__c</columns>
+    <columns>Vol_Cap_Customer_ATP3__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>ADMIN - Online ATP D(29-61) In Tons</label>
+</ListView>

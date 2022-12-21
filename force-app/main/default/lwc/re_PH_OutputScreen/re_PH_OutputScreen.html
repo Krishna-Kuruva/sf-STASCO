@@ -1,0 +1,357 @@
+<template>
+    <div class="zoomout">
+
+        <div class="slds-page-header slds-page-header_record-home outputHeader">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            
+                                <lightning-icon icon-name="standard:product_required"
+                                    alternative-text="close"
+                                    variant="inverse"
+                                    alternativetext="CBU Sheet"
+                                    size="medium" ></lightning-icon>
+                        </div>
+                        <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate slds-text-heading_medium" title="Commercial Fuels CBU Template 2020 CBU Sheet" style="font-weight: lighter;">Commercial Fuels {currentyear} CBU Template</span>
+                                </h1>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="slds-page-header__col-actions slds-align--absolute-center">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">Last Job Run : </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{lastModifiedDate}</b></span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate boldFont">CBU Date : </span>
+                        </div>
+                        <div class="slds-col">
+                            <span class="slds-truncate"><b>{todaysdate}</b></span>
+                        </div>
+                        <div class="slds-col">
+                        </div>
+                    </div>
+                </div>
+                <template if:true ={validProfile}>
+                    <div class="slds-page-header__col-actions slds-align--absolute-center">
+                        <lightning-button class=" slds-var-m-left_x-small slds-button__icon_right" variant="brand" label="Recalculate" icon-name="utility:replace" onclick={handleRecalculate}>
+                        </lightning-button>                    
+                    </div>  
+                    &nbsp;
+                    <div class="slds-page-header__col-actions slds-align--absolute-center">
+                        <lightning-button class="slds-var-m-left_x-small slds-button__icon_right" variant="brand" icon-name="utility:email" label="Email" onclick={handleMail} >
+                        </lightning-button>
+                    </div>
+                    &nbsp;
+                   
+                </template>
+            </div>
+        </div> 
+
+        
+
+<!--   old 
+        <div class="slds-grid slds-scrollable_x slds-var-p-left_x-small" >
+            <div class="slds-page-header__name" style="margin-top: auto;margin-bottom: auto;">
+                <div class="slds-page-header__name-title">
+                    <h1>
+                        <span class="slds-page-header__title slds-truncate" title="Commercial Fuels CBU Template CBU Sheet">Commercial Fuels {currentyear} CBU Template</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions slds-align_absolute-center">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                    </div>
+                    <div class="slds-col">
+                        <span class="slds-truncate boldFont">Last Job Run : </span>
+                    </div>
+                    <div class="slds-col">
+                        <span class="slds-truncate"><b>{lastModifiedDate}</b></span>
+                    </div>
+                    <div class="slds-col">
+                        <span class="slds-truncate boldFont">CBU Date : </span>
+                    </div>
+                    <div class="slds-col">
+                        <span class="slds-truncate"><b>{todaysdate}</b></span>
+                    </div>
+                    <div class="slds-col">
+                    </div>
+                </div>
+            </div>
+            <template if:true ={validProfile}>
+            <div class=" slds-size_1-of-12  slds-var-p-around_xx-small">
+                    <lightning-button class=" slds-var-m-left_x-small slds-button__icon_right" variant="brand" label="Recalculate" icon-name="utility:replace" onclick={handleRecalculate}>
+                    </lightning-button>
+            </div> &nbsp;
+            <div class=" slds-size_1-of-12  slds-var-p-around_xx-small">
+                <lightning-button class="slds-var-m-left_x-small slds-button__icon_right" variant="brand" icon-name="utility:email" label="Email" onclick={handleMail} >
+                </lightning-button>
+            </div>
+          </template>
+        </div>-->
+        <div class="outerBluebox">
+        <template if:true={isRecalculate}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container setModal">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header" style="background-color: #212946;color: #ffffff;">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closePopUp}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small"
+                                class="slds-modal__close"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Re-Calculate</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                        <h2 class="slds-text-heading_large slds-hyphenate slds-text-color_error slds-text-title_bold">Do you want to proceed?</h2>
+                                    <br/>
+                                    <h2 class="slds-text-heading_large slds-hyphenate slds-text-title_bold">Last Job Run : {lastModifiedDate}</h2>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer" style="background-color: #ffffff;border:none">
+                        <button class="slds-button slds-button_neutral" onclick={closePopUp} title="No">No</button>
+                        <button class="slds-button slds-button_brand" onclick={executejob} title="Yes">Yes</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <div class="sectionHeading slds-align_absolute-center slds-text-heading_medium">
+            <h2><b>MOPS Data</b></h2>
+        </div>
+        <div class="slds-box slds-p-around_none slds-var-m-around_xx-small">
+            <div class="page-section page-header slds-grid  textfont" onclick={toggleSection} data-name="section">
+                <template if:false={showSectionData}>
+                    <lightning-button-icon icon-name="utility:hide" alternative-text="Click To Expand" data-name="section" size="x-small" class="slds-button__icon_left" >
+                    </lightning-button-icon>
+                </template>
+                <template if:true={showSectionData}>
+                    <lightning-button-icon icon-name="utility:preview" alternative-text="Click To Collapse" data-name="section" size="x-small" class="slds-button__icon_left">
+                    </lightning-button-icon>
+                </template>
+               <!-- <div class="slds-page-header__title slds-text-title_bold slds-align_absolute-center">MOPS Data</div>-->
+            </div>
+            <div class="slds-scrollable_x">
+                <template if:true={showSectionData}>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered ">
+                        <thead>
+                            <tr class="mopsData slds-line-height_reset">
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate" title="date"></div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="SIN 92 UNL">SIN 92 UNL</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="SIN 0.001% GOIL">SIN 0.001% GOIL</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="SIN HSFO180">SIN HSFO180</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="Weighted Ave PDS">Weighted Ave PDS</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="UCAP RBD CNO">UCAP RBD CNO</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate bgProduct" title="CIF Ethanol">CIF Ethanol</div>
+                                </th>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="date">Date</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="SIN 92 UNL">$/BBL</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="SIN 0.001% GOIL">$/BBL</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="SIN HSFO180">$/T</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="Weighted Ave PDS">PHP/$</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="UCAP RBD CNO">Php/kg</div>
+                                </th>
+                                <th class="slds-size_1-of-12" scope="col">
+                                    <div class="slds-truncate slds-float_left" title="CIF Ethanol">$/BBL</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="setText">
+                                <template for:each = {mopsData} for:item = "mopsDataItem" for:index="index" >
+                                <tr class="slds-hint-parent" key={mopsDataItem.item}>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-text value={mopsDataItem.mopsdate}></lightning-formatted-text>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.SIN92UNL}></lightning-formatted-number>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.SINGOIL} maximum-fraction-digits="2"
+                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.SINHSFO180} maximum-fraction-digits="2"
+                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.WeightedAvePDS} maximum-fraction-digits="2"
+                                            minimum-fraction-digits="2"></lightning-formatted-number>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.UCAPRBDCNO}></lightning-formatted-number>
+                                    </td>
+                                    <td class="slds-size_1-of-12" style="border: 1px solid #d9e2ed;font-weight: bold;font-size: 1.2em;">
+                                        <lightning-formatted-number value={mopsDataItem.CIFEthanol}></lightning-formatted-number>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+            </div>
+        </div>
+        <lightning-layout multiple-rows="true" class="slds-var-p-top_xx-small slds-var-p-left_xx-small slds-var-p-right_xx-small ">
+            <!--lightning-layout-item size="12">  
+                <div class="slds-var-p-left_x-small slds-var-p-right_x-small page-section page-header slds-box slds-grid textfont">
+                    
+                </div-->
+
+                <!--template if:false = {toggleClick}>
+                    <div class="slds-var-p-top_xx-small">
+                        <div class="slds-box slds-var-p-top_xx-small slds-scrollable_x">
+                        < cbu table starts here!-->
+                            <!--table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <template for:each = {dateData} for:item = "dateitem">
+                                        <tr key={dateitem.datetype} class="slds-line-height_reset">
+                                            <th class="slds-size_2-of-12" scope="col"></th>
+                                            <th class="slds-size_1-of-12 cls1" scope="col">{dateitem.datetype} :</th>
+                                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col" >{dateitem.M1Date}</th>
+                                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col" >{dateitem.M2Date}</th>
+                                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col">{dateitem.W1Date}</th>
+                                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col">{dateitem.W2Date}</th>
+                                            <th class="slds-size_1-of-12 cls6 tableheader" scope="col">{dateitem.D1Date}</th>
+                                            <th class="slds-size_1-of-12 cls7 tableheader" scope="col">{dateitem.D2Date}</th>
+                                            <th class="slds-size_1-of-12 cls8 tableheader" scope="col">{dateitem.WTDDate}</th>
+                                            <th class="slds-size_1-of-12 cls9 tableheader" scope="col">{dateitem.MTDDate}</th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                            <th class="slds-size_1-of-12  " scope="col"></th>
+                                        </tr>
+                                    </template>
+                                    <tr class="slds-line-height_reset">
+                                        <th scope="col"></th>
+                                    </tr>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-size_2-of-12 clsplant" scope="col">Pricing Period</th>
+                                        <th class="slds-size_1-of-12 cls1 tableheader" scope="col"></th>
+                                        <th class="slds-size_1-of-12 cls2 tableheader" scope="col" >M-1</th>
+                                        <th class="slds-size_1-of-12 cls3 tableheader" scope="col" >M-2</th>
+                                        <th class="slds-size_1-of-12 cls4 tableheader" scope="col">W-1</th>
+                                        <th class="slds-size_1-of-12 cls5 tableheader" scope="col">W-2</th>
+                                        <th class="slds-size_1-of-12 cls6 tableheader" scope="col">D-1</th>
+                                        <th class="slds-size_1-of-12 cls7 tableheader" scope="col">D-2</th>
+                                        <th class="slds-size_1-of-12 cls8 tableheader" scope="col">WTD</th>
+                                        <th class="slds-size_1-of-12 cls9 tableheader" scope="col">MTD</th>
+                                        <th class="slds-size_1-of-12 cls10 tableheader" scope="col">(W-1)-(W-2)</th>
+                                        <th class="slds-size_1-of-12 cls11 tableheader" scope="col">(D-1)-(M-1)</th>
+                                        <th class="slds-size_1-of-12 cls2 tableheader" scope="col">(D-1)-(w-1)</th>
+                                        <th class="slds-size_1-of-12 cls3 tableheader" scope="col">(D-1)-(D-2)</th>
+                                        <th class="slds-size_1-of-12 cls4 tableheader" scope="col">(D-1)-WTD</th>
+                                        <th class="slds-size_1-of-12 cls5 tableheader" scope="col">WTD-(w-1)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each = {ldcCostData} for:item = "ldcData">
+                                        <tr key={ldcData.product}>
+                                            <th class="slds-size_2-of-12 clsplant">{ldcData.product}</th>
+                                            <th class="slds-size_1-of-12 cls1 tableheader">{ldcData.productcode}</th>
+                                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col"><lightning-formatted-number value={ldcData.M1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col"><lightning-formatted-number value={ldcData.M2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col"><lightning-formatted-number value={ldcData.W1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col"><lightning-formatted-number value={ldcData.W2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls6 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls7 tableheader" scope="col"><lightning-formatted-number value={ldcData.D2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls8 tableheader" scope="col"><lightning-formatted-number value={ldcData.WTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls9 tableheader" scope="col"><lightning-formatted-number value={ldcData.MTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls10 tableheader" scope="col"><lightning-formatted-number value={ldcData.W1VSW2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls11 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSM1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls2 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSW1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls3 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSD2Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls4 tableheader" scope="col"><lightning-formatted-number value={ldcData.D1VSWTDData} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                            <th class="slds-size_1-of-12 cls5 tableheader" scope="col"><lightning-formatted-number value={ldcData.WTDVSW1Data} maximum-fraction-digits="2" minimum-fraction-digits="2"></lightning-formatted-number></th>
+                                        </tr>
+                                    </template>
+                                </tbody>  
+                            </table>
+                        </div>
+                    </div>
+                </template!-->   
+            <!--/lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout multiple-rows="true" class="slds-var-p-top_xx-small slds-var-p-bottom_xx-small slds-var-p-left_xx-small slds-var-p-right_xx-small "-->
+            <lightning-layout-item size="12"> 
+                <div class="sectionHeading slds-align_absolute-center slds-text-heading_medium">
+                    <h2><b>Daily Average (all values in PHP/LTR)</b></h2>
+                </div>           
+                <div class="slds-var-p-left_x-small slds-var-p-right_x-small slds-box">
+                    <div class="slds-grid">
+                        <div class=" slds-var-p-left_small slds-size_2-of-12">
+                            <c-re_-multiselect-picklist options={plantoptions}
+                            onselect={handleValueChange} multi-select="true" selected-values={selectedplant}
+                            label="Select Plant: "></c-re_-multiselect-picklist>
+                        </div>
+                       <!-- <div class="slds-text-align_center slds-size_9-of-12 slds-var-p-right_xx-large" style="font-size: medium;">
+                            <h2><b>Daily Average (all values in PHP/LTR)</b></h2>
+                        </div>-->
+                        <div class="slds-var-p-left_large slds-size_1-of-12 slds-form-element slds-float_right" style="margin-left: auto;">  
+                            <b><label class="slds-checkbox_toggle slds-grid">
+                            <lightning-input type="checkbox" label={costtype} checked={cbuOutput} onchange={handleToggle}></lightning-input>
+                            </label></b>
+                        </div>
+                    </div>
+                    <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle} active-section-name={activeSections}>
+                        <template for:each={selectedplantList} for:item='item'>
+                            <lightning-accordion-section key={item.Name} name={item.Name} label={item.Name} id={item.Name}>   
+                                <div class="innerdiv" data-plantitem={item.Name} style="display: none;">                        
+                                    <c-re_ph_plantbasedoutputdetail class ="childcls" id={item.Name} plant-name = {item.Name} date-data ={dateData} ></c-re_ph_plantbasedoutputdetail> 
+                                </div>                       
+                            </lightning-accordion-section>  
+                        </template>      
+                    </lightning-accordion>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>    
+    </div>     
+    </div>
+    <template if:true={showSpinner}>
+        <div class="spinner">
+            <lightning-spinner class="spinner-inner" variant="brand" altenative-text="Loading"></lightning-spinner>
+        </div>
+    </template>
+</template>

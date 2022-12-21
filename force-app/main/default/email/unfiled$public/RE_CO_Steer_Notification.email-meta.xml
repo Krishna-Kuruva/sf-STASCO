@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CO Steer change Notification</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Approval_process</letterhead>
+    <name>RE CO Steer Notification</name>
+    <style>freeForm</style>
+    <subject>Change in CO Steer {!RE_Route_Backbone__c.Name}</subject>
+    <textOnly>Hi,
+
+CO Steer for the product {!RE_Route_Backbone__c.RE_Product_Name__c} is {!RE_Route_Backbone__c.RE_CO_Steer__c} / {!RE_Route_Backbone__c.RE_MY_CO_Steer_Unit__c}. It is applicable for the location {!RE_Route_Backbone__c.RE_Destination_Name__c} and source {!RE_Route_Backbone__c.RE_Source_Name__c}.
+
+Click on this link to check the detail - {!RE_Route_Backbone__c.Link}
+
+Thanks,
+Revolution East Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GT_Cust_Entity_Type_Class__c</fullName>
+    <externalId>false</externalId>
+    <label>* Customer Entity Type | Classification</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Bank/Financial Institution |</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution |</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Co-operative</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Co-operative</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Fund</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Fund</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Partnership</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Partnership</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Private Company</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Private Company</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Bank/Financial Institution | Trust/Foundation</fullName>
+                <default>false</default>
+                <label>Bank/Financial Institution | Trust/Foundation</label>
+            </value>
+            <value>
+                <fullName>Branch</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Branch</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer |</fullName>
+                <default>false</default>
+                <label>Broker Dealer |</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer | Fund</fullName>
+                <default>false</default>
+                <label>Broker Dealer | Fund</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer | Partnership</fullName>
+                <default>false</default>
+                <label>Broker Dealer | Partnership</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer | Private Company</fullName>
+                <default>false</default>
+                <label>Broker Dealer | Private Company</label>
+            </value>
+            <value>
+                <fullName>Broker Dealer | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Broker Dealer | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Central Bank |</fullName>
+                <default>false</default>
+                <label>Central Bank |</label>
+            </value>
+            <value>
+                <fullName>Central Bank | Fund</fullName>
+                <default>false</default>
+                <label>Central Bank | Fund</label>
+            </value>
+            <value>
+                <fullName>Central Bank | Private Company</fullName>
+                <default>false</default>
+                <label>Central Bank | Private Company</label>
+            </value>
+            <value>
+                <fullName>Central Bank | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Central Bank | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Central Bank | Statutory Body</fullName>
+                <default>false</default>
+                <label>Central Bank | Statutory Body</label>
+            </value>
+            <value>
+                <fullName>Fund |</fullName>
+                <default>false</default>
+                <label>Fund |</label>
+            </value>
+            <value>
+                <fullName>Fund | Fund</fullName>
+                <default>false</default>
+                <label>Fund | Fund</label>
+            </value>
+            <value>
+                <fullName>Fund | Partnership</fullName>
+                <default>false</default>
+                <label>Fund | Partnership</label>
+            </value>
+            <value>
+                <fullName>Fund | Private Company</fullName>
+                <default>false</default>
+                <label>Fund | Private Company</label>
+            </value>
+            <value>
+                <fullName>Fund | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Fund | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Fund | Trust/Foundation</fullName>
+                <default>false</default>
+                <label>Fund | Trust/Foundation</label>
+            </value>
+            <value>
+                <fullName>Government Organisation |</fullName>
+                <default>false</default>
+                <label>Government Organisation |</label>
+            </value>
+            <value>
+                <fullName>Government Organisation | Fund</fullName>
+                <default>false</default>
+                <label>Government Organisation | Fund</label>
+            </value>
+            <value>
+                <fullName>Government Organisation | Government Organisation/Department</fullName>
+                <default>false</default>
+                <label>Government Organisation | Government Organisation/Department</label>
+            </value>
+            <value>
+                <fullName>Government Organisation | Statutory Body</fullName>
+                <default>false</default>
+                <label>Government Organisation | Statutory Body</label>
+            </value>
+            <value>
+                <fullName>Individual</fullName>
+                <default>false</default>
+                <label>Individual</label>
+            </value>
+            <value>
+                <fullName>Insurance Company |</fullName>
+                <default>false</default>
+                <label>Insurance Company |</label>
+            </value>
+            <value>
+                <fullName>Insurance Company | Fund</fullName>
+                <default>false</default>
+                <label>Insurance Company | Fund</label>
+            </value>
+            <value>
+                <fullName>Insurance Company | Partnership</fullName>
+                <default>false</default>
+                <label>Insurance Company | Partnership</label>
+            </value>
+            <value>
+                <fullName>Insurance Company | Private Company</fullName>
+                <default>false</default>
+                <label>Insurance Company | Private Company</label>
+            </value>
+            <value>
+                <fullName>Insurance Company | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Insurance Company | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor |</fullName>
+                <default>false</default>
+                <label>Investment Advisor |</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor | Fund</fullName>
+                <default>false</default>
+                <label>Investment Advisor | Fund</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor | Partnership</fullName>
+                <default>false</default>
+                <label>Investment Advisor | Partnership</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor | Private Company</fullName>
+                <default>false</default>
+                <label>Investment Advisor | Private Company</label>
+            </value>
+            <value>
+                <fullName>Investment Advisor | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Investment Advisor | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure |</fullName>
+                <default>false</default>
+                <label>Market Infrastructure |</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Association</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Association</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Fund</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Fund</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Partnership</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Partnership</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Private Company</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Private Company</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Market Infrastructure | Trust/Foundation</fullName>
+                <default>false</default>
+                <label>Market Infrastructure | Trust/Foundation</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business |</fullName>
+                <default>false</default>
+                <label>Non-Financial Business |</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Association</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Association</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Co-operative</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Co-operative</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Fund</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Fund</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Individual/Sole-Trader</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Individual/Sole-Trader</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Partnership</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Partnership</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Private Company</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Private Company</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Public Company/Corporation</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Public Company/Corporation</label>
+            </value>
+            <value>
+                <fullName>Non-Financial Business | Trust/Foundation</fullName>
+                <default>false</default>
+                <label>Non-Financial Business | Trust/Foundation</label>
+            </value>
+            <value>
+                <fullName>Trust |</fullName>
+                <default>false</default>
+                <label>Trust |</label>
+            </value>
+            <value>
+                <fullName>Trust | Fund</fullName>
+                <default>false</default>
+                <label>Trust | Fund</label>
+            </value>
+            <value>
+                <fullName>Vessel</fullName>
+                <default>false</default>
+                <label>Vessel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

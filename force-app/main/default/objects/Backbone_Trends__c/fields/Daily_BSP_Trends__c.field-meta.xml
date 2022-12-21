@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Daily_BSP_Trends__c</fullName>
+    <externalId>false</externalId>
+    <label>Daily BSP Trends</label>
+    <referenceTo>BSP_Trends__c</referenceTo>
+    <relationshipLabel>Daily Backbone Trends</relationshipLabel>
+    <relationshipName>Daily_Backbone_Trends</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

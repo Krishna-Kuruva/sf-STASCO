@@ -1,0 +1,157 @@
+<template>
+    <!--
+	  Version : 0.0
+	  Author  : Soumyajit
+	  Date  : 17-Apr-2020
+	  Details  : Revolution BSP Day to Day Dashboard
+    -->
+
+    <!--ExcelExport component calling-->
+    <c-rv_-excel-export
+            header-list={xlsHeader}
+            filename={filename}
+            worksheet-name-list={workSheetNameList}
+            sheet-data={xlsData}
+    ></c-rv_-excel-export>
+
+    <!--Page starts here-->
+    <div class="c-container">
+        <lightning-layout horizontal-align="spread" >
+            <lightning-layout-item padding="around-small" size="12">
+
+                <!--Header starts here-->
+                <div class="slds-page-header slds-page-header_record-home page-header">
+                    <div class="">
+                        <div class="slds-grid">
+							<!--START - Rahul Sharma | Date - 07-Jan-2021 : Updated layout-->
+                            <div class="slds-col slds-size_1-of-3">
+                                <div class="slds-media header-top-pad">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon icon-name="standard:app" alternative-text="BSP Day to Day Changes" title=""></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span class="slds-page-header__title slds-truncate">BSP Day to Day Changes</span>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                        <p class="slds-page-header__name-meta">Calculate BSP and PSP Difference Between Two Days on Plant, Grade and Channel Level</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_2-of-3">
+                                <div class="slds-grid slds-float_right">
+									<!--START - Rahul Sharma | Date - 07-Jan-2021 : Added radio buttton filter D2D changes based on sales channel-->
+									<div class="slds-col slds-size_1-of-6">
+										<lightning-radio-group name="radioGroup"
+																label="Sales Channel"
+																options={salesOrgs}
+																value={salesOrg}
+																type="radio"
+																onchange={updateSalesOrg}>
+										</lightning-radio-group>
+									</div>
+									<!--END - Rahul Sharma | Date - 07-Jan-2021 : Added radio buttton filter D2D changes based on sales channel-->
+									<!--START - Rahul Sharma | Date - 25-Nov-2020 : Added drop-down list to filter D2D changes based on tranche-->
+                                        <div class="slds-col slds-size_1-of-6">
+                                            <lightning-combobox name="trancheSelect"
+                                                                label="Lifting Window:"
+                                                                value={tranche}
+                                                                placeholder={tranche}
+                                                                options={trancheList}
+                                                                onchange={updateTranche}
+                                                                required>
+                                            </lightning-combobox>
+                                        </div>
+                                    <!--END - Rahul Sharma | Date - 25-Nov-2020 : Added drop-down list to filter D2D changes based on tranche-->
+                                    <div class="slds-col slds-size_1-of-6">
+                                        <lightning-input type="date" name="Yesterday" label="Day 1:" value={yesterday} onchange={dateChange} required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-6">
+                                        <lightning-input type="date" name="Today" label="Day 2:" value={today} onchange={dateChange} required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-6 slds-align_absolute-center slds-m-top_large">
+                                        <span> &nbsp;&nbsp; </span>
+                                        <lightning-button variant="brand" label="View ∆BSP" title="View ∆BSP" onclick={dateChangeSearch} disabled={viewDeltaBtnDisabled}>
+                                        </lightning-button>
+                                        <span> &nbsp;&nbsp; </span>
+                                        <lightning-button variant="brand" label="Download" title="Download" onclick={exportPage} disabled={downloadBtnDisabled}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+							<!--END - Rahul Sharma | Date - 07-Jan-2021 : Updated layout-->
+                        </div>
+                    </div>
+                </div>
+                <!--Header ends here-->
+
+                <br/>
+
+                <template if:true={spinnerDisplay}>
+                    <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+                </template>
+                <template if:false={spinnerDisplay}>
+
+                    <div class="slds-table--header-fixed_container noPadding" style="height:500px;">
+                        <div class="slds-scrollable_y borderTable" style="height:100%;">
+                            <table class="slds-table_bordered slds-table_col-bordered slds-table--header-fixed bgColoreven bgColorodd">
+                                <thead>
+                                <tr class="slds-text-title_caps head1">
+                                    <template for:each={headerTopRow} for:item='htr'>
+                                        <th colspan={htr.tabColSpan} rowspan={htr.tabRowSpan} scope="colgroup rowgroup" key={htr.value} class={htr.thClass}>
+                                            <div class={htr.divClass} title={htr.title}>{htr.value}</div>
+                                        </th>
+                                    </template>
+                                </tr>
+                                <tr class="slds-text-title_caps head2">
+                                    <template for:each={headerMidRow} for:item='hmr'>
+                                        <th colspan={hmr.tabColSpan} rowspan={hmr.tabRowSpan} scope="colgroup rowgroup" key={hmr.value} class={hmr.thClass}>
+                                            <div class={hmr.divClass} title={hmr.title}>{hmr.value}</div>
+                                        </th>
+                                    </template>
+                                </tr>
+                                <tr class="slds-text-title_caps head3">
+                                    <template for:each={headerLastRow} for:item='hlr'>
+                                        <th colspan={hlr.tabColSpan} rowspan={hlr.tabRowSpan} scope="colgroup rowgroup" key={hlr.value} class={hlr.thClass}>
+                                            <div class={hlr.divClass} title={hlr.title}>{hlr.value}</div>
+                                        </th>
+                                    </template>
+                                </tr>
+                                </thead>
+                                <tbody class="hovercolor">
+                                <template for:each={deltaPriceData} for:item='pd'>
+                                    <tr class="slds-hint-parent" key={pd.rowKey}>
+                                        <!--Lakshmi-changes-->
+                                        <template for:each={pd.rowleft} for:item='pdr'>
+                                            <td key={pdr.value} class={pdr.tdClass}>
+                                                <div class={pdr.divClass} title={pdr.title}>
+                                                    {pdr.value}
+                                                </div>
+                                            </td>
+                                        </template>
+                                        <!--Lakshmi-changes-->
+                                        <template for:each={pd.rowCol} for:item='pdr'>
+                                            <td key={pdr.value} class={pdr.tdClass}>
+                                                <div class={pdr.divClass} title={pdr.title}>
+                                                    <!--Lakshmi-changes-->
+                                                    <lightning-formatted-number value={pdr.value} minimum-fraction-digits="2"></lightning-formatted-number>
+                                                    <!--Lakshmi-changes-->
+                                                </div>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <!--Page ends here-->
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Gsap_Available__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(TEXT(BDD_Line_of_Business__c) == &apos;STUSCO&apos;,TEXT(MDN_CP_Rel_Desc__c) != &apos;Vendor Only&apos;,OR(TEXT(MDN_OI_Company__c) = &apos;US16 (0201) - SOPUS&apos;,TEXT(MDN_OI_Company__c)= &apos;USN6 (0301) - STUSCO (Domestic)&apos;,TEXT(MDN_OI_Company__c) = &apos;0308 - STUSCO (Puerto Rico)&apos;,TEXT(MDN_OI_Company__c) = &apos;MX01 - Shell Mexico&apos;,TEXT(MDN_OI_Company__c) = &apos;XXXX - SCAPSA (Argentina)&apos;),OR(TEXT(MDN_OI_Business_Line__c) = &apos;Products&apos;,TEXT(MDN_OI_Business_Line__c) = &apos;Broker - Products&apos;,TEXT(MDN_OI_Business_Line__c) = &apos;Terminalling&apos;,TEXT(MDN_OI_Business_Line__c) = &apos;Marine - Products&apos;,TEXT(MDN_OI_Business_Line__c) = &apos;SOPUS NOC&apos;)),true,false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Gsap Available</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

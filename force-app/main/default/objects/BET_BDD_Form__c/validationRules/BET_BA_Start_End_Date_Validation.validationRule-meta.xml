@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BET_BA_Start_End_Date_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(( AND(NOT(ISBLANK(MDN_BA_StartDate__c)),ISBLANK(MDN_BA_EndDate__c))) ,(MDN_BA_StartDate__c  &gt;=  MDN_BA_EndDate__c))</errorConditionFormula>
+    <errorDisplayField>MDN_BA_StartDate__c</errorDisplayField>
+    <errorMessage>End Date must be filled when Start Date is added and Start Date must be earlier than End date</errorMessage>
+</ValidationRule>

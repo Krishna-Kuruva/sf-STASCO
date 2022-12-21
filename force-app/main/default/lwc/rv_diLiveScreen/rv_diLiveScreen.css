@@ -1,0 +1,20 @@
+.live-dot{
+    width: 10px;
+    height: 10px;
+    margin-top: 5px;
+    background-color: #068f13;
+    position: relative;
+    animation-name: animate-live-dot;
+    animation-duration: 1s;
+    animation-delay: .2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+}
+@keyframes animate-live-dot {
+    0%   {background-color:#0c7a17}
+    25%  {background-color:#1baf2a}
+    50%  {background-color:#25e738}
+    75%  {background-color:#2cf03f}
+    100% {background-color:#33ff47}
+  }

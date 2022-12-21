@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Malaysia</label>
+    <protected>false</protected>
+    <values>
+        <field>Analysis_Period_Setting__c</field>
+        <value xsi:type="xsd:string">ANNUAL MODEL</value>
+    </values>
+    <values>
+        <field>BDF__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Conversion_SI__c</field>
+        <value xsi:type="xsd:double">1000.0</value>
+    </values>
+    <values>
+        <field>Corporate_income_tax_payable__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Corporate_income_tax_rate__c</field>
+        <value xsi:type="xsd:double">24.0</value>
+    </values>
+    <values>
+        <field>Cost_Below_C5__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Cost_Between_C3_C5__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Covamo_Detail_ReportId__c</field>
+        <value xsi:type="xsd:string">00O0C000000L3cVUAS</value>
+    </values>
+    <values>
+        <field>Covamo_FS_ReportId__c</field>
+        <value xsi:type="xsd:string">00O0C000000L0yTUAS</value>
+    </values>
+    <values>
+        <field>Covamo_Header_ReportId__c</field>
+        <value xsi:type="xsd:string">00O0C000000L3cQUAS</value>
+    </values>
+    <values>
+        <field>Covamo_Yearly_FS_ReportId__c</field>
+        <value xsi:type="xsd:string">00O0C000000L3cLUAS</value>
+    </values>
+    <values>
+        <field>Days_Per_year__c</field>
+        <value xsi:type="xsd:double">365.0</value>
+    </values>
+    <values>
+        <field>Exchange_Rate__c</field>
+        <value xsi:type="xsd:double">4.225</value>
+    </values>
+    <values>
+        <field>Inflation_Rate__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Integrity_check__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Payables__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>RE_Excise_Duties_in_local_currency__c</field>
+        <value xsi:type="xsd:double">40.0</value>
+    </values>
+    <values>
+        <field>Receivables__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+    <values>
+        <field>Stocks_Days__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+    <values>
+        <field>Temperature_Gain__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>VAT_Duties_payable_receivable__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>VAT_Payment_Days__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>VAT_Rate__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Weighted_Average_Cost_of_Capital__c</field>
+        <value xsi:type="xsd:double">7.0</value>
+    </values>
+</CustomMetadata>

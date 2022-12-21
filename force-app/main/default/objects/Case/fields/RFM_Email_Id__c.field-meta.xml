@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RFM_Email_Id__c</fullName>
+    <externalId>false</externalId>
+    <label>RFM Email Id</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>RFM_Contact__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Celeste.Ho@shell.com</fullName>
+                <default>false</default>
+                <label>Celeste.Ho@shell.com</label>
+            </value>
+            <value>
+                <fullName>Stewart.Waters@shell.com</fullName>
+                <default>false</default>
+                <label>Stewart.Waters@shell.com</label>
+            </value>
+            <value>
+                <fullName>Wilbert.Arends@shell.com</fullName>
+                <default>false</default>
+                <label>Wilbert.Arends@shell.com</label>
+            </value>
+            <value>
+                <fullName>Dominic.Corley@shell.com</fullName>
+                <default>false</default>
+                <label>Dominic.Corley@shell.com</label>
+            </value>
+            <value>
+                <fullName>Yvonne.Phua@shell.com</fullName>
+                <default>false</default>
+                <label>Yvonne.Phua@shell.com</label>
+            </value>
+            <value>
+                <fullName>Hilmi.Yusof@shell.com</fullName>
+                <default>false</default>
+                <label>Hilmi.Yusof@shell.com</label>
+            </value>
+            <value>
+                <fullName>Soo-Lim.Goh@shell.com</fullName>
+                <default>false</default>
+                <label>Soo-Lim.Goh@shell.com</label>
+            </value>
+            <value>
+                <fullName>Tjeerd.Anema@shell.com</fullName>
+                <default>false</default>
+                <label>Tjeerd.Anema@shell.com</label>
+            </value>
+            <value>
+                <fullName>A.Payot@shell.com</fullName>
+                <default>false</default>
+                <label>A.Payot@shell.com</label>
+            </value>
+            <value>
+                <fullName>Tanya.Lam@shell.com</fullName>
+                <default>false</default>
+                <label>Tanya.Lam@shell.com</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Tanya Lam</controllingFieldValue>
+            <valueName>Tanya.Lam@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Celeste Ho</controllingFieldValue>
+            <valueName>Celeste.Ho@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stewart Waters</controllingFieldValue>
+            <valueName>Stewart.Waters@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wilbert Arends</controllingFieldValue>
+            <valueName>Wilbert.Arends@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dominic Corley</controllingFieldValue>
+            <valueName>Dominic.Corley@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Yvonne.Phua@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hilmi Yusof</controllingFieldValue>
+            <valueName>Hilmi.Yusof@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Soo-Lim Goh</controllingFieldValue>
+            <valueName>Soo-Lim.Goh@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tjeerd Anema</controllingFieldValue>
+            <valueName>Tjeerd.Anema@shell.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Arnaud Payot</controllingFieldValue>
+            <valueName>A.Payot@shell.com</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

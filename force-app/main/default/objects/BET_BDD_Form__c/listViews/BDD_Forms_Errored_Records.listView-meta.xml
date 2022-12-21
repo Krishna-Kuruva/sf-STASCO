@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDD_Forms_Errored_Records</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>BDD_Line_of_Business__c</columns>
+    <columns>BDD_Entity_Type__c</columns>
+    <columns>BET_Status__c</columns>
+    <columns>GoldTier_Status__c</columns>
+    <columns>MDN_Status__c</columns>
+    <columns>Assigned_COF__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>MDN_Status__c</field>
+        <operation>equals</operation>
+        <value>Error Occurred</value>
+    </filters>
+    <filters>
+        <field>GoldTier_Status__c</field>
+        <operation>equals</operation>
+        <value>Error Occurred</value>
+    </filters>
+    <label>BDD Forms with Errors</label>
+</ListView>

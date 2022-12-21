@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Account Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Initial Contact</fullName>
+                <default>false</default>
+                <label>Initial Contact</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Active</fullName>
+                <default>false</default>
+                <label>Set up &amp; Active</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Inactive</fullName>
+                <default>false</default>
+                <label>Set up &amp; Inactive</label>
+            </value>
+            <value>
+                <fullName>Under negotiation</fullName>
+                <default>false</default>
+                <label>Under negotiation</label>
+            </value>
+            <value>
+                <fullName>No further action required</fullName>
+                <default>false</default>
+                <label>No further action required</label>
+            </value>
+            <value>
+                <fullName>Previous contact made - now dormant</fullName>
+                <default>false</default>
+                <label>Previous contact made - now dormant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

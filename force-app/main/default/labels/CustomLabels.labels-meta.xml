@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AGO_B7</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AGO B7</shortDescription>
+        <value>AGO B7</value>
+    </labels>
+    <labels>
+        <fullName>AGO_IGO_Density</fullName>
+        <categories>Density Conversions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AGO/IGO Density</shortDescription>
+        <value>0.845</value>
+    </labels>
+    <labels>
+        <fullName>AMV_Scenario_API_Name</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AMV Scenario API Name</shortDescription>
+        <value>Location_Steer__c</value>
+    </labels>
+    <labels>
+        <fullName>ARA_PBH_AGO_Steer</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ARA PBH AGO Steer</shortDescription>
+        <value>ARA_PBH_AGO_Steer__c</value>
+    </labels>
+    <labels>
+        <fullName>ARA_PBH_IGO_Steer</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ARA PBH IGO Steer</shortDescription>
+        <value>ARA_PBH_IGO_Steer__c</value>
+    </labels>
+    <labels>
+        <fullName>ATP1</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ATP1</shortDescription>
+        <value>ATP1</value>
+    </labels>
+    <labels>
+        <fullName>ATP2</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ATP2</shortDescription>
+        <value>ATP2</value>
+    </labels>
+    <labels>
+        <fullName>ATP3</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ATP3</shortDescription>
+        <value>ATP3</value>
+    </labels>
+    <labels>
+        <fullName>ATPJobId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ATPJobId</shortDescription>
+        <value>01p2X000000ZHeVQAW</value>
+    </labels>
+    <labels>
+        <fullName>All_Changes_c</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All_Changes__c</shortDescription>
+        <value>Info_Kiosk_All_Changes</value>
+    </labels>
+    <labels>
+        <fullName>BP_Gelsenkirchen</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BP Gelsenkirchen</shortDescription>
+        <value>D092</value>
+    </labels>
+    <labels>
+        <fullName>BP_Kassel</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BP Kassel</shortDescription>
+        <value>D294</value>
+    </labels>
+    <labels>
+        <fullName>BP_Lingen</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BP Lingen</shortDescription>
+        <value>D101</value>
+    </labels>
+    <labels>
+        <fullName>Bremen_HGM</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bremen HGM</shortDescription>
+        <value>D119</value>
+    </labels>
+    <labels>
+        <fullName>Conversion_Euro_100L_AGO_IGO</fullName>
+        <categories>Conversion Euro/100L(AGO/IGO)</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Conversion Euro/100L(AGO/IGO)</shortDescription>
+        <value>11.8343</value>
+    </labels>
+    <labels>
+        <fullName>Conversion_Euro_100L_MOGAS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Conversion Euro/100L(MOGAS)</shortDescription>
+        <value>13.2450</value>
+    </labels>
+    <labels>
+        <fullName>CronDaily</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CronDaily</shortDescription>
+        <value>0 0 8 * * *</value>
+    </labels>
+    <labels>
+        <fullName>CronTenMins</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CronTenMins</shortDescription>
+        <value>0 10 * * * *</value>
+    </labels>
+    <labels>
+        <fullName>DaveJobId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DaveJobId</shortDescription>
+        <value>01p2X000000ZHedQAG</value>
+    </labels>
+    <labels>
+        <fullName>DealsJobId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DealsJobId</shortDescription>
+        <value>01p2X000000ZHegQAG</value>
+    </labels>
+    <labels>
+        <fullName>Density_Factor_M3_MT</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DensityfactorM3_MT</shortDescription>
+        <value>1.183</value>
+    </labels>
+    <labels>
+        <fullName>EMPTY_FILE</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV file is empty.</shortDescription>
+        <value>CSV file is empty.</value>
+    </labels>
+    <labels>
+        <fullName>ENI_Neustadt</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ENI Neustadt</shortDescription>
+        <value>D099</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_JSON_BAD_FORMAT</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The provided Json String was badly formatted.</shortDescription>
+        <value>The provided Json String was badly formatted.</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_JSON_EMPTY</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No field values were found in the Json String.</shortDescription>
+        <value>No field values were found in the Json String.</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_OP_FAILED</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Operation failed, please check messages!</shortDescription>
+        <value>Operation failed, please check messages!</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_REQUEST_FAILED_NO_ERROR</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Request failed with no specified error.</shortDescription>
+        <value>Request failed with no specified error.</value>
+    </labels>
+    <labels>
+        <fullName>ERROR_UNAUTHORIZED_ENDPOINT</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unauthorized endpoint, please check Setup</shortDescription>
+        <value>Unauthorized endpoint, please check Setup</value>
+    </labels>
+    <labels>
+        <fullName>Existing_items_are_modified_c</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Existing_items_are_modified__c</shortDescription>
+        <value>Info_Kiosk_Existing_Items</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Back_Button</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Back Button</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Configuration_Meta_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Configuration Meta Text</shortDescription>
+        <value>Please follow these configuration steps after installation. You can also refer this page in your Salesforce tab to setup new buttons.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Configuration_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Configuration Title</shortDescription>
+        <value>Configuration Steps</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Download_Button</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Download Button</shortDescription>
+        <value>Download</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Example_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Example Text</shortDescription>
+        <value>Example:</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_ListView_Section</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel ListView Section</shortDescription>
+        <value>List Views</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Enable_Step1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Enable Step1</shortDescription>
+        <value>After creating custom list button; for lightning experience, click &apos;Search Layouts for Salesforce Classic&apos; in the same object setup. For Classic Experience, click &apos;Search Layouts&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Enable_Step2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Enable Step2</shortDescription>
+        <value>Click dropdown next to the &apos;List View&apos; and click &apos;Edit&apos; for Lightning Experience. For Salesforce Classic, edit &apos;Account List View&apos; option.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Enable_Step3</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Enable Step3</shortDescription>
+        <value>Add the list button created in previous step to &apos;Selected Buttons&apos; from the &apos;Available Buttons&apos; section.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Enable_Step4</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Enable Step4</shortDescription>
+        <value>Click &apos;Save&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Enable_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Enable Title</shortDescription>
+        <value>Enable List Button for List View</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step1</shortDescription>
+        <value>For Lightning Experience, go to Setup &gt; Object Manager &gt; Select custom/standard object. For Classic, go to Setup &gt; Search for object in search bar.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step10</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step10</shortDescription>
+        <value>Example:- If the object is Contact then the complete URL should be: /apex/Export2Excel?ObjectType={!$ObjectType.Contact}</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step2</shortDescription>
+        <value>Click &apos;Buttons Links and Actions&apos; &gt; Click &apos;New Button or Link&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step3</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step3</shortDescription>
+        <value>Name Label and API Name as &apos;Export&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step4</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step4</shortDescription>
+        <value>Select &apos;Display Type&apos; as &apos;List Button&apos;and &apos;Behavior as &apos;Display in existing window with sidebar&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step5</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step5</shortDescription>
+        <value>Select &apos;Content Source as &apos;URL&apos;</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step6</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Step6</shortDescription>
+        <value>Insert following URL: /apex/Export2Excel?ObjectType=</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step7</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Export2Excel List Button Setup Step7</shortDescription>
+        <value>After ObjectType=, insert object API name of the object for which you are setting the list button.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step8</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Export2Excel List Button Setup Step8</shortDescription>
+        <value>Complete the URL and click &apos;Save&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Step9</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Export2Excel List Button Setup Step9</shortDescription>
+        <value>Example:- If the object API name is &apos;Custom_Object__c&apos; then the complete URL should be: /apex/Export2Excel?ObjectType=Custom_Object__c</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_Button_Setup_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List Button Setup Title</shortDescription>
+        <value>Create Custom List Button</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_List_View_Setup_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel List View Setup Title</shortDescription>
+        <value>List Button Setup</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Meta_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Meta Text</shortDescription>
+        <value>Exports List View into Excel file</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Note_Description</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Note Description</shortDescription>
+        <value>By default, the app and its feature is available for the System Administrator profile at the time of installation. To enable the export feature for additional profile(s)/Permission set(s), give access to below Visualforce Pages:</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Note_Description_Option1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Note Description Option1</shortDescription>
+        <value>Export2Excel,</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Note_Description_Option2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Note Description Option2</shortDescription>
+        <value>Export2ExcelDownloader.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Note_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Note Title</shortDescription>
+        <value>Note</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Object_Meta_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Object Meta Text</shortDescription>
+        <value>Please select the filter which you want to download.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_One_Time_Setup_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel One Time Setup Title</shortDescription>
+        <value>One Time Setup</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Preview_Section</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Preview Section</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Preview_Section_HelpText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Preview Section HelpText</shortDescription>
+        <value>This is just a preview for the selected filter. The downloaded file will contain all records for the selected filter.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Step1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Step1</shortDescription>
+        <value>Go to Setup &gt; Remote Site Settings &gt; Click &apos;New Remote Site&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Step2_1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Step2.1</shortDescription>
+        <value>Define a name for your remote site setting and paste</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Step2_2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Step2.2</shortDescription>
+        <value>into &apos;Remote Site URL&apos; field.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Step3</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Step3</shortDescription>
+        <value>Make sure that &apos;Active&apos; checkbox is checked and click &apos;Save&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Step4</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Step4</shortDescription>
+        <value>After adding Remote Site Setting URL, You can follow &apos;List Button Setup&apos; Section to add list buttons for the objects you want to enable export feature.</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Remote_Site_Settings_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Remote Site Settings Title</shortDescription>
+        <value>Remote Site Settings</value>
+    </labels>
+    <labels>
+        <fullName>Export2Excel_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export2Excel Title</shortDescription>
+        <value>Export2Excel</value>
+    </labels>
+    <labels>
+        <fullName>FILE_MISSING</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please provide a comma separated file.</shortDescription>
+        <value>Please provide a comma separated file.</value>
+    </labels>
+    <labels>
+        <fullName>Gunvor_Ingolstadt</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gunvor Ingolstadt</shortDescription>
+        <value>D096</value>
+    </labels>
+    <labels>
+        <fullName>Hamburg_PCCH_AGO_MT</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hamburg PCCH AGO MT</shortDescription>
+        <value>Hamburg_PCCH_AGO_MT__c</value>
+    </labels>
+    <labels>
+        <fullName>Hartmannsdorf</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hartmannsdorf</shortDescription>
+        <value>D116</value>
+    </labels>
+    <labels>
+        <fullName>Heide</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Heide</shortDescription>
+        <value>D137</value>
+    </labels>
+    <labels>
+        <fullName>Holborn</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Holborn</shortDescription>
+        <value>D111</value>
+    </labels>
+    <labels>
+        <fullName>IGO_1000ppm</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IGO_1000ppm</shortDescription>
+        <value>IGO_1000ppm</value>
+    </labels>
+    <labels>
+        <fullName>IGO_50ppm</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>IGO 50ppm</shortDescription>
+        <value>IGO 50ppm</value>
+    </labels>
+    <labels>
+        <fullName>INVALID_FILE_ROW_SIZE_DOESNT_MATCH</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The number of field values does not match the number of header fields on line</shortDescription>
+        <value>The number of field values does not match the number of header fields on line</value>
+    </labels>
+    <labels>
+        <fullName>Info_Kiosk_Items_Created_By_Me</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Info_Kiosk_Items_Created_By_Me</shortDescription>
+        <value>Info_Kiosk_Items_Created_By_Me</value>
+    </labels>
+    <labels>
+        <fullName>Info_Kiosk_Last_Modfied_By_me</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Info_Kiosk_Last_Modfied_By_me</shortDescription>
+        <value>Info_Kiosk_Last_Modfied_By_me</value>
+    </labels>
+    <labels>
+        <fullName>Items_are_deleted_c</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Items_are_deleted__c</shortDescription>
+        <value>Info_Kiosk_Deleted_Items</value>
+    </labels>
+    <labels>
+        <fullName>Location_Name_PCK</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Location Name PCK</shortDescription>
+        <value>PCK</value>
+    </labels>
+    <labels>
+        <fullName>MOGAS_98</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MOGAS 98</shortDescription>
+        <value>MOGAS 98</value>
+    </labels>
+    <labels>
+        <fullName>MOGAS_E10</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MOGAS E10</shortDescription>
+        <value>MOGAS E10</value>
+    </labels>
+    <labels>
+        <fullName>MOT_Barge</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MOT Barge</shortDescription>
+        <value>Barge</value>
+    </labels>
+    <labels>
+        <fullName>MOT_Pipe</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MOT Pipe</shortDescription>
+        <value>Pipe</value>
+    </labels>
+    <labels>
+        <fullName>MOT_Rail</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MOT Rail</shortDescription>
+        <value>Rail</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CHECK_API_NAMES</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please check the Api names!</shortDescription>
+        <value>Please check the Api names!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CS_MDT_EXISTS</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Make sure Custom Setting and Custom Metadata Types exists in the org!</shortDescription>
+        <value>Make sure Custom Setting and Custom Metadata Types exists in the org!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CS_MDT_FIELD_NAME_FORMAT</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please check the format, Custom Setting.field and Custom Metadata Types.field</shortDescription>
+        <value>Please check the format, Custom Setting.field and Custom Metadata Types.field</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CS_MDT_FIELD_NAME_REQ</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Setting Name/Field Name and CMT/Field Name names are required!</shortDescription>
+        <value>Custom Setting Name/Field Name and CMT/Field Name names are required!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CS_MDT_MAPPING_REQ</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Setting Name, Custom Metadata Types and Json Mapping names are required!</shortDescription>
+        <value>Custom Setting Name, Custom Metadata Types and Json Mapping names are required!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CS_MDT_REQ</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Setting Api Name and Custom Metadata Types Api names are required!</shortDescription>
+        <value>Custom Setting Api Name and Custom Metadata Types Api names are required!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_CUSTOM_SETTINGS_EXISTS</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Make sure Custom Setting exists in the org!</shortDescription>
+        <value>Make sure Custom Setting exists in the org!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_JSON_API_NAMES</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please check the Api names in Json!</shortDescription>
+        <value>Please check the Api names in Json!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_JSON_FORMAT</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please check the Json format!</shortDescription>
+        <value>Please check the Json format!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_MDT_END</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Custom Metadata Types name should end with</shortDescription>
+        <value>Custom Metadata Types name should end with</value>
+    </labels>
+    <labels>
+        <fullName>MSG_MIGRATION_COMPLETED</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Migration Completed!</shortDescription>
+        <value>Migration Completed!</value>
+    </labels>
+    <labels>
+        <fullName>MSG_MIGRATION_IN_PROGRESS</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Migration In Progress, check status under Deploy -&gt; Deployment Status, Job Id:</shortDescription>
+        <value>Migration In Progress, check status under Deploy -&gt; Deployment Status, Job Id:</value>
+    </labels>
+    <labels>
+        <fullName>MSG_NOT_SUPPORTED</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Supported!!!</shortDescription>
+        <value>Not Supported!!!</value>
+    </labels>
+    <labels>
+        <fullName>MTD_Search_Filter</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE MTD Search Filter</shortDescription>
+        <value>Gasoil 0.001% S</value>
+    </labels>
+    <labels>
+        <fullName>Mogas_Density</fullName>
+        <categories>Density Conversions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mogas Density</shortDescription>
+        <value>0.755</value>
+    </labels>
+    <labels>
+        <fullName>New_items_are_added_c</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New_items_are_added__c</shortDescription>
+        <value>Info_Kiosk_New_Changes</value>
+    </labels>
+    <labels>
+        <fullName>Non_Premium</fullName>
+        <categories>Customer Surchage</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Non Premium</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>OLF_ApexControllerDebugLogOn</fullName>
+        <categories>OLF</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OLF ApexControllerDebugLogOn</shortDescription>
+        <value>FALSE</value>
+    </labels>
+    <labels>
+        <fullName>OLF_ConnectionErrorMessage</fullName>
+        <categories>OLF</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OLF Connection Error Message</shortDescription>
+        <value>The Shell interface is inactive. Please contact Shell Support.</value>
+    </labels>
+    <labels>
+        <fullName>OLF_Hour</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OLF Hour</shortDescription>
+        <value>20</value>
+    </labels>
+    <labels>
+        <fullName>OLF_Minute</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OLF Minute</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>OLF_Split_Size</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OLF Split Size</shortDescription>
+        <value>500</value>
+    </labels>
+    <labels>
+        <fullName>Opening_Hours</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opening Hours</shortDescription>
+        <value>https://eu001-sp.shell.com/:x:/r/sites/AAFAA3649/_layouts/15/Doc.aspx?sourcedoc=%7BC1C8A0F8-11FF-4C02-B7CC-67468696088D%7D&amp;file=1.%20Holiday%20Opening%20Hours%20Depots.xlsx&amp;action=default&amp;mobileredirect=true</value>
+    </labels>
+    <labels>
+        <fullName>OrganizationWideEmail</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrganizationWideEmail</shortDescription>
+        <value>krishna-ghosh.dhriti@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>PernisRefineryHydrocarbons</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PernisRefineryHydrocarbons</shortDescription>
+        <value>9.42</value>
+    </labels>
+    <labels>
+        <fullName>PernisRefineryHydrocarbons1</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PernisRefineryHydrocarbons1</shortDescription>
+        <value>15.83</value>
+    </labels>
+    <labels>
+        <fullName>Premium</fullName>
+        <categories>Customer Surchage</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Premium</shortDescription>
+        <value>0.2</value>
+    </labels>
+    <labels>
+        <fullName>Product_Cat_IGO</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Cat IGO</shortDescription>
+        <value>IGO 50ppm</value>
+    </labels>
+    <labels>
+        <fullName>Query</fullName>
+        <categories>Bio AMV Query</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Query</shortDescription>
+        <value>Select Id, BIO_AMV_Steer_m__c, Grade__r.Name From BIO_AMV__c WHERE Reset_Flag__c = True</value>
+    </labels>
+    <labels>
+        <fullName>RE_BBL_to_LTR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_BBL_to_LTR</shortDescription>
+        <value>158.9873</value>
+    </labels>
+    <labels>
+        <fullName>RE_BaseURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_BaseURL</shortDescription>
+        <value>/services/Soap/u/26.0/</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_Final_Unit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_MY_Final_Unit</shortDescription>
+        <value>MYR CTS/LTR</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_Mail_Recipient</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_MY_Mail_Recipient</shortDescription>
+        <value>souvik.kundu@shell.com;Vijaykumar.S@shell.com;Chien-Li.Lai@shell.com;naveen.vijayakumar@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_MarkUp_Credit_Charge_Min_Value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_MY_MarkUp_Credit_Charge_Min_Value</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_MarkUp_Credit_Charge_Percentage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_MY_MarkUp_Credit_Charge_Percentage</shortDescription>
+        <value>0</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_Marketing_Selling_Tariff</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_MY_Marketing &amp; Selling Tariff</shortDescription>
+        <value>1.1696</value>
+    </labels>
+    <labels>
+        <fullName>RE_MY_Marketing_Selling_Tariff_Unit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Marketing_Selling_Tariff_Unit</shortDescription>
+        <value>MYR CTS/LTR</value>
+    </labels>
+    <labels>
+        <fullName>RE_Margin_Aspiration</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_Margin_Aspiration</shortDescription>
+        <value>0.7; 0.9;1.0;1.1;1.2;1.3;1.4</value>
+    </labels>
+    <labels>
+        <fullName>RE_SG_MarkUp_Credit_Charge_Min_Value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_SG_MarkUp_Credit_Charge_Min_Value</shortDescription>
+        <value>0.2</value>
+    </labels>
+    <labels>
+        <fullName>RE_SG_MarkUp_Credit_Charge_Percentage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_SG_MarkUp_Credit_Charge_Percentage</shortDescription>
+        <value>0.06</value>
+    </labels>
+    <labels>
+        <fullName>RE_SG_Marketing_Selling_Tariff</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_SG_Marketing_Selling_Tariff</shortDescription>
+        <value>0.2492</value>
+    </labels>
+    <labels>
+        <fullName>RE_SG_Marketing_Selling_Tariff_Unit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_SG_Marketing_Selling_Tariff_Unit</shortDescription>
+        <value>USD CTS/LTR</value>
+    </labels>
+    <labels>
+        <fullName>RE_TH_Mail_Recipient</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_TH_Mail_Recipient</shortDescription>
+        <value>souvik.kundu@shell.com;naveen.vijayakumar@shell.com;Vijaykumar.S@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RT_AccountTypes</fullName>
+        <categories>Turkey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Turkey Account Types</shortDescription>
+        <value>Direct Channel ASF;Direct Customer - ASF;Free Users;IPA;Large Independents;Local Marine;Oil Exploration;Resellers;Direct;</value>
+    </labels>
+    <labels>
+        <fullName>RV_AGO_IGO_Diff_USD_Ton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AGO/IGO Diff USD/Ton</shortDescription>
+        <value>AGO/IGO Diff. $/to</value>
+    </labels>
+    <labels>
+        <fullName>RV_AGO_IGO_Live_vs_8_00_o_clock_value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AGO/IGO Live vs 8:00 o&apos;clock value</shortDescription>
+        <value>AGO/IGO Live vs 8:00 €/100l</value>
+    </labels>
+    <labels>
+        <fullName>RV_Bio_B7_CBM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bio B7/CBM</shortDescription>
+        <value>Bio B7 €/cbm</value>
+    </labels>
+    <labels>
+        <fullName>RV_Brent_today_8_00_o_clock</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Brent today 8:00 o&apos;clock</shortDescription>
+        <value>Brent today 8:00 am $/bbl</value>
+    </labels>
+    <labels>
+        <fullName>RV_DK_USE_Ton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DK USE/Ton</shortDescription>
+        <value>DK $/to</value>
+    </labels>
+    <labels>
+        <fullName>RV_ErrorMessagesApexClassAccess</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_ErrorMessagesApexClassAccess</shortDescription>
+        <value>You do not have sufficient permissions to access Kurt dashboard.Please contact Salesforce Support Team.</value>
+    </labels>
+    <labels>
+        <fullName>RV_ErrorMessagesSaveFilterData</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_ErrorMessagesSaveFilterData</shortDescription>
+        <value>You do not have sufficient access to save this filter.Please contact Salesforce Support Team.</value>
+    </labels>
+    <labels>
+        <fullName>RV_Euro_to_USD_Fixing</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Euro to USD Fixing</shortDescription>
+        <value>€/$ fixing</value>
+    </labels>
+    <labels>
+        <fullName>RV_Euro_to_USD_Value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Euro to USD Value</shortDescription>
+        <value>€/$ today 8:00 am</value>
+    </labels>
+    <labels>
+        <fullName>RV_GSAPErrorCancellationEmailCCRecepients</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_GSAPErrorCancellationEmailCCRecepients</shortDescription>
+        <value>;Matthias.Zimbrich@shell.com;Dennis.Gerken@shell.com;Inger.Lueth@shell.com;andreas.heeschen@shell.com;Melina.Meiring@shell.com;Maike.Nicolai@shell.com;</value>
+    </labels>
+    <labels>
+        <fullName>RV_GSAPErrorCancellationEmailToRecepients</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_GSAPErrorCancellationEmailToRecepients</shortDescription>
+        <value>;GXSOMWIPROITBAM-S-OFFGSE-EO-FARO@shell.com;</value>
+    </labels>
+    <labels>
+        <fullName>RV_GSAPErrorEmailCCRecepients</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_GSAPErrorEmailCCRecepients</shortDescription>
+        <value>;Matthias.Zimbrich@shell.com;Dennis.Gerken@shell.com;Inger.Lueth@shell.com;andreas.heeschen@shell.com;Melina.Meiring@shell.com;Maike.Nicolai@shell.com;</value>
+    </labels>
+    <labels>
+        <fullName>RV_GSAPErrorEmailToRecepients</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_GSAPErrorEmailToRecepients</shortDescription>
+        <value>;GXSOMWIPROITBAM-S-OFFGSE-EO-FARO@shell.com;</value>
+    </labels>
+    <labels>
+        <fullName>RV_GSAP_Old_Interface</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV GSAP Old Interface</shortDescription>
+        <value>False</value>
+    </labels>
+    <labels>
+        <fullName>RV_HEL_1000ppm_USD_Ton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HEL 1000ppm USD/Ton</shortDescription>
+        <value>HEL 1000ppm $/to</value>
+    </labels>
+    <labels>
+        <fullName>RV_HEL_50ppm_USD_Ton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HEL 50ppm USD/Ton</shortDescription>
+        <value>HEL50ppm $/to</value>
+    </labels>
+    <labels>
+        <fullName>RV_ICE_LCO_Quote_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ICE LCO Quote Name</shortDescription>
+        <value>ICE LCO Brent Crude Oil (Ask)</value>
+    </labels>
+    <labels>
+        <fullName>RV_ICE_LGO_Quote_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ICE LGO Quote Name</shortDescription>
+        <value>ICE LGO Low Sulfur Gasoil (Ask)</value>
+    </labels>
+    <labels>
+        <fullName>RV_ICE_RBOB_Quote_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ICE RBOB Quote Name</shortDescription>
+        <value>NYMEX RBOB Gasoline (Ask)</value>
+    </labels>
+    <labels>
+        <fullName>RV_ICE_Today_8_00_0_clock</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ICE Today 8:00 0&apos;clock</shortDescription>
+        <value>ICE today 8:00 am $/to</value>
+    </labels>
+    <labels>
+        <fullName>RV_ImportWizardSchedule</fullName>
+        <categories>Please enter Hour, minute and second separated by &apos;-&apos; .</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_ImportWizardSchedule</shortDescription>
+        <value>00-15-00</value>
+    </labels>
+    <labels>
+        <fullName>RV_Live_Euro_to_USD</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Live Euro to USD</shortDescription>
+        <value>Live €/$</value>
+    </labels>
+    <labels>
+        <fullName>RV_MRCErrorRecepients</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MRCErrorRecepients</shortDescription>
+        <value>GXSOMWIPROITBAM-S-OFFGSE-EO-FARO@shell.com;Matthias.Zimbrich@shell.com;Dennis.Gerken@shell.com;Inger.Lueth@shell.com;andreas.heeschen@shell.com;mika.tiusanen@shell.com;</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialNameList</shortDescription>
+        <value>000000000400001685,000000000400002410,000000000400001637,000000000400001986,000000000400003805,000000000400002484,000000000400002498,000000000400002390</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName1637</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName1637</shortDescription>
+        <value>000000000400001637</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName1685</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName1685</shortDescription>
+        <value>000000000400001685</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName1986</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName1986</shortDescription>
+        <value>000000000400001986</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName2390</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName2390</shortDescription>
+        <value>000000000400002390</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName2410</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName2410</shortDescription>
+        <value>000000000400002410</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName2484</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName2484</shortDescription>
+        <value>000000000400002484</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName2498</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName2498</shortDescription>
+        <value>000000000400002498</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName3805</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName3805</shortDescription>
+        <value>000000000400003805</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialNameGTL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialNameGTL</shortDescription>
+        <value>000000000400001986</value>
+    </labels>
+    <labels>
+        <fullName>RV_Mogas_Live_vs_8_00_o_clock_value</fullName>
+        <categories>DI Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mogas Live vs 8:00 o&apos;clock value</shortDescription>
+        <value>MOGAS Live vs 8:00 €/100l</value>
+    </labels>
+    <labels>
+        <fullName>RV_OLFExceptionEmailCCAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_OLFExceptionEmailCCAddress</shortDescription>
+        <value>andreas.heeschen@shell.com;Inger.Lueth@shell.com;marc.reinke@shell.com;Linda.Luedde@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RV_OLFExceptionEmailToAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_OLFExceptionEmailToAddress</shortDescription>
+        <value>andreas.heeschen@shell.com;Inger.Lueth@shell.com;marc.reinke@shell.com;Linda.Luedde@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RV_OLFInactivationWarningMsg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_OLFInactivationWarningMsg</shortDescription>
+        <value>OLF Connection Auto-Inactivation time has already been scheduled. Are you sure to delete the existing one?</value>
+    </labels>
+    <labels>
+        <fullName>RV_OLFInactiveDateHelptext</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_OLFInactiveDateHelptext</shortDescription>
+        <value>To delete an existing OLF Connection Inactivation scheduler, please click on the &quot;Edit&quot; button and remove the existing values from &quot;Date&quot; and &quot;Time&quot; fields and &quot;Save&quot; it.</value>
+    </labels>
+    <labels>
+        <fullName>RV_RBOB_today_8_00_o_clock</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBOB today 8:00 o&apos;clock</shortDescription>
+        <value>RBOB today 8:00 am cnt/gal</value>
+    </labels>
+    <labels>
+        <fullName>RV_SAPStagingCC</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_SAPStagingCC</shortDescription>
+        <value>ITSO-Salesforce-SOM-Application-Support@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RV_SAPStagingEmailTimeDuration</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_SAPStagingEmailTimeDuration</shortDescription>
+        <value>10</value>
+    </labels>
+    <labels>
+        <fullName>RV_SAPStagingOLFUserName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_SAPStagingOLFUserName</shortDescription>
+        <value>olfintegrationuser@shell.com.stasco.revqa</value>
+    </labels>
+    <labels>
+        <fullName>RV_SAPStagingolfccAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_SAPStagingolfccAddress</shortDescription>
+        <value>dhriti.ghoshmoulick@shell.com;suhasini.nune@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>RV_Surcharge_98</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_Surcharge_98</shortDescription>
+        <value>8.30</value>
+    </labels>
+    <labels>
+        <fullName>RV_Surcharge_E10</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_Surcharge_E10</shortDescription>
+        <value>-1.60</value>
+    </labels>
+    <labels>
+        <fullName>RV_Surcharge_E5</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_Surcharge_E5</shortDescription>
+        <value>1.60</value>
+    </labels>
+    <labels>
+        <fullName>RV_UserAccessMessages</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UserAccessMessages</shortDescription>
+        <value>You do not have permission to Save or Cancel Deals!</value>
+    </labels>
+    <labels>
+        <fullName>RV_offerCleanupBatchEmailIds</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_offerCleanupBatchEmailIds</shortDescription>
+        <value>mika.tiusanen@shell.com,ashish.a.tiwari@shell.com,mohan-kumar.choppa@shell.com</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Ago_Igo_Live_8am</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Ago Igo Live 8am</shortDescription>
+        <value>AGO / IGO Live vs 8:00 €/100l</value>
+    </labels>
+    <labels>
+        <fullName>Rv_BioB7_Eur_Cbm</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_BioB7 Eur Cbm</shortDescription>
+        <value>Bio B7 €/cbm</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Bio_E5_Cbm</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Bio E5 Cbm</shortDescription>
+        <value>Bio E5 €/cbm</value>
+    </labels>
+    <labels>
+        <fullName>Rv_ConversionAgoIgoCBMtoTon</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv ConversionAgoIgoCBMtoTon</shortDescription>
+        <value>0.845</value>
+    </labels>
+    <labels>
+        <fullName>Rv_ConversionMogasCBMtoTon</fullName>
+        <categories>Revolution Conversion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv ConversionMogasCBMtoTon</shortDescription>
+        <value>0.755</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Eur_USD_fixing</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Eur/USD fixing</shortDescription>
+        <value>€/$ fixing</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Eur_Usd_8am</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Eur/Usd 8am</shortDescription>
+        <value>€/$ today 8:00 am</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Invalid_route_value</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Invalid_route_value</shortDescription>
+        <value>1000</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Live_Eur_Chf</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Live Eur/Chf</shortDescription>
+        <value>Live €/CHF</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Live_Eur_Usd</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Live Eur/Usd</shortDescription>
+        <value>Live €/$</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Mogas_Live_8am</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_Mogas Live 8am</shortDescription>
+        <value>Mogas Live vs 8:00 €/100l</value>
+    </labels>
+    <labels>
+        <fullName>Rv_SalesCaptureConfirmSkipMaterials</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rv_SalesCaptureConfirmSkipMaterials</shortDescription>
+        <value>0;</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Wesseling_AGO_MRC</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DI Dashboard AGO MRC dailyPriceTrend</shortDescription>
+        <value>MRCXXD230-000328</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Wesseling_AGO_MRC_Dashboard</fullName>
+        <categories>DI Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DI Dashboard AGO MRC Wessling</shortDescription>
+        <value>000000000-000128</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Wesseling_MOGAS_MRC</fullName>
+        <categories>Di Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DI Dashboard MOGAS MRC dailyPriceTrend</shortDescription>
+        <value>MRCXXD230-000331</value>
+    </labels>
+    <labels>
+        <fullName>Rv_Wesseling_MOGAS_MRC_Dashboard</fullName>
+        <categories>DI Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DI Dashboard MOGAS MRC Wessling</shortDescription>
+        <value>000000000-000127</value>
+    </labels>
+    <labels>
+        <fullName>SHT_Status_Cancelled</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SHT Status Cancelled</shortDescription>
+        <value>Cancelled</value>
+    </labels>
+    <labels>
+        <fullName>SHT_Status_Completed</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SHT Status Completed</shortDescription>
+        <value>Completed</value>
+    </labels>
+    <labels>
+        <fullName>Salesforce_URL</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesforce URL</shortDescription>
+        <value>https://stasco.my.salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>Scenario_Balanced</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scenario Balanced</shortDescription>
+        <value>Balanced</value>
+    </labels>
+    <labels>
+        <fullName>Scenario_Exchange</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scenario Exchange</shortDescription>
+        <value>Exchange</value>
+    </labels>
+    <labels>
+        <fullName>Scenario_Net_Purchase</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scenario Net Purchase</shortDescription>
+        <value>Net Purchase</value>
+    </labels>
+    <labels>
+        <fullName>Stuttgart</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stuttgart</shortDescription>
+        <value>D102</value>
+    </labels>
+    <labels>
+        <fullName>TYPE_OPTION_NOT_SELECTED</fullName>
+        <categories>CMT</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please choose a valid custom metadata type.</shortDescription>
+        <value>Please choose a valid custom metadata type.</value>
+    </labels>
+    <labels>
+        <fullName>Total_Duisburg</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Duisburg</shortDescription>
+        <value>D095</value>
+    </labels>
+    <labels>
+        <fullName>Total_Leuna_Trains</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Leuna (Trains)</shortDescription>
+        <value>D100</value>
+    </labels>
+    <labels>
+        <fullName>Total_Leuna_Trucks</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total Leuna (Trucks)</shortDescription>
+        <value>D100</value>
+    </labels>
+    <labels>
+        <fullName>UGL95_E5</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UGL95 E5</shortDescription>
+        <value>UGL95 E5</value>
+    </labels>
+    <labels>
+        <fullName>Varo_Vohburg</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Varo Vohburg</shortDescription>
+        <value>D103</value>
+    </labels>
+    <labels>
+        <fullName>X3rd_Party_Rail</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>3rd Party Rail</shortDescription>
+        <value>3rd Party Rail Sources</value>
+    </labels>
+    <labels>
+        <fullName>X3rd_Party_truck</fullName>
+        <categories>Custom Code</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>3rd Party truck</shortDescription>
+        <value>3rd Party Truck Sources</value>
+    </labels>
+    <labels>
+        <fullName>betGtAndMdnStatusChangeEmailBatchCCAddress</fullName>
+        <categories>BET</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>betGtAndMdnStatusChangeEmailBatchCCAddress</shortDescription>
+        <value>Frazer.Keane@shell.com</value>
+    </labels>
+</CustomLabels>

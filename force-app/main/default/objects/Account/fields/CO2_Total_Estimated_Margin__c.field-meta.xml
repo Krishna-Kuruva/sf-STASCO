@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Total_Estimated_Margin__c</fullName>
+    <externalId>false</externalId>
+    <formula>Free_Allowance_Margin__c + CO2_Margin_Short_Allowances__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Total for both free amd Short</inlineHelpText>
+    <label>CO2 - Total Estimated Margin</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

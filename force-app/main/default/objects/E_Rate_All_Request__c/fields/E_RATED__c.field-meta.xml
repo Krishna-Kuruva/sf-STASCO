@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E_RATED__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF((Latest_Actioned_Request_Type__c=&quot;E-Rate&quot; &amp;&amp; ISPICKVAL(Request_Type__c,&quot;E-rate&quot;) &amp;&amp; (ISPICKVAL(Request_Status__c,&quot;Completed&quot;) || ISPICKVAL(Request_Status__c,&quot;Previously Actioned&quot;))),&quot;Y&quot;,NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>E-RATED?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

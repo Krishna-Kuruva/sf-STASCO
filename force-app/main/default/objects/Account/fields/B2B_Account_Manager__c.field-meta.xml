@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>B2B_Account_Manager__c</fullName>
+    <externalId>false</externalId>
+    <label>RM Account Manager</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Helen McGee</fullName>
+                <default>false</default>
+                <label>Helen McGee</label>
+            </value>
+            <value>
+                <fullName>Kenny Tay</fullName>
+                <default>false</default>
+                <label>Kenny Tay</label>
+            </value>
+            <value>
+                <fullName>Kevin Heselden</fullName>
+                <default>false</default>
+                <label>Kevin Heselden</label>
+            </value>
+            <value>
+                <fullName>Kevin Kam-Fei Cheah</fullName>
+                <default>false</default>
+                <label>Kevin Kam-Fei Cheah</label>
+            </value>
+            <value>
+                <fullName>Michael Furze</fullName>
+                <default>false</default>
+                <label>Michael Furze</label>
+            </value>
+            <value>
+                <fullName>Not B2B</fullName>
+                <default>false</default>
+                <label>Not B2B</label>
+            </value>
+            <value>
+                <fullName>Peter Selvig</fullName>
+                <default>false</default>
+                <label>Peter Selvig</label>
+            </value>
+            <value>
+                <fullName>Claire Pontal</fullName>
+                <default>false</default>
+                <label>Claire Pontal</label>
+            </value>
+            <value>
+                <fullName>Sarah Pereira</fullName>
+                <default>false</default>
+                <label>Sarah Pereira</label>
+            </value>
+            <value>
+                <fullName>Ned Leary</fullName>
+                <default>false</default>
+                <label>Ned Leary</label>
+            </value>
+            <value>
+                <fullName>Pearly Lin</fullName>
+                <default>false</default>
+                <label>Pearly Lin</label>
+            </value>
+            <value>
+                <fullName>Simon Xin</fullName>
+                <default>false</default>
+                <label>Simon Xin</label>
+            </value>
+            <value>
+                <fullName>Elaine Hee</fullName>
+                <default>false</default>
+                <label>Elaine Hee</label>
+            </value>
+            <value>
+                <fullName>Clara Sherry</fullName>
+                <default>false</default>
+                <label>Clara Sherry</label>
+            </value>
+            <value>
+                <fullName>Orla Mckenna</fullName>
+                <default>false</default>
+                <label>Orla Mckenna</label>
+            </value>
+            <value>
+                <fullName>Yih-Mey Ng</fullName>
+                <default>false</default>
+                <label>Yih-Mey Ng</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

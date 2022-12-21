@@ -1,0 +1,51 @@
+*** DEAL DONE NOTIFICATION *** 
+
+Account Manager for this account:  {!Account.Acct_Mgr__c}
+Deal executed on {!Opportunity.CreatedDate} by {!User.Name}.
+
+{!Opportunity.Shell_Entity__c}, {!Opportunity.Account} ({!Opportunity.Name})
+
+Route to Market: {!Account.CO2_Route_To_Service__c}
+Country Registered for EU ETS: {!Account.CO2_Registered_in_which_Country__c}: 
+Shell Company to Invoice from:{!Account.Registered_Country__c}
+Shell Legal Enitiy : {!Opportunity.Shell_Entity__c}
+Click on the link to access the Opportunity directly: {!Opportunity.Link}
+____________________________________________________
+Number of allowances (Tonnes) : {!Opportunity.CO2_Number_of_allowances__c}
+Allowance Type: {!Opportunity.CO2_Product__c}
+Instrument: {!Opportunity.CO2_Instrument__c}
+______________________________________________________
+{!Opportunity.Account} --  Buys/sells:          {!Opportunity.CO2_Customer_Buy_Sell__c}
+Price to the Customer Euro/t  : {!Opportunity.CO2_Price_to_Customer__c}
+Customer Invoiced (Customer to invoice Shell) in Euro : {!Opportunity.Customer_Invoice_Value__c}
+Price from Shell Trading Euro/Tonne:    {!Opportunity.CO2_Price_STASCO__c}
+
+Payment Date Customer : {!Opportunity.Payment_due_date_Customer_Invoice__c}
+Date for when to deliver allowances to Customer: {!Opportunity.CO2_Delivery_Date_of_Allowances__c}
+_______________________________________________________
+FX rate used ($:Euro):   {!Opportunity.CO2_FX_rate_to_get_US_Tonne__c}
+GC Margin made (Euro/t):    {!Opportunity.CO2_Margin_tonne_on_deal__c}
+GC Margin Made ($/T) : {!Opportunity.CO2_US_Margin_T__c}
+GC Margin Made US$ : {!Opportunity.CO2_Total_Margin_US__c}
+Trading Margin made US$ : {!Opportunity.CO2_Deal_done_by_Shell_Trade__c}
+
+Integrated margin on deal to Shell $ :          {!Opportunity.CO2_Total_Margin__c}
+Integrated margin to Shell US$/t :                 {!Opportunity.CO2_Overall_Margin_T__c}
+
+______________________________________________________
+OVERALL:
+Total Margin made so far from this customer: {!Account.00N20000003BGib}
+
+_______________________________________________
+General Info
+Total Number of Allowances the customer may need: 
+Number Of Free allowances Customer has : {!Account.CO2_Free_Allowances_for_2012__c}
+Number of allowances Short/(Long): {!Account.CO2_Est_2012_position__c}
+Number of Allowances sold/bought so far: {!Account.00N20000003BGiW}
+
+________________________________________________
+PFE : {!Opportunity.PFE_USD__c}
+Contingent credit Limit  for customer : {!Existing PFE all deals: {!Account.Exisiting_PFE__c}
+_________________________________________________
+***MOA*****
+MOA Approval Obtained :

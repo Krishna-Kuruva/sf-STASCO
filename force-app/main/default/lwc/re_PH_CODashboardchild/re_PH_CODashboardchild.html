@@ -1,0 +1,888 @@
+<template> 
+    <!--on loading message  start-->
+    <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+                
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+    </template>
+    <!--on loading message end-->
+
+    <div class="bordertop tabledata slds-box slds-table--header-fixed_container" style="height:100vh;padding-top: 2%;">
+        <div class={className} data-id="divblock">
+            <div class="slds-scrollable--y slds-p-left_none slds-p-right_none slds-box " style="padding-top: 0px; padding-bottom: 0px;border-top: 0;">
+                    <table class=" tableLayout fornttotable slds-table slds-table_bordered slds-table--header-fixed">
+                        <thead>
+                            <tr>
+                                <template if:false={hidectrlbut}>
+                                    <!--<template if:true={approvebuttondirect}> -->
+                                    <th scope="col" class="datatblbg checkboxwidth ">
+                                        <div class="slds-p-top_xx-small slds-p-left_x-small slds-cell-fixed  slds-truncate datatblbg checkboxwidth">
+                                            <template if:false={isolddate}>
+                                            <lightning-input type="checkbox" label="" name="selectAll"
+                                                onchange={handleselectAllData}></lightning-input>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-input type="checkbox" label="" name="selectAll"
+                                                                 onchange={handleselectAllData} disabled></lightning-input>
+                                            </template>
+                                        </div>
+                                    </th>
+                                    <!-- </template> -->
+                                </template>
+                                <th class="expand">
+                                    <div class="expand"></div>
+                                </th>
+
+                                <th scope="col" class="datatblbg customerName">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed  slds-truncate datatblbg customerName"
+                                        onclick={changeSortchar} data-target-id="customerNameSoldTo"
+                                        title="Customer Name(Sold To)">Sold To Name&nbsp;&nbsp;
+                                    </div>
+                                </th>
+                                <th scope="col" class="datatblbg materials">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg materials"
+                                        onclick={changeSortchar} data-target-id="product" title="Product">Material</div>
+                                </th>
+                                <th scope="col" class="datatblbg materials">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed  slds-truncate datatblbg materials"
+                                        onclick={changeSortchar} data-target-id="Location" title="Location">Plant</div>
+                                </th>
+                                <th scope="col" class="datatblbg plant">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg plant"
+                                        onclick={changesortNumber} data-target-id="soldTo" title="Sold-To">Sold-To</div>
+                                </th>
+                                <th scope="col" class="datatblbg plant">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg plant"
+                                        onclick={changesortNumber} data-target-id="shipTo" title="Ship To">Ship To</div>
+                                </th>
+                                <th scope="col" class="datatblbg region">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region"
+                                        title="Valid From">Valid From</div>
+                                </th>
+                                <th scope="col" class="datatblbg region">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region"
+                                        title="Valid To">Valid To</div>
+                                </th>
+
+                                <th scope="col" class="datatblbg material">
+                                    <div class=" slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"
+                                        title="AutoCalRefAmnt">AutoCalRefAmnt</div>
+                                </th>
+                                <th scope="col" class="datatblbg material">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"
+                                        title="AutoCalRefAmntAdj">AutoCalRefAmntAdj</div>
+                                </th>
+                                <th scope="col" class="datatblbg material">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"
+                                        title="Net Price">Net Price</div>
+                                </th>
+                                <th scope="col" class="datatblbg plant">
+                                    <div class=" slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg plant"
+                                        title="Price Calc Method">Price Calc Method</div>
+                                </th>
+                                <th scope="col" class="datatblbg plant">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg plant"
+                                        title="Ref Period">Ref Period</div>
+                                </th>
+                                <th scope="col" class="datatblbg stdDis">
+                                    <div class=" slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg stdDis"
+                                        title="Base Ref Price">Base Ref Price </div>
+                                </th>
+                                <th scope="col" class="datatblbg stdDis">
+                                    <div class=" slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg stdDis"
+                                        title="UC3 for Ref">UC3 Ref</div>
+                                </th>
+                               <!-- <th scope="col" class="datatblbg material">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg material"
+                                        title="CBU MC">Account Manager</div></th>
+                                 <th  scope="col" class="datatblbg region">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg region" title="Margin CBU MC"> Margin CBU MC</div>
+                                </th>-->
+
+                                <th scope="col" class="datatblbg status">
+                                    <div class="slds-p-top_xx-small slds-cell-fixed slds-truncate datatblbg status"
+                                        title="Status">Status</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={CustData} for:item="itemData">
+                                <tr class="slds-hint-parent celldata " key={itemData.id}>
+                                    <template if:false={hidectrlbut}>
+                                        <template if:true={itemData.checkBoxController}>
+                                            <th scope="row" class="rowdesing">
+                                                <template if:false={isolddate}>
+                                                    <lightning-input type="checkbox" onchange={slectedcheckbox} label=""
+                                                        name={itemData.id} checked={itemData.isChecked}></lightning-input>
+                                                </template>
+                                                <template if:true={isolddate}>
+                                                    <lightning-input type="checkbox" onchange={slectedcheckbox} label=""
+                                                     name={itemData.id} checked={itemData.isChecked} disabled></lightning-input>
+                                                </template>
+                                            </th>
+                                        </template>
+                                        <template if:false={itemData.checkBoxController}>
+                                            <th scope="row" class="rowdesing">
+                                            </th>
+                                        </template>
+                                    </template>
+                                    <th class="expand">
+                                        <lightning-button-icon icon-name="utility:new_window"
+                                            alternative-text="Show Details" data-id={itemData.id} data-name="view"
+                                            size="small" title="Show Details" variant="bare" onclick={editDirectdata}>
+                                        </lightning-button-icon>
+                                        <!--<template if:true={itemData.recordMode}>
+                                          <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:edit"
+                                          alternative-text="Edit"
+                                          data-id={itemData.id}
+                                          data-name="Edit"
+                                          size="small"
+                                          title="Edit Opps"
+                                          variant="bare"
+                                          onclick={editDirectdata}></lightning-button-icon>
+                                      </template>-->
+                                    </th>
+                                    <th scope="row" class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.customerNameSoldTo}>
+                                            <lightning-formatted-url value={itemData.customerSoldToID}
+                                                tooltip={itemData.customerNameSoldTo}
+                                                label={itemData.customerNameSoldTo} target="_blank">
+                                            </lightning-formatted-url>
+                                        </div>
+                                    </th>
+                                    <!--th scope="row" class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.customerName}>
+                                            <lightning-formatted-url value={itemData.customerNameId}
+                                                tooltip={itemData.customerName} label={itemData.customerName}
+                                                target="_blank"></lightning-formatted-url>
+                                        </div>
+                                    </th-->
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.product}>{itemData.product}</div>
+                                        <!--[{itemData.productCode}]-->
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.Location}>{itemData.Location}[{itemData.locationCode}]</div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.soldTo}>{itemData.soldTo}</div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.shipTo}>{itemData.shipTo}</div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.startDate}>{itemData.startDate}</div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.endDate}>{itemData.endDate}</div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div title={itemData.listPrice}>
+                                            <lightning-formatted-number value={itemData.autocalcrefamnt}
+                                                maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                            </lightning-formatted-number>
+                                        </div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div title={itemData.tieredDiscount}>
+                                            <lightning-formatted-number value={itemData.autocalcrefamntadj}
+                                                maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                            </lightning-formatted-number>
+                                        </div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div title={itemData.finalPrice}>
+                                            <template if:false={approvebuttondirect}>
+                                                <template if:false={itemData.recordMode}>
+                                                    <lightning-formatted-number value={itemData.finalPrice}
+                                                        maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                                    </lightning-formatted-number>
+                                                </template>
+                                                <template if:true={itemData.recordMode}>
+                                                    <template if:true={itemData.finalPriceEdit}>
+                                                        <template if:false={itemData.inlineEdit}>
+                                                            <lightning-formatted-number value={itemData.finalPrice}
+                                                                maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                                            </lightning-formatted-number>
+                                                            <lightning-button-icon class="slds-m-left_xx-small"
+                                                                icon-name="utility:edit" alternative-text="Edit"
+                                                                data-id={itemData.id} data-name="Edit" size="small"
+                                                                title="Edit Opps" variant="bare"
+                                                                onclick={enableInlineEdit}>
+                                                            </lightning-button-icon>
+                                                        </template>
+                                                        <template if:true={itemData.inlineEdit}>
+                                                            <lightning-input name={itemData.id} type="number"
+                                                                class="inlineEdit" step="0.01" variant="label-hidden"
+                                                                onchange={finalPricechangeinLine} onblur={cancelInline}
+                                                                value={itemData.finalPrice}></lightning-input>
+                                                            &nbsp;&nbsp;
+                                                        </template>
+                                                    </template>
+                                                    <template if:false={itemData.finalPriceEdit}>
+                                                        <lightning-formatted-number value={itemData.finalPrice}
+                                                            maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                                        </lightning-formatted-number>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <template if:true={approvebuttondirect}>
+                                                <lightning-formatted-number value={itemData.finalPrice}
+                                                    maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                                </lightning-formatted-number>
+                                            </template>
+                                        </div>
+                                    </td>
+
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.calcmethod}>{itemData.calcmethod}
+                                        </div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div class="slds-truncate" title={itemData.refperiod}>{itemData.refperiod}</div>
+                                    </td>
+
+                                    <td class="rowdesing">
+                                        <div title={itemData.refprice}>
+                                            <lightning-formatted-number value={itemData.refprice}
+                                                maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                            </lightning-formatted-number>
+                                        </div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <div title={itemData.refuc3}>
+                                            <lightning-formatted-number value={itemData.refuc3}
+                                                maximum-fraction-digits="2" minimum-fraction-digits="2">
+                                            </lightning-formatted-number>
+                                        </div>
+                                    </td>
+                                    <td class="rowdesing">
+                                        <!--<div class="slds-truncate forntsize">  <lightning-avatar src="" initials={itemData.approveStatus} class="colorback" fallback-icon-name="standard:avatar"  alternative-text={itemData.approveStatus} size="x-small"></lightning-avatar></div>-->
+                                        <span class="slds-avatar avatar">
+                                            <abbr class={itemData.avatarCssClass} style="padding-top: 0.1rem;"
+                                                title={itemData.approveStatus}>{itemData.approveStatus}</abbr>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+        <template if:true={ShowEdit}>
+            <!--section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                  <div class="slds-modal__container ">
+                    <header class="modeltemp slds-modal__header"-->
+            <!--/header-->
+            <h2 id="modal-heading-01" class="slds-hyphenate">Detail view : {editDirect.customerName}
+                <button class="slds-button slds-button_icon slds-float_right" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="xx-small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </h2>
+            <div class="popUpcolor slds-scrollable--y" style="height:49%;width:100%;" id="modal-content-id-1">
+                <div class="Backgroundcls borderToBox slds-box slds-m-bottom_xx-small" style="padding: 0px;">
+                    <div class="slds-grid slds-grid_pull-padded-medium">
+                        <div class="slds-size_1-of-3 slds-p-horizontal_medium">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Customer Name(Sold To)</b></td>
+                                        <td>
+                                            <lightning-formatted-url value={editDirect.customerSoldToID}
+                                                tooltip={editDirect.customerSoldToID}
+                                                label={editDirect.customerNameSoldTo} target="_blank">
+                                            </lightning-formatted-url>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Product</b></td>
+                                        <td>{editDirect.product}[{editDirect.productCode}]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Location</b></td>
+                                        <td>{editDirect.Location} [{editDirect.locationCode}]</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="slds-size_1-of-3 slds-p-horizontal_medium">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                <tr>
+                                    <td><b>Account Manager</b></td>
+                                    <td>{editDirect.amCode}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Sold-To</b></td>
+                                    <td>{editDirect.soldTo}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Ship To</b></td>
+                                    <td>{editDirect.shipToAddress}[{editDirect.shipTo}]</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="slds-size_1-of-3 slds-p-horizontal_medium">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Valid start date</b></td>
+                                        <td>{editDirect.startDate}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Valid End date</b></td>
+                                        <td>{editDirect.endDate}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="Backgroundcls borderToBox slds-box" style="padding: 0px;">
+                    <div class="slds-grid slds-grid_pull-padded-medium">
+                        <div class=" slds-p-horizontal_medium">
+                            <table class="Backgroundcls childrowdesign slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>FinalPriceCalc</b></td>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Excise Tax</b></td>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Sec Transport</b></td>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>C2C3 Cost</b></td>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Net Price</b></td>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Calculation Method</b></td>
+                                        <template if:true={isAPM}>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>ASprired C3</b></td>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b></b></td>
+                                        </template>
+                                        <template if:true={isGPC}>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Prev Week Price</b></td>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>GPC</b></td>
+                                        </template>
+                                        <template if:true={isRPG}>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>RPG Fix Price</b></td>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Tier Value</b></td>
+                                        </template>
+                                        <template if:true={isMan}>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b></b></td>
+                                            <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b></b></td>
+                                        </template>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Price Support</b></td>
+                                        <!--td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Valid From</b></td-->
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Valid Till</b></td>
+                                        <template if:false={isolddate}>                                       
+                                             <template if:true={editDirect.recordMode}>                                       
+                                             <td>
+                                            <lightning-button label="Save" title="Save" variant="brand" onclick={saveDetail} >
+                                            </lightning-button>
+                                            <lightning-button class="slds-p-left_small" label="Cancel"  title="Cancel" variant="border-filled" onclick={cancelDetail} >
+                                            </lightning-button>
+                                            </td>
+                                            </template>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-text value=""> 
+                                            </lightning-formatted-text>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-number value={editDirect.exciseTax}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-number value={editDirect.transportCharge}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-number value={}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_2-of-12" style="padding: 0px">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-input type="number" step=any variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                        onchange={finalPriceChange} onblur={cancelInline} name="RE_Final_Price_Rebate__c"
+                                                        value={editDirect.finalPrice}></lightning-input>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-formatted-number value={editDirect.finalPrice}
+                                                        maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                                    </lightning-formatted-number>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-formatted-number value={editDirect.finalPrice}
+                                                    maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                                </lightning-formatted-number>
+                                            </template>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-text value={editDirect.calcmethod}> 
+                                            </lightning-formatted-text>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-number value={editDirect.autocalcrefamnt}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-12">
+                                            <lightning-formatted-number value={editDirect.autocalcrefamntadj}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_2-of-12" style="padding: 0px">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-input type="number" step=any variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                     onchange={finalPriceChange} onblur={cancelInline} name="RE_Price_support__c"
+                                                                     value={editDirect.priceSupport}></lightning-input>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-formatted-number value={editDirect.priceSupport}
+                                                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                                    </lightning-formatted-number>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-formatted-number value={editDirect.priceSupport}
+                                                                            maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                                </lightning-formatted-number>
+                                            </template>
+                                        </td>
+                                        <!--td class="childrowdesign slds-size_2-of-12" style="padding: 0px">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                     onchange={finalPriceChange} onblur={cancelInline} name="RE_PS_valid_from__c"
+                                                                     value={editDirect.psStartDate}></lightning-input>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                     name="RE_PS_valid_from__c" disabled value={editDirect.psStartDate}></lightning-input>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                 name="RE_PS_valid_from__c" disabled value={editDirect.psStartDate}></lightning-input>
+                                            </template>
+                                        </td-->
+                                        <td class="childrowdesign slds-size_2-of-12" style="padding: 0px">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                     onchange={finalPriceChange} onblur={cancelInline} name="RE_PS_valid_to__c"
+                                                                     value={editDirect.psEndDate}></lightning-input>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                     name="RE_PS_valid_to__c" disabled value={editDirect.psEndDate}></lightning-input>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-input type="date" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                                 name="RE_PS_valid_to__c" disabled value={editDirect.psEndDate}></lightning-input>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr>
+                                        <td class="childrowdesign slds-size_1-of-12" style="background-color: antiquewhite;"><b>Remarks</b></td>
+                                        <td class="childrowdesign slds-size_11-of-12" style="padding: 0px">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-input type="text" variant="label-hidden" style="zoom: 70%;font-size: small;"
+                                                        onchange={finalPriceChange} onblur={cancelInline} name="RE_Submitter_Comments__c"
+                                                        value={editDirect.submitterComments}>
+                                                    </lightning-input>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-formatted-text value={editDirect.submitterComments}>
+                                                    </lightning-formatted-text>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-formatted-text value={editDirect.submitterComments}>
+                                                </lightning-formatted-text>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class=" slds-p-horizontal_medium slds-p-top_large" >
+                            <template if:false= {isProperDecimal}>
+                                <div style="color : red">Please enter 4 digit decimal places.</div>
+                            </template>
+                            <template if:true= {isoldpsdate}>
+                                <div style="color : red">You cannot select old date.</div>
+                            </template>
+                            <template if:true= {isvaliddate}>
+                                <div style="color : red">Valid To Date should be greater or equals to Valid From Date.</div>
+                            </template>
+                            <template if:true= {ispriceSupport}>
+                                <div style="color : red">Please put Valid till before saving.</div>
+                            </template>
+                            <template if:true= {isValidFrom}>
+                                <div style="color : red">Please put Valid To before saving.</div>
+                            </template>
+                            <template if:true= {isValidTo}>
+                                <div style="color : red">Please put Valid From before saving.</div>
+                            </template>
+                        </div>
+                    </div>
+                
+                    <div class="slds-grid slds-grid_pull-padded-xxx-small" style="padding-top: 5px;">
+                        <div class="slds-size_1-of-8 slds-p-horizontal_xxx-small">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Tranfer Price</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>M-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.tpM_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>MTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.tpMTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>WTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.tpWTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.tpD_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>W-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.tpW_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-size_1-of-8 slds-p-horizontal_xxx-small">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Exgate Cost</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>M-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.exgM_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>MTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.exgMTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>WTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.exgWTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.exgD_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>W-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.exgW_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-size_1-of-8 slds-p-horizontal_xxx-small">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>UC3</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>M-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.uc3M_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>MTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.uc3MTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>WTD</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.uc3WTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.uc3D_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>W-1</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.uc3W_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-size_1-of-5 slds-p-horizontal_xxx-small">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr class="childrowdesign" style="background-color: antiquewhite;">
+                                        <td ><b>UC3 Vs BackstopMargin</b></td>
+                                        <td style="background-color: antiquewhite;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Reference Period</b></td>
+                                        <td class="childrowdesign" style="padding:0px;">
+                                            <template if:false={isolddate}>
+                                                <template if:true={editDirect.recordMode}>
+                                                    <lightning-combobox
+                                                        style="zoom: 70%;font-size: small;"
+                                                        variant="label-hidden"
+                                                        name="RE_Reference_Period__c"
+                                                        value={editDirect.refperiod}
+                                                        options={refoptions}
+                                                        onchange={finalPriceChange} onblur={cancelInline}></lightning-combobox>
+                                                </template>
+                                                <template if:false={editDirect.recordMode}>
+                                                    <lightning-formatted-text value={editDirect.refperiod}></lightning-formatted-text>
+                                                </template>
+                                            </template>
+                                            <template if:true={isolddate}>
+                                                <lightning-formatted-text value={editDirect.refperiod}></lightning-formatted-text>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Exgate Cost</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.refprice}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>UC3 for Ref period</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.refuc3}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>BackstopMargin</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-number value={editDirect.backStopMargin}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="slds-size_1-of-6 slds-p-horizontal_xxx-small">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer">
+                                <tbody>
+                                    <tr style="background-color: antiquewhite;">
+                                        <td class="childrowdesign"><b>Approval</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Status</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-text value={editDirect.approveStatusFull}></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Scheme</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-text value={editDirect.approvalScheme}>
+                                            </lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr  style="background-color: antiquewhite;">
+                                        <td class="childrowdesign"><b>Approver</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Role</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-text value={editDirect.approverRole}>
+                                            </lightning-formatted-text>
+                                        </td>
+                                        <td class="childrowdesign">
+                                            <template if:true={isapproved}>
+                                                <lightning-input type="checkbox" label="Is approved" name="approved" style="zoom:0.8" checked></lightning-input>
+                                            </template>
+                                            <template if:false={isapproved}>
+                                                <lightning-input type="checkbox" label="Is approved" name="approved" style="zoom:0.8"></lightning-input>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>Name</b></td>
+                                        <td class="childrowdesign">
+                                            <lightning-formatted-text value={editDirect.approverName}>
+                                            </lightning-formatted-text>
+                                        </td>
+                                        <td class="childrowdesign">
+                                            <template if:true={isuploaded}>
+                                                <lightning-input type="checkbox" label="Is uploaded" name="uploaded" style="zoom:0.8" checked></lightning-input>
+                                            </template>
+                                            <template if:false={isuploaded}>
+                                                <lightning-input type="checkbox" label="Is uploaded" name="uploaded" style="zoom:0.8"></lightning-input>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-grid slds-grid_pull-padded-medium" style="padding-top: 5px;">
+                        <div class="slds-size_2-of-3 slds-p-horizontal_medium">
+                            <table class="Backgroundcls slds-table slds-table_cell-buffer slds-table_header-hidden">
+                                <tbody>
+                                   
+                                    <tr>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1 vs D-2</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1 vs WTD</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1 vs W-1</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1 vs MTD</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>D-1 vs M-1</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>WTD vs W-1</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>W-1 vs W-2</b></td>
+                                        <td class="childrowdesign" style="background-color: antiquewhite;"><b>MTD vs M-1</b></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.d_1vsD_2}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.d_1vsWTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.d_1vsW_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.d_1vsMTD}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.d_1vsM_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.wtdvsW_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.w_1vsW_2}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                        <td class="childrowdesign slds-size_1-of-8">
+                                            <lightning-formatted-number value={editDirect.mtdvsM_1}
+                                                maximum-fraction-digits="4" minimum-fraction-digits="4">
+                                            </lightning-formatted-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <!--footer class="modeltemp slds-modal__footer">
+                  <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                  <button class="slds-button slds-button_neutral" onclick={saveandClose}>Save</button>
+               </footer-->
+    <!--/section-->
+    <!--div class="slds-backdrop slds-backdrop_open"></div-->
+    <!--on loading message  start-->
+</template>

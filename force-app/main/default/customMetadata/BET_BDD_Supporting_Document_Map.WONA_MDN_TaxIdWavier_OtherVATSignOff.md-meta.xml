@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>WONA MDN TaxIdWavier OtherVATSignOff</label>
+    <protected>false</protected>
+    <values>
+        <field>Document_Category__c</field>
+        <value xsi:type="xsd:string">Tax ID Wavier</value>
+    </values>
+    <values>
+        <field>Document_Type__c</field>
+        <value xsi:type="xsd:string">VAT Sign Off</value>
+    </values>
+    <values>
+        <field>Region__c</field>
+        <value xsi:type="xsd:string">WONA</value>
+    </values>
+    <values>
+        <field>Section__c</field>
+        <value xsi:type="xsd:string">MDN</value>
+    </values>
+    <values>
+        <field>Source_ShortName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:type="xsd:string">Other</value>
+    </values>
+</CustomMetadata>

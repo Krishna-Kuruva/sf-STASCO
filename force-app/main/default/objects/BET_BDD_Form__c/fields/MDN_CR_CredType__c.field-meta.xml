@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_CR_CredType__c</fullName>
+    <externalId>false</externalId>
+    <label>* Credit Type/Market Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+                <label>Aggregator</label>
+            </value>
+            <value>
+                <fullName>Aggregator - Structured</fullName>
+                <default>false</default>
+                <label>Aggregator - Structured</label>
+            </value>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>BROKER</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>BROKER</label>
+            </value>
+            <value>
+                <fullName>Brokers/Clearing Houses</fullName>
+                <default>false</default>
+                <label>Brokers/Clearing Houses</label>
+            </value>
+            <value>
+                <fullName>C&amp;I Enduser Physical</fullName>
+                <default>false</default>
+                <label>C&amp;I Enduser Physical</label>
+            </value>
+            <value>
+                <fullName>Common Accounts - DM Owned</fullName>
+                <default>false</default>
+                <label>Common Accounts - DM Owned</label>
+            </value>
+            <value>
+                <fullName>Common Accounts - T&amp;S Owned</fullName>
+                <default>false</default>
+                <label>Common Accounts - T&amp;S Owned</label>
+            </value>
+            <value>
+                <fullName>Community Choice Aggregation (CCA)</fullName>
+                <default>false</default>
+                <label>Community Choice Aggregation (CCA)</label>
+            </value>
+            <value>
+                <fullName>End User</fullName>
+                <default>false</default>
+                <label>End User</label>
+            </value>
+            <value>
+                <fullName>Exchange</fullName>
+                <default>false</default>
+                <label>Exchange</label>
+            </value>
+            <value>
+                <fullName>Generator - Endusers</fullName>
+                <default>false</default>
+                <label>Generator - Endusers</label>
+            </value>
+            <value>
+                <fullName>Generator - Structured</fullName>
+                <default>false</default>
+                <label>Generator - Structured</label>
+            </value>
+            <value>
+                <fullName>Hedge Funds / Private Equity</fullName>
+                <default>false</default>
+                <label>Hedge Funds / Private Equity</label>
+            </value>
+            <value>
+                <fullName>MUSH - Hospitals</fullName>
+                <default>false</default>
+                <label>MUSH - Hospitals</label>
+            </value>
+            <value>
+                <fullName>MUSH - Municipalities</fullName>
+                <default>false</default>
+                <label>MUSH - Municipalities</label>
+            </value>
+            <value>
+                <fullName>MUSH - Universities/Schools</fullName>
+                <default>false</default>
+                <label>MUSH - Universities/Schools</label>
+            </value>
+            <value>
+                <fullName>Non-Lockbox Aggregator</fullName>
+                <default>false</default>
+                <label>Non-Lockbox Aggregator</label>
+            </value>
+            <value>
+                <fullName>PIPELINE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PIPELINE</label>
+            </value>
+            <value>
+                <fullName>Pipelines</fullName>
+                <default>false</default>
+                <label>Pipelines</label>
+            </value>
+            <value>
+                <fullName>Prepay</fullName>
+                <default>false</default>
+                <label>Prepay</label>
+            </value>
+            <value>
+                <fullName>Producer</fullName>
+                <default>false</default>
+                <label>Producer</label>
+            </value>
+            <value>
+                <fullName>Producer-Secured No Margin</fullName>
+                <default>false</default>
+                <label>Producer-Secured No Margin</label>
+            </value>
+            <value>
+                <fullName>Producer - Structured</fullName>
+                <default>false</default>
+                <label>Producer - Structured</label>
+            </value>
+            <value>
+                <fullName>Producer-Unsecured No Margin</fullName>
+                <default>false</default>
+                <label>Producer-Unsecured No Margin</label>
+            </value>
+            <value>
+                <fullName>Refiner</fullName>
+                <default>false</default>
+                <label>Refiner</label>
+            </value>
+            <value>
+                <fullName>SEE SO EU</fullName>
+                <default>false</default>
+                <label>SEE SO EU</label>
+            </value>
+            <value>
+                <fullName>Shell Affiliate</fullName>
+                <default>false</default>
+                <label>Shell Affiliate</label>
+            </value>
+            <value>
+                <fullName>SHELL AFFILIATES</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SHELL AFFILIATES</label>
+            </value>
+            <value>
+                <fullName>Small C&amp;I</fullName>
+                <default>false</default>
+                <label>Small C&amp;I</label>
+            </value>
+            <value>
+                <fullName>SNM-HYBRID</fullName>
+                <default>false</default>
+                <label>SNM-HYBRID</label>
+            </value>
+            <value>
+                <fullName>Storage/Capacity</fullName>
+                <default>false</default>
+                <label>Storage/Capacity</label>
+            </value>
+            <value>
+                <fullName>Tolling</fullName>
+                <default>false</default>
+                <label>Tolling</label>
+            </value>
+            <value>
+                <fullName>TSO</fullName>
+                <default>false</default>
+                <label>TSO</label>
+            </value>
+            <value>
+                <fullName>US Public Administration</fullName>
+                <default>false</default>
+                <label>US Public Administration</label>
+            </value>
+            <value>
+                <fullName>Wholesale</fullName>
+                <default>false</default>
+                <label>Wholesale</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

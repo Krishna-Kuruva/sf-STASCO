@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>Bio_Quotes__c</name>
+    <picklistValues>
+        <masterLabel>Argus Biodiesel RED FAME -10°C CFPP FOB ARA (ask)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Argus Biodiesel RED FAME -10°C CFPP FOB ARA (mean)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Argus Biodiesel RED FAME 0°C CFPP FOB ARA (mean)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB ARA NWE RED FAME 0 (high)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB ARA NWE RED FAME-10 (high)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB R&apos;dam Ethanol T2 (€) (high)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB R&apos;dam Ethanol T2 (€) (low)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB R&apos;dam Ethanol T2 (€) (mean)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB R&apos;dam Ethanol T2 GermanSpec (€) (high)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Platts FOB R&apos;dam Ethanol T2 GermanSpec (€) (mean)</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

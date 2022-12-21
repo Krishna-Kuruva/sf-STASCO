@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>RE Route Backbone</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>RE Route Backbones</value>
+    </caseValues>
+    <layouts>
+        <layout>Route Backbone Layout</layout>
+        <sections>
+            <label></label>
+            <section>CO Steer Based</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Cost Based</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Route Based</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Turkey Route Backbone Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Malaysia</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Singapore</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Thailand</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Turkey</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>RE_CO_Steer_Input_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Turkey_Required_Fields</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>RM_Physical_Dashboard</links>
+    <links>RM_Paper_Dashboard</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

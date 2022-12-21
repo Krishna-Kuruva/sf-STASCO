@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0016</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:type="xsd:string">Klarice.Segeren@shell.com;SBO-KRW-QUOTATION-SUPPORT-DESK@shell.com;SCAN-HCDM-REQUESTS@shell.com;SCAN-Nucleus-Pricing@shell.com;Taylor.Schenk@shell.com;Mohamed.Shemith@shell.com;Tosh.Skalosky@shell.com;Emily.Skaper@shell.com;SSSCMLA-DM-CANADAFUELS-Pricing@Shell.com;SSSCMLA-DM-CANADAFUELS-Sales-Support@shell.com;Natalie.Tardif@shell.com;Slavko.Uzelac@shell.com;Al.Watson@shell.com;Jordan.Wiancko@shell.com;Robert.R.Young@shell.com;Courtney.Yuen@shell.com;Sierra.Martz@shell.com;Lorena.Camargo@shell.com;N.Hoang@shell.com;Kimberley.Soares@shell.com;Nisha.Nayyar@shell.com;M.Cozzolino@shell.com;</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Internal Rack Notification</value>
+    </values>
+</CustomMetadata>

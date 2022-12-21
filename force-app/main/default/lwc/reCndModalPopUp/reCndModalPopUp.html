@@ -1,0 +1,332 @@
+<template>
+
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class={popUpWidth}>
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header blockscolor">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+    
+                    <template if:true={showMailList}>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">EMAIL NOTIFICATION</h2>
+                    </template>
+                    <template if:false={showMailList}>
+                        <template if:true={isGSAP}>
+                            <template if:true={isRetry}>
+                                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">RETRY SAP UPLOAD</h2>
+                            </template>
+                            <template if:false={isRetry}>
+                                <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate">UPLOAD TO SAP</h2>
+                            </template>
+                            
+                        </template>
+                        <template if:false={isGSAP}>
+                            <template if:true={isSapUpload}>
+                                <h2 id="modal-heading-05" class="slds-text-heading_medium slds-hyphenate">DOWNLOAD SAP FILES</h2>
+                            </template> 
+                            <template if:false={isSapUpload}>                    
+                                <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">UPDATE PRICES</h2>
+                            </template>
+                        </template>
+                        
+                    </template>
+                    
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium blockscolor" id="modal-content-id-1">
+                    <template if:true={adjustmentScreen}>
+                    <table >
+                        <tr>
+                            <td><b>Valid From</b></td>
+                            <td><lightning-input    type="date" 
+                                                    name="ValidFrom" 
+                                                    disabled=true
+                                                    variant="label-hidden"
+                                                    label="Valid From" 
+                                                    value={validfrom}
+                                                    class="fontsize">
+                        </lightning-input></td>
+                        </tr>
+                        <tr>
+                            <td><b>Valid To</b></td>
+                            <td><lightning-input type="date" name="Valid To" variant="label-hidden"
+                                disabled=true class="fontsize"
+                                label="Valid To" 
+                                value={validto}>
+                            </lightning-input></td>
+                        </tr>
+                        <tr>
+                            <td><b>Adjustment</b></td>
+                            <td><lightning-input type="number" name="Adjustment" variant="label-hidden" required
+                                label="Adjustment" class="inputCmp" step=".001" onchange={handleAdjustment}   value={newAdjustment}> 
+                            </lightning-input></td>
+                        </tr>
+                        <tr>
+                            <td><b>Comment</b></td>
+                            <td><lightning-textarea type="text" name="Comment" variant="label-hidden" 
+                                label="Comment" required  onchange={handleCommentChange} 
+                                value={newComment}>
+                            </lightning-textarea></td>
+                        </tr>
+                    </table>
+                    </template>
+    
+                    <template if:true={showSaveWarning}>
+                        
+                        <div class="slds-grid ">
+                            <div class="slds-col slds-p-around_medium">
+                                <b><lightning-input    type="date" 
+                                                    name="ValidFrom" 
+                                                    disabled=true
+                                                    label="Valid From" 
+                                                    value={validfrom}
+                                                    class="fontsize">
+                                </lightning-input></b>
+                            </div>
+                            <div class="slds-col slds-p-around_medium">
+                                <b><lightning-input type="date" 
+                                                 name="Valid To"
+                                                 disabled=true 
+                                                 class="fontsize"
+                                                 label="Valid To" 
+                                                 value={validto}>
+                                </lightning-input></b>
+                            </div>
+                        </div>
+    
+                        <div class="slds-align_absolute-center warningFont">Do you want to do more Adjustments?</div>
+                        <div class="slds-align_absolute-center warningFont">OR</div>
+                        <div class="slds-align_absolute-center warningFont">Save the changes?</div>
+                    </template>
+    
+                    <template if:true={showCustomerTypeOptions}>
+                        <lightning-checkbox-group name={filterLabel}
+                                label={filterLabel}
+                                options={CustomerTypeList}
+                                value={gsapvalue}
+                                onchange={optionChange}
+                                required>
+                        </lightning-checkbox-group>
+                    </template>
+                    
+                    <template if:true={showMailList}>
+    
+                        <lightning-radio-group name="radioGroup"
+                            label="Receipient Type"
+                            variant ="label-inline"
+                            options={emailReceiver}
+                            value={emailReceierValue}
+                            onchange={receiverChange}
+                            type="radio">
+                        </lightning-radio-group>
+                        
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <table class="slds-table">
+                                    <tr>
+                                        <td> <lightning-input    type="checkbox" value="IARackNotif" onchange={selectMail}
+                                                        label="Internal Rack Notification" name="IARackNotif" class="checkClass2" disabled={disableAll} >
+                                            </lightning-input>
+                                        </td>
+                                        <td></td>
+                                        <td><lightning-input type="toggle" value="Internal Rack Notification" 
+                                            label="isIARackNotif"  checked={isIARackNotif} disabled={disableAll} 
+                                            data-id="isIARackNotif" class="toggleClass" onchange={showMailDetail}   variant="label-hidden">
+                                           </lightning-input>
+                                        </td>
+                                    </tr>	
+                                    
+                                    <tr><td><lightning-input    type="checkbox" value="SFJRackNotif" onchange={selectMail} class="checkClass2"
+                                                                label="SFJ Rack notification" name="SFJRackNotif" disabled={disableAll} >
+                                            </lightning-input></td>
+                                            <td></td>
+                                            <td><lightning-input type="toggle" value="SFJ Rack notification"   checked={isSFJRackNotif}
+                                                data-id="isSFJRackNotif" class="toggleClass"  onchange={showMailDetail}   variant="label-hidden"
+                                                label="isSFJRackNotif" disabled={disableAll} >
+                                                </lightning-input></td>
+                                    </tr>
+    
+                                    <tr><td><lightning-input    type="checkbox" value="BRPPNotif" onchange={selectMail} class="checkClass2"
+                                                                label="Internal Shell Canada BRPP Notification" name="BRPPNotif" disabled={disableAll} >
+                                            </lightning-input></td>
+                                            <td></td>
+                                        <td><lightning-input type="toggle" value="Internal Shell Canada BRPP Notification"   checked={isBRPPNotif}
+                                            data-id="isBRPPNotif" class="toggleClass"   onchange={showMailDetail}   variant="label-hidden"
+                                            label="isBRPPNotif" disabled={disableAll} >
+                                            </lightning-input></td>
+                                    </tr>
+    
+                                    
+                                    <tr><td><lightning-input    type="checkbox" value="CustNotif" class="checkClass2" disabled={disableAll} 
+                                        label="Shell Canada Rack Notification" name="CustNotif" onchange={selectMail}>
+                                    </lightning-input></td>
+                                    <td></td>
+                                    <td><lightning-input type="toggle" value="Shell Canada Rack Notification"   checked={isCustNotif}
+                                        data-id="isCustNotif" class="toggleClass"  onchange={showMailDetail}  disabled={disableAll} 
+                                        variant="label-hidden" label="isCustNotif">
+                                    </lightning-input></td>
+                                    </tr>
+    
+                                    <tr><td><lightning-input    type="checkbox" value="BrandedNotif" class="checkClass2" disabled={disableAll} 
+                                        label="Shell Canada - Branded Customer Notification" name="BrandedNotif" onchange={selectMail}> 
+                                    </lightning-input></td>
+                                    <td></td>
+                                    <td><lightning-input type="toggle" value="Shell Canada - Branded Customer Notification"   checked={isBrandedNotif}
+                                        data-id="isBrandedNotif" disabled={disableAll} class="toggleClass" onchange={showMailDetail}   variant="label-hidden" label="isBrandedNotif">
+                                    </lightning-input></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td><lightning-input   type="checkbox" value="ShellRackNotif" onchange={selectMail}
+                                        disabled={disableAll} label="Canadian Rack Prices" name="ShellRackNotif" class="checkClass2">
+                                            </lightning-input></td>
+                                            <td>
+                                                <lightning-button-icon icon-name="utility:preview"  variant="bare" onclick={showReport} 
+                                                alternative-text="Report" name="Canadian Rack Prices" title="Report"></lightning-button-icon>
+                                            </td>
+                                            <td><lightning-input type="toggle" value="Canadian Rack Prices"   checked={isShellRackNotif}
+                                            data-id="isShellRackNotif" class="toggleClass" disabled={disableAll} onchange={showMailDetail}  
+                                             variant="label-hidden"	label="isShellRackNotif">
+                                            </lightning-input></td>
+                                    </tr>
+    
+                                    <tr><td><lightning-input    type="checkbox" value="CARackPrices" onchange={selectMail}
+                                        disabled={disableAll}  label="Shell Rack Customer Notification" name="CARackPrices" 
+                                        class="checkClass2">
+                                        </lightning-input></td>
+                                        <td>
+                                        <lightning-button-icon icon-name="utility:preview"  variant="bare" onclick={showReport} 
+                                        alternative-text="Report" name="Shell Rack Customer Notification" title="Report"></lightning-button-icon>
+                                        </td>
+                                        <td><lightning-input type="toggle" value="Shell Rack Customer Notification"   checked={isCARackPrices}
+                                            data-id="isCARackPrices" class="toggleClass" disabled={disableAll} onchange={showMailDetail}  
+                                             variant="label-hidden" label="isCARackPrices">
+                                            </lightning-input></td>
+                                    </tr>
+    
+                                    <tr><td><lightning-input    type="checkbox" value="CARackPrices7" disabled={disableAll}
+                                        label="7 Day Canadian Rack Prices" name="CARackPrices7" onchange={selectMail}
+                                        class="checkClass2">
+                                    </lightning-input></td>
+                                    <td>
+                                        <lightning-button-icon icon-name="utility:preview"  variant="bare" onclick={showReport} 
+                                        alternative-text="Report" name="7 Day Canadian Rack Prices" title="Report"></lightning-button-icon>
+                                        </td>
+                                    <td><lightning-input type="toggle" value="7 DAY Canadian Rack Prices"   checked={isCARackPrices7}
+                                        data-id="isCARackPrices7" class="toggleClass" disabled={disableAll} onchange={showMailDetail}   variant="label-hidden" label="isCARackPrices7">
+                                    </lightning-input></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td><lightning-input    type="checkbox" value="UploadFiles" disabled={disableAll}
+                                        label="Ready to Upload Notification" name="UploadFiles" onchange={selectMail}
+                                        class="checkClass2">
+                                        </lightning-input></td>
+                                         <td></td>
+                                        <td><lightning-input type="toggle" value="Ready to Upload Notification"   checked={isUploadFiles}
+                                        label="isUploadFiles" data-id="isUploadFiles" class="toggleClass" disabled={disableAll} onchange={showMailDetail}   variant="label-hidden">
+                                        </lightning-input></td>
+                                    </tr>
+                                        <tr><td><lightning-input    type="checkbox" value="CanadRackPrcngFiles" disabled={disableAll}
+                                            label="Canadian Rack Pricing and rack pricing Files" name="CanadRackPrcngFiles" onchange={selectMail}
+                                            class="checkClass2">
+                                        </lightning-input></td>
+                                        <td></td>
+                                        <td><lightning-input type="toggle" value="Canadian Rack Pricing and rack pricing Files"   checked={isCanadRackPrcngFiles}
+                                            data-id="isCanadRackPrcngFiles" class="toggleClass" disabled={disableAll} onchange={showMailDetail}   variant="label-hidden" label="isCanadRackPrcngFiles">
+                                        </lightning-input></td>
+                                        </tr>
+                                    <tr>
+                                        <td><lightning-input    type="checkbox" value="noRevised" disabled={noReviseDisable}
+                                        label="No Revised Pricing" name="noRevised" onchange={selectMail}
+                                        class="noRevise">
+                                        </lightning-input></td>
+                                        <td>
+                                        </td>
+                                        <td><lightning-input type="toggle" value="No Revised Pricing"   checked={isNoRevised}
+                                        label="isNoRevised" data-id="isNoRevised" class="toggleClass" disabled={noReviseDisable} onchange={showMailDetail}   variant="label-hidden">
+                                        </lightning-input></td>
+                                    </tr>
+                                </table>
+                            </div>
+                           
+                            <div class="slds-col">
+                               <b> Email Content:</b>
+                                <lightning-input type="text" label="Subject" value={selectedSubject} onchange={subjectChange}></lightning-input>
+                            <lightning-input-rich-text
+                                value={selectedBody}
+                                onchange={bodyChange}>
+                            </lightning-input-rich-text>
+                            </div>    
+                        </div>
+                    </template>
+    
+                    <template if:true={downloadGsapFile}>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-p-around_medium">
+                                <lightning-checkbox-group name="Customer Type"
+                                label="Customer Type"
+                                options={CustomerTypeList}
+                                value={selctedCustTypeValues}
+                                onchange={handleCustTypeChange} 
+                                required></lightning-checkbox-group>
+                                <br>
+                               <template if:true={isAnothrSapUplodInProgres}>
+                                    <p class="slds-float_left slds-text-color_error"><strong>SAP Upload Job Name: {jobRunName} commenced on {jobRunStartDtTime} (GMT) is in progress!</strong></p>
+                                    <br><br><br>
+                                    <p class="slds-float_left slds-text-color_error"><strong>If you click on Download button, the running Job will be aborted and then download will continue...</strong></p>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={isLoading} >
+                        <lightning-spinner class="modalHeightLarge" alternative-text="Loading" variant="brand" size="large">
+                        </lightning-spinner>
+                    </template>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer blockscolor">
+                    <template if:true={adjustmentScreen}>
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={handlesave} title="Save">Save</button>
+                    </template>
+    
+                    <template if:true={showSaveWarning}>
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">More Adjustment</button>
+                        <button class="slds-button slds-button_brand" onclick={handlesaveAndGenerateSFJ} title="Save">Save</button>
+                    </template>
+                    
+                    <template if:true={showCustomerTypeOptions}>
+                        <template if:false={isGSAP}>
+                            <p class="slds-float_left slds-text-color_error">*Cascade of Adjustment updates to Branded/Unbranded/SFJ will only work for changes</p>                            
+                            <p class="slds-float_left slds-text-color_error">in Base products. For Derived products, please ensure to update manually using filters.</p>
+                            <br><br><br>                      
+                        </template>                     
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={handleUpload} title="Save">Select</button>
+                    </template>
+                    <template if:true={showMailList}>
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Close">Close</button>
+                        <button class="slds-button slds-button_neutral" onclick={proceedEmail} title="Proceed">Proceed</button>
+                    </template>
+    
+                    <template if:true={downloadGsapFile}>
+                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                        <button class="slds-button slds-button_brand" disabled={disableButton} onclick={handleDownload} title="Download">Download</button>
+                    </template>
+                </footer>
+            
+            </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    </template>

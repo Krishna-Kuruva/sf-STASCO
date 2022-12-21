@@ -1,0 +1,15 @@
+.searchfooter{   
+    border-top: 1px solid #c5d3e0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1px;
+}
+.serachresult{
+    z-index: 99;
+    position: absolute;
+    padding-top: 16%;
+    /*width: 100%;*/
+}
+.reducedFont{
+    font-size: 10px;
+}

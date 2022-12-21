@@ -1,0 +1,71 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    background-color: white;
+}
+.THIS .page-section {
+    border: solid 2px #FFCC00;
+    padding: 1rem;
+}
+.THIS .display-section {
+    border: solid 2px #FFCC00;
+    padding: 2rem;
+    margin-top: 10px;
+    margin-right:10px;
+    margin-left:10px ;
+    margin-bottom:10px;
+}
+.THIS .col-section {
+    padding: 1rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.THIS .page-main {
+    background: #f8f8f8;
+}
+.THIS .matchWidth {
+    width: 109%;
+}
+.THIS .page-left,
+.THIS .page-right {
+    background: #f0efef;
+}
+.THIS .setRows{
+   display:inline; 
+}
+.THIS .putborder{
+   border: 1px solid black;  
+}
+.THIS .putAlert{
+    background: #FFCC00;  
+}
+.THIS .putborderHeader{
+   border-right: 1px solid #a7a8aa;
+}
+.THIS .putborderLeft{
+   border-left: 1px solid #a7a8aa;
+}
+
+.THIS .putborderRow{
+   border-right: 1px solid #eff2f7;
+}
+.THIS .tsInput {
+    width: 70%;
+}
+.THIS .tsInputHoverDD {
+   margin-left: 1.25%;
+   width: 15.1%;
+   margin-top: 2.25%;
+}
+.THIS .showName{display:block;}
+.THIS .hidename{display:none;}
+.THIS .btnSet {
+    margin-left: 2rem;
+    margin-top: 1.35rem;
+}
+.THIS .salesPeriodSet{
+    padding-left: 1.5rem;
+    padding-right: 2.5rem;
+}

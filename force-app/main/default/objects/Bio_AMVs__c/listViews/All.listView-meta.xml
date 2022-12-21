@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Sales_Org__c</columns>
+    <columns>Plant__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Assoc_Blend_location__c</columns>
+    <columns>Frequency__c</columns>
+    <columns>AGO_B7_m_Future__c</columns>
+    <columns>AGO_B7_m_Prompt__c</columns>
+    <columns>ULG_95_E10_m_Future__c</columns>
+    <columns>ULG_95_E10_m_Prompt__c</columns>
+    <columns>ULG_95_E5_m_Future__c</columns>
+    <columns>ULG_95_E5_m_Prompt__c</columns>
+    <columns>ULG_98_m_Future__c</columns>
+    <columns>ULG_98_m_Prompt__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AB DEPOTS IT RAIL</fullName>
+        <default>false</default>
+        <label>AB DEPOTS IT RAIL</label>
+    </customValue>
+    <customValue>
+        <fullName>AB TEMP DEPOTS IT RAIL</fullName>
+        <default>false</default>
+        <label>AB TEMP DEPOTS IT RAIL</label>
+    </customValue>
+    <customValue>
+        <fullName>Bare Point</fullName>
+        <default>false</default>
+        <label>Bare Point</label>
+    </customValue>
+    <customValue>
+        <fullName>Belleville</fullName>
+        <default>false</default>
+        <label>Belleville</label>
+    </customValue>
+    <customValue>
+        <fullName>Calgary</fullName>
+        <default>false</default>
+        <label>Calgary</label>
+    </customValue>
+    <customValue>
+        <fullName>Charlottetown</fullName>
+        <default>false</default>
+        <label>Charlottetown</label>
+    </customValue>
+    <customValue>
+        <fullName>Chicoutimi</fullName>
+        <default>false</default>
+        <label>Chicoutimi</label>
+    </customValue>
+    <customValue>
+        <fullName>Edmonton</fullName>
+        <default>false</default>
+        <label>Edmonton</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaspe</fullName>
+        <default>false</default>
+        <label>Gaspe</label>
+    </customValue>
+    <customValue>
+        <fullName>Halifax</fullName>
+        <default>false</default>
+        <label>Halifax</label>
+    </customValue>
+    <customValue>
+        <fullName>Hamilton</fullName>
+        <default>false</default>
+        <label>Hamilton</label>
+    </customValue>
+    <customValue>
+        <fullName>Kamloops</fullName>
+        <default>false</default>
+        <label>Kamloops</label>
+    </customValue>
+    <customValue>
+        <fullName>Kingston</fullName>
+        <default>false</default>
+        <label>Kingston</label>
+    </customValue>
+    <customValue>
+        <fullName>London</fullName>
+        <default>false</default>
+        <label>London</label>
+    </customValue>
+    <customValue>
+        <fullName>Montreal</fullName>
+        <default>false</default>
+        <label>Montreal</label>
+    </customValue>
+    <customValue>
+        <fullName>NE Quebec</fullName>
+        <default>false</default>
+        <label>NE Quebec</label>
+    </customValue>
+    <customValue>
+        <fullName>Oakville</fullName>
+        <default>false</default>
+        <label>Oakville</label>
+    </customValue>
+    <customValue>
+        <fullName>Ottawa</fullName>
+        <default>false</default>
+        <label>Ottawa</label>
+    </customValue>
+    <customValue>
+        <fullName>Prince George</fullName>
+        <default>false</default>
+        <label>Prince George</label>
+    </customValue>
+    <customValue>
+        <fullName>Quebec City</fullName>
+        <default>false</default>
+        <label>Quebec City</label>
+    </customValue>
+    <customValue>
+        <fullName>Regina</fullName>
+        <default>false</default>
+        <label>Regina</label>
+    </customValue>
+    <customValue>
+        <fullName>Sarnia</fullName>
+        <default>false</default>
+        <label>Sarnia</label>
+    </customValue>
+    <customValue>
+        <fullName>Saskatoon</fullName>
+        <default>false</default>
+        <label>Saskatoon</label>
+    </customValue>
+    <customValue>
+        <fullName>Sault Ste Marie</fullName>
+        <default>false</default>
+        <label>Sault Ste Marie</label>
+    </customValue>
+    <customValue>
+        <fullName>Sept Iles</fullName>
+        <default>false</default>
+        <label>Sept Iles</label>
+    </customValue>
+    <customValue>
+        <fullName>St. Rom</fullName>
+        <default>false</default>
+        <label>St. Rom</label>
+    </customValue>
+    <customValue>
+        <fullName>Thunder Bay</fullName>
+        <default>false</default>
+        <label>Thunder Bay</label>
+    </customValue>
+    <customValue>
+        <fullName>Toronto</fullName>
+        <default>false</default>
+        <label>Toronto</label>
+    </customValue>
+    <customValue>
+        <fullName>Vancouver</fullName>
+        <default>false</default>
+        <label>Vancouver</label>
+    </customValue>
+    <customValue>
+        <fullName>Winnipeg</fullName>
+        <default>false</default>
+        <label>Winnipeg</label>
+    </customValue>
+    <description>Revolution Canada Rack details</description>
+    <masterLabel>RE_CND_Racks</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

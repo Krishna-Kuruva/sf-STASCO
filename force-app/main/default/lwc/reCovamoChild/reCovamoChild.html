@@ -1,0 +1,187 @@
+<template>
+	
+	<lightning-card title="Purchase cost">
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_1-of-4"> 
+					<lightning-input disabled type="text" label="Product" name="Product_Name__c" value={covDetailsDataSet.Product_Name__c}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					{covDetailsDataSet.RecordTypeId.Name}
+					<lightning-input disabled type="text" label="Type" name="Type__c" value={covDetailsDataSet.Type__c} ></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input required type="number" step="0" label="Volume (Litre)" name="Volume__c" value={covDetailsDataSet.Volume__c} onchange={handlechangeValue} class="covInput"></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4"><!--
+					<template if:true={isAM}>
+						<lightning-input disabled required type="number" label="MOPS" step="0.0001" name="MOPS__c" value={covDetailsDataSet.MOPS__c} onchange={handlechangeValue}></lightning-input>
+					</template>
+					<template if:false={isAM}>-->
+						<lightning-input required type="number" label="MOPS (USD/Litre)" step="0.0001" name="MOPS__c" value={covDetailsDataSet.MOPS__c} onchange={handlechangeValue}></lightning-input>
+					<!--</template>-->
+				</div>
+			</div>
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Market Premium (MYR/Litre)" name="Market_Premium__c" value={covDetailsDataSet.Market_Premium__c} onchange={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Fixed Premium (MYR/Litre)" name="Fixed_Premium__c" value={covDetailsDataSet.Fixed_Premium__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Freight (MYR/Litre)" name="Freight__c" value={covDetailsDataSet.Freight__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Oil Gain/Loss (MYR/Litre)" name="Oil_Loss__c" value={covDetailsDataSet.Oil_Loss__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+			</div>
+		
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label=" Additives (MYR/Litre)" name="Additives__c" value={covDetailsDataSet.Additives__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Biofuel (MYR/Litre)" name="Biofuel__c" value={covDetailsDataSet.Biofuel__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label=" Hedging Cost (MYR/Litre)" name="Hedging_Cost__c" value={covDetailsDataSet.Hedging_Cost__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label=" Breakbulk Cost (MYR/Litre)" name="Breakbulk_Cost__c" value={covDetailsDataSet.Breakbulk_Cost__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+			</div>
+			<div class="slds-grid slds-gutters">
+           
+			<div class="slds-col slds-size_1-of-4">
+				<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Other Cost (MYR/Litre)" name="Miscellaneous_Cost__c" value={covDetailsDataSet.Miscellaneous_Cost__c} onblur={handlechangeValue} class="covInput"></lightning-input>
+			</div>
+			<div class="slds-col slds-size_1-of-4"></div>
+			<div class="slds-col slds-size_1-of-4"></div>
+			<div class="slds-col slds-size_1-of-4">
+				<lightning-input disabled type="number" step="0.0001" label="Purchase Margin (MYR/Litre)" name="Purchase_Margin__c" value={covDetailsDataSet.Purchase_Margin__c}></lightning-input>
+			</div>
+			</div>
+		</lightning-card>
+        <lightning-card title="Delivery">
+			<div class="slds-grid slds-gutters">            
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Primary Transport (MYR/Litre)" name="Primary_Transport__c" value={covDetailsDataSet.Primary_Transport__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="S/H Cost (MYR/Litre)" name="Handling_Cost__c" value={covDetailsDataSet.Handling_Cost__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label=" Secondary Transport (MYR/Litre)" name="Secondary_Transport__c" value={covDetailsDataSet.Secondary_Transport__c} onblur={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input disabled type="number" step="0.0001" label="Transportation Margin (MYR/Litre)" name="Transportation_Margin__c" value={covDetailsDataSet.Transportation_Margin__c}></lightning-input>
+				</div>
+			</div>
+		</lightning-card>
+		<lightning-card title="Sales Margin">
+			<div class="slds-grid slds-gutters">
+				
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Temperature Gain (MYR/Litre)" name="Temperature_Gain__c" value={covDetailsDataSet.Temperature_Gain__c} onchange={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Premium Price Out (MYR/Litre)" name="Expected_Premium_Price_Out__c" value={covDetailsDataSet.Expected_Premium_Price_Out__c} onchange={handlechangeValue} disabled></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" label="Distillation Premium (MYR/Litre)" name="Distillation_Premium__c" value={covDetailsDataSet.Distillation_Premium__c} onchange={handlechangeValue}></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input type="number" step="0.0001" disabled label="Total Sales Margin (MYR/Litre)" name="Total_Sales_Margin__c" value={covDetailsDataSet.Total_Sales_Margin__c}></lightning-input>
+					</div>
+			</div>
+		</lightning-card>
+		<lightning-card title="Duties">
+			<div class="slds-grid slds-gutters">
+			   
+				<div class="slds-col slds-size_1-of-4 ">
+					<template if:true={isbdfreq}>
+						<lightning-input disabled type="number" step="0.0001" label=" Amortization Unit (MYR/Litre)" name="Amortization_Per_Unit__c" value={covDetailsDataSet.Amortization_Per_Unit__c} onchange={handlechangeValue}></lightning-input>
+					</template>
+					<template if:false={isbdfreq}>
+						<lightning-input disabled type="number" step="0.0001" label=" Amortization Unit (MYR/Litre)" name="Amortization_Per_Unit__c" value={covDetailsDataSet.Amortization_Per_Unit__c} onchange={handlechangeValue} onmousemove={showamort} onmouseout={calloutamortization}></lightning-input>
+						<strong class="amort slds-hide">Go back to "{covDetailsDataSet.Type__c} : {firstproduct}", and click [save details] again</strong> 
+					</template>
+				</div>
+				
+				<div class="slds-col slds-size_1-of-4">
+					<!--<template if:true={isAM}>
+						<lightning-input disabled required type="number" step="0.0001" label="Unit C3" name="Unit_C3__c" value={covDetailsDataSet.Unit_C3__c} onchange={handlechangeValue}></lightning-input>
+					</template>
+					<template if:false={isAM}>-->
+						<lightning-input required type="number" step="0.0001" label="Unit C3 (USD/Litre)" name="Unit_C3__c" value={covDetailsDataSet.Unit_C3__c} onchange={handlechangeValue} disabled></lightning-input>
+					<!--</template>-->
+				</div>
+				<div class="slds-col slds-size_1-of-4">
+					<lightning-input required type="number" step="0.0001" label="Target Unit C3 (MYR/Litre)" name="Target_Unit_C3__c" value={covDetailsDataSet.Target_Unit_C3__c} onchange={handlechangeValue} class="covInput"></lightning-input>
+				</div>
+				<div class="slds-col slds-size_1-of-4"><!--
+					<template if:true={isAM}>
+						<lightning-input disabled required type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Cost Between C3 C5" name="Cost_Between_C3_C5__c" value={covDetailsDataSet.Cost_Between_C3_C5__c} onblur={handlechangeValue}></lightning-input>
+					</template>
+					<template if:false={isAM}>-->
+						<lightning-input required type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Cost Between C3 C5 (MYR/Litre)" name="Cost_Between_C3_C5__c" value={covDetailsDataSet.Cost_Between_C3_C5__c} onblur={handlechangeValue}></lightning-input>
+					<!--</template>-->
+				</div>
+			</div>
+        
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input required type="number" step="0.0001" max="0" message-when-range-overflow="Please enter a negative value." label="Cost Below C5 (MYR/Litre)" name="Cost_Below_C5__c" value={covDetailsDataSet.Cost_Below_C5__c} onblur={handlechangeValue}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input required type="number" step="0" label="Stocks Days (Days)" name="Stocks_Days__c" value={covDetailsDataSet.Stocks_Days__c} onchange={handlechangeValue} class="covInput"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input required type="number" step="0" label="Receivables (Days)" name="Receivables_Days__c" value={covDetailsDataSet.Receivables_Days__c} onchange={handlechangeValue} class="covInput"></lightning-input>
+            </div>
+			 <div class="slds-col slds-size_1-of-4">
+                <lightning-input required type="number" step="0" label="Payables (Days)" name="Payables_Days__c" value={covDetailsDataSet.Payables_Days__c} onchange={handlechangeValue}></lightning-input>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+           
+            <div class="slds-col slds-size_1-of-4">
+				<template if:true={isbdfreq}>
+					<lightning-input required type="number" step="0.0001" label="BDF (000 USD)" name="BDF__c" value={covDetailsDataSet.BDF__c} onchange={handlechangeValue} class="covInput"></lightning-input>
+				</template>
+				<template if:false={isbdfreq}>
+					<lightning-input disabled required type="number" step="0.0001" label="BDF (000 USD)" name="BDF__c" value={covDetailsDataSet.BDF__c} onchange={handlechangeValue} class="covInput" onmousemove={callbdf} onmouseout={calloutbdf}></lightning-input>
+					<strong class="bdf slds-hide">INPUT in "{covDetailsDataSet.Type__c} : {firstproduct}"</strong> 
+				</template>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input type="number" step="0.0001"  label="Excise Fee (MYR/Litre)" name="Excise_Fee__c" value={covDetailsDataSet.Excise_Fee__c} onchange={handlechangeValue}></lightning-input>
+            </div>
+			<div class="slds-col slds-size_1-of-4"></div>
+			<div class="slds-col slds-size_1-of-4"></div>
+        </div>
+    </lightning-card>
+    <!--
+    <lightning-card title="Purchase cost">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-input type="number" label="Volume" name="Volume__c" value={covDetailsDataSet.Volume__c} onchange={handlechangeValue}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-input type=number label="MOPS" name="MOPS__c" value={covDetailsDataSet.MOPS__c} onchange={handlechangeValue}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-input type=number label="Market Premium" name="Market_Premium__c" value={covDetailsDataSet.Market_Premium__c} onchange={handlechangeValue}></lightning-input>
+            </div>
+        </div>
+    </lightning-card>
+    <lightning-input class="slds-hidden" type="text" label="Product" name="Product_Name__c" value={covDetailsDataSet.Product_Name__c} ></lightning-input>
+    <lightning-input class="slds-hidden" type="text" label="Record Type" name="RecordTypeId" value={covDetailsDataSet.RecordTypeId} ></lightning-input>
+-->
+	<template if:false={isbdfreq}>
+		<strong>IMPORTANT: IF BDF IS PART OF THE DEAL, REOPEN "{covDetailsDataSet.Type__c} : {firstproduct}" AND [save details] AGAIN. (This is to ensure that the BDF Amortisation is calculated correctly)</strong>
+	</template><br>
+    <lightning-button class="slds-align--absolute-center" label="save details" onclick={handlesave}></lightning-button>
+
+    
+</template>

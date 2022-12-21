@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>UoM_ref_data_1_in_formula_term_item_calc__c</name>
+</CustomFieldTranslation>

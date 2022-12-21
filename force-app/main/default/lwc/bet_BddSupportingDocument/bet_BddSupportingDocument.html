@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Add Document" icon-name="standard:record" 
+                                            div class="slds-p-around_small">
+        <div class="slds-m-around_medium">
+            <lightning-record-edit-form object-api-name={documentObject}
+                                        record-type-id={documentRecTypeId}
+                                        onsubmit={handleSubmit}
+                                        onsuccess={handleSuccess}
+                                        onerror={handleError}>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name={documentCategory}
+                                               required>
+                        </lightning-input-field>
+                        <lightning-input-field field-name={documentType}
+                                               required>
+                        </lightning-input-field>
+                        <lightning-input-field field-name={cratedDate}
+                                               required>
+                        </lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        
+                    </div>
+                </div>
+                <lightning-button class="slds-m-top_small"
+                                  label="Add"
+                                  type="submit"
+                                  variant="brand">
+                </lightning-button>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

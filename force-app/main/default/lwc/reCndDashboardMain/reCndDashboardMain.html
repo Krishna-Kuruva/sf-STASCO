@@ -1,0 +1,356 @@
+<template>
+    <div class="mainDiv  slds-p-around_xx-small">
+        <template if:true={showFilterBar}>
+        <div class="slds-grid slds-grid_align-end ">
+            <div class="slds-col slds-size_3-of-4"></div>
+    
+           <div class="filterBar slds-col slds-size_1-of-4 slds-p-around_xx-small">
+               <div class="blockscolor slds-p-around_xx-small">
+                   <div class="slds-grid slds-grid_align-end slds-p-around_xxx-small">
+                       <div class="slds-col slds-p-right_xx-large filterFont">
+                           <b>Select Filters</b>
+                       </div>
+                        <div class="slds-col">
+                        <lightning-icon icon-name="action:filter" name="All" value="All" size="xx-small" onclick={clearFilter} alternative-text="Clear Filter" title="Clear Filter"></lightning-icon>
+                        <lightning-button-icon icon-name="utility:close"  size="large"  variant="bare" onclick={closeFilter} alternative-text="Settings" title="Settings"></lightning-button-icon>   
+                       
+                    </div>
+                    </div>
+                    <div class="slds-p-around_xxx-small slds-col_bump-left">
+                        <lightning-input type="toggle"
+                         label="Adjust Today's value"
+                         checked={updateTodayPrice}
+                         disabled={isGSAPload} 
+                         onchange={handleToggle}>
+                        </lightning-input>
+                    </div>
+                    <template if:false={isGSAPload}> 
+                    <div class="slds-p-around_xxx-small" >                   
+                        <label class="slds-p-around_xxx-small ">Date Filter</label> 
+                        <lightning-input disabled={updateTodayPrice} type="date"  variant="label-hidden"  value={selectedDate} onchange={dateChanged} name="DateFilter" label="" ></lightning-input>
+                    </div> 
+                    </template>
+                    <div class="slds-p-around_xxx-small">
+                        <label class="slds-p-around_xxx-small">CustomerType</label>
+                        <lightning-combobox
+                        variant="label-hidden"
+                        name="CustomerType"
+                        value={selectedCustomerType}
+                        label="CustomerType"
+                        placeholder="Select Customer Type"
+                        options={CustomerTypeList}
+                        onchange={CustomerTypeFilter}
+                        required></lightning-combobox>                        
+                    </div>
+                    <div class="slds-p-around_xxx-small">
+                        <label class="slds-p-around_xxx-small">Product Classification</label>
+                        <lightning-combobox
+                        variant="label-hidden"
+                        name="Classification"
+                        value={selectedClassification}
+                        label="Classification"
+                        placeholder="Select Product Class"
+                        options={ProductClassification}
+                        onchange={CustomerTypeFilter}
+                        required></lightning-combobox>                        
+                    </div>
+                    <!--<div class="slds-p-around_xxx-small">
+                        <label class="slds-p-around_xxx-small">Rack</label>
+                        <lightning-combobox
+                        variant="label-hidden"
+                        name="Rack"
+                        value={selectedRack}
+                        label="Rack"
+                        placeholder="All"
+                        options={rackList}
+                        onchange={CustomerTypeFilter}
+                        ></lightning-combobox>
+                    </div>-->
+                    <div class="slds-p-around_xxx-small" >
+                        <div>Racks</div>
+                        <lightning-input    type="search"
+                                        label="Rack"
+                                        name="Rack"
+                                        value={rackSearchText}
+                                        variant="label-hidden"
+                                        onchange={handleRackSearch}
+                                        onclick={focusSearch} >{rackSearchText}
+                        </lightning-input>
+                        <template if:true={showRackGroup}> 
+                        <div  class="slds-scrollable_y slds-p-left_small scrollDiv" >
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                
+                                    <template for:each={rackListToShow} for:item="serecord" for:index="index">
+                                       <div key={serecord.rackGroup} class="slds-border_bottom"> 
+                                        <template if:true ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.rackGroup}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="brand"   
+                                                            name={serecord.rackGroup}
+                                                            data-record={index}
+                                                            onclick={handleRackSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.rackGroup}
+                                        </template>
+                                        <template if:false ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.rackGroup}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="border-filled"   
+                                                            name={serecord.rackGroup}
+                                                            data-record={index}
+                                                            onclick={handleRackSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.rackGroup}
+                                        </template>
+                                        </div>
+                                    </template>
+                            </ul>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button-group>
+                            <lightning-button label="Show Result" title="Non-primary action" variant="brand" onclick={applyRackFilter} >
+                            </lightning-button>
+                            <lightning-button label="Close" name="Rack" title="Non-primary action" variant="border-filled" onclick={closeSearchFilter} >
+    
+                            </lightning-button>
+                        </lightning-button-group>
+                        </div>
+                    </template>
+                    </div>
+
+
+
+                    
+                    <div class="slds-p-around_xxx-small" >
+                        <div>Product Group</div>
+                        <lightning-input    type="search"
+                                        label="Product Group"
+                                        name="Group"
+                                        value={groupSearchText}
+                                        variant="label-hidden"
+                                        onchange={handleGroupSearch}
+                                        onclick={focusSearch} >{groupSearchText}
+                        </lightning-input>
+                        <template if:true={showProductGroup}> 
+                        <div  class="slds-scrollable_y slds-p-left_small scrollDiv" >
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                
+                                    <template for:each={groupListToShow} for:item="serecord" for:index="index">
+                                       <div key={serecord.prodGroup} class="slds-border_bottom"> 
+                                        <template if:true ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.prodGroup}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="brand"   
+                                                            name={serecord.prodGroup}
+                                                            data-record={index}
+                                                            onclick={handleGroupSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.prodGroup}
+                                        </template>
+                                        <template if:false ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.prodGroup}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="border-filled"   
+                                                            name={serecord.prodGroup}
+                                                            data-record={index}
+                                                            onclick={handleGroupSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.prodGroup}
+                                        </template>
+                                        </div>
+                                    </template>
+                            </ul>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button-group>
+                            <lightning-button label="Show Result" title="Non-primary action" variant="brand" onclick={applyProdGroupFilter} >
+                            </lightning-button>
+                            <lightning-button label="Close" name="Group" title="Non-primary action" variant="border-filled" onclick={closeSearchFilter} >
+    
+                            </lightning-button>
+                        </lightning-button-group>
+                        </div>
+                    </template>
+                    </div>
+    
+                    <div class="slds-p-around_xxx-small" >
+                        <div>Location</div>
+                        <lightning-input    type="search"
+                                        label="Location"
+                                        name="Location"
+                                        value={locSearchText}
+                                        variant="label-hidden"
+                                        onchange={handleLocationSearch}
+                                        onclick={focusSearch} >{locSearchText}
+                        </lightning-input>
+                        <template if:true={showLocList}>
+                        <div  class="slds-scrollable_y slds-p-left_small scrollDiv" >
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                
+                                    <template for:each={locListToShow} for:item="serecord" for:index="index">
+                                       <div key={serecord.location} class="slds-border_bottom"> 
+                                        <template if:true ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.location}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="brand"   
+                                                            name={serecord.location}
+                                                            data-record={index}
+                                                            onclick={handleLocationSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.location}
+                                        </template>
+                                        <template if:false ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.location}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="border-filled"   
+                                                            name={serecord.location}
+                                                            data-record={index}
+                                                            onclick={handleLocationSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.location}
+                                        </template>
+                                        </div>
+                                    </template>
+                            </ul>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button-group>
+                            <lightning-button label="Show Result" title="Non-primary action" variant="brand" onclick={applyLocationFilter} >
+                            </lightning-button>
+                            <lightning-button label="Close" name="Location" title="Non-primary action" variant="border-filled" onclick={closeSearchFilter} >
+    
+                            </lightning-button>
+                        </lightning-button-group>
+                        </div>
+                    </template>
+                    </div>
+    
+                    <div class="slds-p-around_xxx-small" >
+                        <div>Product</div>
+                        <lightning-input    type="search"
+                                        label="Product"
+                                        name="Product"
+                                        variant="label-hidden"
+                                        value={prodSearchText}
+                                        onchange={handleProductSearch}
+                                        onclick={focusSearch} >{prodSearchText}
+                        </lightning-input>
+                        <template if:true={showProdList}>
+                        <div  class="slds-scrollable_y slds-p-left_small scrollDiv" >
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                
+                                    <template for:each={prodListToShow} for:item="serecord" for:index="index">
+                                       <div key={serecord.product} class="slds-border_bottom"> 
+                                        <template if:true ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.product}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="brand"   
+                                                            name={serecord.product}
+                                                            data-record={index}
+                                                            onclick={handleProductSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.product}
+                                        </template>
+                                        <template if:false ={serecord.isSelected}>
+                                            <lightning-button-icon icon-name="utility:check"
+                                                            label={serecord.product}
+                                                            size="xx-small"
+                                                            class="slds-p-right_small"
+                                                            value={serecord.isSelected}
+                                                            variant="border-filled"   
+                                                            name={serecord.product}
+                                                            data-record={index}
+                                                            onclick={handleProductSelect} >
+                                            </lightning-button-icon>
+                                            {serecord.product}
+                                        </template>
+                                        </div>
+                                    </template>
+                            </ul>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button-group>
+                            <lightning-button label="Show Result" title="Non-primary action" variant="brand" onclick={applyProductFilter} >
+                            </lightning-button>
+                            <lightning-button label="Close" name="Product" title="Non-primary action" variant="border-filled" onclick={closeSearchFilter} >
+    
+                            </lightning-button>
+                        </lightning-button-group>
+                        </div>
+                    </template>
+                    </div>
+    
+                   
+                    <div class="slds-p-around_xxx-small">
+                        <label class="slds-p-around_xxx-small">Product Type</label>
+                        <lightning-combobox
+                        variant="label-hidden"
+                        name="ProductType"
+                        value={selectedProductType}
+                        label="Product Type"
+                        placeholder="All"
+                        options={productTypeList}
+                        onchange={CustomerTypeFilter}
+                        ></lightning-combobox>
+                    </div>
+                    <div class="slds-p-around_xxx-small">
+                        <label class="slds-p-around_xxx-small">Status</label>
+                        <lightning-combobox
+                        variant="label-hidden"
+                        name="Status"
+                        value={selectedStatus}
+                        label="Status"
+                        placeholder="All"
+                        options={statusList}
+                        onchange={CustomerTypeFilter}
+                        ></lightning-combobox>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        </template>
+    
+        
+        <div class="slds-p-around_none slds-m-top_xx-small">
+               <c-re-cnd-price-list  datefilter={selectedDate}
+                                            today-date ={todaysDate}
+                                            onhandlefilterbar={handleFilterBar}
+                                            ongsaploading={gsaploading}
+                                            onclearfilteronmain={clearFilterMain}
+                                            customertypefilter={selectedCustomerType}
+                                            rackfilter={selectedRack}
+                                            classificationfilter={selectedClassification}
+                                            producttypefilter={selectedProductType}
+                                            statusfilter={selectedStatus}
+                                            update-today-price={updateTodayPrice}
+                                            pricing-access={PricingAccess}
+                                            gsap-access={GSAPAccess}
+                                            is-all-p-g={pgAll}
+                                            is-all-location={locAll}
+                                            is-all-product={prodAll}>        
+               </c-re-cnd-price-list>
+        </div>
+    </div>
+        </template>

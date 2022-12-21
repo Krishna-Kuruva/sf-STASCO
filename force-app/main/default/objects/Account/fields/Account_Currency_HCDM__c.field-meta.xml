@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Currency_HCDM__c</fullName>
+    <externalId>false</externalId>
+    <label>Account Currency</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BGN-Bulgarian Lev</fullName>
+                <default>false</default>
+                <label>BGN-Bulgarian Lev</label>
+            </value>
+            <value>
+                <fullName>CHF-Swiss Franc</fullName>
+                <default>false</default>
+                <label>CHF-Swiss Franc</label>
+            </value>
+            <value>
+                <fullName>CZK-Czech Koruna</fullName>
+                <default>false</default>
+                <label>CZK-Czech Koruna</label>
+            </value>
+            <value>
+                <fullName>DKK-Danish Krone</fullName>
+                <default>false</default>
+                <label>DKK-Danish Krone</label>
+            </value>
+            <value>
+                <fullName>EUR-Euro</fullName>
+                <default>true</default>
+                <label>EUR-Euro</label>
+            </value>
+            <value>
+                <fullName>GBP-British Pound</fullName>
+                <default>false</default>
+                <label>GBP-British Pound</label>
+            </value>
+            <value>
+                <fullName>HUF-Hungarian Forint</fullName>
+                <default>false</default>
+                <label>HUF-Hungarian Forint</label>
+            </value>
+            <value>
+                <fullName>PLN-Polish Zloty</fullName>
+                <default>false</default>
+                <label>PLN-Polish Zloty</label>
+            </value>
+            <value>
+                <fullName>RUB-Russian Rouble</fullName>
+                <default>false</default>
+                <label>RUB-Russian Rouble</label>
+            </value>
+            <value>
+                <fullName>TRY-Turkish Lira (New)</fullName>
+                <default>false</default>
+                <label>TRY-Turkish Lira (New)</label>
+            </value>
+            <value>
+                <fullName>ZAR-South African Rand</fullName>
+                <default>false</default>
+                <label>ZAR-South African Rand</label>
+            </value>
+            <value>
+                <fullName>USD-US Dollar</fullName>
+                <default>false</default>
+                <label>USD-US Dollar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

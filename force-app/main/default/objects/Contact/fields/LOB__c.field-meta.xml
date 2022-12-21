@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOB__c</fullName>
+    <externalId>false</externalId>
+    <label>LOB</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aviation</fullName>
+                <default>false</default>
+                <label>Aviation</label>
+            </value>
+            <value>
+                <fullName>Bitumen</fullName>
+                <default>false</default>
+                <label>Bitumen</label>
+            </value>
+            <value>
+                <fullName>Commercial Fuels</fullName>
+                <default>false</default>
+                <label>Commercial Fuels</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>Marine</fullName>
+                <default>false</default>
+                <label>Marine</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

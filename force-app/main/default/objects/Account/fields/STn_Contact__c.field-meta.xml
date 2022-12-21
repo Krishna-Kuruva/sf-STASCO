@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STn_Contact__c</fullName>
+    <description>STn Contact (only relevant if STn customer/prospect).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>STn Contact (only relevant if STn customer/prospect).</inlineHelpText>
+    <label>STn Contact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Campbell-Colquhoun, Toby P STASCO-OTEP</fullName>
+                <default>false</default>
+                <label>Campbell-Colquhoun, Toby P STASCO-OTEP</label>
+            </value>
+            <value>
+                <fullName>Durante, Peter E STASCO-OTEP</fullName>
+                <default>false</default>
+                <label>Durante, Peter E STASCO-OTEP</label>
+            </value>
+            <value>
+                <fullName>Wilcock, James R STASCO-OTEP</fullName>
+                <default>false</default>
+                <label>Wilcock, James R STASCO-OTEP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

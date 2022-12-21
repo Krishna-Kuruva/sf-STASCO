@@ -1,0 +1,589 @@
+<template>
+    <lightning-layout-item padding="around-small" size="12">
+        <div class="row">
+            <div class="slds-grid " >
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                    <thead>
+                    <tr class="slds-text-title_caps">
+                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                            SHT No
+                        </th>
+                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                            MRC No
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                            Sold To
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                            Ship To
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                            PO Type
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                            Plant
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Grade
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Mat No
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Contract Start Date
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Contract End Date
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Volume CBM
+                        </th>
+                        <!--added bug-1265732-->
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            SP €/100L
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Margin €/100L
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            PSP €/100L
+                        </th>
+                        <!--end  bug-1265732-->
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            GSAP Response
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Comment
+                        </th>
+                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                            Reason
+                        </th>
+                        <template if:true={cancelledStatus}>
+                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                Status
+                            </th>
+                        </template>
+                        <template if:false={cancelledStatus}>
+                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                Action
+                            </th>
+                        </template>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <template for:each={completedMasterTriggerSHTData} for:item="it" for:index="indx">  
+                        <tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
+                            <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.shtNo}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.MrcNo}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Plant Name" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.Customer}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Plant Code" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.shipToNumber}</div>
+                            </td>
+                            <td  scope="row" class="putborderHeader" data-label="Material Description" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.poType}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Monthly Volume" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.location}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Remaining Volume" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.product}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Min Trigger Volume" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.materialNo}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.c_StartDate}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max No of Trigger" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.c_EndDate}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="TriggerVolume" style={it.highlightDeal}>
+                                <!--bug-1267484-->
+                                <div class="slds-cell-wrap" >{it.volCbm}
+                                    <!--lightning-input data-id={indx} value={it.volCbm} onchange={onchangeTriggerVolume}></lightning-input-->
+                                </div>
+                            </td>
+                            <!--added bug-1265732-->
+                            <td scope="row" class="putborderHeader" data-label="spper100" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.spPer100L}
+                                    <!--lightning-input data-id={indx} value={it.spPer100L} ></lightning-input-->
+                                </div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="targetMargin" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.targetMargin}
+                                </div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="psp" style={it.highlightDeal}>
+                                <div class="slds-cell-wrap">{it.msp}
+                                </div>
+                            </td>
+                            <!--end bug-1265732-->
+                            <td scope="row" class="putborderHeader" data-label="gsapResponse" style={it.highlightDeal}>
+                                
+                                <template if:true={it.gsapContractCheck}>
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium" style="align-items: center; display: flex;padding: 5px; margin: 0px;">
+                                        <div class="slds-cell-wrap">{it.gsapContract}</div>
+                                    </div>
+                                </template>
+                                <template if:true={it.gsapErrorCheck}>
+                                    <template if:true={it.gsapError}>
+                                        <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium" style="align-items: center; color: red;display: flex;padding: 5px; margin: 0px;font-weight: 500;">
+                                            Error <lightning-helptext content={it.gsapError} icon-name="utility:info" icon-variant="error" style="margin-left: 2px;"></lightning-helptext>
+                                        </div>
+                                    </template>
+                                </template>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume" style={it.highlightDeal}>
+                                <!--added as part of Bug-1265721-->
+                                <lightning-textarea data-id={it.shtRecordId} value={it.Comment} onblur={onchangeTriggerComments}  maxlength="255"></lightning-textarea>
+                            </td>
+                            <template if:true ={cancelledStatus}>
+                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger" style={it.highlightDeal}>
+                                    <div class="slds-cell-wrap">{it.cancellationReason}</div>
+                                </td>
+                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger" style={it.highlightDeal}>
+                                    <div class="slds-cell-wrap">{it.dealStatus}</div>
+                                </td>
+                            </template>
+                            <template if:false ={cancelledStatus}>
+                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger" style={it.highlightDeal}>
+                                    <div class="slds-cell-wrap">
+                                        <lightning-combobox name="Reason"
+                                                label="Reason"
+                                                variant="label-hidden"
+                                                value={selectedReasonValue}
+                                                placeholder="Select Reason"
+                                                options={cancellationReasonOptions}
+                                                onchange={handleReasonChange} ></lightning-combobox>
+                                    </div>
+                                </td>
+                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger" style={it.highlightDeal}>
+                                    <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
+                                    <div class="slds-cell-wrap">
+                                        <lightning-button-icon icon-name="utility:close" 
+                                                data-recid={it.Id} data-id={it.shtNo}  alternative-text="Cancel"
+                                                class="slds-m-left_xx-small btnRed" title="Cancel" onclick={cancelCompledtedTriggerDeal}></lightning-button-icon>
+                                        <!--<lightning-button data-recid={it.Id} data-id={it.shtNo}  variant="destructive" label="Cancel"
+                                                        title="Cancel" onclick={cancelCompledtedTriggerDeal}>
+                                        </lightning-button>-->
+                                    </div>
+                                    <div class="slds-cell-wrap">
+                                        <!--lightning-button-icon icon-name="utility:save" 
+                                                data-recid={it.shtNo} data-id={it.shtNo}  alternative-text="Cancel & New"
+                                                class="slds-m-left_xx-small btnGreen" title="Cancel & New" onclick={cancelCompledtedTriggerDeal}></lightning-button-icon-->
+                                        <!--<lightning-button data-recid={it.shtNo} data-id={it.shtNo} variant="destructive" label="Cancel & New"
+                                                        title="Cancel&New" onclick={cancelCompledtedTriggerDeal}>
+                                        </lightning-button>-->
+                                    </div>
+                                    <div class="slds-cell-wrap">
+                                        <template if:true={it.gsapErrorCheck}>
+                                        <lightning-button-icon icon-name="utility:refresh" 
+                                                data-recid={it.shtNo} data-id={it.shtNo}  alternative-text="Retry"
+                                                class="slds-m-left_xx-small btnBlue" title="Retry" onclick={resendDealtoGsap} ></lightning-button-icon>
+                                        <!--<lightning-button data-recid={it.shtNo} data-id={it.shtNo} variant="destructive" label="Cancel & New"
+                                                        title="Cancel&New" onclick={cancelCompledtedTriggerDeal}>
+                                        </lightning-button>-->
+                                    </template>
+                                    </div>
+                                   </div>
+                                </td>
+                            </template>
+                        </tr>
+                        <!--<tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
+                            <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                <div class="slds-cell-wrap">{it.Name}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                <div class="slds-cell-wrap">{it.MRC_Number__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Plant Name">
+                                <div class="slds-cell-wrap">{it.Sold_To_Name__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Plant Code">
+                                <div class="slds-cell-wrap">{it.Ship_To__c}</div>
+                            </td>
+                            <td  scope="row" class="putborderHeader" data-label="Material Description">
+                                <div class="slds-cell-wrap">{it.PO_Type__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Monthly Volume">
+                                <div class="slds-cell-wrap">{it.Plant_No__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Remaining Volume">
+                                <div class="slds-cell-wrap">{it.Product_Category__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
+                                <div class="slds-cell-wrap">{it.Material_No__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                <div class="slds-cell-wrap">{it.Contract_Start__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                                <div class="slds-cell-wrap">{it.Contract_End_Date__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="TriggerVolume">
+                                <div class="slds-cell-wrap">
+                                    <lightning-input data-id={indx} value={it.Volume_CBM__c} onchange={onchangeTriggerVolume}>
+
+                                    </lightning-input>
+
+                                </div>
+                            </td>
+
+                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                <div class="slds-cell-wrap">{it.Deal_Comment__c}</div>
+                            </td>
+                            <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+
+                            </td>
+                        </tr>-->
+                    </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-layout-item>
+    <template if:true={create_newDeal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container setCal" style="align-items: center;">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header" style="width:95vw;background-color: #212946;color: #fff;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={close_createDealBox}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Cancel New : {cancel_shtNo}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="width:95vw;overflow: auto;">
+                    <lightning-layout>
+                    <lightning-layout-item padding="around-small" size="2">
+                        <lightning-combobox name="CancellationReason"
+                                    label="Cancellation Reason"
+                                    value={cancelReason}
+                                    placeholder="--Select--"
+                                    options={cancellationReasonOptions}
+                                    onchange={handleChange}>
+                </lightning-combobox>
+                    </lightning-layout-item>
+                </lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <p><b>Cancelled Deal:</b></p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="row">
+                            <div class="slds-grid " >
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                                    <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                            SHT No
+                                        </th>
+                                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                            MRC No
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Sold To
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Ship To
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            PO Type
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Plant
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Grade
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Mat No
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Contract Start Date
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Contract End Date
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Volume CBM
+                                        </th>
+                
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Comment
+                                        </th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={cancel_compDealRec} for:item="it" for:index="indx">  
+                                            <tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
+                                                <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                                    <div class="slds-cell-wrap">{it.shtNo}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                                    <div class="slds-cell-wrap">{it.MrcNo}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Name">
+                                                    <div class="slds-cell-wrap">{it.Customer}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Code">
+                                                    <div class="slds-cell-wrap">{it.shipToNumber}</div>
+                                                </td>
+                                                <td  scope="row" class="putborderHeader" data-label="Material Description">
+                                                    <div class="slds-cell-wrap">{it.poType}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Monthly Volume">
+                                                    <div class="slds-cell-wrap">{it.location}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Remaining Volume">
+                                                    <div class="slds-cell-wrap">{it.product}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
+                                                    <div class="slds-cell-wrap">{it.materialNo}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">{it.contractStartDate}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                                                    <div class="slds-cell-wrap">{it.contractEndDate}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="TriggerVolume">
+                                                    <div class="slds-cell-wrap">{it.volCbm}</div>
+                                                    <!--<div class="slds-cell-wrap">
+                                                        <lightning-input data-id={indx} value={it.volCbm} onchange={onchangeTriggerVolume}>
+                    
+                                                        </lightning-input>
+                    
+                                                    </div>-->
+                                                </td>
+                    
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">{it.Comment}</div>
+                                                </td>
+                                                <!--<td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                    
+                                                </td>-->
+                                                
+                                            </tr>
+                                        </template>
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <!--New cancellation Deal-->
+                    <lightning-layout-item padding="around-small" size="12">
+                        <p><b>New Deal:</b></p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="row">
+                            <div class="slds-grid " >
+                                <lightning-record-edit-form object-api-name="SHT__c">
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                                    <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <!--<th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                            SHT No
+                                        </th>-->
+                                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
+                                            MRC No
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Sold To
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Ship To
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            PO Type
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
+                                            Plant
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Grade
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Mat No
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Contract Start Date
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Contract End Date
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Volume CBM
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            SP €/100L
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Margin €/100L
+                                        </th>
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            PSP €/100L
+                                        </th>
+                                        <!--<th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            BSP 
+                                        </th>-->
+                
+                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
+                                            Comment
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <template for:each={cancel_compDealRec} for:item="it" for:index="indx"> 
+                                            
+                                            <tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
+                                               <!--<td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input data-id={indx} value={it.shtNo} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>
+                                                    </div>
+                                                </td>-->
+                                                <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="MRC__c" variant="label-hidden" data-id="mrcNo" value={it.MrcId} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>
+                                                        <!--<lightning-input data-id="mrcNo" value={it.MrcNo} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Name">
+                                                    <div class="slds-cell-wrap">
+                                                        <div class="slds-cell-wrap" >
+                                                            <lightning-input data-id="customer" value={it.Customer}  disabled> </lightning-input>
+                                                       </div>
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Code">
+                                                    <div class="slds-cell-wrap" >
+                                                        <lightning-input data-id="shipToNumber" value={it.shipToNumber} onchange={onchangeTriggerVolume} disabled></lightning-input>
+                                                    </div>
+                                                </td>
+                                                <td  scope="row" class="putborderHeader" data-label="Material Description">
+                                                    <div class="slds-cell-wrap" >
+                                                        <lightning-input data-id="poType" value={it.poType} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Monthly Volume" >
+                                                    <div class="slds-cell-wrap">
+                                                         <c-rv_search-lookup obj-name="MRC__c"
+                                                        icon-name="standard:location"
+                                                        label-name=""
+                                                        placeholder="Search Plant..."
+                                                         fields="Location_Name__c,Plant_Description__c,Plant__c"
+                                                        display-fields="Location_Name__c,Plant_Description__c"
+                                                        onkeyup={handleArrowPress}
+                                                        onlookup={handleLookup}
+                                                        current-record-id="Location"
+                                                        filter-query={customerFilter}
+                                                        selected-record={defaultPlant}
+                                                        disabled-val={haveCancelReason}
+                                                        in-search-group="">
+                                                        </c-rv_search-lookup>
+                                                     <!--  Ashish:  <lightning-input-field field-name="Location__c" data-id="location" variant="label-hidden" value={it.locationId} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field> -->
+                                                        <!--<lightning-input data-id="location" value={it.locationId} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Remaining Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="Product_Category__c" variant="label-hidden" data-id="product" value={it.product} disabled={haveCancelReason}> </lightning-input-field>
+                                                        <!--<lightning-input data-id="product" value={it.product} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="Material_No__c" variant="label-hidden" data-id="materialNo" value={it.materialNo} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>
+                                                        <!--<lightning-input data-id="materialNo" value={it.materialNo} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap" >
+                                                        <!--<lightning-input-field field-name="Contract_Start__c" variant="label-hidden" data-id="contractStartDate" value={it.contractStartDate} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>-->
+                                                        <lightning-input type="date"  name="startDate"  date-style="short" data-id="contractStartDate" value={it.contractStartDate} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                                                    <div class="slds-cell-wrap" >
+                                                        <!--<lightning-input-field field-name="Contract_End_Date__c" variant="label-hidden" data-id="contractEndDate" value={it.contractEndDate} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>-->
+                                                        <lightning-input type="date" date-style="short" data-id="contractEndDate" value={it.contractEndDate} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="TriggerVolume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="Volume_CBM__c" variant="label-hidden" data-id="volCbm" value={it.volCbm} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>
+                                                        <!--<lightning-input data-id="volCbm" value={it.volCbm} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                    
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field class="slds-truncate colorchange" field-name="SP_100L__c" variant="label-hidden" data-id="spPer100L" value={it.spPer100L} onchange={onchangeTriggerVolume} disabled={haveCancelReason}> </lightning-input-field>
+                                                        <!--<lightning-input data-id="spPer100L" value={it.spPer100L} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="Effective_Margin__c" variant="label-hidden" data-id="targetMargin" value={it.targetMargin} onchange={onchangeTriggerVolume} disabled> </lightning-input-field>
+                                                        <!--<lightning-input data-id="targetMargin" value={it.targetMargin} onchange={onchangeTriggerVolume} disabled={haveCancelReason}></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input-field field-name="MSP__c" variant="label-hidden" data-id="msp" value={it.msp} onchange={onchangeTriggerVolume} disabled> </lightning-input-field>
+                                                        <!--<lightning-input data-id="msp" value={it.msp} onchange={onchangeTriggerVolume} disabled></lightning-input>-->
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap" >
+                                                        <lightning-textarea data-id="Comment" value={it.Comment} onchange={onchangeTriggerVolume} disabled={haveCancelReason} max-length="255"></lightning-textarea>
+                                                    </div>
+                                                </td>
+                                                <!--<td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                    
+                                                </td>-->
+                                            
+                                            </tr>
+                                        
+                                        </template>
+                                      
+                                        </tbody>
+                                </table>
+                            </lightning-record-edit-form>
+                                
+                                    
+
+                               
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+
+                </div>
+                <!-- ModalPopup Box-----------  footer starts here -->
+                <footer class="slds-modal__footer" style="width:95vw;background-color: #ffffff;border: none;">
+                      <!--<button class="slds-button slds-button_neutral" onclick={close_createDealBox}
+                        title="Discard">Discard</button>
+                    <button class="slds-button slds-button_brand" onclick={createCancelledNewDeal} title="Confirm"
+                        disabled>Confirm</button> -->
+                    <lightning-button variant="neutral" label="Discard" name="Discard" onclick={close_createDealBox}>
+                    </lightning-button>
+                    <lightning-button variant="brand" label="Confirm" name="Confirm" disabled={isDisabled}
+                        onclick={createCancelledNewDeal}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

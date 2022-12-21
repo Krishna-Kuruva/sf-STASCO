@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>URL_Extension__c</fullName>
+    <description>This field extends the endpoint URL for the callout.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Specify Map of URL parameter vs field API Name from where the code can pick the values. You can also specify multiple parameters separated by a semi-colon. 
+Example: urlParam1:FieldAPIName1;urlParam2:FieldAPIName2</inlineHelpText>
+    <label>URL Extension</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

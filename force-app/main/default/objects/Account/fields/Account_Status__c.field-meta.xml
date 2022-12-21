@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Account Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Set up &amp; Active</fullName>
+                <default>false</default>
+                <label>Set up &amp; Active</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Inactive</fullName>
+                <default>false</default>
+                <label>Set up &amp; Inactive</label>
+            </value>
+            <value>
+                <fullName>Initial Contact</fullName>
+                <default>false</default>
+                <label>Initial Contact</label>
+            </value>
+            <value>
+                <fullName>Under negotiation</fullName>
+                <default>false</default>
+                <label>Under negotiation</label>
+            </value>
+            <value>
+                <fullName>Passive</fullName>
+                <default>false</default>
+                <label>Passive</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Inactive (Brexit)</fullName>
+                <default>false</default>
+                <label>Set up &amp; Inactive (Brexit)</label>
+            </value>
+            <value>
+                <fullName>No further action required</fullName>
+                <default>false</default>
+                <label>No further action required</label>
+            </value>
+            <value>
+                <fullName>Previous contact made - but now dormant</fullName>
+                <default>false</default>
+                <label>Previous contact made - but now dormant</label>
+            </value>
+            <value>
+                <fullName>No Jurisdiction</fullName>
+                <default>false</default>
+                <label>No Jurisdiction</label>
+            </value>
+            <value>
+                <fullName>No further trades</fullName>
+                <default>false</default>
+                <label>No further trades</label>
+            </value>
+            <value>
+                <fullName>On Stop (EMIR)</fullName>
+                <default>false</default>
+                <label>On Stop (EMIR)</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Active (On Hold - Credit)</fullName>
+                <default>false</default>
+                <label>Set up &amp; Active (On Hold - Credit)</label>
+            </value>
+            <value>
+                <fullName>Set up &amp; Inactive (KYC lapsed)</fullName>
+                <default>false</default>
+                <label>Set up &amp; Inactive (KYC lapsed)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

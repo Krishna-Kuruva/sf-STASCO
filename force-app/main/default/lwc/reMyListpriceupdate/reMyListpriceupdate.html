@@ -1,0 +1,67 @@
+<template>     
+    <div class=" zoomout fornsize  slds-m-around_xxx-small ">
+        <lightning-layout multiple-rows="true">
+            <template for:each={mapData} for:item="keyValue">
+                <lightning-layout-item key = {keyValue.key} class="slds-var-p-around_xx-small" size="6">
+                    <div class="slds-box ">
+                        <div class="slds-truncate slds-align_absolute-left" title="salse org"> <b class="slds-var-p-around_small"> Salse org :{keyValue.key} </b></div>
+                        <table class=" slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-line-height_reset">                                    
+                                    <!--<th class="slds-size_1-of-12" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="salse org"> {keyValue.key}</div>
+                                    </th> -->
+                                    <th class="slds-size_1-of-12" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="Product">Product</div>
+                                    </th>
+                                    <th class="slds-size_1-of-12" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="Material Code">Material Code </div>
+                                    </th>
+                                    <th class="slds-size_1-of-12 variantcls" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="ValidFrom">Valid From</div>
+                                    </th>   
+                                    <th class="slds-size_1-of-12 greencls" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="Valid To">Valid To</div>
+                                    </th>                 
+                                    <th class="slds-size_2-of-12 redcls" scope="col">
+                                        <div class="slds-truncate slds-align_absolute-left" title="mrkprc">List price</div>
+                                    </th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each = {keyValue.value} for:item = "data">
+                                    <tr class="slds-line-height_reset" key={data.id}>
+                                    <!--<th  scope="row" > </th> -->
+                                    <th  scope="row" > <lightning-formatted-text value={data.value.product}></lightning-formatted-text></th>
+                                    <th  scope="row" > <lightning-formatted-text value={data.value.material}></lightning-formatted-text></th>
+                                    <th  scope="row" class="variantcls" > <lightning-formatted-text value={data.value.validFrom}></lightning-formatted-text></th>
+                                    <th  scope="row" class="greencls" > <lightning-formatted-text value={data.value.validTo}></lightning-formatted-text> </th>
+                                    <th  scope="row" class="redcls">
+                                    <lightning-input disabled={hasReadAccess} class="inlineEdit " name={data.value.salesOrgProduct} type="number" step="0.01" onchange={priceChange} variant="label-hidden"  value={data.value.listPrice}></lightning-input> </th>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </lightning-layout-item>
+            </template>
+   
+    </lightning-layout>
+    </div>
+     <!--on loading message  start-->
+     <template if:true={spinnerLoad}>
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+
+                <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;">
+                    {spinnerMessage}
+                </p>
+            </div>
+        </div>
+        
+    </template>
+     <!--on loading message end-->
+</template>

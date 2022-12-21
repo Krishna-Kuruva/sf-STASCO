@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MDN_CP_Rel_Desc__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>MDN Credit Information not required for US: Parent Setups, Guarantors or Vendors Only.</inlineHelpText>
+    <label>* Counterparty Relationship Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Counterparty</fullName>
+                <default>false</default>
+                <label>Counterparty</label>
+            </value>
+            <value>
+                <fullName>Counterparty (Customer &amp; Vendor)</fullName>
+                <default>false</default>
+                <label>Counterparty (Customer &amp; Vendor)</label>
+            </value>
+            <value>
+                <fullName>Customer Only</fullName>
+                <default>false</default>
+                <label>Customer Only</label>
+            </value>
+            <value>
+                <fullName>Vendor Only</fullName>
+                <default>false</default>
+                <label>Vendor Only</label>
+            </value>
+            <value>
+                <fullName>Guarantor Only</fullName>
+                <default>false</default>
+                <label>Guarantor Only</label>
+            </value>
+            <value>
+                <fullName>Parent Setup Only</fullName>
+                <default>false</default>
+                <label>Parent Setup Only</label>
+            </value>
+            <value>
+                <fullName>test</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>test</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

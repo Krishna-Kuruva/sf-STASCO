@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>InfoKiosk Alert</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>InfoKiosk Alerts</value>
+    </caseValues>
+    <layouts>
+        <layout>InfoKiosk Alert Layout</layout>
+        <sections>
+            <label></label>
+            <section>Action</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Enter External Email Address</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Enter Internal Email Address</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Only send me alerts when</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Only send me an alert for a selected region</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Record Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Signature</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Validation_on_Alert_Action</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Validation_on_Sending_Alert_Section1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Validation_on_Sending_Alert_Section2</name>
+    </validationRules>
+</CustomObjectTranslation>

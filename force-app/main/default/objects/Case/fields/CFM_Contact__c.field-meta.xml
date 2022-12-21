@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CFM_Contact__c</fullName>
+    <externalId>false</externalId>
+    <label>CFM Contact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>RFM_Contact__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alexendre Bailly</fullName>
+                <default>false</default>
+                <label>Alexendre Bailly</label>
+            </value>
+            <value>
+                <fullName>Arnaud Payot</fullName>
+                <default>false</default>
+                <label>Arnaud Payot</label>
+            </value>
+            <value>
+                <fullName>Alexandra Stevens</fullName>
+                <default>false</default>
+                <label>Alexandra Stevens</label>
+            </value>
+            <value>
+                <fullName>Andrew Tan</fullName>
+                <default>false</default>
+                <label>Andrew Tan</label>
+            </value>
+            <value>
+                <fullName>Deborah Stewart</fullName>
+                <default>false</default>
+                <label>Deborah Stewart</label>
+            </value>
+            <value>
+                <fullName>Elda Ho</fullName>
+                <default>false</default>
+                <label>Elda Ho</label>
+            </value>
+            <value>
+                <fullName>Jan Rode</fullName>
+                <default>false</default>
+                <label>Jan Rode</label>
+            </value>
+            <value>
+                <fullName>Jessica Ching</fullName>
+                <default>false</default>
+                <label>Jessica Ching</label>
+            </value>
+            <value>
+                <fullName>Joern Schmidt</fullName>
+                <default>false</default>
+                <label>Joern Schmidt</label>
+            </value>
+            <value>
+                <fullName>Kashif Arshad</fullName>
+                <default>false</default>
+                <label>Kashif Arshad</label>
+            </value>
+            <value>
+                <fullName>Norulaiza  Norulaiza</fullName>
+                <default>false</default>
+                <label>Norulaiza  Norulaiza</label>
+            </value>
+            <value>
+                <fullName>Mine Dindar</fullName>
+                <default>false</default>
+                <label>Mine Dindar</label>
+            </value>
+            <value>
+                <fullName>Nadia KadirBawah</fullName>
+                <default>false</default>
+                <label>Nadia KadirBawah</label>
+            </value>
+            <value>
+                <fullName>Nguyen-thi dung</fullName>
+                <default>false</default>
+                <label>Nguyen-thi dung</label>
+            </value>
+            <value>
+                <fullName>Rona Lynch</fullName>
+                <default>false</default>
+                <label>Rona Lynch</label>
+            </value>
+            <value>
+                <fullName>Smile Gillegean</fullName>
+                <default>false</default>
+                <label>Smile Gillegean</label>
+            </value>
+            <value>
+                <fullName>Stewart Waters</fullName>
+                <default>false</default>
+                <label>Stewart Waters</label>
+            </value>
+            <value>
+                <fullName>Valerie Kay</fullName>
+                <default>false</default>
+                <label>Valerie Kay</label>
+            </value>
+            <value>
+                <fullName>Wimon Udompongsanont</fullName>
+                <default>false</default>
+                <label>Wimon Udompongsanont</label>
+            </value>
+            <value>
+                <fullName>Ray Mccarthy</fullName>
+                <default>false</default>
+                <label>Ray Mccarthy</label>
+            </value>
+            <value>
+                <fullName>Yvonne Phua</fullName>
+                <default>false</default>
+                <label>Yvonne Phua</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Tanya Lam</controllingFieldValue>
+            <valueName>Jessica Ching</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Celeste Ho</controllingFieldValue>
+            <valueName>Deborah Stewart</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Celeste Ho</controllingFieldValue>
+            <valueName>Mine Dindar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Stewart Waters</controllingFieldValue>
+            <valueName>Alexandra Stevens</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wilbert Arends</controllingFieldValue>
+            <valueName>Kashif Arshad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wilbert Arends</controllingFieldValue>
+            <valueName>Nadia KadirBawah</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wilbert Arends</controllingFieldValue>
+            <valueName>Valerie Kay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dominic Corley</controllingFieldValue>
+            <valueName>Alexendre Bailly</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dominic Corley</controllingFieldValue>
+            <valueName>Jan Rode</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dominic Corley</controllingFieldValue>
+            <valueName>Ray Mccarthy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Andrew Tan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Elda Ho</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Nguyen-thi dung</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yvonne Phua</controllingFieldValue>
+            <valueName>Yvonne Phua</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hilmi Yusof</controllingFieldValue>
+            <valueName>Norulaiza  Norulaiza</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hilmi Yusof</controllingFieldValue>
+            <valueName>Smile Gillegean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hilmi Yusof</controllingFieldValue>
+            <valueName>Wimon Udompongsanont</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Soo-Lim Goh</controllingFieldValue>
+            <valueName>Joern Schmidt</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Soo-Lim Goh</controllingFieldValue>
+            <valueName>Rona Lynch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tjeerd Anema</controllingFieldValue>
+            <valueName>Stewart Waters</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Arnaud Payot</controllingFieldValue>
+            <valueName>Arnaud Payot</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

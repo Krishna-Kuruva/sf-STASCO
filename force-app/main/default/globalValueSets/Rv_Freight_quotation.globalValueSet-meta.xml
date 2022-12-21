@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-BasleSFR</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-BasleSFR</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-Cologne</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-Cologne</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-Dortmund</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-Dortmund</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-Duisburg</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-Duisburg</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-Frankfurt</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-Frankfurt</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoil ARA-Karlsruhe</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoil ARA-Karlsruhe</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-BasleSFR</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-BasleSFR</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-Cologne</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-Cologne</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-Dortmund</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-Dortmund</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-Duisburg</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-Duisburg</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-Frankfurt</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-Frankfurt</label>
+    </customValue>
+    <customValue>
+        <fullName>Reuters (PJK) Rhine Freight Gasoline ARA-Karlsruhe</fullName>
+        <default>false</default>
+        <label>Reuters (PJK) Rhine Freight Gasoline ARA-Karlsruhe</label>
+    </customValue>
+    <masterLabel>Rv_Freight quotation</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

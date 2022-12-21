@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ER0007</label>
+    <protected>false</protected>
+    <values>
+        <field>Bcc_List__c</field>
+        <value xsi:type="xsd:string">Francois.Gingras@energiesonic.com;Gasbuying@costco.com;goldy.singh@econopetro.com;gsanzone@costco.com;gsimpson@exchangepetroleum.com;Isabelle.Aube@parkland.ca;isabelle.caron@energiesonic.com;Javid.Khan@parkland.ca;jcox@vianet.ca;jean-christophe.benoi@costco.com;jeff.kaarto@econopetro.com;Josee.Poirier@energiesonic.com;kareem@hughespetroleum.com;laval.germain@costco.com;LenoreW@swpetroleum.ca;ljohnson@4Refuel.com;Luis.Hernandez@cantire.com;m.rai@rrfns.com;Marie-Catherine_Diouf@viarail.ca;mariodesmarais@harnoisgroupepetrolier.com;rcoulombe@petrolescoulombe.com;EmilyMcdonald@EdwardFuels.com;fuelmanagement@calgary.ca;</value>
+    </values>
+    <values>
+        <field>Cc_List__c</field>
+        <value xsi:type="xsd:string">b.simpson@shell.com;CAL-SC-RevolutionCanada@shell.com;</value>
+    </values>
+    <values>
+        <field>Country__c</field>
+        <value xsi:type="xsd:string">Canada</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>To_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Shell Rack Customer Notification</value>
+    </values>
+</CustomMetadata>

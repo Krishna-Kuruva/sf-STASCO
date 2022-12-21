@@ -1,0 +1,58 @@
+<aura:component controller="RE_ApprovalProcessHandler" implements="force:lightningQuickAction,force:hasRecordId" > 
+    
+    <aura:attribute name="comments" type="String" default=""/>
+    <aura:attribute name="showErrors" type="Boolean" default="false"/>   
+    <aura:attribute name="errorMessage" type="String" default=""/>  
+    <aura:attribute name="checkApprovalReocrd" type="Boolean" default=""/>   
+    <aura:attribute name="onSuccess" type="Boolean" default="false"/>   
+    <aura:attribute name="successMessage" type="String" default=""/>  
+    <aura:attribute name="displaySubmit" type="Boolean" default="true"/>  
+    <aura:attribute name="AppRejButton" type="Boolean" default=""/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.checkApprovalReocrd}">
+        <aura:if isTrue="{!v.AppRejButton}">
+            <div class="slds-box slds-box_small slds-m-bottom_xx-small">               
+                <h5 class="slds-text-heading_small">You don't have access to Approve / Reject the Record </h5>
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!v.displaySubmit}">
+            <lightning:button variant="success" disabled="{!v.AppRejButton}" label="Approve" title="Approve" onclick="{! c.handleApprove }"/>
+            <lightning:button variant="destructive" disabled="{!v.AppRejButton}" label="Reject" title="Reject" onclick="{! c.handleReject }"/>
+            <lightning:textarea  name="Comments" aura:id="Comments" value="{!v.comments}" maxlength="256" label="Comments" placeholder="type here..." />
+        </aura:if>
+        <div>        
+            <aura:if isTrue="{!v.onSuccess}">
+                <div class="slds-box slds-box_small">               
+                    <h5 class="slds-text-heading_small">Status saved successfully</h5>
+                    <br/>
+                    <div class="slds-theme_success  slds-box slds-box_x-small">
+                        <p >{!v.successMessage}</p> 
+                    </div>
+                </div>  
+            </aura:if>   
+        </div>
+        
+    </aura:if>
+    <div>        
+        <aura:if isTrue="{!v.showErrors}">
+            <div class="slds-box slds-box_small">               
+                <h5 class="slds-text-heading_small">Error occurred </h5>
+                <br/>
+                <div class="slds-theme_error  slds-box slds-box_x-small">
+                    <p >{!v.errorMessage}</p> 
+                </div>
+            </div>  
+        </aura:if>   
+    </div>
+    
+    <aura:if isTrue="{!!v.checkApprovalReocrd}">
+        <div class="slds-box slds-box_small">               
+            <h5 class="slds-text-heading_small">Record is not submitted for Approval process </h5>
+        </div>
+    </aura:if>
+    
+    
+</aura:component>
