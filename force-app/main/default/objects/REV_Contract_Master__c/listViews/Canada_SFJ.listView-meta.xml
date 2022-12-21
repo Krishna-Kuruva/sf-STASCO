@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_SFJ</fullName>
+    <columns>NAME</columns>
+    <columns>RT_Ship_to_Name__c</columns>
+    <columns>RT_Ship_to_Number__c</columns>
+    <columns>RE_CND_Rack__c</columns>
+    <columns>RT_Material_Number__c</columns>
+    <columns>RT_Material_Desc__c</columns>
+    <columns>RE_CND_Product_Pricing_Basis__c</columns>
+    <columns>RE_CND_Plant_Pricing_Basis__c</columns>
+    <columns>RE_CND_Group_Pricing_Basis__c</columns>
+    <columns>RE_CND_Pricing_Basis__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>CA</value>
+    </filters>
+    <filters>
+        <field>RT_Ship_to_Number__c</field>
+        <operation>equals</operation>
+        <value>0012876204</value>
+    </filters>
+    <label>Canada SFJ</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

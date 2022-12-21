@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Philippines</fullName>
+    <columns>NAME</columns>
+    <columns>RE_PH_Percent_Base_Fuel__c</columns>
+    <columns>RE_Material__c</columns>
+    <columns>RE_Additive_Cost_Unit__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_Additive_Cost__c</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RE_Product_Code__c</columns>
+    <columns>RE_Product_Group__c</columns>
+    <columns>RE_PH_Index__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Product__c.Philippines</value>
+    </filters>
+    <label>Philippines</label>
+</ListView>

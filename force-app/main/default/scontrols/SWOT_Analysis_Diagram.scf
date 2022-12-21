@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>SWOT Analysis Diagram</title>
+
+    <!-- AJAX Toolkit -->
+    <script type="text/javascript" src="/soap/ajax/9.0/connection.js"></script>
+
+    <!-- Dojo 0.4.1 -->
+    <script type="text/javascript" src="/js/dojo/0.4.1/dojo.js"></script> 
+
+    <script type="text/javascript">
+dojo.require('dojo.string.extras');
+dojo.require('dojo.event.*');
+dojo.require('dojo.widget.InlineEditBox');
+
+
+// parent entity object id
+var parentId = '{!$Request.eid}';
+
+// For i18n
+var lang;
+var resources = {
+  'en' : {
+    'Strength'         : 'Strength',  
+    'Weaknesses'       : 'Weaknesses',  
+    'Opportunities'    : 'Opportunities',  
+    'Threats'          : 'Threats',
+    'SOStrategies'     : 'S-O Strategies',
+    'WOStrategies'     : 'W-O Strategies',
+    'STStrategies'     : 'S-T Strategies',
+    'WTStrategies'     : 'W-T Strategies',
+    'Click2Enter'      : '(Click to Enter)',
+    'APINotEnabled'    : 'This app utilizes the Apex API.\n'+
+                         'It appears that your salesforce.com Edition does not have this feature enabled.',
+    'WriteAccessNotAllowed' : 'Write access is not allowed.'
+  }
+  ,
+
+  'ja' : {
+    'Strength'         : '強み(Strength)',  
+    'Weaknesses'       : '弱み(Weaknesses)',  
+    'Opportunities'    : '機会(Opportunities)',  
+    'Threats'          : '脅威(Threats)',
+    'SOStrategies'     : '積極的攻勢',
+    'WOStrategies'     : '段階的施策',
+    'STStrategies'     : '差別化戦略',
+    'WTStrategies'     : '専守防衛または撤退',
+    'Click2Enter'      : '(クリックして入力)',
+    'APINotEnabled'    : 'このアプリケーションのご利用には Apex APIが必要です。\n'+
+                         'お使いのsalesforce.comのエディションではAPIアクセスは有効ではありません。',
+    'WriteAccessNotAllowed' : '書き込み権限がありません'
+  }
+};
+
+function init() {
+  // check if api access is enabled or not.
+  sforce.connection.getUserInfo({
+    onSuccess : function(userInfo) {
+      window.lang = userInfo.userLanguage;
+      startup();
+    },
+    
+    onFailure : function(error) {
+      alert(getResource('APINotEnabled'));
+    }
+  });
+}
+
+function startup() {
+  // i18n
+  dojo.lang.forEach(
+    dojo.html.getElementsByClass('i18nLabel'),
+    function(elem) {
+      elem.innerHTML = getResource(elem.title);
+    }
+  )
+  
+  queryTable();
+}
+  
+function queryTable() {
+  // Retrieve SWOT Elements related to parent entity.
+  sforce.connection.query(
+    "SELECT Id, Name, Area__c, CreatedDate "+
+    " FROM SWOTElement__c " +
+    " WHERE ParentId__c = '"+parentId+"'",
+    function(res) {
+      var swotTable = {};
+      dojo.lang.forEach(res.getArray('records'), function(swot) {
+        var area = swot.Area__c;
+        if (swotTable[area]) {
+          swotTable[area].push(swot) 
+        } else {
+          swotTable[area] = [ swot ];
+        }
+      });
+      renderTable(swotTable);
+    }
+  );
+}
+
+function appendSWOTElement(container, swot, beforeNode) {
+  var div = document.createElement('div');
+  div.className = 'SWOTElement';
+  if (!beforeNode) {
+    container.appendChild(div);
+  } else {
+    container.insertBefore(div, beforeNode);
+  }
+  var element = document.createElement('div')
+  div.appendChild(element);
+  var editbox = dojo.widget.createWidget(
+    'InlineEditBox', 
+    { templateString : getTemplate('SWOTElementTemplate'),
+      templateCssString : getTemplate('SWOTElementCssTemplate') }, 
+    element);
+    editbox.setText(dojo.string.escape('html', swot.Name));
+    editbox.onSave = function(newValue, oldValue) {
+    editbox.disable();
+    swot.Name = newValue;
+    swot.CreatedDate = undefined;
+    sforce.connection.update([ swot ], {
+      onSuccess : function(res) {
+        if (res[0].success=='false') {
+          alert(getResource('WriteAccessNotAllowed'));
+          editbox.setText(dojo.string.escape('html', oldValue));
+        }
+        editbox.enable();
+      }
+      ,
+      onFailure : function(e) {
+        alert(getResource('WriteAccessNotAllowed'));
+        editbox.enable();
+      }
+    });
+  }
+  editbox.onDelete = function(newValue, oldValue) {
+    editbox.disable();
+    sforce.connection.deleteIds([ swot.Id ], {
+      onSuccess : function(res) {
+        if (res[0].success=='false') {
+          alert(getResource('WriteAccessNotAllowed'));
+        } else {
+          container.removeChild(div);
+        }
+        editbox.enable();
+      }
+      ,
+      onFailure : function(e) {
+        alert(getResource('WriteAccessNotAllowed'));
+        editbox.enable();
+      }
+    });
+  }
+  
+}
+
+function appendEmptySWOTElement(container, area) {
+  var div = document.createElement('div');
+  div.className = 'SWOTEmptyElement';
+  container.appendChild(div);
+  var element = document.createElement('div')
+  div.appendChild(element);
+  var editbox = dojo.widget.createWidget(
+    'InlineEditBox', 
+    { templateString : getTemplate('SWOTElementTemplate'),
+      templateCssString : getTemplate('SWOTElementCssTemplate') }, 
+    element);
+  editbox.setText(getResource('Click2Enter'));
+  editbox.onSave = function(newValue, oldValue) {
+    editbox.disable();
+    var swot = new sforce.SObject('SWOTElement__c');
+    swot.Name = newValue;
+    swot.Area__c = area;
+    swot.ParentId__c = parentId;
+    sforce.connection.create([ swot ], {
+      onSuccess : function(res) {
+        if (res[0].success=='false') {
+          alert(getResource('WriteAccessNotAllowed'));
+	      } else {
+	        swot.Id = res[0].id;
+	        appendSWOTElement(container, swot, div);
+	      }
+        editbox.setText(dojo.string.escape('html', oldValue));
+        editbox.enable();
+      }
+      ,
+      onFailure : function(e) {
+        alert(getResource('WriteAccessNotAllowed'));
+        editbox.setText(dojo.string.escape('html', oldValue));
+        editbox.enable();
+      }
+    });
+  }
+  editbox.deleteButton.style.display = 'none';
+  return div;
+}
+
+function renderTable(swotTable) {
+  var areas = ['S', 'W', 'O', 'T', 'SO', 'ST', 'WO', 'WT' ];
+  dojo.lang.forEach(areas, function(area) {
+    var areaId = 'SWOTArea_'+area;
+    var container = document.getElementById(areaId);
+    if (swotTable[area]) {
+      dojo.lang.forEach(
+        swotTable[area].sort(function(s1, s2) {
+          return s1.getDateTime('CreatedDate')>s2.getDateTime('CreatedDate') ? 1 : -1;
+        })
+        ,
+        function(swot) {
+          appendSWOTElement(container, swot);
+        }
+      );
+    }
+    appendEmptySWOTElement(container, area);
+  });
+}
+
+
+function getTemplate(templateName) {
+  return dojo.byId(templateName+'_'+lang) ? dojo.byId(templateName+'_'+lang).value :
+         dojo.byId(templateName+'_en') ? dojo.byId(templateName+'_en').value :
+         null;
+}
+
+function getResource(resourceName) {
+  return resources[lang] && resources[lang][resourceName] ? resources[lang][resourceName] :
+         resources['en'][resourceName] ? resources['en'][resourceName] : 
+         resourceName;
+}
+
+dojo.addOnLoad(init);
+    </script>
+    
+    <style type="text/css">
+@import '/dCSS/Theme2/en/common.css';
+    
+body {
+  margin : 10px auto;
+  padding : 10px;
+  text-align : center;
+}   
+#SWOTTableContainer {
+  margin : 0px auto;
+  width : 730px;
+  text-align : left;
+}
+#SWOTTable {
+  border-collapse : collapse;
+  border-right : 3px solid #aaa;
+  border-bottom : 3px solid #aaa;
+}
+#SWOTTable td {
+  padding : 10px;
+}
+.SWOTAreaHeader {
+  margin : 2px;
+  height : 20px;
+  display : block;
+  font-size : 16px;
+  text-align : center;
+}
+.SWOTArea {
+  margin : 0px;
+  padding : 0px;
+  width : 220px;
+  height : 170px;
+  font-size : 14px;
+  overflow : auto;
+}
+.SWOTElement,
+.SWOTEmptyElement {
+  padding-left : 15px;
+  width : 200px;
+}
+
+.SWOTEmptyElement div {
+  color : #888;
+}
+.SWOTElement div,
+.SWOTElement form,
+.SWOTEmptyElement div,
+.SWOTEmptyElement form {
+  display : list-item;
+  list-style-type: square;
+  margin : 0px;
+  padding : 2px;
+}
+.SWOTTableCell,
+#SWOTTableHeader_S,
+#SWOTTableHeader_T,
+#SWOTTableHeader_W,
+#SWOTTableHeader_O {
+  border : 1px solid #ccc;
+}
+#SWOTTableCell_SO:hover,
+#SWOTTableCell_ST:hover,
+#SWOTTableCell_WO:hover,
+#SWOTTableCell_WT:hover {
+  background-color : #eee;
+}
+#SWOTTableHeader_S {
+  border-top : 1px solid #fcc;
+  border-left : 1px solid #fcc;
+  background-color : #f88;
+}
+#SWOTTableHeader_S:hover {
+  background-color : #fcc;
+}
+#SWOTTableHeader_S .SWOTAreaHeader {
+  color : #a00;
+}
+#SWOTTableHeader_W {
+  border-left : 1px solid #ccf;
+  background-color : #88f;
+}
+#SWOTTableHeader_W:hover {
+  background-color : #ccf;
+}
+#SWOTTableHeader_W .SWOTAreaHeader {
+  color : #00a;
+}
+#SWOTTableHeader_O {
+  border-left : 1px solid #cfc;
+  border-top : 1px solid #cfc;
+  background-color : #8f8;
+}
+#SWOTTableHeader_O:hover {
+  background-color : #cfc;
+}
+#SWOTTableHeader_O .SWOTAreaHeader {
+  color : #0a0;
+}
+#SWOTTableHeader_T {
+  border-top : 1px solid #ffc;
+  background-color : #ff8;
+}
+#SWOTTableHeader_T:hover {
+  background-color : #ffe;
+}
+#SWOTTableHeader_T .SWOTAreaHeader {
+  color : #aa0;
+}
+
+    </style>
+  </head>
+
+  <body>
+
+    <div id="SWOTTableContainer">
+      <table id="SWOTTable">
+        <tr>
+          <td>&nbsp;</th>
+          <td id="SWOTTableHeader_O" class="SWOTTableHeader">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="Opportunities"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_O"></div>
+          </th>
+          <td id="SWOTTableHeader_T" class="SWOTTableHeader">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="Threats"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_T"></div>
+          </td>
+        </tr>
+        <tr>
+          <td id="SWOTTableHeader_S" class="SWOTTableHeader">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="Strength"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_S"></div>
+          </td>
+          <td class="SWOTTableCell" id="SWOTTableCell_SO">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="SOStrategies"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_SO"></div>
+          </td>
+          <td class="SWOTTableCell" id="SWOTTableCell_ST">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="WOStrategies"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_ST"></div>
+          </td>
+        </tr>
+        <tr>
+          <td id="SWOTTableHeader_W" class="SWOTTableHeader">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="Weaknesses"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_W"></div>
+          </td>
+          <td class="SWOTTableCell" id="SWOTTableCell_WO">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="STStrategies"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_WO"></div>
+          </td>
+          <td class="SWOTTableCell" id="SWOTTableCell_WT">
+            <h2 class="SWOTAreaHeader"><span class="i18nLabel" title="WTStrategies"></span></h2>
+            <div class="SWOTArea" id="SWOTArea_WT"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- InlineEdit Widget Template -->
+    <textarea id="SWOTElementTemplate_en" style="display: none">
+<form class="inlineEditBox" style="display: none" 
+      dojoAttachPoint="form" 
+      dojoAttachEvent="onSubmit:saveEdit; onReset:cancelEdit; onKeyUp: checkForValueChange;">
+  <input type="text" dojoAttachPoint="text" style="display: none;" />
+  <input type="submit" value="Save" dojoAttachPoint="submitButton" />
+  <input type="button" value="Delete" dojoAttachPoint="deleteButton" dojoAttachEvent="onClick:onDelete"/>
+  <input type="reset" value="Cancel" dojoAttachPoint="cancelButton" />
+</form>
+    </textarea>
+    <!-- InlineEdit Widget Template END -->
+
+
+    <!-- InlineEdit Widget Template for Japanese -->
+    <textarea id="SWOTElementTemplate_ja" style="display: none">
+<form class="inlineEditBox" style="display: none" 
+      dojoAttachPoint="form" 
+      dojoAttachEvent="onSubmit:saveEdit; onReset:cancelEdit; onKeyUp: checkForValueChange;">
+  <input type="text" dojoAttachPoint="text" style="display: none;" />
+  <input type="submit" value="保存" dojoAttachPoint="submitButton" />
+  <input type="button" value="削除" dojoAttachPoint="deleteButton" dojoAttachEvent="onClick:onDelete"/>
+  <input type="reset" value="キャンセル" dojoAttachPoint="cancelButton" />
+</form>
+    </textarea>
+    <!-- InlineEdit Widget Template for Japanese END -->
+
+
+		<!-- InlineEdit Widget CSS Template  -->
+    <textarea id="SWOTElementCssTemplate_en" style="display: none">
+.editLabel {
+	font-size : small;
+	padding : 0 5px;
+	display : none;
+}
+
+.editableRegion {
+	background-color : #ffc !important;
+	cursor : pointer;
+	_cursor : hand;
+}
+
+.editableRegion .editLabel {
+	display : inline;
+}
+
+.editableTextareaRegion .editLabel {
+	display : block;
+}
+
+.inlineEditBox {
+	/*background-color : #ffc;*/
+	display : inline;
+}
+    </textarea>
+		<!-- InlineEdit Widget CSS Template END -->
+  </body>
+</html>

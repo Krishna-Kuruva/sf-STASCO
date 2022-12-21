@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_Plant__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Plant</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tawau</fullName>
+                <default>false</default>
+                <label>Tawau</label>
+            </value>
+            <value>
+                <fullName>Bintulu</fullName>
+                <default>false</default>
+                <label>Bintulu</label>
+            </value>
+            <value>
+                <fullName>IOT Senari</fullName>
+                <default>false</default>
+                <label>IOT Senari</label>
+            </value>
+            <value>
+                <fullName>Bagan Luar</fullName>
+                <default>false</default>
+                <label>Bagan Luar</label>
+            </value>
+            <value>
+                <fullName>KVDT</fullName>
+                <default>false</default>
+                <label>KVDT</label>
+            </value>
+            <value>
+                <fullName>Port Dickson</fullName>
+                <default>false</default>
+                <label>Port Dickson</label>
+            </value>
+            <value>
+                <fullName>Pasir Gudang</fullName>
+                <default>false</default>
+                <label>Pasir Gudang</label>
+            </value>
+            <value>
+                <fullName>Tanjung Gelang</fullName>
+                <default>false</default>
+                <label>Tanjung Gelang</label>
+            </value>
+            <value>
+                <fullName>Labuan</fullName>
+                <default>false</default>
+                <label>Labuan</label>
+            </value>
+            <value>
+                <fullName>Kota Kinabalu</fullName>
+                <default>false</default>
+                <label>Kota Kinabalu</label>
+            </value>
+            <value>
+                <fullName>Sandakan</fullName>
+                <default>false</default>
+                <label>Sandakan</label>
+            </value>
+            <value>
+                <fullName>Tg Manis</fullName>
+                <default>false</default>
+                <label>Tg Manis</label>
+            </value>
+            <value>
+                <fullName>Westport</fullName>
+                <default>false</default>
+                <label>Westport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Product__c</fullName>
+    <externalId>false</externalId>
+    <label>CO2- Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CER</fullName>
+                <default>false</default>
+                <label>CER</label>
+            </value>
+            <value>
+                <fullName>CER or ERU</fullName>
+                <default>false</default>
+                <label>CER or ERU</label>
+            </value>
+            <value>
+                <fullName>EUA</fullName>
+                <default>false</default>
+                <label>EUA</label>
+            </value>
+            <value>
+                <fullName>EUA/ or AEUA</fullName>
+                <default>false</default>
+                <label>EUA/ or AEUA</label>
+            </value>
+            <value>
+                <fullName>EUAA</fullName>
+                <default>false</default>
+                <label>EUAA</label>
+            </value>
+            <value>
+                <fullName>EUA or EUAA</fullName>
+                <default>false</default>
+                <label>EUA or EUAA</label>
+            </value>
+            <value>
+                <fullName>Spread EUA/CER</fullName>
+                <default>false</default>
+                <label>Spread EUA/CER</label>
+            </value>
+            <value>
+                <fullName>Spread EUAA/CER</fullName>
+                <default>false</default>
+                <label>Spread EUAA/CER</label>
+            </value>
+            <value>
+                <fullName>Voluntary</fullName>
+                <default>false</default>
+                <label>Voluntary</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

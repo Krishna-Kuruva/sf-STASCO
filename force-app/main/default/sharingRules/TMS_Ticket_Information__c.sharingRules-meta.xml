@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>LSS_ticket_sharing_rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>For LSS ticket users</description>
+        <label>LSS ticket sharing rule</label>
+        <sharedTo>
+            <role>LSS_Ticket_Admins</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>LSS Ticket</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

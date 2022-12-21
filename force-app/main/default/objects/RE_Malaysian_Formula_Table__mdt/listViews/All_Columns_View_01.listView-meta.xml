@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Columns_View_01</fullName>
+    <columns>MasterLabel</columns>
+    <columns>RE_MY_Valid_From__c</columns>
+    <columns>RE_MY_Valid_To__c</columns>
+    <columns>RE_MY_BreakBulk_Premium_Quote__c</columns>
+    <columns>RE_MY_BreakBulk_Premium_Quote_Percentage__c</columns>
+    <columns>RE_MY_Product__c</columns>
+    <columns>RE_MY_Region__c</columns>
+    <columns>RE_MY_Plant__c</columns>
+    <columns>RE_MY_HCV_Quote_Percentage__c</columns>
+    <columns>RE_MY_Market_Premium_Percentage__c</columns>
+    <columns>RE_MY_Market_Premium_Quote__c</columns>
+    <columns>RE_MY_Oil_Loss_Percentage__c</columns>
+    <columns>RE_MY_Bio_Loss_Percentage__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Columns View 01</label>
+    <language>en_US</language>
+</ListView>

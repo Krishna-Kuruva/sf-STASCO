@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Product__c</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>RE_MC_Morning__c</columns>
+    <columns>RE_Spot_Price_Adj__c</columns>
+    <columns>RE_Prev_Mid_Day_price_out__c</columns>
+    <columns>RE_Today_s_BSP__c</columns>
+    <columns>RE_Target_Margin__c</columns>
+    <columns>RE_PSP__c</columns>
+    <columns>RE_AM_Challenged_Price__c</columns>
+    <columns>RE_Final_PSP__c</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RE_IsLatest__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

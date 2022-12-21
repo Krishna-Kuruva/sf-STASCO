@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Not Started</fullName>
+        <default>true</default>
+        <label>Not Started</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>First draft sent</fullName>
+        <default>false</default>
+        <label>First draft sent</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on someone else - EXTERNAL</fullName>
+        <default>false</default>
+        <label>Waiting on someone else - EXTERNAL</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on STASCO credit</fullName>
+        <default>false</default>
+        <label>Waiting on STASCO credit</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on STASCO legal</fullName>
+        <default>false</default>
+        <label>Waiting on STASCO legal</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on STASCO contracts</fullName>
+        <default>false</default>
+        <label>Waiting on STASCO contracts</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on someone else - STASCO</fullName>
+        <default>false</default>
+        <label>Waiting on someone else - STASCO</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Negotiating CSA</fullName>
+        <default>false</default>
+        <label>Negotiating CSA</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Deferred</fullName>
+        <default>false</default>
+        <label>Deferred</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

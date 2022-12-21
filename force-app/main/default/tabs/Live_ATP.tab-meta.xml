@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>Rv_LiveATP</auraComponent>
+    <description>Live view of availble to promise volume and Sales volume for all plants and tranches. Related Object(s) : ATP, Location</description>
+    <label>Live ATP</label>
+    <motif>Custom38: Camera</motif>
+</CustomTab>

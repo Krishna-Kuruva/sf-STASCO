@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Column_View</fullName>
+    <columns>NAME</columns>
+    <columns>SETUP_TYPE</columns>
+    <columns>External_Quotation_Number__c</columns>
+    <columns>External_Quote_Source__c</columns>
+    <columns>External_Quote_Type__c</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER.ALIAS</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>RE_Multiplier__c</columns>
+    <columns>RE_Country__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Quote_Type__c</field>
+        <operation>equals</operation>
+        <value>Market Premium</value>
+    </filters>
+    <filters>
+        <field>RE_Quote_Name__c</field>
+        <operation>equals</operation>
+        <value>Gasoil 0.001% Premium</value>
+    </filters>
+    <label>All Column View</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,2794 @@
+{
+  "resultPayload": {
+    "legalEntity": {
+      "names": [
+        {
+          "type": "Legal Title",
+          "value": "SBI (Mauritius) Ltd"
+        },
+        {
+          "type": "Former Name",
+          "value": "SBI International (Mauritius) Ltd"
+        },
+        {
+          "type": "Former Name",
+          "value": "State Bank International Ltd"
+        }
+      ],
+      "type": "Bank",
+      "status": "active",
+      "offshoreIndicator": true,
+      "registeredOffice": {
+        "name": "Bhumi Park, 45",
+        "types": [
+          "Registered Office",
+          "Head Office"
+        ],
+        "status": "active",
+        "locations": [
+          {
+            "address": {
+              "type": "physical",
+              "streetAddress": {
+                "addressLine1": "6th & 7th Floor"
+              },
+              "city": "Ebene Cybercity",
+              "subarea": {
+                "name": "",
+                "displayName": "",
+                "isUsedInAddress": false
+              },
+              "area": {
+                "name": "",
+                "displayName": "",
+                "isUsedInAddress": false
+              },
+              "country": "Mauritius",
+              "postalCode": null,
+              "postalCodePosition": null
+            },
+            "contactDetails": {
+              "telephone": [
+                "+230-4044900"
+              ],
+              "fax": [
+                "+230-4546890"
+              ]
+            }
+          }
+        ],
+        "departments": [
+          {
+            "name": "Correspondent Banking",
+            "routingCodes": [{"routingCodeType":"test","routingCodeValue":"test","routingCodeStatus":"test"}],
+            "contactDetails": {
+              "telephone": [
+                "+230-2101485"
+              ],
+              "email": [
+                "sbilmaur@intnet.mu"
+              ]
+            }
+          },
+          {
+            "name": "Documentary Credits",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044901"
+              ]
+            }
+          },
+          {
+            "name": "Foreign Exchange",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044922"
+              ]
+            }
+          },
+          {
+            "name": "International Banking",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-2122054"
+              ],
+              "fax": [
+                "+230-2122050"
+              ],
+              "email": [
+                "sbilmaur@intnet.mu"
+              ]
+            }
+          },
+          {
+            "name": "International Division",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044955"
+              ]
+            }
+          }
+        ],
+        "identifiers": {
+          "bankersAlmanacId": "30635-0",
+          "swiftBICs": [
+            "INILMUMU"
+          ],
+          "giin": [
+            "Z2N8XN.99999.SL.480"
+          ]
+        }
+      },
+      "headOffice": {
+        "name": "Bhumi Park, 45",
+        "types": [
+          "Registered Office",
+          "Head Office"
+        ],
+        "status": "active",
+        "locations": [
+          {
+            "address": {
+              "type": "physical",
+              "streetAddress": {
+                "addressLine1": "6th & 7th Floor"
+              },
+              "city": "Ebene Cybercity",
+              "subarea": {
+                "name": "",
+                "displayName": "",
+                "isUsedInAddress": false
+              },
+              "area": {
+                "name": "",
+                "displayName": "",
+                "isUsedInAddress": false
+              },
+              "country": "Mauritius",
+              "postalCode": null,
+              "postalCodePosition": null
+            },
+            "contactDetails": {
+              "telephone": [
+                "+230-4044900"
+              ],
+              "fax": [
+                "+230-4546890"
+              ]
+            }
+          }
+        ],
+        "departments": [
+          {
+            "name": "Correspondent Banking",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-2101485"
+              ],
+              "email": [
+                "sbilmaur@intnet.mu"
+              ]
+            }
+          },
+          {
+            "name": "Documentary Credits",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044901"
+              ]
+            }
+          },
+          {
+            "name": "Foreign Exchange",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044922"
+              ]
+            }
+          },
+          {
+            "name": "International Banking",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-2122054"
+              ],
+              "fax": [
+                "+230-2122050"
+              ],
+              "email": [
+                "sbilmaur@intnet.mu"
+              ]
+            }
+          },
+          {
+            "name": "International Division",
+            "routingCodes": [],
+            "contactDetails": {
+              "telephone": [
+                "+230-4044955"
+              ]
+            }
+          }
+        ],
+        "identifiers": {
+          "bankersAlmanacId": "30635-0",
+          "swiftBICs": [
+            "INILMUMU"
+          ],
+          "giin": [
+            "Z2N8XN.99999.SL.480"
+          ]
+        }
+      },
+      "identifiers": {
+        "bankersAlmanacId": "30635"
+      },
+      "overview": {
+        "activities": [
+          "Commercial Bank",
+          "Corporate Bank",
+          "Investment Bank",
+          "Merchant Bank",
+          "Mortgage Bank",
+          "Offshore Bank",
+          "Retail Bank",
+          "Savings Bank"
+        ],
+        "services": [
+          "Account Management",
+          "Bills of Exchange",
+          "Commercial Banking",
+          "Corporate Banking",
+          "Corporate Finance",
+          "Correspondent Banking",
+          "Documentary Credits",
+          "Foreign Exchange",
+          "Guarantees",
+          "International Settlements",
+          "Investment Banking",
+          "Letters of Credit",
+          "Merchant Banking",
+          "Money Markets",
+          "Retail Banking",
+          "Syndicated Loans",
+          "Trust Administration",
+          "Offshore Services",
+          "Custody",
+          "Internet Banking",
+          "Financial Futures",
+          "Lines of Credit - Business",
+          "Mortgages",
+          "Savings Accounts - Personal",
+          "Unsecured Loans - Personal",
+          "Unsecured Loans - Commercial"
+        ]
+      },
+      "memberOf": {
+        "items": [
+          {
+            "bankersAlmanacId": "65453",
+            "name": "Mauritius Bankers Association Limited"
+          },
+          {
+            "bankersAlmanacId": "169030",
+            "name": "The Mauritius Chamber of Commerce and Industry"
+          }
+        ]
+      },
+      "regulators": [
+        {
+          "bankersAlmanacId": "1123",
+          "name": "Bank of Mauritius",
+          "regulatorType": "Regulator",
+          "registeredOffice": {
+            "name": "Sir William Newton Street",
+            "types": [
+              "Registered Office",
+              "Head Office"
+            ],
+            "status": "active",
+            "locations": [
+              {
+                "address": {
+                  "type": "physical",
+                  "streetAddress": {
+                    "addressLine1": "Sir William Newton Street"
+                  },
+                  "city": "Port Louis",
+                  "country": "Mauritius"
+                },
+                "contactDetails": {
+                  "telephone": [
+                    "+230-2023800"
+                  ],
+                  "fax": [
+                    "+230-2089204"
+                  ],
+                  "email": [
+                    "communications@bom.mu"
+                  ]
+                }
+              }
+            ],
+            "departments": []
+          }
+        }
+      ],
+      "auditors": [
+        {
+          "bankersAlmanacId": "337668",
+          "name": "Kemp Chatteris Deloitte",
+          "auditorType": "AML Auditor"
+        },
+        {
+          "bankersAlmanacId": "337083",
+          "name": "Deloitte",
+          "auditorType": "Financial Auditor"
+        }
+      ],
+      "ownership": {
+        "ultimateParent": {
+          "name": "Government of the Republic of India",
+          "entityType": "legalEntity",
+          "bankersAlmanacId": "163403"
+        },
+        "directOwners": [
+          {
+            "name": "State Bank of India",
+            "country": "India",
+            "percentageOwnership": 96.6,
+            "bankersAlmanacId": "4297",
+            "lastVerifiedDate": "2019-05-29",
+            "entityType": "institution"
+          },
+          {
+            "name": "Undefined, 394 other minority shareholders holding less than 1% shareholding in SBIML",
+            "percentageOwnership": 2.23,
+            "lastVerifiedDate": "2019-05-29",
+            "entityType": "owner"
+          },
+          {
+            "name": "Indian Ocean General Assurance Ltd",
+            "country": "Mauritius",
+            "percentageOwnership": 1.17,
+            "bankersAlmanacId": "218179",
+            "lastVerifiedDate": "2019-05-29",
+            "entityType": "institution"
+          }
+        ],
+        "ubos": [{"name":"test","entityType":"test","percentageOwnership":"test"}],
+        "directSubsidiaries": [{"name":"test","country":"test","bankersAlmanacId":"test","entityType":"test"}],
+        "groupStructure": {
+          "data": {
+            "bankersAlmanacId": "163403",
+            "name": "Government of the Republic of India",
+            "children": [
+              {
+                "bankersAlmanacId": "251952",
+                "name": "Administrator of the Specified Undertaking of the Unit Trust of India (SUUTI)",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "2493",
+                "name": "Export-Import Bank of India",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "334495",
+                "name": "National Insurance Company Limited",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "3865",
+                "name": "Reserve Bank of India",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "97524",
+                    "name": "Bhartiya Reserve Bank Note Mudran Limited",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "97416",
+                    "name": "Deposit Insurance and Credit Guarantee Corporation",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "102115",
+                    "name": "The National Housing Bank",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "2885",
+                "name": "Indian Overseas Bank",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "4497",
+                "name": "UCO Bank",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "1959",
+                "name": "Central Bank of India",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "62666",
+                    "name": "Centbank Financial Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "1097",
+                "name": "Bank of India",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "234663",
+                    "name": "Bank of India (New Zealand) Ltd",
+                    "country": "New Zealand",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "246989",
+                    "name": "Bank of India (Uganda) Limited",
+                    "country": "Uganda",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "45121",
+                    "name": "Bank of India Shareholding Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "203990",
+                    "name": "Bank of India Tanzania Ltd",
+                    "country": "Tanzania",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "22010",
+                    "name": "PT Bank of India Indonesia Tbk",
+                    "country": "Indonesia",
+                    "percentageOwnership": 76,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "360903",
+                    "name": "BOI AXA Investment Managers Private Limited",
+                    "country": "India",
+                    "percentageOwnership": 51,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "360904",
+                    "name": "BOI AXA Trustee Services Private LTD",
+                    "country": "India",
+                    "percentageOwnership": 51,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "1121",
+                "name": "Bank of Maharashtra",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "35139",
+                    "name": "Maharashtra Executors & Trustee Co Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "3811",
+                "name": "Punjab & Sind Bank",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "3812",
+                "name": "Punjab National Bank",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "282929",
+                    "name": "PNB Investment Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "191305",
+                    "name": "Punjab National Bank (International) Limited",
+                    "country": "UK",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "379840",
+                    "name": "PNB Insurance Broking Private Ltd",
+                    "country": "India",
+                    "percentageOwnership": 81,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "55081",
+                    "name": "PNB Gilts Ltd",
+                    "country": "India",
+                    "percentageOwnership": 74.07,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "230295",
+                    "name": "Druk PNB Bank Ltd",
+                    "country": "Bhutan",
+                    "percentageOwnership": 51,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "2883",
+                "name": "Indian Bank",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "37662",
+                    "name": "IndBank Merchant Banking Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 64.84,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "37665",
+                    "name": "IndBank Housing Ltd",
+                    "country": "India",
+                    "percentageOwnership": 51,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "1860",
+                "name": "Canara Bank",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "349871",
+                    "name": "Canara Bank (Tanzania) Limited",
+                    "country": "Tanzania",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "50728",
+                    "name": "Canarabank Securities Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "44309",
+                    "name": "Canbank Financial Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "44681",
+                    "name": "Canbank Venture Capital Fund",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "212151",
+                    "name": "SyndBank Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "44310",
+                    "name": "Canbank Factors Ltd",
+                    "country": "India",
+                    "percentageOwnership": 70,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "44682",
+                    "name": "Canbank Computer Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 69.14,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "225458",
+                    "name": "Canara HSBC Oriental Bank of Commerce Life Insurance Company",
+                    "country": "India",
+                    "percentageOwnership": 51,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "218065",
+                    "name": "Canara Robeco Asset Management Company Ltd",
+                    "country": "India",
+                    "percentageOwnership": 51,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "4534",
+                "name": "Union Bank of India",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "33411",
+                    "name": "Andhra Bank Financial Services",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "89461",
+                    "name": "Corpbank Securities Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "285885",
+                    "name": "Union Asset Management Company Private Limited",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "269232",
+                    "name": "Union Bank of India (UK) Limited",
+                    "country": "UK",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "285904",
+                    "name": "UNION Trustee Company Private Limited",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "1045",
+                "name": "Bank of Baroda",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "119186",
+                    "name": "Bank of Baroda (Botswana) Limited",
+                    "country": "Botswana",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "123437",
+                    "name": "Bank of Baroda (Guyana) Incorporated",
+                    "country": "Guyana",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "226254",
+                    "name": "Bank of Baroda (NewZealand) Ltd",
+                    "country": "New Zealand",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "199576",
+                    "name": "Bank of Baroda (Trinidad and Tobago) Limited",
+                    "country": "Trinidad & Tobago",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "395441",
+                    "name": "Baroda Global Shared Services Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "395442",
+                    "name": "BarodaSun Technologies Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "131524",
+                    "name": "BOB Capital Market Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "131523",
+                    "name": "BOB Cards Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "167709",
+                    "name": "Bank of Baroda (Tanzania) Ltd",
+                    "country": "Tanzania",
+                    "percentageOwnership": 99.99,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "20790",
+                    "name": "Nainital Bank Ltd",
+                    "country": "India",
+                    "percentageOwnership": 98.57,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "32398",
+                    "name": "Bank of Baroda (Kenya) Ltd",
+                    "country": "Kenya",
+                    "percentageOwnership": 86.7,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "1046",
+                    "name": "Bank of Baroda (Uganda) Limited",
+                    "country": "Uganda",
+                    "percentageOwnership": 80,
+                    "children": [
+                      {
+                        "bankersAlmanacId": "123638",
+                        "name": "Baroda Capital Markets (Uganda) Limited",
+                        "country": "Uganda",
+                        "percentageOwnership": 100,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "bankersAlmanacId": "275016",
+                "name": "Repco Bank Ltd",
+                "country": "India",
+                "children": []
+              },
+              {
+                "bankersAlmanacId": "4297",
+                "name": "State Bank of India",
+                "country": "India",
+                "children": [
+                  {
+                    "bankersAlmanacId": "268401",
+                    "name": "Bank SBI Botswana ltd.",
+                    "country": "Botswana",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "4298",
+                    "name": "SBI Canada Bank",
+                    "country": "Canada",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "39719",
+                    "name": "SBI Capital Markets Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "404902",
+                    "name": "SBI Infra Management Solutions Pvt. Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "223999",
+                    "name": "SBI Mutual Fund Trustee Company PVT Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "249512",
+                    "name": "SBICAP (Singapore) Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "224000",
+                    "name": "SBICAP (UK) Ltd",
+                    "country": "UK",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "223996",
+                    "name": "SBICAP Securities Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "223997",
+                    "name": "SBICAP Trustee Company Ltd",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "223998",
+                    "name": "SBICAPS Ventures LTD",
+                    "country": "India",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "372979",
+                    "name": "State Bank of India (UK) Limited",
+                    "country": "UK",
+                    "percentageOwnership": 100,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "21968",
+                    "name": "PT Bank SBI Indonesia",
+                    "country": "Indonesia",
+                    "percentageOwnership": 99,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "30635",
+                    "name": "SBI (Mauritius) Ltd",
+                    "country": "Mauritius",
+                    "percentageOwnership": 96.6,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "220600",
+                    "name": "SBI Pension Funds Pvt Ltd",
+                    "country": "India",
+                    "percentageOwnership": 92.6,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "231632",
+                    "name": "SBI Global Factors Ltd",
+                    "country": "India",
+                    "percentageOwnership": 86.18,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "231633",
+                    "name": "SBI Payment Services Pvt Ltd",
+                    "country": "India",
+                    "percentageOwnership": 74,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "54826",
+                    "name": "SBI DFHI Ltd",
+                    "country": "India",
+                    "percentageOwnership": 72.17,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "220602",
+                    "name": "SBI General Insurance Company Ltd",
+                    "country": "India",
+                    "percentageOwnership": 70,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "108916",
+                    "name": "SBI Cards and Payment Services Pvt Ltd",
+                    "country": "India",
+                    "percentageOwnership": 69.5,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "249511",
+                    "name": "SBI-SG Global Securities Services Pvt Ltd",
+                    "country": "India",
+                    "percentageOwnership": 65,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "231634",
+                    "name": "SBI Funds Management (International) Private Ltd",
+                    "country": "Mauritius",
+                    "percentageOwnership": 63,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "39720",
+                    "name": "SBI Funds Management Pvt Ltd",
+                    "country": "India",
+                    "percentageOwnership": 63,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "158148",
+                    "name": "Commercial Indo Bank LLC",
+                    "country": "Russian Federation",
+                    "percentageOwnership": 60,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "124068",
+                    "name": "SBI Life Insurance Company Ltd",
+                    "country": "India",
+                    "percentageOwnership": 57.6,
+                    "children": []
+                  },
+                  {
+                    "bankersAlmanacId": "30677",
+                    "name": "Nepal SBI Bank Ltd",
+                    "country": "Nepal",
+                    "percentageOwnership": 55,
+                    "children": [
+                      {
+                        "bankersAlmanacId": "389409",
+                        "name": "Nepal SBI Merchant Banking Ltd",
+                        "country": "Nepal",
+                        "percentageOwnership": 100,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "link": "https://ownership.bankersalmanac.com/kyc-webapp/#/legalentity/30635/ownership/groupstructure/summary"
+        }
+      },
+      "stockExchanges": [],
+      "personnel": [
+        {
+          "name": "Mr. Parida Patitapaban",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr Tajinder Pal Singh",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. S S Ramakrishna",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. Debasish Ratha",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mrs. Shashi Prabha",
+          "titles": [
+            "Chief Risk Officer"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr Venkat Nageswar Chalasani",
+          "titles": [
+            "Non Executive Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. Rajapur Subbaramaiah Ramesh",
+          "titles": [
+            "Non Executive Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. K Ramkhelawon",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Patitapaban Parida",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. Umesh Chandra Sahu",
+          "titles": [
+            "Vice-President"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. B.K Maudarbocus-Boodoo",
+          "titles": [
+            "Independent Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. S S Asthana",
+          "titles": [
+            "Managing Director",
+            "Chief Executive Officer"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr Sanjay Dattatraya Naik",
+          "titles": [
+            "Non Executive Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. Mukesh Arya",
+          "titles": [
+            "Chief Operating Officer"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. S S Asthana",
+          "titles": [
+            "Executive Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. G Gopee",
+          "titles": [
+            "Independent Director"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. A. B. Mosaheb",
+          "titles": [
+            "Vice-President",
+            "Company Secretary"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        },
+        {
+          "name": "Mr. Kamlesh Choudhary",
+          "titles": [
+            "Manager"
+          ],
+          "lastVerifiedDate": "2020-06-23"
+        }
+      ],
+      "dueDiligenceDocuments": [
+        {
+          "nametype": "AML Controls",
+          "publishedDate": "2020-06-24T10:28:42Z",
+          "documentRecordType": "child",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Anti-Money Laundering Controls",
+          "parentDocument": {
+            "nametype": "AML Controls",
+            "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=1123&docid=AMLD50542",
+            "filename": "0001123_AMLD50542_0001.PDF",
+            "publishedDate": "2020-06-24T10:28:42Z",
+            "documentRecordType": "parent",
+            "documentStatus": "Approved",
+            "documentGroup": "Due Diligence Documents",
+            "documentSet": "Anti-Money Laundering Controls"
+          }
+        },
+        {
+          "nametype": "Interim Report",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=INTD106662",
+          "filename": "0030635_INTD106662_0001.PDF",
+          "publishedDate": "2016-09-01T10:24:05Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Interim Financial Reports"
+        },
+        {
+          "nametype": "Abbreviated Accounts",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=ANND206062",
+          "filename": "0030635_ANND206062_0001.PDF",
+          "publishedDate": "2020-06-12T05:08:52Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Financial Reports"
+        },
+        {
+          "nametype": "Law/Regulations",
+          "publishedDate": "2020-02-20T18:34:02Z",
+          "documentRecordType": "child",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Corporate Governance Documents",
+          "parentDocument": {
+            "nametype": "Law/Regulations",
+            "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=1123&docid=CICD62436",
+            "filename": "0001123_CICD62436_0001.PDF",
+            "publishedDate": "2020-02-20T18:34:02Z",
+            "documentRecordType": "parent",
+            "documentStatus": "Approved",
+            "documentGroup": "Due Diligence Documents",
+            "documentSet": "Corporate Governance Documents"
+          }
+        },
+        {
+          "nametype": "List of Regulated Entities",
+          "publishedDate": "2020-02-11T07:35:02Z",
+          "documentRecordType": "child",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Licence Information",
+          "parentDocument": {
+            "nametype": "List of Regulated Entities",
+            "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=1123&docid=BALD40692",
+            "filename": "0001123_BALD40692_0001.PDF",
+            "publishedDate": "2020-02-11T07:35:02Z",
+            "documentRecordType": "parent",
+            "documentStatus": "Approved",
+            "documentGroup": "Due Diligence Documents",
+            "documentSet": "Licence Information"
+          }
+        },
+        {
+          "nametype": "Annual Report",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=ANND206061",
+          "filename": "0030635_ANND206061_0001.PDF",
+          "publishedDate": "2020-06-12T05:09:15Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Financial Reports"
+        },
+        {
+          "nametype": "Interim Report",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=INTD93844",
+          "filename": "0030635_INTD93844_0001.PDF",
+          "publishedDate": "2016-03-09T07:50:35Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Interim Financial Reports"
+        },
+        {
+          "nametype": "Interim Report",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=INTD93948",
+          "filename": "0030635_INTD93948_0001.PDF",
+          "publishedDate": "2016-03-16T10:55:46Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Interim Financial Reports"
+        },
+        {
+          "nametype": "UBO declaration",
+          "publishedDate": "2016-07-21T10:09:12Z",
+          "documentRecordType": "reason",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Ultimate Beneficial Owners"
+        },
+        {
+          "nametype": "USA PATRIOT Act Certificate",
+          "publishedDate": "2020-02-05T14:02:41Z",
+          "documentRecordType": "child",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "USA PATRIOT Act Certification",
+          "parentDocument": {
+            "nametype": "USA PATRIOT Act Certificate",
+            "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=4297&docid=UPAD17578",
+            "filename": "0004297_UPAD17578_0001.PDF",
+            "publishedDate": "2020-02-05T14:02:41Z",
+            "documentRecordType": "parent",
+            "documentStatus": "Approved",
+            "documentGroup": "Due Diligence Documents",
+            "documentSet": "USA PATRIOT Act Certification"
+          }
+        },
+        {
+          "nametype": "Shareholder & Ownership Information",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=UBOD204",
+          "filename": "0030635_UBOD204_0001.PDF",
+          "publishedDate": "2016-07-21T09:19:02Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Ultimate Beneficial Owners"
+        },
+        {
+          "nametype": "Wolfsberg Group Questionnaire",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=AMLD25847",
+          "filename": "0030635_AMLD25847_0001.PDF",
+          "publishedDate": "2016-07-19T07:47:43Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Anti-Money Laundering Controls"
+        },
+        {
+          "nametype": "USA PATRIOT Act Certificate",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=UPAD11203",
+          "filename": "0030635_UPAD11203_0001.PDF",
+          "publishedDate": "2016-07-19T07:50:40Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "USA PATRIOT Act Certification"
+        },
+        {
+          "nametype": "AML Policies/Procedures",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=AMLD8724",
+          "filename": "0030635_AMLD8724_0001.PDF",
+          "publishedDate": "2012-04-02T15:39:26Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Anti-Money Laundering Controls"
+        },
+        {
+          "nametype": "Bank Licence",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=BALD858",
+          "filename": "0030635_BALD858_0001.PDF",
+          "publishedDate": "2009-03-11T16:49:38Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Licence Information"
+        },
+        {
+          "nametype": "Certificate of Incorporation/Registration",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=CICD4026",
+          "filename": "0030635_CICD4026_0001.PDF",
+          "publishedDate": "2010-03-01T16:45:37Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Corporate Governance Documents"
+        },
+        {
+          "nametype": "Certificate of Incorporation/Registration",
+          "link": "http://www.bankersalmanac.com/private/duediligence/pdf.aspx?ck=30635&docid=CICD1318",
+          "filename": "0030635_CICD1318_0001.PDF",
+          "publishedDate": "2009-03-11T16:50:24Z",
+          "documentRecordType": "parent",
+          "documentStatus": "Approved",
+          "documentGroup": "Due Diligence Documents",
+          "documentSet": "Corporate Governance Documents"
+        }
+      ],
+      "websites": [
+        "http://www.sbimauritius.com"
+      ],
+      "summary": {
+        "numberOfOffices": 16
+      }
+    },
+    "financials": [
+      {
+        "statementType": "Annual",
+        "periodStart": "2019-03-31",
+        "periodEnd": "2020-03-31",
+        "consolidated": false,
+        "originalCurrencyName": "US Dollar",
+        "originalCurrencyCode": "USD",
+        "orderOfMagnitude": 0,
+        "lineItemsSets": [
+          {
+            "currencyName": "US Dollar",
+            "currencyCode": "USD",
+            "exchangeRate": 1,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 48627188
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 78081411
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 435808436
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 255166637
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 10582227
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 16628917
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 1322606
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 846217422
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 165201046
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 231666707
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 405203940
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 16884079
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 7583324
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 19678326
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 846217422
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 17239380
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 5379635
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 21296409
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 1322606
+              }
+            ]
+          }
+        ],
+        "ratioItemSet": [
+          {
+            "lineName": "Net Profit/Equity Capital",
+            "lineValue": 0.91
+          },
+          {
+            "lineName": "Net Profit/Total Assets",
+            "lineValue": 0.16
+          },
+          {
+            "lineName": "Equity Capital/Total Assets",
+            "lineValue": 17.09
+          }
+        ]
+      },
+      {
+        "statementType": "Annual",
+        "periodStart": "2018-03-31",
+        "periodEnd": "2019-03-31",
+        "consolidated": false,
+        "originalCurrencyName": "US Dollar",
+        "originalCurrencyCode": "USD",
+        "orderOfMagnitude": 0,
+        "lineItemsSets": [
+          {
+            "currencyName": "US Dollar",
+            "currencyCode": "USD",
+            "exchangeRate": 1,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 48627188
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 74785456
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 471418308
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 265106186
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 9573455
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 10852829
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 15699917
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 896063339
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 201427769
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 192495304
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 455325880
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 20968553
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 7685687
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 18160146
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 896063339
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 24185189
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 4436581
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 12921853
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 15699917
+              }
+            ]
+          },
+          {
+            "currencyName": "Pound Sterling",
+            "currencyCode": "GBP",
+            "exchangeRate": 0.7673,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 37311641
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 57382880
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 361719268
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 203415977
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 7345712
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 8327376
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 12046546
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 687549400
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 154555527
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 147701647
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 349371548
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 16089171
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 5897228
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 13934280
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 687549400
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 18557296
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3404189
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 9914938
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 12046546
+              }
+            ]
+          },
+          {
+            "currencyName": "Euro",
+            "currencyCode": "EUR",
+            "exchangeRate": 0.8914,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 43346275
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 66663755
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 420222280
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 236315654
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 8533778
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 9674212
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 13994906
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 798750860
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 179552713
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 171590314
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 405877489
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 18691368
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 6851021
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 16187954
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 798750860
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 21558677
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3954768
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 11518540
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 13994906
+              }
+            ]
+          }
+        ],
+        "ratioItemSet": [
+          {
+            "lineName": "Net Profit/Equity Capital",
+            "lineValue": 10.47
+          },
+          {
+            "lineName": "Net Profit/Total Assets",
+            "lineValue": 1.75
+          },
+          {
+            "lineName": "Equity Capital/Total Assets",
+            "lineValue": 16.74
+          }
+        ]
+      },
+      {
+        "statementType": "Annual",
+        "periodStart": "2017-04-01",
+        "periodEnd": "2018-03-31",
+        "consolidated": false,
+        "originalCurrencyName": "US Dollar",
+        "originalCurrencyCode": "USD",
+        "orderOfMagnitude": 0,
+        "lineItemsSets": [
+          {
+            "currencyName": "US Dollar",
+            "currencyCode": "USD",
+            "exchangeRate": 1,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 48627188
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 71041969
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 781642115
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 165692623
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 7473920
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 40509338
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 1670508
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 1116657661
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 439001168
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 115013354
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 492041699
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 23591511
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 7939630
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 39070299
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 1116657661
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 23627763
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 4639500
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 26596755
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 1670508
+              }
+            ]
+          },
+          {
+            "currencyName": "Pound Sterling",
+            "currencyCode": "GBP",
+            "exchangeRate": 0.7135,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 34695499
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 50688445
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 557701649
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 118221687
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 5332642
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 28903413
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 1191907
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 796735241
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 313227333
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 82062028
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 351071752
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 16832543
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 5664926
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 27876658
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 796735241
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 16858409
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3310283
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 18976785
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 1191907
+              }
+            ]
+          },
+          {
+            "currencyName": "Euro",
+            "currencyCode": "EUR",
+            "exchangeRate": 0.8118,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 39475551
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 57671870
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 634537069
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 134509271
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 6067328
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 32885481
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 1356118
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 906502689
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 356381148
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 93367841
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 399439451
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 19151589
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 6445392
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 31717269
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 906502689
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 19181018
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3766346
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 21591246
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 1356118
+              }
+            ]
+          }
+        ],
+        "ratioItemSet": [
+          {
+            "lineName": "Net Profit/Equity Capital",
+            "lineValue": 1.03
+          },
+          {
+            "lineName": "Net Profit/Total Assets",
+            "lineValue": 0.15
+          },
+          {
+            "lineName": "Equity Capital/Total Assets",
+            "lineValue": 14.49
+          }
+        ]
+      },
+      {
+        "statementType": "Annual",
+        "periodStart": "2016-04-01",
+        "periodEnd": "2017-03-31",
+        "consolidated": false,
+        "originalCurrencyName": "US Dollar",
+        "originalCurrencyCode": "USD",
+        "orderOfMagnitude": 0,
+        "lineItemsSets": [
+          {
+            "currencyName": "US Dollar",
+            "currencyCode": "USD",
+            "exchangeRate": 1,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 48627188
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 73930805
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 681280732
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 227594953
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 5638546
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 44845965
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 10502105
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 1092420294
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 345854274
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 68027592
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 532379892
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 22932878
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 8105819
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 115119839
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 1092420294
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 23500964
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 4370806
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 17369665
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 10502105
+              }
+            ]
+          },
+          {
+            "currencyName": "Pound Sterling",
+            "currencyCode": "GBP",
+            "exchangeRate": 0.7962,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 38716967
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 58863707
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 542435719
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 181211102
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 4489410
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 35706357
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 8361776
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 869785038
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 275369173
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 54163569
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 423880870
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 18259157
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 6453853
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 91658416
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 869785038
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 18711468
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3480036
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 13829727
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 8361776
+              }
+            ]
+          },
+          {
+            "currencyName": "Euro",
+            "currencyCode": "EUR",
+            "exchangeRate": 0.9361,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 45519911
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 69206627
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 637746893
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 213051636
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 5278243
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 41980308
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 9831020
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 1022614637
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 323754186
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 63680629
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 498360817
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 21467467
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 7587857
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 107763681
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 1022614637
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 21999252
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 4091511
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 16259743
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 9831020
+              }
+            ]
+          }
+        ],
+        "ratioItemSet": [
+          {
+            "lineName": "Net Profit/Equity Capital",
+            "lineValue": 5.9
+          },
+          {
+            "lineName": "Net Profit/Total Assets",
+            "lineValue": 0.96
+          },
+          {
+            "lineName": "Equity Capital/Total Assets",
+            "lineValue": 16.29
+          }
+        ]
+      },
+      {
+        "statementType": "Annual",
+        "periodStart": "2015-04-01",
+        "periodEnd": "2016-03-31",
+        "consolidated": false,
+        "originalCurrencyName": "US Dollar",
+        "originalCurrencyCode": "USD",
+        "orderOfMagnitude": 0,
+        "lineItemsSets": [
+          {
+            "currencyName": "US Dollar",
+            "currencyCode": "USD",
+            "exchangeRate": 1,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 48627188
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 72583530
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 718216838
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 159077723
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 5152346
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 57496783
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 9628009
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 1070782417
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 289761213
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 86655662
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 632090869
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 20509855
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 7614354
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 34150464
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 1070782417
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 20563162
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 5639696
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 16574849
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 9628009
+              }
+            ]
+          },
+          {
+            "currencyName": "Pound Sterling",
+            "currencyCode": "GBP",
+            "exchangeRate": 0.69596444277553,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 33842794
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 50515556
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 499853381
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 110712439
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 3585850
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 40015717
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 6700752
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 745226488
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 201663501
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 60309260
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 439912769
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 14274130
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 5299320
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 23767509
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 745226488
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 14311230
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 3925028
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 11535506
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 6700752
+              }
+            ]
+          },
+          {
+            "currencyName": "Euro",
+            "currencyCode": "EUR",
+            "exchangeRate": 0.878773245411144,
+            "lineItemsSet": [
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Capital",
+                "lineValue": 42732272
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Reserves",
+                "lineValue": 63784464
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Deposits, &c",
+                "lineValue": 631149742
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Borrowings, &c",
+                "lineValue": 139793247
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Other Liabilities",
+                "lineValue": 4527744
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Retained Earnings",
+                "lineValue": 50526635
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Profit/(Loss)",
+                "lineValue": 8460837
+              },
+              {
+                "lineGroup": "Liabilities",
+                "lineName": "Total Liabilities",
+                "lineValue": 940974940
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Cash & Banks",
+                "lineValue": 254634402
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Investments",
+                "lineValue": 76150677
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Loans, &c",
+                "lineValue": 555464544
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Mortgages",
+                "lineValue": 18023512
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Fixed Assets",
+                "lineValue": 6691291
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Other Assets",
+                "lineValue": 30010514
+              },
+              {
+                "lineGroup": "Assets",
+                "lineName": "Total Assets",
+                "lineValue": 940974940
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Interest Inc.",
+                "lineValue": 18070357
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Income",
+                "lineValue": 4956014
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Other Expense",
+                "lineValue": 14565534
+              },
+              {
+                "lineGroup": "Profit and loss",
+                "lineName": "Net Profit",
+                "lineValue": 8460837
+              }
+            ]
+          }
+        ],
+        "ratioItemSet": [
+          {
+            "lineName": "Net Profit/Equity Capital",
+            "lineValue": 5.11
+          },
+          {
+            "lineName": "Net Profit/Total Assets",
+            "lineValue": 0.9
+          },
+          {
+            "lineName": "Equity Capital/Total Assets",
+            "lineValue": 17.59
+          }
+        ]
+      }
+    ]
+  },
+  "responseMessage": "Success",
+  "isSuccess": true,
+  "responseCode": 200
+}

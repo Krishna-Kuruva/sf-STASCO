@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thailand</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>Depot_Backbone__c</columns>
+    <columns>RE_Fixed_Premium__c</columns>
+    <columns>RE_Final_Price_Unit__c</columns>
+    <columns>RE_TH_HCV_Quote1__c</columns>
+    <columns>RE_TH_HCV_Quote2_Percent__c</columns>
+    <columns>RE_TH_HCV_Quote2__c</columns>
+    <columns>RE_TH_HCV_Quote1_Percent__c</columns>
+    <columns>RE_Primary_Transport_Cost__c</columns>
+    <columns>RE_Snh_Cost__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Depot_Pricing_Backbone__c.Thailand</value>
+    </filters>
+    <label>Thailand</label>
+</ListView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_FX_Rates</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>RE_Base_Unit__c</columns>
+    <columns>RE_Conversion_Unit__c</columns>
+    <columns>RE_Forex_Name__c</columns>
+    <columns>RE_Forex_Rate__c</columns>
+    <columns>RE_Pricing_Date__c</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_Trade_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Quote_Name__c</field>
+        <operation>equals</operation>
+        <value>Reuters FX rate (bid)</value>
+    </filters>
+    <filters>
+        <field>RE_Quote_Name__c</field>
+        <operation>equals</operation>
+        <value>Reuters FX rate (daily)</value>
+    </filters>
+    <label>Canada FX Rates</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

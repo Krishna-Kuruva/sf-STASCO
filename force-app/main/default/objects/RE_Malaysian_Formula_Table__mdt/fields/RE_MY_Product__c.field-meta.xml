@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_Product__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Product</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>BF ULG95</fullName>
+                <default>false</default>
+                <label>BF ULG95</label>
+            </value>
+            <value>
+                <fullName>Gasoil B0 0.001% S</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gasoil B0 0.001% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil B0 0.05% S</fullName>
+                <default>false</default>
+                <label>Gasoil B0 0.05% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil B7 0.001% S</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gasoil B7 0.001% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil B7 0.05% S</fullName>
+                <default>false</default>
+                <label>Gasoil B7 0.05% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil E2 B10</fullName>
+                <default>false</default>
+                <label>Gasoil E2 B10</label>
+            </value>
+            <value>
+                <fullName>Gasoil E5 B10</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gasoil E5 B10</label>
+            </value>
+            <value>
+                <fullName>Gasoil E5 B20</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gasoil E5 B20</label>
+            </value>
+            <value>
+                <fullName>IGO 10 ppm B0</fullName>
+                <default>false</default>
+                <label>IGO 10 ppm B0</label>
+            </value>
+            <value>
+                <fullName>IGO 10 ppm B10</fullName>
+                <default>false</default>
+                <label>IGO 10 ppm B10</label>
+            </value>
+            <value>
+                <fullName>IGO 10 ppm B20</fullName>
+                <default>false</default>
+                <label>IGO 10 ppm B20</label>
+            </value>
+            <value>
+                <fullName>IGO 10 ppm B7</fullName>
+                <default>false</default>
+                <label>IGO 10 ppm B7</label>
+            </value>
+            <value>
+                <fullName>Kerosene</fullName>
+                <default>false</default>
+                <label>Kerosene</label>
+            </value>
+            <value>
+                <fullName>MOGAS 95</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MOGAS 95</label>
+            </value>
+            <value>
+                <fullName>MOGAS 97</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MOGAS 97</label>
+            </value>
+            <value>
+                <fullName>SH ULG97</fullName>
+                <default>false</default>
+                <label>SH ULG97</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

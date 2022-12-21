@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commodity_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Commodity Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Crude Basis</fullName>
+                <default>false</default>
+                <label>Crude Basis</label>
+            </value>
+            <value>
+                <fullName>Ethanol</fullName>
+                <default>false</default>
+                <label>Ethanol</label>
+            </value>
+            <value>
+                <fullName>Fuel Oil</fullName>
+                <default>false</default>
+                <label>Fuel Oil</label>
+            </value>
+            <value>
+                <fullName>G C Diesel</fullName>
+                <default>false</default>
+                <label>G C Diesel</label>
+            </value>
+            <value>
+                <fullName>Jet</fullName>
+                <default>false</default>
+                <label>Jet</label>
+            </value>
+            <value>
+                <fullName>MB Propane</fullName>
+                <default>false</default>
+                <label>MB Propane</label>
+            </value>
+            <value>
+                <fullName>Nat Gas Basis</fullName>
+                <default>false</default>
+                <label>Nat Gas Basis</label>
+            </value>
+            <value>
+                <fullName>NYMEX Crude</fullName>
+                <default>false</default>
+                <label>NYMEX Crude</label>
+            </value>
+            <value>
+                <fullName>NYMEX Gasoline</fullName>
+                <default>false</default>
+                <label>NYMEX Gasoline</label>
+            </value>
+            <value>
+                <fullName>NYMEX Heating Oil</fullName>
+                <default>false</default>
+                <label>NYMEX Heating Oil</label>
+            </value>
+            <value>
+                <fullName>NYMEX Nat Gas</fullName>
+                <default>false</default>
+                <label>NYMEX Nat Gas</label>
+            </value>
+            <value>
+                <fullName>P+ Posting</fullName>
+                <default>false</default>
+                <label>P+ Posting</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

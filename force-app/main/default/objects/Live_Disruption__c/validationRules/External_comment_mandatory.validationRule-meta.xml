@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_comment_mandatory</fullName>
+    <active>true</active>
+    <description>If user enters external comment external check is mandatory and vice versa.</description>
+    <errorConditionFormula>AND(ISBLANK( External_Stakeholders_Comment__c ), External_Check__c == true)</errorConditionFormula>
+    <errorDisplayField>External_Stakeholders_Comment__c</errorDisplayField>
+    <errorMessage>Please enter Comment</errorMessage>
+</ValidationRule>

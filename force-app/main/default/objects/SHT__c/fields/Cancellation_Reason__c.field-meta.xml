@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancellation_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Cancellation Reason</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Saved Deal</fullName>
+                <default>false</default>
+                <label>Saved Deal</label>
+            </value>
+            <value>
+                <fullName>Z4</fullName>
+                <default>false</default>
+                <label>Z4</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Wrong Price</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Wrong Price</label>
+            </value>
+            <value>
+                <fullName>Wrong Volume</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Wrong Volume</label>
+            </value>
+            <value>
+                <fullName>Z5</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Z5</label>
+            </value>
+            <value>
+                <fullName>Z6</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Z6</label>
+            </value>
+            <value>
+                <fullName>Z9</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Z9</label>
+            </value>
+            <value>
+                <fullName>ZB</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZB</label>
+            </value>
+            <value>
+                <fullName>ZD</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZD</label>
+            </value>
+            <value>
+                <fullName>ZE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZE</label>
+            </value>
+            <value>
+                <fullName>ZF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZF</label>
+            </value>
+            <value>
+                <fullName>ZG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZG</label>
+            </value>
+            <value>
+                <fullName>ZH</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZH</label>
+            </value>
+            <value>
+                <fullName>ZI</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ZI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

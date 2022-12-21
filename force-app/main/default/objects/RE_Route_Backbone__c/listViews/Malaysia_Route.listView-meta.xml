@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia_Route</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Destination_Name__c</columns>
+    <columns>RE_Source_Name__c</columns>
+    <columns>RE_Route_Utilization__c</columns>
+    <columns>RE_MY_Primary_Transport_Cost__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_MY_Oil_Loss_Percentage__c</columns>
+    <columns>RE_MY_Bio_Loss_Percentage__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Route_Backbone__c.Malaysia</value>
+    </filters>
+    <filters>
+        <field>RE_Product_Name__c</field>
+        <operation>contains</operation>
+        <value>IGO 10 ppm B0</value>
+    </filters>
+    <filters>
+        <field>RE_Destination_Name__c</field>
+        <operation>equals</operation>
+        <value>Westport</value>
+    </filters>
+    <label>Malaysia Route</label>
+</ListView>

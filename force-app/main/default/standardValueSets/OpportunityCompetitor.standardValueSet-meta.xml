@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>BP</fullName>
+        <default>false</default>
+        <label>BP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Total</fullName>
+        <default>false</default>
+        <label>Total</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Esso</fullName>
+        <default>false</default>
+        <label>Esso</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Morgan Stanley</fullName>
+        <default>false</default>
+        <label>Morgan Stanley</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Barclays Capital</fullName>
+        <default>false</default>
+        <label>Barclays Capital</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Test</fullName>
+        <default>false</default>
+        <label>Test</label>
+    </standardValue>
+</StandardValueSet>

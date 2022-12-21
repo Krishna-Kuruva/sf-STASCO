@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_value_population_for_fields</fullName>
+    <active>true</active>
+    <description>Ensure Sold To, Plant, Material, Condition Type &amp; Payment Term are present</description>
+    <errorConditionFormula>AND(
+        Active__c = True,
+        ISPICKVAL(Country_Name__c, &apos;TU&apos;),
+        OR(
+        ISBLANK(RT_Sold_to_Name__c ),
+        ISBLANK(RT_Plant_Desc__c),
+        ISBLANK(RT_Material_Desc__c),
+        ISBLANK(RT_Condition_Type__c),
+        ISBLANK(RT_Payment_Term__c)
+        )
+        )</errorConditionFormula>
+    <errorMessage>Mandatory field missing. Sold To, Plant, Material, Condition Type &amp; Payment Term are required.</errorMessage>
+</ValidationRule>

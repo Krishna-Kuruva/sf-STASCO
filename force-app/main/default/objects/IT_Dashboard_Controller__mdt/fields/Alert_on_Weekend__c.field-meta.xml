@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alert_on_Weekend__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If checked, alert will be checked &amp; sent on weekends also</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>If checked, alert will be checked &amp; sent on weekends also</inlineHelpText>
+    <label>Alert on Weekend?</label>
+    <type>Checkbox</type>
+</CustomField>

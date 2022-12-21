@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Cost_Price__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Cost Price</label>
+    <referenceTo>RE_MY_CostPrice__c</referenceTo>
+    <relationshipLabel>Fixed Price Staging Table</relationshipLabel>
+    <relationshipName>Fixed_Price_Staging_Table_CND_CP</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

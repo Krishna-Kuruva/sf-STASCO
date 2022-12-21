@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_on_Sending_Alert_Section2</fullName>
+    <active>false</active>
+    <description>Select either one selection in section1 (All Changes,New items are added,Existing items are modified,Items are deleted)</description>
+    <errorConditionFormula>OR( 
+AND(NOT(ISBLANK(TEXT(changes_an_item_appears_in_following_reg__c))),Someone_else_changes_an_item__c = TRUE), 
+AND(NOT(ISBLANK(TEXT(changes_an_item_appears_in_following_reg__c))),Someone_changes_an_item_created_by_me__c = TRUE), 
+AND(NOT(ISBLANK(TEXT(changes_an_item_appears_in_following_reg__c))),Someone_changes_item_last_modified_by_me__c = TRUE), 
+AND(NOT(ISBLANK(TEXT(changes_an_item_appears_in_following_reg__c))),Someone_else_changes_an_item__c = TRUE,Someone_changes_an_item_created_by_me__c = TRUE), 
+AND(NOT(ISBLANK(TEXT(changes_an_item_appears_in_following_reg__c))),Someone_else_changes_an_item__c = TRUE,Someone_changes_an_item_created_by_me__c = TRUE,Someone_changes_item_last_modified_by_me__c= TRUE), 
+AND(Someone_else_changes_an_item__c = TRUE,Someone_changes_an_item_created_by_me__c= TRUE), 
+AND(Someone_else_changes_an_item__c = TRUE,Someone_changes_item_last_modified_by_me__c= TRUE), 
+AND(Someone_else_changes_an_item__c = TRUE,Someone_changes_an_item_created_by_me__c = TRUE,Someone_changes_item_last_modified_by_me__c= TRUE), 
+AND(Someone_changes_an_item_created_by_me__c = TRUE,Someone_changes_item_last_modified_by_me__c= TRUE) 
+)</errorConditionFormula>
+    <errorMessage>Please check any one option in Section2</errorMessage>
+</ValidationRule>

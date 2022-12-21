@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>RE_AM_Challenged_Price_Rejected</fullName>
+        <description>AM Challenged Price Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Challenged_User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/RE_MOA_Reject_Mail</template>
+    </alerts>
+    <alerts>
+        <fullName>RE_AM_Challenged_Price_has_been_approved</fullName>
+        <description>AM Challenged Price has been approved</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Challenged_User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/RE_MOA_Approved_Mail</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>RE_AgreedPrice</fullName>
+        <field>RE_Agreed_PSP__c</field>
+        <formula>RE_AM_Challenged_Price__c</formula>
+        <name>Agreed Price</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Agreed_PSP_Update</fullName>
+        <field>RE_Agreed_PSP__c</field>
+        <formula>RE_Final_PSP__c</formula>
+        <name>Agreed Price Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Status_Change_Approved</fullName>
+        <field>RE_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status Change Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Status_Change_Rejected</fullName>
+        <field>RE_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status Change Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Status_Change_Submitted</fullName>
+        <field>RE_Status__c</field>
+        <literalValue>Submitted</literalValue>
+        <name>Status Change Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

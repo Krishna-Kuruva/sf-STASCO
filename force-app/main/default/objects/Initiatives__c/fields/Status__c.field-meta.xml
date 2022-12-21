@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE(
+CASE(Overall_RAG__c,
+&quot;Red&quot;, &quot;http://www.stickpng.com/assets/images/58afdad6829958a978a4a693.png&quot;, 
+&quot;Amber&quot;, &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Circle_Fulvous_Solid.svg/600px-Circle_Fulvous_Solid.svg.png&quot;,
+&quot;Green&quot;, &quot;https://melbournechapter.net/images/green-transparent-color-4.png&quot;,
+&quot;--None--&quot;, &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/NA_gills_icon.svg/300px-NA_gills_icon.svg.png&quot;,
+
+NULL
+
+),
+
+&quot;&quot;,
+
+16,16
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>RAG Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

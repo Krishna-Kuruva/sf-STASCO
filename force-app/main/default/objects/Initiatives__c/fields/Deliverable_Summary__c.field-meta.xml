@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deliverable_Summary__c</fullName>
+    <description>Deliverable Summary (Character Limit of 1,500)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Deliverable Summary (Character Limit of 1,500)</inlineHelpText>
+    <label>Deliverable Summary</label>
+    <length>1500</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Covamo Header Edit</name>
+    <queueMembers>
+        <users>
+            <user>benny.vun@shell.com.stasco</user>
+            <user>carmen.chan@shell.com.stasco</user>
+            <user>kokfun.cheong@shell.com.stasco</user>
+            <user>cindy.chew@shell.com.stasco</user>
+            <user>dean.wong@shell.com.stasco</user>
+            <user>fred.anselmus@shell.com.stasco</user>
+            <user>ikhwan.i.razali@shell.com.stasco</user>
+            <user>james.j.wong@shell.com.stasco</user>
+            <user>jamie.koo@shell.com.stasco</user>
+            <user>javier.seah@shell.com.stasco</user>
+            <user>jenny.ngu@shell.com.stasco</user>
+            <user>joseph.j.tan@shell.com.stasco</user>
+            <user>justin.yong@shell.com.stasco</user>
+            <user>kok-sang.kong@shell.com.stasco</user>
+            <user>mindy.lew@shell.com.stasco</user>
+            <user>mohammadirman.adnan@shell.com.stasco</user>
+            <user>mohammad.morshidi@shell.com.stasco</user>
+            <user>thiam-luk.tai@shell.com.stasco</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Rev_Covamo_Detail__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Rev_Covamo_Header__c</sobjectType>
+    </queueSobject>
+</Queue>

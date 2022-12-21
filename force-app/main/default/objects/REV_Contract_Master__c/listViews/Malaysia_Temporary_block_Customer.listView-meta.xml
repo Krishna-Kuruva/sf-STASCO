@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia_Temporary_block_Customer</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Customer_Name__c</columns>
+    <columns>RT_Material_Desc__c</columns>
+    <columns>RT_Plant_Desc__c</columns>
+    <columns>RE_Custom_Ops_Calculation__c</columns>
+    <columns>Country_Name__c</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RT_Valid_From__c</columns>
+    <columns>RT_Valid_To__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>MY</value>
+    </filters>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>RE_Inactive_state__c</field>
+        <operation>equals</operation>
+        <value>Temporary blocked</value>
+    </filters>
+    <label>Malaysia Temporary block Customer</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gross_or_Nett_Billing__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Use for temperature adjustment</inlineHelpText>
+    <label>Gross or Net Billing</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Net Billing</fullName>
+                <default>false</default>
+                <label>Net Billing</label>
+            </value>
+            <value>
+                <fullName>Gross Billing</fullName>
+                <default>false</default>
+                <label>Gross Billing</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

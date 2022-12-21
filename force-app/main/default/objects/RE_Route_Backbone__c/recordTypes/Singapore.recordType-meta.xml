@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Singapore</fullName>
+    <active>true</active>
+    <label>Singapore</label>
+    <picklistValues>
+        <picklist>RE_Demmurage_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Fixed_Premium_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Freight_Charges_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_BreakBulk_Premium_Quote__c</picklist>
+        <values>
+            <fullName>Breakbulk Premium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_CO_Steer_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Freight_Charges_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_MR_Demurrage_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_MR_Frieght_Quote__c</picklist>
+        <values>
+            <fullName>MR Floating Premium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Market_Premium_Quote__c</picklist>
+        <values>
+            <fullName>Gasoil 0%2E001%25 Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E05%25 Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HIGH RON PREMIUM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kero Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MID RON PREMIUM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Port_Charges_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Primary_Transport_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Small_lot_premium_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_Storage_Handling_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_MY_TP_Premium_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Depot_Prices</fullName>
+    <columns>RT_Location_Code__c</columns>
+    <columns>RT_Location__c</columns>
+    <columns>RT_Product_Code__c</columns>
+    <columns>RT_Product__c</columns>
+    <columns>RT_Depot_Price__c</columns>
+    <columns>RT_Effective_Date__c</columns>
+    <columns>RT_Active__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Price_Book__c.Depot_Prices</value>
+    </filters>
+    <filters>
+        <field>RT_Country__c</field>
+        <operation>equals</operation>
+        <value>TU</value>
+    </filters>
+    <label>Turkey Depot Prices</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

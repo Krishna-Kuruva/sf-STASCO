@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Malaysia</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Malaysia</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Malaysia</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RT_Contract_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>RT Contract Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Turkey</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Singapore</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Singapore</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Singapore</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Singapore</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

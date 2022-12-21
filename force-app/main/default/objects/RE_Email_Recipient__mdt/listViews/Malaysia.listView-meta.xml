@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia</fullName>
+    <columns>MasterLabel</columns>
+    <columns>Country__c</columns>
+    <columns>Type__c</columns>
+    <columns>To_List__c</columns>
+    <columns>Cc_List__c</columns>
+    <columns>Bcc_List__c</columns>
+    <columns>Is_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>equals</operation>
+        <value>Malaysia</value>
+    </filters>
+    <label>Malaysia</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Condition Type</fullName>
+                <default>false</default>
+                <label>Condition Type</label>
+            </value>
+            <value>
+                <fullName>Daily Adjustment</fullName>
+                <default>false</default>
+                <label>Daily Adjustment</label>
+            </value>
+            <value>
+                <fullName>Distribution Channel Code</fullName>
+                <default>false</default>
+                <label>Distribution Channel Code</label>
+            </value>
+            <value>
+                <fullName>Division Code</fullName>
+                <default>false</default>
+                <label>Division Code</label>
+            </value>
+            <value>
+                <fullName>MY AM code</fullName>
+                <default>false</default>
+                <label>MY AM code</label>
+            </value>
+            <value>
+                <fullName>MY Customer Group</fullName>
+                <default>false</default>
+                <label>MY Customer Group</label>
+            </value>
+            <value>
+                <fullName>MY Distribution Channel</fullName>
+                <default>false</default>
+                <label>MY Distribution Channel</label>
+            </value>
+            <value>
+                <fullName>MY Division</fullName>
+                <default>false</default>
+                <label>MY Division</label>
+            </value>
+            <value>
+                <fullName>MY Payment Term</fullName>
+                <default>false</default>
+                <label>MY Payment Term</label>
+            </value>
+            <value>
+                <fullName>MY Pricing Level</fullName>
+                <default>false</default>
+                <label>MY Pricing Level</label>
+            </value>
+            <value>
+                <fullName>MY Sales</fullName>
+                <default>false</default>
+                <label>MY Sales</label>
+            </value>
+            <value>
+                <fullName>MY Tier</fullName>
+                <default>false</default>
+                <label>MY Tier</label>
+            </value>
+            <value>
+                <fullName>Payment Term</fullName>
+                <default>false</default>
+                <label>Payment Term</label>
+            </value>
+            <value>
+                <fullName>PH AM</fullName>
+                <default>false</default>
+                <label>PH AM</label>
+            </value>
+            <value>
+                <fullName>PH Delegated User</fullName>
+                <default>false</default>
+                <label>PH Delegated User</label>
+            </value>
+            <value>
+                <fullName>Sales Group Code</fullName>
+                <default>false</default>
+                <label>Sales Group Code</label>
+            </value>
+            <value>
+                <fullName>Sales Org Code</fullName>
+                <default>false</default>
+                <label>Sales Org Code</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

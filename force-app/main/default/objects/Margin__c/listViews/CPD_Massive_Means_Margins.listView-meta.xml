@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CPD_Massive_Means_Margins</fullName>
+    <columns>NAME</columns>
+    <columns>Plant__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>AGO_B0_Sales_Margin__c</columns>
+    <columns>AGO_B7_Sales_Margin__c</columns>
+    <columns>AGO_CH_Sales_Margin__c</columns>
+    <columns>IGO_1000_Sales_Margin__c</columns>
+    <columns>IGO_50_Sales_Margin__c</columns>
+    <columns>MOGAS_98_Sales_Margin__c</columns>
+    <columns>MOGAS_BOB10_Sales_Margin__c</columns>
+    <columns>MOGAS_BOB5_Sales_Margin__c</columns>
+    <columns>MOGAS_E0_Sales_Margin__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Margin__c.Massive_Means</value>
+    </filters>
+    <filters>
+        <field>Tranche__c</field>
+        <operation>equals</operation>
+        <value>ATP1</value>
+    </filters>
+    <label>CPD - Massive Means Margins (Tranche 1)</label>
+</ListView>

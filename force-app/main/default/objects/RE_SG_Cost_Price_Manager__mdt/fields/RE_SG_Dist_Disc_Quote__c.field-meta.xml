@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_SG_Dist_Disc_Quote__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Dist Disc Quote</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Distillation Discount</fullName>
+                <default>true</default>
+                <label>Distillation Discount</label>
+            </value>
+            <value>
+                <fullName>FuelSave95 Premium</fullName>
+                <default>false</default>
+                <label>FuelSave95 Premium</label>
+            </value>
+            <value>
+                <fullName>FuelSave98 Premium</fullName>
+                <default>false</default>
+                <label>FuelSave98 Premium</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

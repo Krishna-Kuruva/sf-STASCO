@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_IsSuccess__c</columns>
+    <columns>RE_Exception__c</columns>
+    <columns>RE_Job_Run_Count__c</columns>
+    <columns>RE_Job_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_Run_Time__c</columns>
+    <columns>RE_Run_Type__c</columns>
+    <columns>RE_User__c</columns>
+    <columns>RE_Job_Status__c</columns>
+    <columns>Other_Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Job_Type__c</field>
+        <operation>equals</operation>
+        <value>Malaysia Output,Malaysia AMV Output,CustomerOps Output,MY Export Report,MY Customer Opps CBU,Philippines Output,MY Data Analysis Report,PH Customer Opps CBU</value>
+    </filters>
+    <label>All</label>
+</ListView>

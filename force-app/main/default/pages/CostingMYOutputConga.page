@@ -1,0 +1,6 @@
+<apex:page standardController="RE_MY_CostPrice__c" extensions="RE_MY_CostingController" recordSetVar="costings" action="{!prepareMYUrl}">
+    <apex:outputPanel id="script">
+        <script type="text/javascript"> window.open("{!MYUrl}","_blank","width=640,height=480"); window.history.back(); 
+		</script>
+    </apex:outputPanel>
+</apex:page>

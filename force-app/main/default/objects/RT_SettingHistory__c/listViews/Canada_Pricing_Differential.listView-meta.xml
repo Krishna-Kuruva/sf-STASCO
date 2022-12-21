@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Pricing_Differential</fullName>
+    <columns>NAME</columns>
+    <columns>RE_CND_Differential_Type__c</columns>
+    <columns>RE_CND_BrandFee_Category__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Product_Classification_L0__c</columns>
+    <columns>RE_CND_Product_Groups__c</columns>
+    <columns>RE_Location_Name__c</columns>
+    <columns>RE_CND_Rack__c</columns>
+    <columns>RE_Value__c</columns>
+    <columns>RE_Rate_Unit__c</columns>
+    <columns>Country__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_CND_Rack__c</field>
+        <operation>equals</operation>
+        <value>Sarnia</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.Canada_Pricing_Differential</value>
+    </filters>
+    <label>Canada Pricing Differential</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

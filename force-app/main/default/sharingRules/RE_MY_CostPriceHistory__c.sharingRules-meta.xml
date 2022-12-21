@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Covamo_Malaysia_History</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Covamo Malaysia History</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Malaysia</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Covamo Malaysia,Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Philippines_History</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Philippines History</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Philippines</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Philippines</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Rev_Canada_Cost_Price_History_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Rev Canada Cost Price History Share</label>
+        <sharedTo>
+            <group>RE_CND_Manila_Teams</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Revolution_Canada_Cost_Price_History_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Revolution Canada Cost Price History Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Thailand_History</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Thailand History</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Thailand</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Thailand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

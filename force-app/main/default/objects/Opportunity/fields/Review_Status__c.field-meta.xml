@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Review_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Review Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quote requested</fullName>
+                <default>false</default>
+                <label>Quote requested</label>
+            </value>
+            <value>
+                <fullName>Requested</fullName>
+                <default>false</default>
+                <label>Requested</label>
+            </value>
+            <value>
+                <fullName>Under review</fullName>
+                <default>false</default>
+                <label>Under review</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Complete (See Notes)</fullName>
+                <default>false</default>
+                <label>Complete (See Notes)</label>
+            </value>
+            <value>
+                <fullName>Action required</fullName>
+                <default>false</default>
+                <label>Action required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

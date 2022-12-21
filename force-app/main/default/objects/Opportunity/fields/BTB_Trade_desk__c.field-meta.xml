@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BTB_Trade_desk__c</fullName>
+    <description>STUSCO trade desk for BTB deal</description>
+    <externalId>false</externalId>
+    <label>BTB Trade desk</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crude Swaps</fullName>
+                <default>false</default>
+                <label>Crude Swaps</label>
+            </value>
+            <value>
+                <fullName>Crude Options</fullName>
+                <default>false</default>
+                <label>Crude Options</label>
+            </value>
+            <value>
+                <fullName>Crude Basis</fullName>
+                <default>false</default>
+                <label>Crude Basis</label>
+            </value>
+            <value>
+                <fullName>Crude P+</fullName>
+                <default>false</default>
+                <label>Crude P+</label>
+            </value>
+            <value>
+                <fullName>Nat Gas Swaps</fullName>
+                <default>false</default>
+                <label>Nat Gas Swaps</label>
+            </value>
+            <value>
+                <fullName>Nat Gas Options</fullName>
+                <default>false</default>
+                <label>Nat Gas Options</label>
+            </value>
+            <value>
+                <fullName>Nat Gas Basis Swaps</fullName>
+                <default>false</default>
+                <label>Nat Gas Basis Swaps</label>
+            </value>
+            <value>
+                <fullName>Nat Gas Basis Options</fullName>
+                <default>false</default>
+                <label>Nat Gas Basis Options</label>
+            </value>
+            <value>
+                <fullName>Gasoline Swaps</fullName>
+                <default>false</default>
+                <label>Gasoline Swaps</label>
+            </value>
+            <value>
+                <fullName>Gasoline Options</fullName>
+                <default>false</default>
+                <label>Gasoline Options</label>
+            </value>
+            <value>
+                <fullName>Heating Oil Swaps</fullName>
+                <default>false</default>
+                <label>Heating Oil Swaps</label>
+            </value>
+            <value>
+                <fullName>Heating Oil Options</fullName>
+                <default>false</default>
+                <label>Heating Oil Options</label>
+            </value>
+            <value>
+                <fullName>Jet Swaps</fullName>
+                <default>false</default>
+                <label>Jet Swaps</label>
+            </value>
+            <value>
+                <fullName>Jet Options</fullName>
+                <default>false</default>
+                <label>Jet Options</label>
+            </value>
+            <value>
+                <fullName>Propane Swaps</fullName>
+                <default>false</default>
+                <label>Propane Swaps</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

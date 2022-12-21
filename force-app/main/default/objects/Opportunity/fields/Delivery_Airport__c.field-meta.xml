@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Airport__c</fullName>
+    <externalId>false</externalId>
+    <label>Delivery Airport</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dublin</fullName>
+                <default>false</default>
+                <label>Dublin</label>
+            </value>
+            <value>
+                <fullName>Frankfurt Hahn</fullName>
+                <default>false</default>
+                <label>Frankfurt Hahn</label>
+            </value>
+            <value>
+                <fullName>London Gatwick</fullName>
+                <default>false</default>
+                <label>London Gatwick</label>
+            </value>
+            <value>
+                <fullName>London Heathrow</fullName>
+                <default>false</default>
+                <label>London Heathrow</label>
+            </value>
+            <value>
+                <fullName>London Luton</fullName>
+                <default>false</default>
+                <label>London Luton</label>
+            </value>
+            <value>
+                <fullName>London Stansted</fullName>
+                <default>false</default>
+                <label>London Stansted</label>
+            </value>
+            <value>
+                <fullName>New York - Newark airport</fullName>
+                <default>false</default>
+                <label>New York - Newark airport</label>
+            </value>
+            <value>
+                <fullName>Paris CDG</fullName>
+                <default>false</default>
+                <label>Paris CDG</label>
+            </value>
+            <value>
+                <fullName>Paris Beauvais</fullName>
+                <default>false</default>
+                <label>Paris Beauvais</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

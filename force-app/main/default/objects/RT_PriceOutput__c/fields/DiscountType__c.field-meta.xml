@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountType__c</fullName>
+    <externalId>false</externalId>
+    <label>Discount Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Discount</fullName>
+                <default>true</default>
+                <label>No Discount</label>
+            </value>
+            <value>
+                <fullName>YP04 - Percentage</fullName>
+                <default>false</default>
+                <label>YP04 - Percentage</label>
+            </value>
+            <value>
+                <fullName>YP04 - Unit</fullName>
+                <default>false</default>
+                <label>YP04 - Unit</label>
+            </value>
+            <value>
+                <fullName>YP04 - Tupras Flat</fullName>
+                <default>false</default>
+                <label>YP04 - Tupras Flat</label>
+            </value>
+            <value>
+                <fullName>YD05 - Percentage</fullName>
+                <default>false</default>
+                <label>YD05 - Percentage</label>
+            </value>
+            <value>
+                <fullName>YD07 - Unit</fullName>
+                <default>false</default>
+                <label>YD07 - Unit</label>
+            </value>
+            <value>
+                <fullName>YD06 - Unit</fullName>
+                <default>false</default>
+                <label>YD06 - Unit</label>
+            </value>
+            <value>
+                <fullName>YD07_YD06 - Unit</fullName>
+                <default>false</default>
+                <label>YD07_YD06 - Unit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

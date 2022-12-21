@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Initiatives</fullName>
+    <columns>NAME</columns>
+    <columns>Initiative_Status__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Overall_RAG__c</columns>
+    <columns>Next_Milestone_Date__c</columns>
+    <columns>Actual_L1__c</columns>
+    <columns>Actual_L2__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Initiative_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Cancelled,On Hold</value>
+    </filters>
+    <label>My Initiatives</label>
+</ListView>

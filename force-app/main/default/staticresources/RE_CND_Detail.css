@@ -1,0 +1,15 @@
+.slds-button_neutral, .slds-button--neutral {
+    height: 22px;
+}
+/*.slds-input {
+	max-height: 22px;
+	min-height: 22px;
+}*/
+
+.slds-section__title-action {
+    height: 25px;
+}
+.slds-button_icon-border-filled, .slds-button--icon-border-filled, .slds-button_icon-border, .slds-button--icon-border,.slds-button_brand,
+.slds-button--brand  {
+    height: 22px;
+}

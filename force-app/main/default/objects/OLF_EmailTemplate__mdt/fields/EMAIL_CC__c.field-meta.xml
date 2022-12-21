@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EMAIL_CC__c</fullName>
+    <description>Enter emails to be sent as CC in semicolon (;) separated, e.g. abc@test.com; efz@test.com;</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter emails to be sent as CC in semicolon (;) separated, e.g. abc@test.com; efz@test.com;</inlineHelpText>
+    <label>EMAIL CC</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

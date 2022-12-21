@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Turkey_Aureus_Data_Inactive</fullName>
+    <columns>NAME</columns>
+    <columns>RT_Sold_to_Number__c</columns>
+    <columns>RT_Sold_to_Name__c</columns>
+    <columns>RT_Plant_Code__c</columns>
+    <columns>RT_Plant_Desc__c</columns>
+    <columns>RT_Material_Number__c</columns>
+    <columns>RT_Material_Desc__c</columns>
+    <columns>RT_Condition_Type__c</columns>
+    <columns>RT_Key_Value__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>TU</value>
+    </filters>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Turkey Aureus Data Inactive</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

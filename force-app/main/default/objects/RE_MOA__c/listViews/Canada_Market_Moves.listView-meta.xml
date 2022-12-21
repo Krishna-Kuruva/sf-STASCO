@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Market_Moves</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Initial_Version__c</columns>
+    <columns>RE_CND_Marker_Name__c</columns>
+    <columns>RE_CND_Group__c</columns>
+    <columns>RE_Price_Value__c</columns>
+    <columns>RE_CND_Delta_Percentage__c</columns>
+    <columns>RE_CND_Actual_Delta__c</columns>
+    <columns>RE_CND_CAD_Delta_cpl__c</columns>
+    <columns>RE_CND_PrvDay_Delta_Percentage__c</columns>
+    <columns>RE_Base_Rate_Unit__c</columns>
+    <columns>RE_Converted_Rate_Unit__c</columns>
+    <columns>RE_CND_Effective_Date__c</columns>
+    <columns>RE_CND_Effective_From_Date__c</columns>
+    <columns>RE_CND_Effective_To_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MOA__c.Canada_Market_Moves</value>
+    </filters>
+    <label>Canada Market Moves</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>PH_Rejection_Action</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>PH Rejection Action</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_BM_Approve</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Approved</literalValue>
+        <name>BM Approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Latest_price_dt_update</fullName>
+        <field>RE_Latest_price_dt__c</field>
+        <formula>NOW()</formula>
+        <name>Latest_price_dt_update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_PM_approve</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Approved</literalValue>
+        <name>PM approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_STL_Support</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Support STL</literalValue>
+        <name>STL Support</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_STL_approve</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Approved</literalValue>
+        <name>STL approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Support_PM</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Support PM</literalValue>
+        <name>Support PM</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Update_Approve</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Update Approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Update_Reject</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_Updated_Support_STL</fullName>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <literalValue>Support STL</literalValue>
+        <name>Updated Support STL</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_updatePH_Latest_price_dt</fullName>
+        <field>RE_Latest_price_dt__c</field>
+        <formula>NOW()</formula>
+        <name>updatePH_Latest_price_dt</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_update_Latest_price_dt</fullName>
+        <field>RE_Latest_price_dt__c</field>
+        <formula>NOW()</formula>
+        <name>update_Latest_price_dt</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_update_PH_Approve</fullName>
+        <field>RE_Latest_price_dt__c</field>
+        <formula>NOW()</formula>
+        <name>update PH Approve</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RE_update_cost_approved</fullName>
+        <field>RE_Latest_price_dt__c</field>
+        <formula>NOW()</formula>
+        <name>update cost approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

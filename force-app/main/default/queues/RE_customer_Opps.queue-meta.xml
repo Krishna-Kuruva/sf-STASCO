@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>souvik.kundu@shell.com.invalid</email>
+    <name>RE customer Opps</name>
+    <queueMembers>
+        <users>
+            <user>ansh.akhil@shell.com.stasco</user>
+            <user>borhan.zainal@shell.com.stasco</user>
+            <user>dean.wong@shell.com.stasco</user>
+            <user>n.aminuddin@shell.com.stasco</user>
+            <user>ikhwan.i.razali@shell.com.stasco</user>
+            <user>jamie.koo@shell.com.stasco</user>
+            <user>jinn.ng@shell.com.stasco</user>
+            <user>joseph.j.tan@shell.com.stasco</user>
+            <user>jye-min.lim@shell.com.stasco</user>
+            <user>ket-chung.voo@shell.com.stasco</user>
+            <user>mindy.lew@shell.com.stasco</user>
+            <user>muhammad-nizam.ablah@shell.com.stasco</user>
+            <user>n.damanhuri@shell.com.stasco</user>
+            <user>phoebe.kong@shell.com.stasco</user>
+            <user>ratna-dewi.h-louis@shell.com.stasco</user>
+            <user>reveast.superuser@shell.com.stasco</user>
+            <user>wan-yin.chow@shell.com.stasco</user>
+            <user>yun-kee.chee@shell.com.stasco</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>RT_Price_Book__c</sobjectType>
+    </queueSobject>
+</Queue>

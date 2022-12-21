@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>TMS_Ticket_Information__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>Ticket Status</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Assigned Ticket&lt;/p&gt;</info>
+        <picklistValueName>ASSIGNED</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Ticket closed and resolution has been found&lt;/p&gt;</info>
+        <picklistValueName>CLOSED</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Ticket is Being Worked On&lt;/p&gt;</info>
+        <picklistValueName>IN PROGRESS</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;New Ticket, not yet assigned&lt;/p&gt;</info>
+        <picklistValueName>NEW</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Ticket On Hold&lt;/p&gt;</info>
+        <picklistValueName>ON HOLD</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

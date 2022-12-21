@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_SG_HCV_Quote_1__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>HCV Quote 1</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Gasoil 0.001% S</fullName>
+                <default>false</default>
+                <label>Gasoil 0.001% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.05% S</fullName>
+                <default>true</default>
+                <label>Gasoil 0.05% S</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.25% S</fullName>
+                <default>false</default>
+                <label>Gasoil 0.25% S</label>
+            </value>
+            <value>
+                <fullName>Kero</fullName>
+                <default>false</default>
+                <label>Kero</label>
+            </value>
+            <value>
+                <fullName>MOGAS 95</fullName>
+                <default>false</default>
+                <label>MOGAS 95</label>
+            </value>
+            <value>
+                <fullName>MOGAS 97</fullName>
+                <default>false</default>
+                <label>MOGAS 97</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

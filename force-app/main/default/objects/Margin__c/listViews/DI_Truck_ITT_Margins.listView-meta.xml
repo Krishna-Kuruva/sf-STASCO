@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DI_Truck_ITT_Margins</fullName>
+    <columns>NAME</columns>
+    <columns>Plant__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Sales_Org__c</columns>
+    <columns>Sales_Mgn_IGO_50ppm__c</columns>
+    <columns>Sales_Mgn_AGO_B7__c</columns>
+    <columns>Sales_Mgn_ULG95_E5__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>OBJECT_ID</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Margin__c.Truck_ITT</value>
+    </filters>
+    <filters>
+        <field>Tranche__c</field>
+        <operation>equals</operation>
+        <value>ATP1</value>
+    </filters>
+    <label>DI - Truck/ITT Margins (Tranche 1)</label>
+</ListView>

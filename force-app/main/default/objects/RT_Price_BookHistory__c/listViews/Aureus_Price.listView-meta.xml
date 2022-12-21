@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aureus_Price</fullName>
+    <columns>NAME</columns>
+    <columns>RT_Key_Value__c</columns>
+    <columns>RT_Effective_Date__c</columns>
+    <columns>RT_Amount__c</columns>
+    <columns>RT_Rev_Contract__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Price_Book__c.RT_Rev_Contract_Prices</value>
+    </filters>
+    <filters>
+        <field>RT_Country__c</field>
+        <operation>equals</operation>
+        <value>TU</value>
+    </filters>
+    <label>Turkey Aureus Data</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

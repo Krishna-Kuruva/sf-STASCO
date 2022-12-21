@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_AM_setting</fullName>
+    <columns>NAME</columns>
+    <columns>Value__c</columns>
+    <columns>Type__c</columns>
+    <columns>RE_Country__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.PH_Code_Value_Mapping</value>
+    </filters>
+    <label>PH setting</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Philippines</territory>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marketer__c</fullName>
+    <externalId>false</externalId>
+    <label>Marketer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Helen McGee</fullName>
+                <default>false</default>
+                <label>Helen McGee</label>
+            </value>
+            <value>
+                <fullName>Jennifer Weatherly</fullName>
+                <default>false</default>
+                <label>Jennifer Weatherly</label>
+            </value>
+            <value>
+                <fullName>Jill Broviak</fullName>
+                <default>false</default>
+                <label>Jill Broviak</label>
+            </value>
+            <value>
+                <fullName>Mary Swanson Duggan</fullName>
+                <default>false</default>
+                <label>Mary Swanson Duggan</label>
+            </value>
+            <value>
+                <fullName>Nicole Valentine</fullName>
+                <default>false</default>
+                <label>Nicole Valentine</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

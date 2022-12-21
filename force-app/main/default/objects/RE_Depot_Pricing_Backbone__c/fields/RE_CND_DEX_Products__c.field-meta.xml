@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_CND_DEX_Products__c</fullName>
+    <description>DEX Products used in Canadiandailyrack and Canadiandailyrack7day output files</description>
+    <externalId>false</externalId>
+    <label>DEX Products</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>E10</fullName>
+                <default>false</default>
+                <label>E10</label>
+            </value>
+            <value>
+                <fullName>Furnace</fullName>
+                <default>false</default>
+                <label>Furnace</label>
+            </value>
+            <value>
+                <fullName>Mid</fullName>
+                <default>false</default>
+                <label>Mid</label>
+            </value>
+            <value>
+                <fullName>Pre</fullName>
+                <default>false</default>
+                <label>Pre</label>
+            </value>
+            <value>
+                <fullName>ULS1</fullName>
+                <default>false</default>
+                <label>ULS1</label>
+            </value>
+            <value>
+                <fullName>ULSD</fullName>
+                <default>false</default>
+                <label>ULSD</label>
+            </value>
+            <value>
+                <fullName>ULSD AB03</fullName>
+                <default>false</default>
+                <label>ULSD AB03</label>
+            </value>
+            <value>
+                <fullName>ULSD AB04</fullName>
+                <default>false</default>
+                <label>ULSD AB04</label>
+            </value>
+            <value>
+                <fullName>ULSD BC02</fullName>
+                <default>false</default>
+                <label>ULSD BC02</label>
+            </value>
+            <value>
+                <fullName>ULSD BC04</fullName>
+                <default>false</default>
+                <label>ULSD BC04</label>
+            </value>
+            <value>
+                <fullName>ULSD BC05</fullName>
+                <default>false</default>
+                <label>ULSD BC05</label>
+            </value>
+            <value>
+                <fullName>ULSDCP34</fullName>
+                <default>false</default>
+                <label>ULSDCP34</label>
+            </value>
+            <value>
+                <fullName>ULSDCP43</fullName>
+                <default>false</default>
+                <label>ULSDCP43</label>
+            </value>
+            <value>
+                <fullName>ULSD ON03</fullName>
+                <default>false</default>
+                <label>ULSD ON03</label>
+            </value>
+            <value>
+                <fullName>ULSD ON04</fullName>
+                <default>false</default>
+                <label>ULSD ON04</label>
+            </value>
+            <value>
+                <fullName>ULSD ON05</fullName>
+                <default>false</default>
+                <label>ULSD ON05</label>
+            </value>
+            <value>
+                <fullName>ULSD ON06</fullName>
+                <default>false</default>
+                <label>ULSD ON06</label>
+            </value>
+            <value>
+                <fullName>ULSD QC02</fullName>
+                <default>false</default>
+                <label>ULSD QC02</label>
+            </value>
+            <value>
+                <fullName>ULSD QC05</fullName>
+                <default>false</default>
+                <label>ULSD QC05</label>
+            </value>
+            <value>
+                <fullName>ULSD QC06</fullName>
+                <default>false</default>
+                <label>ULSD QC06</label>
+            </value>
+            <value>
+                <fullName>ULSD QC07</fullName>
+                <default>false</default>
+                <label>ULSD QC07</label>
+            </value>
+            <value>
+                <fullName>ULSD QC09</fullName>
+                <default>false</default>
+                <label>ULSD QC09</label>
+            </value>
+            <value>
+                <fullName>ULSFUM ON03</fullName>
+                <default>false</default>
+                <label>ULSFUM ON03</label>
+            </value>
+            <value>
+                <fullName>ULSFUM ON04</fullName>
+                <default>false</default>
+                <label>ULSFUM ON04</label>
+            </value>
+            <value>
+                <fullName>ULSFUM ON05</fullName>
+                <default>false</default>
+                <label>ULSFUM ON05</label>
+            </value>
+            <value>
+                <fullName>ULSFUM ON06</fullName>
+                <default>false</default>
+                <label>ULSFUM ON06</label>
+            </value>
+            <value>
+                <fullName>ULSFUM QC02</fullName>
+                <default>false</default>
+                <label>ULSFUM QC02</label>
+            </value>
+            <value>
+                <fullName>ULSFUM QC05</fullName>
+                <default>false</default>
+                <label>ULSFUM QC05</label>
+            </value>
+            <value>
+                <fullName>ULSFUM QC06</fullName>
+                <default>false</default>
+                <label>ULSFUM QC06</label>
+            </value>
+            <value>
+                <fullName>ULSFUM QC07</fullName>
+                <default>false</default>
+                <label>ULSFUM QC07</label>
+            </value>
+            <value>
+                <fullName>ULSFUM QC09</fullName>
+                <default>false</default>
+                <label>ULSFUM QC09</label>
+            </value>
+            <value>
+                <fullName>Unl</fullName>
+                <default>false</default>
+                <label>Unl</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origination_Steer</fullName>
+    <active>true</active>
+    <label>Origination Steer</label>
+    <picklistValues>
+        <picklist>MOT__c</picklist>
+        <values>
+            <fullName>Barge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ITT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Truck</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origination_Steer_Type__c</picklist>
+        <values>
+            <fullName>ARA AGO Steer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ARA IGO Steer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ARA MOGAS Steer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Harburg AGO steer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Harburg IGO steer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Override_Scenario__c</picklist>
+        <values>
+            <fullName>Balanced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Export</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Import</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Sub_Group__c</picklist>
+        <values>
+            <fullName>AGO B7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IGO 50ppm</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULG95 E5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Scenario__c</picklist>
+        <values>
+            <fullName>Balanced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Export</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Import</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

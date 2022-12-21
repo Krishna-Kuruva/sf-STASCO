@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_SOM</fullName>
+    <columns>NAME</columns>
+    <columns>Backbone_Route_Name__c</columns>
+    <columns>Source__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Freight_Quotation__c</columns>
+    <columns>Alt_Type__c</columns>
+    <columns>PlantGradeUnq__c</columns>
+    <columns>Destination_Code__c</columns>
+    <columns>SubGrade_3P__c</columns>
+    <columns>Freight_rate_EUR_mt__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Valid_To__c</columns>
+    <columns>Valid_From__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Destination_Code__c</field>
+        <operation>equals</operation>
+        <value>D037</value>
+    </filters>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>contains</operation>
+        <value>Anja</value>
+    </filters>
+    <label>All (SOM)</label>
+</ListView>

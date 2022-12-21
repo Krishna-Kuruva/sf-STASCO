@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Energy EU/AF Improvement Specialists</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Energy EU/AF Improvement Specialists</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Energy_EU_AF_Lead</parentRole>
+</Role>

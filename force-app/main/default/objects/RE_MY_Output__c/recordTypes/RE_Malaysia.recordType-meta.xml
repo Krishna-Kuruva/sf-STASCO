@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Malaysia</fullName>
+    <active>true</active>
+    <label>Malaysia</label>
+    <picklistValues>
+        <picklist>RE_CND_Reporting_Name__c</picklist>
+        <values>
+            <fullName>BrandedNotificationChangeAmount</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BrandedNotificationExternalWeb</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CanadianRackPricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NewBAPP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RackChangeNotification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RackCustomerNotification</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Type__c</picklist>
+        <values>
+            <fullName>MTD Position</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MY Temp Gain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia Output</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore Output</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

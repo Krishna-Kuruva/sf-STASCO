@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disclaimer__c</fullName>
+    <defaultValue>&quot;This information is thought to be reliable; however, Shell and its affiliates make no representation as to the accuracy or completeness of the information contained herein or otherwise provided and accept no responsibility or liability, in contract, in tort, in negligence, or otherwise, should the information be found to be inaccurate or incomplete in any respect. Shell and its affiliates are not acting as an advisor to the recipient of this information, and the ultimate decision to proceed with any transaction rests solely with the recipient of this information. Therefore, prior to entering into any proposed transaction, the recipient of this information should determine, without reliance upon Shell or its affiliates, the economic risks and merits, as well as the legal, tax, and accounting characterizations and consequences, of the transaction and that it is able to assume these risks. This information is neither an offer to sell nor the solicitation of an offer to enter into a transaction.&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>Disclaimer</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All_SOM</fullName>
+    <columns>NAME</columns>
+    <columns>GradeLocation__c</columns>
+    <columns>Base_Quote_1__c</columns>
+    <columns>Base_Quote_1_Percent__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Bio_Quote__c</columns>
+    <columns>Bio_surcharge__c</columns>
+    <columns>Future_Calculation__c</columns>
+    <columns>Differential_Calculation__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <columns>Grade__c</columns>
+    <columns>Product_sub_grade__c</columns>
+    <columns>Depot__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Copy of All(SOM)</label>
+</ListView>

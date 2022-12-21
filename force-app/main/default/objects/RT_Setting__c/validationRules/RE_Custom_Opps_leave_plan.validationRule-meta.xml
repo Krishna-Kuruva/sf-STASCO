@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Custom_Opps_leave_plan</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( RecordType.Name = &apos;User leave plan&apos;, ISPICKVAL( RE_User_Name__r.RE_Customer_Opps_team__c  ,&quot;&quot;)
+,
+false)</errorConditionFormula>
+    <errorMessage>User Name should have Access to CO dashboard</errorMessage>
+</ValidationRule>

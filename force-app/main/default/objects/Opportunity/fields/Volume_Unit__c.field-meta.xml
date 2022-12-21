@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volume_Unit__c</fullName>
+    <description>Use this field to select the volumetric unit deal was executed in</description>
+    <externalId>false</externalId>
+    <label>Volume Unit</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Barrels</fullName>
+                <default>false</default>
+                <label>Barrels</label>
+            </value>
+            <value>
+                <fullName>Gallons</fullName>
+                <default>false</default>
+                <label>Gallons</label>
+            </value>
+            <value>
+                <fullName>Litres</fullName>
+                <default>false</default>
+                <label>Litres</label>
+            </value>
+            <value>
+                <fullName>MMBTUS</fullName>
+                <default>false</default>
+                <label>MMBTUS</label>
+            </value>
+            <value>
+                <fullName>Tonnes</fullName>
+                <default>false</default>
+                <label>Tonnes</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>MT</fullName>
+                <default>false</default>
+                <label>MT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

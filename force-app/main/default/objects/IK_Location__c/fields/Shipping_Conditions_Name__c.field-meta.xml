@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Conditions_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Shipping_Conditions__c,
+10, &quot;Road Pickup&quot;,
+11, &quot;Road Delivery&quot;,
+21, &quot;Rail Delivery&quot;,
+30, &quot;Vessel Pickup&quot;,
+31, &quot;Vessel Delivery&quot;,
+20, &quot;Rail Pickup&quot;,
+80, &quot;In-Tank&quot;,
+Null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Shipping Conditions Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

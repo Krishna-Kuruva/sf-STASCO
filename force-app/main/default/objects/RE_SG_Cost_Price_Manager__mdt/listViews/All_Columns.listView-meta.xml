@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Columns</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>RE_SG_Plant__c</columns>
+    <columns>RE_SG_Product__c</columns>
+    <columns>RE_SG_HCV_Quote_1__c</columns>
+    <columns>RE_SG_HCV_Quote_1_Percent__c</columns>
+    <columns>RE_SG_HCV_Quote_2__c</columns>
+    <columns>RE_SG_HCV_Quote_2_Percent__c</columns>
+    <columns>RE_SG_Market_Premium_Percent__c</columns>
+    <columns>RE_SG_Market_Premium_Quote__c</columns>
+    <columns>RE_SG_Dist_Disc_Quote__c</columns>
+    <columns>RE_SG_Dist_Disc_Percentage__c</columns>
+    <columns>RE_SG_Oil_Loss_Percent__c</columns>
+    <columns>RE_SG_Valid_From__c</columns>
+    <columns>RE_SG_Valid_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Columns</label>
+    <language>en_US</language>
+</ListView>

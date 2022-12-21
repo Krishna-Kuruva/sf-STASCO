@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Manager_Training</fullName>
+    <columns>SOLUTION.ISSUE</columns>
+    <columns>SOLUTION.SOLUTION_NUMBER</columns>
+    <columns>SOLUTION.STATUS</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>SOLUTION.TIMES_USED</columns>
+    <columns>SOLUTION.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>Account Manager Training</label>
+    <sharedTo>
+        <group>RiskMarketing</group>
+    </sharedTo>
+</ListView>

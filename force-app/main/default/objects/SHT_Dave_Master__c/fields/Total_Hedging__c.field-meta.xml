@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Hedging__c</fullName>
+    <externalId>false</externalId>
+    <label>Hedged</label>
+    <summarizedField>SHT_Dave__c.Hedge__c</summarizedField>
+    <summaryFilterItems>
+        <field>SHT_Dave__c.Transactions__c</field>
+        <operation>equals</operation>
+        <value>Hedge</value>
+    </summaryFilterItems>
+    <summaryForeignKey>SHT_Dave__c.SHT_Dave_Master__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Revolution permissions given to each user/profile/permission set. Related Object(s) : Profile, Permission Set, User, User Permission Dashboard</description>
+    <label>User Permissions</label>
+    <lwcComponent>rv_UserPermissions</lwcComponent>
+    <motif>Custom63: Chip</motif>
+</CustomTab>

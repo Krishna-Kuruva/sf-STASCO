@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Philippines</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Philippines</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Philippines</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country_Name__c</field>
+            <operation>equals</operation>
+            <value>Philippines</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>REV_Malaysia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>REV Malaysia</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Malaysia</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country_Name__c</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RE_CND_Revolution_Canada_REV_Contract_Master_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Revolution Canada</description>
+        <label>Revolution Canada REV Contract Master Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country_Name__c</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Turkey_REV_Contract_Master_sharing_rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share records with Turkey</description>
+        <label>Turkey REV Contract Master sharing rule</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country_Name__c</field>
+            <operation>equals</operation>
+            <value>Turkey</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

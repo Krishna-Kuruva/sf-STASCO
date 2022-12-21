@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Done_Validation</fullName>
+    <active>false</active>
+    <description>If Deal Done field has value &quot;No&quot; and Reason Deal Failure is left empty: Warning message to say: This field needs to be completed.</description>
+    <errorConditionFormula>AND ( 
+ISPICKVAL(  Deal_Done__c , &quot;No&quot;),
+LEN ( Reason_for_Deal_Failure__c ) = 0
+)</errorConditionFormula>
+    <errorDisplayField>Reason_for_Deal_Failure__c</errorDisplayField>
+    <errorMessage>Please complete the &quot;Reason for Deal Failure&quot; field before you save this opportunity.</errorMessage>
+</ValidationRule>

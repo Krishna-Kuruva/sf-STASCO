@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_PH_Freight_Quote__c</fullName>
+    <externalId>false</externalId>
+    <label>Freight Quote</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FREIGHT JPI01</fullName>
+                <default>false</default>
+                <label>FREIGHT JPI01</label>
+            </value>
+            <value>
+                <fullName>FREIGHT MPI08</fullName>
+                <default>false</default>
+                <label>FREIGHT MPI08</label>
+            </value>
+            <value>
+                <fullName>FREIGHT GPI02</fullName>
+                <default>false</default>
+                <label>FREIGHT GPI02</label>
+            </value>
+            <value>
+                <fullName>FREIGHT S2P02</fullName>
+                <default>false</default>
+                <label>FREIGHT S2P02</label>
+            </value>
+            <value>
+                <fullName>FREIGHT S2P01</fullName>
+                <default>false</default>
+                <label>FREIGHT S2P01</label>
+            </value>
+            <value>
+                <fullName>SIN HK 30KT CLEAN</fullName>
+                <default>false</default>
+                <label>SIN HK 30KT CLEAN</label>
+            </value>
+            <value>
+                <fullName>FREIGHT GPI01</fullName>
+                <default>false</default>
+                <label>FREIGHT GPI01</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ForEx__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Currency__c,&quot;USD&quot;),1,Price_to_Customer__c / Currency_value__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Insert the FX value og the Currency vs US$  eg if $1 = GBP 2.00   ---- enter 2.00</inlineHelpText>
+    <label>ForEx</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

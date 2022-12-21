@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia</fullName>
+    <active>true</active>
+    <label>Malaysia</label>
+    <picklistValues>
+        <picklist>RE_Costprice_Unit__c</picklist>
+        <values>
+            <fullName>Value1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Weekly_data_2021</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Year__c</columns>
+    <columns>RE_Month__c</columns>
+    <columns>RE_Week_Number__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Week_Start_Date__c</columns>
+    <columns>RE_Week_End_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Year__c</field>
+        <operation>equals</operation>
+        <value>2021</value>
+    </filters>
+    <label>Weekly data 2021</label>
+    <language>en_US</language>
+</ListView>

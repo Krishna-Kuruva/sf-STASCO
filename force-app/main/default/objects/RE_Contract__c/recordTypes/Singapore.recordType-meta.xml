@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Singapore</fullName>
+    <active>true</active>
+    <label>Singapore</label>
+    <picklistValues>
+        <picklist>RT_Country__c</picklist>
+        <values>
+            <fullName>TU</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

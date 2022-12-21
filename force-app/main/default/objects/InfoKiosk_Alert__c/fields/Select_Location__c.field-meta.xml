@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Select_Location__c</fullName>
+    <externalId>false</externalId>
+    <label>Select Location</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Aberdeen</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aberdeen</label>
+            </value>
+            <value>
+                <fullName>Altmannshofen Shell Depot</fullName>
+                <default>false</default>
+                <label>Altmannshofen Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Andernach Dötsch Depot</fullName>
+                <default>false</default>
+                <label>Andernach Dötsch Depot</label>
+            </value>
+            <value>
+                <fullName>Aschaffenburg Baywa Depot</fullName>
+                <default>false</default>
+                <label>Aschaffenburg Baywa Depot</label>
+            </value>
+            <value>
+                <fullName>Augsburg Präg depot</fullName>
+                <default>false</default>
+                <label>Augsburg Präg depot</label>
+            </value>
+            <value>
+                <fullName>Avonmouth</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Avonmouth</label>
+            </value>
+            <value>
+                <fullName>Bendorf Oiltanking Depot</fullName>
+                <default>false</default>
+                <label>Bendorf Oiltanking Depot</label>
+            </value>
+            <value>
+                <fullName>Berlin Oiltanking Depot</fullName>
+                <default>false</default>
+                <label>Berlin Oiltanking Depot</label>
+            </value>
+            <value>
+                <fullName>Berlin Unitank depot</fullName>
+                <default>false</default>
+                <label>Berlin Unitank depot</label>
+            </value>
+            <value>
+                <fullName>Bertrange</fullName>
+                <default>false</default>
+                <label>Bertrange</label>
+            </value>
+            <value>
+                <fullName>Birmingham Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Birmingham Airport</label>
+            </value>
+            <value>
+                <fullName>Birsfdn Rhytank depot</fullName>
+                <default>false</default>
+                <label>Birsfdn Rhytank depot</label>
+            </value>
+            <value>
+                <fullName>Birsfdn Varo depot</fullName>
+                <default>false</default>
+                <label>Birsfdn Varo depot</label>
+            </value>
+            <value>
+                <fullName>Bramhall</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bramhall</label>
+            </value>
+            <value>
+                <fullName>Braunschwg Varo depot</fullName>
+                <default>false</default>
+                <label>Braunschwg Varo depot</label>
+            </value>
+            <value>
+                <fullName>Bremen HGM Depot</fullName>
+                <default>false</default>
+                <label>Bremen HGM Depot</label>
+            </value>
+            <value>
+                <fullName>Shell/OMV Burghausen</fullName>
+                <default>false</default>
+                <label>Burghausen OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Clydebank</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Clydebank</label>
+            </value>
+            <value>
+                <fullName>Collombey Tamoil depot</fullName>
+                <default>false</default>
+                <label>Collombey Tamoil depot</label>
+            </value>
+            <value>
+                <fullName>Cressier Varo depot</fullName>
+                <default>false</default>
+                <label>Cressier Varo depot</label>
+            </value>
+            <value>
+                <fullName>Cunnersdorf Tabeg Depot</fullName>
+                <default>false</default>
+                <label>Cunnersdorf Tabeg Depot</label>
+            </value>
+            <value>
+                <fullName>Dortmund-Lünen Varo Depot</fullName>
+                <default>false</default>
+                <label>Dortmund-Lünen Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Duisburg Tanquid</fullName>
+                <default>false</default>
+                <label>Duisburg Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Duisburg Total Depot</fullName>
+                <default>false</default>
+                <label>Duisburg Total Depot</label>
+            </value>
+            <value>
+                <fullName>Duisburg Varo Depot</fullName>
+                <default>false</default>
+                <label>Duisburg Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Emleben Unitank depot</fullName>
+                <default>false</default>
+                <label>Emleben Unitank depot</label>
+            </value>
+            <value>
+                <fullName>Erlangen Varo Depot</fullName>
+                <default>false</default>
+                <label>Erlangen Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Essen UTG Depot</fullName>
+                <default>false</default>
+                <label>Essen UTG Depot</label>
+            </value>
+            <value>
+                <fullName>Esso West London</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Esso West London</label>
+            </value>
+            <value>
+                <fullName>Shell/OMV Feldkirchen</fullName>
+                <default>false</default>
+                <label>Feldkirchen OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Flörsheim Shell Depot</fullName>
+                <default>false</default>
+                <label>Flörsheim Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Frankfurt Oiltanking Depot</fullName>
+                <default>false</default>
+                <label>Frankfurt Oiltanking Depot</label>
+            </value>
+            <value>
+                <fullName>Shell/Agip Fuernitz</fullName>
+                <default>false</default>
+                <label>Fuernitz ENI Depot</label>
+            </value>
+            <value>
+                <fullName>Fürth Unitank Depot</fullName>
+                <default>false</default>
+                <label>Fürth Unitank Depot</label>
+            </value>
+            <value>
+                <fullName>Gatwick Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gatwick Airport</label>
+            </value>
+            <value>
+                <fullName>Gelsenkirchen BP Refinery</fullName>
+                <default>false</default>
+                <label>Gelsenkirchen BP Refinery</label>
+            </value>
+            <value>
+                <fullName>Genève SOGEP depot</fullName>
+                <default>false</default>
+                <label>Genève SOGEP depot</label>
+            </value>
+            <value>
+                <fullName>Shell/OilTk Gera</fullName>
+                <default>false</default>
+                <label>Gera OTG Depot</label>
+            </value>
+            <value>
+                <fullName>Gernsheim</fullName>
+                <default>false</default>
+                <label>Gernsheim Depot</label>
+            </value>
+            <value>
+                <fullName>Godorf Shell Gantry</fullName>
+                <default>false</default>
+                <label>Godorf Shell Gantry</label>
+            </value>
+            <value>
+                <fullName>Godorf Shell Refinery</fullName>
+                <default>false</default>
+                <label>Godorf Shell Refinery</label>
+            </value>
+            <value>
+                <fullName>Grangemouth Petro I.</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Grangemouth Petro I.</label>
+            </value>
+            <value>
+                <fullName>Grays</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Grays</label>
+            </value>
+            <value>
+                <fullName>Graz DCC Depot</fullName>
+                <default>false</default>
+                <label>Graz DCC Depot</label>
+            </value>
+            <value>
+                <fullName>Hamburg Vopak Depot</fullName>
+                <default>false</default>
+                <label>Hamburg EVOS Depot</label>
+            </value>
+            <value>
+                <fullName>Hamburg Holborn Gantry</fullName>
+                <default>false</default>
+                <label>Hamburg Holborn Gantry</label>
+            </value>
+            <value>
+                <fullName>Hamburg Oiltanking Depot</fullName>
+                <default>false</default>
+                <label>Hamburg Oiltanking Depot</label>
+            </value>
+            <value>
+                <fullName>Hanau Oiltanking Depot</fullName>
+                <default>false</default>
+                <label>Hanau Oiltanking Depot</label>
+            </value>
+            <value>
+                <fullName>Hannover Tanquid Depot</fullName>
+                <default>false</default>
+                <label>Hannover Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Hannover Varo depot</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hannover Varo depot</label>
+            </value>
+            <value>
+                <fullName>Hannover-Linden Varo Depot</fullName>
+                <default>false</default>
+                <label>Hannover Varo depot 3rd party stock</label>
+            </value>
+            <value>
+                <fullName>Hannover Varo depot Shell stock</fullName>
+                <default>false</default>
+                <label>Hannover Varo depot Shell stock</label>
+            </value>
+            <value>
+                <fullName>Harburg Shell Depot</fullName>
+                <default>false</default>
+                <label>Harburg Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Shell/Total Hartmannsdf</fullName>
+                <default>false</default>
+                <label>Hartmannsdorf Total Depot</label>
+            </value>
+            <value>
+                <fullName>Heathrow Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Heathrow Airport</label>
+            </value>
+            <value>
+                <fullName>Heide Klesch Gantry</fullName>
+                <default>false</default>
+                <label>Heide Klesch Gantry</label>
+            </value>
+            <value>
+                <fullName>Heide Ref (HC)</fullName>
+                <default>false</default>
+                <label>Heide Ref (HC)</label>
+            </value>
+            <value>
+                <fullName>Heide Ref gantry</fullName>
+                <default>false</default>
+                <label>Heide Ref gantry</label>
+            </value>
+            <value>
+                <fullName>Hildesheim Varo depot</fullName>
+                <default>false</default>
+                <label>Hildesheim Varo depot</label>
+            </value>
+            <value>
+                <fullName>Hythe</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hythe</label>
+            </value>
+            <value>
+                <fullName>Immingham</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Immingham</label>
+            </value>
+            <value>
+                <fullName>Ingolstadt Gunvor Gantry</fullName>
+                <default>false</default>
+                <label>Ingolstadt Gunvor Gantry</label>
+            </value>
+            <value>
+                <fullName>Innsbruck DCC Depot</fullName>
+                <default>false</default>
+                <label>Innsbruck DCC Depot</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe MiRO Gantry</fullName>
+                <default>false</default>
+                <label>Karlsruhe MiRO Gantry</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe MiRO Refinery</fullName>
+                <default>false</default>
+                <label>Karlsruhe MiRO Refinery</label>
+            </value>
+            <value>
+                <fullName>Kassel BP Depot</fullName>
+                <default>false</default>
+                <label>Kassel BP Depot</label>
+            </value>
+            <value>
+                <fullName>Kehl Total Depot</fullName>
+                <default>false</default>
+                <label>Kehl Total Depot</label>
+            </value>
+            <value>
+                <fullName>Kempten Präg depot</fullName>
+                <default>false</default>
+                <label>Kempten Präg depot</label>
+            </value>
+            <value>
+                <fullName>Kiel Total depot</fullName>
+                <default>false</default>
+                <label>Kiel Total depot</label>
+            </value>
+            <value>
+                <fullName>Killingholme</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Killingholme</label>
+            </value>
+            <value>
+                <fullName>Kingsbury (BP)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Kingsbury (BP)</label>
+            </value>
+            <value>
+                <fullName>Kingsbury (Valero)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Kingsbury (Valero)</label>
+            </value>
+            <value>
+                <fullName>Klagenfurt DCC Depot</fullName>
+                <default>false</default>
+                <label>Klagenfurt DCC Depot</label>
+            </value>
+            <value>
+                <fullName>Koblenz Tanquid Depot</fullName>
+                <default>false</default>
+                <label>Koblenz Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Köln Varo Depot</fullName>
+                <default>false</default>
+                <label>Köln Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Landqrt AGROLA depot</fullName>
+                <default>false</default>
+                <label>Landqrt AGROLA depot</label>
+            </value>
+            <value>
+                <fullName>Leuna Total Gantry</fullName>
+                <default>false</default>
+                <label>Leuna Total Gantry</label>
+            </value>
+            <value>
+                <fullName>Lingen BP Gantry</fullName>
+                <default>false</default>
+                <label>Lingen BP Gantry</label>
+            </value>
+            <value>
+                <fullName>Linz Shell Depot</fullName>
+                <default>false</default>
+                <label>Linz Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Lobau OMV Depot</fullName>
+                <default>false</default>
+                <label>Lobau OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Ludwigshafen Shell Depot</fullName>
+                <default>false</default>
+                <label>Ludwigshafen Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Lustenau OMV Depot</fullName>
+                <default>false</default>
+                <label>Lustenau OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Luton Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Luton Airport</label>
+            </value>
+            <value>
+                <fullName>Magdeburg MUT Depot</fullName>
+                <default>false</default>
+                <label>Magdeburg MUT Depot</label>
+            </value>
+            <value>
+                <fullName>Manchester Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Manchester Airport</label>
+            </value>
+            <value>
+                <fullName>Marktredwitz Varo Depot</fullName>
+                <default>false</default>
+                <label>Marktredwitz Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Milford</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Milford</label>
+            </value>
+            <value>
+                <fullName>München Tanquid Depot</fullName>
+                <default>false</default>
+                <label>München Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Neuss I Tanquid depot</fullName>
+                <default>false</default>
+                <label>Neuss I Tanquid depot</label>
+            </value>
+            <value>
+                <fullName>Neuss Tanquid Depot</fullName>
+                <default>false</default>
+                <label>Neuss Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Neustadt Bayernoil Gantry</fullName>
+                <default>false</default>
+                <label>Neustadt Bayernoil Gantry</label>
+            </value>
+            <value>
+                <fullName>Niederh Varo depot</fullName>
+                <default>false</default>
+                <label>Niederh Varo depot</label>
+            </value>
+            <value>
+                <fullName>Shell/EssoBP NÃ¼rnberg</fullName>
+                <default>false</default>
+                <label>Nürnberg Depot</label>
+            </value>
+            <value>
+                <fullName>Osnabrueck Varo Depot</fullName>
+                <default>false</default>
+                <label>Osnabrueck Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Pembroke</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pembroke</label>
+            </value>
+            <value>
+                <fullName>Plochingen</fullName>
+                <default>false</default>
+                <label>Plochingen Depot</label>
+            </value>
+            <value>
+                <fullName>Plymouth</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plymouth</label>
+            </value>
+            <value>
+                <fullName>Pontresina Storz depot</fullName>
+                <default>false</default>
+                <label>Pontresina Storz depot</label>
+            </value>
+            <value>
+                <fullName>Purfleet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Purfleet</label>
+            </value>
+            <value>
+                <fullName>Race Petrol Depot</fullName>
+                <default>false</default>
+                <label>Race Petrol Depot</label>
+            </value>
+            <value>
+                <fullName>Rancate Benoil Depot</fullName>
+                <default>false</default>
+                <label>Rancate Benoil Depot</label>
+            </value>
+            <value>
+                <fullName>Raunheim Unitank Depot</fullName>
+                <default>false</default>
+                <label>Raunheim Unitank Depot</label>
+            </value>
+            <value>
+                <fullName>Raunheim Unitank Esso depot</fullName>
+                <default>false</default>
+                <label>Raunheim Unitank Esso depot</label>
+            </value>
+            <value>
+                <fullName>Regburg Petrotank depot</fullName>
+                <default>false</default>
+                <label>Regburg Petrotank depot</label>
+            </value>
+            <value>
+                <fullName>Rhäsa Varo Depot</fullName>
+                <default>false</default>
+                <label>Rhäsa Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Ross NuStar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ross NuStar</label>
+            </value>
+            <value>
+                <fullName>Rostock Gör depot</fullName>
+                <default>false</default>
+                <label>Rostock Gör depot</label>
+            </value>
+            <value>
+                <fullName>Shell/Total Rostock-Gör</fullName>
+                <default>false</default>
+                <label>Rostock-Gör Total Depot</label>
+            </value>
+            <value>
+                <fullName>Rothenburg Varo depot</fullName>
+                <default>false</default>
+                <label>Rothenburg Varo depot</label>
+            </value>
+            <value>
+                <fullName>Rümlang TAR</fullName>
+                <default>false</default>
+                <label>Rümlang TAR</label>
+            </value>
+            <value>
+                <fullName>Salzburg TBG Depot</fullName>
+                <default>false</default>
+                <label>Salzburg TBG Depot</label>
+            </value>
+            <value>
+                <fullName>Shell/OMV Schwechat</fullName>
+                <default>false</default>
+                <label>Schwechat OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Schwedt PCK depot</fullName>
+                <default>false</default>
+                <label>Schwedt PCK depot</label>
+            </value>
+            <value>
+                <fullName>Schwedt PCK Gantry</fullName>
+                <default>false</default>
+                <label>Schwedt PCK Gantry</label>
+            </value>
+            <value>
+                <fullName>Schwedt PCK Refinery</fullName>
+                <default>false</default>
+                <label>Schwedt PCK Refinery</label>
+            </value>
+            <value>
+                <fullName>Seefeld PETS Depot</fullName>
+                <default>false</default>
+                <label>Seefeld PETS Depot</label>
+            </value>
+            <value>
+                <fullName>Seefeld PETS Depot1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Seefeld PETS Depot1</label>
+            </value>
+            <value>
+                <fullName>Shell/MineralÃ¶l Bremen</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shell/MineralÃ¶l Bremen</label>
+            </value>
+            <value>
+                <fullName>Shell Haven</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shell Haven</label>
+            </value>
+            <value>
+                <fullName>Speyer Tanquid Depot</fullName>
+                <default>false</default>
+                <label>Speyer Tanquid Depot</label>
+            </value>
+            <value>
+                <fullName>Shell/OMV St.Valentin</fullName>
+                <default>false</default>
+                <label>St.Valentin OMV Depot</label>
+            </value>
+            <value>
+                <fullName>Stanlow</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stanlow</label>
+            </value>
+            <value>
+                <fullName>Stansted Airport</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stansted Airport</label>
+            </value>
+            <value>
+                <fullName>Shell/TLS Stuttgart</fullName>
+                <default>false</default>
+                <label>Stuttgart TLS Depot</label>
+            </value>
+            <value>
+                <fullName>Tägerschen TLT depot</fullName>
+                <default>false</default>
+                <label>Tägerschen TLT depot</label>
+            </value>
+            <value>
+                <fullName>Teeside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Teeside</label>
+            </value>
+            <value>
+                <fullName>Theale</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Theale</label>
+            </value>
+            <value>
+                <fullName>Trier Varo Depot</fullName>
+                <default>false</default>
+                <label>Trier Varo Depot</label>
+            </value>
+            <value>
+                <fullName>Vohburg Bayernoil Gantry</fullName>
+                <default>false</default>
+                <label>Vohburg Bayernoil Gantry</label>
+            </value>
+            <value>
+                <fullName>Vopak Thames</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vopak Thames</label>
+            </value>
+            <value>
+                <fullName>Wesseling Shell Gantry</fullName>
+                <default>false</default>
+                <label>Wesseling Shell Gantry</label>
+            </value>
+            <value>
+                <fullName>Wesseling Shell Refinery</fullName>
+                <default>false</default>
+                <label>Wesseling Shell Refinery</label>
+            </value>
+            <value>
+                <fullName>Westerland Hake Depot</fullName>
+                <default>false</default>
+                <label>Westerland Hake Depot</label>
+            </value>
+            <value>
+                <fullName>Westerleigh</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Westerleigh</label>
+            </value>
+            <value>
+                <fullName>West London</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>West London</label>
+            </value>
+            <value>
+                <fullName>Shell/OMV Wien</fullName>
+                <default>false</default>
+                <label>Wien OMV Refinery</label>
+            </value>
+            <value>
+                <fullName>WOSL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>WOSL</label>
+            </value>
+            <value>
+                <fullName>Würzburg Shell Depot</fullName>
+                <default>false</default>
+                <label>Würzburg Shell Depot</label>
+            </value>
+            <value>
+                <fullName>Würzburg Varo depot</fullName>
+                <default>false</default>
+                <label>Würzburg Varo depot</label>
+            </value>
+            <value>
+                <fullName>Shell/Agip Zirl</fullName>
+                <default>false</default>
+                <label>Zirl ENI Depot</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

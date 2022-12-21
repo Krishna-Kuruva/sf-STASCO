@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Quotes</fullName>
+    <columns>NAME</columns>
+    <columns>Quote_Name__c</columns>
+    <columns>Quote_Display_Name__c</columns>
+    <columns>Price__c</columns>
+    <columns>Pricing_Date__c</columns>
+    <columns>Unit_Of_Measure__c</columns>
+    <columns>RE_Country_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Reuter_Id__c</columns>
+    <columns>Reuters_Created_Date__c</columns>
+    <columns>CurrencyCode__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Country_Name__c</field>
+        <operation>equals</operation>
+        <value>CA</value>
+    </filters>
+    <filters>
+        <field>Quote_Name__c</field>
+        <operation>contains</operation>
+        <value>OPIS West Coast Spot Market Prices Price(AVERAGE) CCAC Spot CAL</value>
+    </filters>
+    <label>Canada Quotes</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

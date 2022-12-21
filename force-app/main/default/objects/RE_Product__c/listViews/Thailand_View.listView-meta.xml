@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thailand_View</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RT_Product_Code__c</columns>
+    <columns>RE_Additive_Cost__c</columns>
+    <columns>RE_Material__c</columns>
+    <columns>RE_Additive_Cost_Unit__c</columns>
+    <columns>RE_TH_Oil_Loss_Percent__c</columns>
+    <columns>RE_Product_Group__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_Product_Subgroup__c</columns>
+    <columns>RE_TH_TP_Premium__c</columns>
+    <columns>TP_Premium_Unit__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Product__c.Thailand</value>
+    </filters>
+    <label>Thailand View</label>
+</ListView>

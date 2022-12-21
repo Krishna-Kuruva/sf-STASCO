@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STN_Contact__c</fullName>
+    <externalId>false</externalId>
+    <label>STN Contact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alex McLeish</fullName>
+                <default>false</default>
+                <label>Alex McLeish</label>
+            </value>
+            <value>
+                <fullName>Anthony Parson</fullName>
+                <default>false</default>
+                <label>Anthony Parson</label>
+            </value>
+            <value>
+                <fullName>Chee-Chung Tan</fullName>
+                <default>false</default>
+                <label>Chee-Chung Tan</label>
+            </value>
+            <value>
+                <fullName>Christine Crosley</fullName>
+                <default>false</default>
+                <label>Christine Crosley</label>
+            </value>
+            <value>
+                <fullName>Peter Durante</fullName>
+                <default>false</default>
+                <label>Peter Durante</label>
+            </value>
+            <value>
+                <fullName>Rod Hamilton</fullName>
+                <default>false</default>
+                <label>Rod Hamilton</label>
+            </value>
+            <value>
+                <fullName>Sue Argue</fullName>
+                <default>false</default>
+                <label>Sue Argue</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origination_Steer_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Origination Steer Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ARA AGO Steer</fullName>
+                <default>false</default>
+                <label>ARA AGO Steer</label>
+            </value>
+            <value>
+                <fullName>ARA IGO Steer</fullName>
+                <default>false</default>
+                <label>ARA IGO Steer</label>
+            </value>
+            <value>
+                <fullName>ARA MOGAS Steer</fullName>
+                <default>false</default>
+                <label>ARA MOGAS Steer</label>
+            </value>
+            <value>
+                <fullName>Harburg AGO steer</fullName>
+                <default>false</default>
+                <label>Harburg AGO steer</label>
+            </value>
+            <value>
+                <fullName>Harburg IGO steer</fullName>
+                <default>false</default>
+                <label>Harburg IGO steer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

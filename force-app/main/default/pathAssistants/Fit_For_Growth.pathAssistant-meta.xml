@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Initiatives__c</entityName>
+    <fieldName>Phase__c</fieldName>
+    <masterLabel>Fit For Growth</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;All steps to realize savings completed&lt;/p&gt;</info>
+        <picklistValueName>Executed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Any idea generated with a description﻿&lt;/p&gt;</info>
+        <picklistValueName>Idea</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Any idea generated with high level estimate of impact&lt;/p&gt;</info>
+        <picklistValueName>Identified</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Savings and impact accrued&lt;/p&gt;</info>
+        <picklistValueName>Implemented</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Implementation plan developed&lt;/p&gt;</info>
+        <picklistValueName>Planned</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Idea analyzed for feasibility, P&amp;amp;L impact and risks. Approval of business case&lt;/p&gt;</info>
+        <picklistValueName>Validated</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Project</recordTypeName>
+</PathAssistant>

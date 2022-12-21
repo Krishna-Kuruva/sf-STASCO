@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>Rv_DI_Dashboard</auraComponent>
+    <description>View Live ATP, BSP, PSP and OTM. Related Object(s) : Product Differential, Sales Dashboard</description>
+    <label>DI Dashboard</label>
+    <motif>Custom65: Cup</motif>
+</CustomTab>

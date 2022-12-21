@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_SOM</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Product__c</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>RE_MC_Morning__c</columns>
+    <columns>RE_Spot_Price_Adj__c</columns>
+    <columns>RE_Prev_Mid_Day_price_out__c</columns>
+    <columns>RE_Today_s_BSP__c</columns>
+    <columns>RE_Target_Margin__c</columns>
+    <columns>RE_PSP__c</columns>
+    <columns>RE_AM_Challenged_Price__c</columns>
+    <columns>RE_Final_PSP__c</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RE_IsLatest__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Country__c</field>
+        <operation>equals</operation>
+        <value>Malaysia</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>12/7/2022 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MOA__c.Malaysia</value>
+    </filters>
+    <label>All (SOM)</label>
+</ListView>

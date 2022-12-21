@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quotation__c</fullName>
+    <externalId>false</externalId>
+    <label>Quotation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CIF NWE</fullName>
+                <default>false</default>
+                <label>CIF NWE</label>
+            </value>
+            <value>
+                <fullName>FOB NWE</fullName>
+                <default>false</default>
+                <label>FOB NWE</label>
+            </value>
+            <value>
+                <fullName>FOB Rdam</fullName>
+                <default>false</default>
+                <label>FOB Rdam</label>
+            </value>
+            <value>
+                <fullName>Singapore</fullName>
+                <default>false</default>
+                <label>Singapore</label>
+            </value>
+            <value>
+                <fullName>USG</fullName>
+                <default>false</default>
+                <label>USG</label>
+            </value>
+            <value>
+                <fullName>IPE</fullName>
+                <default>false</default>
+                <label>IPE</label>
+            </value>
+            <value>
+                <fullName>NYMEX</fullName>
+                <default>false</default>
+                <label>NYMEX</label>
+            </value>
+            <value>
+                <fullName>Carbon Point</fullName>
+                <default>false</default>
+                <label>Carbon Point</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

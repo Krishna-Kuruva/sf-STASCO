@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platts_FOB_Barge_R_dam_Diesel_10ppm_hig</fullName>
+    <columns>NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>equals</operation>
+        <value>Platts FOB Barge R&apos;dam Diesel 10ppm (high)</value>
+    </filters>
+    <label>Platts FOB Barge R&apos;dam Diesel 10ppm (hig</label>
+</ListView>

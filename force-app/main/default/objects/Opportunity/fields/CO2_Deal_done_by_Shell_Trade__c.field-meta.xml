@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Deal_done_by_Shell_Trade__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This is a deal done by Shell Trading for CF Customer</inlineHelpText>
+    <label>CO2 -Shell Trading Margin $</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

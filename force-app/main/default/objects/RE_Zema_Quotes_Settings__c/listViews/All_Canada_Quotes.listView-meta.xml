@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Canada_Quotes</fullName>
+    <columns>NAME</columns>
+    <columns>Quote_Name__c</columns>
+    <columns>Display_Name__c</columns>
+    <columns>Country__c</columns>
+    <columns>Frequency__c</columns>
+    <columns>Type__c</columns>
+    <columns>Price_to_be_converted__c</columns>
+    <columns>Is_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>contains</operation>
+        <value>Canada</value>
+    </filters>
+    <label>All Canada Quotes</label>
+    <language>en_US</language>
+</ListView>

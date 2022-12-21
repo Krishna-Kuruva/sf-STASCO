@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>7 DAY Canadian Rack Prices</fullName>
+                <default>false</default>
+                <label>7 DAY Canadian Rack Prices</label>
+            </value>
+            <value>
+                <fullName>Canada GSAP</fullName>
+                <default>false</default>
+                <label>Canada GSAP</label>
+            </value>
+            <value>
+                <fullName>Canada Quote Movement</fullName>
+                <default>false</default>
+                <label>Canada Quote Movement</label>
+            </value>
+            <value>
+                <fullName>Canadian Rack Prices</fullName>
+                <default>false</default>
+                <label>Canadian Rack Prices</label>
+            </value>
+            <value>
+                <fullName>Canadian Rack Pricing and rack pricing Files</fullName>
+                <default>false</default>
+                <label>Canadian Rack Pricing and rack pricing Files</label>
+            </value>
+            <value>
+                <fullName>Internal Rack Notification</fullName>
+                <default>false</default>
+                <label>Internal Rack Notification</label>
+            </value>
+            <value>
+                <fullName>Internal Shell Canada BRPP Notification</fullName>
+                <default>false</default>
+                <label>Internal Shell Canada BRPP Notification</label>
+            </value>
+            <value>
+                <fullName>MY Monthly CBU Costing and Chart</fullName>
+                <default>false</default>
+                <label>MY Monthly CBU Costing and Chart</label>
+            </value>
+            <value>
+                <fullName>No Revised Pricing</fullName>
+                <default>false</default>
+                <label>No Revised Pricing</label>
+            </value>
+            <value>
+                <fullName>Ready to Upload Notification</fullName>
+                <default>false</default>
+                <label>Ready to Upload Notification</label>
+            </value>
+            <value>
+                <fullName>SFJ Rack notification</fullName>
+                <default>false</default>
+                <label>SFJ Rack notification</label>
+            </value>
+            <value>
+                <fullName>Shell Canada - Branded Customer Notification</fullName>
+                <default>false</default>
+                <label>Shell Canada - Branded Customer Notification</label>
+            </value>
+            <value>
+                <fullName>Shell Canada Rack Notification</fullName>
+                <default>false</default>
+                <label>Shell Canada Rack Notification</label>
+            </value>
+            <value>
+                <fullName>Shell Rack Customer Notification</fullName>
+                <default>false</default>
+                <label>Shell Rack Customer Notification</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

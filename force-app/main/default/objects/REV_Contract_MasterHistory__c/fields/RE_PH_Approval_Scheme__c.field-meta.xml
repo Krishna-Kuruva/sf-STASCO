@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_PH_Approval_Scheme__c</fullName>
+    <externalId>false</externalId>
+    <label>RE Approval scheme</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Margin__Homebased_MOGAS_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin__Homebased_MOGAS_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Fixed price_OCI</fullName>
+                <default>false</default>
+                <label>Fixed price_OCI</label>
+            </value>
+            <value>
+                <fullName>Fixed price_OCLS</fullName>
+                <default>false</default>
+                <label>Fixed price_OCLS</label>
+            </value>
+            <value>
+                <fullName>Fixed price_OCM</fullName>
+                <default>false</default>
+                <label>Fixed price_OCM</label>
+            </value>
+            <value>
+                <fullName>Margin__Homebased_AGO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin__Homebased_AGO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin__Homebased_FO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin__Homebased_FO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin__Homebased_KERO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin__Homebased_KERO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_AGO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_AGO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_AGO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_AGO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_FO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_FO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_FO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_FO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_KERO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_KERO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_KERO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_KERO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_MOGAS_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_MOGAS_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCI_CF_MOGAS_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCI_CF_MOGAS_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_AGO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_AGO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_AGO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_AGO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_FO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_FO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_FO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_FO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_KERO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_KERO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_KERO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_KERO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_MOGAS_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_MOGAS_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCLS_CF_MOGAS_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCLS_CF_MOGAS_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_AGO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_AGO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_AGO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_AGO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_FO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_FO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_FO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_FO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_KERO_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_KERO_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_KERO_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_KERO_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_MOGAS_Other Sector</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_MOGAS_Other Sector</label>
+            </value>
+            <value>
+                <fullName>Margin_OCM_CF_MOGAS_WHOLESALE AND MARINE</fullName>
+                <default>false</default>
+                <label>Margin_OCM_CF_MOGAS_WHOLESALE AND MARINE</label>
+            </value>
+            <value>
+                <fullName>Malaysia Approval Scheme</fullName>
+                <default>false</default>
+                <label>Malaysia Approval Scheme</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

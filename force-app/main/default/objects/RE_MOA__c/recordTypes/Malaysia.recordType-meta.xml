@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia</fullName>
+    <active>true</active>
+    <label>Malaysia</label>
+    <picklistValues>
+        <picklist>RE_Approval__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Base_Rate_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STG%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FKG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FGAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Group__c</picklist>
+        <values>
+            <fullName>Fx Rate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Marker_Name__c</picklist>
+        <values>
+            <fullName>Chi CBOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chi Rbob</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chi ULS%232</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LA ULS%232</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYH CBOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYH RBOB Unl</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYH ULS%232</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNW CARBOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNW ULS%232</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RBOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reuters Fx</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USG CBOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USG ULS%232</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WTI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Rack__c</picklist>
+        <values>
+            <fullName>AB DEPOTS IT RAIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AB TEMP DEPOTS IT RAIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bare Point</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belleville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calgary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charlottetown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chicoutimi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Edmonton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gaspe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halifax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hamilton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kamloops</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kingston</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Montreal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE Quebec</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oakville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ottawa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prince George</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quebec City</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarnia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saskatoon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sault Ste Marie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sept Iles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>St%2E Rom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thunder Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Toronto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vancouver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Winnipeg</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Converted_Rate_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STG%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FKG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FGAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auto Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

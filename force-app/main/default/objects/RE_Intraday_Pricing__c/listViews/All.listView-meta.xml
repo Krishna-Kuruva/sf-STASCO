@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Price_Change__c</columns>
+    <columns>RE_Location__c</columns>
+    <columns>RE_Product__c</columns>
+    <columns>RE_Relevant_Product__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Intraday_Pricing__c.Reseller</value>
+    </filters>
+    <label>All</label>
+</ListView>

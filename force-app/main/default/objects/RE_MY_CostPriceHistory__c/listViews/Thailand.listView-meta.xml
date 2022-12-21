@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thailand</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Additive_Cost__c</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_Hydrocarbon_Value__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Storage_Handling_Cost__c</columns>
+    <columns>RE_Primary_Transport_Cost__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MY_CostPrice__c.Thailand</value>
+    </filters>
+    <filters>
+        <field>RE_Depot_Name__c</field>
+        <operation>equals</operation>
+        <value>Bandon</value>
+    </filters>
+    <label>Thailand</label>
+</ListView>

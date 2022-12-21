@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia_Route_2021</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Destination_Name__c</columns>
+    <columns>RE_Source_Name__c</columns>
+    <columns>RE_Route_Utilization__c</columns>
+    <columns>RE_MY_Primary_Transport_Cost__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_MY_Bio_Loss_Percentage__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_MY_BreakBulk_Premium_Quote_Percentage__c</columns>
+    <columns>RE_MY_MR_Demurrage__c</columns>
+    <columns>RE_MY_Oil_Loss_Percentage__c</columns>
+    <columns>RE_MY_Small_lot_percentage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Route_Backbone__c.Malaysia</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_From__c</field>
+        <operation>lessOrEqual</operation>
+        <value>1/1/2021</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_To__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>12/31/2021</value>
+    </filters>
+    <label>Malaysia Route - 2021</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

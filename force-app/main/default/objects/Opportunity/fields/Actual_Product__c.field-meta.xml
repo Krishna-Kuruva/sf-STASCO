@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Product__c</fullName>
+    <externalId>false</externalId>
+    <label>Actual Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bay CARB ULSD</fullName>
+                <default>false</default>
+                <label>Bay CARB ULSD</label>
+            </value>
+            <value>
+                <fullName>CHI ULSD</fullName>
+                <default>false</default>
+                <label>CHI ULSD</label>
+            </value>
+            <value>
+                <fullName>G3 LSD</fullName>
+                <default>false</default>
+                <label>G3 LSD</label>
+            </value>
+            <value>
+                <fullName>G3 ULSD</fullName>
+                <default>false</default>
+                <label>G3 ULSD</label>
+            </value>
+            <value>
+                <fullName>GC HSD</fullName>
+                <default>false</default>
+                <label>GC HSD</label>
+            </value>
+            <value>
+                <fullName>GC LSD</fullName>
+                <default>false</default>
+                <label>GC LSD</label>
+            </value>
+            <value>
+                <fullName>GC ULSD</fullName>
+                <default>false</default>
+                <label>GC ULSD</label>
+            </value>
+            <value>
+                <fullName>LA CARB ULSD</fullName>
+                <default>false</default>
+                <label>LA CARB ULSD</label>
+            </value>
+            <value>
+                <fullName>NYH HSD</fullName>
+                <default>false</default>
+                <label>NYH HSD</label>
+            </value>
+            <value>
+                <fullName>NYH ULSD</fullName>
+                <default>false</default>
+                <label>NYH ULSD</label>
+            </value>
+            <value>
+                <fullName>PNW ULSD</fullName>
+                <default>false</default>
+                <label>PNW ULSD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

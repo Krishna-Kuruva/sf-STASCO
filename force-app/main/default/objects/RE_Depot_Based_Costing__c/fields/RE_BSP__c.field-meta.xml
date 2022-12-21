@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_BSP__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(RE_HCV_Value__c), 0, RE_HCV_Value__c) +
+IF(ISBLANK(RE_Bio_Value__c), 0, RE_Bio_Value__c) +
+IF(ISBLANK(RE_S_N_H_Cost__c), 0, RE_S_N_H_Cost__c) +
+IF(ISBLANK(RE_Spot_Price_Adjustment__c), 0, RE_Spot_Price_Adjustment__c) +
+IF(ISBLANK(RE_Sales_Tax__c), 0, RE_Sales_Tax__c) +
+IF(ISBLANK(RE_Weighted_Avg__c), 0, RE_Weighted_Avg__c)</formula>
+    <label>BSP</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

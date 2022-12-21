@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Settlementquotes</fullName>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>SETUP_TYPE</columns>
+    <columns>SETUP_OWNER_NAME</columns>
+    <columns>RE_Country__c</columns>
+    <columns>External_Quotation_Number__c</columns>
+    <columns>External_Quote_Source__c</columns>
+    <columns>External_Quote_Type__c</columns>
+    <columns>RE_Multiplier__c</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER.ALIAS</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Quote_Type__c</field>
+        <operation>equals</operation>
+        <value>Settlement</value>
+    </filters>
+    <label>Settlementquotes</label>
+    <language>en_US</language>
+</ListView>

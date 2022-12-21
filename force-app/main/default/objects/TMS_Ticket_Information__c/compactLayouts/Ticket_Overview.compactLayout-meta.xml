@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Overview</fullName>
+    <fields>Name</fields>
+    <fields>Status__c</fields>
+    <fields>Terminal__c</fields>
+    <fields>Issue_Title__c</fields>
+    <fields>Case_Assigned_To__c</fields>
+    <fields>Priority__c</fields>
+    <fields>TMS_User__c</fields>
+    <label>Ticket Overview</label>
+</CompactLayout>

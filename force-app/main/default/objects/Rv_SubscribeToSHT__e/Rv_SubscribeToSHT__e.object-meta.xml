@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This event wll be triggered if any deal is created on SHT.This event will be handled from SHT Dave Screen using cometD library</description>
+    <eventType>HighVolume</eventType>
+    <label>Rv_SubscribeToSHT</label>
+    <pluralLabel>Rv_SubscribeToSHT</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>

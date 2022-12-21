@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MY_Price_Book_MidDay</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Contract_Master__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Final_Price_Rebate__c</columns>
+    <columns>RE_Margin_on_MC__c</columns>
+    <columns>RE_Margin_on_LDC__c</columns>
+    <columns>RE_Forecast_Margin_on_MC__c</columns>
+    <columns>RE_Forecast_Margin_on_LDC__c</columns>
+    <columns>RE_Is_Latest__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Is_Latest__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RE_Is_CBU__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>MY Price Book MidDay</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

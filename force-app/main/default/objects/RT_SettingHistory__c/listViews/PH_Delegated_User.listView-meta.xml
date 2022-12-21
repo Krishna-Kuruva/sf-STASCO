@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Delegated_User</fullName>
+    <columns>NAME</columns>
+    <columns>RE_User_Name__c</columns>
+    <columns>RE_Delegate_Approver__c</columns>
+    <columns>Active__c</columns>
+    <columns>Country__c</columns>
+    <columns>Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.PH_Code_Value_Mapping</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>PH Delegated User</value>
+    </filters>
+    <label>PH Delegated User</label>
+</ListView>

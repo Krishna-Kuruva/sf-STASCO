@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Valid_To__c</fullName>
+    <externalId>false</externalId>
+    <formula>SAP_Contract__r.RT_Valid_To__c</formula>
+    <label>Contract - Valid To</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

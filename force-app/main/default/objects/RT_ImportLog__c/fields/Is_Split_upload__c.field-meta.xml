@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Split_upload__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>to indicate if the file was loaded after splitting internally.</description>
+    <externalId>false</externalId>
+    <label>Is Split upload?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

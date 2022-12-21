@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Philippines_History</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Philippines History</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Philippines</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RT_Country__c</field>
+            <operation>equals</operation>
+            <value>Philippines</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>REV_Malaysia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>REV Malaysia</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Malaysia</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RT_Country__c</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Revolution_Canada_PriceBook_History_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Revolution Canada PriceBook History Share</label>
+        <sharedTo>
+            <group>RE_CND_Manila_Teams</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Canada SFJ Price</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Revolution_Canada_Price_Book_History_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Revolution Canada Price Book History Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Canada SFJ Price</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Revolution_Turkey_History_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Revolution Turkey History Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RT_Country__c</field>
+            <operation>equals</operation>
+            <value>Turkey</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

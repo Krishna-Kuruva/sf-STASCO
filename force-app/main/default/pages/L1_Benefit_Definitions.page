@@ -1,0 +1,11 @@
+<apex:page showHeader="false" title="DisplayImage" sidebar="false"> 
+    <apex:form >
+        <table>
+            <tr>
+                <td width="1000px" height="600px;" align="center">
+                    <apex:image url="/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&versionId=0681x0000008txE&operationContext=CHATTER&contentId=05T1x000000Ap0g" />
+                </td>
+           </tr>
+        </table>
+    </apex:form>
+</apex:page>

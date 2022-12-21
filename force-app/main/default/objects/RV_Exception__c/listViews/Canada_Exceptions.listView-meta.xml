@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Exceptions</fullName>
+    <columns>NAME</columns>
+    <columns>Apex_Class__c</columns>
+    <columns>Method_Name__c</columns>
+    <columns>Status_Code__c</columns>
+    <columns>getMessage__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Canada Exceptions</label>
+</ListView>

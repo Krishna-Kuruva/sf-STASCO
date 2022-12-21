@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Customer_Name__c</columns>
+    <columns>Active__c</columns>
+    <columns>Country_Name__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Material_Code__c</columns>
+    <columns>RT_Plant_Code__c</columns>
+    <columns>RT_Valid_To__c</columns>
+    <columns>RT_Valid_From__c</columns>
+    <columns>RE_Account_Manager__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RT_CONDITION_TABLE_ID__c</columns>
+    <columns>RE_PH_Approval_Scheme__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>MY</value>
+    </filters>
+    <label>All</label>
+</ListView>

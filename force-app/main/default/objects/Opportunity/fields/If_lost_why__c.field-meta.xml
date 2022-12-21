@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>If_lost_why__c</fullName>
+    <description>Alternative Product</description>
+    <externalId>false</externalId>
+    <label>If lost - why?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Price of swap</fullName>
+                <default>false</default>
+                <label>Price of swap</label>
+            </value>
+            <value>
+                <fullName>Price of option</fullName>
+                <default>false</default>
+                <label>Price of option</label>
+            </value>
+            <value>
+                <fullName>Price - other</fullName>
+                <default>false</default>
+                <label>Price - other</label>
+            </value>
+            <value>
+                <fullName>Credit margin</fullName>
+                <default>false</default>
+                <label>Credit margin</label>
+            </value>
+            <value>
+                <fullName>Timing</fullName>
+                <default>false</default>
+                <label>Timing</label>
+            </value>
+            <value>
+                <fullName>Authority</fullName>
+                <default>false</default>
+                <label>Authority</label>
+            </value>
+            <value>
+                <fullName>No interest</fullName>
+                <default>false</default>
+                <label>No interest</label>
+            </value>
+            <value>
+                <fullName>Trader unavailable</fullName>
+                <default>false</default>
+                <label>Trader unavailable</label>
+            </value>
+            <value>
+                <fullName>Supply avaalibility</fullName>
+                <default>false</default>
+                <label>Supply avaalibility</label>
+            </value>
+            <value>
+                <fullName>Supply costing</fullName>
+                <default>false</default>
+                <label>Supply costing</label>
+            </value>
+            <value>
+                <fullName>FX</fullName>
+                <default>false</default>
+                <label>FX</label>
+            </value>
+            <value>
+                <fullName>Systems not able to handle trade</fullName>
+                <default>false</default>
+                <label>Systems not able to handle trade</label>
+            </value>
+            <value>
+                <fullName>MOA</fullName>
+                <default>false</default>
+                <label>MOA</label>
+            </value>
+            <value>
+                <fullName>Alternative Product</fullName>
+                <default>false</default>
+                <label>Alternative Product</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RV_OLF_MRC_Only_Validation</fullName>
+    <active>false</active>
+    <description>This validation rule ensures that OLF_MRC_Only__c is can be checked only when Rv_Available_for_OLF__c is set to true</description>
+    <errorConditionFormula>AND(RV_OLF_MRC_Only__c, NOT(Rv_Available_for_OLF__c))</errorConditionFormula>
+    <errorMessage>MRC is not available for OLF.</errorMessage>
+</ValidationRule>

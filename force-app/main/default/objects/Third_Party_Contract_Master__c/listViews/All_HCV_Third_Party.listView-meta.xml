@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_HCV_Third_Party</fullName>
+    <columns>NAME</columns>
+    <columns>Supply_Route_ID_Name__c</columns>
+    <columns>Grade__c</columns>
+    <columns>Product_sub_grade__c</columns>
+    <columns>GradeLocation__c</columns>
+    <columns>Bio_Quote_Info__c</columns>
+    <columns>Frieight_Quote_Info__c</columns>
+    <columns>Base_Quote_1_Percent__c</columns>
+    <columns>Base_Quote_1__c</columns>
+    <columns>Additive_surcharge__c</columns>
+    <columns>Bio_surcharge__c</columns>
+    <columns>Loc_Diff__c</columns>
+    <columns>Average_Multiplier_Quote__c</columns>
+    <columns>Average_Quote_1__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>isThirdParty__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Valid_From__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Valid_To__c</field>
+        <operation>greaterThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>All HCV Third Party</label>
+</ListView>

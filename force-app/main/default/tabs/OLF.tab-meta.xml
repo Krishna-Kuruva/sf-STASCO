@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>OLF_Dashboard</auraComponent>
+    <description>OLF interface details, Available Accounts and MRCs for online sales. Related Object(s) : Account, MRC, Reuters Quotes, Online User API Audit, Revolution Setting, OLF Email Template</description>
+    <label>OLF</label>
+    <motif>Custom3: Sun</motif>
+</CustomTab>

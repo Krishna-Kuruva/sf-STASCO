@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Settlements_Brent_v_EBOB_Daimler</fullName>
+    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Reuter_Id__c</columns>
+    <columns>Quote_Display_Name__c</columns>
+    <columns>Quote_Name__c</columns>
+    <columns>Price__c</columns>
+    <columns>Valid_Month__c</columns>
+    <columns>Valid_To_Date__c</columns>
+    <columns>Valid_From_Date__c</columns>
+    <columns>Unit_Of_Measure__c</columns>
+    <columns>Reuters_Created_Date__c</columns>
+    <columns>Reuters_Code__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Quote_Display_Name__c</field>
+        <operation>equals</operation>
+        <value>Platts FOB Barge Eurobob (high)</value>
+    </filters>
+    <filters>
+        <field>Quote_Name__c</field>
+        <operation>equals</operation>
+        <value>Brent Crude EOD</value>
+    </filters>
+    <filters>
+        <field>Reuters_Created_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>4/30/2019 12:00 AM</value>
+    </filters>
+    <label>Settlements Brent v EBOB (Daimler)</label>
+</ListView>

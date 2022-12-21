@@ -1,0 +1,310 @@
+<apex:page controller="RV_DIDashboardControllerFuture" showHeader="false" sidebar="false" lightningStyleSheets="true"
+           applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" standardStylesheets="false">
+    <style type="text/css">
+        
+         tr:nth-child(even) { background-color: #F3F2F2; }
+        
+  <!--Fix_170889_Lakshmi_02May2019 Starts-->
+       
+         tr:nth-child(odd) { background-color: #FFFFFF; }
+        /*Fix_331177_Soumyajit_17Sep2019 starts
+		tr:hover td {
+   			 background-color:#FFFF99;
+		}
+          Fix_331177_Soumyajit_17Sep2019 ends*/
+  <!--Fix_170889_Lakshmi_02May2019 Ends--> 
+                 
+      th {
+            height: 25px;
+        }
+        td {
+            height: 20px;
+            font-weight: bold;          
+            
+        }
+        .refreshBox{
+        	background-color:#E1EDD9;
+        }
+        #tBody td{
+            padding-left: 1%;
+            height: 20px;
+            font-weight: bold;
+        	
+        }
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 15px; 
+            width: 90%;
+            height: 100%; 
+            background: #F3F2F2;   
+        }
+        #roundTable {
+            border-radius: 25px;
+            border: 2px solid #a7a8aa !important;
+        }
+        #greenBorder td{
+            border: 1px solid #73AD21; 
+            border-collapse: collapse;
+            padding-left: 1%;
+        }
+        #headerBrand th{
+            text-align: center;
+            border: 1px solid #73AD21;
+            border-collapse: collapse; 
+            background-color:#DDDBDA !important;
+        }
+        #childTd td{
+            border: 1px solid #73AD21; 
+            border-collapse: collapse;
+        }
+       
+       
+       
+    /*Fix_170834_Soumyajit_17Apr2019 starts*/
+    .headerTopRowPlant{position:absolute;top:0;min-height:2rem;background-color:#FFFFFF;width:25%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;z-index:1;font-weight: 700;font-size: .65rem;}
+    .headerTopRowSales{position:absolute;top:0;min-height:2rem;background-color:#FFFFFF;width:15%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;z-index:1;font-weight: 700;font-size: .65rem;}
+    .headerTopRowIgo{position:absolute;top:0;min-height:2rem;background-color:#FEF2CC;width:28%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;z-index:1;font-weight: 700;font-size: .65rem;}
+    .headerTopRowAgo{position:absolute;top:0;min-height:2rem;background-color:#FCE4D6;width:25%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;z-index:1;font-weight: 700;font-size: .65rem;}
+    .headerTopRowMogas{position:absolute;top:0;min-height:2rem;background-color:#DDEBF6;width:25%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;z-index:1;font-weight: 700;font-size: .65rem;}
+    .headerTopRowGTL{position:absolute;top:0;min-height:2rem;background-color:#FEF2CC;width:10%;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;border-right: 1px solid #a7a8aa;display: flex;align-items: center;z-index:1;font-weight: 700;font-size: .65rem;}
+    
+    .headerButtomRow{position:absolute;top:33px;min-height:2rem;background-color:#FFFFFF;width:10%;z-index:1;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;display: flex;align-items: center;font-weight: 700;font-size: .65rem;}
+    .headerButtomRowBlank{position:absolute;top:33px;min-height:2rem;background-color:#FFFFFF;width:30%;z-index:1;border-left: 1px solid #a7a8aa;border-top: 1px solid #a7a8aa;border-bottom: 1px solid #a7a8aa;font-weight: 700font-size: .65rem;}
+    /*Fix_170834_Soumyajit_17Apr2019 ends*/ 
+        
+        .highlightColor{background-color:#FFFF99 !important;} /*Fix_331177_Soumyajit_17Sep2019*/
+        
+    </style>
+    <!--AdditionalFix_170834_Soumyajit_27May2019 Starts-->
+    <script language="javascript">
+      var scrOfX = 0, scrOfY = 0;
+       function getScrollXY()
+       {
+           //console.log('I am Inside get');
+          var scrollElmnt = document.getElementById("scrollId");           
+          scrOfY = scrollElmnt.scrollTop;
+          scrOfX = scrollElmnt.scrollLeft;
+           //console.log(scrOfX +', ' + scrOfY);
+        }
+      function setScrollXY()
+       {
+           //console.log('I am Inside set with '+ scrOfX +', ' + scrOfY);
+          var scrollElmnt = document.getElementById("scrollId");           
+          scrollElmnt.scrollTo(scrOfX,scrOfY);
+           restoreHighlight();	//Fix_331177_Soumyajit_17Sep2019
+        }
+    
+    	//Fix_331177_Soumyajit_17Sep2019 starts
+        var highlighthedRow;
+    	var oldHighlighthedRow;
+    
+    	function addClass(element, cls){element.classList.add(cls);}
+    	function removeClass(element, cls){element.classList.remove(cls);}
+    
+    	function restoreHighlight()
+    	{
+            if(highlighthedRow != null && highlighthedRow != '' && highlighthedRow != 'undefined')
+            	addClass(document.getElementById(highlighthedRow),"highlightColor");
+        }
+    
+       	function setHighlight(tab) 
+    	{
+            if(tab.id != null && tab.id != '' && tab.id != 'undefined')
+            	{
+                   highlighthedRow = tab.id;
+                   
+                   if(oldHighlighthedRow != null && oldHighlighthedRow != '' && oldHighlighthedRow != 'undefined')
+                        removeClass(document.getElementById(oldHighlighthedRow),"highlightColor");
+                    
+                   addClass(document.getElementById(highlighthedRow),"highlightColor");
+                   oldHighlighthedRow = highlighthedRow;
+                }
+		}
+    	//Fix_331177_Soumyajit_17Sep2019 ends
+     </script>
+    <!--AdditionalFix_170834_Soumyajit_27May2019 Ends-->
+    <head>
+          <meta charset="utf-8" />
+          <meta http-equiv="x-ua-compatible" content="ie=edge" />
+          <title>DI Dashboard</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <apex:slds />
+    </head>
+   <apex:form >
+       <div class="slds-scope">
+         <apex:outputPanel id="rerenderTime">        
+            <div class="slds-box slds-box_x-small " style="background-color:#E1EDD9;">
+                <B><apex:outputText value="ATP and Price Last Updated On: {!refreshedTime}"></apex:outputText></B>
+            </div>
+        </apex:outputPanel>
+        <apex:outputPanel id="rerenderTable">
+            <!--Fix_170834_Soumyajit_17Apr2019 starts-->
+            <!--
+            <div class="slds-grid slds-wrap slds-size_4-of-4" style="font-size:10px;" >
+            	<table class="slds-table slds-table_bordered slds-table_striped " style="font-weight:bold;">
+                <thead>
+     				<tr class="slds-text-title_caps">
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom" style="border-left: 1px solid #a7a8aa; border:collapse;">PLANT</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">SALES CHANNEL</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FEF2CC;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FEF2CC;">IGO</th>
+              					   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FEF2CC;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FEF2CC;"></th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborderLeft " style="background-color:#FCE4D6;border-left: 1px solid #a7a8aa; border:collapse;"></th>
+                                   <th scope="col"  class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FCE4D6;">AGO</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FCE4D6;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#FCE4D6;"></th>
+                                   
+                        		   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborderLeft " style="background-color:#DDEBF6;border-left: 1px solid #a7a8aa;border:collapse;"></th>
+                                   <th scope="col"  class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#DDEBF6;">MOGAS</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#DDEBF6;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom " style="background-color:#DDEBF6;"></th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborderTopBottom putborderLeft putborderRight " style="background-color:#FCE4D6;border-left: 1px solid #a7a8aa;border:collapse;">GTL</th>
+                   </tr>
+					<tr class="slds-text-title_caps">
+                                   <th scope="col" class="slds-truncate slds-cell-fixed" style="border: 1px solid #a7a8aa;border:collapse;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed" style="border: 1px solid #a7a8aa;border:collapse;"></th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">ATP CBM</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">BSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">PSP</th>
+                                   <th scope="col" class="slds-truncate slds-cell-fixed " style="border: 1px solid #a7a8aa;border:collapse;">OTM</th>
+                                  
+                                   <th scope="col" class="slds-truncate slds-cell-fixed putborder" style="border: 1px solid #a7a8aa;border:collapse;">BSP</th>
+                                   
+                              </tr>
+                   
+                </thead>
+			-->
+            <!--Updated Header to freeze with scroll-->
+            <div class="slds-table--header-fixed_container" style="height:500px;padding-top:1rem;">
+                	<!--AdditionalFix_170834_Soumyajit_27May2019 Starts-->
+                	<!--<div class="slds-grid slds-wrap slds-size_4-of-4 slds-scrollable_y borderTable" style="height:100%;">-->
+                    <div id="scrollId" class="slds-grid slds-wrap slds-size_4-of-4 slds-scrollable_y borderTable" style="height:100%;" onscroll="getScrollXY();">
+					<!--AdditionalFix_170834_Soumyajit_27May2019 Ends-->
+                      	<table class="slds-table_bordered fontSize slds-table--header-fixed" 
+                               style="font-size:10px" id="dataTable">
+			                             	  <thead>
+                              <tr class="slds-text-title_caps">
+                                  <th scope="col"><div class="slds-truncate headerTopRowPlant" title="PLANT">&nbsp;PLANT</div></th>
+                                  <th scope="col" style="width:150px;"><div class="slds-truncate headerTopRowSales" title="Sales Channel">&nbsp;Sales Channel</div></th>
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowIgo" title="IGO">IGO</div></th>
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowAgo" title="AGO">AGO</div></th>
+                                  <!--MOGAS Label change by Dharmendra : PBI328 starts-->
+                                  <th colspan="4" scope="colgroup"><div class="slds-truncate slds-align_absolute-center headerTopRowMogas" title="{!MOGASOption}">{!MOGASOption}</div></th> 
+                                  <!--MOGAS Label change :  Ends-->
+                                  <th scope="col" style="width:50px;"><div class="slds-truncate headerTopRowGTL" title="GTL">&nbsp;GTL</div></th>
+                              </tr> 
+                              <tr class="slds-text-title_caps">
+                                  <th scope="col"><div class="slds-truncate headerButtomRowBlank">&nbsp;</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRowBlank">&nbsp;</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>
+                                  <th scope="col" style="width:100px;"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>
+                                  <th scope="col" style="width:100px;"><div class="slds-truncate headerButtomRow" title="ATP CBM">&nbsp;ATP CBM</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="PSP">&nbsp;PSP</div></th>
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="OTM">&nbsp;OTM</div></th>                                  
+                                  <th scope="col"><div class="slds-truncate headerButtomRow" title="BSP">&nbsp;BSP</div></th>                                          
+                              </tr>
+                          </thead>
+            	<!--Fix_170834_Soumyajit_17Apr2019 ends-->
+                <tbody id="tBody">
+                   
+                    <apex:repeat value="{!revolutionDashboardLst}" var="item">
+                        <!--Fix_331177_Soumyajit_17Sep2019 starts-->
+                        <!--<tr>-->
+                        <tr id="{!item.UniqueKey__c}" onmouseover="setHighlight(this)">
+                        <!--Fix_331177_Soumyajit_17Sep2019 ends-->
+                          <!--Fix_170889,170828_Lakshmi_02May2019 Starts-->
+                            <td scope="row" class="putborderHeader" style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top; font-weight:normal;">
+                                <apex:outputField value="{!item.Plant_Name_Text__c}"/>
+                            </td >
+                            
+                            <td scope="row" class="putborderHeader" style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.Sales_Channel__c}"/>
+                            </td >
+                          
+                            <td scope="row" class="putborderHeader " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.ATP1_Live_IGO__c}"/>
+                            </td>
+                      
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.BSP_IGO__c}" />
+                            </td>
+                            
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.PSP_IGO__c}" />
+                            </td>
+                            
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;">
+                                <apex:outputField value="{!item.OTM_IGO__c}"/>
+                            </td>
+                         
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                
+                                    <apex:outputField value="{!item.ATP1_Live_AGO__c}"/>
+                                
+                            </td>
+                      
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.BSP_AGO__c}" /> 
+                            </td>
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.PSP_AGO__c}" />
+                            </td>
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;">
+                                <apex:outputField value="{!item.OTM_AGO__c}" />
+                            </td>
+
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.ATP1_Live_MOGAS__c}" />    
+                            </td>
+                            
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.BSP_MOGAS__c}" />
+                            </td>
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                <apex:outputField value="{!item.PSP_MOGAS__c}" /> 
+                            </td>
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;text-align: right;padding:4px 8px;vertical-align: top;">
+                              <apex:outputField value="{!item.OTM_MOGAS__c}" /> 
+                            </td>
+                            <td scope="row" class="putborderHeader  " style="border-left: 1px solid #a7a8aa;border:collapse;border-right: 1px solid;text-align: right;padding:4px 8px;vertical-align: top;font-weight:normal;">
+                                 <apex:outputField value="{!item.BSP_GTL__c}" />
+                            </td>
+                           <!--Fix_170889,170828_Lakshmi_02May2019 Ends-->
+                        </tr>
+                    </apex:repeat> 
+                </tbody>
+            </table>
+            </div>
+           <!--Fix_170834_Soumyajit_17Apr2019 starts-->
+           </div>
+           <!--Fix_170834_Soumyajit_17Apr2019 ends-->
+        </apex:outputPanel>
+    <!--AdditionalFix_170834_Soumyajit_27May2019 Starts-->
+     <!--<apex:actionPoller action="{!refreshPage}" reRender="rerenderTable,rerenderTime" interval="15"/>-->
+     <apex:actionPoller action="{!refreshPage}" reRender="rerenderTable,rerenderTime" interval="15" oncomplete="setScrollXY();"/>
+    <!--AdditionalFix_170834_Soumyajit_27May2019 Ends-->
+       </div>
+    </apex:form>
+</apex:page>

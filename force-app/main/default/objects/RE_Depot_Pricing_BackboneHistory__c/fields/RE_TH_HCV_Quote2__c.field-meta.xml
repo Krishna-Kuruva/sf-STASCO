@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_TH_HCV_Quote2__c</fullName>
+    <externalId>false</externalId>
+    <label>HCV Quote 2</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>SING FOB GO 0.05%</fullName>
+                <default>false</default>
+                <label>SING FOB GO 0.05%</label>
+            </value>
+            <value>
+                <fullName>GTL</fullName>
+                <default>false</default>
+                <label>GTL</label>
+            </value>
+            <value>
+                <fullName>Ethanol</fullName>
+                <default>false</default>
+                <label>Ethanol</label>
+            </value>
+            <value>
+                <fullName>POME</fullName>
+                <default>false</default>
+                <label>POME</label>
+            </value>
+            <value>
+                <fullName>Ethanol_Changed</fullName>
+                <default>false</default>
+                <label>Ethanol_Changed</label>
+            </value>
+            <value>
+                <fullName>Ethanol_RYG</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ethanol_RYG</label>
+            </value>
+            <value>
+                <fullName>Ethanol_SRC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ethanol_SRC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

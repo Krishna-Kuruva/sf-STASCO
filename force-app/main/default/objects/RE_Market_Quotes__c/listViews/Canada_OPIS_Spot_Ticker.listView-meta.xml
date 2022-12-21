@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_OPIS_Spot_Ticker</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_CND_Validity_Date__c</columns>
+    <columns>RE_Price__c</columns>
+    <columns>RE_Validity_Month__c</columns>
+    <columns>RE_Rate_Unit__c</columns>
+    <columns>RE_Default_Per_Unit__c</columns>
+    <columns>RE_Quote_Source__c</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>RE_Country_Name__c</columns>
+    <columns>RE_Is_Processed__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Market_Quotes__c.Canada_OPIS_Spot_Ticker</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Validity_Date__c</field>
+        <operation>equals</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <label>Canada OPIS Spot Ticker</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

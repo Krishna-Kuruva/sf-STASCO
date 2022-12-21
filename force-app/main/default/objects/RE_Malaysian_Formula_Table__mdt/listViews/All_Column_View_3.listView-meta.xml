@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Column_View_3</fullName>
+    <columns>MasterLabel</columns>
+    <columns>RE_MY_Fixed_Premium__c</columns>
+    <columns>RE_MY_Fixed_Premium_Unit__c</columns>
+    <columns>RE_MY_Plant__c</columns>
+    <columns>RE_MY_Product__c</columns>
+    <columns>RE_MY_Region__c</columns>
+    <columns>RE_MY_TP_Premium__c</columns>
+    <columns>RE_MY_TP_Premium_Percentage__c</columns>
+    <columns>RE_MY_TP_Premium_Unit__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Column View 3</label>
+    <language>en_US</language>
+</ListView>

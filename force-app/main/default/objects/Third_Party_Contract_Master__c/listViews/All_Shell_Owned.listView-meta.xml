@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Shell_Owned</fullName>
+    <columns>NAME</columns>
+    <columns>GradeLocation__c</columns>
+    <columns>Average_Quote_1__c</columns>
+    <columns>Supplement_Quote_1__c</columns>
+    <columns>Average_Quote_2__c</columns>
+    <columns>Supplement_Quote_2__c</columns>
+    <columns>Base_Quote_1__c</columns>
+    <columns>Differential_Quote_1__c</columns>
+    <columns>Differential_Quote_1_Percent__c</columns>
+    <columns>Differential_Quote_2__c</columns>
+    <columns>Differential_Quote_2_Percent__c</columns>
+    <columns>Alternate_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Shell_Owned_Type__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>isThirdParty__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>All Shell Owned</label>
+</ListView>

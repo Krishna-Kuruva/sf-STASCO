@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_TransportCharges__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>it is true if Transport Charges are applied</description>
+    <externalId>false</externalId>
+    <label>Transport Charges</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

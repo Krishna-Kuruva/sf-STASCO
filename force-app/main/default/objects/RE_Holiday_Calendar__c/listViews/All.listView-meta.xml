@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Comments__c</columns>
+    <columns>RE_Holiday__c</columns>
+    <columns>RE_Holiday_Date__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Holiday_Calendar__c.RE_MY_Holiday_Calendar</value>
+    </filters>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platts_FOB_Barge_R_dam_Diesel_10ppm</fullName>
+    <columns>NAME</columns>
+    <columns>Quote_Display_Name__c</columns>
+    <columns>Price_USD__c</columns>
+    <columns>Price__c</columns>
+    <columns>CurrencyCode__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Quote_Display_Name__c</field>
+        <operation>contains</operation>
+        <value>Platts CIF Cargo NWE Gasoline 10ppm (high),Platts FOB Barge Eurobob (high)</value>
+    </filters>
+    <label>Platts FOB Barge R&apos;dam Diesel 10ppm</label>
+</ListView>

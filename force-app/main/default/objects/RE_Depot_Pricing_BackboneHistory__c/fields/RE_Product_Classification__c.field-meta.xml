@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Product_Classification__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Fuel By-Products</fullName>
+                <default>false</default>
+                <label>Fuel By-Products</label>
+            </value>
+            <value>
+                <fullName>Gas Oil</fullName>
+                <default>false</default>
+                <label>Gas Oil</label>
+            </value>
+            <value>
+                <fullName>Gasoline</fullName>
+                <default>false</default>
+                <label>Gasoline</label>
+            </value>
+            <value>
+                <fullName>Kero</fullName>
+                <default>false</default>
+                <label>Kero</label>
+            </value>
+            <value>
+                <fullName>Residual Fuel Oil</fullName>
+                <default>false</default>
+                <label>Residual Fuel Oil</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

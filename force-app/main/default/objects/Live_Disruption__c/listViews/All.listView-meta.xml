@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Status_Indicator__c</columns>
+    <columns>NAME</columns>
+    <columns>IK_Locations__c</columns>
+    <columns>Product__c</columns>
+    <columns>Status__c</columns>
+    <columns>Cause__c</columns>
+    <columns>Begin_Date__c</columns>
+    <columns>Estimated_End_Date__c</columns>
+    <columns>Comment__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Resolution_Status__c</columns>
+    <columns>Resolve_Date_Time__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

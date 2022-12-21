@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Location_Name__c</columns>
+    <columns>RE_Costprice_Marginal_Cost__c</columns>
+    <columns>RE_FX_Marginal_Cost__c</columns>
+    <columns>RE_FX_Laid_Down_Cost__c</columns>
+    <columns>RE_Hydrocarbon_Value__c</columns>
+    <columns>RE_Oil_Loss__c</columns>
+    <columns>RE_Market_Premium__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_IsLatest__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>RE_IsMidday__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

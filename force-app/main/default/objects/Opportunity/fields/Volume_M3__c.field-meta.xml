@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volume_M3__c</fullName>
+    <description>Total opportunity volume in Cubic Meters</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total opp. Volume. If the deal is for e.g. 1m each year in 2 years - volume is = 2m.</inlineHelpText>
+    <label>Volume (M3)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

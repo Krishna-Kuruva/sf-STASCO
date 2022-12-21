@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Live_Disruptions_North</fullName>
+    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>IK_Locations__c</columns>
+    <columns>Product__c</columns>
+    <columns>Status__c</columns>
+    <columns>Cause__c</columns>
+    <columns>Begin_Date__c</columns>
+    <columns>Estimated_End_Date__c</columns>
+    <columns>Comment__c</columns>
+    <columns>Resolve_Date_Time__c</columns>
+    <columns>Resolution_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>IK_Location_Name__c</field>
+        <operation>equals</operation>
+        <value>Seefeld PETS Depot,Harburg Shell Depot,Hamburg Holborn Gantry,Schwedt PCK Gantry,Heide Klesch Gantry,Heide Ref gantry,Magdeburg MUT Depot,Schwedt PCK Refinery</value>
+    </filters>
+    <filters>
+        <field>IK_Location_Name__c</field>
+        <operation>equals</operation>
+        <value>Bremen HGM Depot,Hannover Tanquid,Hannover-Linden Varo Depot,Emleben Unitank depot,Leuna Total Gantry,Rhäsa Varo Depot,Schwedt PCK Gantry</value>
+    </filters>
+    <filters>
+        <field>Resolution_Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>Live Disruptions - North</label>
+</ListView>

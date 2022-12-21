@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_SOM</fullName>
+    <columns>OBJECT_ID</columns>
+    <columns>NAME</columns>
+    <columns>SfHeaderShtNo__c</columns>
+    <columns>Error_Processing_to_GSAP__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CreationInd__c</columns>
+    <columns>SalesPrice__c</columns>
+    <columns>SapMrcNo__c</columns>
+    <columns>SfItemShtNo__c</columns>
+    <columns>SapSalesContNo__c</columns>
+    <columns>SHT_Transaction_Id__c</columns>
+    <columns>Processing_Indicator__c</columns>
+    <columns>Rejection_Reason__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All (SOM)</label>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rv_Is_Active_Steer__c</fullName>
+    <description>Returns true if steer record is valid.</description>
+    <externalId>false</externalId>
+    <formula>Valid_From__c &lt;= TODAY() &amp;&amp; Valid_To__c &gt;= TODAY()</formula>
+    <label>Is Active Steer?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

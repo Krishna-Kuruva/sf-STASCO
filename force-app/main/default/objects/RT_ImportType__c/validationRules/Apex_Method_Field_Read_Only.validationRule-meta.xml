@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apex_Method_Field_Read_Only</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISCHANGED(ApexClassMethod__c)</errorConditionFormula>
+    <errorDisplayField>ApexClassMethod__c</errorDisplayField>
+    <errorMessage>This is a Read-Only Field</errorMessage>
+</ValidationRule>

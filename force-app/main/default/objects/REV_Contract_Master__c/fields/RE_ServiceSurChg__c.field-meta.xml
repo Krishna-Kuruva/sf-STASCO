@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_ServiceSurChg__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>it is true if Service SurChg are appiled</description>
+    <externalId>false</externalId>
+    <label>Service SurChg</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

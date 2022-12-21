@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrictions__c</fullName>
+    <description>free text field to hold any special actions that need to be taken, whether advice was limited to a particular situation....</description>
+    <externalId>false</externalId>
+    <inlineHelpText>free text field to hold any special actions that need to be taken, whether advice was limited to a particular situation....</inlineHelpText>
+    <label>Restrictions</label>
+    <length>32000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

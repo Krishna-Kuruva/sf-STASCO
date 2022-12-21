@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IGO_50ppm_Hedge</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Transactions__c</columns>
+    <columns>Time_Stamp__c</columns>
+    <columns>Mass_MT__c</columns>
+    <columns>Hedge__c</columns>
+    <columns>Exposure_Factor__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>equals</operation>
+        <value>IGO 50ppm</value>
+    </filters>
+    <filters>
+        <field>Transactions__c</field>
+        <operation>equals</operation>
+        <value>Hedge</value>
+    </filters>
+    <label>IGO 50ppm Hedge</label>
+</ListView>

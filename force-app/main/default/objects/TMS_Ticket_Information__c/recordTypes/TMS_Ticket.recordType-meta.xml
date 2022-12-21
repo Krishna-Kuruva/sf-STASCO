@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TMS_Ticket</fullName>
+    <active>true</active>
+    <description>For TMS ticket</description>
+    <label>TMS Ticket</label>
+    <picklistValues>
+        <picklist>Contact_Method__c</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Issue_Category__c</picklist>
+        <values>
+            <fullName>Alliance Terminal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MultiLoad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TMS Host</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TMS SCAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USIB</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>CRITICAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HIGH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LOW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDIUM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>ASSIGNED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CLOSED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IN PROGRESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NEW</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>ON HOLD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subcategory__c</picklist>
+        <values>
+            <fullName>ACCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ACCESS%2FACCOUNTS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ADDITIVE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALLOCATIONS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BACKUP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BACKUPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BIZTALK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BUSINESS PROCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Badges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHANGES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COMMUNICATIONS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONFIGURATION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONNECTIVITY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contracts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DATA SETUP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEVELOPMENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENDUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ERRORS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FOLIO CLOSE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FUNCTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GSAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GUIDANCE%2FKNOWKLEDGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HAZCOM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HYPERVISOR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INSTRUCTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KNOWLEDGE TRANSFER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LAB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liaison</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MASTER DATA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MIRROR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MISSING TRANSACTIONS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MULTILOAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NETWORK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NOMINATIONS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PASSWORD%2FACCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PICKLIST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRINTERS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRODUCTS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RECORDS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REG TEXT %2F HAZCOM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RELEASE LINES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REPORTING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RETAIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SETTINGS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SRR MANILA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STOCK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STRAPPING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO ISSUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO OTHER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO RESEARCH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO SET-UP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SUPPLY AND TRADING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SYSTEM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TABS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TECHNICAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TESTING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UPGRADE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USIB ERRORS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Terminal_Number__c</picklist>
+        <values>
+            <fullName>C101 Scotford</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C116 Sherwood</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C123 Kingston</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C125 Sarnia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C126 Hamilton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C131 Ottawa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C134 Sault Ste%2E Marie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C136 Keele</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C138 Bare Point</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C142 Winnipeg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C146 Calgary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C149 Shellburn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C169 Montreal Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C173 Gretna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C211 Montreal East</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C316 Burmount</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y004 Van Nuys</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y009 Colton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y016 Des Plaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y022 Carson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y032 Seattle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y071 Sacramento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y076 Anacortes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y081 San Jose</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y083 Portland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y087 Signal Hill</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y164 Stockton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y314 New Haven</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y315 Convent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y352 Newark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y353 Long Island</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y354 Providence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y366 Nashville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y370 Kenner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y371 Sewaren</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y372 Knoxville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y536 Anacortes Refinery Rack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y601 Mobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y780 Collins</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y944 Birmingham</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

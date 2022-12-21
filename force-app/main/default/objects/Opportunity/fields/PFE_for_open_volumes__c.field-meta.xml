@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PFE_for_open_volumes__c</fullName>
+    <description>Approx PFE for Open volumes</description>
+    <externalId>false</externalId>
+    <formula>((Total_Volume__c/Number_of_Months__c)*(( Execution_date_Start_date__c + Number_of_Months__c )*Round(((CloseDate-Today())/30.5),0))*Account.M2M_B2B__c)*0.25</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PFE for open volumes</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

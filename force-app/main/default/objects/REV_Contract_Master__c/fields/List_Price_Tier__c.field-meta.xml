@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>List_Price_Tier__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>List Price Tier</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>RT_Setting__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>MY Code Value Mapping</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.Type__c</field>
+            <operation>equals</operation>
+            <value>MY Tier</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.Name</field>
+            <operation>contains</operation>
+            <value>Tier 1</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>RT_Setting__c</referenceTo>
+    <relationshipLabel>REV Contract Master (List Price Tier)</relationshipLabel>
+    <relationshipName>REV_Contract_Master6</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

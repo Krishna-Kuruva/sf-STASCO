@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IGO</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Product_Sub_Group__c</columns>
+    <columns>Source__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Scenario__c</columns>
+    <columns>Origination_Steer_Type__c</columns>
+    <columns>Select_CO_Steer__c</columns>
+    <columns>Differential_Value_1__c</columns>
+    <columns>Differential_Value_2__c</columns>
+    <columns>Factor_Route_1__c</columns>
+    <columns>Route_1__c</columns>
+    <columns>Factor_Route_2__c</columns>
+    <columns>Route_2__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Sub_Group__c</field>
+        <operation>equals</operation>
+        <value>IGO</value>
+    </filters>
+    <label>IGO</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Ready__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field indicates if the data upload via import wizard was done after splitting the upload file, and email can be triggered.</description>
+    <externalId>false</externalId>
+    <label>Email Ready?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

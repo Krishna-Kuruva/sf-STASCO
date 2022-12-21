@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Month__c</columns>
+    <columns>RE_MOPS_Name__c</columns>
+    <columns>RE_MTD__c</columns>
+    <columns>RE_Price__c</columns>
+    <columns>RE_Published_Date__c</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>RE_Type__c</columns>
+    <columns>RE_Year__c</columns>
+    <columns>RE_Week_Number__c</columns>
+    <columns>RE_WeekAverage__c</columns>
+    <columns>RE_W_1__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

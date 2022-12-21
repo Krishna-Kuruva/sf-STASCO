@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cause__c</fullName>
+    <externalId>false</externalId>
+    <label>Cause</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Delayed Primary Transport</fullName>
+                <default>false</default>
+                <label>Delayed Primary Transport</label>
+            </value>
+            <value>
+                <fullName>Delayed 3rd Party Delivery</fullName>
+                <default>false</default>
+                <label>Delayed 3rd Party Delivery</label>
+            </value>
+            <value>
+                <fullName>Overlifting</fullName>
+                <default>false</default>
+                <label>Overlifting</label>
+            </value>
+            <value>
+                <fullName>Hydrocarbon Availability</fullName>
+                <default>false</default>
+                <label>Hydrocarbon Availability</label>
+            </value>
+            <value>
+                <fullName>3rd Party Information</fullName>
+                <default>false</default>
+                <label>3rd Party Information</label>
+            </value>
+            <value>
+                <fullName>Planned Maintenance</fullName>
+                <default>false</default>
+                <label>Planned Maintenance</label>
+            </value>
+            <value>
+                <fullName>Unplanned Maintenance</fullName>
+                <default>false</default>
+                <label>Unplanned Maintenance</label>
+            </value>
+            <value>
+                <fullName>Quality</fullName>
+                <default>false</default>
+                <label>Quality</label>
+            </value>
+            <value>
+                <fullName>CSO Cover</fullName>
+                <default>false</default>
+                <label>CSO Cover</label>
+            </value>
+            <value>
+                <fullName>Spec Change</fullName>
+                <default>false</default>
+                <label>Spec Change</label>
+            </value>
+            <value>
+                <fullName>Weather Conditions</fullName>
+                <default>false</default>
+                <label>Weather Conditions</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Opening Hour</fullName>
+                <default>false</default>
+                <label>Opening Hour</label>
+            </value>
+            <value>
+                <fullName>Cancelled Primary transport</fullName>
+                <default>false</default>
+                <label>Cancelled Primary transport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

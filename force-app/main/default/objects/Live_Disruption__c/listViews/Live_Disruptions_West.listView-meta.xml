@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Live_Disruptions_West</fullName>
+    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>IK_Locations__c</columns>
+    <columns>Product__c</columns>
+    <columns>Status__c</columns>
+    <columns>Cause__c</columns>
+    <columns>Begin_Date__c</columns>
+    <columns>Estimated_End_Date__c</columns>
+    <columns>Comment__c</columns>
+    <columns>Resolve_Date_Time__c</columns>
+    <columns>Resolution_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>IK_Location_Name__c</field>
+        <operation>equals</operation>
+        <value>Andernach Dötsch Depot,Godorf Shell Gantry,Godorf Shell Refinery,Gelsenkirchen BP Refinery,Essen UTG Depot,Wesseling Shell Gantry</value>
+    </filters>
+    <filters>
+        <field>IK_Location_Name__c</field>
+        <operation>equals</operation>
+        <value>Wesseling Shell Refinery,Duisburg Total Depot,Duisburg Varo Depot,Lingen BP Gantry,Kassel BP Depot,Flörsheim Shell Depot</value>
+    </filters>
+    <filters>
+        <field>Resolution_Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>Live Disruptions - West</label>
+</ListView>

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Terminal__c</fullName>
+    <description>APEX, NC
+Marshall, MI
+Ferrisburg, MI
+Beaumont, TX
+Dayton, OH
+Effingham, IL-Buckeye</description>
+    <externalId>false</externalId>
+    <label>Terminal</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Anacortes, WA - SOPUS</fullName>
+                <default>false</default>
+                <label>Anacortes, WA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Apex, NC-Motiva</fullName>
+                <default>false</default>
+                <label>Apex, NC-Motiva</label>
+            </value>
+            <value>
+                <fullName>Argo, IL - BUCKEYE</fullName>
+                <default>false</default>
+                <label>Argo, IL - BUCKEYE</label>
+            </value>
+            <value>
+                <fullName>Aurora, CO - Magellan</fullName>
+                <default>false</default>
+                <label>Aurora, CO - Magellan</label>
+            </value>
+            <value>
+                <fullName>Austin, TX - Flint Hills</fullName>
+                <default>false</default>
+                <label>Austin, TX - Flint Hills</label>
+            </value>
+            <value>
+                <fullName>Bainbridge, GA - Motiva</fullName>
+                <default>false</default>
+                <label>Bainbridge, GA - Motiva</label>
+            </value>
+            <value>
+                <fullName>Baltimore, MD - Motiva</fullName>
+                <default>false</default>
+                <label>Baltimore, MD - Motiva</label>
+            </value>
+            <value>
+                <fullName>Bridgeport, CT - Motiva</fullName>
+                <default>false</default>
+                <label>Bridgeport, CT - Motiva</label>
+            </value>
+            <value>
+                <fullName>Cape Girardeau, MO - Teppco</fullName>
+                <default>false</default>
+                <label>Cape Girardeau, MO - Teppco</label>
+            </value>
+            <value>
+                <fullName>Carson, CA - SOPUS RACK</fullName>
+                <default>false</default>
+                <label>Carson, CA - SOPUS RACK</label>
+            </value>
+            <value>
+                <fullName>Charlotte, NC - MOTIVA (North)</fullName>
+                <default>false</default>
+                <label>Charlotte, NC - MOTIVA (North)</label>
+            </value>
+            <value>
+                <fullName>Cincinnati, OH - Buckeye</fullName>
+                <default>false</default>
+                <label>Cincinnati, OH - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Collins, MS - Motiva</fullName>
+                <default>false</default>
+                <label>Collins, MS - Motiva</label>
+            </value>
+            <value>
+                <fullName>Colton, CA - KINDER MORGAN</fullName>
+                <default>false</default>
+                <label>Colton, CA - KINDER MORGAN</label>
+            </value>
+            <value>
+                <fullName>Columbus, OH</fullName>
+                <default>false</default>
+                <label>Columbus, OH</label>
+            </value>
+            <value>
+                <fullName>Columbus, OH - Buckeye</fullName>
+                <default>false</default>
+                <label>Columbus, OH - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Convent, LA-Motiva</fullName>
+                <default>false</default>
+                <label>Convent, LA-Motiva</label>
+            </value>
+            <value>
+                <fullName>Coraopolis, PA - PPC</fullName>
+                <default>false</default>
+                <label>Coraopolis, PA - PPC</label>
+            </value>
+            <value>
+                <fullName>Corapolis, PA - PPC</fullName>
+                <default>false</default>
+                <label>Corapolis, PA - PPC</label>
+            </value>
+            <value>
+                <fullName>Dallas, TX-Motiva</fullName>
+                <default>false</default>
+                <label>Dallas, TX-Motiva</label>
+            </value>
+            <value>
+                <fullName>Des Moines, IA - Magellan</fullName>
+                <default>false</default>
+                <label>Des Moines, IA - Magellan</label>
+            </value>
+            <value>
+                <fullName>Doraville, GA-Motiva</fullName>
+                <default>false</default>
+                <label>Doraville, GA-Motiva</label>
+            </value>
+            <value>
+                <fullName>Duncansville, PA</fullName>
+                <default>false</default>
+                <label>Duncansville, PA</label>
+            </value>
+            <value>
+                <fullName>Du Pont, CO - Kaneb</fullName>
+                <default>false</default>
+                <label>Du Pont, CO - Kaneb</label>
+            </value>
+            <value>
+                <fullName>Dupont, PA - Petroleum Prod.</fullName>
+                <default>false</default>
+                <label>Dupont, PA - Petroleum Prod.</label>
+            </value>
+            <value>
+                <fullName>Effingham, IL-Buckeye</fullName>
+                <default>false</default>
+                <label>Effingham, IL-Buckeye</label>
+            </value>
+            <value>
+                <fullName>Fairfax, VA-Motiva</fullName>
+                <default>false</default>
+                <label>Fairfax, VA-Motiva</label>
+            </value>
+            <value>
+                <fullName>Fayetteville, NC - Motiva</fullName>
+                <default>false</default>
+                <label>Fayetteville, NC - Motiva</label>
+            </value>
+            <value>
+                <fullName>Ferrysburg, MI - Buckeye</fullName>
+                <default>false</default>
+                <label>Ferrysburg, MI - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Fresno, CA-Kinder Morgan</fullName>
+                <default>false</default>
+                <label>Fresno, CA-Kinder Morgan</label>
+            </value>
+            <value>
+                <fullName>Ft. Worth - Motiva</fullName>
+                <default>false</default>
+                <label>Ft. Worth - Motiva</label>
+            </value>
+            <value>
+                <fullName>Great Bend, KS-Magellan</fullName>
+                <default>false</default>
+                <label>Great Bend, KS-Magellan</label>
+            </value>
+            <value>
+                <fullName>Hammond, IN - Buckeye</fullName>
+                <default>false</default>
+                <label>Hammond, IN - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Hearne, TX - Motiva</fullName>
+                <default>false</default>
+                <label>Hearne, TX - Motiva</label>
+            </value>
+            <value>
+                <fullName>Houston, TX-Motiva</fullName>
+                <default>false</default>
+                <label>Houston, TX-Motiva</label>
+            </value>
+            <value>
+                <fullName>Indianola, PA - Kindermorgan</fullName>
+                <default>false</default>
+                <label>Indianola, PA - Kindermorgan</label>
+            </value>
+            <value>
+                <fullName>Inwood, NY - MOTIVA</fullName>
+                <default>false</default>
+                <label>Inwood, NY - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Iowa City, IA - Magellan</fullName>
+                <default>false</default>
+                <label>Iowa City, IA - Magellan</label>
+            </value>
+            <value>
+                <fullName>Kansas City, KS - Magellan</fullName>
+                <default>false</default>
+                <label>Kansas City, KS - Magellan</label>
+            </value>
+            <value>
+                <fullName>Kenner, LA-Motiva</fullName>
+                <default>false</default>
+                <label>Kenner, LA-Motiva</label>
+            </value>
+            <value>
+                <fullName>Knoxville, TN-Motiva</fullName>
+                <default>false</default>
+                <label>Knoxville, TN-Motiva</label>
+            </value>
+            <value>
+                <fullName>Lebanon, OH - Teppco</fullName>
+                <default>false</default>
+                <label>Lebanon, OH - Teppco</label>
+            </value>
+            <value>
+                <fullName>Lima, OH - Buckeye</fullName>
+                <default>false</default>
+                <label>Lima, OH - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Marshall, MI</fullName>
+                <default>false</default>
+                <label>Marshall, MI</label>
+            </value>
+            <value>
+                <fullName>Marshall, MI - BUCKEYE</fullName>
+                <default>false</default>
+                <label>Marshall, MI - BUCKEYE</label>
+            </value>
+            <value>
+                <fullName>Marshall MI</fullName>
+                <default>false</default>
+                <label>Marshall MI</label>
+            </value>
+            <value>
+                <fullName>Martinez, CA - SOPUS</fullName>
+                <default>false</default>
+                <label>Martinez, CA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>McPhearson, KS-National Coop</fullName>
+                <default>false</default>
+                <label>McPhearson, KS-National Coop</label>
+            </value>
+            <value>
+                <fullName>Mechanicsburg-Petr.</fullName>
+                <default>false</default>
+                <label>Mechanicsburg-Petr.</label>
+            </value>
+            <value>
+                <fullName>Middletown, PA - Petroleum Prod.</fullName>
+                <default>false</default>
+                <label>Middletown, PA - Petroleum Prod.</label>
+            </value>
+            <value>
+                <fullName>Mount Vernon, IN</fullName>
+                <default>false</default>
+                <label>Mount Vernon, IN</label>
+            </value>
+            <value>
+                <fullName>N. Augusta, SC - Motiva</fullName>
+                <default>false</default>
+                <label>N. Augusta, SC - Motiva</label>
+            </value>
+            <value>
+                <fullName>N. St. Louis, MO - Buckeye</fullName>
+                <default>false</default>
+                <label>N. St. Louis, MO - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Newark, NJ - MOTIVA</fullName>
+                <default>false</default>
+                <label>Newark, NJ - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>New Haven, CT - Motiva</fullName>
+                <default>false</default>
+                <label>New Haven, CT - Motiva</label>
+            </value>
+            <value>
+                <fullName>Niles, MI-Buckeye</fullName>
+                <default>false</default>
+                <label>Niles, MI-Buckeye</label>
+            </value>
+            <value>
+                <fullName>North Augusta, SC - Kinder Morgan</fullName>
+                <default>false</default>
+                <label>North Augusta, SC - Kinder Morgan</label>
+            </value>
+            <value>
+                <fullName>North Little Rock, AR - Magellan</fullName>
+                <default>false</default>
+                <label>North Little Rock, AR - Magellan</label>
+            </value>
+            <value>
+                <fullName>North Little Rock, AZ - Magellan</fullName>
+                <default>false</default>
+                <label>North Little Rock, AZ - Magellan</label>
+            </value>
+            <value>
+                <fullName>North Platte, NE - Kaneb</fullName>
+                <default>false</default>
+                <label>North Platte, NE - Kaneb</label>
+            </value>
+            <value>
+                <fullName>Oakland City, IN-Teppco</fullName>
+                <default>false</default>
+                <label>Oakland City, IN-Teppco</label>
+            </value>
+            <value>
+                <fullName>Odessa, TX</fullName>
+                <default>false</default>
+                <label>Odessa, TX</label>
+            </value>
+            <value>
+                <fullName>Oklahoma City, OK - SOPUS</fullName>
+                <default>false</default>
+                <label>Oklahoma City, OK - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Omaha, NE - Magellan</fullName>
+                <default>false</default>
+                <label>Omaha, NE - Magellan</label>
+            </value>
+            <value>
+                <fullName>Owensboro, KY - Southern States</fullName>
+                <default>false</default>
+                <label>Owensboro, KY - Southern States</label>
+            </value>
+            <value>
+                <fullName>Pasadena, TX - MOTIVA</fullName>
+                <default>false</default>
+                <label>Pasadena, TX - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Pasco - Tidewater, Wa.</fullName>
+                <default>false</default>
+                <label>Pasco - Tidewater, Wa.</label>
+            </value>
+            <value>
+                <fullName>Portland, OR - SOPUS</fullName>
+                <default>false</default>
+                <label>Portland, OR - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Providence, RI - MOTIVA</fullName>
+                <default>false</default>
+                <label>Providence, RI - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Revere, MA - Irving</fullName>
+                <default>false</default>
+                <label>Revere, MA - Irving</label>
+            </value>
+            <value>
+                <fullName>Richmond, VA - KM Deepwater</fullName>
+                <default>false</default>
+                <label>Richmond, VA - KM Deepwater</label>
+            </value>
+            <value>
+                <fullName>Richmond, VA - MOTIVA</fullName>
+                <default>false</default>
+                <label>Richmond, VA - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Roanoke, VA - MOTIVA #8148</fullName>
+                <default>false</default>
+                <label>Roanoke, VA - MOTIVA #8148</label>
+            </value>
+            <value>
+                <fullName>Roanoke, VA - MOTIVA #8512</fullName>
+                <default>false</default>
+                <label>Roanoke, VA - MOTIVA #8512</label>
+            </value>
+            <value>
+                <fullName>S. St. Louis - Buckeye</fullName>
+                <default>false</default>
+                <label>S. St. Louis - Buckeye</label>
+            </value>
+            <value>
+                <fullName>Sacramento, CA - SOPUS</fullName>
+                <default>false</default>
+                <label>Sacramento, CA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>San Jose, CA - SOPUS</fullName>
+                <default>false</default>
+                <label>San Jose, CA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Scott City, KS - Magellan</fullName>
+                <default>false</default>
+                <label>Scott City, KS - Magellan</label>
+            </value>
+            <value>
+                <fullName>Seattle, WA - SOPUS</fullName>
+                <default>false</default>
+                <label>Seattle, WA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Sewaren, NJ - MOTIVA</fullName>
+                <default>false</default>
+                <label>Sewaren, NJ - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Sinking Springs, PA - Pet Prod</fullName>
+                <default>false</default>
+                <label>Sinking Springs, PA - Pet Prod</label>
+            </value>
+            <value>
+                <fullName>South Portland, ME - MOTIVA</fullName>
+                <default>false</default>
+                <label>South Portland, ME - MOTIVA</label>
+            </value>
+            <value>
+                <fullName>Stockton, CA - SOPUS</fullName>
+                <default>false</default>
+                <label>Stockton, CA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Tampa, FL - Marathon</fullName>
+                <default>false</default>
+                <label>Tampa, FL - Marathon</label>
+            </value>
+            <value>
+                <fullName>Waco, TX - Motiva</fullName>
+                <default>false</default>
+                <label>Waco, TX - Motiva</label>
+            </value>
+            <value>
+                <fullName>Wilmington, CA - SOPUS</fullName>
+                <default>false</default>
+                <label>Wilmington, CA - SOPUS</label>
+            </value>
+            <value>
+                <fullName>Zionsville, IN-Buckeye</fullName>
+                <default>false</default>
+                <label>Zionsville, IN-Buckeye</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

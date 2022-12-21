@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marine_Aviation_Prompt_to_Enter_Delco</fullName>
+    <active>true</active>
+    <description>Mandatory &quot;Comments&quot; on Delco if Line of Business is &quot;Marine&quot; or &quot;Aviation&quot;</description>
+    <errorConditionFormula>AND ( 
+  OR ( 
+     ISPICKVAL( Line_of_Business__c , &quot;Shell Marine Products&quot;), 
+     ISPICKVAL( Line_of_Business__c , &quot;Aviation&quot;)),
+LEN (Comments__c) =0
+)</errorConditionFormula>
+    <errorMessage>In &quot;Comments&quot; section, please state clearly if this is an International or Local deal.  For Aviation deal, put CONCO in &quot;Shell Entity&quot;. For Marine deal, put DELCO in &quot;Shell Entity&quot;. For Aviation, please put Delco details in &quot;Comments&quot; section as well.</errorMessage>
+</ValidationRule>

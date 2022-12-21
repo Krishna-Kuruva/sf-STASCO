@@ -1,0 +1,157 @@
+<!--*=====================================================DESCRIPTION========================================================
+	*Page Name 		: 	Export2ExcelConfiguration
+	*Developer 		: 	Rahul Sharma
+	*Created Date	:	29-Apr-2020
+	*Purpose		: 	Configuration page for Export2Excel feature.
+	===========================================MODIFICATION LOGS==============================================================
+	*Developer		:	
+	*Date			:	
+	*Description	:	
+	==========================================================================================================================
+-->
+<apex:page lightningStylesheets="true" sidebar="false">
+    <style>
+    .slds-icon-standard-settings > svg > use{
+        fill : white !important;
+        }
+    </style>
+    <apex:slds />
+    <article class="slds-card">
+        <div class="slds-page-header__row slds-p-around_small">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-doctype-excel" >
+                            <svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon-small">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                     xlink:href="/apexpages/slds/latest/assets/icons/doctype-sprite/svg/symbols.svg#excel">
+                                </use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Export2Excel_Title}">{!$Label.Export2Excel_Title}</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">{!$Label.Export2Excel_Meta_Text}</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="slds-card__body slds-card__body_inner">
+            <hr class="slds-m-vertical_none"/>
+            <article class="slds-card">
+                <div class="slds-page-header__row slds-p-around_small">
+                    <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-utility-settings" >
+                                    <svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon-small">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                             xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#settings">
+                                        </use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                        <h1>
+                                            <span class="slds-page-header__title slds-truncate" title="{!$Label.Export2Excel_Configuration_Title}">{!$Label.Export2Excel_Configuration_Title}</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <p class="slds-page-header__name-meta">
+                                    {!$Label.Export2Excel_Configuration_Meta_Text}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="slds-card__body slds-card__body_inner">
+                    <apex:pageBlock title="{!$Label.Export2Excel_One_Time_Setup_Title}">
+                        <apex:pageBlockSection title="{!$Label.Export2Excel_Remote_Site_Settings_Title}" columns="1">
+                            <ol class="slds-list_ordered">
+                                <li>{!$Label.Export2Excel_Remote_Site_Settings_Step1}</li>
+                                <li>{!$Label.Export2Excel_Remote_Site_Settings_Step2_1}&nbsp;{!LEFT($CurrentPage.URL,FIND('/',$CurrentPage.URL,9))}&nbsp;{!$Label.Export2Excel_Remote_Site_Settings_Step2_2}</li>
+                                <li>{!$Label.Export2Excel_Remote_Site_Settings_Step3}</li>
+                                <li>{!$Label.Export2Excel_Remote_Site_Settings_Step4}</li>
+                            </ol>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                    <apex:pageBlock title="{!$Label.Export2Excel_List_View_Setup_Title}">
+                        <apex:pageBlockSection title="{!$Label.Export2Excel_List_Button_Setup_Title}" columns="1">
+                            <ol class="slds-list_ordered">
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step1}<br/>
+                                    {!$Label.Export2Excel_Example_Text}
+                                    <apex:image url="{!URLFOR($Resource.Export2Excel_Images, '/Images/Setup.jpg')}" width="70%" height="70%"/><br/>
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step2}<br/>
+                                    {!$Label.Export2Excel_Example_Text}
+                                    <apex:image url="{!URLFOR($Resource.Export2Excel_Images, '/Images/ButtonLinksAndActions.jpg')}" width="70%" height="70%"/><br/>
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step3}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step4}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step5}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step6}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step7}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step8}
+                                <br/>
+                                    {!$Label.Export2Excel_Example_Text}
+                                    <apex:image url="{!URLFOR($Resource.Export2Excel_Images, '/Images/ButtonSetup.jpg')}" width="70%" height="70%"/><br/>
+                                </li>
+                            	<li>
+                                    {!$Label.Export2Excel_List_Button_Setup_Step9}
+                                </li>
+                            </ol>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection title="{!$Label.Export2Excel_List_Button_Enable_Title}" columns="1">
+                            <ol class="slds-list_ordered">
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Enable_Step1}<br/>
+                                    {!$Label.Export2Excel_Example_Text}
+                                    <apex:image url="{!URLFOR($Resource.Export2Excel_Images, '/Images/SearchLayout.jpg')}" width="70%" height="70%"/><br/>
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Enable_Step2}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Enable_Step3}
+                                </li>
+                                <li>
+                                    {!$Label.Export2Excel_List_Button_Enable_Step4}<br/>
+                                    {!$Label.Export2Excel_Example_Text}
+                                    <apex:image url="{!URLFOR($Resource.Export2Excel_Images, '/Images/SeachLayoutSetup.jpg')}" width="70%" height="70%"/><br/>
+                                </li>
+                            </ol>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection title="{!$Label.Export2Excel_Note_Title}" columns="1">
+                            <p>
+                                {!$Label.Export2Excel_Note_Description}<br/>
+                                {!$Label.Export2Excel_Note_Description_Option1}<br/>
+								{!$Label.Export2Excel_Note_Description_Option2}                              
+                            </p>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </div>
+            </article>
+        </div>
+    </article>
+</apex:page>

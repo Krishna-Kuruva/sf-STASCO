@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Turkey_Required_Fields</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.DeveloperName == &apos;Turkey&apos;
+&amp;&amp;  (ISBLANK(RE_Source_Name__c) || ISBLANK(RE_Product_Name__c) || ISBLANK(RE_Depot_Name__c))</errorConditionFormula>
+    <errorMessage>Source / Depot / Product can&apos;t contain null or invalid value</errorMessage>
+</ValidationRule>

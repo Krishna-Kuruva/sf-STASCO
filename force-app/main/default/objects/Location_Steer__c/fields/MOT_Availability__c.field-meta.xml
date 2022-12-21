@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MOT_Availability__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( INCLUDES(Plant__r.Depot_MOT__c, &quot;Truck&quot;), &quot;Truck;&quot;,&quot;&quot;)
+&amp;
+IF( INCLUDES(Plant__r.Depot_MOT__c, &quot;Rail&quot;), &quot;Rail;&quot;,&quot;&quot;)
+&amp;
+IF( INCLUDES(Plant__r.Depot_MOT__c, &quot;ITT&quot;), &quot;ITT;&quot;,&quot;&quot;) 
+&amp;
+IF( INCLUDES(Plant__r.Depot_MOT__c, &quot;Barge&quot;), &quot;Barge;&quot;,&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MOT Availability</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_L2__c</fullName>
+    <externalId>false</externalId>
+    <label>Actual L2</label>
+    <summarizedField>Benefit__c.Total_Benefit_Sum__c</summarizedField>
+    <summaryFilterItems>
+        <field>Benefit__c.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>L2</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Benefit__c.BE_Activities__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

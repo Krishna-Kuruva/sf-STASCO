@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Admin_view</fullName>
+    <columns>NAME</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Plant__c</columns>
+    <columns>Sold_To__c</columns>
+    <columns>Sales_Organization__c</columns>
+    <columns>Shipping_Condition__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Handling_Type__c</columns>
+    <columns>PO_Type__c</columns>
+    <columns>Product__c</columns>
+    <columns>Rv_Available_for_OLF__c</columns>
+    <columns>Material_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>MRC__c.MRC</value>
+    </filters>
+    <label>Admin view</label>
+</ListView>

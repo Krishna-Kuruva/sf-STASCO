@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Product__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>used in List price calculation Malaysia customer Opps</description>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <referenceTo>RE_Product__c</referenceTo>
+    <relationshipLabel>REV Country Settings</relationshipLabel>
+    <relationshipName>REV_Country_Settings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

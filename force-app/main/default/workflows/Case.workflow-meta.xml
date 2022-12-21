@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Case_escalation_notification_Settlement</fullName>
+        <description>Case escalation notification (Settlement)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>manesh.lakshman@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Outstanding_Hedge_Settlement_14_Days</fullName>
+        <description>Outstanding Hedge Settlement - 14 Days</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>manesh.lakshman@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Outstanding_Hedge_Settlement_21_Days</fullName>
+        <description>Outstanding Hedge Settlement - 21 Days</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>manesh.lakshman@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Outstanding_Hedge_Settlement_7_Days</fullName>
+        <description>Outstanding Hedge Settlement - 7 Days</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>manesh.lakshman@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTCaseescalationnotificationSAMPLE</template>
+    </alerts>
+    <rules>
+        <fullName>Case escalation notification %28Settlement - 14 Days%29</fullName>
+        <actions>
+            <name>Outstanding_Hedge_Settlement_14_Days</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Case_Age__c</field>
+            <operation>equals</operation>
+            <value>14</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case escalation notification %28Settlement - 21 Days%29</fullName>
+        <actions>
+            <name>Outstanding_Hedge_Settlement_21_Days</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Case_Age__c</field>
+            <operation>equals</operation>
+            <value>21</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case escalation notification %28Settlement - 7 Days%29</fullName>
+        <actions>
+            <name>Outstanding_Hedge_Settlement_7_Days</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Case_Age__c</field>
+            <operation>equals</operation>
+            <value>7</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

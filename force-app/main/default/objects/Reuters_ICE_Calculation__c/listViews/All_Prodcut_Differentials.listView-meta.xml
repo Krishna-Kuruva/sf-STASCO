@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Prodcut_Differentials</fullName>
+    <columns>NAME</columns>
+    <columns>Display_Name__c</columns>
+    <columns>frequency__c</columns>
+    <columns>Gelt_Other_Currency__c</columns>
+    <columns>Product_Differential__c</columns>
+    <columns>Quote_Name__c</columns>
+    <columns>ProdDiff_Display_Name__c</columns>
+    <columns>Column__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Differential__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All Prodcut Differentials</label>
+    <language>en_US</language>
+</ListView>

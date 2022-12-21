@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_Market_Premium_Quote__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Market Premium Quote</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HIGH RON PREMIUM</fullName>
+                <default>false</default>
+                <label>HIGH RON PREMIUM</label>
+            </value>
+            <value>
+                <fullName>MID RON PREMIUM</fullName>
+                <default>false</default>
+                <label>MID RON PREMIUM</label>
+            </value>
+            <value>
+                <fullName>Kero Premium</fullName>
+                <default>false</default>
+                <label>Kero Premium</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.05% Premium</fullName>
+                <default>false</default>
+                <label>Gasoil 0.05% Premium</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.001% Premium</fullName>
+                <default>false</default>
+                <label>Gasoil 0.001% Premium</label>
+            </value>
+            <value>
+                <fullName>JET/AVTUR</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>JET/AVTUR</label>
+            </value>
+            <value>
+                <fullName>Platts GO 0.001%</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Platts GO 0.001%</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

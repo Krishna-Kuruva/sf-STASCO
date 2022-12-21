@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Final_Value__c</fullName>
+    <externalId>false</externalId>
+    <formula>RE_Route_Utilization__c * ( IF(ISBLANK(RE_Bio_Loss__c), 0, RE_Bio_Loss__c)   +  
+																												IF(ISBLANK(RE_Breakbulk_Premium__c), 0, RE_Breakbulk_Premium__c) + 
+																												IF(ISBLANK(RE_CO_Steer__c), 0, RE_CO_Steer__c) +
+																												IF(ISBLANK(RE_Freight_Pipeline_Charges__c), 0, RE_Freight_Pipeline_Charges__c) +  
+																												IF(ISBLANK(RE_Market_Premium__c), 0, RE_Market_Premium__c) +
+																												IF(ISBLANK(RE_MR_Freight_Cost__c), 0, RE_MR_Freight_Cost__c) +
+																												IF(ISBLANK(RE_Oil_Loss__c), 0, RE_Oil_Loss__c) +  
+																												IF(ISBLANK(RE_Port_Charges_Cost__c), 0, RE_Port_Charges_Cost__c) +
+																												IF(ISBLANK(RE_Small_Lot_Premium__c), 0, RE_Small_Lot_Premium__c) +
+																												IF(ISBLANK(RE_Primary_Transport_Cost__c), 0, RE_Primary_Transport_Cost__c) +
+																												IF(ISBLANK(RE_Storage_Handling_OSP__c), 0, RE_Storage_Handling_OSP__c) +  
+																												IF(ISBLANK(RE_Transfer_Price_Premium__c), 0, RE_Transfer_Price_Premium__c) )</formula>
+    <label>Final Value</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

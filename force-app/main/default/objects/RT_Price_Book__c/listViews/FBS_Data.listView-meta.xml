@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FBS_Data</fullName>
+    <columns>RT_Location_Code__c</columns>
+    <columns>RT_Location__c</columns>
+    <columns>RT_Product_Code__c</columns>
+    <columns>RT_Product__c</columns>
+    <columns>RT_Effective_Date__c</columns>
+    <columns>RT_Cur__c</columns>
+    <columns>RT_NET_SIP__c</columns>
+    <columns>RT_CRP__c</columns>
+    <columns>RT_MP__c</columns>
+    <columns>RT_SCT__c</columns>
+    <columns>RT_EMRAFEE__c</columns>
+    <columns>RT_NET_SIP_EXP__c</columns>
+    <columns>RT_Active__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Price_Book__c.Retail_Prices</value>
+    </filters>
+    <filters>
+        <field>RT_Country__c</field>
+        <operation>equals</operation>
+        <value>TU</value>
+    </filters>
+    <filters>
+        <field>RT_Location__c</field>
+        <operation>contains</operation>
+        <value>Trabzon</value>
+    </filters>
+    <label>Turkey FBS Data</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

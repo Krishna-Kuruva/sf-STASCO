@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Name__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AGO B7</fullName>
+                <default>false</default>
+                <label>AGO B7</label>
+            </value>
+            <value>
+                <fullName>IGO 50ppm</fullName>
+                <default>false</default>
+                <label>IGO 50ppm</label>
+            </value>
+            <value>
+                <fullName>GASOIL</fullName>
+                <default>false</default>
+                <label>GASOIL</label>
+            </value>
+            <value>
+                <fullName>ULG95 E5</fullName>
+                <default>false</default>
+                <label>ULG95 E5</label>
+            </value>
+            <value>
+                <fullName>ULG98</fullName>
+                <default>false</default>
+                <label>ULG98</label>
+            </value>
+            <value>
+                <fullName>ULG95 E10</fullName>
+                <default>false</default>
+                <label>ULG95 E10</label>
+            </value>
+            <value>
+                <fullName>Gasoline</fullName>
+                <default>false</default>
+                <label>Gasoline</label>
+            </value>
+            <value>
+                <fullName>MOGAS</fullName>
+                <default>false</default>
+                <label>MOGAS</label>
+            </value>
+            <value>
+                <fullName>AGO B0</fullName>
+                <default>false</default>
+                <label>AGO B0</label>
+            </value>
+            <value>
+                <fullName>AGO B0 CH</fullName>
+                <default>false</default>
+                <label>AGO B0 CH</label>
+            </value>
+            <value>
+                <fullName>AGO B7 CH</fullName>
+                <default>false</default>
+                <label>AGO B7 CH</label>
+            </value>
+            <value>
+                <fullName>AGO VPD</fullName>
+                <default>false</default>
+                <label>AGO VPD</label>
+            </value>
+            <value>
+                <fullName>GTL B0</fullName>
+                <default>false</default>
+                <label>GTL B0</label>
+            </value>
+            <value>
+                <fullName>AVGAS</fullName>
+                <default>false</default>
+                <label>AVGAS</label>
+            </value>
+            <value>
+                <fullName>IGO 10ppm</fullName>
+                <default>false</default>
+                <label>IGO 10ppm</label>
+            </value>
+            <value>
+                <fullName>ULG100 VP</fullName>
+                <default>false</default>
+                <label>ULG100 VP</label>
+            </value>
+            <value>
+                <fullName>ULG95 E0</fullName>
+                <default>false</default>
+                <label>ULG95 E0</label>
+            </value>
+            <value>
+                <fullName>ULG95_BOB_E5</fullName>
+                <default>false</default>
+                <label>ULG95_BOB_E5</label>
+            </value>
+            <value>
+                <fullName>IGO 1000ppm</fullName>
+                <default>false</default>
+                <label>IGO 1000ppm</label>
+            </value>
+            <value>
+                <fullName>GTL B7</fullName>
+                <default>false</default>
+                <label>GTL B7</label>
+            </value>
+            <value>
+                <fullName>MOGAS 98</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MOGAS 98</label>
+            </value>
+            <value>
+                <fullName>MOGAS E10</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MOGAS E10</label>
+            </value>
+            <value>
+                <fullName>UGL95 E5</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>UGL95 E5</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

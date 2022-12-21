@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Netback_Check__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(OR(Price_Audit__r.SHT__r.Effective_Margin__c &lt; -1,Price_Audit__r.SHT__r.Effective_Margin__c &gt;=6 ),false,true)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Netback Check</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

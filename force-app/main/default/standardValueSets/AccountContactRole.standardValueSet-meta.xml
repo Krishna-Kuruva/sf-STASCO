@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Shell Account Manager</fullName>
+        <default>false</default>
+        <label>Shell Account Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Finance</fullName>
+        <default>false</default>
+        <label>Finance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Treasury</fullName>
+        <default>false</default>
+        <label>Treasury</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fuel Management</fullName>
+        <default>false</default>
+        <label>Fuel Management</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Procurement</fullName>
+        <default>false</default>
+        <label>Procurement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>External Consultant</fullName>
+        <default>false</default>
+        <label>External Consultant</label>
+    </standardValue>
+</StandardValueSet>

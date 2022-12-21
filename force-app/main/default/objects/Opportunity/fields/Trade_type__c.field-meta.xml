@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trade_type__c</fullName>
+    <externalId>false</externalId>
+    <label>Trade type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Swap</fullName>
+                <default>true</default>
+                <label>Swap</label>
+            </value>
+            <value>
+                <fullName>Option</fullName>
+                <default>false</default>
+                <label>Option</label>
+            </value>
+            <value>
+                <fullName>Differential</fullName>
+                <default>false</default>
+                <label>Differential</label>
+            </value>
+            <value>
+                <fullName>Crack</fullName>
+                <default>false</default>
+                <label>Crack</label>
+            </value>
+            <value>
+                <fullName>Time spread</fullName>
+                <default>false</default>
+                <label>Time spread</label>
+            </value>
+            <value>
+                <fullName>Arbitrage</fullName>
+                <default>false</default>
+                <label>Arbitrage</label>
+            </value>
+            <value>
+                <fullName>Bullets</fullName>
+                <default>false</default>
+                <label>Bullets</label>
+            </value>
+            <value>
+                <fullName>Bullets - minute marker</fullName>
+                <default>false</default>
+                <label>Bullets - minute marker</label>
+            </value>
+            <value>
+                <fullName>FLB swap</fullName>
+                <default>false</default>
+                <label>FLB swap</label>
+            </value>
+            <value>
+                <fullName>FLB swap - minute marker</fullName>
+                <default>false</default>
+                <label>FLB swap - minute marker</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

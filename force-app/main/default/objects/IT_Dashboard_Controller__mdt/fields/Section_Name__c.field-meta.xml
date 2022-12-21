@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Section_Name__c</fullName>
+    <description>Section Label on dashboard, update the picklist label, if display label has to be changed.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Section Label on dashboard, update the picklist label, if display label has to be changed.</inlineHelpText>
+    <label>Section Name</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Deal</fullName>
+                <default>true</default>
+                <label>Today&apos;s Deals</label>
+            </value>
+            <value>
+                <fullName>Dave</fullName>
+                <default>false</default>
+                <label>Today&apos;s Hedge</label>
+            </value>
+            <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                <label>Live Price Value Last Updated At</label>
+            </value>
+            <value>
+                <fullName>MRC Upload</fullName>
+                <default>false</default>
+                <label>MRC Uploads via Mulesoft</label>
+            </value>
+            <value>
+                <fullName>Batch</fullName>
+                <default>false</default>
+                <label>Batch Jobs</label>
+            </value>
+            <value>
+                <fullName>Daily Check</fullName>
+                <default>false</default>
+                <label>Daily Check</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

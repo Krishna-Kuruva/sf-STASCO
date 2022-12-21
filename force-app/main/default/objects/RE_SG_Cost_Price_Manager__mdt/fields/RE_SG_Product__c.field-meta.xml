@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_SG_Product__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Product</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>FuelSave95</fullName>
+                <default>true</default>
+                <label>FuelSave95</label>
+            </value>
+            <value>
+                <fullName>FuelSave98</fullName>
+                <default>false</default>
+                <label>FuelSave98</label>
+            </value>
+            <value>
+                <fullName>Fuelsave Diesel</fullName>
+                <default>false</default>
+                <label>Fuelsave Diesel</label>
+            </value>
+            <value>
+                <fullName>IGO 10ppm</fullName>
+                <default>false</default>
+                <label>IGO 10ppm</label>
+            </value>
+            <value>
+                <fullName>Kero</fullName>
+                <default>false</default>
+                <label>Kero</label>
+            </value>
+            <value>
+                <fullName>MGO 0.1%</fullName>
+                <default>false</default>
+                <label>MGO 0.1%</label>
+            </value>
+            <value>
+                <fullName>MGO 0.5%</fullName>
+                <default>false</default>
+                <label>MGO 0.5%</label>
+            </value>
+            <value>
+                <fullName>Vpower</fullName>
+                <default>false</default>
+                <label>Vpower</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

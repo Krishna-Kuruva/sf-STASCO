@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quote_Region__c</fullName>
+    <defaultValue>&apos;Barge&apos;</defaultValue>
+    <externalId>false</externalId>
+    <label>Quote Region</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Barge</fullName>
+                <default>false</default>
+                <label>Barge</label>
+            </value>
+            <value>
+                <fullName>Cargo</fullName>
+                <default>false</default>
+                <label>Cargo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

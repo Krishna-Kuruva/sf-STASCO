@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Turkey_Routes</fullName>
+    <columns>RE_Route_Name__c</columns>
+    <columns>RE_Source_Code__c</columns>
+    <columns>RE_Source_Name__c</columns>
+    <columns>RT_RefineryDescription__c</columns>
+    <columns>RE_Depot_Code__c</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>RT_Product_Code__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RT_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Route_Backbone__c.Turkey</value>
+    </filters>
+    <label>Turkey Routes</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

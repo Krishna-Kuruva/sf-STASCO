@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Route_Backbone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>RE Route Backbone</label>
+    <referenceTo>RE_Route_Backbone__c</referenceTo>
+    <relationshipLabel>RE Route Based Costing</relationshipLabel>
+    <relationshipName>RE_Route_Based_Costing</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

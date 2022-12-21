@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>RV_SHTDave</auraComponent>
+    <description>Hedging information sent/received to/from DAVE system. Related Object(s) : Total Exposure, Sales/Hedge Transaction</description>
+    <label>Sales Hedge</label>
+    <motif>Custom26: Flag</motif>
+</CustomTab>

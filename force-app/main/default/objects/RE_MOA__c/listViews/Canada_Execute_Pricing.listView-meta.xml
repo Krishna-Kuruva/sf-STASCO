@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Execute_Pricing</fullName>
+    <columns>RE_CND_Rack__c</columns>
+    <columns>RE_CND_Group__c</columns>
+    <columns>RE_CND_Today_s_Price__c</columns>
+    <columns>RE_CND_Market_Move__c</columns>
+    <columns>RE_CND_Competitive_Adj__c</columns>
+    <columns>RE_CND_Net_Move__c</columns>
+    <columns>RE_CND_New_End_Price__c</columns>
+    <columns>RE_CND_Difference__c</columns>
+    <columns>RE_Base_Rate_Unit__c</columns>
+    <columns>RE_Converted_Rate_Unit__c</columns>
+    <columns>RE_CND_Effective_Date__c</columns>
+    <columns>RE_CND_Effective_From_Date__c</columns>
+    <columns>RE_CND_Effective_To_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>RE_Initial_Version__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MOA__c.Canada_Execute_Pricing</value>
+    </filters>
+    <label>Canada Execute Pricing</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

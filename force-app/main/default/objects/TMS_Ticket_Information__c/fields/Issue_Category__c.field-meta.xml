@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Issue Category</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TMS</fullName>
+                <default>false</default>
+                <label>TMS</label>
+            </value>
+            <value>
+                <fullName>TMS Host</fullName>
+                <default>false</default>
+                <label>TMS Host</label>
+            </value>
+            <value>
+                <fullName>USIB</fullName>
+                <default>false</default>
+                <label>USIB</label>
+            </value>
+            <value>
+                <fullName>Comet</fullName>
+                <default>false</default>
+                <label>Comet</label>
+            </value>
+            <value>
+                <fullName>Alliance Terminal</fullName>
+                <default>false</default>
+                <label>Alliance Terminal</label>
+            </value>
+            <value>
+                <fullName>MultiLoad</fullName>
+                <default>false</default>
+                <label>MultiLoad</label>
+            </value>
+            <value>
+                <fullName>Project</fullName>
+                <default>false</default>
+                <label>Project</label>
+            </value>
+            <value>
+                <fullName>TMS SCAN</fullName>
+                <default>false</default>
+                <label>TMS SCAN</label>
+            </value>
+            <value>
+                <fullName>Account</fullName>
+                <default>false</default>
+                <label>Account</label>
+            </value>
+            <value>
+                <fullName>Allocation</fullName>
+                <default>false</default>
+                <label>Allocation</label>
+            </value>
+            <value>
+                <fullName>BOL</fullName>
+                <default>false</default>
+                <label>BOL</label>
+            </value>
+            <value>
+                <fullName>Credit</fullName>
+                <default>false</default>
+                <label>Credit</label>
+            </value>
+            <value>
+                <fullName>Driver Issue</fullName>
+                <default>false</default>
+                <label>Driver Issue</label>
+            </value>
+            <value>
+                <fullName>Hardware</fullName>
+                <default>false</default>
+                <label>Hardware</label>
+            </value>
+            <value>
+                <fullName>Misc</fullName>
+                <default>false</default>
+                <label>Misc</label>
+            </value>
+            <value>
+                <fullName>Petroex/TABS/TDS</fullName>
+                <default>false</default>
+                <label>Petroex/TABS/TDS</label>
+            </value>
+            <value>
+                <fullName>Shell Canada</fullName>
+                <default>false</default>
+                <label>Shell Canada</label>
+            </value>
+            <value>
+                <fullName>Aviation</fullName>
+                <default>false</default>
+                <label>Aviation</label>
+            </value>
+            <value>
+                <fullName>OSP</fullName>
+                <default>false</default>
+                <label>OSP</label>
+            </value>
+            <value>
+                <fullName>TABS Deny/Error</fullName>
+                <default>false</default>
+                <label>TABS Deny/Error</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

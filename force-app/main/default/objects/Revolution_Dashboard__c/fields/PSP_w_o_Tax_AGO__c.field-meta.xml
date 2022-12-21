@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSP_w_o_Tax_AGO__c</fullName>
+    <externalId>false</externalId>
+    <formula>PSP_AGO__c- Total_Tax_AGO__c</formula>
+    <label>PSP w/o Tax(AGO)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

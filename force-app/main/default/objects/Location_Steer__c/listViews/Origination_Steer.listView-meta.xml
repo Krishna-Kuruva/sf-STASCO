@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origination_Steer</fullName>
+    <columns>NAME</columns>
+    <columns>Origination_Steer_Type__c</columns>
+    <columns>Steer_Value__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Location_Steer__c.Origination_Steer</value>
+    </filters>
+    <label>Origination Steer</label>
+</ListView>

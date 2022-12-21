@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Backbone_Route_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT( SubGrade_3P__c ),
+ &apos;ULG98&apos;, &apos;MOGAS-98&apos;,
+ &apos;ULG98 E0&apos;, &apos;MOGAS-98-E0&apos;,
+ &apos;ULG95 E0&apos;, &apos;MOGAS-E0&apos;,
+ &apos;ULG95 E10&apos;, &apos;MOGAS-E10&apos;,
+ &apos;ULG95 E5&apos;, &apos;MOGAS-E5&apos;,
+ &apos;ULG95_BOB_E10&apos;, &apos;MOGAS-BOB_E10&apos;,
+ &apos;ULG95_BOB_E5&apos;, &apos;MOGAS-BOB_E5&apos;,
+ &apos;ULG100 VP&apos;, &apos;MOGAS-100-VP&apos;,
+ &apos;IGO 50ppm&apos;,&apos;IGO-50&apos;,
+ &apos;IGO 1000ppm&apos;,&apos;IGO-1000&apos;,
+ &apos;IGO 10ppm&apos;,&apos;IGO-10&apos;,
+ &apos;GTL B7&apos;,&apos;AGO-GTL.B7&apos;,
+ &apos;GTL B0&apos;,&apos;AGO-GTL.B0&apos;,
+ &apos;AGO B0 CH&apos;,&apos;AGO-CH&apos;,
+ &apos;AGO B7&apos;,&apos;AGO-B7&apos;,
+ &apos;AGO B0&apos;,&apos;AGO-B0&apos;,
+ &apos;AGO VPD&apos;,&apos;AGO-VPD&apos;,
+ TEXT(SubGrade_3P__c)) &amp;&quot;_&quot;&amp; TEXT( Supplier__c )&amp;&quot;_&quot;&amp;  Source__r.Abbreviated_Name__c  &amp;&quot;_&quot;&amp;TEXT( Mode_Of_Transport__c )&amp;&quot;_&quot;&amp;  Destination__r.Abbreviated_Name__c</formula>
+    <label>Route Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

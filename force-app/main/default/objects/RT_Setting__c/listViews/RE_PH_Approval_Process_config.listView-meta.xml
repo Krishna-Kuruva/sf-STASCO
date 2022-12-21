@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_PH_Approval_Process_config</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Approver_Role_1__c</columns>
+    <columns>RE_User_Name__c</columns>
+    <columns>RE_Approver_Role_2__c</columns>
+    <columns>RE_Delegate_Approver__c</columns>
+    <columns>RE_Min_Margin__c</columns>
+    <columns>RE_Max_Margin__c</columns>
+    <columns>RE_Approval_Status__c</columns>
+    <columns>Country__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.RE_Approval_Process</value>
+    </filters>
+    <label>RE PH Approval Process config</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Philippines</territory>
+    </sharedTo>
+</ListView>

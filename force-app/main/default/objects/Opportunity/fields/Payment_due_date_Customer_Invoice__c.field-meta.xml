@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_due_date_Customer_Invoice__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Due date for customer to pay invoice</inlineHelpText>
+    <label>Payment due date - Customer Invoice</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

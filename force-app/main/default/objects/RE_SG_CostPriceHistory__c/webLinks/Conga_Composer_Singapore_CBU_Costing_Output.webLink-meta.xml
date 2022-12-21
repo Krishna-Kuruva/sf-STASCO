@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conga_Composer_Singapore_CBU_Costing_Output</fullName>
+    <availability>online</availability>
+    <description>Created by Conga Solution Manager. Record link: https://stasco--primemydev--apxtconga4.cs110.visual.force.com/a2a0C0000008YYwQAM.</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>660</height>
+    <linkType>url</linkType>
+    <masterLabel>Singapore CBU Costing Output</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+
+
+&amp;QueryId=[SingUSCent]a2U0C0000000hbZ,
+[SingSCent]a2U0C0000000hbe,
+[SingFXRateSellTdy]a2U0C0000000hfH,
+[SingFXRateSellYtd]a2U0C0000000hfl,
+[SingFXRateExTdy]a2U0C0000000hfg,
+[SingFXRateExYtd]a2U0C0000000hfM,
+[SingMarketQuotes]a2U0C0000000hcN,
+[SingMarketQuotesYtd]a2U0C0000000hcS
+
+&amp;Id={!$User.Id}</url>
+</WebLink>

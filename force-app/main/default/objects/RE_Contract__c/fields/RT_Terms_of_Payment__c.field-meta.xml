@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RT_Terms_of_Payment__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Terms of Payment</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>RT_Setting__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Code - Value mapping</value>
+        </filterItems>
+        <filterItems>
+            <field>RT_Setting__c.Type__c</field>
+            <operation>equals</operation>
+            <value>Payment Term</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>RT_Setting__c</referenceTo>
+    <relationshipLabel>RE SAP Contracts</relationshipLabel>
+    <relationshipName>RE_Contracts</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

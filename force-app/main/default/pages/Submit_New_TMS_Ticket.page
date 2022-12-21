@@ -1,0 +1,8 @@
+<apex:page >
+<apex:form >
+<div align="center" draggable="false">
+<apex:commandButton action="{!URLFOR($Action.TMS_Ticket_Information__c.New)}" id="editButton" value="Create New Ticket" styleclass="buttonStyle" oncomplete="this.form.reset()" style="background:#F5F5F5; width:400px; height:50px; font-size: 16px;"/>
+</div>
+
+</apex:form>
+</apex:page>

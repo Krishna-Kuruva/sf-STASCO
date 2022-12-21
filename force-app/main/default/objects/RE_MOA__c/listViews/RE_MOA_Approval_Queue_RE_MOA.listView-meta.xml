@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MOA_Approval_Queue_RE_MOA</fullName>
+    <filterScope>Queue</filterScope>
+    <label>MOA Approval  Queue</label>
+    <queue>RE_MOA_Approval_Queue</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

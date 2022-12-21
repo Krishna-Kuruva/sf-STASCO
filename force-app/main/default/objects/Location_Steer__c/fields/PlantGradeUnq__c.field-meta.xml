@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PlantGradeUnq__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(RecordType.Name = &apos;Depot Steer&apos; , Plant_Code__c+TEXT(Product_Sub_Group__c)+ TEXT(MOT__c), Plant_Code__c+TEXT(Product_Sub_Group__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PlantGradeUnq</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

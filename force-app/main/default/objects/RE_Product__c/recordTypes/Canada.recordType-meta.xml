@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada</fullName>
+    <active>true</active>
+    <description>Record type for Revolution Canada</description>
+    <label>Canada</label>
+    <picklistValues>
+        <picklist>RE_Additive_Cost_Unit__c</picklist>
+        <values>
+            <fullName>CAD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Product_Groups__c</picklist>
+        <values>
+            <fullName>Bronze</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LNG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RUG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX AB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX AB04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX MB02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX MB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON06</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Furnace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Heat O -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Heat O -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -34</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -38</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -41</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -48</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD AB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD AB04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD EC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD MB02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD MB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD NT01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON06</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>V-Power</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Country_Name__c</picklist>
+        <values>
+            <fullName>CA</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Product_Classification_L0__c</picklist>
+        <values>
+            <fullName>Fuel By-Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kerosine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residual Fuel Oil</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Product_Group__c</picklist>
+        <values>
+            <fullName>AGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel By-Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KERO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MOGAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine RFO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Product_Subgroup__c</picklist>
+        <values>
+            <fullName>Dual Purpose AGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Oil Bunker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Octane</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hydrogen Refinery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KERO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kerosene</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low Octane</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium Octane</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Off-road AGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On-road AGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RFO Bunker</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RT_Product_Type__c</picklist>
+        <values>
+            <fullName>Material</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TH_TP_PremiumHCV2_UNIT__c</picklist>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TP_Premium_Unit__c</picklist>
+        <values>
+            <fullName>CAD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

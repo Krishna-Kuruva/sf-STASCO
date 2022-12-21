@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_on_Sending_Alert_Section1</fullName>
+    <active>true</active>
+    <description>Select either one selection in section1 (All Changes,New items are added,Existing items are modified,Items are deleted)</description>
+    <errorConditionFormula>OR( 
+AND(All_Changes__c = TRUE,New_items_are_added__c = TRUE), 
+AND(All_Changes__c = TRUE,Existing_items_are_modified__c = TRUE), 
+AND(All_Changes__c = TRUE,Items_are_deleted__c = TRUE), 
+AND(All_Changes__c = TRUE,New_items_are_added__c = TRUE,Existing_items_are_modified__c = TRUE), 
+AND(All_Changes__c = TRUE,New_items_are_added__c = TRUE,Existing_items_are_modified__c = TRUE,Items_are_deleted__c= TRUE), 
+AND(New_items_are_added__c = TRUE,Existing_items_are_modified__c= TRUE), 
+AND(New_items_are_added__c = TRUE,Items_are_deleted__c= TRUE), 
+AND(New_items_are_added__c = TRUE,Existing_items_are_modified__c = TRUE,Items_are_deleted__c= TRUE), 
+AND(Existing_items_are_modified__c = TRUE,Items_are_deleted__c= TRUE), 
+AND(All_Changes__c = FALSE,New_items_are_added__c = FALSE,Existing_items_are_modified__c = FALSE,Items_are_deleted__c= FALSE) 
+)</errorConditionFormula>
+    <errorMessage>Please check any one option in Section1</errorMessage>
+</ValidationRule>

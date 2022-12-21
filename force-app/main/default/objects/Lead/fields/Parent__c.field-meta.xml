@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Parent Account associated with this Site</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This should only be entered if the lead is for a site account in which case the parent account for that site should be selected. Please leave blank for leads relating to any other account.</inlineHelpText>
+    <label>Parent</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Leads (Parent)</relationshipLabel>
+    <relationshipName>HCDM_Leads</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

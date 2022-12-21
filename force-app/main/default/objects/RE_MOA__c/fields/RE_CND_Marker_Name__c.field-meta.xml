@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_CND_Marker_Name__c</fullName>
+    <externalId>false</externalId>
+    <label>Marker Name</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Chi CBOB</fullName>
+                <default>false</default>
+                <label>Chi CBOB</label>
+            </value>
+            <value>
+                <fullName>Chi Rbob</fullName>
+                <default>false</default>
+                <label>Chi Rbob</label>
+            </value>
+            <value>
+                <fullName>Chi ULS#2</fullName>
+                <default>false</default>
+                <label>Chi ULS#2</label>
+            </value>
+            <value>
+                <fullName>HO</fullName>
+                <default>false</default>
+                <label>HO</label>
+            </value>
+            <value>
+                <fullName>LA ULS#2</fullName>
+                <default>false</default>
+                <label>LA ULS#2</label>
+            </value>
+            <value>
+                <fullName>NYH CBOB</fullName>
+                <default>false</default>
+                <label>NYH CBOB</label>
+            </value>
+            <value>
+                <fullName>NYH RBOB Unl</fullName>
+                <default>false</default>
+                <label>NYH RBOB Unl</label>
+            </value>
+            <value>
+                <fullName>NYH ULS#2</fullName>
+                <default>false</default>
+                <label>NYH ULS#2</label>
+            </value>
+            <value>
+                <fullName>PNW CARBOB</fullName>
+                <default>false</default>
+                <label>PNW CARBOB</label>
+            </value>
+            <value>
+                <fullName>PNW ULS#2</fullName>
+                <default>false</default>
+                <label>PNW ULS#2</label>
+            </value>
+            <value>
+                <fullName>RBOB</fullName>
+                <default>false</default>
+                <label>RBOB</label>
+            </value>
+            <value>
+                <fullName>Reuters Fx</fullName>
+                <default>false</default>
+                <label>Reuters Fx</label>
+            </value>
+            <value>
+                <fullName>USG CBOB</fullName>
+                <default>false</default>
+                <label>USG CBOB</label>
+            </value>
+            <value>
+                <fullName>USG ULS#2</fullName>
+                <default>false</default>
+                <label>USG ULS#2</label>
+            </value>
+            <value>
+                <fullName>WTI</fullName>
+                <default>false</default>
+                <label>WTI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Turkey_Product_SubGrades</fullName>
+    <columns>RT_Product_Code__c</columns>
+    <columns>NAME</columns>
+    <columns>RT_Description__c</columns>
+    <columns>RT_Parent_Product_Code__c</columns>
+    <columns>RT_Parent_Product__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Product__c.Turkey</value>
+    </filters>
+    <filters>
+        <field>RT_Product_Type__c</field>
+        <operation>equals</operation>
+        <value>Product Sub-grade</value>
+    </filters>
+    <label>Turkey Product SubGrades</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

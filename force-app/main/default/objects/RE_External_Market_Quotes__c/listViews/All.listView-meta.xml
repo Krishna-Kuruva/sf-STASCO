@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RE_No_Quote_Indicator__c</columns>
+    <columns>RE_Quote_Source__c</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>RE_Quote_No__c</columns>
+    <columns>RE_Quote_Price__c</columns>
+    <columns>RE_Quote_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>7/5/2022 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>RE_Quote_No__c</field>
+        <operation>contains</operation>
+        <value>OTHER PREMIA GSE01</value>
+    </filters>
+    <label>All</label>
+</ListView>

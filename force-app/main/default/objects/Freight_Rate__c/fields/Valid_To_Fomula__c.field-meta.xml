@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_To_Fomula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(WEEKDAY( Valid_To__c ),
+2, Valid_To__c - 7, 
+3, Valid_To__c - 7, 
+4, Valid_To__c - 7,
+5, Valid_To__c - 7,
+6, Valid_To__c - 7,
+7, Valid_To__c - 6,
+1, Valid_To__c - 7,
+null)</formula>
+    <label>Valid To Fomula</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

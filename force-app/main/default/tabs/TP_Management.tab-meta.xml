@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>For the Philippine users. Users can create a new Plant - Material (Depot Pricing Backbone) combination or the combination can be cloned to create a new combination.</description>
+    <label>TP Management</label>
+    <lwcComponent>re_Ph_TP_Management_Main</lwcComponent>
+    <motif>Custom5: Leaf</motif>
+</CustomTab>

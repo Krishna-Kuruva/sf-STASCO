@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>RE_CND_Revolution_Canada_Import_Wizard_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Revolution Canada</description>
+        <label>Revolution Canada Import Wizard Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>ApplicationName__c</field>
+            <operation>equals</operation>
+            <value>RE_Revolution_Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RT_RevolutionTurkey</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Revolution Turkey</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>ApplicationName__c</field>
+            <operation>equals</operation>
+            <value>RT_Revolution_Turkey</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Revolution_Germany</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Revolution Germany</label>
+        <sharedTo>
+            <group>RV_Import_Buddy</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>ApplicationName__c</field>
+            <operation>equals</operation>
+            <value>Revolution</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

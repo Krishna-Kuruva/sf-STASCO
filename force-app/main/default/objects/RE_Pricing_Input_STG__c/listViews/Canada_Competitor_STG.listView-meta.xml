@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Competitor_STG</fullName>
+    <columns>NAME</columns>
+    <columns>RE_CND_Daily_Racks_Raw_Date__c</columns>
+    <columns>RE_CND_City_Code__c</columns>
+    <columns>RE_CND_City_Name__c</columns>
+    <columns>RE_CND_Supplier_Name__c</columns>
+    <columns>RE_CND_Brand_Indicator__c</columns>
+    <columns>RE_CND_Product_Group__c</columns>
+    <columns>RE_Price__c</columns>
+    <columns>RE_CND_Move_Value__c</columns>
+    <columns>RE_Pricing_Date__c</columns>
+    <columns>RE_Default_Currency__c</columns>
+    <columns>RE_Unit_of_Measure__c</columns>
+    <columns>RE_Is_Processed__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Pricing_Input_STG__c.Canada_Competitor</value>
+    </filters>
+    <label>Canada Competitor STG</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

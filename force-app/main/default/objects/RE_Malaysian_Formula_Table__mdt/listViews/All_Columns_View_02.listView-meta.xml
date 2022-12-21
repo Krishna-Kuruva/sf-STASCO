@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Columns_View_02</fullName>
+    <columns>MasterLabel</columns>
+    <columns>RE_MY_Product__c</columns>
+    <columns>RE_MY_Region__c</columns>
+    <columns>RE_MY_Plant__c</columns>
+    <columns>RE_MY_Small_lot_percentage__c</columns>
+    <columns>RE_MY_Small_lot_premium__c</columns>
+    <columns>RE_MY_Small_lot_premium_Unit__c</columns>
+    <columns>RE_MY_MR_Cost_Percentage__c</columns>
+    <columns>RE_MY_MR_Demurrage__c</columns>
+    <columns>RE_MY_MR_Frieght_Quote__c</columns>
+    <columns>RE_MY_Port_Charges__c</columns>
+    <columns>RE_MY_Port_Charges_Unit__c</columns>
+    <columns>RE_MY_BreakBulk_Premium_Quote__c</columns>
+    <columns>RE_MY_BreakBulk_Premium_Quote_Percentage__c</columns>
+    <columns>RE_MY_MR_Demurrage_Unit__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Columns View 02</label>
+    <language>en_US</language>
+</ListView>

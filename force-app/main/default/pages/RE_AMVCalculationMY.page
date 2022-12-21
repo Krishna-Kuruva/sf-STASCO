@@ -1,0 +1,6 @@
+<apex:page standardController="RE_Depot_Based_Costing__c" recordSetVar="dbcdata" extensions="RE_MalayasiaOutputController" action="{!AMVjobExecute}" >
+    <apex:outputPanel id="script">
+        <script type="text/javascript">window.history.back();
+		</script>
+    </apex:outputPanel>
+</apex:page>

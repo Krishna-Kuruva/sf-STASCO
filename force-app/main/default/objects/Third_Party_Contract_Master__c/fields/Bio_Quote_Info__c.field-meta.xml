@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bio_Quote_Info__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT( Bio_Quote__c *100) +&apos; &apos;+&apos;%&apos;+ IF(NOT(ISBLANK(TEXT(Bio_Quotes__c))), &apos;*&apos; + &apos; &apos;+ TEXT(Bio_Quotes__c),&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Bio Quote Info</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

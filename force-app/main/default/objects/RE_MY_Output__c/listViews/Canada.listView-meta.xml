@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Type__c</columns>
+    <columns>RE_CND_Reporting_Name__c</columns>
+    <columns>RE_CND_Output_Key_Name__c</columns>
+    <columns>RE_CND_Rack_English__c</columns>
+    <columns>RE_CND_Rack_French__c</columns>
+    <columns>RE_CND_Product_Group_English__c</columns>
+    <columns>RE_CND_Product_Group_French__c</columns>
+    <columns>RE_CND_Old_Value__c</columns>
+    <columns>RE_CND_Change_Value__c</columns>
+    <columns>RE_CND_New_Value__c</columns>
+    <columns>RE_CND_NewRackBAPP_Section__c</columns>
+    <columns>RE_CND_NewRackBAPP_Sequence__c</columns>
+    <columns>RE_CND_RackChangeNoti_Sequence__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MY_Output__c.Canada</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Rack_English__c</field>
+        <operation>equals</operation>
+        <value>Vancouver</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Product_Group_English__c</field>
+        <operation>equals</operation>
+        <value>ULSD BC02</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Reporting_Name__c</field>
+        <operation>equals</operation>
+        <value>CanadianRackPricing</value>
+    </filters>
+    <label>Canada</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

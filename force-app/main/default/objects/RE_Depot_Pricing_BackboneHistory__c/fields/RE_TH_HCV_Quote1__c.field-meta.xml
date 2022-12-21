@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_TH_HCV_Quote1__c</fullName>
+    <externalId>false</externalId>
+    <label>HCV Quote 1</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>SING FOB KERO</fullName>
+                <default>false</default>
+                <label>SING FOB KERO</label>
+            </value>
+            <value>
+                <fullName>SING FOB GO 0.05%</fullName>
+                <default>false</default>
+                <label>SING FOB GO 0.05%</label>
+            </value>
+            <value>
+                <fullName>SING FOB FO 180</fullName>
+                <default>false</default>
+                <label>SING FOB FO 180</label>
+            </value>
+            <value>
+                <fullName>HDGO</fullName>
+                <default>false</default>
+                <label>HDGO</label>
+            </value>
+            <value>
+                <fullName>SING FOB MOGAS 95</fullName>
+                <default>false</default>
+                <label>SING FOB MOGAS 95</label>
+            </value>
+            <value>
+                <fullName>SING FOB AGO 10PPM</fullName>
+                <default>false</default>
+                <label>SING FOB AGO 10PPM</label>
+            </value>
+            <value>
+                <fullName>FIX Price</fullName>
+                <default>false</default>
+                <label>FIX Price</label>
+            </value>
+            <value>
+                <fullName>FOA Price</fullName>
+                <default>false</default>
+                <label>FOA Price</label>
+            </value>
+            <value>
+                <fullName>SING FOB MFO 0.5%</fullName>
+                <default>false</default>
+                <label>SING FOB MFO 0.5%</label>
+            </value>
+            <value>
+                <fullName>MOGAS 92</fullName>
+                <default>false</default>
+                <label>MOGAS 92</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.001% S</fullName>
+                <default>false</default>
+                <label>Gasoil 0.001% S</label>
+            </value>
+            <value>
+                <fullName>Kero</fullName>
+                <default>false</default>
+                <label>Kero</label>
+            </value>
+            <value>
+                <fullName>Marine FuelOil 180</fullName>
+                <default>false</default>
+                <label>Marine FuelOil 180</label>
+            </value>
+            <value>
+                <fullName>CME Premium</fullName>
+                <default>false</default>
+                <label>CME Premium</label>
+            </value>
+            <value>
+                <fullName>ETHANOL</fullName>
+                <default>false</default>
+                <label>ETHANOL</label>
+            </value>
+            <value>
+                <fullName>UCAP RBD CNO</fullName>
+                <default>false</default>
+                <label>UCAP RBD CNO</label>
+            </value>
+            <value>
+                <fullName>QTY PREMIA S2P01</fullName>
+                <default>false</default>
+                <label>QTY PREMIA S2P01</label>
+            </value>
+            <value>
+                <fullName>QTY PREMIA S2P02</fullName>
+                <default>false</default>
+                <label>QTY PREMIA S2P02</label>
+            </value>
+            <value>
+                <fullName>MKT PREMIA MPI08</fullName>
+                <default>false</default>
+                <label>MKT PREMIA MPI08</label>
+            </value>
+            <value>
+                <fullName>MKT PREMIA MPI09</fullName>
+                <default>false</default>
+                <label>MKT PREMIA MPI09</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.001% Premium</fullName>
+                <default>false</default>
+                <label>Gasoil 0.001% Premium</label>
+            </value>
+            <value>
+                <fullName>Kero Premium</fullName>
+                <default>false</default>
+                <label>Kero Premium</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

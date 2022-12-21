@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Sub_Group_Availability__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( INCLUDES(Plant__r.Products_Availability__c, &quot;AGO B7&quot;), &quot;AGO B7;&quot;,&quot;&quot;)
+&amp;
+IF( INCLUDES(Plant__r.Products_Availability__c , &quot;IGO 50ppm&quot;), &quot;IGO 50ppm;&quot;,&quot;&quot;)
+&amp;
+IF( INCLUDES(Plant__r.Products_Availability__c, &quot;ULG95 E5&quot;), &quot;ULG95 E5;&quot;,&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Sub Group Availability</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

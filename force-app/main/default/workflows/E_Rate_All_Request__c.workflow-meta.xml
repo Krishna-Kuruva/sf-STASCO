@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>SLA_Due_Date_Calculator</fullName>
+        <field>SLA_Due_Date__c</field>
+        <formula>CASE(
+MOD(Date_Approved_DD_MM_YYYY__c - DATE(1900, 1, 7), 7),
+0, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + FLOOR((SLA_BUSINESS_DAYS__c-1)/5)*2,
+1, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + FLOOR((SLA_BUSINESS_DAYS__c)/5)*2,
+2, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + FLOOR((SLA_BUSINESS_DAYS__c+1)/5)*2,
+3, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + FLOOR((SLA_BUSINESS_DAYS__c+2)/5)*2,
+4, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + FLOOR((SLA_BUSINESS_DAYS__c+3)/5)*2,
+5, (Date_Approved_DD_MM_YYYY__c) + SLA_BUSINESS_DAYS__c + CEILING((SLA_BUSINESS_DAYS__c)/5)*2,
+6, (Date_Approved_DD_MM_YYYY__c) - IF(SLA_BUSINESS_DAYS__c&gt;0,1,0) + SLA_BUSINESS_DAYS__c + CEILING((SLA_BUSINESS_DAYS__c)/5)*2,
+NULL)</formula>
+        <name>SLA Due Date Calculator</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_In_Progress</fullName>
+        <field>Request_Status__c</field>
+        <literalValue>In Progress</literalValue>
+        <name>Update Status In-Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>E-Rate - Update Date Actioned</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>E_Rate_All_Request__c.Request_Status__c</field>
+            <operation>notEqual</operation>
+            <value>In Progress</value>
+        </criteriaItems>
+        <description>Update Date Actioned</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SLA Due Date Calculator</fullName>
+        <actions>
+            <name>SLA_Due_Date_Calculator</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>E_Rate_All_Request__c.Date_Approved_DD_MM_YYYY__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status In-Progress</fullName>
+        <actions>
+            <name>Update_Status_In_Progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>E_Rate_All_Request__c.Request_Status__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>E_Rate_All_Request__c.Date_Approved_DD_MM_YYYY__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

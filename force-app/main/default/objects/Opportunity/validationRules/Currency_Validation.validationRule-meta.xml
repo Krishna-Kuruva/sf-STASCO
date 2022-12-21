@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Currency_Validation</fullName>
+    <active>false</active>
+    <description>JV - Turned off : Caused error to show in paper page.</description>
+    <errorConditionFormula>AND (
+                                            NOT(ISPICKVAL(Currency__c, &quot;USD&quot;) ),
+                           OR( 
+                                            ISNULL(Exchange_Rate_to_USD__c),
+                                            ABS(Exchange_Rate_to_USD__c) = 0      
+                                  )
+                           )</errorConditionFormula>
+    <errorDisplayField>Exchange_Rate_to_USD__c</errorDisplayField>
+    <errorMessage>If the currency is not US Dollars (&quot;USD&quot;), the Exchange rate needs to be filled.</errorMessage>
+</ValidationRule>

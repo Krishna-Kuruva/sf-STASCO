@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Quotes</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>RE_Price__c</columns>
+    <columns>RE_Pricing_Date__c</columns>
+    <columns>RE_Rate_Unit__c</columns>
+    <columns>RE_Country_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Country_Name__c</field>
+        <operation>equals</operation>
+        <value>CA</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>notEqual</operation>
+        <value>RE_Market_Quotes__c.Canada_Competitor,RE_Market_Quotes__c.Canada_OPIS_Spot_Ticker</value>
+    </filters>
+    <label>Canada Quotes</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

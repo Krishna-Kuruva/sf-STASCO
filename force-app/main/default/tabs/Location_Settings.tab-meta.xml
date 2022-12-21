@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>Rv_LiveAtpPsp</auraComponent>
+    <description>Preferred Location setting for the user. Related Object(s) : ATP, Location</description>
+    <label>Location Settings</label>
+    <motif>Custom49: CD/DVD</motif>
+</CustomTab>

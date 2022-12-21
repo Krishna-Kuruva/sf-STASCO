@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WoW_Project_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>WoW Project Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Group__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Process</fullName>
+                <default>false</default>
+                <label>New Process</label>
+            </value>
+            <value>
+                <fullName>Process_Change</fullName>
+                <default>false</default>
+                <label>Process Change</label>
+            </value>
+            <value>
+                <fullName>Clarification</fullName>
+                <default>false</default>
+                <label>Process Clarification</label>
+            </value>
+            <value>
+                <fullName>Playbook L3</fullName>
+                <default>false</default>
+                <label>Playbook</label>
+            </value>
+            <value>
+                <fullName>Endur</fullName>
+                <default>false</default>
+                <label>Endur</label>
+            </value>
+            <value>
+                <fullName>IMOS</fullName>
+                <default>false</default>
+                <label>IMOS</label>
+            </value>
+            <value>
+                <fullName>CMS</fullName>
+                <default>false</default>
+                <label>CMS</label>
+            </value>
+            <value>
+                <fullName>3D</fullName>
+                <default>false</default>
+                <label>3D</label>
+            </value>
+            <value>
+                <fullName>Energy Component</fullName>
+                <default>false</default>
+                <label>Energy Component</label>
+            </value>
+            <value>
+                <fullName>SDR</fullName>
+                <default>false</default>
+                <label>SDR</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Process</controllingFieldValue>
+            <valueName>New Process</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Process</controllingFieldValue>
+            <valueName>Process_Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Process</controllingFieldValue>
+            <valueName>Clarification</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Process</controllingFieldValue>
+            <valueName>Playbook L3</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>Endur</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>IMOS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>CMS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>3D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>Energy Component</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>System</controllingFieldValue>
+            <valueName>SDR</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

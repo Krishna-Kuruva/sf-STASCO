@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>B2BRM</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Line_of_Business__c</field>
+        <operation>equals</operation>
+        <value>Aviation,Bitumen,Commercial Fuels,LPG,Shell Marine Products</value>
+    </filters>
+    <label>B2B RM</label>
+    <sharedTo>
+        <role>B2BLead</role>
+        <role>Paper</role>
+    </sharedTo>
+</ListView>

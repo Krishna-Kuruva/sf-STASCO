@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Table_Header_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>LEN(TABEL_HEADER__c ) = 0</errorConditionFormula>
+    <errorDisplayField>TABEL_HEADER__c</errorDisplayField>
+    <errorMessage>Table Header is Required</errorMessage>
+</ValidationRule>

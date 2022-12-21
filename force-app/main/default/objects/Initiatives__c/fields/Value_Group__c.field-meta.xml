@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Value_Group__c</fullName>
+    <description>Value Group Category added for Shipping Initiatives</description>
+    <externalId>false</externalId>
+    <label>Value Group</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Americas</fullName>
+                <default>false</default>
+                <label>Americas</label>
+            </value>
+            <value>
+                <fullName>Commercial*</fullName>
+                <default>false</default>
+                <label>Commercial*</label>
+            </value>
+            <value>
+                <fullName>EU/AF</fullName>
+                <default>false</default>
+                <label>EU/AF</label>
+            </value>
+            <value>
+                <fullName>East</fullName>
+                <default>false</default>
+                <label>East</label>
+            </value>
+            <value>
+                <fullName>FG Other</fullName>
+                <default>false</default>
+                <label>FG Other</label>
+            </value>
+            <value>
+                <fullName>FG1</fullName>
+                <default>false</default>
+                <label>FG1</label>
+            </value>
+            <value>
+                <fullName>FG2</fullName>
+                <default>false</default>
+                <label>FG2</label>
+            </value>
+            <value>
+                <fullName>FG3</fullName>
+                <default>false</default>
+                <label>FG3</label>
+            </value>
+            <value>
+                <fullName>FG4</fullName>
+                <default>false</default>
+                <label>FG4</label>
+            </value>
+            <value>
+                <fullName>FG5</fullName>
+                <default>false</default>
+                <label>FG5</label>
+            </value>
+            <value>
+                <fullName>Technology*</fullName>
+                <default>false</default>
+                <label>Technology*</label>
+            </value>
+            <value>
+                <fullName>Time Charter Fleet</fullName>
+                <default>false</default>
+                <label>Time Charter Fleet</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

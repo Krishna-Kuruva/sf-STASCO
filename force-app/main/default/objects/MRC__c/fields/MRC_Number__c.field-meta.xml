@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MRC_Number__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(OR(BEGINS(Name, &apos;0Barge&apos;), (BEGINS(Name, &apos;0Truck&apos;)))), MID( Name , 0, 10), Name)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MRC Number</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

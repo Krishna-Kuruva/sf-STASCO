@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>RE_Bio_Quotes_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>RE Bio Quotes Sharing Rule</label>
+        <sharedTo>
+            <territory>Revolution_Territory.Malaysia</territory>
+        </sharedTo>
+        <criteriaItems>
+            <field>RE_Bio_Quotes_Name__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Thailand</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Thailand</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Thailand</territoryAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Thailand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

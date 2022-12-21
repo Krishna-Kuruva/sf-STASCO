@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Turkey_Contracts</fullName>
+    <columns>NAME</columns>
+    <columns>RT_Contract_Number__c</columns>
+    <columns>RT_Sold_to_Number__c</columns>
+    <columns>RT_Sold_To_Name__c</columns>
+    <columns>RE_Location_Code__c</columns>
+    <columns>RE_Location_Name__c</columns>
+    <columns>RT_Product_Code__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RT_Ship_to_Number__c</columns>
+    <columns>RT_Ship_to_Name__c</columns>
+    <columns>RT_Valid_To__c</columns>
+    <columns>RT_Valid_From__c</columns>
+    <columns>Active__c</columns>
+    <columns>RT_Contract_Item__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Contract__c.Turkey</value>
+    </filters>
+    <filters>
+        <field>RT_Terms_of_Payment__c</field>
+        <operation>contains</operation>
+        <value>Z003</value>
+    </filters>
+    <label>Turkey Contracts</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Turkey</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Ticket</fullName>
+    <availability>online</availability>
+    <description>enter a new ticket</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New Ticket</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>https://stasco--tsbedev.lightning.force.com/lightning/o/TMS_Ticket_Information__c/new?nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=LIST_VIEW&amp;backgroundContext=%2Flightning%2Fn%2FTMS_Ticketing_Portal</url>
+</WebLink>

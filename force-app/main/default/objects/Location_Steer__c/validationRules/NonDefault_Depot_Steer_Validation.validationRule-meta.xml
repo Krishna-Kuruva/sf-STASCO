@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NonDefault_Depot_Steer_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(RecordType.Name ==&apos;Depot Steer&apos;,Default__c ==False),OR(NOT(ISBLANK( Depot_Steer_Override_Start_Date__c)),NOT(ISBLANK( Depot_Steer_Override_mt__c))), false)</errorConditionFormula>
+    <errorMessage>Overrides not allowed for Non-Default Depot Steers</errorMessage>
+</ValidationRule>

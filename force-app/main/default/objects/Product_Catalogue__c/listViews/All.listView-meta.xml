@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>OBJECT_ID</columns>
+    <columns>NAME</columns>
+    <columns>Level_0__c</columns>
+    <columns>Level_1__c</columns>
+    <columns>Commodity_Grade_L2__c</columns>
+    <columns>Material_Name__c</columns>
+    <columns>BEHG_Value_100l__c</columns>
+    <columns>Marketing_Cost__c</columns>
+    <columns>Current_BEHG_valid_from_date__c</columns>
+    <columns>Current_BEHG_valid_to_date__c</columns>
+    <columns>Future_BEHG_value_in_100l__c</columns>
+    <columns>Future_BEHG_valid_from_date__c</columns>
+    <columns>Future_BEHG_valid_to_date__c</columns>
+    <columns>Total_Additive_cost_EUR_100l__c</columns>
+    <columns>WASA_EUR_100l__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

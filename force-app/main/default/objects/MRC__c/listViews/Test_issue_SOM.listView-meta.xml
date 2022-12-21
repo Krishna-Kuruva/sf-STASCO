@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_issue_SOM</fullName>
+    <columns>OBJECT_ID</columns>
+    <columns>NAME</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Valid_From_Date__c</columns>
+    <columns>Valid_To_Date__c</columns>
+    <columns>Plant__c</columns>
+    <columns>Sold_To__c</columns>
+    <columns>Material_Description__c</columns>
+    <columns>Material_Name__c</columns>
+    <columns>Product__c</columns>
+    <columns>Sales_Organization__c</columns>
+    <columns>Shipping_Condition__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Material_Description__c</field>
+        <operation>contains</operation>
+        <value>GTL B0,GTL B7</value>
+    </filters>
+    <filters>
+        <field>Plant_Code__c</field>
+        <operation>equals</operation>
+        <value>D050</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>equals</operation>
+        <value>MRCXXD050-000201,MRCXXD050-000202</value>
+    </filters>
+    <label>Test issue (SOM)</label>
+</ListView>

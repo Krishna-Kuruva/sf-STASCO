@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Regional_Cluster__c</fullName>
+    <description>Sub Category of Region (Created for &quot;Shipping&quot; Business Unit)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Sub Category of Region (Created for &quot;Shipping&quot; Business Unit)</inlineHelpText>
+    <label>Regional Cluster</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Southeast Asia</fullName>
+                <default>false</default>
+                <label>Southeast Asia</label>
+            </value>
+            <value>
+                <fullName>PHILIPPINES</fullName>
+                <default>false</default>
+                <label>PHILIPPINES</label>
+            </value>
+            <value>
+                <fullName>North East Asia</fullName>
+                <default>false</default>
+                <label>North East Asia</label>
+            </value>
+            <value>
+                <fullName>BUKOM</fullName>
+                <default>false</default>
+                <label>BUKOM</label>
+            </value>
+            <value>
+                <fullName>TABANGAO</fullName>
+                <default>false</default>
+                <label>TABANGAO</label>
+            </value>
+            <value>
+                <fullName>SIETCO</fullName>
+                <default>false</default>
+                <label>SIETCO</label>
+            </value>
+            <value>
+                <fullName>Middle East South Asia</fullName>
+                <default>false</default>
+                <label>Middle East South Asia</label>
+            </value>
+            <value>
+                <fullName>CHEMICALS</fullName>
+                <default>false</default>
+                <label>CHEMICALS</label>
+            </value>
+            <value>
+                <fullName>UPSTREAM</fullName>
+                <default>false</default>
+                <label>UPSTREAM</label>
+            </value>
+            <value>
+                <fullName>IGJV</fullName>
+                <default>false</default>
+                <label>IGJV</label>
+            </value>
+            <value>
+                <fullName>APME</fullName>
+                <default>false</default>
+                <label>APME</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

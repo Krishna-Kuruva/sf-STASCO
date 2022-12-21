@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rv_prompt_window_percent__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF((((Valid_To__c - TODAY()) &lt; 15) &amp;&amp; Valid_To__c &gt;= Today()), ((Valid_To__c - TODAY())/15), If((Valid_To__c &lt; Today()), 0, 1))</formula>
+    <label>% of Steer in prompt window</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

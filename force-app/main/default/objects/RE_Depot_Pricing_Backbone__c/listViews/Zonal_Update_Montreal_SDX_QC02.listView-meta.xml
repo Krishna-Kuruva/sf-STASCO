@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zonal_Update_Montreal_SDX_QC02</fullName>
+    <columns>NAME</columns>
+    <columns>RE_CND_Rack__c</columns>
+    <columns>RE_CND_Group__c</columns>
+    <columns>RE_CND_Location_Code__c</columns>
+    <columns>RE_Product_Codes__c</columns>
+    <columns>RE_CND_Product_Group__c</columns>
+    <columns>RE_CND_Pricing_Basis__c</columns>
+    <columns>RE_CND_Product_Differentials__c</columns>
+    <columns>RE_CND_Plant_Differential__c</columns>
+    <columns>RE_CND_Brand_Fees__c</columns>
+    <columns>RE_CND_Brand_Discount__c</columns>
+    <columns>RE_CND_Special_Adjustment__c</columns>
+    <columns>RE_Is_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Depot_Pricing_Backbone__c.Canada</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Rack__c</field>
+        <operation>notEqual</operation>
+        <value>Ottawa</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Product_Group__c</field>
+        <operation>equals</operation>
+        <value>SDX QC02</value>
+    </filters>
+    <label>Zonal Filter - Montreal SDX QC02</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

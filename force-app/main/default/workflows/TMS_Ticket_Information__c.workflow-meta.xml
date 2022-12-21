@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>TMS_Ticket_Closed</fullName>
+        <description>TMS Ticket Closed Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Case_Assigned_To__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/TMS_Ticket_Closed_Email</template>
+    </alerts>
+    <rules>
+        <fullName>TMS Ticket Closed Email to User</fullName>
+        <actions>
+            <name>TMS_Ticket_Closed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>TMS_Ticket_Information__c.Status__c</field>
+            <operation>equals</operation>
+            <value>CLOSED</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

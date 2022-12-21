@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Freight_rate_EUR_mt__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL( Freight_Cost__c ,&apos;Variable&apos;) ,Freight_Percentage__c *Marker__c + Freight_diff_EUR_mt__c,Freight_diff_EUR_mt__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Freight rate [EUR/mt]</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

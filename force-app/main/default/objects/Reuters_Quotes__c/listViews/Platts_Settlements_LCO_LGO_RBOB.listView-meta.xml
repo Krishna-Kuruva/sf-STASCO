@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platts_Settlements_LCO_LGO_RBOB</fullName>
+    <columns>NAME</columns>
+    <columns>Quote_Display_Name__c</columns>
+    <columns>Price__c</columns>
+    <columns>CurrencyCode__c</columns>
+    <columns>Unit_Of_Measure__c</columns>
+    <columns>Pricing_Date__c</columns>
+    <columns>Valid_Month__c</columns>
+    <columns>Valid_From_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Frequency__c</columns>
+    <columns>Quote_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Platts Settlements LCO,LGO,RBOB</label>
+</ListView>

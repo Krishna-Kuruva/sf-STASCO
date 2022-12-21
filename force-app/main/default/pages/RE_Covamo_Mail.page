@@ -1,0 +1,7 @@
+<apex:page standardController="Rev_Covamo_Header__c" extensions="RE_CovamoMailController" action="{!prepareCovamoUrl}"> 
+    <apex:outputPanel id="script"> 
+         
+       <script type="text/javascript"> window.open("{!CovamoUrl}","_blank","width=640,height=480"); window.history.back(); 
+            </script>
+    </apex:outputPanel>
+</apex:page>

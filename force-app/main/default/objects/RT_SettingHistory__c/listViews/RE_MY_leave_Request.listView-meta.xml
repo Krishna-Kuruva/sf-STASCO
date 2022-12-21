@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_leave_Request</fullName>
+    <columns>NAME</columns>
+    <columns>RE_User_Name__c</columns>
+    <columns>RE_Delegate_Approver__c</columns>
+    <columns>RE_Start_Date__c</columns>
+    <columns>RE_End_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.RE_User_leave_plan</value>
+    </filters>
+    <label>RE MY leave Request</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

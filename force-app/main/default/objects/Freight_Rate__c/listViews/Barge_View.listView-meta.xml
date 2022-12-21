@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Barge_View</fullName>
+    <columns>NAME</columns>
+    <columns>Source__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Mode_Of_Transport__c</columns>
+    <columns>Freight_Cost__c</columns>
+    <columns>Freight_diff_EUR_mt__c</columns>
+    <columns>Freight_rate_EUR_mt__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Mode_Of_Transport__c</field>
+        <operation>equals</operation>
+        <value>Pipe,Rail,Truck</value>
+    </filters>
+    <label>Rail, Truck and Pipe View</label>
+</ListView>

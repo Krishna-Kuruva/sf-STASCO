@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Total_Margin_US__c</fullName>
+    <externalId>false</externalId>
+    <formula>CO2_US_Margin_T__c  *  CO2_Number_of_allowances__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This is the margin in US$ at time of doing the deal (converted)</inlineHelpText>
+    <label>CO2- GC Margin US$</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

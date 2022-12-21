@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MRC_Grade_Sort__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(  Material_Description__c , &quot;IGO 50ppm&quot;, 1, &quot;IGO 1000ppm&quot;, 2, &quot;IGO 10ppm&quot;, 3,&quot;AGO B7&quot;, 4,&quot;AGO B0&quot;, 5,&quot;AGO B0 CH&quot;, 6,&quot;AGO VPD&quot;, 7,&quot;GTL B0&quot;, 8,&quot;GTL B7&quot;, 9,&quot;ULG95 E5&quot;, 11,&quot;ULG95 E10&quot;, 10,&quot;ULG98&quot;, 12,&quot;ULG95_BOB_E5&quot;, 13,&quot;ULG95_BOB_E10&quot;, 14,&quot;ULG95 E0&quot;, 15,&quot;ULG100 VP&quot;, 16,&quot;AVGAS&quot;, 17,18)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MRC Grade Sort</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Location__c</fullName>
+    <externalId>false</externalId>
+    <label>Delivery Location</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Line_of_Business__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0.84 Miro</fullName>
+                <default>false</default>
+                <label>0.84 Miro</label>
+            </value>
+            <value>
+                <fullName>0.94 Coryton – FO 3.5 Rott Barges</fullName>
+                <default>false</default>
+                <label>0.94 Coryton – FO 3.5 Rott Barges</label>
+            </value>
+            <value>
+                <fullName>0.94 Eastham – FO CIF NWE 3.5</fullName>
+                <default>false</default>
+                <label>0.94 Eastham – FO CIF NWE 3.5</label>
+            </value>
+            <value>
+                <fullName>1,Unknown</fullName>
+                <default>false</default>
+                <label>1,Unknown</label>
+            </value>
+            <value>
+                <fullName>1.00 Stanlow  – FO Rott Bgs 3.5</fullName>
+                <default>false</default>
+                <label>1.00 Stanlow  – FO Rott Bgs 3.5</label>
+            </value>
+            <value>
+                <fullName>1.399 (FO380) + 2.9526 (GO0.5) + 31</fullName>
+                <default>false</default>
+                <label>1.399 (FO380) + 2.9526 (GO0.5) + 31</label>
+            </value>
+            <value>
+                <fullName>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</fullName>
+                <default>false</default>
+                <label>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</label>
+            </value>
+            <value>
+                <fullName>42--Shell Canada Products</fullName>
+                <default>false</default>
+                <label>42--Shell Canada Products</label>
+            </value>
+            <value>
+                <fullName>Amsterdam</fullName>
+                <default>false</default>
+                <label>Amsterdam</label>
+            </value>
+            <value>
+                <fullName>Antwerp</fullName>
+                <default>false</default>
+                <label>Antwerp</label>
+            </value>
+            <value>
+                <fullName>Berre 1.510 Low FOB Med  - 0.460 High CIF Med</fullName>
+                <default>false</default>
+                <label>Berre 1.510 Low FOB Med  - 0.460 High CIF Med</label>
+            </value>
+            <value>
+                <fullName>Berre Hard Pen 1.0 * 3.5% FO FOB Rotterdam barges (High)</fullName>
+                <default>false</default>
+                <label>Berre Hard Pen 1.0 * 3.5% FO FOB Rotterdam barges (High)</label>
+            </value>
+            <value>
+                <fullName>Berre Soft pen 3.5 FO FOB Med High</fullName>
+                <default>false</default>
+                <label>Berre Soft pen 3.5 FO FOB Med High</label>
+            </value>
+            <value>
+                <fullName>Bitumen; (1.399 FO380 - 2.9526 GO 0.5) + 182</fullName>
+                <default>false</default>
+                <label>Bitumen; (1.399 FO380 - 2.9526 GO 0.5) + 182</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO 380- 2.9526* GO0.5 + 38</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO 380- 2.9526* GO0.5 + 38</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Hard Pen 0.59 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Hard Pen 0.59 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Hard Pen 0.61 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Hard Pen 0.61 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Hard Pen 0.76 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Hard Pen 0.76 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Hard Pen 0.81 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Hard Pen 0.81 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Hard Pen 0.84 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Hard Pen 0.84 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Soft Pen 0.61 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Soft Pen 0.61 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Soft Pen 0.63 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Soft Pen 0.63 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Soft Pen 0.78 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Soft Pen 0.78 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Soft Pen 0.83 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Soft Pen 0.83 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>CRC Litvinov Soft Pen 0.85 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>CRC Litvinov Soft Pen 0.85 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Dublin</fullName>
+                <default>false</default>
+                <label>Dublin</label>
+            </value>
+            <value>
+                <fullName>Durban</fullName>
+                <default>false</default>
+                <label>Durban</label>
+            </value>
+            <value>
+                <fullName>Eastham - NWE 3.5 HSFO CIF mean</fullName>
+                <default>false</default>
+                <label>Eastham - NWE 3.5 HSFO CIF mean</label>
+            </value>
+            <value>
+                <fullName>France - R/dam barges 3.5 * 0.71</fullName>
+                <default>false</default>
+                <label>France - R/dam barges 3.5 * 0.71</label>
+            </value>
+            <value>
+                <fullName>France - R/Dam barges 3.5 % * 0.615</fullName>
+                <default>false</default>
+                <label>France - R/Dam barges 3.5 % * 0.615</label>
+            </value>
+            <value>
+                <fullName>Frankfurt - Hahn</fullName>
+                <default>false</default>
+                <label>Frankfurt - Hahn</label>
+            </value>
+            <value>
+                <fullName>Gasoil 50ppm FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Gasoil 50ppm FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Godorf Barges 0.74 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Barges 0.74 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Hard Pen 0.71 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Hard Pen 0.71 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Hard Pen 0.74 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Hard Pen 0.74 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Hard Pen 0.77 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Hard Pen 0.77 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Hard Pen 0.78 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Hard Pen 0.78 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Hard Pen 0.81 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Hard Pen 0.81 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf HardPen - 1.471Low FOB Barges - 0.469 Mean FOB Barges</fullName>
+                <default>false</default>
+                <label>Godorf HardPen - 1.471Low FOB Barges - 0.469 Mean FOB Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Soft Pen 0.91 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Soft Pen 0.91 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Soft Pen 0.94 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Soft Pen 0.94 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Soft Pen 0.94 * 3.5% Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Soft Pen 0.94 * 3.5% Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Soft Pen 0.98 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Godorf Soft Pen 0.98 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Specialities 0.53 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Specialities 0.53 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Specialities 0.69 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Specialities 0.69 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Godorf Specialities 0.74 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Godorf Specialities 0.74 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Hard Pen 0.78 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Hard Pen 0.78 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Hard Pen 0.89 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Hard Pen 0.89 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Hard Pen 0.91 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Hard Pen 0.91 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Hard Pen 1.486 High Fob Barges - 0.441 High Cif NWE</fullName>
+                <default>false</default>
+                <label>Harburg Hard Pen 1.486 High Fob Barges - 0.441 High Cif NWE</label>
+            </value>
+            <value>
+                <fullName>Harburg Soft Pen 0.83 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Soft Pen 0.83 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Soft Pen 0.92 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Soft Pen 0.92 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Soft Pen 0.93 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Soft Pen 0.93 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg Soft Pen 0.95 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg Soft Pen 0.95 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg V1500 1.03 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg V1500 1.03 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Harburg V1500 1.05 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Harburg V1500 1.05 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Blown Grades 1.09 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Blown Grades 1.09 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Blown Grades 1.19 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Blown Grades 1.19 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Hard Pen 0.75 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Hard Pen 0.75 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Hard Pen 0.86 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Hard Pen 0.86 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Hard Pen 0.97 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Hard Pen 0.97 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Hard pen- 1.490MFOBBarges-0.440MCIF NWE</fullName>
+                <default>false</default>
+                <label>Heide Hard pen- 1.490MFOBBarges-0.440MCIF NWE</label>
+            </value>
+            <value>
+                <fullName>Heide Soft Pen 0.81 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Soft Pen 0.81 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Soft Pen 0.89 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Soft Pen 0.89 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Heide Soft Pen 1.00 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Heide Soft Pen 1.00 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Houston</fullName>
+                <default>false</default>
+                <label>Houston</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Heavily Blown 0.98 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Heavily Blown 0.98 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Lightly Blown 0.98 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Lightly Blown 0.98 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Soft Pen 0.98 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Soft Pen 0.98 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Karlsruhe (Miro) Soft Pen 0.99 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Karlsruhe (Miro) Soft Pen 0.99 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Korea</fullName>
+                <default>false</default>
+                <label>Korea</label>
+            </value>
+            <value>
+                <fullName>Litvinov HardPen - 1.470MFOBBarges-0.430MCIF nwe</fullName>
+                <default>false</default>
+                <label>Litvinov HardPen - 1.470MFOBBarges-0.430MCIF nwe</label>
+            </value>
+            <value>
+                <fullName>London - Gatwick</fullName>
+                <default>false</default>
+                <label>London - Gatwick</label>
+            </value>
+            <value>
+                <fullName>London - Heathrow</fullName>
+                <default>false</default>
+                <label>London - Heathrow</label>
+            </value>
+            <value>
+                <fullName>London - Luton</fullName>
+                <default>false</default>
+                <label>London - Luton</label>
+            </value>
+            <value>
+                <fullName>London - Stansted</fullName>
+                <default>false</default>
+                <label>London - Stansted</label>
+            </value>
+            <value>
+                <fullName>Miro Hard Pen 0.71 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Hard Pen 0.71 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Hard Pen 0.79 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Hard Pen 0.79 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro HardPen 1.510Mean FOB barges - 0.480 Mean Fob Barges</fullName>
+                <default>false</default>
+                <label>Miro HardPen 1.510Mean FOB barges - 0.480 Mean Fob Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Heavily Blown 0.95 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Heavily Blown 0.95 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Heavily Blown 0.96 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Heavily Blown 0.96 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Lightly Blown 0.74 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Lightly Blown 0.74 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Lightly Blown 0.81 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Lightly Blown 0.81 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Soft Pen 0.8 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Soft Pen 0.8 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Soft Pen 0.85 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Soft Pen 0.85 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Miro Soft Pen 0.91 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Miro Soft Pen 0.91 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>New York - Newark Airport</fullName>
+                <default>false</default>
+                <label>New York - Newark Airport</label>
+            </value>
+            <value>
+                <fullName>Norway</fullName>
+                <default>false</default>
+                <label>Norway</label>
+            </value>
+            <value>
+                <fullName>NWE CIF 7000 ( Platt&apos;s )</fullName>
+                <default>false</default>
+                <label>NWE CIF 7000 ( Platt&apos;s )</label>
+            </value>
+            <value>
+                <fullName>NYM Heating Oil</fullName>
+                <default>false</default>
+                <label>NYM Heating Oil</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Paris - Beauvais</fullName>
+                <default>false</default>
+                <label>Paris - Beauvais</label>
+            </value>
+            <value>
+                <fullName>Paris - CDG</fullName>
+                <default>false</default>
+                <label>Paris - CDG</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.56 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.56 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.64 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.64 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.73 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.73 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.77 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.77 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Hard Pen - 1.470 Mean FOB Barge - 0.430 GO mean cif NWE</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Hard Pen - 1.470 Mean FOB Barge - 0.430 GO mean cif NWE</label>
+            </value>
+            <value>
+                <fullName>PCK Schwedt Rail Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>PCK Schwedt Rail Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Peace River - 75% West Canadian Select (WCS) = WTI less Diff</fullName>
+                <default>false</default>
+                <label>Peace River - 75% West Canadian Select (WCS) = WTI less Diff</label>
+            </value>
+            <value>
+                <fullName>Pernis Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Pernis Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Petit Couronne Hard Pen 1.0157 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Petit Couronne Hard Pen 1.0157 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>PtCouronne, 3.5% FOB Rott Barges</fullName>
+                <default>false</default>
+                <label>PtCouronne, 3.5% FOB Rott Barges</label>
+            </value>
+            <value>
+                <fullName>PtCouronne  HardPen Low FOB NWE</fullName>
+                <default>false</default>
+                <label>PtCouronne  HardPen Low FOB NWE</label>
+            </value>
+            <value>
+                <fullName>Reichstett Hard Pen 1.0157 * 3.5% FO FOB Rotterdam barges</fullName>
+                <default>false</default>
+                <label>Reichstett Hard Pen 1.0157 * 3.5% FO FOB Rotterdam barges</label>
+            </value>
+            <value>
+                <fullName>Reichstett - HardPen - Low Fob Barges</fullName>
+                <default>false</default>
+                <label>Reichstett - HardPen - Low Fob Barges</label>
+            </value>
+            <value>
+                <fullName>Reichstett - HardPen - Mean Fob Barges</fullName>
+                <default>false</default>
+                <label>Reichstett - HardPen - Mean Fob Barges</label>
+            </value>
+            <value>
+                <fullName>Richards Bay</fullName>
+                <default>false</default>
+                <label>Richards Bay</label>
+            </value>
+            <value>
+                <fullName>Rotterdam</fullName>
+                <default>false</default>
+                <label>Rotterdam</label>
+            </value>
+            <value>
+                <fullName>Singapore</fullName>
+                <default>false</default>
+                <label>Singapore</label>
+            </value>
+            <value>
+                <fullName>Sowa Shell</fullName>
+                <default>false</default>
+                <label>Sowa Shell</label>
+            </value>
+            <value>
+                <fullName>Stanlow Hard Pen 0.59 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Stanlow Hard Pen 0.59 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Stanlow Hard Pen 0.79 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Stanlow Hard Pen 0.79 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Stanlow Hard Pen 0.85 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Stanlow Hard Pen 0.85 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Stanlow Hard Pen 1.587 Mean Cif NWE - 0.475 Mean CIF NWE</fullName>
+                <default>false</default>
+                <label>Stanlow Hard Pen 1.587 Mean Cif NWE - 0.475 Mean CIF NWE</label>
+            </value>
+            <value>
+                <fullName>Stanlow Propane Asphalt 0.58 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Stanlow Propane Asphalt 0.58 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Stanlow Propane Asphalt 0.78 * 3.5% FO FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Stanlow Propane Asphalt 0.78 * 3.5% FO FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Sweden</fullName>
+                <default>false</default>
+                <label>Sweden</label>
+            </value>
+            <value>
+                <fullName>Taiwan</fullName>
+                <default>false</default>
+                <label>Taiwan</label>
+            </value>
+            <value>
+                <fullName>Thailand</fullName>
+                <default>false</default>
+                <label>Thailand</label>
+            </value>
+            <value>
+                <fullName>Turkey</fullName>
+                <default>false</default>
+                <label>Turkey</label>
+            </value>
+            <value>
+                <fullName>UK</fullName>
+                <default>false</default>
+                <label>UK</label>
+            </value>
+            <value>
+                <fullName>1.81*FO380 - 0.81*GO500ppm*6.29/0.86</fullName>
+                <default>false</default>
+                <label>1.81*FO380 - 0.81*GO500ppm*6.29/0.86</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Frankfurt - Hahn</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>London - Gatwick</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>London - Heathrow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>London - Luton</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>London - Stansted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>New York - Newark Airport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Paris - Beauvais</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Paris - CDG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>0.84 Miro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>0.94 Coryton – FO 3.5 Rott Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>0.94 Eastham – FO CIF NWE 3.5</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>1.00 Stanlow  – FO Rott Bgs 3.5</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>1.399 (FO380) + 2.9526 (GO0.5) + 31</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Berre Hard Pen 1.0 * 3.5% FO FOB Rotterdam barges (High)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Berre Soft pen 3.5 FO FOB Med High</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO 380- 2.9526* GO0.5 + 38</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Hard Pen 0.76 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Hard Pen 0.81 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Hard Pen 0.84 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Soft Pen 0.61 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Soft Pen 0.83 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>CRC Litvinov Soft Pen 0.85 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Eastham - NWE 3.5 HSFO CIF mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 50ppm FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Barges 0.74 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Hard Pen 0.74 * 3.5% FO FOB Rotterdam barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Hard Pen 0.77 * 3.5% FO FOB Rotterdam barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Hard Pen 0.78 * 3.5% FO FOB Rotterdam barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf HardPen - 1.471Low FOB Barges - 0.469 Mean FOB Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Soft Pen 0.94 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Soft Pen 0.94 * 3.5% Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Soft Pen 0.98 * 3.5% FO FOB Rotterdam barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Godorf Specialities 0.74 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Harburg Hard Pen 0.91 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Harburg Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Harburg Soft Pen 0.93 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Harburg Soft Pen 0.95 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Heide Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Heide Hard Pen 0.97 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Heide Hard pen- 1.490MFOBBarges-0.440MCIF NWE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Hard Pen 0.93 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Heavily Blown 0.98 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Lightly Blown 0.98 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Soft Pen 0.98 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Karlsruhe (Miro) Soft Pen 0.99 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Litvinov HardPen - 1.470MFOBBarges-0.430MCIF nwe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Miro Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Miro HardPen 1.510Mean FOB barges - 0.480 Mean Fob Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Miro Soft Pen 0.91 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PCK Schwedt Hard Pen 0.77 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PCK Schwedt Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PCK Schwedt Hard Pen 0.83 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PCK Schwedt Hard Pen - 1.470 Mean FOB Barge - 0.430 GO mean cif NWE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PCK Schwedt Rail Hard Pen 0.80 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Peace River - 75% West Canadian Select (WCS) = WTI less Diff</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Pernis Hard Pen 0.92 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Petit Couronne Hard Pen 1.0157 * 3.5% FO FOB Rotterdam barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PtCouronne, 3.5% FOB Rott Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>PtCouronne  HardPen Low FOB NWE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Reichstett - HardPen - Low Fob Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Reichstett - HardPen - Mean Fob Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Singapore</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Stanlow Hard Pen 0.79 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Stanlow Hard Pen 0.85 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Stanlow Hard Pen 1.587 Mean Cif NWE - 0.475 Mean CIF NWE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Stanlow Propane Asphalt 0.78 * 3.5% FO FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>1.81*FO380 - 0.81*GO500ppm*6.29/0.86</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Amsterdam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Antwerp</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Houston</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Taiwan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>NWE CIF 7000 ( Platt&apos;s )</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Durban</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Richards Bay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Rotterdam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels - Marine</controllingFieldValue>
+            <valueName>Thailand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>42--Shell Canada Products</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conga_Composer_RESGConga_Solution</fullName>
+    <availability>online</availability>
+    <description>Created by Conga Solution Manager. Record link: https://stasco--uat--apxtconga4.visualforce.com/a2f4J0000019tHrQAI.</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>false</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>660</height>
+    <isResizable>false</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>RESGConga Solution</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!RE_SG_CostPrice__c.Id}
+
+&amp;QueryId=[SingFXRateSellTdy]a2Z4J000000UvkR,
+[SingFXRateSellYtd]a2Z4J000000UvkS,
+[SingMarketQuotes]a2Z4J000000UvkT,
+[SingMarketQuotesYtd]a2Z4J000000UvkU,
+[SingFXRateExYtd]a2Z4J000000UvkQ,
+[SingSCent]a2Z4J000000UvkM,
+[SingUSCent]a2Z4J000000UvkN,
+[SingFXRateExTdy]a2Z4J000000UvkP,
+[SingMC0Dip]a2Z4J000000V366,
+[SGAPToday]a2Z4J000000V36B,
+[SGAPYday]a2Z4J000000V36G,
+[SGMPToday]a2Z4J000000V36V,
+[SGMPYday]a2Z4J000000V36Q,
+[SgMQTemperature]a2Z4J000000V7Nr,
+[SingMQ0005]a2Z4L000002dpoe,
+[SingMQYstrdy0005]a2Z4L000002dpoj
+
+&amp;CongaEmailTemplateId=a2Y4J0000001Oxn</url>
+    <width>900</width>
+</WebLink>

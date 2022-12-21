@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Job_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Job Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Malaysia Output</fullName>
+                <default>false</default>
+                <label>Malaysia Output</label>
+            </value>
+            <value>
+                <fullName>Singapore Output</fullName>
+                <default>false</default>
+                <label>Singapore Output</label>
+            </value>
+            <value>
+                <fullName>SG Midday Output</fullName>
+                <default>false</default>
+                <label>SG Midday Output</label>
+            </value>
+            <value>
+                <fullName>Malaysia AMV Output</fullName>
+                <default>false</default>
+                <label>Malaysia AMV Output</label>
+            </value>
+            <value>
+                <fullName>Thailand Output</fullName>
+                <default>false</default>
+                <label>Thailand Output</label>
+            </value>
+            <value>
+                <fullName>CustomerOps Output</fullName>
+                <default>false</default>
+                <label>CustomerOps Output</label>
+            </value>
+            <value>
+                <fullName>New Contract Pricing Output</fullName>
+                <default>false</default>
+                <label>New Contract Pricing Output</label>
+            </value>
+            <value>
+                <fullName>Thailand AMV Output</fullName>
+                <default>false</default>
+                <label>Thailand AMV Output</label>
+            </value>
+            <value>
+                <fullName>MY Export Report</fullName>
+                <default>false</default>
+                <label>MY Export Report</label>
+            </value>
+            <value>
+                <fullName>MY Customer Opps CBU</fullName>
+                <default>false</default>
+                <label>MY Customer Opps CBU</label>
+            </value>
+            <value>
+                <fullName>Philippines Output</fullName>
+                <default>false</default>
+                <label>Philippines Output</label>
+            </value>
+            <value>
+                <fullName>Canada Daily Reuters Quote Move</fullName>
+                <default>false</default>
+                <label>Canada Daily Reuters Quote Move</label>
+            </value>
+            <value>
+                <fullName>Canada Execute Depo Pricing</fullName>
+                <default>false</default>
+                <label>Canada Execute Depo Pricing</label>
+            </value>
+            <value>
+                <fullName>Canada Pricing Recalculation</fullName>
+                <default>false</default>
+                <label>Canada Pricing Recalculation</label>
+            </value>
+            <value>
+                <fullName>Canada SFJ Record Creation</fullName>
+                <default>false</default>
+                <label>Canada SFJ Record Creation</label>
+            </value>
+            <value>
+                <fullName>Canada Live OPIS Spot Ticker Processing</fullName>
+                <default>false</default>
+                <label>Canada Live OPIS Spot Ticker Processing</label>
+            </value>
+            <value>
+                <fullName>Canada Market Move Calculation</fullName>
+                <default>false</default>
+                <label>Canada Market Move Calculation</label>
+            </value>
+            <value>
+                <fullName>Canada Competitor Data Processing</fullName>
+                <default>false</default>
+                <label>Canada Competitor Data Processing</label>
+            </value>
+            <value>
+                <fullName>Canada GSAP Upload</fullName>
+                <default>false</default>
+                <label>Canada GSAP Upload</label>
+            </value>
+            <value>
+                <fullName>Canada Email Output</fullName>
+                <default>false</default>
+                <label>Canada Email Output</label>
+            </value>
+            <value>
+                <fullName>MY Data Analysis Report</fullName>
+                <default>false</default>
+                <label>MY Data Analysis Report</label>
+            </value>
+            <value>
+                <fullName>PH Customer Opps CBU</fullName>
+                <default>false</default>
+                <label>PH Customer Opps CBU</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

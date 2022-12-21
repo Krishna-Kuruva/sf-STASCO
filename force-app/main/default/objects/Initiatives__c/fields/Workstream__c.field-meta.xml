@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Workstream__c</fullName>
+    <externalId>false</externalId>
+    <label>Workstream</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Port</fullName>
+                <default>false</default>
+                <label>Port</label>
+            </value>
+            <value>
+                <fullName>Maintenance</fullName>
+                <default>false</default>
+                <label>Maintenance</label>
+            </value>
+            <value>
+                <fullName>Standardisation</fullName>
+                <default>false</default>
+                <label>Standardisation</label>
+            </value>
+            <value>
+                <fullName>Cargo</fullName>
+                <default>false</default>
+                <label>Cargo</label>
+            </value>
+            <value>
+                <fullName>Commercial</fullName>
+                <default>false</default>
+                <label>Commercial</label>
+            </value>
+            <value>
+                <fullName>Passage</fullName>
+                <default>false</default>
+                <label>Passage</label>
+            </value>
+            <value>
+                <fullName>C&amp;P - Category Management</fullName>
+                <default>false</default>
+                <label>C&amp;P - Category Management</label>
+            </value>
+            <value>
+                <fullName>Cargo Boil Off</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cargo / Boil Off</label>
+            </value>
+            <value>
+                <fullName>Category Management</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Category Management</label>
+            </value>
+            <value>
+                <fullName>Fuel Management</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Fuel Management</label>
+            </value>
+            <value>
+                <fullName>Opex</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Opex</label>
+            </value>
+            <value>
+                <fullName>Passage Utilisation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Passage / Utilisation</label>
+            </value>
+            <value>
+                <fullName>Standards</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Standards</label>
+            </value>
+            <value>
+                <fullName>Unclassified</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unclassified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

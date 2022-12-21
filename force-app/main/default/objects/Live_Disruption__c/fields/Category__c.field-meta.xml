@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>last mile</fullName>
+                <default>false</default>
+                <label>last mile</label>
+            </value>
+            <value>
+                <fullName>load location 3rd party</fullName>
+                <default>false</default>
+                <label>load location 3rd party</label>
+            </value>
+            <value>
+                <fullName>load location Shell</fullName>
+                <default>false</default>
+                <label>load location Shell</label>
+            </value>
+            <value>
+                <fullName>primary Transport Source 3rd Party</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>primary Transport Source 3rd Party</label>
+            </value>
+            <value>
+                <fullName>primary Transport Source Shell</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>primary Transport Source Shell</label>
+            </value>
+            <value>
+                <fullName>regional transport</fullName>
+                <default>false</default>
+                <label>regional transport</label>
+            </value>
+            <value>
+                <fullName>terminal</fullName>
+                <default>false</default>
+                <label>terminal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

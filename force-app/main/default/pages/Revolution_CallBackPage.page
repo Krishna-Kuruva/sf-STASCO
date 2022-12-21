@@ -1,0 +1,7 @@
+<!-- This page is used as Callback URL link to the Revoltion_SPT Connected App -->
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

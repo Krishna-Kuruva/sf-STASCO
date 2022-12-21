@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exisiting_Replacement__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Is this volume exisiting or replacement of current volume?</inlineHelpText>
+    <label>Exisiting/Incremental</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Both</fullName>
+                <default>false</default>
+                <label>Both</label>
+            </value>
+            <value>
+                <fullName>Exisiting</fullName>
+                <default>false</default>
+                <label>Exisiting</label>
+            </value>
+            <value>
+                <fullName>Incremental</fullName>
+                <default>false</default>
+                <label>Incremental</label>
+            </value>
+            <value>
+                <fullName>Replacement</fullName>
+                <default>false</default>
+                <label>Replacement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

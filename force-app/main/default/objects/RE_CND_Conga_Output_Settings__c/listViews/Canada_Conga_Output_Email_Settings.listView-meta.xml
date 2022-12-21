@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Conga_Output_Email_Settings</fullName>
+    <columns>NAME</columns>
+    <columns>File_Name__c</columns>
+    <columns>Rack_Name__c</columns>
+    <columns>Product_Group_Name__c</columns>
+    <columns>Product_Code__c</columns>
+    <columns>Location_Code__c</columns>
+    <columns>Group__c</columns>
+    <columns>Display_English_Rack_Name__c</columns>
+    <columns>Display_French_Rack_Name__c</columns>
+    <columns>Display_English_Product_Group__c</columns>
+    <columns>Display_French_Product_Group__c</columns>
+    <columns>Sequence_No__c</columns>
+    <columns>Section_Name__c</columns>
+    <columns>Is_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Display_English_Rack_Name__c</field>
+        <operation>equals</operation>
+        <value>Vancouver</value>
+    </filters>
+    <filters>
+        <field>Location_Code__c</field>
+        <operation>equals</operation>
+        <value>c316</value>
+    </filters>
+    <filters>
+        <field>Product_Group_Name__c</field>
+        <operation>equals</operation>
+        <value>ulsd</value>
+    </filters>
+    <label>Canada Conga Output Email Settings</label>
+    <language>en_US</language>
+</ListView>

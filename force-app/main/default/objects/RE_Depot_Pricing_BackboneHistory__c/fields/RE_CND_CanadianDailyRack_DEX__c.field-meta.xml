@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_CND_CanadianDailyRack_DEX__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;CRACKS &apos;+ TEXT(RE_CND_DEX_loc_code__c) + &apos; &apos; +  TEXT(RE_CND_DEX_product_code__c) + &apos; SPOT P&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CanadianDailyRack DEX</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

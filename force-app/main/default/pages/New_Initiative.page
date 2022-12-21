@@ -1,0 +1,8 @@
+<apex:page >
+<apex:form >
+<div align="center" draggable="false">
+<apex:commandButton action="{!URLFOR($Action.Initiatives__c.New)}" id="editButton" value="Create New Initiative" styleclass="buttonStyle" oncomplete="this.form.reset()" style="background:White; width:300px; height:35px; font-size: 12px;"/>
+</div>
+
+</apex:form>
+</apex:page>

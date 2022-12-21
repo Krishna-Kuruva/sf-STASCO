@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR(TEXT( IK_Locations__r.Region_Name__c) == &apos;EAST&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;North&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;South&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;West&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;Mid&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;SW&apos;,TEXT(IK_Locations__r.Region_Name__c) == &apos;OTHER-DE&apos;),&apos;Germany&apos;,IF(TEXT(IK_Locations__r.Region_Name__c)==&apos;AUSTRIA&apos;,&apos;Austria&apos;,IF(TEXT(IK_Locations__r.Region_Name__c)==&apos;SWITZERLAND&apos;,&apos;Switzerland&apos;,IF(TEXT(IK_Locations__r.Region_Name__c)==&apos;LUXEMBOURG&apos;,&apos;Luxembourg&apos;,IF(TEXT(IK_Locations__r.Region_Name__c)==&apos;United Kingdom&apos;,&apos;United Kingdom&apos;,&apos;&apos;)))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Country</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

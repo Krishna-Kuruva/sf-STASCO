@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>If_Status_is_In_Progress</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Request_Status__c,&quot;In Progress&quot;),ISBLANK(Date_Approved_DD_MM_YYYY__c))</errorConditionFormula>
+    <errorDisplayField>Date_Approved_DD_MM_YYYY__c</errorDisplayField>
+    <errorMessage>Please fill in the Date Approved</errorMessage>
+</ValidationRule>

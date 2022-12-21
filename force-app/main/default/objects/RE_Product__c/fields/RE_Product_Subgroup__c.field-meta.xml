@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Product_Subgroup__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Subgroup</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AGO B7</fullName>
+                <default>false</default>
+                <label>AGO B7</label>
+            </value>
+            <value>
+                <fullName>AGO B0</fullName>
+                <default>false</default>
+                <label>AGO B0</label>
+            </value>
+            <value>
+                <fullName>MOGAS 95</fullName>
+                <default>false</default>
+                <label>MOGAS 95</label>
+            </value>
+            <value>
+                <fullName>MOGAS 97</fullName>
+                <default>false</default>
+                <label>MOGAS 97</label>
+            </value>
+            <value>
+                <fullName>Kerosene</fullName>
+                <default>false</default>
+                <label>Kerosene</label>
+            </value>
+            <value>
+                <fullName>IGO B0</fullName>
+                <default>false</default>
+                <label>IGO B0</label>
+            </value>
+            <value>
+                <fullName>IGO B7</fullName>
+                <default>false</default>
+                <label>IGO B7</label>
+            </value>
+            <value>
+                <fullName>IGO B10</fullName>
+                <default>false</default>
+                <label>IGO B10</label>
+            </value>
+            <value>
+                <fullName>Dual Purpose AGO</fullName>
+                <default>false</default>
+                <label>Dual Purpose AGO</label>
+            </value>
+            <value>
+                <fullName>Gas Oil</fullName>
+                <default>false</default>
+                <label>Gas Oil</label>
+            </value>
+            <value>
+                <fullName>Gas Oil Bunker</fullName>
+                <default>false</default>
+                <label>Gas Oil Bunker</label>
+            </value>
+            <value>
+                <fullName>Hydrogen Refinery</fullName>
+                <default>false</default>
+                <label>Hydrogen Refinery</label>
+            </value>
+            <value>
+                <fullName>High Octane</fullName>
+                <default>false</default>
+                <label>High Octane</label>
+            </value>
+            <value>
+                <fullName>IGO</fullName>
+                <default>false</default>
+                <label>IGO</label>
+            </value>
+            <value>
+                <fullName>KERO</fullName>
+                <default>false</default>
+                <label>KERO</label>
+            </value>
+            <value>
+                <fullName>Low Octane</fullName>
+                <default>false</default>
+                <label>Low Octane</label>
+            </value>
+            <value>
+                <fullName>Medium Octane</fullName>
+                <default>false</default>
+                <label>Medium Octane</label>
+            </value>
+            <value>
+                <fullName>Off-road AGO</fullName>
+                <default>false</default>
+                <label>Off-road AGO</label>
+            </value>
+            <value>
+                <fullName>On-road AGO</fullName>
+                <default>false</default>
+                <label>On-road AGO</label>
+            </value>
+            <value>
+                <fullName>RFO Bunker</fullName>
+                <default>false</default>
+                <label>RFO Bunker</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

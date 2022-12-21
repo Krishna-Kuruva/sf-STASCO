@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Contract</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Customer_Name__c</columns>
+    <columns>RT_Plant_Desc__c</columns>
+    <columns>RT_Material_Desc__c</columns>
+    <columns>RE_Custom_Ops_Calculation__c</columns>
+    <columns>RT_Valid_From__c</columns>
+    <columns>RT_Valid_To__c</columns>
+    <columns>RE_Tier__c</columns>
+    <columns>RE_Sales_Org__c</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RE_Standard_Discount__c</columns>
+    <columns>Active__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Country_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>MY</value>
+    </filters>
+    <label>RE Contract</label>
+</ListView>

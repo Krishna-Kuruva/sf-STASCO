@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>B2B_Jurisdiction_Review_Notification</fullName>
+        <ccEmails>Sietco-RMK@shell.com; STASCO-RMK@shell.com</ccEmails>
+        <description>B2B Jurisdiction Review Notification</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/B2B_Jurisdictional_Review_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>CO2_Deal_Done</fullName>
+        <ccEmails>GXSIPCGCRMBO@shell.com</ccEmails>
+        <ccEmails>M.Gorman@shell.com</ccEmails>
+        <description>CO2 Deal Done</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CO2DealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>CO2_Deals_Done</fullName>
+        <description>CO2 Deals Done Now</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>m.furze.co2@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>michael.furze@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CO2DealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>Deal_Approval_Sheet_TEST_Michelle</fullName>
+        <description>Deal Approval Sheet - WONA</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Deal_Approval_Sheet_with_Logo</template>
+    </alerts>
+    <alerts>
+        <fullName>Deal_Approval_Sheet_US</fullName>
+        <description>Deal Approval Sheet - US</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Deal_Approval_Sheet_with_Logo</template>
+    </alerts>
+    <alerts>
+        <fullName>Deal_Done_on_CO2_Trade</fullName>
+        <ccEmails>M.Gorman@shell.com</ccEmails>
+        <description>Deal Done on CO2 Trade</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>bikash.biswal@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>derya.yilmaz@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>manesh.lakshman.co2@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>rekha.narayanarao@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sidharth.mehrotra@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sreejith.krishnan@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CO2DealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>European_Bitumen_Risk_Marketing_Deal_Done</fullName>
+        <ccEmails>BitumenPricingDesk@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>European Bitumen Risk Marketing Deal Done</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONADealDoneEuroBit</template>
+    </alerts>
+    <alerts>
+        <fullName>Exampleoffirmorder</fullName>
+        <description>Example of firm order</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Firmorder</template>
+    </alerts>
+    <alerts>
+        <fullName>FirmorderExample</fullName>
+        <description>Firm order - Example</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/B2BDealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>PFECreditCheckUS</fullName>
+        <description>PFE Credit Check - US</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>michelle.ho-jia-hui@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/PFECreditcheckUS</template>
+    </alerts>
+    <alerts>
+        <fullName>PFECreditcheck</fullName>
+        <description>PFE Credit check</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/PFECreditcheck</template>
+    </alerts>
+    <alerts>
+        <fullName>RMdealdone</fullName>
+        <ccEmails>marlon.harrison@motivaent.com</ccEmails>
+        <description>RM deal done</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONADealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>RiskMarketingDealdone</fullName>
+        <ccEmails>marlon.harrison@motivaent.com</ccEmails>
+        <description>Risk Marketing Deal done</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/USDealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>Risk_Marketing_Paper_Deal_Done</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>Risk Marketing Paper Deal Done</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>eugene.e.yeo@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Risk_Marketing_Paper_Deal_Done</template>
+    </alerts>
+    <alerts>
+        <fullName>Risk_Marketing_Paper_Deal_Done_East</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>GXsietcoriskmarketing@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>Risk Marketing Paper Deal Done East</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>eugene.e.yeo@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yih-mey.ng@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Risk_Marketing_Paper_Deal_Done_East</template>
+    </alerts>
+    <alerts>
+        <fullName>SalesAccountManagertest</fullName>
+        <description>Sales Account Manager test</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>SalesAccountManagertest</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/B2BDealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>T_Clipper_Exposure_Management_Deal_Done</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>C.Jayabalaji@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>T-Clipper Exposure Management Deal Done</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>eugene.e.yeo@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/T_Clipper_Exposure_Management_Deals</template>
+    </alerts>
+    <alerts>
+        <fullName>T_Clipper_Exposure_Management_Deal_Done_East</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>C.Jayabalaji@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>T-Clipper Exposure Management Deal Done East</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>rekha.narayanarao@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yih-mey.ng@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/T_Clipper_Exposure_Management_Deals</template>
+    </alerts>
+    <alerts>
+        <fullName>WONAApproval</fullName>
+        <description>WONA: Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONAApproval</template>
+    </alerts>
+    <alerts>
+        <fullName>WONARiskMarketingDealDone</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>GXSIPCGCRMBO@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>WONA Risk Marketing Deal Done</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONADealDone</template>
+    </alerts>
+    <alerts>
+        <fullName>WONA_Exposure_Management_Deal_Done</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>GXSIPCGCRMBO@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>WONA Exposure Management Deal Done</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONAExposureMgmtDeal</template>
+    </alerts>
+    <alerts>
+        <fullName>WONA_Exposure_Management_Deal_Done_East</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>GXSIPCGCRMBO@shell.com</ccEmails>
+        <ccEmails>GXsietcoriskmarketing@shell.com</ccEmails>
+        <ccEmails>P.Palanichamy2@shell.com</ccEmails>
+        <description>WONA Exposure Management Deal Done East</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>eugene.e.yeo@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yih-mey.ng@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONA_Exposure_Mgmt_Deal_East</template>
+    </alerts>
+    <alerts>
+        <fullName>WONA_Risk_Marketing_Deal_Done_East</fullName>
+        <ccEmails>confirms@shell.com</ccEmails>
+        <ccEmails>GXSIPCGCRMBO@shell.com</ccEmails>
+        <ccEmails>GXsietcoriskmarketing@shell.com</ccEmails>
+        <description>WONA Risk Marketing Deal Done East</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>colin.dentstasco@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>g.kannanarumugam@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kevin.heselden@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>orla.mckenna@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>p.palanichamy2@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>swathi.umamageswaran@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yih-mey.ng@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONA_Deal_Done_East</template>
+    </alerts>
+    <alerts>
+        <fullName>WONA_Risk_Marketing_Deal_Done_STR</fullName>
+        <ccEmails>gxsipcb2brm@SHELL.com</ccEmails>
+        <description>WONA Risk Marketing Deal Done - STR</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/WONADealDone</template>
+    </alerts>
+    <outboundMessages>
+        <fullName>P31report</fullName>
+        <apiVersion>8.0</apiVersion>
+        <endpointUrl>http://1</endpointUrl>
+        <fields>Account_Manager__c</fields>
+        <fields>Comments__c</fields>
+        <fields>Contract_Price__c</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>meera.varsani@shell.com</integrationUser>
+        <name>P31 report</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>B2B Check Master Agreement</fullName>
+        <active>true</active>
+        <formula>AND(
+OR($RecordType.Name = &quot;Risk Marketing Physical&quot;, $RecordType.Name = &quot;US - B2B Risk Marketing&quot;),
+
+ISPICKVAL(StageName, &quot;Deal Done&quot;),
+
+and(NOT(ISPICKVAL(Account.Master_Agreement__c, &quot;Not applicable&quot;)), NOT(ISPICKVAL(Account.Master_Agreement__c, &quot;Signed and attached&quot;))))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>B2B Contract Not Checked Over 24 Hours</fullName>
+        <active>true</active>
+        <formula>AND( 
+OR($RecordType.Name = &quot;UK - B2B Risk Marketing&quot;, $RecordType.Name = &quot;US - B2B Risk Marketing&quot;), 
+
+ISPICKVAL(StageName, &quot;Deal Done&quot;),  
+
+
+ISNULL(DEX_Reference__c) , 
+
+Execution_Date__c  &lt; TODAY()-1)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>B2B Jurisdictional Review Notification</fullName>
+        <actions>
+            <name>B2B_Jurisdiction_Review_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Review_Notification__c</field>
+            <operation>equals</operation>
+            <value>60</value>
+        </criteriaItems>
+        <description>Jurisdiction Review Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>B2B PFE not entered within 24hours of deal being done</fullName>
+        <active>true</active>
+        <description>PFE needs to be entered with in 24 hours of the deal done</description>
+        <formula>AND( 
+OR($RecordType.Name = &quot;Risk Marketing Physical&quot;, $RecordType.Name = &quot;US - B2B Risk Marketing&quot;), 
+
+ISPICKVAL(StageName, &quot;Deal Done&quot;),  
+
+
+ISNULL( PFE_USD__c ) , 
+
+Execution_Date__c  &lt; TODAY()-1)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>B2B PFE not entered within 5 days of deal being done</fullName>
+        <active>true</active>
+        <formula>AND( 
+OR($RecordType.Name = &quot;Risk Marketing Physical&quot;, $RecordType.Name = &quot;US - B2B Risk Marketing&quot;), 
+
+ISPICKVAL(StageName, &quot;Deal Done&quot;),  
+
+
+ISNULL( PFE_USD__c ) , 
+
+Execution_Date__c  &lt; TODAY()-5)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CO2 Deal Done</fullName>
+        <actions>
+            <name>Deal_Done_on_CO2_Trade</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>CO2 - Trade by Stn for GC customer,CO2- Deal Done</value>
+        </criteriaItems>
+        <description>This is to send out an automatic alert</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Deal Approval Sheet - US</fullName>
+        <actions>
+            <name>Deal_Approval_Sheet_US</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>US - B2B Risk Marketing</value>
+        </criteriaItems>
+        <description>Deal Approval Sheet - US
+For seeking approval/support from senior management</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Deal Approval Sheet - WONA</fullName>
+        <actions>
+            <name>Deal_Approval_Sheet_TEST_Michelle</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <description>Deal Approval Sheet - WONA
+For seeking approval/support from senior management</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>European Bitumen%3A Deal done</fullName>
+        <actions>
+            <name>European_Bitumen_Risk_Marketing_Deal_Done</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Settlement,Reversal,Deal Done,Exposure Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>Bitumen</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Shell_Entity__c</field>
+            <operation>equals</operation>
+            <value>Shell UK Ltd,Shell Deutscheland Oil GMBH,Societe des Petroles Shell,Shell CZECH Republic AS,Shell Nederland Verkoopmaatschappij,Svenska Shell,DANSK Shell,Shell Switzerland,Shell Nederland Raffinaderij BV,Shell Norway</value>
+        </criteriaItems>
+        <description>European Bitumen Deal Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Firm order</fullName>
+        <actions>
+            <name>Exampleoffirmorder</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Firm order</value>
+        </criteriaItems>
+        <description>Generates a firm order</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>MARINE%3A Deal done</fullName>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Settlement,Reversal,Deal Done</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>UK - B2B Risk Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>Shell Marine Products</value>
+        </criteriaItems>
+        <description>Marine Deal Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PFE Check</fullName>
+        <actions>
+            <name>PFECreditcheck</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>PFE Check</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <description>This is a risk marketing deal, please pre-approve the credit check</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PFE Check - US</fullName>
+        <actions>
+            <name>PFECreditCheckUS</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>PFE Check</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>US - B2B Risk Marketing</value>
+        </criteriaItems>
+        <description>This is a risk marketing deal, please pre-approve the credit check</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PFE Credit check due</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>,US - B2B Risk Marketing,Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>PFE Check</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Execution_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>The Credit check is due today</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Risk Marketing Deal done</fullName>
+        <actions>
+            <name>RMdealdone</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>US - B2B Risk Marketing,UK - B2B Risk Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Reversal,Deal Done,Settlement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Total_Margin__c</field>
+            <operation>greaterThan</operation>
+            <value>5000</value>
+        </criteriaItems>
+        <description>Risk Marketing deal done greater than $5000 c3 Global</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Risk Marketing Paper%3A Deal Done</fullName>
+        <actions>
+            <name>Risk_Marketing_Paper_Deal_Done</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Paper</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.OwnerId</field>
+            <operation>equals</operation>
+            <value>Kevin Heselden,Sarah Pereira,Orla Mckenna</value>
+        </criteriaItems>
+        <description>Risk Marketing Paper Deal Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Risk Marketing Paper%3A Deal Done East</fullName>
+        <actions>
+            <name>Risk_Marketing_Paper_Deal_Done_East</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.OwnerId</field>
+            <operation>equals</operation>
+            <value>Yih-Mey Ng,Nancy Liu,Eugene Yeo</value>
+        </criteriaItems>
+        <description>Risk Marketing Paper Deal Done East</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>T-Clipper Exposure Management Deal Done</fullName>
+        <actions>
+            <name>T_Clipper_Exposure_Management_Deal_Done</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Exposure Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing - TClipper</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Kevin Heselden,Sarah Pereira,Orla Mckenna,Colin Dent</value>
+        </criteriaItems>
+        <description>T-Clipper Exposure Management Deal Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>T-Clipper Exposure Management Deal Done East</fullName>
+        <actions>
+            <name>T_Clipper_Exposure_Management_Deal_Done_East</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Exposure Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing - TClipper</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Yih-Mey Ng,Nancy Liu</value>
+        </criteriaItems>
+        <description>T-Clipper Exposure Management Deal Done East</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>US Deal done %28houston%29 CF2</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>US - B2B Risk Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Reversal,Settlement,Deal Done</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>Commercial Fuels</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3A Approval</fullName>
+        <actions>
+            <name>WONAApproval</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <description>Approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3A Deal Done East</fullName>
+        <actions>
+            <name>WONA_Risk_Marketing_Deal_Done_East</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Settlement,Deal Done,Reversal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Yih-Mey Ng,Nancy Liu,Eugene Yeo</value>
+        </criteriaItems>
+        <description>Deal done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3A Deal done</fullName>
+        <actions>
+            <name>WONARiskMarketingDealDone</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Settlement,Reversal,Deal Done</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Kevin Heselden,Sarah Pereira,Orla Mckenna,Colin Dent</value>
+        </criteriaItems>
+        <description>Deal done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3A Expo Mgmt Deal</fullName>
+        <actions>
+            <name>WONA_Exposure_Management_Deal_Done</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Exposure Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Kevin Heselden,Sarah Pereira,Orla Mckenna,Colin Dent</value>
+        </criteriaItems>
+        <description>Expo Mgmt Deal done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3A Expo Mgmt Deal East</fullName>
+        <actions>
+            <name>WONA_Exposure_Management_Deal_Done_East</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Exposure Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Risk_Marketer__c</field>
+            <operation>equals</operation>
+            <value>Yih-Mey Ng,Nancy Liu,Eugene Yeo</value>
+        </criteriaItems>
+        <description>Expo Mgmt Deal done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WONA%3ASTR</fullName>
+        <actions>
+            <name>WONA_Risk_Marketing_Deal_Done_STR</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Settlement,Deal Done,Reversal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Risk Marketing Physical</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Shell_Entity__c</field>
+            <operation>equals</operation>
+            <value>Shell Trading Rotterdam (STR)</value>
+        </criteriaItems>
+        <description>STR Deal Done</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Record</fullName>
+    <active>true</active>
+    <businessProcess>Account Manager Training</businessProcess>
+    <label>CO2 Record</label>
+    <picklistValues>
+        <picklist>Buying_Behaviour__c</picklist>
+        <values>
+            <fullName>Country</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Local</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CO2_Registered_in_which_Country__c</picklist>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyprus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CzechRepublic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estonia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greece</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iceland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Latvia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lithuania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portugal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romania</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UnitedKingdom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CO2_Stage__c</picklist>
+        <values>
+            <fullName>Approached</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Close</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Negotiation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suspect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CO2_What_Stage_are_you_at__c</picklist>
+        <values>
+            <fullName>A meeting has been held to introduce the full CVP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deals %28Commercial%29 - done already</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In active negotations with them</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indentified as potential customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Agreement- ISDA Signed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mater Agreements%2FISDA have been sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not a target</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>See Comment Section</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>They have been contacted and show interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>They have been contacted and show no interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>They have been contacted and want us to pick up later</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UNCLEAR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Banding__c</picklist>
+        <values>
+            <fullName>Bronze</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platinum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Has_the_AM_closed_deals__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry</picklist>
+        <values>
+            <fullName>Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitumen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Fuels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lubricants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sulphur</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry__c</picklist>
+        <values>
+            <fullName>Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitumen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Fuels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lubricants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail - Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sulphur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trading</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilities</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word of mouth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Sales_Office__c</picklist>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Czech Republic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mandated_Scheme__c</picklist>
+        <values>
+            <fullName>Australian CPRS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EU ETS</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Projects - CDM%2FJI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Voluntary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>Dr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mrs%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ms%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prof%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Next_Step__c</picklist>
+        <values>
+            <fullName>Keep working</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Move to active account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stop</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rating</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>A%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>A-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AA%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AA-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BB%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BB-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBB%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBB-</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CCC%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DY-prepayment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unrated</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Disqualified__c</picklist>
+        <values>
+            <fullName>Business Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consumption Below Threshold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Criteria Not Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Contact %28TPS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate Record</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Buyer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Gas On Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price Not Competitive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renting %2F Leasing Property</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Role__c</picklist>
+        <values>
+            <fullName>Buyer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Influencer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shell_Entity__c</picklist>
+        <values>
+            <fullName>Belgian Shell NV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgian Shell SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Butagazs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DANSK Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Irish Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motiva Enterprises LLC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OY Shell AB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PT Shell Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pilipinas Shell Petroleum Corporation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SHELL GAS LTD - UK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sannes AB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Austria Gesellschaft MBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Aviation Ireland Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell CZECH Republic AS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Canada Energy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Canada Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Chile Sociedad Anonima Comercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Compagnia de Argentina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Company of Turkey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Deutscheland Oil GMBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Direct GMBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Eastern Petroleum Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Eastern Trading %28Pte%29 Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Espana SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Hellas AE Oil and Chemicals Co</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Hong Kong Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Italia SPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Malasyia Trading Sendirian Bhd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marine Product Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marine Products - USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marketing Middle East</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Nederland Raffinaderij BV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Nederland Verkoopmaatschappij</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell New Zealand Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Oil Products US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Oman Marketing Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell South Africa Marketing %28PTY%29 Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Thailand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Timur Sdn Bhd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Trading Rotterdam %28STR%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell UK Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Vietnam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Societe des Petroles Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Svenska Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THE SHELL COMPANY OF AUSTRALIA LTD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sign_MA_potential__c</picklist>
+        <values>
+            <fullName>Dead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excellent - soon %28next 30 days%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excellent- more time %3E30 days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium - requires more work</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Trade_Type__c</picklist>
+        <values>
+            <fullName>CO2 Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper and Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper and Physical and CO2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Unit_of_Measure__c</picklist>
+        <values>
+            <fullName>M3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

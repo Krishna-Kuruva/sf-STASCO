@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Customer_Opps_team__c</fullName>
+    <externalId>false</externalId>
+    <label>Customer Opps team</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer Operation</fullName>
+                <default>false</default>
+                <label>Customer Operation</label>
+            </value>
+            <value>
+                <fullName>Account Manager</fullName>
+                <default>false</default>
+                <label>Account Manager</label>
+            </value>
+            <value>
+                <fullName>Price desk</fullName>
+                <default>false</default>
+                <label>Price desk</label>
+            </value>
+            <value>
+                <fullName>Sales Team Lead</fullName>
+                <default>false</default>
+                <label>Sales Team Lead</label>
+            </value>
+            <value>
+                <fullName>Pricing Manager</fullName>
+                <default>false</default>
+                <label>Pricing Manager</label>
+            </value>
+            <value>
+                <fullName>Business manager</fullName>
+                <default>false</default>
+                <label>Business manager</label>
+            </value>
+            <value>
+                <fullName>Customer Opps Approver 1</fullName>
+                <default>false</default>
+                <label>Customer Opps Approver 1</label>
+            </value>
+            <value>
+                <fullName>Customer Opps Approver 2</fullName>
+                <default>false</default>
+                <label>Customer Opps Approver 2</label>
+            </value>
+            <value>
+                <fullName>Customer Opps Team</fullName>
+                <default>false</default>
+                <label>Customer Opps Team</label>
+            </value>
+            <value>
+                <fullName>PH Customer Operation</fullName>
+                <default>false</default>
+                <label>PH Customer Operation</label>
+            </value>
+            <value>
+                <fullName>PH Account Manager</fullName>
+                <default>false</default>
+                <label>PH Account Manager</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

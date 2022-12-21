@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Competitor__c</fullName>
+    <description>Who did we lose or compete with to do this deal</description>
+    <externalId>false</externalId>
+    <label>Competitor</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>Oil Major</fullName>
+                <default>false</default>
+                <label>Oil Major</label>
+            </value>
+            <value>
+                <fullName>Small oil companies</fullName>
+                <default>false</default>
+                <label>Small oil companies</label>
+            </value>
+            <value>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+                <label>Reseller</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Other Financial organisation</fullName>
+                <default>false</default>
+                <label>Other Financial organisation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

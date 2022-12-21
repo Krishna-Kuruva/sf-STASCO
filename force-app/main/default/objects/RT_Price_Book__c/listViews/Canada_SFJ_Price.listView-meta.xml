@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_SFJ_Price</fullName>
+    <columns>NAME</columns>
+    <columns>RE_CND_Customer_Name__c</columns>
+    <columns>RE_CND_Effective_From_Date__c</columns>
+    <columns>RE_CND_Effective_To_Date__c</columns>
+    <columns>RE_CND_Final_Value__c</columns>
+    <columns>RE_CND_New_Base_Value__c</columns>
+    <columns>RE_CND_Old_Base_Value__c</columns>
+    <columns>RE_CND_Pricing_Basis__c</columns>
+    <columns>RE_Customer_Number__c</columns>
+    <columns>RE_CND_Product_Group__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_CND_Rack__c</columns>
+    <columns>RE_Custom_Opp_Approve__c</columns>
+    <columns>RE_Is_Latest__c</columns>
+    <columns>RE_Initial_Version__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Price_Book__c.Canada_SFJ_Price</value>
+    </filters>
+    <filters>
+        <field>RT_Effective_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Canada SFJ Price</label>
+    <sharedTo>
+        <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+    </sharedTo>
+</ListView>

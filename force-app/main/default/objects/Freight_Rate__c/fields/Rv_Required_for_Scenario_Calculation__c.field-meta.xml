@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rv_Required_for_Scenario_Calculation__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if the backbone record is being used in steer logic.</description>
+    <externalId>false</externalId>
+    <label>Required for Scenario Calculation?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

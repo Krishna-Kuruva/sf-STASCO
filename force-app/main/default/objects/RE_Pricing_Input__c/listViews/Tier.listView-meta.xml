@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tier</fullName>
+    <columns>NAME</columns>
+    <columns>RE_ShipTo__c</columns>
+    <columns>RE_SoldTo__c</columns>
+    <columns>RE_Material__c</columns>
+    <columns>RE_Plant__c</columns>
+    <columns>RE_TierAmnt__c</columns>
+    <columns>RE_CurrentCnfgTierAmnt__c</columns>
+    <columns>RE_IsConfig__c</columns>
+    <columns>RE_IsDifferent__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Type__c</field>
+        <operation>equals</operation>
+        <value>Tier</value>
+    </filters>
+    <label>Tier</label>
+</ListView>

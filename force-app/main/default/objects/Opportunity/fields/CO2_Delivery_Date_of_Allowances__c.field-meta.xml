@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CO2_Delivery_Date_of_Allowances__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Date at which allowances need to be transfered to customer</inlineHelpText>
+    <label>CO2 - Delivery Date of Allowance</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

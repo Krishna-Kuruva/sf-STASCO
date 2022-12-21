@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commodity_HCDM__c</fullName>
+    <externalId>false</externalId>
+    <label>Commodity</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AGO</fullName>
+                <default>false</default>
+                <label>AGO</label>
+            </value>
+            <value>
+                <fullName>Biofuels</fullName>
+                <default>false</default>
+                <label>Biofuels</label>
+            </value>
+            <value>
+                <fullName>CSO Tickets</fullName>
+                <default>false</default>
+                <label>CSO Tickets</label>
+            </value>
+            <value>
+                <fullName>Environmental Products</fullName>
+                <default>false</default>
+                <label>Environmental Products</label>
+            </value>
+            <value>
+                <fullName>Fuel oil</fullName>
+                <default>false</default>
+                <label>Fuel oil</label>
+            </value>
+            <value>
+                <fullName>IGO</fullName>
+                <default>false</default>
+                <label>IGO</label>
+            </value>
+            <value>
+                <fullName>Jet</fullName>
+                <default>false</default>
+                <label>Jet</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>MGO</fullName>
+                <default>false</default>
+                <label>MGO</label>
+            </value>
+            <value>
+                <fullName>Mogas</fullName>
+                <default>false</default>
+                <label>Mogas</label>
+            </value>
+            <value>
+                <fullName>GTL</fullName>
+                <default>false</default>
+                <label>GTL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

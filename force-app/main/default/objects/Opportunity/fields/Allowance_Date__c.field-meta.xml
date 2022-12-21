@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allowance_Date__c</fullName>
+    <externalId>false</externalId>
+    <label>Allowance Period</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dec 2011</fullName>
+                <default>false</default>
+                <label>Dec 2011</label>
+            </value>
+            <value>
+                <fullName>Dec 2012</fullName>
+                <default>false</default>
+                <label>Dec 2012</label>
+            </value>
+            <value>
+                <fullName>Dec 2014</fullName>
+                <default>false</default>
+                <label>Dec 2014</label>
+            </value>
+            <value>
+                <fullName>Sep 2012</fullName>
+                <default>false</default>
+                <label>Sep 2012</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

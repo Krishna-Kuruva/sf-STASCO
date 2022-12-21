@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Aviation</fullName>
+        <default>false</default>
+        <label>Aviation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Banking</fullName>
+        <default>false</default>
+        <label>Banking</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Bitumen</fullName>
+        <default>false</default>
+        <label>Bitumen</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chemical</fullName>
+        <default>false</default>
+        <label>Chemical</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Commercial Fleet</fullName>
+        <default>false</default>
+        <label>Commercial Fleet</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Commercial Fuels</fullName>
+        <default>false</default>
+        <label>Commercial Fuels</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Industry</fullName>
+        <default>false</default>
+        <label>Industry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LPG</fullName>
+        <default>false</default>
+        <label>LPG</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Lubricants</fullName>
+        <default>false</default>
+        <label>Lubricants</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marine</fullName>
+        <default>false</default>
+        <label>Marine</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Refining</fullName>
+        <default>false</default>
+        <label>Refining</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Retail - Card</fullName>
+        <default>false</default>
+        <label>Retail - Card</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RMH</fullName>
+        <default>false</default>
+        <label>RMH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sulphur</fullName>
+        <default>false</default>
+        <label>Sulphur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trading</fullName>
+        <default>false</default>
+        <label>Trading</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Utilities</fullName>
+        <default>false</default>
+        <label>Utilities</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>This_week_GPC_Data_SOM</fullName>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>RE_Custom_Opp_Approve__c</columns>
+    <columns>RE_AutoCalRefAmnt__c</columns>
+    <columns>RE_AM_Code__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RT_Location__c</columns>
+    <columns>RT_Product__c</columns>
+    <columns>RE_Final_Price_Rebate__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_Contract_Master__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RE_ApprovalProcess__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RT_Country__c</field>
+        <operation>equals</operation>
+        <value>PH</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Customer_Account_Name__c</field>
+        <operation>contains</operation>
+        <value>MILESTONE PETROLEUM</value>
+    </filters>
+    <filters>
+        <field>RT_Location_Code__c</field>
+        <operation>equals</operation>
+        <value>P102</value>
+    </filters>
+    <filters>
+        <field>RE_Sold_To_Number__c</field>
+        <operation>equals</operation>
+        <value>11518312</value>
+    </filters>
+    <filters>
+        <field>RE_Ship_To_Number__c</field>
+        <operation>equals</operation>
+        <value>11518312</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_From__c</field>
+        <operation>equals</operation>
+        <value>11/21/2022</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Fuel Oil Plus</value>
+    </filters>
+    <label>This week GPC Data SOM</label>
+</ListView>

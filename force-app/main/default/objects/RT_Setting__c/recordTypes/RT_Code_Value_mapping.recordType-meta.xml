@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RT_Code_Value_mapping</fullName>
+    <active>true</active>
+    <description>To store code-value mapping</description>
+    <label>Code - Value mapping</label>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>TU</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Approval_Status__c</picklist>
+        <values>
+            <fullName>Auto Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_BrandFee_Category__c</picklist>
+        <values>
+            <fullName>Gasoline %28High%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline %28Low%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline %28Mid%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kerosene</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Differential_Type__c</picklist>
+        <values>
+            <fullName>Brand Discount</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand Fee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plant Differential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Differential</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Product_Groups__c</picklist>
+        <values>
+            <fullName>Bronze</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Furnace Oil QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat O -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LNG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RUG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX AB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX AB04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX BC05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX MB02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX MB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON06</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX ON5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDX QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Furnace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Heat O -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Heat O -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -34</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -38</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -41</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -43</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD -48</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD AB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD AB04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD BC05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD EC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD MB02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD MB03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD NT01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON06</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD ON07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD QC09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>V-Power</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_CND_Rack__c</picklist>
+        <values>
+            <fullName>AB DEPOTS IT RAIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AB TEMP DEPOTS IT RAIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bare Point</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belleville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calgary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charlottetown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chicoutimi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Edmonton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gaspe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halifax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hamilton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kamloops</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kingston</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Montreal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE Quebec</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oakville</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ottawa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prince George</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quebec City</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarnia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saskatoon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sault Ste Marie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sept Iles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>St%2E Rom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thunder Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Toronto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vancouver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Winnipeg</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Editable_Field__c</picklist>
+        <values>
+            <fullName>RE_Final_Price_Rebate%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE_Pricing_Level%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Frequency__c</picklist>
+        <values>
+            <fullName>Fri</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sun</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Output_Pricing_Condition__c</picklist>
+        <values>
+            <fullName>YD03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YD04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YD07</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Product_Classification_L0__c</picklist>
+        <values>
+            <fullName>Gas Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kerosine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residual Fuel Oil</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Rate_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STG%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FKG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FGAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Unit__c</picklist>
+        <values>
+            <fullName>BBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYR%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SGD%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STG%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FKG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD CTS%2FTON</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FCBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Condition Type</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution Channel Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Division Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Term</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Group Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Org Code</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

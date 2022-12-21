@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unit_Margin_opp_cur_M3__c</fullName>
+    <description>Unit Margin in Cubic Meters entered in Opportunity currency</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Local marketing margin is all and everything you get from the customer - above the price you get from Trading. Enter fractions using your normal decimal separator e.g. Unit Margin is half a Euro Cent and your decimal separator is a comma then enter 0,005</inlineHelpText>
+    <label>Unit Margin (opp cur/M3)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>8</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

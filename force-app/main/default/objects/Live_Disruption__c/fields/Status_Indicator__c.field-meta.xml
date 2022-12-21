@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Indicator__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(NOT(ISNULL(Resolve_Date_Time__c)), ISPICKVAL(Resolution_Status__c,&apos;Resolved&apos;) ), IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;green&quot;, 20, 20), 
+IF(TEXT(Status__c) = &apos;Physical Product Outage&apos;, IMAGE(&quot;/img/msg_icons/error24.png&quot;, &quot;Red&quot;, 20, 20), 
+IF(TEXT(Status__c) = &apos;Constraint&apos;, IMAGE(&quot;/img/msg_icons/warning24.png&quot;, &quot;Yellow&quot;, 20, 20), 
+IF(TEXT(Status__c) = &apos;Non-Physical Product Outage&apos;, IMAGE(&quot;/img/msg_icons/error24.png&quot;, &quot;Red&quot;, 20, 20),IMAGE(&quot;/img/msg_icons/error24.png&quot;, &quot;Red&quot;, 20, 20)))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Flag</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

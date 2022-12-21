@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>B2BAccountdetaailpageinsalesforcehasbeenchanged</fullName>
+        <description>B2B Account detaail page in salesforce has been changed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>helen.mcgee@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>inbar.vandenburg@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>meera.varsani@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>michael.furze@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mun-leong.wong@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>per-arne.karlsson@shell.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/B2BAccountManagercreatedoredited</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Capture_OLF_First_Activation_Date</fullName>
+        <field>OLF_First_Activation_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Capture OLF First Activation Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>M2MB2BfromParent</fullName>
+        <field>M2M_B2B__c</field>
+        <formula>Parent.M2M_B2B__c</formula>
+        <name>M2M - B2B from Parent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Credit_Available</fullName>
+        <field>Rv_Credit_Available__c</field>
+        <formula>Rv_Credit_Limit__c</formula>
+        <name>Update Credit Available</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Credit_Used_to_Zero</fullName>
+        <field>Rv_Credit_Utilized__c</field>
+        <formula>0</formula>
+        <name>Update Credit Used to Zero</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_datetime_of_Credit_Limit_Updated</fullName>
+        <field>Rv_Credit_Limit_Updated__c</field>
+        <formula>NOW()</formula>
+        <name>Update datetime of Credit Limit Updated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>B2B Account page edited</fullName>
+        <actions>
+            <name>B2BAccountdetaailpageinsalesforcehasbeenchanged</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Account.B2B_Account_Manager__c</field>
+            <operation>equals</operation>
+            <value>Per-Arne Karlsson,Inbar Van den Burg,Michael Furze,Meera Varsani,Mun Leong Wong,Helen McGee</value>
+        </criteriaItems>
+        <description>Details of the account has been edited</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Capture OLF First Activation Date</fullName>
+        <actions>
+            <name>Capture_OLF_First_Activation_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISNULL(OLF_First_Activation_Date__c ) &amp;&amp;  ISCHANGED(Rv_Available_for_OLF__c) &amp;&amp; (Rv_Available_for_OLF__c == true)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Live Credit On Account</fullName>
+        <actions>
+            <name>Update_Credit_Available</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Credit_Used_to_Zero</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_datetime_of_Credit_Limit_Updated</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(Rv_Credit_Limit__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

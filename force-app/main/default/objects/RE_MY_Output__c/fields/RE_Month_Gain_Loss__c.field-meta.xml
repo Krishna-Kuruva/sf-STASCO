@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Month_Gain_Loss__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(RE_Type__c, &apos;MTD Position&apos;), IF(RE_LAG_GAIN_LOSS_M_1_GO__c	 &gt; 0 ,&apos;gain&apos;,&apos;loss&apos;) ,&apos;&apos;)</formula>
+    <label>Month Gain/Loss</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

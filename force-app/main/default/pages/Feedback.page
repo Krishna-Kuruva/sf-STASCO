@@ -1,0 +1,17 @@
+<apex:page standardController="Feedback__c">
+<apex:form >
+<apex:pageblock >
+
+    <apex:pageblocksection columns="1">
+        <apex:inputField style="width: 90%; height: 40px; font-size: 12px;" value="{! Feedback__c.Feedback__c}"/>
+        
+       
+
+    <apex:commandbutton action="{! quicksave}" value="Submit" oncomplete="this.form.reset()"/>
+  
+
+    </apex:pageblocksection>
+
+</apex:pageblock>
+</apex:form>
+</apex:page>

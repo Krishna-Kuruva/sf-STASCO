@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Marketer__c</fullName>
+    <externalId>false</externalId>
+    <label>Risk Marketer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Claire Pontal</fullName>
+                <default>false</default>
+                <label>Claire Pontal</label>
+            </value>
+            <value>
+                <fullName>Kevin Heselden</fullName>
+                <default>false</default>
+                <label>Kevin Heselden</label>
+            </value>
+            <value>
+                <fullName>Peter Selvig</fullName>
+                <default>false</default>
+                <label>Peter Selvig</label>
+            </value>
+            <value>
+                <fullName>Sarah Pereira</fullName>
+                <default>false</default>
+                <label>Sarah Pereira</label>
+            </value>
+            <value>
+                <fullName>Tom Sanchez</fullName>
+                <default>false</default>
+                <label>Tom Sanchez</label>
+            </value>
+            <value>
+                <fullName>Yih-Mey Ng</fullName>
+                <default>false</default>
+                <label>Yih-Mey Ng</label>
+            </value>
+            <value>
+                <fullName>Simon Xin</fullName>
+                <default>false</default>
+                <label>Simon Xin</label>
+            </value>
+            <value>
+                <fullName>Elaine Hee</fullName>
+                <default>false</default>
+                <label>Elaine Hee</label>
+            </value>
+            <value>
+                <fullName>Clara Sherry</fullName>
+                <default>false</default>
+                <label>Clara Sherry</label>
+            </value>
+            <value>
+                <fullName>Diana Kao</fullName>
+                <default>false</default>
+                <label>Diana Kao</label>
+            </value>
+            <value>
+                <fullName>Min-Hui Chew</fullName>
+                <default>false</default>
+                <label>Min-Hui Chew</label>
+            </value>
+            <value>
+                <fullName>Irminder Jassal</fullName>
+                <default>false</default>
+                <label>Irminder Jassal</label>
+            </value>
+            <value>
+                <fullName>Qisi Tan</fullName>
+                <default>false</default>
+                <label>Qisi Tan</label>
+            </value>
+            <value>
+                <fullName>Nancy Liu</fullName>
+                <default>false</default>
+                <label>Nancy Liu</label>
+            </value>
+            <value>
+                <fullName>Orla Mckenna</fullName>
+                <default>false</default>
+                <label>Orla Mckenna</label>
+            </value>
+            <value>
+                <fullName>Hans Geene</fullName>
+                <default>false</default>
+                <label>Hans Geene</label>
+            </value>
+            <value>
+                <fullName>Stefanie Huang</fullName>
+                <default>false</default>
+                <label>Stefanie Huang</label>
+            </value>
+            <value>
+                <fullName>Eugene Yeo</fullName>
+                <default>false</default>
+                <label>Eugene Yeo</label>
+            </value>
+            <value>
+                <fullName>Colin Dent</fullName>
+                <default>false</default>
+                <label>Colin Dent</label>
+            </value>
+            <value>
+                <fullName>MO Trader</fullName>
+                <default>false</default>
+                <label>MO Trader</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

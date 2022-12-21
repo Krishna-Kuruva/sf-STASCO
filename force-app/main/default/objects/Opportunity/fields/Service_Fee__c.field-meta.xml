@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Fee__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(Deal_Type__c=&quot;FPP&quot;,Volume__c*0.75,if(Deal_Type__c=&quot;FPP East&quot;,Volume_in_BBLs__c*0.10,if(Deal_Type__c=&quot;Exposure&quot;,Volume__c*0.15,if(Deal_Type__c=&quot;Exposure East&quot;,Volume_in_BBLs__c*0.02,if(Deal_Type__c=&quot;Exposure Float East&quot;,Volume_in_BBLs__c*0.03,if(Deal_Type__c=&quot;Exposure Float&quot;,Volume__c*0.25,0))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Service Fee</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

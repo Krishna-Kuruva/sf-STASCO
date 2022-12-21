@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PlantGrade__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(OR(ISPICKVAL(MOT__c,&apos;Barge&apos;),ISPICKVAL(MOT__c,&apos;Rail&apos;) ), Plant_Code__c +TEXT(Product_Sub_Grade__c)+TEXT(MOT__c), Plant_Code__c +TEXT( Standard_grade__c )+TEXT(MOT__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PlantGradeMot</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

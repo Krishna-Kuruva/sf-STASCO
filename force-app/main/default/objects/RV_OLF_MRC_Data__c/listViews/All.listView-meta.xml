@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>RV_OLFAccountName__c</columns>
+    <columns>RV_ContractEndDate__c</columns>
+    <columns>RV_ContractStartDate__c</columns>
+    <columns>RV_OLF_Contact_Email__c</columns>
+    <columns>RV_VolumeCBM__c</columns>
+    <columns>RV_MrcId__c</columns>
+    <columns>RV_PricePerVol__c</columns>
+    <columns>tranche__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>UniqueMRCId__c</columns>
+    <columns>LastModifiedTime__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

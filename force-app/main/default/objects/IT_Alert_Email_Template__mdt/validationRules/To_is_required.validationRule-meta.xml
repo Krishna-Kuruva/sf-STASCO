@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>To_is_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>LEN( EMAIL_TO__c ) = 0</errorConditionFormula>
+    <errorDisplayField>EMAIL_TO__c</errorDisplayField>
+    <errorMessage>To is required</errorMessage>
+</ValidationRule>

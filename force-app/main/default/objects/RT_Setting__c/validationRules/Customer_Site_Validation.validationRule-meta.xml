@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Site_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.DeveloperName == &apos;RT_Account_ROC_Mapping&apos;
+&amp;&amp; ( ISBLANK( Site_Name__c ) ||  ISBLANK( RT_Account__c )  )</errorConditionFormula>
+    <errorMessage>Account and Site are required</errorMessage>
+</ValidationRule>

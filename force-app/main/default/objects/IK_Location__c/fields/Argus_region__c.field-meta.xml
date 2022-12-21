@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Argus_region__c</fullName>
+    <externalId>false</externalId>
+    <label>Argus region</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cologne Bay</fullName>
+                <default>false</default>
+                <label>Cologne Bay</label>
+            </value>
+            <value>
+                <fullName>Lower Rhine/Ruhr</fullName>
+                <default>false</default>
+                <label>Lower Rhine/Ruhr</label>
+            </value>
+            <value>
+                <fullName>North</fullName>
+                <default>false</default>
+                <label>North</label>
+            </value>
+            <value>
+                <fullName>Rhine-Main</fullName>
+                <default>false</default>
+                <label>Rhine-Main</label>
+            </value>
+            <value>
+                <fullName>Seefeld-Schwedt</fullName>
+                <default>false</default>
+                <label>Seefeld-Schwedt</label>
+            </value>
+            <value>
+                <fullName>South</fullName>
+                <default>false</default>
+                <label>South</label>
+            </value>
+            <value>
+                <fullName>South East</fullName>
+                <default>false</default>
+                <label>South East</label>
+            </value>
+            <value>
+                <fullName>South West</fullName>
+                <default>false</default>
+                <label>South West</label>
+            </value>
+            <value>
+                <fullName>East</fullName>
+                <default>false</default>
+                <label>East</label>
+            </value>
+            <value>
+                <fullName>Emsland</fullName>
+                <default>false</default>
+                <label>Emsland</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

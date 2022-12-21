@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Snapshot</fullName>
+    <columns>NAME</columns>
+    <columns>Display_Name__c</columns>
+    <columns>Barges__c</columns>
+    <columns>prev_Day_Cargo__c</columns>
+    <columns>Cargoes__c</columns>
+    <columns>prev_Day_Barge__c</columns>
+    <columns>Price__c</columns>
+    <columns>Column__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Product_Differential__c.Snapshot</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Snapshot TODAY</label>
+</ListView>

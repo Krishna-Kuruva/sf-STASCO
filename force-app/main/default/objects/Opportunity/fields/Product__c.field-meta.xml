@@ -1,0 +1,1627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <description>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</description>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Line_of_Business__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1.399 (FO380) + 2.9526 (GO0.5) + 31</fullName>
+                <default>false</default>
+                <label>1.399 (FO380) + 2.9526 (GO0.5) + 31</label>
+            </value>
+            <value>
+                <fullName>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</fullName>
+                <default>false</default>
+                <label>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</label>
+            </value>
+            <value>
+                <fullName>3.5% CIF Cargoes NWE FO swaps</fullName>
+                <default>false</default>
+                <label>3.5% CIF Cargoes NWE FO swaps</label>
+            </value>
+            <value>
+                <fullName>3.5 Fob NWE Cargo</fullName>
+                <default>false</default>
+                <label>3.5 Fob NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Argus EBOB RDAMB M</fullName>
+                <default>false</default>
+                <label>Argus EBOB RDAMB M</label>
+            </value>
+            <value>
+                <fullName>Barges high premium gasoline 10PPM</fullName>
+                <default>false</default>
+                <label>Barges high premium gasoline 10PPM</label>
+            </value>
+            <value>
+                <fullName>Berre Soft pen 3.5 FO FOB Med High</fullName>
+                <default>false</default>
+                <label>Berre Soft pen 3.5 FO FOB Med High</label>
+            </value>
+            <value>
+                <fullName>Bitumen</fullName>
+                <default>false</default>
+                <label>Bitumen</label>
+            </value>
+            <value>
+                <fullName>Bitumen; (1.399  FO380 - 2.9526 GO 0.5) + 182</fullName>
+                <default>false</default>
+                <label>Bitumen; (1.399  FO380 - 2.9526 GO 0.5) + 182</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.05) GO + 5.01942</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.05) GO + 5.01942</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 30</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 30</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 34</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 34</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 38</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 38</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 40</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 40</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 42</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 42</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO 380- 2.9526* GO0.5  + 38</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO 380- 2.9526* GO0.5  + 38</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</label>
+            </value>
+            <value>
+                <fullName>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</fullName>
+                <default>false</default>
+                <label>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</label>
+            </value>
+            <value>
+                <fullName>Bitumen: 1.44FO - 2.86GO</fullName>
+                <default>false</default>
+                <label>Bitumen: 1.44FO - 2.86GO</label>
+            </value>
+            <value>
+                <fullName>Bitumen: 1.46FO - 2.99GO - 35.425</fullName>
+                <default>false</default>
+                <label>Bitumen: 1.46FO - 2.99GO - 35.425</label>
+            </value>
+            <value>
+                <fullName>Bitumen - Peace River</fullName>
+                <default>false</default>
+                <label>Bitumen - Peace River</label>
+            </value>
+            <value>
+                <fullName>Canada - Heating Oil</fullName>
+                <default>false</default>
+                <label>Canada - Heating Oil</label>
+            </value>
+            <value>
+                <fullName>Chicago Jet</fullName>
+                <default>false</default>
+                <label>Chicago Jet</label>
+            </value>
+            <value>
+                <fullName>Dubai</fullName>
+                <default>false</default>
+                <label>Dubai</label>
+            </value>
+            <value>
+                <fullName>F180-380SPRCFM</fullName>
+                <default>false</default>
+                <label>F180-380SPRCFM</label>
+            </value>
+            <value>
+                <fullName>F180-BRENT@6.35</fullName>
+                <default>false</default>
+                <label>F180-BRENT@6.35</label>
+            </value>
+            <value>
+                <fullName>F380-BRENT@6.35</fullName>
+                <default>false</default>
+                <label>F380-BRENT@6.35</label>
+            </value>
+            <value>
+                <fullName>Fuel 1.0 CIF Genoa Cargo</fullName>
+                <default>false</default>
+                <label>Fuel 1.0 CIF Genoa Cargo</label>
+            </value>
+            <value>
+                <fullName>Fuel 1.0 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>Fuel 1.0 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Fuel 1.0 FOB NWE Cargo</fullName>
+                <default>false</default>
+                <label>Fuel 1.0 FOB NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Fuel 1.0 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Fuel 1.0 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Fuel 3.5 CIF Genoa</fullName>
+                <default>false</default>
+                <label>Fuel 3.5 CIF Genoa</label>
+            </value>
+            <value>
+                <fullName>Fuel 3.5 CIF MED Cargo</fullName>
+                <default>false</default>
+                <label>Fuel 3.5 CIF MED Cargo</label>
+            </value>
+            <value>
+                <fullName>Fuel 3.5 FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>Fuel 3.5 FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>Fuel 3.5 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Fuel 3.5 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Fuel 3.5 FOB Rotterdam Barge - M500</fullName>
+                <default>false</default>
+                <label>Fuel 3.5 FOB Rotterdam Barge - M500</label>
+            </value>
+            <value>
+                <fullName>G005SPRCFM-IPEB</fullName>
+                <default>false</default>
+                <label>G005SPRCFM-IPEB</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.05 SGP Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.05 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.1 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.1 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.1 FOB NWE Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.1 FOB NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.1 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Gasoil 0.1 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.25 SGP Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.25 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.2 CIF MED Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.2 CIF MED Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.2 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.2 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.2 FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.2 FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.2 FOB NWE Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.2 FOB NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.2 FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Gasoil 0.2 FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Gasoil 0.5 SGP Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil 0.5 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoil 50ppm FOB Rotterdam Barge</fullName>
+                <default>false</default>
+                <label>Gasoil 50ppm FOB Rotterdam Barge</label>
+            </value>
+            <value>
+                <fullName>Gasoil EN590 CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>Gasoil EN590 CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Gasoiline</fullName>
+                <default>false</default>
+                <label>Gasoiline</label>
+            </value>
+            <value>
+                <fullName>Gasoline EBOB FOB Barges High</fullName>
+                <default>false</default>
+                <label>Gasoline EBOB FOB Barges High</label>
+            </value>
+            <value>
+                <fullName>Gasoline NWE CIF cargo 10ppm</fullName>
+                <default>false</default>
+                <label>Gasoline NWE CIF cargo 10ppm</label>
+            </value>
+            <value>
+                <fullName>Gasoline  Rdam FOB Barge EBOB High</fullName>
+                <default>false</default>
+                <label>Gasoline  Rdam FOB Barge EBOB High</label>
+            </value>
+            <value>
+                <fullName>Gasoline Ron 95</fullName>
+                <default>false</default>
+                <label>Gasoline Ron 95</label>
+            </value>
+            <value>
+                <fullName>Gasoline Ron 97</fullName>
+                <default>false</default>
+                <label>Gasoline Ron 97</label>
+            </value>
+            <value>
+                <fullName>Gasoli SGP FOB cargo 10ppm</fullName>
+                <default>false</default>
+                <label>Gasoli SGP FOB cargo 10ppm</label>
+            </value>
+            <value>
+                <fullName>GC Jet</fullName>
+                <default>false</default>
+                <label>GC Jet</label>
+            </value>
+            <value>
+                <fullName>GC Kero PL</fullName>
+                <default>false</default>
+                <label>GC Kero PL</label>
+            </value>
+            <value>
+                <fullName>GC No. 6 3%</fullName>
+                <default>false</default>
+                <label>GC No. 6 3%</label>
+            </value>
+            <value>
+                <fullName>Group3 Jet</fullName>
+                <default>false</default>
+                <label>Group3 Jet</label>
+            </value>
+            <value>
+                <fullName>High Sulpher FO 180 SGP Cargo</fullName>
+                <default>false</default>
+                <label>High Sulpher FO 180 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>High Sulpher FO 380 SGP Cargo</fullName>
+                <default>false</default>
+                <label>High Sulpher FO 380 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>IPE - Brent</fullName>
+                <default>false</default>
+                <label>IPE - Brent</label>
+            </value>
+            <value>
+                <fullName>IPE Brent front month prices -1day</fullName>
+                <default>false</default>
+                <label>IPE Brent front month prices -1day</label>
+            </value>
+            <value>
+                <fullName>IPEBSTRIP-1/MOPDUBAIM</fullName>
+                <default>false</default>
+                <label>IPEBSTRIP-1/MOPDUBAIM</label>
+            </value>
+            <value>
+                <fullName>IPE - Gasoil</fullName>
+                <default>false</default>
+                <label>IPE - Gasoil</label>
+            </value>
+            <value>
+                <fullName>Jet (Multiple Europe)</fullName>
+                <default>false</default>
+                <label>Jet (Multiple Europe)</label>
+            </value>
+            <value>
+                <fullName>JET CIF NEW</fullName>
+                <default>false</default>
+                <label>JET CIF NEW</label>
+            </value>
+            <value>
+                <fullName>Jet Kero CIF NWE Cargo</fullName>
+                <default>false</default>
+                <label>Jet Kero CIF NWE Cargo</label>
+            </value>
+            <value>
+                <fullName>Jet Kero FOB MED Cargo</fullName>
+                <default>false</default>
+                <label>Jet Kero FOB MED Cargo</label>
+            </value>
+            <value>
+                <fullName>Jet Kero FOB Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>Jet Kero FOB Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>Jet Kero SGP Cargo</fullName>
+                <default>false</default>
+                <label>Jet Kero SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Jet MOPAG</fullName>
+                <default>false</default>
+                <label>Jet MOPAG</label>
+            </value>
+            <value>
+                <fullName>Jet WC LA Pipeline US</fullName>
+                <default>false</default>
+                <label>Jet WC LA Pipeline US</label>
+            </value>
+            <value>
+                <fullName>Kero Platts Arab Gulf FOB cargos</fullName>
+                <default>false</default>
+                <label>Kero Platts Arab Gulf FOB cargos</label>
+            </value>
+            <value>
+                <fullName>KRSPRCFM-IPEBM</fullName>
+                <default>false</default>
+                <label>KRSPRCFM-IPEBM</label>
+            </value>
+            <value>
+                <fullName>LA Jet</fullName>
+                <default>false</default>
+                <label>LA Jet</label>
+            </value>
+            <value>
+                <fullName>Low sulphur diesel</fullName>
+                <default>false</default>
+                <label>Low sulphur diesel</label>
+            </value>
+            <value>
+                <fullName>LPG</fullName>
+                <default>false</default>
+                <label>LPG</label>
+            </value>
+            <value>
+                <fullName>LPG - Butane</fullName>
+                <default>false</default>
+                <label>LPG - Butane</label>
+            </value>
+            <value>
+                <fullName>LPG - Mix (Propane &amp; Butane)</fullName>
+                <default>false</default>
+                <label>LPG - Mix (Propane &amp; Butane)</label>
+            </value>
+            <value>
+                <fullName>LPG - Propane</fullName>
+                <default>false</default>
+                <label>LPG - Propane</label>
+            </value>
+            <value>
+                <fullName>M500 Fuel 3.5 FOB barges</fullName>
+                <default>false</default>
+                <label>M500 Fuel 3.5 FOB barges</label>
+            </value>
+            <value>
+                <fullName>M500 - High Sulpher FO 380 SGP Cargo</fullName>
+                <default>false</default>
+                <label>M500 - High Sulpher FO 380 SGP Cargo</label>
+            </value>
+            <value>
+                <fullName>Mean of Platts inner month Dubai</fullName>
+                <default>false</default>
+                <label>Mean of Platts inner month Dubai</label>
+            </value>
+            <value>
+                <fullName>MOPAG Jet Kero</fullName>
+                <default>false</default>
+                <label>MOPAG Jet Kero</label>
+            </value>
+            <value>
+                <fullName>MOPS Gasoil 500ppm Premium</fullName>
+                <default>false</default>
+                <label>MOPS Gasoil 500ppm Premium</label>
+            </value>
+            <value>
+                <fullName>Naphta CIF NWE Physical</fullName>
+                <default>false</default>
+                <label>Naphta CIF NWE Physical</label>
+            </value>
+            <value>
+                <fullName>NWE CIF 7000 ( Platt&apos;s )</fullName>
+                <default>false</default>
+                <label>NWE CIF 7000 ( Platt&apos;s )</label>
+            </value>
+            <value>
+                <fullName>NYH Jet</fullName>
+                <default>false</default>
+                <label>NYH Jet</label>
+            </value>
+            <value>
+                <fullName>NYH Kero PL</fullName>
+                <default>false</default>
+                <label>NYH Kero PL</label>
+            </value>
+            <value>
+                <fullName>Nymex HO - Jet Kero 54</fullName>
+                <default>false</default>
+                <label>Nymex HO - Jet Kero 54</label>
+            </value>
+            <value>
+                <fullName>NYMEX No2 - For Canada</fullName>
+                <default>false</default>
+                <label>NYMEX No2 - For Canada</label>
+            </value>
+            <value>
+                <fullName>Nymex Rbob</fullName>
+                <default>false</default>
+                <label>Nymex Rbob</label>
+            </value>
+            <value>
+                <fullName>NYM Heating Oil</fullName>
+                <default>false</default>
+                <label>NYM Heating Oil</label>
+            </value>
+            <value>
+                <fullName>NYM Heating Oil Cal Avg</fullName>
+                <default>false</default>
+                <label>NYM Heating Oil Cal Avg</label>
+            </value>
+            <value>
+                <fullName>Petcoke - Fueul Oil #4 *aligne FO NY #6 1%s</fullName>
+                <default>false</default>
+                <label>Petcoke - Fueul Oil #4 *aligne FO NY #6 1%s</label>
+            </value>
+            <value>
+                <fullName>Platts Cargoes CIF NWE ARA ULSD 10PPM</fullName>
+                <default>false</default>
+                <label>Platts Cargoes CIF NWE ARA ULSD 10PPM</label>
+            </value>
+            <value>
+                <fullName>Platts M92UN Singapore Cargoes FOB Mean</fullName>
+                <default>false</default>
+                <label>Platts M92UN Singapore Cargoes FOB Mean</label>
+            </value>
+            <value>
+                <fullName>Platts N Japan Cargoes C&amp;F Mean</fullName>
+                <default>false</default>
+                <label>Platts N Japan Cargoes C&amp;F Mean</label>
+            </value>
+            <value>
+                <fullName>PNW LSD</fullName>
+                <default>false</default>
+                <label>PNW LSD</label>
+            </value>
+            <value>
+                <fullName>PNW ULSD</fullName>
+                <default>false</default>
+                <label>PNW ULSD</label>
+            </value>
+            <value>
+                <fullName>Reichstett - HardPen - Mean Fob Barges</fullName>
+                <default>false</default>
+                <label>Reichstett - HardPen - Mean Fob Barges</label>
+            </value>
+            <value>
+                <fullName>Rotterdam Barges ULG 95 gasoline 10 ppm FOB</fullName>
+                <default>false</default>
+                <label>Rotterdam Barges ULG 95 gasoline 10 ppm FOB</label>
+            </value>
+            <value>
+                <fullName>Rotterdam Barges ULG 98 gasoline 10 ppm FOB</fullName>
+                <default>false</default>
+                <label>Rotterdam Barges ULG 98 gasoline 10 ppm FOB</label>
+            </value>
+            <value>
+                <fullName>SETL Spreads - Adjustuments</fullName>
+                <default>false</default>
+                <label>SETL Spreads - Adjustuments</label>
+            </value>
+            <value>
+                <fullName>SFDC TEST</fullName>
+                <default>false</default>
+                <label>SFDC TEST</label>
+            </value>
+            <value>
+                <fullName>SFO 57 (GO 0.05 *67% + FO180cst * 33%)</fullName>
+                <default>false</default>
+                <label>SFO 57 (GO 0.05 *67% + FO180cst * 33%)</label>
+            </value>
+            <value>
+                <fullName>Singapore Gasoil 10 ppm</fullName>
+                <default>false</default>
+                <label>Singapore Gasoil 10 ppm</label>
+            </value>
+            <value>
+                <fullName>Singapore Gasoil 50 ppm</fullName>
+                <default>false</default>
+                <label>Singapore Gasoil 50 ppm</label>
+            </value>
+            <value>
+                <fullName>Singapore Jet Kero</fullName>
+                <default>false</default>
+                <label>Singapore Jet Kero</label>
+            </value>
+            <value>
+                <fullName>Toluene Platts TDI grade Rotterdam</fullName>
+                <default>false</default>
+                <label>Toluene Platts TDI grade Rotterdam</label>
+            </value>
+            <value>
+                <fullName>ULSD 10ppm Fob Rotterdam Barges</fullName>
+                <default>false</default>
+                <label>ULSD 10ppm Fob Rotterdam Barges</label>
+            </value>
+            <value>
+                <fullName>ULSD 10ppm NWE CIF Cargo</fullName>
+                <default>false</default>
+                <label>ULSD 10ppm NWE CIF Cargo</label>
+            </value>
+            <value>
+                <fullName>USGC FO 3% Waterborne</fullName>
+                <default>false</default>
+                <label>USGC FO 3% Waterborne</label>
+            </value>
+            <value>
+                <fullName>US Gulf coast Jet 54 Waterborne</fullName>
+                <default>false</default>
+                <label>US Gulf coast Jet 54 Waterborne</label>
+            </value>
+            <value>
+                <fullName>VR: 1.2FO-0.2GO</fullName>
+                <default>false</default>
+                <label>VR: 1.2FO-0.2GO</label>
+            </value>
+            <value>
+                <fullName>IPEBSTRIP-1/NJAPM</fullName>
+                <default>false</default>
+                <label>IPEBSTRIP-1/NJAPM</label>
+            </value>
+            <value>
+                <fullName>IPEBSTRIP-1/MOPBRENTDATED</fullName>
+                <default>false</default>
+                <label>IPEBSTRIP-1/MOPBRENTDATED</label>
+            </value>
+            <value>
+                <fullName>EBOBARGRD-IPEB</fullName>
+                <default>false</default>
+                <label>EBOBARGRD-IPEB</label>
+            </value>
+            <value>
+                <fullName>M92UNSPRCFM/IPEBSTRIP-1</fullName>
+                <default>false</default>
+                <label>M92UNSPRCFM/IPEBSTRIP-1</label>
+            </value>
+            <value>
+                <fullName>Platts M95UN Singapore Cargoes FOB Mean</fullName>
+                <default>false</default>
+                <label>Platts M95UN Singapore Cargoes FOB Mean</label>
+            </value>
+            <value>
+                <fullName>3.5% CIF NEW Cargo</fullName>
+                <default>false</default>
+                <label>3.5% CIF NEW Cargo</label>
+            </value>
+            <value>
+                <fullName>MOPS 380 FO</fullName>
+                <default>false</default>
+                <label>MOPS 380 FO</label>
+            </value>
+            <value>
+                <fullName>MOPS 180 FO</fullName>
+                <default>false</default>
+                <label>MOPS 180 FO</label>
+            </value>
+            <value>
+                <fullName>F35RDAMB-IPEB</fullName>
+                <default>false</default>
+                <label>F35RDAMB-IPEB</label>
+            </value>
+            <value>
+                <fullName>LPROANSIP-NWEC3</fullName>
+                <default>false</default>
+                <label>LPROANSIP-NWEC3</label>
+            </value>
+            <value>
+                <fullName>Platts ULSD 10 ppm SINGAPORE FOB</fullName>
+                <default>false</default>
+                <label>Platts ULSD 10 ppm SINGAPORE FOB</label>
+            </value>
+            <value>
+                <fullName>MOPBRENTDATED</fullName>
+                <default>false</default>
+                <label>MOPBRENTDATED</label>
+            </value>
+            <value>
+                <fullName>ICE ULS GASOIL</fullName>
+                <default>false</default>
+                <label>ICE ULS GASOIL</label>
+            </value>
+            <value>
+                <fullName>Platts M97UN Singapore Cargoes FOB Mean</fullName>
+                <default>false</default>
+                <label>Platts M97UN Singapore Cargoes FOB Mean</label>
+            </value>
+            <value>
+                <fullName>Propane Argus CIF ARA Large</fullName>
+                <default>false</default>
+                <label>Propane Argus CIF ARA Large</label>
+            </value>
+            <value>
+                <fullName>Butane Argus CIF ARA</fullName>
+                <default>false</default>
+                <label>Butane Argus CIF ARA</label>
+            </value>
+            <value>
+                <fullName>KJNWECC-LGSTRIP</fullName>
+                <default>false</default>
+                <label>KJNWECC-LGSTRIP</label>
+            </value>
+            <value>
+                <fullName>KJRDAMB-LGSTRIP</fullName>
+                <default>false</default>
+                <label>KJRDAMB-LGSTRIP</label>
+            </value>
+            <value>
+                <fullName>Butane Saudi CP</fullName>
+                <default>false</default>
+                <label>Butane Saudi CP</label>
+            </value>
+            <value>
+                <fullName>MOPS 380 FO - Sing Gasoil 0.05</fullName>
+                <default>false</default>
+                <label>MOPS 380 FO - Sing Gasoil 0.05</label>
+            </value>
+            <value>
+                <fullName>ICE Brent Crude</fullName>
+                <default>false</default>
+                <label>ICE Brent Crude</label>
+            </value>
+            <value>
+                <fullName>ULSD1SPRCF-IPEB</fullName>
+                <default>false</default>
+                <label>ULSD1SPRCF-IPEB</label>
+            </value>
+            <value>
+                <fullName>M92CRACKM</fullName>
+                <default>false</default>
+                <label>M92CRACKM</label>
+            </value>
+            <value>
+                <fullName>Platts CIF NWE Cargo Diesel 10ppm UK</fullName>
+                <default>false</default>
+                <label>Platts CIF NWE Cargo Diesel 10ppm UK</label>
+            </value>
+            <value>
+                <fullName>Vacuum Gas Oil</fullName>
+                <default>false</default>
+                <label>Vacuum Gas Oil</label>
+            </value>
+            <value>
+                <fullName>F180SPRCFM-KRSPRCFM</fullName>
+                <default>false</default>
+                <label>F180SPRCFM-KRSPRCFM</label>
+            </value>
+            <value>
+                <fullName>VLSFO-BRENT@6.8</fullName>
+                <default>false</default>
+                <label>VLSFO-BRENT@6.8</label>
+            </value>
+            <value>
+                <fullName>M97UNSPRCFM/IPEBSTRIP-1</fullName>
+                <default>false</default>
+                <label>M97UNSPRCFM/IPEBSTRIP-1</label>
+            </value>
+            <value>
+                <fullName>F05SPRCFM</fullName>
+                <default>false</default>
+                <label>F05SPRCFM</label>
+            </value>
+            <value>
+                <fullName>Platts Gasoil 10 ppm Singapore FOB</fullName>
+                <default>false</default>
+                <label>Platts Gasoil 10 ppm Singapore FOB</label>
+            </value>
+            <value>
+                <fullName>Platts MP10 MEDEurope Cargoes FOB Mean</fullName>
+                <default>false</default>
+                <label>Platts MP10 MEDEurope Cargoes FOB Mean</label>
+            </value>
+            <value>
+                <fullName>KRSPRCFM</fullName>
+                <default>false</default>
+                <label>KRSPRCFM</label>
+            </value>
+            <value>
+                <fullName>TD3CF</fullName>
+                <default>false</default>
+                <label>TD3CF</label>
+            </value>
+            <value>
+                <fullName>LPRONWECFA-IPEB</fullName>
+                <default>false</default>
+                <label>LPRONWECFA-IPEB</label>
+            </value>
+            <value>
+                <fullName>PROPNWECCD-IPEB</fullName>
+                <default>false</default>
+                <label>PROPNWECCD-IPEB</label>
+            </value>
+            <value>
+                <fullName>NPHNWECC-IPEB</fullName>
+                <default>false</default>
+                <label>NPHNWECC-IPEB</label>
+            </value>
+            <value>
+                <fullName>KJNWECC-IPEB</fullName>
+                <default>false</default>
+                <label>KJNWECC-IPEB</label>
+            </value>
+            <value>
+                <fullName>ULSD1RDAM-IPEB</fullName>
+                <default>false</default>
+                <label>ULSD1RDAM-IPEB</label>
+            </value>
+            <value>
+                <fullName>F05SINGCRACK</fullName>
+                <default>false</default>
+                <label>F05SINGCRACK</label>
+            </value>
+            <value>
+                <fullName>ARGUS EURO BOB OXY vs PLATTS NPH CC NWE</fullName>
+                <default>false</default>
+                <label>ARGUS EURO BOB OXY vs PLATTS NPH CC NWE</label>
+            </value>
+            <value>
+                <fullName>NAPHTHA / IPE BRENT CRUDE OIL</fullName>
+                <default>false</default>
+                <label>NAPHTHA / IPE BRENT CRUDE OIL</label>
+            </value>
+            <value>
+                <fullName>URALS(RDAM)DIFF</fullName>
+                <default>false</default>
+                <label>URALS(RDAM)DIFF</label>
+            </value>
+            <value>
+                <fullName>FORTIDIFFQUOTE</fullName>
+                <default>false</default>
+                <label>FORTIDIFFQUOTE</label>
+            </value>
+            <value>
+                <fullName>F05EUROCRK</fullName>
+                <default>false</default>
+                <label>F05EUROCRK</label>
+            </value>
+            <value>
+                <fullName>KJRDAMB-KJNWECC</fullName>
+                <default>false</default>
+                <label>KJRDAMB-KJNWECC</label>
+            </value>
+            <value>
+                <fullName>F05RDAMBM</fullName>
+                <default>false</default>
+                <label>F05RDAMBM</label>
+            </value>
+            <value>
+                <fullName>ICELS-IPEBM</fullName>
+                <default>false</default>
+                <label>ICELS-IPEBM</label>
+            </value>
+            <value>
+                <fullName>MO-NAP</fullName>
+                <default>false</default>
+                <label>MO-NAP</label>
+            </value>
+            <value>
+                <fullName>EBOB</fullName>
+                <default>false</default>
+                <label>EBOB</label>
+            </value>
+            <value>
+                <fullName>NAPEU-IPE</fullName>
+                <default>false</default>
+                <label>NAPEU-IPE</label>
+            </value>
+            <value>
+                <fullName>ULSD1RDAM-ICELS</fullName>
+                <default>false</default>
+                <label>ULSD1RDAM-ICELS</label>
+            </value>
+            <value>
+                <fullName>G01RDAMB-ICELS</fullName>
+                <default>false</default>
+                <label>G01RDAMB-ICELS</label>
+            </value>
+            <value>
+                <fullName>EBOBARGM</fullName>
+                <default>false</default>
+                <label>EBOBARGM</label>
+            </value>
+            <value>
+                <fullName>NPHNWECCM</fullName>
+                <default>false</default>
+                <label>NPHNWECCM</label>
+            </value>
+            <value>
+                <fullName>G10SPRCFMM</fullName>
+                <default>false</default>
+                <label>G10SPRCFMM</label>
+            </value>
+            <value>
+                <fullName>380 CST SINGAPORE FUEL OIL</fullName>
+                <default>false</default>
+                <label>380 CST SINGAPORE FUEL OIL</label>
+            </value>
+            <value>
+                <fullName>GASOLINE 92 UNLEADED</fullName>
+                <default>false</default>
+                <label>GASOLINE 92 UNLEADED</label>
+            </value>
+            <value>
+                <fullName>ICISNEACFLBUTD</fullName>
+                <default>false</default>
+                <label>ICISNEACFLBUTD</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Supply</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Argus EBOB RDAMB M</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoline  Rdam FOB Barge EBOB High</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels - Marine</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>High Sulpher FO 180 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Lubes</controllingFieldValue>
+            <valueName>IPE - Gasoil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Platts M92UN Singapore Cargoes FOB Mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>ULSD 10ppm Fob Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ULSD 10ppm NWE CIF Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>EBOBARGRD-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Platts M95UN Singapore Cargoes FOB Mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>Platts M97UN Singapore Cargoes FOB Mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>Propane Argus CIF ARA Large</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>Butane Argus CIF ARA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>VLSFO-BRENT@6.8</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>Platts Gasoil 10 ppm Singapore FOB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>Platts MP10 MEDEurope Cargoes FOB Mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>KRSPRCFM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>G10SPRCFMM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Fuel 3.5 FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet Kero FOB Rotterdam Barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>Naphta CIF NWE Physical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>Vacuum Gas Oil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>380 CST SINGAPORE FUEL OIL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>GASOLINE 92 UNLEADED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>ICISNEACFLBUTD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Chicago Jet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>GC Kero PL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Group3 Jet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet (Multiple Europe)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>JET CIF NEW</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet Kero CIF NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet Kero FOB MED Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet Kero SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Jet WC LA Pipeline US</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Kero Platts Arab Gulf FOB cargos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>LA Jet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>NYH Kero PL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <valueName>Nymex HO - Jet Kero 54</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>NYM Heating Oil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KJNWECC-LGSTRIP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aviation</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KJRDAMB-LGSTRIP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>1.399 (FO380) + 2.9526 (GO0.5) + 31</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>1.399* FO380 – 2.9526* GO 0.5 + 32 (TGU) + 43 (TGU)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>3.5 Fob NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Barges high premium gasoline 10PPM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Berre Soft pen 3.5 FO FOB Med High</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Bitumen</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; (1.399  FO380 - 2.9526 GO 0.5) + 182</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.05) GO + 5.01942</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399(Sing 380) FO - 2.9526 (Sing 0.5) GO + 15</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 30</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 34</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 38</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 40</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 42</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399 (Sing 380) FO - 2.9526 (Sing 0.5) GO + 45</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526 *GO0.5 +35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO 380- 2.9526* GO0.5  + 38</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526* GO0.5+42</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen; 1.399* FO380 -2.9526 * GO0.5 +50+55</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen: 1.44FO - 2.86GO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen: 1.46FO - 2.99GO - 35.425</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Bitumen - Peace River</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>Canada - Heating Oil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 1.0 CIF Genoa Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 1.0 CIF NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 1.0 FOB NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 1.0 FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 3.5 CIF Genoa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 3.5 CIF MED Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 3.5 FOB MED Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Fuel 3.5 FOB Rotterdam Barge - M500</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels - Marine</controllingFieldValue>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>Gasoil 0.05 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.1 CIF NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.1 FOB NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.1 FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.25 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.2 CIF MED Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.2 CIF NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.2 FOB MED Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.2 FOB NWE Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 0.2 FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Gasoil 0.5 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoil 50ppm FOB Rotterdam Barge</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoline Ron 95</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoline Ron 97</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels - Marine</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>High Sulpher FO 380 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>M500 Fuel 3.5 FOB barges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>M500 - High Sulpher FO 380 SGP Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Nymex Rbob</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Platts Cargoes CIF NWE ARA ULSD 10PPM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Singapore Gasoil 10 ppm</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Singapore Gasoil 50 ppm</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>USGC FO 3% Waterborne</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>3.5% CIF NEW Cargo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ICE ULS GASOIL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>MOPS 380 FO - Sing Gasoil 0.05</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>ICE Brent Crude</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bitumen</controllingFieldValue>
+            <valueName>F180SPRCFM-KRSPRCFM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoline EBOB FOB Barges High</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <valueName>Gasoli SGP FOB cargo 10ppm</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels</controllingFieldValue>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>MOPS 180 FO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>LPG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>LPG - Butane</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>LPG - Propane</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>NWE CIF 7000 ( Platt&apos;s )</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LPG</controllingFieldValue>
+            <valueName>LPROANSIP-NWEC3</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>Gasoiline</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Shell Marine Products</controllingFieldValue>
+            <valueName>SFO 57 (GO 0.05 *67% + FO180cst * 33%)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <valueName>MOPS Gasoil 500ppm Premium</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retail</controllingFieldValue>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>Platts ULSD 10 ppm SINGAPORE FOB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fuels - Marine</controllingFieldValue>
+            <valueName>F05SPRCFM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>NYM Heating Oil Cal Avg</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commercial Fleet</controllingFieldValue>
+            <valueName>Platts CIF NWE Cargo Diesel 10ppm UK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>3.5% CIF Cargoes NWE FO swaps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F180-380SPRCFM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F180-BRENT@6.35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F380-BRENT@6.35</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>G005SPRCFM-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>IPE Brent front month prices -1day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>IPEBSTRIP-1/MOPDUBAIM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KRSPRCFM-IPEBM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Mean of Platts inner month Dubai</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>Platts N Japan Cargoes C&amp;F Mean</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>IPEBSTRIP-1/NJAPM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>IPEBSTRIP-1/MOPBRENTDATED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>M92UNSPRCFM/IPEBSTRIP-1</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>MOPS 380 FO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F35RDAMB-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>MOPBRENTDATED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ULSD1SPRCF-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>M92CRACKM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>M97UNSPRCFM/IPEBSTRIP-1</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>LPRONWECFA-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>PROPNWECCD-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>NPHNWECC-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KJNWECC-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ULSD1RDAM-IPEB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F05SINGCRACK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ARGUS EURO BOB OXY vs PLATTS NPH CC NWE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>NAPHTHA / IPE BRENT CRUDE OIL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>URALS(RDAM)DIFF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>FORTIDIFFQUOTE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F05EUROCRK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KJRDAMB-KJNWECC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>F05RDAMBM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ICELS-IPEBM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>MO-NAP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>EBOB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>NAPEU-IPE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>ULSD1RDAM-ICELS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>G01RDAMB-ICELS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>EBOBARGM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>NPHNWECCM</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

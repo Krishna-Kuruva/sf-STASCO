@@ -1,0 +1,1001 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta name="Copyright" content="salesforce.com">
+<link  href="/dCSS/Theme2/default/common.css" type="text/css" rel="stylesheet" >
+
+<!--  the Salesforce AJAX toolkit -->
+<script src="https://www.salesforce.com/services/lib/ajax/beta3.3/sforceclient.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/functions.js"></script>
+<!--  the turbo 1.0.12 toolkit --><!--  http://www.turboajax.com/turbowidgets/grid/documentation/index.html -->
+<script src="/servlet/servlet.FileDownload?file=01520000000FeVI" type="text/javascript" language="JavaScript1.2"  ></script>
+
+<!--  the normal turbo style sheet with tweaks to make the clasic theme much like salesforce.com css (theme2)-->
+<link  href="/servlet/servlet.FileDownload?file=01520000000FeVJ" type="text/css" rel="stylesheet" >
+
+<!-- if left alone these come out a bit small?  -->
+<style type="text/css"> 
+.turbo-grid-classic {  /* sets the main grid font size */
+ font-size: 12px;  
+}
+.turbo-grid-classic-dta input, .turbo-grid-classic-dta textarea, .turbo-grid-classic-dta select {
+ font-size: 12px;   /* grid input boxes and select menu font size */
+}
+.turbo-grid-classic-selected, .turbo-grid-classic-row-editing { 
+ background-color:   white; /* makes editing look like normal row-over */
+}
+</style> 
+
+<script type="text/javascript" language="JavaScript1.2" >
+dojo.addOnLoad(sforceInit); /* Run our startup code only after the page is loaded and Dojo has initialized widgets */
+
+/* 
+ * color each row with a cell that has changes, 
+ * then allow the user to perform updates all at once or cancel
+ * dont perform updates unexpectedly as they leave cells or rows...
+ * 
+ * FEATURE paged grid for > 100 entries
+ * 
+ */
+var MAX_RECORDS_SHOWN = 100;  // number of records we will show / edit, 100 should be enough, can go as high as 200 
+
+/* This defines the columns across the top of the grid, a few links and 12 month names */ 
+var showFields = new Array('AccountId', 'Name','StageName', 'ForecastCategory', 'CloseDate', 'Amount', 'Id'); 
+var queryStr = "select "+showFields.join(", ")+" from opportunity where ownerid = '{!User.Id}' and isclosed = false";
+var tableName = "opportunity";
+var opps = [], stages = []; // the stages and the order for use in sorting by the stage column
+var store, grid, columns = []; 
+var data = [], controller;
+var doDebug = false; 			// for debugging feedback
+var doConfirm = true; 			// prompt before save
+var opp_name_is_link = true; 	// only tested with this true.
+
+function sforceInit() { 
+
+	sforceClient.init("{!API.Session_ID}", "{!API.Partner_Server_URL_70}"); // AJAX 
+	if ( sforceClient.userInfo && sforceClient.userInfo.faultcode && 
+		sforceClient.userInfo.faultcode.indexOf("API_DISABLED_FOR_ORG")>0) {
+		alert( sforceClient.userInfo.faultstring +
+			"\nThis custom link utilizes the AppExchange API.\n" +
+			"It appears that the Salesforce.com edition you are using does not have this feature enabled."
+		);
+		jumpback(); return; 
+	}
+	
+	var bean = new Sforce.Dynabean('Opportunity'); // gets picklists
+	
+	columns = [ // 'AccountId'='Month' , 'Name'='Name','StageName'='Volume' , 'ForecastCategory'= MOP, 'CloseDate', 'Amount', 'Id'
+		{ name:'AccountId',sfname:'accountid', comparator: nameCompare , 
+			width: 128, readonly:true, formatter: turbo.grid.format.link },		
+		{ name:'Name', comparator: nameCompare  , 
+			width: 188, readonly:true , formatter: turbo.grid.format.link  } ,	
+
+		[ turbo.grid.columns.sfenumerated, { name:'StageName', sfname:'StageName', comparator: stageCompare, width: 125, 
+			options: getOptionsArray(bean,'StageName'),  values: getOptionsArray(bean,'StageName') } ], 
+			
+		[ turbo.grid.columns.sfenumerated, { name:'ForecastCategory', sfname:'ForecastCategory' ,	width: 115  , 
+			options: getOptionsArray(bean,'ForecastCategory'),  values: getOptionsArray(bean,'ForecastCategory') } ],
+
+		 { name:'Close Date', sfname:'CloseDate', comparator: dateCompare , 
+			width: 75,	align: 'left', formatter: turbo.grid.format.dateonly,	editor: turbo.grid.edit.dateonly },
+		 { name:'Amount', sfname:'Amount' , 
+			width: 86, align: 'right', digits: 4, formatter: turbo.grid.format.sfmoney, editor: turbo.grid.edit.decimal} 
+		 ,{ name:'Id', formatter:null }
+	];
+
+	// for sorting stages
+	//sforceClient.query("select id,masterlabel,sortorder from opportunitystage where isactive = true", load_stages);
+
+	opps = [];  // start off empty, brings up page much faster
+
+	// map opportunity data into the global data array in the order of the columns array
+    data = load_data(opps, columns); 
+
+	/* construct our data model, call it store */
+	store = new turbo.data.store(data, columns );
+	
+	/* construct  grid controller */
+	controller = new turbo.grid.controller(grid, store, columns.slice(0,columns.length-1) );
+
+	// establish the default sort order
+	controller.grid.setSortInfo({ column: 4, desc: 'up' }); 
+
+	// override default edit start and edit done so we can detect which cells are changed
+	controller.onBeginEdit = function(inCell) { 
+		this.beforeData = this.getDatum(inCell.col, inCell.row); // save a copy of this cell
+	};
+	controller.editCellDoneSuper = controller.editCellDone;   
+	controller.editCellDone = function() {  // overrides existing hook
+		var cel = this.editingCell;
+		if (!cel) return;					// editingCell is null first time thru
+		if (typeof(this.beforeData) != "undefined" && 
+			this.beforeData !== this.getDatum(cel.col,cel.row) ) {	// compare before and after
+			store.rowinfo.get(cel.row).dirty = true; 	// mark as dirty if it was changed
+		} 
+		delete this.beforeData; 			// done with this, undefine it
+		this.editCellDoneSuper(); 			// call controler routine (null out the editingcell)
+		generalErrorClear();
+		updateStatus();
+	};
+	
+	controller.getClientRowClassSuper = controller.getClientRowClass;
+	controller.getClientRowClass = function (inRow) {  // override so we can color the changed rows
+		var i = this.model.rowinfo.get(inRow);
+		var rowClass = '';
+		if ( i.dirty )  rowClass = 'modified'; 	// our CSS tag for changed cells
+		else if ( i.edit ) rowClass =   'editing';
+		else rowClass = (inRow & 1) ;	 		// the original row class	
+		return this.grid.classTag + '-row-' + rowClass;
+	};
+	
+	controller.onHeaderClickSuper = controller.onHeaderClick;
+	controller.onHeaderClick = function(inSender, inCol) { 	// notify user sort will toss changes.
+		if (count_changes() > 0) { 
+			if ( ! confirm ("Note: Sorting will discard changes\nClick OK to continue or Cancel to save changes") ) { 
+				return; 
+			}
+			statusMsgClear();
+			refreshAll(); 
+		}
+		controller.onHeaderClickSuper(inSender, inCol);
+	};
+	
+	setup_views();
+
+	resize_grid(); // setTimeout("resize_grid();",140);
+} 
+
+function resize_grid() { 
+	var grid_container = document.getElementById('grid_container');
+	
+	// size this to the height of the rows + some padding
+	var hei = 0; 
+	for (var r=0;r<opps.length;r++) 
+		hei += controller.grid.getRowHeight(r); 
+
+	if ( dojo.render.html.moz )  { 
+		hei += (opps.length * 3) + 35;  	// works fine for FF 
+	} else { 
+		hei += (opps.length * 5) + 50;		// this is for IE (select element is taller) 
+	}
+	hei = Math.max(hei,250); // set a minimum height for this, at startup
+		
+	var wid = controller.grid.calcTableWidth(); // gets width
+
+//	generalError( 'before h:'+	grid_container.style.height + ' hei is '+hei + ' is moz '+dojo.render.html.moz)
+
+	grid_container.style.height = hei + 'px'; 		// size this to the height of the rows + some padding
+	grid_container.style.width = wid + 58 + 'px';	// works for both FF and IE
+
+	// finaly fit the iframe to our new grid size
+ 	var ifr = window.parent.document.getElementById("itarget");
+	var newHeight = 600;
+
+	if (ifr && ifr.contentWindow && ifr.contentWindow.document && ifr.contentWindow.document.body) {
+		if (ifr.contentWindow.document.body.scrollHeight){
+			newHeight = Math.max(newHeight, ifr.contentWindow.document.body.scrollHeight);
+		}
+		if (ifr.contentWindow.document.body.clientHeight){
+			newHeight = Math.max(newHeight, ifr.contentWindow.document.body.clientHeight);
+		}
+		if (ifr.contentWindow.document.body.offsetHeight){
+			newHeight = Math.max(newHeight, ifr.contentWindow.document.body.offsetHeight);
+		}
+		if (ifr.contentWindow.document.body.height){
+			newHeight = Math.max(newHeight, ifr.contentWindow.document.body.height);
+		}
+	}
+
+	ifr.style.height = newHeight + 'px';  
+}
+
+
+/* some date calc stuff to get current quarter and like that... */
+Date.prototype.nextDay  = function() { this.setDate(this.getDate()+1); }
+Date.prototype.prevDay  = function() { this.setDate(this.getDate()-1); }
+Date.prototype.quarterStart = function () { // there are 4 q boundries return true if the date falls on one of these.
+	if (this.getDate()!=1) return false;
+	var mon = this.getMonth();
+	return (mon ==0 || mon == 3 || mon == 6 || mon == 9);
+}
+function startQ() { // find the first day of this quarter
+	var td = new Date(); 
+	while ( ! td.quarterStart() ) td.prevDay(); // backup one
+	return Sforce.Util.ToIsoDate ( td );
+} 
+function endQ () { 
+	var td = new Date(); 
+	while ( ! td.quarterStart() ) td.nextDay(); // advance one day
+	return Sforce.Util.ToIsoDate ( td );
+} 
+function qPlus (numdays) { 
+	return Sforce.Util.ToIsoDate ( 
+		Sforce.Util.DateAdd("d",numdays, new Date()) );
+}
+
+function PickList(ele) { // allow user to pick new view of opps
+// TODO add ability to query other users and my team opps
+	statusMsgClear();  
+	generalErrorClear();
+	if (count_changes() > 0 && 
+		confirm ("Note: changing views will discard changes\nClick OK to continue or Cancel to save changes") != true) { 
+		return; // cancel -> no changes
+	}
+	// controller.grid.teardown(); // moved to refreshAll
+	switch(ele.value) { 
+		case 'allopen':	
+			queryStr = "select "+showFields.join(", ")+" from opportunity where ownerid = '{!User.Id}' and isclosed = false";
+			refreshAll(true); 
+			break;
+		case 'allopp':
+			queryStr = "select "+showFields.join(", ")+" from opportunity";
+			refreshAll (true);
+			break;
+		case 'thisqtr': 
+		 	var qStart = startQ(); var qEnd = endQ(); // iso dates for start and end of current quarter
+			queryStr = "select "+showFields.join(", ")+" from opportunity where ownerid = '{!User.Id}' and isclosed = false"+
+				" and closedate >= "+qStart + " and closedate < " + qEnd;
+			refreshAll(true); 
+			break;
+		case 'days120':
+		case 'days60':
+		case 'days30':
+			queryStr = "select "+showFields.join(", ")+" from opportunity where ownerid = '{!User.Id}' and isclosed = false"+
+				" and closedate >= "+ qPlus(0) + 
+				" and closedate < " + qPlus(ele.value.substr(4));
+			refreshAll(true); 
+			break;
+		case 'selectone': break; // user needs to pick something else
+		default: 
+			alert('not implemented :' + ele.value);
+			break;
+	} 
+}
+ 
+function setup_views() { 
+	var sel = document.getElementById('viewPickList');
+	createTag(sel,"option",{ 'value':'selectone','selected':'true'} ).innerHTML = '-- Select one --';
+	createTag(sel,"option",{ 'value':'allopen' } ).innerHTML="All Open Opportunities";
+	createTag(sel,"option",{ 'value':'thisqtr' } ).innerHTML="Closing Current Quarter";
+	createTag(sel,"option",{ 'value':'days30' } ).innerHTML="Closing Next 30 days";
+	createTag(sel,"option",{ 'value':'days60' } ).innerHTML="Closing Next 60 days";
+	createTag(sel,"option",{ 'value':'days120' } ).innerHTML="Closing Next 120 days";
+	createTag(sel,"option",{ 'value':'allopp' } ).innerHTML="All Opportunities";
+	// TODO ADD MORE HERE
+}
+
+function get_opps(qr,flds) {   // main query call back routine, can do a join if needed
+//	var qr = sforceClient.query(qstr);	
+	var _opps = qcallback(qr);
+	if (_opps.length < 1) { 
+		generalError("Warning: No matching opportunities found"); return; 
+	} 
+
+	if (qr.size > MAX_RECORDS_SHOWN ) { 
+		generalError('Warning: more than '+MAX_RECORDS_SHOWN+ ' records found, only '+MAX_RECORDS_SHOWN+' records are displayed below<br>'
+			//+ qr.size + ' , '+ _opps.length
+			); 
+		_opps = _opps.slice(0,MAX_RECORDS_SHOWN);
+	}
+	
+	updateStatus( qr.size + ' Opportunities matching') 
+	// see if we need to query any references
+	var field = null;  
+	var refIds = []; for ( var findex = 0; findex < flds.length; findex++  ) { 
+		var fldDef = _opps[0].getFieldDef(flds[findex]);
+		if (fldDef.type == 'reference') {  // such as account id
+			// get the reference to	table = fldDef.referenceTo;
+			field = fldDef;
+		}
+	}
+	
+	if (field != null ) { // found a reference id, build a link to it
+	    /*for ( var i = 0; i < _opps.length; i++ ) { 
+	  	  	var o = _opps[i]; 
+	  	  	var fn = o.get(field.name);
+	    	if (fn) refIds.push(fn);	    // must check for null as some opps may have no account... why?
+	    	// TODO unique this list
+	    }*/
+		qr.each(function(o) {var fn = o.get(field.name); if (fn) refIds.push(fn); });
+		
+	    var fkey = sforceClient.retrieve("id,name",field.referenceTo,refIds);
+	    if (fkey.className == 'Fault') { generalError("Error could not get "+field.referenceTo+ " names"); return; }
+	    
+	    qr.each(function(o) { var id = o.get(field.name);
+	    	var fkey_bean = get_bean(fkey,field,id);
+	    	if (fkey_bean)  { 
+		    	o.set(field.name, fkey_bean.get('id') + fkey_bean.get('name') );
+		    } });
+	    /*for ( var i = 0; i < _opps.length; i++ ) { 
+	  	  	var o = _opps[i]; 
+	    	var id = o.get(field.name);
+	    	var fkey_bean = get_bean(fkey,field,id);
+	    	if (fkey_bean)  { 
+		    	o.set(field.name, fkey_bean.get('id') + fkey_bean.get('name') );
+		    }
+	    }*/
+	} 
+	if (opp_name_is_link ) { 
+		for ( var i = 0; i < _opps.length; i++ ) { 
+	  	  	var o = _opps[i];
+	  	  	var na =  o.get('name');
+	    	o.set('name', o.get('id') + na );	// treat name special if it is really a link.
+	    }
+	} 
+	return _opps; 
+}
+
+function get_bean(ary,f,id) { 
+	for (var j=0;j<ary.length;j++) { 
+		if ( ary[j].get("id") == id) 
+			return ary[j];
+	} 		
+	return null;
+}
+
+function updateStatus(m) {	// utility routine to draw into the status element a message or count 
+	statusMsgClear();
+	if (m && m != "" ) { statusMsg(m); } 
+	else { 
+		var count = count_changes(); 
+		if ( count > 0 ) { 
+			statusMsg("Modified "+count+ " record(s)"); 
+		} 
+	}
+}
+
+function count_changes() {  // uses globals 'data' and 'store' to count the number of changes
+	var count = 0; 
+	if (!data) return count;
+	for(var row=0; row < data.length; row++) { 
+		if ( store.rowinfo.get(row).dirty && store.rowinfo.get(row).dirty == true) {
+			count++;
+		}
+	}
+	return count;
+}
+
+function doUpdateAll() { // call back from buttons, uses global showFields
+	generalErrorClear();
+	controller.applyEdit(); 	// cause any inprocess edits to close, firing the commit row to update that record
+	var toUpdate = []; for(var row=0; row < data.length; row++) { 
+		var bean = new Sforce.Dynabean(tableName);
+		if ( store.rowinfo.get(row).dirty && store.rowinfo.get(row).dirty == true) {
+			for (var col =0; col <showFields.length; col++) { 
+				// relatedTo fields are also speical, we don't update them
+				var def = bean.getFieldDef(showFields[col]);
+				if (def.type == 'reference') continue; 
+				if (opp_name_is_link && def.label.toLowerCase() === 'name') continue; 
+				
+				var datum = store.getDatum(col,row);
+				// dates are special, stored as a string in the grid.store, need a Date() object in the bean.
+				if ( def.type === "date" && datum != null ) 
+					datum = new Date(datum); 		// are there other special types?
+				// TODO should deal with fieldsToNull() if datum is null
+				bean.set(showFields[col],datum); 	// opposite of load_data
+				bean.rownum = row+1;				// for debug
+			} 
+			toUpdate.push(bean);
+		}
+	}
+	if (toUpdate.length < 1) { generalError("Cannot save: No changes detected"); return; } 
+	
+	if ( doDebug ) { var bb = "rows changed \n"; 
+		for (var x = 0; x <toUpdate.length; x++) { bb += toUpdate[x].rownum + "\n"; } alert(bb); 
+	}
+	
+	statusMsgClear();
+	if ( doConfirm == false || 
+		 confirm ("You are about to update "+toUpdate.length + " prices\nClick OK to continue or Cancel to discard changes") ) { 
+		var sr = sforceClient.update(toUpdate); 	// perform the update
+		if ( anyErrors(sr) != "" ) {
+			generalError("Error from Update: "+ anyErrors(sr) );
+			return;
+		}
+		updateStatus("Updated "+ toUpdate.length + " price record(s)");
+	}
+	
+	refreshAll(); // in both cases we will re-query database and refresh the grid, safest thing
+}
+var sort_info ;
+function refreshAll(force) {	// reload the data array from the opps array, takes a few seconds
+	// TODO set the waiting cursor?
+	generalErrorClear();
+	if (count_changes() < 1 && !force ) { generalError("Cannot Discard: No changes detected"); return; } 
+	sort_info = controller.grid.getSortInfo(); // save this 
+	controller.grid.teardown(); // really removes the rows so user can see work is underway
+	updateStatus("Locating records, please wait...");
+	// TODO break this into two functions , call the query ASYNC
+	sforceClient.query(queryStr,refreshAllCB);
+} 
+function refreshAllCB ( qr) {
+	opps = get_opps(qr, showFields); // this gets fresh data
+	
+	data = load_data(opps, columns); 
+	store.setData(data); 	
+
+	controller.grid.setSortInfo(sort_info); // preserve the sort the user had	
+	controller.model.sort();  // sort the data we just put into setData
+
+	if(!data) return;
+	for(var row=0; row< data.length; row++) { // clear out the dirty flags
+		store.rowinfo.get(row).dirty = false;
+	} 
+	controller.grid.unselectRows(); // unselect each row incase it's selected
+	controller.build(); 
+	resize_grid(); // may have shrunk
+}
+
+function load_data(opps,cols) { 
+    var _data = []; 	// actualy an array of arrays ( 2D array) 
+    if (!opps) return; 	// we caught the error in get_opps()
+    for ( var i = 0; i < opps.length; i++ ) { 
+    	_data[i] = []; 
+    	for (var j = 0; j< cols.length; j++  ) {
+			var daField = ( cols[j].sfname ? cols[j].sfname : cols[j].name );
+			if (daField==undefined) { daField = cols[j][1].sfname; }
+			var cel = opps[i].get(daField); 
+			if ( cel && opps[i].getFieldDef(daField).type == 'date') 
+				cel = cel.toString(); 	// turn dates into strings 
+			_data[i].push( cel );	// fill the row
+		}
+	}
+	return _data; 
+}
+
+
+/* stuff we needed to override in the turbo package
+ * override create input
+ */
+turbo.grid.edit.line.createInput = function(inDomCell, inValue)  // is this needed??
+	{
+		var inDom_h = inDomCell.clientHeight - 8; // use an input or text area if line is wraped
+		
+		var i = document.createElement('input');
+//		var i = document.createElement('textarea');
+		i.setAttribute('autocomplete', "OFF");
+		i.value = (inValue === undefined || inValue == null ? '' : String(inValue));
+		i.style.width = inDomCell.clientWidth - 10 + 'px';
+		inDomCell.innerHTML = '';
+		inDomCell.appendChild(i);
+		if (i.clientHeight < inDomCell.clientHeight - 8) // rhess was 4
+			i.style.height = inDomCell.clientHeight - 8 + 'px'; // rhess was 4
+
+		if ( inDom_h - i.clientHeight > 0 )  { // switch to multi line if was wrapped
+			inDomCell.removeChild(i); 	
+			i = document.createElement('textarea');
+			i.value = String(inValue);
+			i.rows = 1; // FIXME, shoudl calc this
+			i.style.width = inDomCell.clientWidth - 8 + 'px';
+			inDomCell.innerHTML = '';
+			inDomCell.appendChild(i);
+			if (i.clientHeight < inDomCell.clientHeight - 8) 
+				i.style.height = inDomCell.clientHeight - 8 + 'px';
+			i.select();
+			i.focus();
+		} 
+	//	statusMsg("inDomCell.clientHeight is :"+inDom_h + ', '+i.clientHeight);
+
+		turbo.defer(function() { i.select(); i.focus(); }, 10);
+		return i;
+	}
+// another override
+turbo.grid.edit.decimal.createInput = turbo.grid.edit.line.createInput ;
+
+/* 
+ * DATE 
+ * formater and editor for dates that we can live with
+ * basic data type is a string as generated by Date.toString() 
+ */
+turbo.grid.edit.dateonly = new function()
+{
+	this.limitToDate = function(inEvent) // only allow valid date chars into this input
+	{
+		var inChar = String.fromCharCode(inEvent.charCode);
+		if ( inChar.search(/[-\.\/\0\t\n\r\d]/) == -1 ) inEvent.preventDefault();  
+	}
+	this.createInput = function(inDomCell, inValue)  // create an html element to edit a date
+	{
+		// Sforce stores dates as Date() objects, we need to convert to strings
+		var i = document.createElement('input');
+		i.setAttribute('autocomplete', "OFF");
+		i.value = (inValue === null || inValue == undefined ? '' : dateStringToDateOnly(inValue) );
+		i.style.width = inDomCell.clientWidth - 10 + 'px';
+		inDomCell.innerHTML = '';
+		inDomCell.appendChild(i);
+		if (i.clientHeight < inDomCell.clientHeight - 8) 
+			i.style.height = inDomCell.clientHeight - 8 + 'px';
+		turbo.defer(function() { i.select(); i.focus();	}, 10);
+		return i;
+	}
+	this.edit = function(inDomCell, inValue)   // begin to edit
+	{
+		this.restoredate = inValue; 		// when editing starts, save off the date
+		this.client.input = this.createInput(inDomCell, inValue);
+		dojo.event.connect(this.client.input, 'onkeypress', this, 'limitToDate');
+	}
+	this.getValue = function()  			// end of edit
+	{	// get the value from the input field, create a normal Date.toString() after removing hours,...
+		var vdate = Sforce.Util.ParseDate( this.client.input.value.trim(), preferEuro());
+		if (vdate) { 
+			vdate.setHours(0,0,0,0);
+			return vdate.toString(); 
+		} 
+		// restore the original Date if the date entered is bogus
+		return this.restoredate; 	
+	}
+}
+/* 
+ * format a date string into the cell, we get a Date().toString() string form the data grid, or null
+ */
+turbo.grid.format.dateonly = function(inDatum, inReadOnly) { 
+	var s = 'text-align: ' + (this.align ? this.align : 'center') + ';';
+	var ds = '';
+	if (inDatum == null) {
+		s += ' color: #CCBBB3;';  					// dim it out
+		ds = '~';
+	} else { 
+		ds = dateStringToDateOnly(inDatum);	// TODO make this work for international date locales
+	} 
+	return '<div style="' + s + '">' + ds + '</div>';
+}
+function dateStringToDateOnly(inDatum) { 
+	var dt = new Date(inDatum); 
+	return Sforce.Util.FormatDate (dt,"M/d/y"); 
+}
+function preferEuro () { // do we prefer to have our dates formated in europe style , return true if so
+	if ( ! sforceClient.userInfo || ! sforceClient.userInfo.userLocale ) { 
+		throw ( "sforceClient.userInfo not initialized" ); 
+	} 
+	// if not in USA, prefer euro formats, which normaly start with day,month,year
+	return ( /US/.test(sforceClient.userInfo.userLocale) != true ) ;  // simple test, are we in US or not.
+} 
+
+// TODO add comma to the money formats 1,000,000.00
+turbo.grid.format.sfmoney = function(inDatum, inReadOnly) 
+{
+	if (!inDatum) inDatum = 0.0;
+	var f = parseFloat(inDatum);
+	var s = (f < 0 ? -1 : 1);
+	f = Math.abs(f);
+	//
+	var i = Math.floor(f).toString();
+	var l = i.length + (s < 0 ? 1 : 0);
+	//
+	// using - instead of &minus; causes a bizarre rendering error in IE6
+	// but &minus; is not defined in XML, so ultimately we use the numeric code 
+	f = (s < 0 ? '&#45;' : '') + f.toFixed(2);
+	//
+	l = (this.digits ? this.digits : 5) - l;
+	var k = '$' + turbo.stringOf(l, '&#160;') + f;
+	//
+//	s += ' text-align: ' + (this.align ? this.align : 'right') + ';';
+	return '<div style="text-align: right; width:' + 
+		this.width + 'px;" class="turbo-grid-money' + (s < 0 ? " turbo-grid-money-neg" : '') + '">' + k + '</div>';
+}
+/************** end salesforce specific turbo cell formating / editing  */
+
+// remember that formatters execute in the context of the column
+// so you can access column info via 'this'
+turbo.grid.format.button = function(inDatum, inReadOnly)
+{
+	var value = (this.value ? this.value : inDatum);
+	return '<div text-align: center"><input type="button" value="' + value + '"></div>';
+}
+
+// standard scontrol helpers
+function jumpback(retUrl) { 
+	if ( ! retUrl ) { retUrl = "/home/home.jsp"; } 
+	if ( window.opener && typeof(window.opener) == 'object' ) { 
+		setTimeout("window.close();",100); 
+		window.opener.location.href = retUrl;
+	}
+	else { window.parent.parent.location.href = retUrl; }
+}
+
+function qcallback(qr) { 
+	if (qr.className != "QueryResult") {throw("SOQL error " +qr.className +"\tcould not query " + qr.toString() );	}
+	return qr.records; 
+}
+
+function statusMsg(msg) { drawShow( document.getElementById('status'), msg); }
+function statusMsgClear() { 
+	var ele = document.getElementById('status')
+	ele.style.visibility = 'hidden'; 
+	ele.innerHTML = '';
+}
+function generalError(msg) { drawShow( document.getElementById('error_General'), msg); }
+function generalErrorClear() { drawHide( document.getElementById('error_General')); }
+
+function drawShow(ele,msg) { 
+	if(msg) {ele.innerHTML=msg;} 
+	ele.style.visibility = 'visible'; 
+	ele.style.display = ''; 
+}
+function drawHide(ele) { ele.style.display = 'none';  } 
+
+/* ********************** turbo salesforce helpers **********
+ *  given a dynabean record, and a list of names, 
+ *  return trubo fields array, really just the labels
+ *  and a sort routine
+ */
+function load_stages(qr) { 
+	var _stages = qcallback(qr);
+	for ( var i = 0; i < _stages.length; i++) { 
+		stages[_stages[i].get('masterlabel')] = _stages[i].get('sortorder');
+	} 
+}
+function stageCompare(inCol) { 
+	return function(a, b)
+	{
+		return ( stages[a[inCol]] - stages[b[inCol]] );
+	}
+} 
+function dateCompare(inCol) {
+	//dojo.debug("comparing dates");
+	return function(a, b)
+	{
+	    var time1 = new Date( a[inCol] ) ; 
+	    var time2 = new Date ( b[inCol] ) ;
+	    return (time1 > time2 ? 1 : (time1 == time2 ? 0 : -1));
+	}
+}
+
+function nameCompare(inCol) { 
+	return function(a, b)
+	{ 	//return 0;
+		// using a and be, we need to compare the account names not the id's, the values here 
+		// are a concat of ID + Name, we need to pull off the ID, and compare the Name
+		if (a[inCol]) var aa = a[inCol].substr(18).toLowerCase() 
+		if (b[inCol]) var bb = b[inCol].substr(18).toLowerCase() 
+		if (aa && bb) { 
+			var idx = 0, ret; 
+			do { 
+				ret = aa.charCodeAt(idx) - bb.charCodeAt(idx);
+				idx++;
+			} while (ret == 0 && idx <aa.length && idx<bb.length ); 
+			return ret;
+		}
+		return (aa? -1 : 1);
+	}
+} 
+
+// add custom compare functions here
+Sforce.Dynabean.prototype.getTurboFields_old = function(apiFieldNames) { 
+	this.fields = new Array();
+ 	if (! apiFieldNames) apiFieldNames = this.getKeys();
+ 	for ( var i = 0; i < apiFieldNames.length; i++  ) { 
+		var fldDef = this.getFieldDef(apiFieldNames[i]);
+
+		if ( ! fldDef ) continue;
+//		alert(fldDef.toString())
+		switch(fldDef.type) { 
+			case "date":
+				this.fields.push( { name: fldDef.label, comparator: dateCompare } ); 
+				break;
+			case "picklist":
+				if (fldDef.label.toLowerCase() === 'stage') { 
+					this.fields.push( { name: fldDef.label , comparator: stageCompare  } ); 
+				 	break;
+				} // else fall thru to default
+			default:
+				if (fldDef.name.toLowerCase() === 'name' || 
+					fldDef.name.toLowerCase() === 'accountid' ) { 
+					this.fields.push( { name: fldDef.label , comparator: nameCompare  } ); 
+				} else { 
+					this.fields.push( { name: fldDef.label } ); 
+				}
+				break;
+		}
+//}
+	} 
+	return this.fields;
+}
+
+/*
+ * provide default trubo grid column types for salesforce native types.
+ * try to be clever with widths and dates
+ * must also resepct the readonly nature of some fields
+ */
+Sforce.Dynabean.prototype.getFieldDef = function(field) { 
+	return this.definition.fieldMap.getItem(field.toLowerCase()); 
+} 
+
+turbo.grid.format.sfenumerated = function(inDatum, inReadOnly)
+{
+	var opts = '';
+  	if (this.options)	{
+		for (var i=0,v,s; i < this.options.length; i++)
+		{
+			if (this.values && this.values[i])
+			{
+				v = ' value="' + this.values[i] + '"';
+				s = (this.values[i] == inDatum);
+			} 
+			else 
+			{
+				v= '';
+				s = (this.options[i] == inDatum);
+			}
+			s = (s ? ' selected' : '');
+			opts += '<option' + v + s + '>' + this.options[i] + '</option>';
+		}
+	}
+	else		
+	opts = '<option>' + inDatum + '</option>';
+	return '<div>' + '<select  style="border: 0px;"' + (inReadOnly ? ' disabled="disabled"' : '') + '>' + opts + '</select>' + '</div>';
+}
+turbo.grid.columns.sfenumerated = {
+	width: 96,
+	formatter: turbo.grid.format.sfenumerated,
+	editor: turbo.grid.edit.enumerated
+}
+turbo.grid.format.link = function(inDatum, inReadonly)
+{
+	var s = 'width:' + this.width + 'px;';
+	if (inDatum == null)
+	{
+		s += ' color: #CCBBB3;';
+		inDatum = '~';
+	} 
+	else if (typeof(inDatum) == 'string' && inDatum.length > 255)
+		inDatum = '(text: ' + inDatum.length + ' chars)';
+	else 
+		inDatum = turbo.escapeText(inDatum);
+	if (this.align)
+		s += ' text-align: ' + this.align + ';'
+	// inDatum has 18 chars of ID and rest is name
+	var id = inDatum.substr(0,18);
+	var name = inDatum.substr(18);
+	return '<div style="' + s + '"><a target="_parent" href="/'+id + '" >'+name + '</a></div>';
+};
+
+function getOptionsArray(bean, field) { 
+	var fldDef = bean.getFieldDef(field);
+	var plv = fldDef.picklistValues; 
+	var optionsArray = [];
+	for (var i=0;i<plv.length;i++) { optionsArray.push(plv[i].label);	}
+	return optionsArray; 
+}
+
+Sforce.Dynabean.prototype.getTurboColumns_old = function(apiFieldNames) { 
+	try { 
+	this.columns = new Array();
+ 	if (! apiFieldNames) apiFieldNames = this.getKeys();
+ 	for ( var findex = 0; findex < apiFieldNames.length; findex++  ) { 
+		var fldDef = this.getFieldDef(apiFieldNames[findex]);
+		var c = {};
+		switch(fldDef.type) { 
+		case "currency":
+	//	    this.columns.push( {
+		//		width: 86, align: 'right', digits: 4, name: fldDef.label, readonly: fldDef.readonly,
+			//	formatter: turbo.grid.format.sfmoney, editor: turbo.grid.edit.decimal } );
+		    break;
+		case "date":
+	//		this.columns.push( {  
+	//			width: 80,	align: 'left', name: fldDef.label, readonly: fldDef.readonly,
+	//			formatter: turbo.grid.format.dateonly,	editor: turbo.grid.edit.dateonly } );
+			break;
+		case "picklist":
+			var plv = fldDef.picklistValues;
+			var optionsArray = [];	var valuesArray = [];
+			var maxLen = 0; // size the column
+			var minWidth=105;
+			for (var i=0;i<plv.length;i++) {
+				if (plv[i].label != null && plv[i].label != "") {
+					optionsArray.push(plv[i].label);
+					valuesArray.push(plv[i].value);
+				} else {
+					optionsArray.push(plv[i].value);
+					valuesArray.push(plv[i].value);
+				}
+				if (maxLen < plv[i].value.length) maxLen = plv[i].value.length;
+       		}
+       		var width = (maxLen * 7); 
+       		if ( width < minWidth) width=minWidth;
+		    this.columns.push([ turbo.grid.columns.sfenumerated, { 
+		    	readonly: fldDef.readonly, 
+		    	width: width,
+		    	name: fldDef.label, 
+		    	options: optionsArray, values: valuesArray
+		    	} ]);
+		    break;
+		 case "id" :  break; 				// skip for now
+		 case "string" : 
+		 	if ( fldDef.label.toLowerCase() === 'name' && opp_name_is_link) { 
+		 		this.columns.push(  {
+					width: 208, name: fldDef.label, readonly: true, 
+					formatter: turbo.grid.format.link
+				});
+		 	} else { 
+			 	this.columns.push( { 
+			 		width: 208, formatter: turbo.grid.format.line, name: fldDef.label, 
+			 		//editor: turbo.grid.edit.multiLine, 
+			 		editor: turbo.grid.edit.line, 
+			 		readonly: fldDef.readonly 
+			 	});
+		 	}
+		 	break; 
+		 case 'reference' : 
+		 	// need to do a cross ref, make this a link ? or just readonly...?
+		    var fname = fldDef.label; fname = fname.replace(/ ID/,"");
+	//	    this.columns.push(  {
+	//			width: 128, name: fname, readonly: true, 
+	//			formatter: turbo.grid.format.link
+	//		});
+		 	
+		 	break;
+		 default: 							// un-handled fields come here.
+		 	alert('default case, label:' + fldDef.label + ', type:' + fldDef.type)
+		    this.columns.push(  {
+				width: 128, name: fldDef.label, readonly: fldDef.readonly, 
+				formatter: turbo.grid.format.line, editor: turbo.grid.edit.line
+			});
+			break;	
+/*		case "boolean": 
+			c = [ turbo.grid.columns.bool, {name: fldDef.label, width: 30, align: 'center' } ];
+			break;
+		case "int":
+			c = [ turbo.grid.columns.integer, {name: fldDef.label, width: 50, digits: 4 } ];
+			break;
+		case "percent": // TODO fix / test this
+			c = [ turbo.grid.columns.decimal, { name: fldDef.label }];
+			break;
+		case "multiselectpicklist":
+		case "combobox":
+		case "datetime":  // TODO 
+			alert('not implemented '+ fldDef.type); break; 
+		case "double":
+			c = [ turbo.grid.columns.double, {name: fldDef.label, width: 75, digits: 4 } ];
+			break;		*/		
+		}
+	} // end for each field loop
+	 
+	} catch (e) { alert('Error: '+e); }
+
+	return this.columns;
+}
+
+
+/* ********************** turbo salesforce helpers ********** end */
+
+Sforce.Client.prototype.setUserInfo = function(uinfo) { 	// fix for the beta 3.3 version 
+	this.userInfo = uinfo; 	// save uinfo into this client
+};
+
+function anyErrors ( thisarray) { 
+	var ret = ""; 
+	if (thisarray.className == 'Fault') { 
+		return thisarray.className + ' ' + thisarray.faultstring; 
+	}
+	// check for other errors
+	for (var i =0; i < thisarray.length; i++) { 
+		if ( thisarray[i].success != true ) { 
+			ret += thisarray[i].errors[0].message + "<br>";
+		}
+	}
+	return ret;
+}
+
+function assert(fact,msg) { if ( fact ) { return true } 
+	msg = "Assert failure \n" + msg
+	if (arguments.callee.caller != null) { 
+		msg = msg + " in function "+ arguments.callee.caller.toString().match(/function\s+(\w+)/)[1];
+	} 
+	alert(msg);
+	return false
+}
+
+function createTag(parent, name, keyvalPairs) {
+	var ret; 
+	if (sforceClient.appType == Sforce.Application.Type.InternetExplorer) {
+		var trTag = "<"+name+" ";
+		for (key in keyvalPairs) {
+				trTag += key + "=\"" + keyvalPairs[key] + "\"";
+		}
+		trTag += ">";
+		ret = document.createElement(trTag);
+	} else { 
+		ret = document.createElement(name);
+		for (key in keyvalPairs) {
+			ret.setAttribute(key, keyvalPairs[key]);
+		}
+	} 
+	if (parent) parent.appendChild(ret);
+	ret.active = false; // what does this add?
+	return ret;
+}
+
+Sforce.DescribeSObjectResult.prototype.getCloneFields = function() {
+	var out = ['id'];
+	for (key in this.fieldMap.getKeys()) {
+		if (this.fieldMap.getItem(key).updateable  == true ||
+			this.fieldMap.getItem(key).createable   == true )  {	
+			out.push( this.fieldMap.getItem(key).name );
+		}
+	}
+	return out.join(",");
+}
+Sforce.SoapObject.prototype.throwFault = function (msg) { 
+	// if the object in question is a fault, throw a string 
+	if ( this.className == 'Fault' ) { 
+		throw('Fault : '+ msg + '<br>' + this.faultstring );
+	}
+	return obj;
+} 
+
+Sforce.QueryResult.prototype.each = function(func) {
+	if (func == undefined) { return; }
+	if (typeof(func) != 'function') { alert('expected function argument') ; return; }
+	for (var i=0;i<this.records.length;i++) {
+		func(this.records[i])
+	}
+}
+</script>
+</head>
+<body class="opportunity listPage" >
+<table  border="0" cellspacing="0" cellpadding="0" ><tbody><tr><td>
+<form id="editPage" name="editPage" >
+
+<a name="skiplink"><img src="/s.gif" height='1' width='1' alt="Content Starts Here" class="skiplink"></a>
+
+<div class="bPageTitle">
+  <div class="ptBody secondaryPalette">
+    <div class="content">
+      <img src="/s.gif" alt="Home"  class="pageTitleIcon"> 
+      <h1 class="pageType noSecondHeader">Update Open Opportunities owned by {!User.Name} </h1>
+      <div class="blank">&nbsp;</div>
+    </div>
+    <div class="links">
+     <a href="javascript:openPopupFocusEscapePounds('/help/doc/user_ed.jsp?loc=help&body=%2Fhelp%2Fdoc%2Fen%2Fhelp2.jsp&target=opp_overview.htm&section=Opportunities', 'Help', 700, 600, 'width=700,height=600,resizable=yes,toolbar=no,status=no,scrollbars=yes,menubar=yes,directories=no,location=no,dependant=no', false, false);" title="Help for this Page (New Window)">
+     <span  class="helpLink">Help for this Page</span><img src="/s.gif" alt=""  class="helpImage">
+     </a></div>
+  </div>
+  <div class="ptBreadcrumb" ></div>
+</div>
+<!--  <div class="filterOverview">Select a view from the drop-down list to see a list of related results.</div>
+ -->
+<div class="filterOverview"><span class="bFilter"><h2>View:</h2>
+	 <select  id="viewPickList" name="viewPickList" onchange="javascript:PickList(this);"></select></span>
+</div>
+Select a view from the drop-down list to see a list of opportunities. Select a cell to edit the data in the cell. Click Save to save edited data in Salesforce.
+<br>  
+Click Discard Changes to discard any edited data and replace it with the data currently in Salesforce.com.   
+<!--<div class="blank">&nbsp;</div>
+
+ <div id="status" ></div> -->
+<!-- <div id="error_General" class="errorMsg" ></div> -->
+<!-- WrappingClass -->
+
+<div class="listCase">
+	<div class="bPageBlock secondaryPalette">
+		<div class="pbHeader"><TABLE >
+			<TR ><td class="pbTitle"><div id="status" style="font-weight: bold;"></div></td>
+				<TD class="pbButton">
+				<input name="update" value=" Save " class="btn" onclick="javascript:doUpdateAll();" type="button">
+				<input name="refresh" value=" Discard Changes " class="btn" onclick="javascript:refreshAll();statusMsgClear();" type="button">
+				<input name="cancel" value=" Cancel " class="btn" onclick="javascript:jumpback();" type="button">
+				<div class=errorMsg id="error_General"></div> 
+				</TD>
+	<!-- 			<td align="right"><div><select  id="viewPickList" name="viewPickList" onchange="javascript:PickList(this);"></select></div></td>
+	 -->
+			</TR>
+
+			</TABLE>
+		</div>
+	
+	<div class="pbBody" id="main0" name="main0">
+
+		<!-- <div   widgetId="grid"  dojoType="TurboGridClassic"  /></div> -->
+	  	<!-- Grid must have a dimensioned container for IE6  -->
+	  	<div id="grid_container" style="width: 890px; height: 1010px; border: 0px solid silver;">
+	  		<div id="grid" style="turbo-grid-classic-dta" 
+	  			name="grid" widgetId="grid" autosize="true" dojoType="TurboGridClassic" ></div>
+	  	</div>	
+
+	</div>
+<div class="pbFooter secondaryPalette"> <div class="bg"></div></div> </div>
+</div>
+
+</form>
+</td></tr></tbody></table>
+</body></html>

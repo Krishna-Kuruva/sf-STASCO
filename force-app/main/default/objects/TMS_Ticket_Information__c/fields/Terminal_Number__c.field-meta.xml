@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Terminal_Number__c</fullName>
+    <externalId>false</externalId>
+    <label>Terminal Number (Old)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>C101 Scotford</fullName>
+                <default>false</default>
+                <label>C101 Scotford</label>
+            </value>
+            <value>
+                <fullName>C116 Sherwood</fullName>
+                <default>false</default>
+                <label>C116 Sherwood</label>
+            </value>
+            <value>
+                <fullName>C123 Kingston</fullName>
+                <default>false</default>
+                <label>C123 Kingston</label>
+            </value>
+            <value>
+                <fullName>C125 Sarnia</fullName>
+                <default>false</default>
+                <label>C125 Sarnia</label>
+            </value>
+            <value>
+                <fullName>C126 Hamilton</fullName>
+                <default>false</default>
+                <label>C126 Hamilton</label>
+            </value>
+            <value>
+                <fullName>C131 Ottawa</fullName>
+                <default>false</default>
+                <label>C131 Ottawa</label>
+            </value>
+            <value>
+                <fullName>C134 Sault Ste. Marie</fullName>
+                <default>false</default>
+                <label>C134 Sault Ste. Marie</label>
+            </value>
+            <value>
+                <fullName>C136 Keele</fullName>
+                <default>false</default>
+                <label>C136 Keele</label>
+            </value>
+            <value>
+                <fullName>C138 Bare Point</fullName>
+                <default>false</default>
+                <label>C138 Bare Point</label>
+            </value>
+            <value>
+                <fullName>C142 Winnipeg</fullName>
+                <default>false</default>
+                <label>C142 Winnipeg</label>
+            </value>
+            <value>
+                <fullName>C146 Calgary</fullName>
+                <default>false</default>
+                <label>C146 Calgary</label>
+            </value>
+            <value>
+                <fullName>C149 Shellburn</fullName>
+                <default>false</default>
+                <label>C149 Shellburn</label>
+            </value>
+            <value>
+                <fullName>C169 Montreal Marketing</fullName>
+                <default>false</default>
+                <label>C169 Montreal Marketing</label>
+            </value>
+            <value>
+                <fullName>C173 Gretna</fullName>
+                <default>false</default>
+                <label>C173 Gretna</label>
+            </value>
+            <value>
+                <fullName>C211 Montreal East</fullName>
+                <default>false</default>
+                <label>C211 Montreal East</label>
+            </value>
+            <value>
+                <fullName>C316 Burmount</fullName>
+                <default>false</default>
+                <label>C316 Burmount</label>
+            </value>
+            <value>
+                <fullName>Y004 Van Nuys</fullName>
+                <default>false</default>
+                <label>Y004 Van Nuys</label>
+            </value>
+            <value>
+                <fullName>Y009 Colton</fullName>
+                <default>false</default>
+                <label>Y009 Colton</label>
+            </value>
+            <value>
+                <fullName>Y016 Des Plaines</fullName>
+                <default>false</default>
+                <label>Y016 Des Plaines</label>
+            </value>
+            <value>
+                <fullName>Y022 Carson</fullName>
+                <default>false</default>
+                <label>Y022 Carson</label>
+            </value>
+            <value>
+                <fullName>Y032 Seattle</fullName>
+                <default>false</default>
+                <label>Y032 Seattle</label>
+            </value>
+            <value>
+                <fullName>Y071 Sacramento</fullName>
+                <default>false</default>
+                <label>Y071 Sacramento</label>
+            </value>
+            <value>
+                <fullName>Y076 Anacortes</fullName>
+                <default>false</default>
+                <label>Y076 Anacortes</label>
+            </value>
+            <value>
+                <fullName>Y081 San Jose</fullName>
+                <default>false</default>
+                <label>Y081 San Jose</label>
+            </value>
+            <value>
+                <fullName>Y083 Portland</fullName>
+                <default>false</default>
+                <label>Y083 Portland</label>
+            </value>
+            <value>
+                <fullName>Y087 Signal Hill</fullName>
+                <default>false</default>
+                <label>Y087 Signal Hill</label>
+            </value>
+            <value>
+                <fullName>Y164 Stockton</fullName>
+                <default>false</default>
+                <label>Y164 Stockton</label>
+            </value>
+            <value>
+                <fullName>Y314 New Haven</fullName>
+                <default>false</default>
+                <label>Y314 New Haven</label>
+            </value>
+            <value>
+                <fullName>Y315 Convent</fullName>
+                <default>false</default>
+                <label>Y315 Convent</label>
+            </value>
+            <value>
+                <fullName>Y352 Newark</fullName>
+                <default>false</default>
+                <label>Y352 Newark</label>
+            </value>
+            <value>
+                <fullName>Y353 Long Island</fullName>
+                <default>false</default>
+                <label>Y353 Long Island</label>
+            </value>
+            <value>
+                <fullName>Y354 Providence</fullName>
+                <default>false</default>
+                <label>Y354 Providence</label>
+            </value>
+            <value>
+                <fullName>Y366 Nashville</fullName>
+                <default>false</default>
+                <label>Y366 Nashville</label>
+            </value>
+            <value>
+                <fullName>Y370 Kenner</fullName>
+                <default>false</default>
+                <label>Y370 Kenner</label>
+            </value>
+            <value>
+                <fullName>Y371 Sewaren</fullName>
+                <default>false</default>
+                <label>Y371 Sewaren</label>
+            </value>
+            <value>
+                <fullName>Y372 Knoxville</fullName>
+                <default>false</default>
+                <label>Y372 Knoxville</label>
+            </value>
+            <value>
+                <fullName>Y536 Anacortes Refinery Rack</fullName>
+                <default>false</default>
+                <label>Y536 Anacortes Refinery Rack</label>
+            </value>
+            <value>
+                <fullName>Y601 Mobile</fullName>
+                <default>false</default>
+                <label>Y601 Mobile</label>
+            </value>
+            <value>
+                <fullName>Y780 Collins</fullName>
+                <default>false</default>
+                <label>Y780 Collins</label>
+            </value>
+            <value>
+                <fullName>Y944 Birmingham</fullName>
+                <default>false</default>
+                <label>Y944 Birmingham</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

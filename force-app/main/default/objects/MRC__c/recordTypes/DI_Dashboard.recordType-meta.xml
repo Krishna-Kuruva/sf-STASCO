@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DI_Dashboard</fullName>
+    <active>true</active>
+    <description>Created for Revolution Dashboard</description>
+    <label>DI-Dashboard</label>
+    <picklistValues>
+        <picklist>PO_Type__c</picklist>
+        <values>
+            <fullName>Dummy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TRFP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TSFD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TSFP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TSTM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TTTI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TTTM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TTTT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

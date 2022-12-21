@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PFE__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the PFE been calculated?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Has the PFE been calculated?</inlineHelpText>
+    <label>PFE Within Limit</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

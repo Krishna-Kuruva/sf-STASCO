@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia_Active_Customer</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Customer_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Account_Manager__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
+    <columns>RT_Material_Desc__c</columns>
+    <columns>RT_Plant_Desc__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>RT_Valid_From__c</columns>
+    <columns>RT_Valid_To__c</columns>
+    <columns>RE_PH_Approval_Scheme__c</columns>
+    <columns>RE_Distribution_Channel__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Account_Manager__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Malaysia Active Contracts</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

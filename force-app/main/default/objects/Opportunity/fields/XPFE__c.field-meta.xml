@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XPFE__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF((CloseDate&gt;today()),IF(  OR(Execution_Date__c   &lt;  Start_Date__c ,Execution_date_Start_date__c  = 0) , (PFE_USD__c /( Execution_date_Start_date__c + Number_of_Months__c )*round(((CloseDate-today())/30.5),0)), 0),0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>XPFE Consumed</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

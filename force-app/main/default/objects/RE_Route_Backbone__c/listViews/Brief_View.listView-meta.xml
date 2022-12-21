@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brief_View</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Destination_Name__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Source_Name__c</columns>
+    <columns>RE_Route_Utilization__c</columns>
+    <columns>RE_CO_Steer__c</columns>
+    <columns>RE_MY_CO_Steer_Unit__c</columns>
+    <columns>RE_MY_Storage_Handling_Cost_OSP__c</columns>
+    <columns>RE_MY_Storage_Handling_Unit__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Route_Backbone__c.Malaysia</value>
+    </filters>
+    <label>Brief View</label>
+    <sharedTo>
+        <group>RE_CO_Email_Recipient</group>
+    </sharedTo>
+</ListView>

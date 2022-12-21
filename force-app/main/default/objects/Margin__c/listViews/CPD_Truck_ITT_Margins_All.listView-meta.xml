@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CPD_Truck_ITT_Margins_All</fullName>
+    <columns>NAME</columns>
+    <columns>Tranche__c</columns>
+    <columns>Plant__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Sales_Org__c</columns>
+    <columns>Min_Mgn_AGO_B7__c</columns>
+    <columns>Min_Mgn_IGO_50ppm__c</columns>
+    <columns>Min_Mgn_ULG95_E5__c</columns>
+    <columns>Fixed_Surcharge_GTL_B0__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Margin__c.Truck_ITT</value>
+    </filters>
+    <label>CPD - Truck/ITT Margins - All</label>
+</ListView>

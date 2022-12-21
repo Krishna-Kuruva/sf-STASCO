@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCK_Route_View</fullName>
+    <columns>NAME</columns>
+    <columns>Standard_Grade__c</columns>
+    <columns>SubGrade_3P__c</columns>
+    <columns>Destination__c</columns>
+    <columns>Supplier__c</columns>
+    <columns>Route_Utilization__c</columns>
+    <columns>Source__c</columns>
+    <columns>Mode_Of_Transport__c</columns>
+    <columns>Freight_rate_EUR_mt__c</columns>
+    <columns>Valid_From__c</columns>
+    <columns>Valid_To__c</columns>
+    <columns>Rv_Required_for_Scenario_Calculation__c</columns>
+    <columns>Freight_diff_EUR_mt__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Bio_Split__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Source__c</field>
+        <operation>contains</operation>
+        <value>Schwedt PCK Refinery</value>
+    </filters>
+    <filters>
+        <field>Standard_Grade__c</field>
+        <operation>equals</operation>
+        <value>ULG95 E5</value>
+    </filters>
+    <filters>
+        <field>Backbone_Route_Name__c</field>
+        <operation>contains</operation>
+        <value>MOGAS-E5_Shell_Karlsruhe_Rail_Würzburg,MOGAS-E5_Shell_Schwedt-PCK_Rail_Würzburg</value>
+    </filters>
+    <label>PCK_Route View</label>
+</ListView>

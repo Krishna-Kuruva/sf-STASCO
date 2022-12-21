@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAP_Contract__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>SAP Contract</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>No contract item found for the Material.</errorMessage>
+        <filterItems>
+            <field>RE_Contract__c.RE_Product_Name__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.RT_Material_Desc__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>RE_Contract__c</referenceTo>
+    <relationshipLabel>REV Contract Master History</relationshipLabel>
+    <relationshipName>Aureus_Data_History</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

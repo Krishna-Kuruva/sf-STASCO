@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_OPIS_Spot_Ticker</fullName>
+    <active>true</active>
+    <description>Record type for Revolution Canada OPIS Spot Ticker Upload</description>
+    <label>Canada OPIS Spot Ticker</label>
+</RecordType>

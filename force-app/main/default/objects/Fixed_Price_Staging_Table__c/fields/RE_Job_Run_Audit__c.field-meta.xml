@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Job_Run_Audit__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>RE Job Run Audit</label>
+    <referenceTo>RE_Job_Run_Audit__c</referenceTo>
+    <relationshipLabel>Fixed Price Staging Table</relationshipLabel>
+    <relationshipName>Fixed_Price_Staging_Table</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

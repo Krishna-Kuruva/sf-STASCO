@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_Pricing_Structure</fullName>
+    <active>true</active>
+    <description>Pricing structure depends on the customer type in Account</description>
+    <errorConditionFormula>AND( ISPICKVAL(Country_Name__c , &apos;MY&apos;) , OR(
+      AND(  ISPICKVAL(RE_Customer_Name__r.Type,&apos;Reseller&apos; ),  RE_Custom_Ops_Calculation__r.Name  &lt;&gt; &apos;Tier Discount (Reseller)&apos;) ,
+      AND(ISPICKVAL(RE_Customer_Name__r.Type,&apos;Direct&apos; ),  RE_Custom_Ops_Calculation__r.Name  = &apos;Tier Discount (Reseller)&apos;) 
+      )  
+    )</errorConditionFormula>
+    <errorDisplayField>RE_Custom_Ops_Calculation__c</errorDisplayField>
+    <errorMessage>Choose correct Pricing Structure based on Customer Type (Reseller / Direct)</errorMessage>
+</ValidationRule>

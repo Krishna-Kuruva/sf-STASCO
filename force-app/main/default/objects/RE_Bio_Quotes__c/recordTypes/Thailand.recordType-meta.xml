@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thailand</fullName>
+    <active>true</active>
+    <label>Thailand</label>
+    <picklistValues>
+        <picklist>RE_Bio_RateUnit__c</picklist>
+        <values>
+            <fullName>THB%2FLTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FBBL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD%2FTON</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RE_Region__c</picklist>
+        <values>
+            <fullName>Thailand</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

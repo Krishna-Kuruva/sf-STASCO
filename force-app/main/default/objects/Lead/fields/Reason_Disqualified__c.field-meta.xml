@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Disqualified__c</fullName>
+    <externalId>false</externalId>
+    <label>Disqualified Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Do Not Contact (TPS)</fullName>
+                <default>false</default>
+                <label>Do Not Contact (TPS)</label>
+            </value>
+            <value>
+                <fullName>Consumption Below Threshold</fullName>
+                <default>false</default>
+                <label>Consumption Below Threshold</label>
+            </value>
+            <value>
+                <fullName>No Gas On Site</fullName>
+                <default>false</default>
+                <label>No Gas On Site</label>
+            </value>
+            <value>
+                <fullName>Credit Criteria Not Met</fullName>
+                <default>false</default>
+                <label>Credit Criteria Not Met</label>
+            </value>
+            <value>
+                <fullName>Business Closed</fullName>
+                <default>false</default>
+                <label>Business Closed</label>
+            </value>
+            <value>
+                <fullName>Renting / Leasing Property</fullName>
+                <default>false</default>
+                <label>Renting / Leasing Property</label>
+            </value>
+            <value>
+                <fullName>External Buyer</fullName>
+                <default>false</default>
+                <label>External Buyer</label>
+            </value>
+            <value>
+                <fullName>Duplicate Record</fullName>
+                <default>false</default>
+                <label>Duplicate Record</label>
+            </value>
+            <value>
+                <fullName>Price Not Competitive</fullName>
+                <default>false</default>
+                <label>Price Not Competitive</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

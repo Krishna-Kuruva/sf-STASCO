@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia</fullName>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>RE_Cost_Price_Adjustment__c</columns>
+    <columns>RE_Cost_Price_Adjustment_Unit__c</columns>
+    <columns>RE_Final_Price_Unit__c</columns>
+    <columns>RE_Primary_Transport_Cost__c</columns>
+    <columns>RE_Primary_Transport_Offset__c</columns>
+    <columns>RE_Primary_Transport_Unit__c</columns>
+    <columns>RE_Snh_Cost__c</columns>
+    <columns>RE_SnH_Unit__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Comments__c</columns>
+    <columns>RE_Country__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Valid_To__c</field>
+        <operation>equals</operation>
+        <value>12/31/2022</value>
+    </filters>
+    <filters>
+        <field>RE_Country__c</field>
+        <operation>equals</operation>
+        <value>Malaysia</value>
+    </filters>
+    <label>Malaysia</label>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Controller_Value__c</fullName>
+    <description>Used for internal calculation.
+If value is SOQL, it must return an Aggregate result with label as &apos;rslt&apos;, e.g. select count(id)rslt from account</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Used for internal calculation.
+If value is SOQL, it must return an Aggregate result with label as &apos;rslt&apos;, e.g. select count(id)rslt from account</inlineHelpText>
+    <label>Controller Value</label>
+    <length>131072</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

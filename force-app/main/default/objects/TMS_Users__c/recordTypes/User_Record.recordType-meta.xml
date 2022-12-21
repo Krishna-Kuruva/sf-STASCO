@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_Record</fullName>
+    <active>true</active>
+    <description>TMS ticketing user record</description>
+    <label>User Record</label>
+</RecordType>

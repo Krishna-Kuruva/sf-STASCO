@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Netback_BSP__c</fullName>
+    <externalId>false</externalId>
+    <formula>(((Landed_BAMV__c + Depot_Steer_Euro_Mt__c )/10)* Price_Audit__r.Density__c )+ Price_Audit__r.Throughput_Cost__c + Price_Audit__r.Energy_Fees__c + Price_Audit__r.Union_Fees__c + Price_Audit__r.CSO__c +  Price_Audit__r.CO2_Euro_100L__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Netback BSP</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

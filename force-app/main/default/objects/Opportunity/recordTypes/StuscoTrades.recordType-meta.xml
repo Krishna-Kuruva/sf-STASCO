@@ -1,0 +1,2561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StuscoTrades</fullName>
+    <active>true</active>
+    <businessProcess>Stusco Trades</businessProcess>
+    <label>Stusco Trades</label>
+    <picklistValues>
+        <picklist>Account_Manager__c</picklist>
+        <values>
+            <fullName>Adrian Street</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barry Griffith</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brendan Hunt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emerson Tan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleur Morales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gareth Logie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gary Lowis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jaakko Niemi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jamie Hodges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jan Hansen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>John Pedersen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jon Doyle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kamolpat Baholyodhin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luciana Giuliani</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marieke Knook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark Sutherland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark Watson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thierry Deguingand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trine Wulff-Nilsen</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Action_Party__c</picklist>
+        <values>
+            <fullName>Account Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Derivs CA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISDA Team</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Actual_Product__c</picklist>
+        <values>
+            <fullName>Bay CARB ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHI ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>G3 LSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>G3 ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GC HSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GC LSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GC ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LA CARB ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYH HSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYH ULSD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PNW ULSD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Allowance_Date__c</picklist>
+        <values>
+            <fullName>Dec 2011</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dec 2012</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dec 2014</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sep 2012</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Approval_Support_Obtained__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Area__c</picklist>
+        <values>
+            <fullName>Asia Pacific</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Middle East</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South%2FLatin America</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BO_Analyst__c</picklist>
+        <values>
+            <fullName>Manesh Lakshman</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BTB_Trade_desk__c</picklist>
+        <values>
+            <fullName>Crude Basis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crude Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crude P%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crude Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heating Oil Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heating Oil Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas Basis Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas Basis Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas Swaps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Propane Swaps</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BTB_with__c</picklist>
+        <values>
+            <fullName>Crude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multiple</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P21</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P22</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P26</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P31</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIETCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ST7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Book__c</picklist>
+        <values>
+            <fullName>RMK%2FAV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FAV-P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FCHEM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FCHEM-P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FMAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FMAR-P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FOTHER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FOTHER-P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FREF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FREF-P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FUTIL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMK%2FUTIL-P</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Buy_Sell__c</picklist>
+        <values>
+            <fullName>Buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exchange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Throughput</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CO2_Instrument__c</picklist>
+        <values>
+            <fullName>Forward Fixed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forward Floating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spread</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CO2_Product__c</picklist>
+        <values>
+            <fullName>CER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CER or ERU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUA%2F or AEUA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUAA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spread EUA%2FCER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spread EUAA%2FCER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Voluntary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cleared_for__c</picklist>
+        <values>
+            <fullName>Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Commodity_HCDM__c</picklist>
+        <values>
+            <fullName>AGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biofuels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSO Tickets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GTL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MGO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mogas</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Commodity_Type__c</picklist>
+        <values>
+            <fullName>Crude Basis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethanol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>G C Diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MB Propane</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYMEX Crude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYMEX Gasoline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYMEX Heating Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NYMEX Nat Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas Basis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P%2B Posting</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Commodity__c</picklist>
+        <values>
+            <fullName>Crude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naphtha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Competitor__c</picklist>
+        <values>
+            <fullName>Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oil Major</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Financial organisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Small oil companies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Owner__c</picklist>
+        <values>
+            <fullName>Brokers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIETCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STASCO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Type__c</picklist>
+        <values>
+            <fullName>Collar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fixed</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Max</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Min</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swap</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Vol_unit__c</picklist>
+        <values>
+            <fullName>Barrels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gallons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tonnes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cost_Contribution__c</picklist>
+        <values>
+            <fullName>No - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - WONA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - WONA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Country__c</picklist>
+        <values>
+            <fullName>Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Chile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Czech Republic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Finland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Guatemala</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Hong Kong</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Ireland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A New Zealand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NE%3A Thailand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Papua New-Guinea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sweden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Arab Emirates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>United Kingdom</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Credit_Person_Trained__c</picklist>
+        <values>
+            <fullName>Allan Pereira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anya Jirachitsumpun</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brenda Westren</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brian Leung</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>David Fisher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deirdre Gorman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elizabeth Uy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erik Nel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fellipo Ferri</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Francis Dee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ginette Chamberland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Godfrey Lin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hannag Ngu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Harish Prabhu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Harriet Yates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Henrick Junkar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hugo Marin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jacqueline Teo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jan Rasmussen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jan Sazama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jeff Mooney</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jeffrey Bautista</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jenny Strickland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jeremie Schleis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jetsupa Thiengtham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joanne Iovannone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>John McKeown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Julian Magee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kristina Adreneda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leanne Hooper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lyn Miller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marcus Milbradt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Natalie Cole</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nedy Catambay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patrick Alzetto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paul Beijer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rasa Owondault-Berre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ray Ardoin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rob Lowe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Siew Wei Fong Jessyca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stephen Harraway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Steve Park</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sylvie Gagnier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thitporn Phansopha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thomas Kremla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tina Lozano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tyneshia Shelby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vernon Hoadley</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Currency__c</picklist>
+        <values>
+            <fullName>EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deal_Done__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deal_Group__c</picklist>
+        <values>
+            <fullName>1081547</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1110496</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1110523</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1222783</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1222866</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2044040</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2045381</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2424753</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2424754</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3595652</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4218790</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4218792</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4622048</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4918874</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>908106</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Delivery_Airport__c</picklist>
+        <values>
+            <fullName>Dublin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Frankfurt Hahn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London Gatwick</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London Heathrow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London Luton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>London Stansted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New York - Newark airport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paris Beauvais</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paris CDG</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Delivery_Location__c</picklist>
+        <values>
+            <fullName>Amsterdam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Antwerp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Durban</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Houston</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Korea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PtCouronne%2C 3%2E5%25 FOB Rott Barges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reichstett - HardPen - Mean Fob Barges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Richards Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rotterdam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sowa Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taiwan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Exisiting_Replacement__c</picklist>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exisiting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Replacement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fixed_Price_Contracts_are_used_for__c</picklist>
+        <values>
+            <fullName>controlling budgets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>securing supply</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fixed_price__c</picklist>
+        <values>
+            <fullName>Buyer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>From_year__c</picklist>
+        <values>
+            <fullName>2010</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Gross_or_Nett_Billing__c</picklist>
+        <values>
+            <fullName>Gross Billing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Billing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>H_M_L__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mean</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>If_lost_why__c</picklist>
+        <values>
+            <fullName>Alternative Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Authority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit margin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price - other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Timing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trader unavailable</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Importance__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Instrument__c</picklist>
+        <values>
+            <fullName>Basis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Costless Collar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swap</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar - Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word of mouth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Legal_opinion__c</picklist>
+        <values>
+            <fullName>OpCo legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outside firm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Line_of_Business2__c</picklist>
+        <values>
+            <fullName>Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitumen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Fuels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Line_of_Business__c</picklist>
+        <values>
+            <fullName>Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitumen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Fuels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marine Products</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Market__c</picklist>
+        <values>
+            <fullName>MED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NWE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Marketer__c</picklist>
+        <values>
+            <fullName>Helen McGee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jennifer Weatherly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jill Broviak</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mary Swanson Duggan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nicole Valentine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Master_Agreement__c</picklist>
+        <values>
+            <fullName>No - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - WONA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - WONA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>New_Contract__c</picklist>
+        <values>
+            <fullName>ISDA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MSA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>New_Existing_Business__c</picklist>
+        <values>
+            <fullName>Existing Customer - New Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Customer - Renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Customer - New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Nicole__c</picklist>
+        <values>
+            <fullName>nicole</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Opportunity_Currency_HCDM__c</picklist>
+        <values>
+            <fullName>BGN-Bulgarian Lev</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHF-Swiss Franc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CZK-Czech Koruna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DKK-Danish Krone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUR-Euro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GBP-British Pound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HUF-Hungarian Forint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PLN-Polish Zloty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RUB-Russian Rouble</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TRY-Turkish Lira %28New%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD-US Dollar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ZAR-South African Rand</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Organisation__c</picklist>
+        <values>
+            <fullName>B2B RM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STASCO RMS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PFE_Application_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable Anymore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pricing_Month__c</picklist>
+        <values>
+            <fullName>Month</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Month %2B1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Month-1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_Country_of_Opportunity__c</picklist>
+        <values>
+            <fullName>Austria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belgium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulgaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Czech Republic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denmark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Germany</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hungary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxembourg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Netherlands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovakia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slovenia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Turkey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product__c</picklist>
+        <values>
+            <fullName>Bitumen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dubai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 1%2E0 CIF Genoa Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 1%2E0 CIF NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 1%2E0 FOB NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 1%2E0 FOB Rotterdam Barge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 3%2E5 CIF Genoa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 3%2E5 CIF MED Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 3%2E5 FOB MED Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel 3%2E5 FOB Rotterdam Barge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E2 CIF MED Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E2 CIF NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E2 FOB MED Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E2 FOB NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E2 FOB Rotterdam Barge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E25 SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil 0%2E5 SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoil EN590 CIF NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gasoline NWE CIF cargo 10ppm</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Sulpher FO 180 SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Sulpher FO 380 SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IPE - Brent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IPE - Gasoil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JET CIF NEW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet Kero CIF NWE Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet Kero FOB MED Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jet Kero SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low sulphur diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M500 - High Sulpher FO 380 SGP Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M500 Fuel 3%2E5 FOB barges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naphta CIF NWE Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rotterdam Barges ULG 95 gasoline 10 ppm FOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rotterdam Barges ULG 98 gasoline 10 ppm FOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SFDC TEST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Singapore Jet Kero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD 10ppm Fob Rotterdam Barges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ULSD 10ppm NWE CIF Cargo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US Gulf coast Jet 54 Waterborne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Lost__c</picklist>
+        <values>
+            <fullName>Credit Criteria Not Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer is not compatible with Deal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Long Term Relationship with Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Reason Given%2FOther</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Suitable CVP Offering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Supply%2FCapacity Available</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Terms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price Competitive But Selected Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price Not Competitive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Review_Status__c</picklist>
+        <values>
+            <fullName>Action required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete %28See Notes%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote requested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under review</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Risk_Marketer__c</picklist>
+        <values>
+            <fullName>Claire Pontal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elaine Hee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kevin Heselden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peter Selvig</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarah Pereira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tom Sanchez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yih-Mey Ng</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>STN_Contact__c</picklist>
+        <values>
+            <fullName>Alex McLeish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anthony Parson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chee-Chung Tan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Christine Crosley</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peter Durante</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rod Hamilton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sue Argue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>STN_cleared__c</picklist>
+        <values>
+            <fullName>No - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - WONA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - WONA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>STn_Buy_Sell__c</picklist>
+        <values>
+            <fullName>Buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sell</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shell_Entity__c</picklist>
+        <values>
+            <fullName>DANSK Shell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pilipinas Shell Petroleum Corporation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell CZECH Republic AS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Deutscheland Oil GMBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Direct GMBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Eastern Trading %28Pte%29 Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marine Product Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Marketing Middle East</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Norway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell Switzerland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shell UK Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Societe des Petroles Shell</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Source__c</picklist>
+        <values>
+            <fullName>Addvantage</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Swap</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tenor_from_month__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tenor_to_month__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Terminal__c</picklist>
+        <values>
+            <fullName>Aurora%2C CO - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Austin%2C TX - Flint Hills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Baltimore%2C MD - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bridgeport%2C CT - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cape Girardeau%2C MO - Teppco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charlotte%2C NC - MOTIVA %28North%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cincinnati%2C OH - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collins%2C MS - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Columbus%2C OH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Columbus%2C OH - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coraopolis%2C PA - PPC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corapolis%2C PA - PPC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Des Moines%2C IA - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doraville%2C GA-Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duncansville%2C PA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dupont%2C PA - Petroleum Prod%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fayetteville%2C NC - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hammond%2C IN - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hearne%2C TX - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indianola%2C PA - Kindermorgan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inwood%2C NY - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iowa City%2C IA - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kansas City%2C KS - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Knoxville%2C TN-Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lebanon%2C OH - Teppco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lima%2C OH - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Martinez%2C CA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mechanicsburg-Petr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Middletown%2C PA - Petroleum Prod%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2E St%2E Louis%2C MO - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Haven%2C CT - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Newark%2C NJ - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Augusta%2C SC - Kinder Morgan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Little Rock%2C AR - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Little Rock%2C AZ - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Platte%2C NE - Kaneb</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oklahoma City%2C OK - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omaha%2C NE - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owensboro%2C KY - Southern States</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pasadena%2C TX - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portland%2C OR - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Providence%2C RI - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revere%2C MA - Irving</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Richmond%2C VA - KM Deepwater</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Richmond%2C VA - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roanoke%2C VA - MOTIVA %238148</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roanoke%2C VA - MOTIVA %238512</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S%2E St%2E Louis - Buckeye</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sacramento%2C CA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Jose%2C CA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scott City%2C KS - Magellan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seattle%2C WA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sewaren%2C NJ - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sinking Springs%2C PA - Pet Prod</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South Portland%2C ME - MOTIVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stockton%2C CA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa%2C FL - Marathon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waco%2C TX - Motiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wilmington%2C CA - SOPUS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>To_year__c</picklist>
+        <values>
+            <fullName>2010</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Trade_book__c</picklist>
+        <values>
+            <fullName>Crude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nat Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Products</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Trade_type__c</picklist>
+        <values>
+            <fullName>Crack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Differential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swap</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Time spread</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Trading_Entity__c</picklist>
+        <values>
+            <fullName>DTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIETCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STASCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUSCO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Unit_of_Measure__c</picklist>
+        <values>
+            <fullName>M3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>VAT__c</picklist>
+        <values>
+            <fullName>No - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - WONA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - WONA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Volume_Unit__c</picklist>
+        <values>
+            <fullName>Barrels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gallons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MMBTUS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

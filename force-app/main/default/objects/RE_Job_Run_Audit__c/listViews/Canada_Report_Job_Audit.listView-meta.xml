@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Report_Job_Audit</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Job_Type__c</columns>
+    <columns>RE_Job_Status__c</columns>
+    <columns>RE_Run_Type__c</columns>
+    <columns>RE_Exception__c</columns>
+    <columns>Other_Comments__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Job_Type__c</field>
+        <operation>equals</operation>
+        <value>Canada Daily Reuters Quote Move</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Canada Report Job Audit</label>
+</ListView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Holiday_List</fullName>
+    <columns>NAME</columns>
+    <columns>Holiday__c</columns>
+    <columns>Day__c</columns>
+    <columns>Holiday_Date__c</columns>
+    <columns>Country_Name__c</columns>
+    <columns>Comments__c</columns>
+    <columns>Is_Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country_Name__c</field>
+        <operation>equals</operation>
+        <value>Canada</value>
+    </filters>
+    <label>Canada Holiday List</label>
+    <language>en_US</language>
+</ListView>

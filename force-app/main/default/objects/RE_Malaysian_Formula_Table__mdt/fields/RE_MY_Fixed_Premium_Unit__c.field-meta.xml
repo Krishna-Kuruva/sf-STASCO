@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_MY_Fixed_Premium_Unit__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Fixed Premium Unit</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>MYR/BBL</fullName>
+                <default>false</default>
+                <label>MYR/BBL</label>
+            </value>
+            <value>
+                <fullName>MYR/CBM</fullName>
+                <default>false</default>
+                <label>MYR/CBM</label>
+            </value>
+            <value>
+                <fullName>MYR/LTR</fullName>
+                <default>false</default>
+                <label>MYR/LTR</label>
+            </value>
+            <value>
+                <fullName>MYR/TON</fullName>
+                <default>false</default>
+                <label>MYR/TON</label>
+            </value>
+            <value>
+                <fullName>MYR CTS/BBL</fullName>
+                <default>false</default>
+                <label>MYR CTS/BBL</label>
+            </value>
+            <value>
+                <fullName>MYR CTS/CBM</fullName>
+                <default>false</default>
+                <label>MYR CTS/CBM</label>
+            </value>
+            <value>
+                <fullName>MYR CTS/LTR</fullName>
+                <default>false</default>
+                <label>MYR CTS/LTR</label>
+            </value>
+            <value>
+                <fullName>MYR CTS/TON</fullName>
+                <default>false</default>
+                <label>MYR CTS/TON</label>
+            </value>
+            <value>
+                <fullName>SGD/BBL</fullName>
+                <default>false</default>
+                <label>SGD/BBL</label>
+            </value>
+            <value>
+                <fullName>SGD/CBM</fullName>
+                <default>false</default>
+                <label>SGD/CBM</label>
+            </value>
+            <value>
+                <fullName>SGD/LTR</fullName>
+                <default>false</default>
+                <label>SGD/LTR</label>
+            </value>
+            <value>
+                <fullName>SGD/TON</fullName>
+                <default>false</default>
+                <label>SGD/TON</label>
+            </value>
+            <value>
+                <fullName>SGD CTS/BBL</fullName>
+                <default>false</default>
+                <label>SGD CTS/BBL</label>
+            </value>
+            <value>
+                <fullName>SGD CTS/CBM</fullName>
+                <default>false</default>
+                <label>SGD CTS/CBM</label>
+            </value>
+            <value>
+                <fullName>SGD CTS/LTR</fullName>
+                <default>false</default>
+                <label>SGD CTS/LTR</label>
+            </value>
+            <value>
+                <fullName>SGD CTS/TON</fullName>
+                <default>false</default>
+                <label>SGD CTS/TON</label>
+            </value>
+            <value>
+                <fullName>USD/BBL</fullName>
+                <default>false</default>
+                <label>USD/BBL</label>
+            </value>
+            <value>
+                <fullName>USD/CBM</fullName>
+                <default>false</default>
+                <label>USD/CBM</label>
+            </value>
+            <value>
+                <fullName>USD/LTR</fullName>
+                <default>false</default>
+                <label>USD/LTR</label>
+            </value>
+            <value>
+                <fullName>USD/TON</fullName>
+                <default>false</default>
+                <label>USD/TON</label>
+            </value>
+            <value>
+                <fullName>USD CTS/BBL</fullName>
+                <default>false</default>
+                <label>USD CTS/BBL</label>
+            </value>
+            <value>
+                <fullName>USD CTS/CBM</fullName>
+                <default>false</default>
+                <label>USD CTS/CBM</label>
+            </value>
+            <value>
+                <fullName>USD CTS/LTR</fullName>
+                <default>false</default>
+                <label>USD CTS/LTR</label>
+            </value>
+            <value>
+                <fullName>USD CTS/TON</fullName>
+                <default>false</default>
+                <label>USD CTS/TON</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,279 @@
+<apex:page controller="LiveAtpPspController" showHeader="false" sidebar="false">
+    <style type="text/css">
+        tr:nth-child(even) {background-color: #F3F2F2;}
+        th {
+            height: 25px;
+        }
+        td {
+            height: 20px;
+            font-weight: bold;          
+            
+        }
+        #tBody td{
+			/*270224_OLFLiveOnline_09Jul2019_Soumyajit starts*/
+			/*padding-left: 1%; */
+        	padding-left: 0.2%; 
+			padding-right: 0.2%;
+			/*270224_OLFLiveOnline_09Jul2019_Soumyajit ends*/
+            height: 20px;
+            font-weight: bold;
+        }
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 15px; 
+            width: 90%;
+            height: 100%; 
+            background: #F3F2F2;   
+        }
+        #roundTable {
+            border-radius: 25px;
+            border: 2px solid #73AD21 !important;
+        }
+        #greenBorder td{
+            border: 1px solid #73AD21; 
+            border-collapse: collapse;
+			/*270224_OLFLiveOnline_09Jul2019_Soumyajit starts*/
+        	/*padding-left: 1%;*/
+        	text-align: center;
+			/*270224_OLFLiveOnline_09Jul2019_Soumyajit ends*/
+        }
+        #headerBrand th{
+            text-align: center;
+            border: 1px solid #73AD21;
+            border-collapse: collapse; 
+            background-color:#DDDBDA !important;
+        }
+        #childTd td{
+            border: 1px solid #73AD21; 
+            border-collapse: collapse;
+        }
+		/*270224_OLFLiveOnline_09Jul2019_Soumyajit starts*/
+        .CommentStyle {width:200px;} 
+        .NumberStyle {text-align: right;}
+        #tBody tr:nth-child(odd) { background-color: #FFFFFF; }
+        #tBody tr:hover td {background-color:#FFFF99;}
+		/*270224_OLFLiveOnline_09Jul2019_Soumyajit ends*/
+        
+    </style>
+    <apex:form >
+        
+        <table style="width: 99%;">
+        <tr>
+        <td style="width: 33%;padding-left: 10px">
+        <div style="float:left;" id="rcorners2">
+            <B><h2 style="padding-left:10%">Select Channel</h2></B>
+            <B><apex:selectCheckboxes value="{!companyCodes}" layout="pageDirection">
+                <apex:selectOptions value="{!channels}"/>
+                <apex:actionSupport event="onclick" action="{!selectedCompanyCodes}"/>
+            </apex:selectCheckboxes></B> 
+            <BR/>    
+        </div>
+        </td>
+        <td style="width: 33%;">
+        <div style="float:left;" id="rcorners2">
+            <B><h2 style="padding-left:10%">Select View</h2></B>
+            <B><apex:selectRadio value="{!option}" layout="pageDirection">
+                <apex:selectOptions value="{!items}"/>
+                <apex:actionSupport event="onclick" action="{!selectedPreference}"/>
+            </apex:selectRadio></B>
+        </div>
+        </td>
+        <td style="width: 33%;">
+        <div style="float:left;" id="rcorners2"> 
+            <B><h2 style="padding-left:10%">Select Window</h2></B>
+            <B><apex:selectRadio value="{!wndw}" layout="pageDirection">
+                <apex:selectOptions value="{!tranche}"/>
+                <apex:actionSupport event="onclick" action="{!selectedWindows}"/>
+            </apex:selectRadio></B>
+        </div>
+        </td>
+        </tr>
+        </table>
+        <apex:outputPanel id="rerenderTime">        
+            <div style="text-align: left; padding-top: 4px; padding-bottom: 2px; width: 99%; border-radius: 5px; border: 1px solid #73AD21; background: #F3F2F2; font-size: small;">
+                <B><apex:outputText value="The Page last refreshed on: {!refreshedTime}"></apex:outputText></B>
+            </div>
+        </apex:outputPanel>
+        <apex:outputPanel id="rerenderTable">
+            <table style="width:99%; border-collapse: collapse;" id="roundTable">
+                <thead>
+					<!--270224_OLFLiveOnline_09Jul2019_Soumyajit starts-->
+					<!--
+                    <tr id="headerBrand">
+                        <th colspan="2"></th>
+                        <th colspan="5" style="background-color:LightGreen !important;">IGO</th>
+                        <th colspan="5" style="background-color:NavajoWhite !important;">AGO</th>
+                        <th colspan="5" style="background-color:#DDDBDA !important;">MOGAS</th>
+                    </tr>
+
+                    <tr id="greenBorder">
+                        <B><td>LOC</td></B>
+                        <B><td>CODE</td></B>
+                        <B><td>ATP (CBM)</td></B>
+                        <B><td>Sales</td></B>
+                        B><td>PSP</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+                        <B><td>ATP (CBM)</td></B>
+                        <B><td>Sales</td></B>
+                        <B><td>PSP</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+                        <B><td>ATP Online (CBM)</td></B> 
+                        <B><td>Sales</td></B>
+                        <B><td>PSP</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+				    </tr>
+					-->	
+					<tr id="headerBrand">
+                        <th colspan="1"></th>
+                        <th colspan="5" style="background-color:LightGreen !important;">IGO</th>
+                        <th colspan="5" style="background-color:NavajoWhite !important;">AGO</th>
+                        <th colspan="5" style="background-color:#DDDBDA !important;">MOGAS</th>
+                    </tr>
+
+                    <tr id="greenBorder">	
+                        <B><td>LOCATION - PLANT CODE</td></B>
+                        <B><td>ATP (CBM)</td></B>
+                        <B><td>ATP Online (CBM)</td></B>
+                        <B><td>Sales</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+                        <B><td>ATP (CBM)</td></B>
+                        <B><td>ATP Online (CBM)</td></B>
+                        <B><td>Sales</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+                        <B><td>ATP (CBM)</td></B>
+                        <B><td>ATP Online (CBM)</td></B> 
+                        <B><td>Sales</td></B>
+                        <B><td>DAY</td></B>
+                        <B><td>COMMENT</td></B>
+                    </tr>
+					<!--270224_OLFLiveOnline_09Jul2019_Soumyajit ends-->
+                </thead>
+                <tbody id="tBody">
+                    <apex:repeat value="{!atpWrapper}" var="item">
+						<!--270224_OLFLiveOnline_09Jul2019_Soumyajit starts-->
+                        <!--
+                        <tr id="childTd">
+                            <td>
+                                <apex:outputText value="{!item.locName}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{!item.locCode}"/>
+                            </td>
+                            <td style="{!if(OR(item.atpIGO == null, item.atpIGO < 0),'color:red;font-weight: bold', 'color:black')}">
+                                <apex:outputText value="{!item.atpIGOString}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{!item.salesValueIGO}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value=""/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateIGO}" /> </apex:outputText>
+                            </td>
+                            <td>
+                                <div style="width: 100px" >
+                                <apex:outputText value="{!item.commentIGO}"/>
+                                </div>
+                            </td>
+                            <td style="{!if(OR(item.atpAGO == null, item.atpAGO < 0),'color:red;font-weight: bold', 'color:black')}">
+                                <apex:outputText value="{!item.atpAGOString}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{!item.salesValueAGO}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value=""/>
+                            </td>
+                            <td>
+                               <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateAGO}" /> </apex:outputText>
+                            </td>
+                            <td>
+                                <div style="width: 100px" >
+                                <apex:outputText value="{!item.commentAGO}"/>
+                                </div>
+                            </td>
+                            <td style="{!if(OR(item.atpULG == null, item.atpULG < 0),'color:red;font-weight: bold', 'color:black')}">
+                                <apex:outputText value="{!item.atpULGString}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{!item.salesValueULG}"/>
+                            </td>
+                            <td>
+                                <apex:outputText value=""/>
+                            </td>
+                            <td>
+                                <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateULG}" /> </apex:outputText>
+                            </td>
+                            <td>
+                                <div style="width: 100px" >
+                                <apex:outputText value="{!item.commentULG}"/>
+                                </div>
+                            </td>
+                        </tr>
+						-->
+						<tr id="childTd">
+                            <td title="LOCATION - PLANT CODE">
+                                <apex:outputText value="{!item.locAbbrName}-{!item.locCode}"/>
+                            </td>
+                            <td style="{!if(OR(item.atpIGO == null, item.atpIGO < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="IGO ATP (CBM)">
+                                <apex:outputText value="{!item.atpIGOString}"/>
+                            </td>
+                            <td style="{!if(OR(item.IGOonline == null, item.IGOonline < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="IGO ATP Online (CBM)">
+                                <apex:outputText value="{!item.atpIGOonline}"/>
+                            </td>
+                            <td class="NumberStyle" title="IGO Sales">
+                                <apex:outputText value="{!item.salesValueIGO}"/>
+                            </td>
+                            <td title="IGO DAY">
+                                <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateIGO}" /> </apex:outputText>
+                            </td>
+                            <td class="CommentStyle" title="IGO COMMENT">
+                                <apex:outputText value="{!item.commentIGO}"/>
+                            </td>
+                            <td style="{!if(OR(item.atpAGO == null, item.atpAGO < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="AGO ATP (CBM)">
+                                <apex:outputText value="{!item.atpAGOString}"/>
+                            </td>
+                            <td style="{!if(OR(item.AGOonline == null, item.AGOonline < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="AGO ATP Online (CBM)">
+                                <apex:outputText value="{!item.atpAGOonline}"/>
+                            </td>
+                            <td class="NumberStyle" title="AGO Sales">
+                                <apex:outputText value="{!item.salesValueAGO}"/>
+                            </td>
+                            <td title="AGO DAY">
+                               <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateAGO}" /> </apex:outputText>
+                            </td>
+                            <td class="CommentStyle" title="AGO COMMENT">
+                                <apex:outputText value="{!item.commentAGO}"/>
+                            </td>
+                            <td style="{!if(OR(item.atpULG == null, item.atpULG < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="MOGAS ATP (CBM)">
+                                <apex:outputText value="{!item.atpULGString}"/>
+                            </td>
+                            <td style="{!if(OR(item.MOGASonline == null, item.MOGASonline < 0),'color:red;font-weight: bold', 'color:black')}" class="NumberStyle" title="MOGAS ATP Online (CBM)">
+                                <apex:outputText value="{!item.atpMOGASonline}"/>
+                            </td>
+                            <td class="NumberStyle" title="MOGAS Sales">
+                                <apex:outputText value="{!item.salesValueULG}"/>
+                            </td>
+                            <td title="MOGAS DAY">
+                                <apex:outputText value="{0,date,dd.MM.yyyy}"> <apex:param value="{!item.dateULG}" /> </apex:outputText>
+                            </td>
+                            <td class="CommentStyle" title="MOGAS COMMENT">
+                                <apex:outputText value="{!item.commentULG}"/>
+                            </td>
+                        </tr>
+						<!--270224_OLFLiveOnline_09Jul2019_Soumyajit ends-->
+                    </apex:repeat>      
+                </tbody>    
+            </table>
+        </apex:outputPanel>
+        <apex:actionPoller action="{!refreshPage}" reRender="rerenderTable,rerenderTime" interval="15"/>
+
+    </apex:form>
+</apex:page>

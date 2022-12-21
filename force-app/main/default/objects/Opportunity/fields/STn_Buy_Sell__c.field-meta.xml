@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STn_Buy_Sell__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter what STn are doing - 
+- If they give you their OFFER, enter Sell.
+- if they give you their BID, enter Buy</inlineHelpText>
+    <label>STn Buy/Sell</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Buy</fullName>
+                <default>false</default>
+                <label>Buy</label>
+            </value>
+            <value>
+                <fullName>Sell</fullName>
+                <default>false</default>
+                <label>Sell</label>
+            </value>
+            <value>
+                <fullName>Both</fullName>
+                <default>false</default>
+                <label>Both</label>
+            </value>
+            <value>
+                <fullName>NO Hedge as fixed for fixed</fullName>
+                <default>false</default>
+                <label>NO Hedge as fixed for fixed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>Rv_ITdashboard</auraComponent>
+    <description>Control Dashboard to monitor Revolution Application. Related Object(s) : MRC, Reuters Quotes, SHT, Online User API Audit, SAP Staging, Sales/Hedge Transaction, Daily Backbone Trends, RV_Exception, Ice Month, IT Dashboard Controller, IT Dashboard Setting, IT Alert Email Template, Revolution Batch</description>
+    <label>Control Dashboard</label>
+    <motif>Custom21: Computer</motif>
+</CustomTab>

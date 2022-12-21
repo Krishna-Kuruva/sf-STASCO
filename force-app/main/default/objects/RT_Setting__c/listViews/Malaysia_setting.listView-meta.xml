@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysia_setting</fullName>
+    <columns>NAME</columns>
+    <columns>Value__c</columns>
+    <columns>Type__c</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RT_Account__c</columns>
+    <columns>RE_Max_Margin__c</columns>
+    <columns>RE_Min_Margin__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Setting__c.MY_Code_Value_Mapping</value>
+    </filters>
+    <label>Malaysia setting</label>
+    <sharedTo>
+        <territory>Revolution_Territory.Malaysia</territory>
+    </sharedTo>
+</ListView>

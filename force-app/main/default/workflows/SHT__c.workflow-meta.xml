@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>RV_SHT_Number_Update</fullName>
+        <field>SHT_Contract_Number__c</field>
+        <formula>&apos;DI-&apos;+Auto_Num__c+MRC__r.Name</formula>
+        <name>RV SHT Number Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>RV SHT Number Creation</fullName>
+        <actions>
+            <name>RV_SHT_Number_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SHT__c.Auto_Num__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>unique sht number assigned to sht record</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

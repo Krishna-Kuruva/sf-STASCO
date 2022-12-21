@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Opps_MY</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Is_Active__c</columns>
+    <columns>RE_Application__c</columns>
+    <columns>RE_Calculation_Type__c</columns>
+    <columns>RE_Condition_Table__c</columns>
+    <columns>RE_Condition_Type__c</columns>
+    <columns>RE_Condition_Usage_Table__c</columns>
+    <columns>RE_Customer_Type__c</columns>
+    <columns>RE_Data_Type__c</columns>
+    <columns>RE_Quantity__c</columns>
+    <columns>RE_Region__c</columns>
+    <columns>RE_Scale_Type__c</columns>
+    <columns>RE_Unit__c</columns>
+    <columns>RE_Varkey__c</columns>
+    <columns>RE_Country_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Country_Name__c</field>
+        <operation>equals</operation>
+        <value>Malaysia</value>
+    </filters>
+    <label>Custom Opps MY</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BO_Analyst__c</fullName>
+    <externalId>false</externalId>
+    <label>BO Analyst</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gopinath KA</fullName>
+                <default>false</default>
+                <label>Gopinath KA</label>
+            </value>
+            <value>
+                <fullName>Swathi UM</fullName>
+                <default>false</default>
+                <label>Swathi UM</label>
+            </value>
+            <value>
+                <fullName>Chandramouli J</fullName>
+                <default>false</default>
+                <label>Chandramouli J</label>
+            </value>
+            <value>
+                <fullName>Manesh Lakshman</fullName>
+                <default>false</default>
+                <label>Manesh Lakshman</label>
+            </value>
+            <value>
+                <fullName>Rekha Narayana Rao</fullName>
+                <default>false</default>
+                <label>Rekha Narayana Rao</label>
+            </value>
+            <value>
+                <fullName>Sreejith Krishnan</fullName>
+                <default>false</default>
+                <label>Sreejith Krishnan</label>
+            </value>
+            <value>
+                <fullName>Tharani. D</fullName>
+                <default>false</default>
+                <label>Tharani. D</label>
+            </value>
+            <value>
+                <fullName>Periyasami P</fullName>
+                <default>false</default>
+                <label>Periyasami P</label>
+            </value>
+            <value>
+                <fullName>Mohan, Anjali C</fullName>
+                <default>false</default>
+                <label>Mohan, Anjali C</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

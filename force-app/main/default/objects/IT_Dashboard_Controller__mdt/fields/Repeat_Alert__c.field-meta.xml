@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Repeat_Alert__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>If set to true, an email alert will be sent repeatedly for the specified time interval.
+This option is applicable only if &apos;Alert Needed?&apos; is checked.</inlineHelpText>
+    <label>Repeat Alert</label>
+    <type>Checkbox</type>
+</CustomField>

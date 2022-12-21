@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RE_Latest_price_dt__c</fullName>
+    <description>latest price date and time</description>
+    <externalId>false</externalId>
+    <inlineHelpText>based on the latest price date and time record will be displayed in the CO dashboard</inlineHelpText>
+    <label>Latest price dt</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Today_s_Deals</fullName>
+    <columns>NAME</columns>
+    <columns>MRC_Number__c</columns>
+    <columns>Customer__c</columns>
+    <columns>Location__c</columns>
+    <columns>Product_Category__c</columns>
+    <columns>Tranche__c</columns>
+    <columns>Volume_CBM__c</columns>
+    <columns>Status__c</columns>
+    <columns>SP_100L__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>SAP_Contract_Number__c</columns>
+    <columns>PO_Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Rv_LastModifiedDate__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Today&apos;s Deals</label>
+</ListView>

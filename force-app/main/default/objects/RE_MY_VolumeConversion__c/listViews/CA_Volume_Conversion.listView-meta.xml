@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CA_Volume_Conversion</fullName>
+    <columns>NAME</columns>
+    <columns>RE_MY_Country__c</columns>
+    <columns>RE_MY_Base_Volume_Unit__c</columns>
+    <columns>RE_MY_Product_Subgroup__c</columns>
+    <columns>RE_MY_Volume_Unit__c</columns>
+    <columns>RE_MY_Conversion_Rate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_MY_Country__c</field>
+        <operation>equals</operation>
+        <value>Canada</value>
+    </filters>
+    <label>CA Volume Conversion</label>
+    <language>en_US</language>
+</ListView>

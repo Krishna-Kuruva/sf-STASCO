@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Turkey_Required_Fields</fullName>
+    <active>true</active>
+    <errorConditionFormula>(RecordType.DeveloperName == &apos;Depot_Prices&apos;
+|| RecordType.DeveloperName == &apos;Refinery_Prices&apos;
+|| RecordType.DeveloperName == &apos;Retail_Prices&apos;) &amp;&amp;
+ (ISBLANK( RT_Location__c ) 
+||  ISBLANK( RT_Product__c ) 
+||  ISBLANK( RT_Effective_Date__c ) )</errorConditionFormula>
+    <errorMessage>Location, Product and Effective Date are required fields</errorMessage>
+</ValidationRule>

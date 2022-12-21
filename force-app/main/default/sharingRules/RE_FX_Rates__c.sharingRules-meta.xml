@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>RE_CND_Revolution_Canada_FX_Rate_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Revolution Canada</description>
+        <label>Revolution Canada FX Rate Share</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.Canada</territoryAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>RE_Quote_Name__c</field>
+            <operation>equals</operation>
+            <value>Reuters FX rate (bid)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RE_Quote_Name__c</field>
+            <operation>equals</operation>
+            <value>Reuters FX rate (daily)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>RE_East_Region_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sharing rule for visibility of Fx_Rates data to all the territories of East region.</description>
+        <label>RE_East_Region_Sharing</label>
+        <sharedTo>
+            <territoryAndSubordinates>Revolution_Territory.East</territoryAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>RE_Quote_Name__c</field>
+            <operation>notEqual</operation>
+            <value>Reuters FX rate (daily)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RE_Quote_Name__c</field>
+            <operation>notEqual</operation>
+            <value>Reuters FX rate (bid)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>
