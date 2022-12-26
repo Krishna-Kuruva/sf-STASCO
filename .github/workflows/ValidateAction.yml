@@ -1,0 +1,149 @@
+name: Validate PR files
+
+on:
+  workflow_call:
+    inputs:
+      test_level_run:
+        description: "Decides what level of test run against the given environment"
+        required: true
+        type: string
+    secrets:
+      default_username:
+        description: "Default username to be used to authenticate against the target org(sandbox/prod)"
+        required: true
+      login_credentials:
+        description: "Login credential used to authenticate against the target org(sandbox/prod)"
+        required: true
+
+jobs:
+  Validate:
+    runs-on: ubuntu-latest
+    steps:
+      # Install Salesforce CLI
+      - name: "Install Salesforce CLI"
+        run: |
+          wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+          mkdir ~/sfdx
+          tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
+          echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+          ~/sfdx/bin/sfdx version
+
+      # Checkout the source code
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Store secret for sandbox/prod Org
+      - name: "Populate auth file with secret"
+        shell: bash
+        run: echo ${{ secrets.login_credentials }} > ./sandbox.txt
+
+      # Authenticate sandbox Org
+      - name: "Authenticate Sandbox Org"
+        run: sfdx auth:sfdxurl:store -f ./sandbox.txt
+
+      # Set default username to be used when validating/deploying
+      - name: "Set Default UserName"
+        run: sfdx config:set defaultusername=${{ secrets.default_username }}
+
+      # Add files into a string with comma separation included
+      - name: Check Files in PR
+        uses: actions/github-script@v6
+        id: checkFiles
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
+          script: |
+            var afterCursor="";
+            var addModifiedFile = "";
+            var deleteFile = "";
+            var finalString = "";
+            const listFilesInPR = [];
+            while(afterCursor != null){
+              const returnFiles = await callFilesApi(afterCursor);
+              for(const i of returnFiles.repository.pullRequest.files.edges){
+                listFilesInPR.push(i);
+              }
+              afterCursor = returnFiles.repository.pullRequest.files.pageInfo.endCursor;
+            }
+            function callFilesApi(afterCursor) {
+              const query = `query($pull_number:Int!, $owner:String!, $name:String!, $after:String!) {
+                repository(owner:$owner, name:$name) {
+                  pullRequest(number: $pull_number) {
+                    files(first:100 after:$after) {pageInfo { endCursor }
+                      edges {
+                        node {
+                          changeType
+                          path
+                        }
+                      }
+                    }
+                  }
+                }
+              }`;
+              const variables = {
+                pull_number: context.payload.number,
+                owner: context.repo.owner,
+                name: context.repo.repo,
+                after: afterCursor
+              };
+              return github.graphql(query, variables).then(result => { return result } );
+            }
+            const fileExt = ['yml', 'md', 'CODEOWNERS'];           
+            listFilesInPR.forEach(s=> {
+                if(!fileExt.some(r=> s.node.path.endsWith(r))){
+                  let path = s.node.path.replaceAll(/[$]/g, '\\$');
+                  if(s.node.changeType == "DELETED"){
+                      deleteFile = deleteFile.length == 0 ? s.node.path : deleteFile.concat(',',s.node.path);
+                  }
+                  else{
+                      addModifiedFile = addModifiedFile.length == 0 ? s.node.path : addModifiedFile.concat(',',s.node.path);
+                  }
+                }                    
+            });
+            finalString = addModifiedFile.concat(';',deleteFile);
+            console.log('FINALSTRING IS ',finalString);
+            return finalString
+
+      # Validate source on sandbox/prod
+      - name: "Validate Added/Modified/Deleted files on destination org"
+        run: |
+          IFS=';' read -ra arrIN <<< "${{steps.checkFiles.outputs.result}}"
+          if [ ! -z "${arrIN[0]}" ] && [ -z "${arrIN[1]}" ]; then
+            echo "INSIDE 1ST CONDITION"
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy -p "${arrIN[0]}" --checkonly --testlevel ${{inputs.test_level_run}} --wait 60 --verbose --resultsdir apexTestResults --junit
+          elif [ ! -z "${arrIN[0]}" ] && [ ! -z "${arrIN[1]}" ]; then
+            echo "INSIDE 2ND CONDITION"
+            IFS=',' #setting comma as delimiter  
+            read -ra deletePath <<<"${arrIN[1]}" #reading str as an array as tokens separated by IFS              
+            for i in "${deletePath[@]}"; #accessing each element of array  
+            do  
+              echo "$i"
+              mkdir -p -- "$(dirname -- "$i")"
+              touch -- "$i"
+            done
+            sfdx force:source:manifest:create -p "${arrIN[1]}" --manifestname postDestruct.xml
+            echo "$(<postDestruct.xml)"
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy -p "${arrIN[0]}" --checkonly --testlevel ${{inputs.test_level_run}} --wait 60 --verbose --postdestructivechanges postDestruct.xml --resultsdir apexTestResults --junit
+          elif [ -z "${arrIN[0]}" ] && [ ! -z "${arrIN[1]}" ]; then
+            echo "INSIDE 3RD CONDITION"
+            IFS=',' #setting comma as delimiter  
+            read -ra deletePath <<<"${arrIN[1]}" #reading str as an array as tokens separated by IFS              
+            for i in "${deletePath[@]}"; #accessing each element of array  
+            do  
+              echo "$i"
+              mkdir -p -- "$(dirname -- "$i")"
+              touch -- "$i"
+            done
+            sfdx force:source:manifest:create -p config
+            sfdx force:source:manifest:create -p "${arrIN[1]}" --manifestname postDestruct.xml
+            echo "$(<postDestruct.xml)"
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --manifest package.xml --checkonly --testlevel ${{inputs.test_level_run}} --wait 60 --verbose --postdestructivechanges postDestruct.xml --resultsdir apexTestResults --junit
+          fi
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          junit_files: "apexTestResults/junit/junit.xml"          

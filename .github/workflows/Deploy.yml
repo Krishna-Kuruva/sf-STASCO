@@ -1,0 +1,133 @@
+name: Deploy metadata
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [sandbox/DACHDev,sandbox/RevLiteDev,sandbox/BETDev,sandbox/TCPDev,sandbox/HotFixDev,sandbox/BAUDev,sandbox/RevQA,sandbox/BAUQA,sandbox/BETQA,sandbox/TCPQA,sandbox/HotFixQA,sandbox/UAT,sandbox/Regression,sandbox/PSE,main]
+
+jobs:
+  DeployOnDACHDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/DACHDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.DACHDEV_USERNAME }}
+      login_credentials: ${{ secrets.DACHDEV_AUTH_URL }}
+
+  DeployOnRevLiteDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/RevLiteDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.REVLITEDEV_USERNAME }}
+      login_credentials: ${{ secrets.REVLITEDEV_AUTH_URL }}
+
+  DeployOnBETDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/BETDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.BETDEV_USERNAME }}
+      login_credentials: ${{ secrets.BETDEV_AUTH_URL }}
+
+  DeployOnTCPDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/TCPDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.TCPDEV_USERNAME }}
+      login_credentials: ${{ secrets.TCPDEV_AUTH_URL }}
+
+  DeployOnHotFixDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/HotFixDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.HOTFIXDEV_USERNAME }}
+      login_credentials: ${{ secrets.HOTFIXDEV_AUTH_URL }}
+
+  DeployOnBAUDev:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/BAUDev') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.BAUDEV_USERNAME }}
+      login_credentials: ${{ secrets.BAUDEV_AUTH_URL }}
+
+  DeployOnRevQA:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/RevQA') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.REVQA_USERNAME }}
+      login_credentials: ${{ secrets.REVQA_AUTH_URL }}
+
+  DeployOnBAUQA:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/BAUQA') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.BAUQA_USERNAME }}
+      login_credentials: ${{ secrets.BAUQA_AUTH_URL }}
+
+  DeployOnBETQA:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/BETQA') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.BETQA_USERNAME }}
+      login_credentials: ${{ secrets.BETQA_AUTH_URL }}
+
+  DeployOnTCPQA:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/TCPQA') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.TCPQA_USERNAME }}
+      login_credentials: ${{ secrets.TCPQA_AUTH_URL }}
+
+  DeployOnHotFixQA:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/HotFixQA') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.HOTFIXQA_USERNAME }}
+      login_credentials: ${{ secrets.HOTFIXQA_AUTH_URL }}
+
+  DeployOnUAT:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/UAT') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.UAT_USERNAME }}
+      login_credentials: ${{ secrets.UAT_AUTH_URL }}
+
+  DeployOnRegression:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/Regression') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.REGRESSION_USERNAME }}
+      login_credentials: ${{ secrets.REGRESSION_AUTH_URL }}
+
+  DeployOnPSE:
+    uses: sede-x/sf-STASCO/.github/workflows/DeployAction.yml@main
+    if: (github.base_ref == 'sandbox/PSE') && (github.event.pull_request.merged == true)
+    with:
+      test_level_run: NoTestRun
+    secrets:
+      default_username: ${{ secrets.PSE_USERNAME }}
+      login_credentials: ${{ secrets.PSE_AUTH_URL }}                                                 

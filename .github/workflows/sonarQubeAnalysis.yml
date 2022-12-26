@@ -1,0 +1,37 @@
+on:
+  # Trigger analysis when creating a pull request.
+  
+  push:
+    branches:
+      - main
+
+  pull_request:
+      branches: [main,sandbox/RevQA,sandbox/BAUQA,sandbox/BETQA,sandbox/TCPQA,sandbox/HotFixQA]
+      types: [opened, synchronize, reopened]
+
+name: Code Analysis
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.projectKey=com.shell.sf-STASCO
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
