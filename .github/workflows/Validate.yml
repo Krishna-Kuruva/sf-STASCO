@@ -5,6 +5,9 @@ on:
     types: [opened, synchronize, reopened]
     branches: [sandbox/DACHDev,sandbox/RevLiteDev,sandbox/BETDev,sandbox/TCPDev,sandbox/HotFixDev,sandbox/BAUDev,sandbox/RevQA,sandbox/BAUQA,sandbox/BETQA,sandbox/TCPQA,sandbox/HotFixQA,sandbox/UAT,sandbox/Regression,sandbox/PSE,main]
 
+concurrency:
+  group: validate/deploy on ${{ github.base_ref }}
+
 jobs:
   ValidateOnDACHDev:
     uses: sede-x/sf-STASCO/.github/workflows/ValidateAction.yml@main
