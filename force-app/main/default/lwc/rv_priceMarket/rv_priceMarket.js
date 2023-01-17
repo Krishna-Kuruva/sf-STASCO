@@ -1,7 +1,7 @@
 /*
  ----------------- Created by Sampada.Bhat on 12/23/2021.
 */
-// Rv PriceMarket 
+// Rv PriceMarket
 import { LightningElement, track, wire, api } from 'lwc';
 import getMRCDataPriceAndMarket from '@salesforce/apex/RV_PriceAndMarket.getMRCDataPriceAndMarket';
 import saveOfferTrackDetails from '@salesforce/apex/RV_PriceAndMarket.saveOfferTrackDetails';
@@ -58,6 +58,12 @@ export default class Rv_PriceMarket extends LightningElement {
     messageContext;
     isDisabled = false;
     priceMarketCss = 'row';
+    //added by swarna
+    @track datetime;
+    @track _onLoad = true;
+    @track refreshInSecs;
+    @track intervalSecs = 30;
+    //end
 
     connectedCallback(){
         this.subscribeToMessageChannel();
@@ -81,7 +87,7 @@ export default class Rv_PriceMarket extends LightningElement {
 
         }
     }
-    
+
     unsubscribeToMessageChannel(){
         unsubscribe(this.subscription);
         this.subscription = null;
@@ -91,11 +97,15 @@ export default class Rv_PriceMarket extends LightningElement {
         this.showPricePage = true;
         console.log('inside price market: Message : '+message);
     }
-    
+
     recieveData(message){
+        this._onLoad = true;
         this.completedMasterTriggerSHTData = [];
         this.parentMessage = message;
         console.log('message from channel::'+JSON.stringify(message));
+        window.clearInterval(this.timerRef);
+        window.localStorage.removeItem('startTimer');
+        this.setTimer1();
         if(message.eventType === 'search'){                               //'search' for search MRC and 'publish' for custom info section
             let filterObj = message.filterData; // for search MRC section
             console.log('at recieveData::'+JSON.stringify(filterObj));
@@ -106,10 +116,20 @@ export default class Rv_PriceMarket extends LightningElement {
                     let startDate = this.filterStartDate;
                     const startDateLst = startDate.split("-");
                     this.filteredYear = startDateLst[0];
-                    
+
              }
-            if(filterObj.poType == 'TSFP' || filterObj.poType == 'Dummy'){  
-             getMRCDataPriceAndMarket({
+             if(filterObj.poType != 'TTTT' && filterObj.poType != 'TTTI'){
+                this.getPM_MRCData(filterObj);
+             }else{
+                this.showSaveButton = false;
+                this.completedMasterTriggerSHTData = [];
+                this.mrcsAvailable = 'Please select TSFP PO Type to book the offers in Price & Market!';
+            }
+        }
+    }
+    getPM_MRCData(filterObj){
+        if(filterObj.poType != 'TTTT' && filterObj.poType != 'TTTI'){
+            getMRCDataPriceAndMarket({
                 soldToAccId: filterObj.customerRecId,//0012500001RIxDuAAL
                 mrcNumber: JSON.stringify(filterObj.mrcNo),
                 shipToAccNum : filterObj.shipToNum,
@@ -123,7 +143,7 @@ export default class Rv_PriceMarket extends LightningElement {
                 startDate : filterObj.startDate,
                 endDate : filterObj.endDate,
                 callFromOlf:filterObj.olfOnly,
-                checked :filterObj.retailMix                
+                checked :filterObj.retailMix
         })
         .then(result => {
                    let groupMRCData = new Map();
@@ -139,15 +159,15 @@ export default class Rv_PriceMarket extends LightningElement {
                     let count =0;
                     let flag = 0;
                     let gradeSet = new Set();
-                    result.forEach(mrcData => { 
+                    result.forEach(mrcData => {
                          if(mrcData.hasEditAccess ===  false){
                             this.isDisabled = true;
                             this.priceMarketCss = 'row readonly-page'
                          }
                         let newPlantGroupMogas = null;
-                        console.log('count before ULG:'+count);
+                       // console.log('count before ULG:'+count);
                         if(!gradeSet.has(mrcData.mrcNo+mrcData.locationName+'ULG') && mrcData.grade.startsWith('ULG')){
-                         
+
                             newPlantGroupMogas = {};
                             newPlantGroupMogas.bsp = null;
                             newPlantGroupMogas.salesPrice = null;
@@ -164,7 +184,7 @@ export default class Rv_PriceMarket extends LightningElement {
                         }
                         console.log('count after ULG :'+count);
                         let newPlantGroup = {};
-                            newPlantGroup.bsp = mrcData.finalbspCal; 
+                            newPlantGroup.bsp = mrcData.finalbspCal;
                             newPlantGroup.finalSalesPriceCal = mrcData.finalSalesPriceCal;//parseInt(mrcData.finalSalesPriceCal);
                             newPlantGroup.dailySales = parseInt(mrcData.dailySales);//added by swarna hypercare
                             //newPlantGroup.salesPrice = parseInt(mrcData.finalSalesPriceCal);
@@ -191,9 +211,9 @@ export default class Rv_PriceMarket extends LightningElement {
                             newPlantGroup.soldToNumber = mrcData.soldToNumber;
                             newPlantGroup.tranche = mrcData.tranche;
                             newPlantGroup.startDate = mrcData.startDate;
-                            newPlantGroup.endDate = mrcData.endDate;              
+                            newPlantGroup.endDate = mrcData.endDate;
                             newPlantGroup.offerId = "offer"+count;
-                            newPlantGroup.showOfferField = (mrcData.finalOTM!=null)?true:false; 
+                            newPlantGroup.showOfferField = (mrcData.finalOTM!=null)?true:false;
                             //newPlantGroup.offerTrackMap = mrcData.offerTrackMap;
                             //newPlantGroup.lastOfferedPrice = mrcData.lastOfferedPrice;
                             newPlantGroup.lastOfferedPrice = ((mrcData.lastOfferedPrice)*1).toFixed(2);
@@ -209,7 +229,7 @@ export default class Rv_PriceMarket extends LightningElement {
                             }else{
                                 newPlantGroup.lastOfferAvailable = false;
                             }
-                            
+
                             /* End - Code added by Mohan for offer tracking */
                             //newPlantGroup.margin = (mrcData.finalSalesPriceCal-mrcData.OTM).toFixed(2) ;// Ashish: commented under 1177068
                             newPlantGroup.margin = mrcData.finalOTM == null ? 0 :(mrcData.finalOTM-mrcData.finalbspCal).toFixed(2) ;
@@ -225,9 +245,9 @@ export default class Rv_PriceMarket extends LightningElement {
                                 plantGroupList=[newPlantGroupMogas,newPlantGroup];
 
                             }
-                           
+
                             else{
-                           
+
                              plantGroupList=[newPlantGroup];
                             }
                             groupPlantData.set(mrcData.locationName+mrcData.mrcName,plantGroupList);
@@ -236,7 +256,7 @@ export default class Rv_PriceMarket extends LightningElement {
                     });
                     console.log('groupPlantData:'+groupPlantData);
                     let plantNames = new Set();
-                    result.forEach(mrcData => { 
+                    result.forEach(mrcData => {
                         let newMRCGroup = {};
                         newMRCGroup.location = mrcData.locationName;
                         newMRCGroup.locationId = mrcData.location;
@@ -245,7 +265,7 @@ export default class Rv_PriceMarket extends LightningElement {
                         newMRCGroup.rowspan = groupPlantData.get(mrcData.locationName+mrcData.mrcName).length+1;
                         if(!plantNames.has(mrcData.locationName+mrcData.mrcName)){
                         if(groupMRCData.has(mrcData.mrcName)){
-                            
+
                             groupMRCData.get(mrcData.mrcName).push(newMRCGroup);
                         }else{
                            let mrcGroupList =[newMRCGroup];
@@ -254,27 +274,55 @@ export default class Rv_PriceMarket extends LightningElement {
                         plantNames.add(mrcData.locationName+mrcData.mrcName);
                     }
 
-                        
+
                     });
-                    
+
 
                     console.log("Master Data :"+groupMRCData);
-                  
+
                     let itr = groupMRCData;
                     let mrcArray =[];
                     groupMRCData.forEach((values,keys)=>{
                         console.log(values+' '+keys);
                         let mrc = {};
-                        
+
                         mrc.mrcNo = keys;
-                    
+
                       //  mrc.rowSpan = values.gradeGroup.length + 1;
                         mrc.plants = values;
-                        mrcArray.push(mrc);                      
+                        mrcArray.push(mrc);
                     })
+                       // this.completedMasterTriggerSHTData = mrcArray;
+                       if(this._onLoad){
                         this.completedMasterTriggerSHTData = mrcArray;
-                        console.log('MRC Array'+mrcArray+' '+JSON.stringify(this.completedMasterTriggerSHTData));
+                            this.refreshInSecs = this.intervalSecs * 1000;
+                            this._onLoad = false;
+                            console.log('startInterval msg::'+JSON.stringify(this.parentMessage));
+                            //this.startInterval();
+                           // this.datetime = this.currentDate;
+                    }
+                    else if(!this._onLoad){
+                        console.log('time in else::'+this.currentDate);
+                        console.log('completedMaster::',this.completedMasterTriggerSHTData);
+                        for(var i = 0;i<this.completedMasterTriggerSHTData.length; i++){
+                            for(var j = 0;j<this.completedMasterTriggerSHTData[i].plants.length; j++){
+                                for(var k = 0;k<this.completedMasterTriggerSHTData[i].plants[j].gradeGroup.length; k++){
+                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].dailySales = mrcArray[i].plants[j].gradeGroup[k].dailySales ;
+                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].onlineATP = mrcArray[i].plants[j].gradeGroup[k].onlineATP ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].phoneATP = mrcArray[i].plants[j].gradeGroup[k].phoneATP ;
+                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].bsp = mrcArray[i].plants[j].gradeGroup[k].bsp ;
+                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].finalSalesPriceCal = mrcArray[i].plants[j].gradeGroup[k].finalSalesPriceCal ;
+                                }
+                            }
+                        }
+                        //this.datetime = this.currentDate;
+                    }
+
+                    //    console.log('MRC Array'+mrcArray+' '+JSON.stringify(this.completedMasterTriggerSHTData));
                         this.showSaveButton = true;
+                        window.clearInterval(this.timerRef);
+                        window.localStorage.removeItem('startTimer');
+                        this.setTimer1();
                     }
                     else{
                         this.completedMasterTriggerSHTData = [];
@@ -286,31 +334,71 @@ export default class Rv_PriceMarket extends LightningElement {
                         this.dispatchEvent(selectedEvent);
                         this.showSaveButton = false;
                     }
-            
+
                // this.cancellationReasonOptions = result.reasonList;
-              
+
         })
         .catch(error => {
-				this.showSaveButton = false;							
+				this.showSaveButton = false;
                 this.completedMasterTriggerSHTData = [];
-                console.log('===error==='+error);
+                console.log('===error===',error);
                 this.mrcsAvailable = 'Data is not available with search criteria!';
                 const selectedEvent = new CustomEvent("customervaluechange", {
                             detail: ''
                         });
                 this.dispatchEvent(selectedEvent);
             });
-            }else{
-				this.showSaveButton = false;							
-                this.completedMasterTriggerSHTData = [];
-                this.mrcsAvailable = 'Please select TSFP PO Type to book the offers in Price & Market!';
-            }
-                
+
+
             }
     }
+    @track timerRef;
+     timer = '0'
+
+     StartTimerHandler(){
+        const startTime = new Date()
+        window.localStorage.setItem('startTimer', startTime)
+        return startTime
+    }
+    setTimer1(){
+        const startTime = new Date( window.localStorage.getItem("startTimer") || this.StartTimerHandler())
+        this.timerRef = window.setInterval(()=>{
+            const secsDiff = new Date().getTime() - startTime.getTime();
+            this.timer = this.secondToHms(Math.floor(secsDiff/1000));
+            const str = this.timer;
+
+            const before_ = str.substring(0, str.indexOf(' '));
+
+            //console.log(before_);
+             this.timer = 30 - before_;
+        }, 1000)
+
+    }
+    secondToHms(d){
+        d = Number(d)
+        const h = Math.floor(d / 3600);
+        const m = Math.floor(d % 3600 / 60);
+        const s = Math.floor(d % 3600 % 60);
+        const hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+        const mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+        const sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+        //alert(sDisplay);
+        if(sDisplay == '30 seconds'){
+            //alert('sdsdsd'+sDisplay);
+            if(this.parentMessage['eventType'] == 'search'){
+                let msgdata = this.parentMessage.filterData;
+                this.getPM_MRCData(msgdata);
+                window.clearInterval(this.timerRef);
+                window.localStorage.removeItem('startTimer');
+            }
+
+        }
+        return hDisplay + mDisplay + sDisplay;
+    }
+
     otmDecrement(event){
         // console.log('DataSet'+event.currentTarget.dataset.mrc+' '+event.currentTarget.dataset.location+' '+event.currentTarget.dataset.otm)
-     
+
         let gIndex = event.currentTarget.dataset.id;
         let pIndex = event.currentTarget.dataset.plant;
         let index = event.currentTarget.dataset.mrc;
@@ -332,9 +420,9 @@ export default class Rv_PriceMarket extends LightningElement {
             }
             console.log('currentOffer:'+currentOffer);
             console.log('presentValue:'+presentValue);
-            
+
             const presentValueArray = presentValue.split(".");
-            
+
             console.log('parseFloat(presentValue):'+(parseFloat(presentValue)));
             let decimalValue = ('0.'+presentValueArray[1])%0.05;
             decimalValue = Math.round((decimalValue + Number.EPSILON) * 100) / 100;
@@ -348,9 +436,9 @@ export default class Rv_PriceMarket extends LightningElement {
                 }
             }else {
                 decrementedValue= (parseFloat(presentValue)-0.05).toFixed(2);
-            }  
-            console.log('decrementedValue:'+decrementedValue); 
-        
+            }
+            console.log('decrementedValue:'+decrementedValue);
+
             //this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].finalOtm = decrementedValue;
             this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offerValue = decrementedValue;
             if(this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offerValue != null){
@@ -360,7 +448,7 @@ export default class Rv_PriceMarket extends LightningElement {
      }
   otmIncrement(event){
      // console.log('DataSet'+event.currentTarget.dataset.mrc+' '+event.currentTarget.dataset.location+' '+event.currentTarget.dataset.otm)
-    
+
     let gIndex = event.currentTarget.dataset.id;
     let pIndex = event.currentTarget.dataset.plant;
     let index = event.currentTarget.dataset.mrc;
@@ -369,7 +457,7 @@ export default class Rv_PriceMarket extends LightningElement {
     let totalIndex = parseInt(count);
     let otmString = 'otm'+totalIndex;
     let incrementedValue = 0;
-    //let res = parseInt(presentValue.split("."));     
+    //let res = parseInt(presentValue.split("."));
     let offerPriceString = 'offerPrice'+totalIndex;
     let offerString = 'offer'+totalIndex;
 
@@ -384,9 +472,9 @@ export default class Rv_PriceMarket extends LightningElement {
         }
         console.log('currentOffer:'+currentOffer);
         console.log('presentValue:'+presentValue);
-        
+
         const presentValueArray = presentValue.split(".");
-        
+
         console.log('parseFloat(presentValue):'+(parseFloat(presentValue)));
         let decimalValue = ('0.'+presentValueArray[1])%0.05;
         decimalValue = Math.round((decimalValue + Number.EPSILON) * 100) / 100;
@@ -403,8 +491,8 @@ export default class Rv_PriceMarket extends LightningElement {
         }else {
             incrementedValue= (parseFloat(presentValue)+0.05).toFixed(2);
             console.log('incrementedValue in e else::'+incrementedValue);
-        }  
-        console.log('incrementedValue:'+incrementedValue);        
+        }
+        console.log('incrementedValue:'+incrementedValue);
         //this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].finalOtm = incrementedValue;
         //this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offer = incrementedValue;
         this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offerValue = incrementedValue;
@@ -428,10 +516,10 @@ export default class Rv_PriceMarket extends LightningElement {
             if(this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offer != null){
                 this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offerValue = this.template.querySelector("div[data-id="+otmString+"]").innerHTML;
                 this.template.querySelector("lightning-input[data-my-id="+offerString+"]").classList.remove('slds-hidden');
-            } 
+            }
         }
     }
-       // Ashish : this mathod will Replace "-" sign under 1167553. 
+       // Ashish : this mathod will Replace "-" sign under 1167553.
     offeredVolumeCheck(event) {
         console.log('event.target.value:'+event.target.value);
         var str = (event.target.value).toString();
@@ -442,7 +530,7 @@ export default class Rv_PriceMarket extends LightningElement {
     }
 
 
- 
+
     keycheck(event) {
         //const typedValue = evt.target.value;
         //const trimmedValue = typedValue.trim(); // trims the value entered by the user
@@ -461,7 +549,7 @@ export default class Rv_PriceMarket extends LightningElement {
         let offerVolString = 'offer'+totalIndex;
         console.log('gIndex:'+gIndex+'~pIndex:'+pIndex+'~index:'+index+'~totalIndex:'+totalIndex+'~offerVolString:'+offerVolString);
         console.log('this.completedMasterTriggerSHTData:'+JSON.stringify(this.completedMasterTriggerSHTData));
-        
+
         if(parseFloat(str)>0 && str!=null ){
             if(this.completedMasterTriggerSHTData[index].plants[pIndex].gradeGroup[gIndex].offerValue != null){
                 this.template.querySelector("lightning-input[data-my-id="+offerVolString+"]").classList.remove('slds-hidden');
@@ -472,7 +560,7 @@ export default class Rv_PriceMarket extends LightningElement {
             }
         }
         */
-        
+
         let count = event.currentTarget.dataset.id;
         let offerVolString = 'offer'+count;
         let offerPriceString = 'offerPrice'+count;
@@ -488,9 +576,9 @@ export default class Rv_PriceMarket extends LightningElement {
                 this.template.querySelector("lightning-input[data-my-id="+offerVolString+"]").classList.add('slds-hidden');
             }
         }
-        
+
     }
-    
+
     saveOfferPrice(event){
         this.isLoading = true;
         let allPlants=[];
@@ -538,8 +626,8 @@ export default class Rv_PriceMarket extends LightningElement {
                             offerTrack.offerVolume = 0;
                         }
                         //offerTrack.offerVolume = '';
-                        console.log('offerTrack.offerVolume:'+offerTrack.offerVolume); 
-                        
+                        console.log('offerTrack.offerVolume:'+offerTrack.offerVolume);
+
                         if(offerTrack.offerValue!='' && offerTrack.offerValue>0){
                             offerTrack.grade = this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].grade;
                             allPlants.push(offerTrack);
@@ -548,7 +636,7 @@ export default class Rv_PriceMarket extends LightningElement {
                 }
             }
         }
-        
+
         console.log('allPlants::'+JSON.stringify(allPlants));
         console.log('this.parentMessage:'+this.parentMessage);
         var isError = false;
@@ -570,7 +658,7 @@ export default class Rv_PriceMarket extends LightningElement {
         }
         if(count == totalSize){
             isError=true;
-            msg='Please enter values for atleast one offer before saving!';   
+            msg='Please enter values for atleast one offer before saving!';
         }
         if(isError){
             this.isLoading = false;
