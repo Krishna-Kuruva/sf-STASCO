@@ -369,7 +369,7 @@ export default class Rv_PriceMarket extends LightningElement {
             this.timer = this.secondToHms(Math.floor(secsDiff/1000));
             const str = this.timer;
 
-            const before_ = str.substring(0, str.indexOf(' '));
+            let before_ = str.substring(0, str.indexOf(' '));
             if(before_ >= 30){
                 before_ = 1
             }

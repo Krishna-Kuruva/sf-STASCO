@@ -27,7 +27,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
     @api advSoldTo;
     @api advShtNo;
     @api advpoType;
-    
+
     soldToOptions;
     createdByOptions;
     shtNoOptions;
@@ -50,7 +50,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
     customerRecId;
     customerAccId;
     defaultPlant;
-    tranche;     
+    tranche;
     isDisabled = false;
 
     @wire(MessageContext)
@@ -90,24 +90,24 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                 console.log('data::'+JSON.stringify(result));
                 console.log('CompletedDeal::'+JSON.stringify(result.CompletedDeal));
                 this.completedMasterTriggerSHTData = result.CompletedDeal;
-              
+
 
                 if(result.reasonList != undefined){
                             var canreasonLst=[];
-                    for (var key in result.reasonList) 
+                    for (var key in result.reasonList)
                     {
                         if (result.reasonList.hasOwnProperty(key)) {
                             this.cancellationReasonOptions.push({value: result.reasonList[key], label: result.reasonList[key]});
                         }
                     }
-                    //this.cancellationReasonOptions = canreasonLst;  
+                    //this.cancellationReasonOptions = canreasonLst;
                 }
                 if(result.CompletedDeal[0] != null && result.CompletedDeal[0].tranche!=null){
-                    this.tranche = result.CompletedDeal[0].tranche;   
-                } 
+                    this.tranche = result.CompletedDeal[0].tranche;
+                }
                  if(result.CompletedDeal[1] != null && result.CompletedDeal[1].tranche!=null){
-                    this.tranche = result.CompletedDeal[1].tranche;   
-                }  
+                    this.tranche = result.CompletedDeal[1].tranche;
+                }
                // this.cancellationReasonOptions = result.reasonList;
             })
             .catch(error => {
@@ -188,7 +188,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                     this.poTypeOptions = data.poTypeListMap;//Map;
                 }
                 this.publishOptions();
-                
+
             }
         });
     }
@@ -201,14 +201,14 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
             poTypeOptions : this.poTypeOptions
         }
         publish(
-            this.messageContext, 
+            this.messageContext,
             advancedFilterValueChannel,
             optionspayload
         );
 
     }
     /*
-    
+
     var action = component.get("c.getCompletedSHTDealWithAdvanceFilterWrap");
         action.setParams({
             	"createdOnStartDate" : createdOnStartDate,
@@ -219,11 +219,11 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
             	"soldTo" : soldTo,
                 "sht" : sht,
                 "internetSales" : InternetSales, //270192_OLFDealCancel_08Jul2019_Soumyajit
-                "poType" : poType 
-            	}); 
-        
+                "poType" : poType
+            	});
+
                 */
-    
+
     cancelCompledtedTriggerDeal(event){
             this.isDisabled = false;
             let tempdeal = [];
@@ -237,7 +237,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                     //this.cancel_compDealRec ={...this.completedMasterTriggerSHTData[i]};
                    // this.cancel_compDealRec = JSON.parse(JSON.stringify(this.completedMasterTriggerSHTData[i]));
                    //const eDate = new Date(this.completedMasterTriggerSHTData[i].contractStartDate);
-												
+
                   // eDate.setDate(eDate.getDate() + parseInt(14));
 					 //this.completedMasterTriggerSHTData[i].contractEndDate =  eDate.toISOString().substr(0,10);
 
@@ -248,7 +248,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                 this.cancel_compDealRec = tempdeal;
                 console.log('@188::'+JSON.stringify(this.cancel_compDealRec));
             }
-        
+
         if(event.target.title=='Cancel & New'){
             this.create_newDeal = true;
             //get AccountId and Location Id and create JSON for rv_searchLookup component to populate Plant value on load
@@ -264,11 +264,11 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                    }
                };
          if(!this.customerFilter.includes(this.customerAccId)){
-            this.customerFilter =  'Active__c = true and  Sold_To__c=' + '\''+this.customerAccId + '\' LIMIT 1';      
-            }                               
+            this.customerFilter =  'Active__c = true and  Sold_To__c=' + '\''+this.customerAccId + '\' LIMIT 1';
+            }
         }
         if(event.target.title == 'Cancel'){
-                                 
+
             this.cancelButton = false;
             this.cancelSHTDeal();
         }
@@ -276,7 +276,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
 
     handleArrowPress(event){
         if(event.target.value != null){
-            this.template.querySelector('rv_search-lookup').handleKeyPress(event.target.value);            
+            this.template.querySelector('rv_search-lookup').handleKeyPress(event.target.value);
         }
     }
 
@@ -295,13 +295,13 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
         }
 
     }
-    
+
     handleLookup(event){
         let selectedRec = event.detail.data;
         if(selectedRec){
             if(selectedRec.currentRecordId == 'Location'){
-                if(selectedRec.record){            
-                    this.plantId = selectedRec.record.Plant__c;                    
+                if(selectedRec.record){
+                    this.plantId = selectedRec.record.Plant__c;
                     this.publishCustomerId();
                 }
                 else{
@@ -316,10 +316,10 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                         eventType: 'publish',
                         customerId: this.customerRecId,
                         mrcId: this.mrcHeader
-        };							 
-					  
+        };
+
         publish(
-            this.messageContext, 
+            this.messageContext,
             searchFilterChannel,
             payload
         );
@@ -343,7 +343,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                 let msg= '';
                 if(data == 'Success'){
                     msg='Comments Updated Successfully.';
-                
+
                     this.dispatchEvent(
                     new ShowToastEvent({
                     title: 'Success',
@@ -355,11 +355,11 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
             }
         });
     }
-	//end bug-1265721									
+	//end bug-1265721
     handleReasonChange(event){
         this.cancelReasonVal = event.detail.value;
         console.log('cancel Reason val in direct cancel::'+this.cancelReasonVal);
-        
+
     }
     handleChange(event){
         this.cancelReason = event.detail.value;
@@ -373,7 +373,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
     @track CN_endDateVal;
     addDaysToDate(date, days){
         var someDate = new Date(date);
-        someDate.setDate(someDate.getDate() + parseInt(days)); 
+        someDate.setDate(someDate.getDate() + parseInt(days));
         var dateFormated = someDate.toISOString().substring(0,10);
         console.log('line 120:'+dateFormated);
         return dateFormated;
@@ -393,7 +393,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
             }
             console.log('CN_endDateVal::'+this.CN_endDateVal);
         }
-		
+
 	createCancelledNewDeal(){
         this.isDisabled = true;
 		let cancomDeal = this.cancel_compDealRec[0];
@@ -408,10 +408,10 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
 
         if(this.plantId == 'undefined' || this.plantId == null || this.plantId == ''){
             this.plantId = cancomDeal['locationId'];
-        }	
+        }
         if(this.tranche == '' || this.tranche == 'undefined' || this.tranche ==null){
             this.tranche = cancomDeal['tranche'];
-        }   						 
+        }
         if(this.cancelReason != 'None' && this.cancelReason != undefined){
         let shtObjRec = {};
         shtObjRec.mrcId = this.template.querySelector('[data-id="mrcNo"]').value;
@@ -428,7 +428,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
         shtObjRec.atpVoltoBeReduced = true;
         let todaysDate = new Date();
         this.validateEndDate(this.template.querySelector('[data-id="contractStartDate"]').value, shtObjRec.poType);
-        shtObjRec.contractEndDate = (shtObjRec.contractStartDate < todaysDate.toISOString().substring(0,10)) ? this.template.querySelector('[data-id="contractEndDate"]').value : this.CN_endDateVal;//this.addDaysToDate(shtObjRec.contractStartDate, 14);		
+        shtObjRec.contractEndDate = (shtObjRec.contractStartDate < todaysDate.toISOString().substring(0,10)) ? this.template.querySelector('[data-id="contractEndDate"]').value : this.CN_endDateVal;//this.addDaysToDate(shtObjRec.contractStartDate, 14);
         //end Bug-1264522
         shtObjRec.volumeCBM = this.template.querySelector('[data-id="volCbm"]').value;
         shtObjRec.Comment = this.template.querySelector('[data-id="Comment"]').value;
@@ -440,7 +440,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
         shtObjRec.msp=this.template.querySelector('[data-id="msp"]').value;
         shtObjRec.cancellationReason = this.cancelReason;
         console.log('shtObjRec::'+JSON.stringify(shtObjRec));
-        if(shtObjRec.poType == "" || shtObjRec.locationId == "" || shtObjRec.grade == "" || shtObjRec.contractStartDate == "" || shtObjRec.contractEndDate == "" || shtObjRec.volumeCBM == "" || ((shtObjRec.spPer100L == "" || shtObjRec.spPer100L == "0" || shtObjRec.spPer100L == "0.00") &&  shtObjRec.poType == "TSFP") 
+        if(shtObjRec.poType == "" || shtObjRec.locationId == "" || shtObjRec.grade == "" || shtObjRec.contractStartDate == "" || shtObjRec.contractEndDate == "" || shtObjRec.volumeCBM == "" || ((shtObjRec.spPer100L == "" || shtObjRec.spPer100L == "0" || shtObjRec.spPer100L == "0.00") &&  shtObjRec.poType == "TSFP")
             || shtObjRec.poType == undefined || shtObjRec.locationId == undefined || shtObjRec.grade == undefined || shtObjRec.contractStartDate == undefined || shtObjRec.contractEndDate == undefined || shtObjRec.volumeCBM == undefined || shtObjRec.spPer100L == undefined ){
                 this.dispatchEvent(
                     new ShowToastEvent({
@@ -473,7 +473,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
               );
           }
       }
-    
+
     createSHT(shtobj){
         console.log('In method entry::'+JSON.stringify(shtobj));
     createSHTObjectRecord({
@@ -501,14 +501,14 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
     cancelSHTDeal(){
         console.log('cancelButton::'+this.cancelButton+'--'+this.cancelReason);
         console.log('cancelDeal::'+JSON.stringify(this.cancel_compDealRec));
-        
+
         let cancelDealJson1 ;
         for(var key in this.cancel_compDealRec){
             this.cancelDealJson1 = this.cancel_compDealRec[key];
             if(this.newDeal != '' && this.newDeal != undefined){
                 this.cancel_compDealRec.Comment = 'by '+this.newDeal;
             }
-       
+
             var resn ;
             var executeCancelFunc = false;
             console.log('New Deal::'+this.newDeal);
@@ -532,12 +532,12 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
                         }),
                     );
                     cancelSHTDealRecord({
-                        
+
                         shtId : this.cancel_compDealRec[key].shtRecordId,
                         status : this.cancel_compDealRec[key].dealStatus,//this.advStatus,
                         reason : resn,
                         searchList : JSON.stringify(this.cancel_compDealRec)
-                        
+
                     }).then(result =>{
                         console.log('Cancel function::'+JSON.stringify(result));
                         this.refreshTermTriggerDeals();
@@ -564,25 +564,35 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
     }
            refreshTermTriggerDeals(event){
             let paramData = {eventType:'canceledSuccess'};
-            let refreshParent = new CustomEvent('refreshtermtriggercmp', 
+            let refreshParent = new CustomEvent('refreshtermtriggercmp',
                                      {detail : paramData}
                                     );
-                this.dispatchEvent(refreshParent);                    
-       
+                this.dispatchEvent(refreshParent);
+
     }
 
     resendDealtoGsap(){
         let retryDeal = [];
         for(var key in this.completedMasterTriggerSHTData){
-            if(this.completedMasterTriggerSHTData[key].gsapError != undefined && 
+            if(this.completedMasterTriggerSHTData[key].gsapError != undefined &&
                     this.completedMasterTriggerSHTData[key].gsapError != null){
                         retryDeal.push(this.completedMasterTriggerSHTData[key].shtRecordId);
             }
         }
         retryDealinGSAP({
-            shtIds :retryDeal 
+            shtIds :retryDeal
         }).then(GSAPResult =>{
             console.log('GSAPResult::'+JSON.stringify(GSAPResult));
+            //added by swarna as part of PBI 1659185
+            this.dispatchEvent(
+                new ShowToastEvent({
+                title: 'Success',
+                message:JSON.stringify(GSAPResult),
+                variant: 'success',
+                    }),
+                );
+                retryDeal = [];
+                //end
         }).catch(error =>{
             console.log('Error in GSAP::'+JSON.stringify(error));
             this.error = error;

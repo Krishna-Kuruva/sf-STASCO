@@ -45,16 +45,16 @@ public class rv_sht_CreateControllerLWC {
                 contractEndDate=String.valueOf(date.valueOf(contractStartDate).addDays(13));
             }
         }
-        
+
 		List<String> plantList = new List<String>();
         for(String plnt : plant){
             if(plnt != null && plnt != '' && plnt != ' '){
                  plantList.add(plnt);
-												   
+
             }
         }
 
-         // START: Added as part of 1306836 : ASHISH  
+         // START: Added as part of 1306836 : ASHISH
       List<String> shipToSet = new List<String>();
     List<String> shipToList = new List<String>();
         if(shipto!= null && shipto.size() > 0){
@@ -67,16 +67,16 @@ public class rv_sht_CreateControllerLWC {
                         shpTo = shpTo;
                     else if(shpTo.startsWith('0'))
                         shpTo = '0'+ shpTo;
-                    
+
                     shipToList.add(shpTo);
                 }
-                
-                
-            } 
+
+
+            }
         }
-         
+
         shipToSet.addAll(shipToList);
-		
+
 		List<String> salesOrgLst = new List<String>();
         List<String> salesOrgLst1 = new List<String>();
         salesOrgLst1 = salesOrg != null ? salesOrg.split(';') : null;
@@ -88,16 +88,16 @@ public class rv_sht_CreateControllerLWC {
                   }
               }
 		system.debug('salesOrgLst::'+salesOrgLst);
-		
+
         System.debug('=======mot======='+mot);
         List<Integer> motIntegerLst = new List<Integer>();
-        
+
         for(String str : mot){
             system.debug('str of mot in deal entry:'+str);
             motIntegerLst.add(Integer.valueOf(str));
-			 
+
         }
-        
+
         System.debug('=======motIntegerLst======='+motIntegerLst);
 
          Set<String> productSet= new Set<String>();
@@ -151,7 +151,7 @@ public class rv_sht_CreateControllerLWC {
         //recordTypeId=:recTypeId and
         string queryPart='';
         String mrc='';
-        
+
 		queryPart = queryPart + ' and Material_Description__c IN :productSet and Valid_To_Date__c >= TODAY';
 		if(salesOrgLst.size() > 0){
             queryPart = queryPart + ' AND Sales_Organization__c IN :salesOrgLst ';
@@ -179,29 +179,29 @@ public class rv_sht_CreateControllerLWC {
             }
             if(string.valueOf(Mrcnoo) != null && string.valueOf(Mrcnoo) != ''){
                 MrcnoList.add(string.valueOf(Mrcnoo));
-                
+
             }
-				
+
             }
             if( MrcnoList.size() > 0){
             queryPart= queryPart + ' AND MRC_Number__c IN :MrcnoList ';
         }
-        		
+
 		system.debug('plant::'+plant.isEmpty()+'--'+plant.size()+'--'+plant);
         if( !plantList.isEmpty() && plantList.size()>0){
             queryPart = queryPart +' AND Plant__c IN :plantList ';
         }
-		
+
         if(!accIdSet.isEmpty()){
             queryPart= queryPart + ' AND Ship_To__c IN :accIdSet ';
         }
-     
-										 
+
+
         if( poType!=null && poType!= ''){
-															   
+
             queryPart= queryPart+ ' AND PO_Type__c= :poType';
         }
-		
+
         /*if(shipto != null && !'none'.equals(shipto) && shipto != '' ){
             if(!shipto.startsWith('0'))
                 shipto = '00'+ shipto;
@@ -210,7 +210,7 @@ public class rv_sht_CreateControllerLWC {
             else if(shipto.startsWith('0'))
                 shipto = '0'+ shipto;
             queryPart= queryPart + ' AND Ship_to_Number__c = :shipto ';
-            
+
         }*/
          if( !shipToList.isEmpty() && shipToList.size()>0){
             queryPart = queryPart +' AND Ship_to_Number__c IN :shipToList ';
@@ -218,25 +218,25 @@ public class rv_sht_CreateControllerLWC {
         if(motIntegerLst.size()>0 && !motIntegerLst.isEmpty()){
             queryPart += ' AND Shipping_Condition__c IN:motIntegerLst ';
         }
-        
+
         if(callFromOlf){
             queryPart=queryPart+' AND Rv_Available_for_OLF__c = true';
         }
-        
+
         if(filterOlfMRCs && !callFromOlf){
             queryPart=queryPart+' AND RV_OLF_MRC_Only__c = true';
         }
         else if(!filterOlfMRCs && !callFromOlf){
             queryPart=queryPart+' AND RV_OLF_MRC_Only__c = false';
         }
-																						  
+
         string queryOrderBy=' ORDER BY MRC_Number__c,Plant__r.Name,MRC_Grade_Sort__c ASC';
         system.debug('query::'+query);
         system.debug('queryPart::'+queryPart);
         system.debug('queryOrderBy::'+queryOrderBy);
-														
+
         string queryString=query+queryPart+queryOrderBy;
-												  
+
         system.debug('queryString::'+queryString);
         mrcList = Database.query (queryString);
         system.debug('checked::'+checked+mrcList.size());
@@ -313,7 +313,7 @@ public class rv_sht_CreateControllerLWC {
         }
         //Deal Event Manager metadata
         Map<String,Deal_Event_Manager__mdt> poTypeHandlingDealMdtMap=getDealEventMetdataMap();
-        //system.debug('poTypeHandlingDealMdtMap==>'+poTypeHandlingDealMdtMap); 
+        //system.debug('poTypeHandlingDealMdtMap==>'+poTypeHandlingDealMdtMap);
 
         //Shipping Condition Map
         Map<Integer,String> ShipCondNoNameMap= new Map<Integer,String>();
@@ -381,9 +381,9 @@ public class rv_sht_CreateControllerLWC {
                                                  Sales_Mgn_AGO_B7__c,
                                                  Sales_Mgn_IGO_50ppm__c,
                                           		 Tranche__c,
-                                                 Sales_Mgn_ULG95_E5__c FROM Margin__c WHERE  Plant__c IN : LocIds AND 
+                                                 Sales_Mgn_ULG95_E5__c FROM Margin__c WHERE  Plant__c IN : LocIds AND
                                                                                             RecordTypeId =: marginRecordTypeId];
-                                                                                            //Sales_Org__c IN : salesOrgSet AND 
+                                                                                            //Sales_Org__c IN : salesOrgSet AND
         for(Margin__c mrg : marginList){
             marginMap.put(mrg.Plant__c, mrg);
         }
@@ -396,19 +396,19 @@ public class rv_sht_CreateControllerLWC {
                      'PSP_AGO__c,PSP_IGO__c,PSP_MOGAS__c,Sales_Channel__c,Shipping_Condition__c,'+
             		 'BSP_w_o_Tax_AGO__c,BSP_w_o_Tax_IGO__c,BSP_w_o_Tax_MOGAS__c,BSP_w_o_Tax_GTL__c,'+
             		 'PSP_w_o_Tax_AGO__c,PSP_w_o_Tax_IGO__c,PSP_w_o_Tax_MOGAS__c,'+
-            		 'OTM_w_o_Tax_AGO__c,OTM_w_o_Tax_IGO__c,OTM_w_o_Tax_MOGAS__c,'+	
+            		 'OTM_w_o_Tax_AGO__c,OTM_w_o_Tax_IGO__c,OTM_w_o_Tax_MOGAS__c,'+
                      //Fix_260839_Lakshmi_20May2019 starts
             		 'Total_Tax_AGO__c,Total_Tax_IGO__c,Total_Tax_MOGAS__c,Total_Tax_GTL__c,'+
             		 //Fix_260839_Lakshmi_20May2019 ends
             	     'ATP2_Live_AGO__c,ATP2_Live_IGO__c,ATP2_Live_MOGAS__c,ATP3_Live_IGO__c,ATP3_Live_AGO__c,ATP3_Live_MOGAS__c'+
                      ' FROM Revolution_Dashboard__c '+
             		 ' where  RecordTypeId =\''+ ''+dashboardRecTypeId+'\'';
-                     //Sales_Channel__c IN :channel and MOT__c IN: MOT and 
+                     //Sales_Channel__c IN :channel and MOT__c IN: MOT and
         /*if(myLocationsSet.size()>0){
             queryString=queryString + ' and Plant_Code__c IN: myLocationsSet ';
         }*/
         dashboardqueryString=dashboardqueryString+' order by Plant_Name__r.Name';
-        allLocAtpPrcLst = Database.query (dashboardqueryString); 
+        allLocAtpPrcLst = Database.query (dashboardqueryString);
         for(Revolution_Dashboard__c revdashboard : allLocAtpPrcLst){
             revDashboardMap.put(revdashboard.Plant_Name__c,revdashboard);
         }
@@ -420,8 +420,8 @@ public class rv_sht_CreateControllerLWC {
             }else{
                 mrcNoOfferList.add(mrcObj);
             }
-        }							   
-																																							   
+        }
+
         /* Start | code developed by Mohan to get and display offer details in price and marketing view */
        // List<RV_Offer_Tracking__c> offerTrackingDetailsList = [SELECT Id, MRC_Header__c, MRC_line_item__c, Offered_Price_100l__c, Offered_Volume_in_cbm__c from RV_Offer_Tracking__c where MRC_Header__c IN : MrcnoList order by MRC_Header__c,createdDate desc];
        // system.debug('offerTrackingDetailsList::'+offerTrackingDetailsList);
@@ -434,14 +434,14 @@ public class rv_sht_CreateControllerLWC {
         if(!accIdSet.isEmpty()){
             offerQuery +=' AND Ship_To_Name__c IN :accIdSet ';
         }
-     
+
         offerQuery+=' order by MRC_Header__c,createdDate desc';
         system.debug('offerQuery:'+offerQuery);
         offerTrackingDetailsList = Database.query (offerQuery);
         system.debug('offerTrackingDetailsList data :'+offerTrackingDetailsList);
-         
-        
-        
+
+
+
         Map<String, RV_Offer_Tracking__c> offerTrackMap = new Map<String, RV_Offer_Tracking__c>();
         if(offerTrackingDetailsList.size()>0){
             for(RV_Offer_Tracking__c offer : offerTrackingDetailsList ){
@@ -453,7 +453,7 @@ public class rv_sht_CreateControllerLWC {
         system.debug('offerTrackMap:'+offerTrackMap);
         /* End | code developed by Mohan to get and display offer details in price and marketing view */
 
-        //create wraper object 
+        //create wraper object
         MRCDataWrap wrapObj ;
         Decimal atpVal = 0;
         string grade = '';
@@ -461,28 +461,28 @@ public class rv_sht_CreateControllerLWC {
         Decimal atpOnline = 0;
         //lastOfferedPrice
 
-																	
-		
+
+
         for(MRC__c mrcObj : mrcfinalList){
             wrapObj = new MRCDataWrap();
             atpVal =0;
             salesD = 0;
             atpOnline = 0;
             wrapObj.mrcId = mrcObj.id;
-																																																	  
+
             if( mrcObj.Material_Description__c != null){
                 grade = mrcObj.Material_Description__c;
             }
             wrapObj.grade = grade;
             if(grade == 'ULG95 E5' || grade == 'ULG98' || grade == 'GTL B0' || grade=='GTL B7'){
                 wrapObj.showFinalOTM = false;
-                
+
             } else {
-                wrapObj.showFinalOTM = true; 
-                
+                wrapObj.showFinalOTM = true;
+
             }
             if(mrcObj.Sold_To__c != null){
-                wrapObj.accId=mrcObj.Sold_To__c;          
+                wrapObj.accId=mrcObj.Sold_To__c;
                 wrapObj.accName=mrcObj.Sold_To__r.Name;
 
             }
@@ -515,7 +515,7 @@ public class rv_sht_CreateControllerLWC {
                         if(prdtName.contains('ULG')){
                             //atpVal = ((atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP_Live__c)/astmMogas).round(System.RoundingMode.HALF_UP);	//AdditionalFix_326425_14Nov2019_Soumyajit
                             atpVal = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP_Live__c != null ? ((atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP_Live__c)/astmMogas).intValue() : null;	//AdditionalFix_326425_14Nov2019_Soumyajit
-							salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_8_30_17_30__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_8_30_17_30__c/Decimal.valueOf(Label.Mogas_Density) : null; 
+							salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_8_30_17_30__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_8_30_17_30__c/Decimal.valueOf(Label.Mogas_Density) : null;
                             atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_00_14__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_00_14__c/Decimal.valueOf(Label.Mogas_Density) : null;
 						}else{
                             //atpVal = ((atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP_Live__c)/astmAgoIgo).round(System.RoundingMode.HALF_UP);	//AdditionalFix_326425_14Nov2019_Soumyajit
@@ -523,7 +523,7 @@ public class rv_sht_CreateControllerLWC {
 							salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_8_30_17_30__c/Decimal.valueOf(Label.AGO_IGO_Density);
                             atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_00_14__c/Decimal.valueOf(Label.AGO_IGO_Density);
 						}
-                        
+
                     }
                 }
             }
@@ -540,7 +540,7 @@ public class rv_sht_CreateControllerLWC {
 							salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_15_28__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_15_28__c/Decimal.valueOf(Label.AGO_IGO_Density) : null;
                             atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP2__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP2__c/Decimal.valueOf(Label.AGO_IGO_Density) : null;
 						}
-                       
+
                     }
                 }
             }
@@ -550,13 +550,13 @@ public class rv_sht_CreateControllerLWC {
                         if(prdtName.contains('ULG')){
                             atpVal = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP3_Live__c != null ? ((atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP3_Live__c)/astmMogas).intValue() : null;	//AdditionalFix_326425_14Nov2019_Soumyajit
 						    salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_29_61__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_29_61__c/Decimal.valueOf(Label.Mogas_Density) : null;
-                            atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c/Decimal.valueOf(Label.Mogas_Density) : null;			 
+                            atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c/Decimal.valueOf(Label.Mogas_Density) : null;
                         }else{
                             atpVal = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP3_Live__c != null ? ((atpLocMap.get(mrcObj.Plant_Code__c+prdtName).ATP3_Live__c)/astmAgoIgo).intValue() : null;	//AdditionalFix_326425_14Nov2019_Soumyajit
 							salesD = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_29_61__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Sales_29_61__c/Decimal.valueOf(Label.AGO_IGO_Density) : null;
-                            atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c/Decimal.valueOf(Label.AGO_IGO_Density) : null;												
+                            atpOnline = atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c != null ? atpLocMap.get(mrcObj.Plant_Code__c+prdtName).Live_Online_ATP3__c/Decimal.valueOf(Label.AGO_IGO_Density) : null;
 						}
-                       
+
                     }
                 }
 
@@ -609,10 +609,10 @@ public class rv_sht_CreateControllerLWC {
                 wrapObj.phoneATP = revDashboardMap.get(mrcObj.Plant__c).ATP1_Live_AGO__c;
             }else{
                 wrapObj.phoneATP = 0;
-            } 
+            }
            // wrapObj.phoneATP = 0;//revDashboardMap.get(mrcObj.Plant__c).ATP1_Live_AGO__c == null ? 0 :revDashboardMap.get(mrcObj.Plant__c).ATP1_Live_AGO__c;
            wrapObj.lastOfferedPrice = (offerTrackMap.get(mrcObj.Name))!=null?string.valueOf((offerTrackMap.get(mrcObj.Name).Offered_Price_100l__c)):'';
-            
+
            wrapObj.finalatpLive = 0;//(callFromOlf)? atpVal : (atpVal - atpLiveRelated) == null ? 0 : (callFromOlf)? atpVal : (atpVal - atpLiveRelated);	//added by swarna aspart of revemp
             //Deal Event Manager Attributes for Pricing ,Vol deduction & Hedging
             wrapObj.isPricingTaxed=false;
@@ -703,14 +703,14 @@ public class rv_sht_CreateControllerLWC {
                 }
 
             }
-            //START - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated pricePerVol as 0 for zero price deal. 
+            //START - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated pricePerVol as 0 for zero price deal.
             if(wrapObj.isZeroPriceDeal){
                 wrapObj.pricePerVol = 0;
             }
            // wrapObj.dealmargin=0;
             system.debug('wrapObj::'+wrapObj);
             wrapObj.dealmargin= wrapObj.finalOTM != null ? wrapObj.finalbspCal != null ?wrapObj.finalOTM - wrapObj.finalbspCal : 0 : 0;
-            //END - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated pricePerVol as 0 for zero price deal. 
+            //END - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated pricePerVol as 0 for zero price deal.
             mrcWrapList.add(wrapObj);
         }
 
@@ -721,7 +721,7 @@ public class rv_sht_CreateControllerLWC {
     }
 
     //Deal Event Manager metadata
-    //START - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated query to retreive only active records. 
+    //START - Rahul Sharma | Date - 28-Jan-2021 | PBI-702438 : Updated query to retreive only active records.
     public static  Map<String,Deal_Event_Manager__mdt> getDealEventMetdataMap(){
         List<Deal_Event_Manager__mdt> dealMgrMdtLst=[SELECT Handling_Type__c,
                 IsATPVolumeReduced__c,
@@ -771,7 +771,7 @@ public class rv_sht_CreateControllerLWC {
         //CommentUpdateFix_10Jul2019_Soumyajit ends
 
     }
-    
+
     @AuraEnabled
     public static saveResultsearchWrap cancelSHTDeal(String shtId,string status,string reason, string searchList){
         system.debug('shtId::'+shtId);
@@ -787,7 +787,7 @@ public class rv_sht_CreateControllerLWC {
         }
         catch(Exception e){
         }
-       
+
         List<SHT__c> shtList = [select id,name,MRC_Number__c,Volume_CBM__c,Location__c,Location__r.Name,
                 Product_Category__c,Status__c,Cancellation_Reason__c,Deal_Comment__c
                 ,isOlfDeal__c //270192_OLFDealCancel_08Jul2019_Soumyajit
@@ -863,7 +863,7 @@ public class rv_sht_CreateControllerLWC {
         return srchSaveWrp;
 
     }
-    
+
 
     @AuraEnabled
     public static saveResultsearchWrap saveSHTObjectRecordLWC(String dataList,String trancheVal , string contractStartDate, string contractEndDate,
@@ -879,7 +879,7 @@ public class rv_sht_CreateControllerLWC {
 
                 if(date.valueOf(contractStartDate) < system.today()){
                     contractStartDate = String.valueOf(System.today());
-                    if(date.valueOf(contractEndDate) <= system.today())	
+                    if(date.valueOf(contractEndDate) <= system.today())
                         contractEndDate=String.valueOf(System.today());
                     else
                             contractEndDate=String.valueOf(System.today().addDays(13));
@@ -896,7 +896,7 @@ public class rv_sht_CreateControllerLWC {
                 retailMixMatSet.add('ULG95 E5');
                 retailMixMatSet.add('ULG95 E10');
                 retailMixMatSet.add('ULG98');
-                
+
                 //List<MRCDataWrap> listToSave = (List<MRCDataWrap>)JSON.deserialize(dataList, List<MRCDataWrap>.class);
                 if(listToSave.size()>0){
                     for(MRCDataWrap dataObj : listToSave){
@@ -904,7 +904,7 @@ public class rv_sht_CreateControllerLWC {
                             accntIdSet.add(dataObj.accId);
                             mrcId.add(dataObj.mrcId);
                         }
-        
+
                     }
                 }
 
@@ -923,7 +923,7 @@ public class rv_sht_CreateControllerLWC {
                 for(mrc__c mr:mrcRetMixMrcLst){
                     mrcRetMixMrcMap.put(mr.Sold_To__c+mr.Ship_to_Number__c+mr.Plant_Code__c+mr.Material_Description__c, mr.Name);
                     mrcRetMixMrcIdMap.put(mr.Sold_To__c+mr.Ship_to_Number__c+mr.Plant_Code__c+mr.Material_Description__c, mr.Id);
-                    
+
                 }
             }
             system.debug('mrcRetMixMrcMap::'+mrcRetMixMrcMap);
@@ -944,7 +944,7 @@ public class rv_sht_CreateControllerLWC {
                 newSHTObj = new SHT__c();
                 boolean retailMixAdded=false;
                 system.debug('dataObj.grade ::'+checked+dataObj.grade+'--'+dataObj.salesOrg );
-                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map. 
+                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map.
                 if(checked && dataObj.grade == 'ULG95 E10' && dataObj.salesOrg !='AT01'){
                     newSHTObj1 = new SHT__c();
                     newSHTObj2 = new SHT__c();
@@ -963,7 +963,7 @@ public class rv_sht_CreateControllerLWC {
                 newSHTObj.MSP__c=dataObj.finalSalesPriceCal;
 
                 if(dataObj.isZeroPriceDeal !=null && dataObj.isZeroPriceDeal){
-                    newSHTObj.SP_100L__c = 0; // Zero Price Deal 
+                    newSHTObj.SP_100L__c = 0; // Zero Price Deal
                 }else{
                     newSHTObj.SP_100L__c = dataObj.pricePerVol; // Enetred Price by End User
                 }
@@ -1031,14 +1031,14 @@ public class rv_sht_CreateControllerLWC {
                     if(dataObj.isZeroPriceDeal){
                         newSHTObj1.SP_100L__c=0;
                     }else{
-                        newSHTObj1.SP_100L__c = dataObj.pricePerVol+decimal.valueOf(Label.RV_Surcharge_E5); // Enetred Price by End User 
+                        newSHTObj1.SP_100L__c = dataObj.pricePerVol+decimal.valueOf(Label.RV_Surcharge_E5); // Enetred Price by End User
                     }
                     if(newSHTObj1.SP_100L__c != null && newSHTObj1.BSP__c != null){
                         newSHTObj1.Target_Margin__c = newSHTObj1.SP_100L__c - newSHTObj1.BSP__c;
                     }
                     newSHTObj1.Select__c= true;
                     newSHTObj1.Tranche__c = dataObj.tranche;//trancheVal;
-                    newSHTObj1.Volume_CBM__c=(dataObj.volumeCBM* 0.80).round(System.RoundingMode.HALF_EVEN); 
+                    newSHTObj1.Volume_CBM__c=(dataObj.volumeCBM* 0.80).round(System.RoundingMode.HALF_EVEN);
                     newSHTObj1.Deal_Comment__c=dataObj.Comment;
                     newSHTObj1.Contract_Start__c=ContractStrtDateToBeSaved;
                     newSHTObj1.Contract_End_Date__c=ContractEndDateToBeSaved;
@@ -1084,7 +1084,7 @@ public class rv_sht_CreateControllerLWC {
                         newSHTObj2.BSP__c = dataObj.finalbspCal;
                         newSHTObj2.MSP__c = dataObj.finalSalesPriceCal;
                     }
-                    
+
                     newSHTObj2.Status__c = 'Saved';
                     if(dataObj.isZeroPriceDeal){
                         newSHTObj2.SP_100L__c=0;
@@ -1146,8 +1146,8 @@ public class rv_sht_CreateControllerLWC {
         srchSaveWrp.savedResult=shtSavedWrap;
         system.debug('srchSaveWrp::'+srchSaveWrp);
         return srchSaveWrp;
-              
-               
+
+
             }
 
     @AuraEnabled
@@ -1171,7 +1171,7 @@ public class rv_sht_CreateControllerLWC {
                 contractEndDate=String.valueOf(System.today());
             else
                     contractEndDate=String.valueOf(System.today().addDays(13));
-        }	
+        }
         saveResultsearchWrap srchSaveWrp = new saveResultsearchWrap();
         List<SHTDisplayWrap> shtSavedWrap = new List<SHTDisplayWrap>();
         Set<Id> MrcIds = new Set<Id>();
@@ -1237,7 +1237,7 @@ public class rv_sht_CreateControllerLWC {
                 }
             }
         }
-        //system.debug('mrcRetMixMrcMap==>'+mrcRetMixMrcMap); 
+        //system.debug('mrcRetMixMrcMap==>'+mrcRetMixMrcMap);
         SHT__c newSHTObj;
         SHT__c newSHTObj1;
         SHT__c newSHTObj2;
@@ -1252,7 +1252,7 @@ public class rv_sht_CreateControllerLWC {
             if(dataObj.volumeCBM != Null && dataObj.volumeCBM >0){
                 newSHTObj = new SHT__c();
                 boolean retailMixAdded=false;
-                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map. 
+                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map.
                 //START - Rahul Sharma | Date - 21-Nov-2020 : Updated retail mix logic from E5 to E10.
                 //if(checked && dataObj.grade == 'ULG95 E5' && dataObj.salesOrg !='AT01' ){
                 if(checked && dataObj.grade == 'ULG95 E10' && dataObj.salesOrg !='AT01' ){
@@ -1275,7 +1275,7 @@ public class rv_sht_CreateControllerLWC {
                 newSHTObj.MSP__c=dataObj.finalSalesPriceCal;
 
                 if(dataObj.isZeroPriceDeal !=null && dataObj.isZeroPriceDeal){
-                    newSHTObj.SP_100L__c = 0; // Zero Price Deal 
+                    newSHTObj.SP_100L__c = 0; // Zero Price Deal
                 }else{
                     newSHTObj.SP_100L__c = dataObj.pricePerVol; // Enetred Price by End User
                 }
@@ -1288,7 +1288,7 @@ public class rv_sht_CreateControllerLWC {
                 newSHTObj.Product_Category__c = dataObj.grade;
                 newSHTObj.Contract_Start__c=ContractStrtDateToBeSaved;
                 newSHTObj.Contract_End_Date__c=ContractEndDateToBeSaved;
-                //newSHTObj.Volume_CBM__c=dataObj.volumeCBM;    //Rahul Sharma | Date - 26-Apr-2021 : Commented redundant variable assignment. 
+                //newSHTObj.Volume_CBM__c=dataObj.volumeCBM;    //Rahul Sharma | Date - 26-Apr-2021 : Commented redundant variable assignment.
                 newSHTObj.Deal_Comment__c=dataObj.Comment;
                 if(dataObj.isPricingTaxed != null)
                     newSHTObj.IsPricingTaxed__c=dataObj.isPricingTaxed;
@@ -1355,7 +1355,7 @@ public class rv_sht_CreateControllerLWC {
                     if(dataObj.isZeroPriceDeal){
                         newSHTObj1.SP_100L__c=0;
                     }else{
-                        newSHTObj1.SP_100L__c = dataObj.pricePerVol+decimal.valueOf(Label.RV_Surcharge_E5); // Enetred Price by End User 
+                        newSHTObj1.SP_100L__c = dataObj.pricePerVol+decimal.valueOf(Label.RV_Surcharge_E5); // Enetred Price by End User
                     }
                     //START - Rahul Sharma | Date - 28-Jan-2021 : Updated calculation logic for target margin.
                     if(newSHTObj1.SP_100L__c != null && newSHTObj1.BSP__c != null){
@@ -1637,7 +1637,7 @@ public class rv_sht_CreateControllerLWC {
         }
         return shippingCondMap;
     }
-    
+
     @AuraEnabled
     public static List<Account> searchRecords(String soldTo){
         String j= '%'+soldTo+'%';
@@ -1944,7 +1944,7 @@ public class rv_sht_CreateControllerLWC {
                  //   shtDspWrp.targetMargin=sh.Target_Margin__c.setScale(2, RoundingMode.HALF_UP);
                 if(sh.msp__c != null)       //Sampada Bhat | Date : 24-Dec-2021
                     shtDspWrp.msp=sh.msp__c.setScale(2, RoundingMode.HALF_UP);
-      
+
                 if(sh.OTM__c != null){           //Sampada Bhat | Date : 24-Dec-2021
                     shtDspWrp.otm = sh.OTM__c.setScale(2, RoundingMode.HALF_UP);
                 }
@@ -2271,7 +2271,7 @@ public class rv_sht_CreateControllerLWC {
             String contractEndDate,Boolean callFromOlf, Boolean OLFOnly){
                 system.debug(tranche+'-'+Mrcno+'-'+accId+'-'+shipto);
                 system.debug(poType+'-'+plant+'-'+mot+'-'+contractStartDate+'-'+contractEndDate);
-                
+
         List<MRCDataWrap> mrcWrapList = new List<MRCDataWrap>();
         if(OLFOnly)
             filterOlfMRCs = true;
@@ -2331,7 +2331,7 @@ public class rv_sht_CreateControllerLWC {
         Map<String,List<PlantSHTWrap>> plantSHTWrapMap = new Map<String,List<PlantSHTWrap>>();
         Map<String,List<GradeSHTWarp>> gradeSHTMap = new Map<String,List<GradeSHTWarp>>();
         List<PlantSHTWrap> plantWrapList = new List<PlantSHTWrap>();
-    
+
       //  shtWrp.CompletedDeal=getCompletedSHTDeal('TODAY','Completed','Me');
         Set<String> grades = new Set<String>();
         Set<String> locations = new Set<String>();
@@ -2346,18 +2346,18 @@ public class rv_sht_CreateControllerLWC {
         gSHTWarp.otm= sht.otm;
         gSHTWarp.salesPrice=sht.spPer100L;
         gSHTWarp.offer = 0;
-        
+
 
         if(gradeSHTMap.containsKey(sht.location)){
             List<GradeSHTWarp> gSW= gradeSHTMap.get(sht.location);
-            if(!grades.contains(sht.product)){               
-           
+            if(!grades.contains(sht.product)){
+
             gSW.add(gSHTWarp);
             grades.add(sht.product);
                 gradeSHTMap.put(sht.location,gSW);
-           }       
-	
-            
+           }
+
+
         }else{
             List<GradeSHTWarp> gSHTW = new List<GradeSHTWarp>();
             gSHTW.add(gSHTWarp);
@@ -2377,7 +2377,7 @@ public class rv_sht_CreateControllerLWC {
 
         if(plantSHTWrapMap.containsKey(sht.location)){
             List<PlantSHTWrap> pSW= plantSHTWrapMap.get(sht.MrcNo);
-            if(!locations.contains(sht.location)){               
+            if(!locations.contains(sht.location)){
                 locations.add(sht.location);
             pSW.add(pSHTWarp);
             plantSHTWrapMap.put(sht.MrcNo,pSW);
@@ -2412,20 +2412,20 @@ public class rv_sht_CreateControllerLWC {
       system.debug('shtList::'+shtIds.size());
       if(shtIds.size() > 0){
         List<SHT__c> shtst = [Select Id, OwnerId, CreatedDate, IsDeleted, Name, Auto_Num__c, Cancellation_Reason__c, Contract_End_Date__c, Error__c,
-         Contract_Start__c, Customer__c, Grade__c, Product_Sub_Group__c, Handling_Type__c, Location__c, PO_Type__c, Transaction_Id__c, 
+         Contract_Start__c, Customer__c, Grade__c, Product_Sub_Group__c, Handling_Type__c, Location__c, PO_Type__c, Transaction_Id__c,
          MRC_Number__c, MRC__c, PSP__c, Product_Catalogue__c, Product_Category__c, SHT_Contract_Number__c, SP_100L__c, Sales_Price__c, Sales_Type__c,
           Select__c, Sold_Price__c, Status__c, Tranche__c, Volume_CBM__c, Deal_Comment__c, BSP__c, Created_Time__c, Effective_Margin__c,
            IsATPVolumeReduced__c, IsGsapDealCancelOn__c, IsGsapDealCreateOn__c, IsPricingTaxed__c, IsVolumeHedged__c, IsZeroPriceDeal__c,
             MRCNumber__c, MSP__c, Margin__c, Margin_vs_MSP__c, Material_Name__c, Material_No__c, Plant_No__c, Price_Condition__c, Price_Unit__c,
-             SAP_Contract_Number__c, Sales_Organization__c, Ship_To__c, Target_Margin__c, Volume_Unit__c, Cancellation_Reason_Label__c, 
-             Contact_Email__c, Contact_Name__c, OLF_Deal_Number__c, OTM__c, isOlfDeal__c, Rv_LastModifiedById__c, Rv_LastModifiedDate__c, Deal_Hour__c, 
+             SAP_Contract_Number__c, Sales_Organization__c, Ship_To__c, Target_Margin__c, Volume_Unit__c, Cancellation_Reason_Label__c,
+             Contact_Email__c, Contact_Name__c, OLF_Deal_Number__c, OTM__c, isOlfDeal__c, Rv_LastModifiedById__c, Rv_LastModifiedDate__c, Deal_Hour__c,
              Ship_To_Name__c, Sold_To_Name__c, Trigger_Master_Data__c from sht__C where Id IN :shtIds];
         RV_CreateSHTSAP.processStagingRecord(shtst,null);
     }
-        return 'staging records are created successfully';
+        return shtst[0].Name+' has been sent to GSAP again';
   }
-   
-  
+
+
     //Sampada Bhat 29/12/2021
     public class SHTPriceAndMarketMrcNoDisplayWrap{
         @AuraEnabled
@@ -2443,7 +2443,7 @@ public class rv_sht_CreateControllerLWC {
         public String location;
         @AuraEnabled
         public String locationCode;
-        @AuraEnabled 
+        @AuraEnabled
         public Decimal salesPrice;
         @AuraEnabled
         public Decimal onlineATP;
@@ -2522,7 +2522,7 @@ public class rv_sht_CreateControllerLWC {
         @AuraEnabled
         public string locationId;
         @AuraEnabled
-        //Added By Sampada.Bhat     
+        //Added By Sampada.Bhat
         public string locationCode;
         @AuraEnabled
         public string product;
@@ -2564,9 +2564,9 @@ public class rv_sht_CreateControllerLWC {
         public String poType;   //Rahul Sharma | PBI-702438 | Date - 29-Jan-2021 : new variable to show PO type.
         @AuraEnabled
         public Decimal otm;   //Sampada Bhat | Date - 14-Dec-2021 : new variable to sht
-        @AuraEnabled 
+        @AuraEnabled
         public Decimal salesPrice;//Sampada Bhat | Date - 14-Dec-2021 : new variable to sht
-       @AuraEnabled 
+       @AuraEnabled
         public Boolean salesPriceCheck; //Sampada Bhat
         @AuraEnabled
         public String spColor;
@@ -2610,7 +2610,7 @@ public class rv_sht_CreateControllerLWC {
         @AuraEnabled
         public string cancelMsg;
     }
-    public class MRCDataWrap{          
+    public class MRCDataWrap{
         @AuraEnabled
         public Id mrcId;
         @AuraEnabled
