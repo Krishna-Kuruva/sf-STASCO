@@ -2410,8 +2410,9 @@ public class rv_sht_CreateControllerLWC {
     @AuraEnabled
   public static String retrySHTDealtoGSAP(List<String> shtIds){
       system.debug('shtList::'+shtIds.size());
+      List<SHT__c> shtst = new List<SHT__c>();
       if(shtIds.size() > 0){
-        List<SHT__c> shtst = [Select Id, OwnerId, CreatedDate, IsDeleted, Name, Auto_Num__c, Cancellation_Reason__c, Contract_End_Date__c, Error__c,
+        shtst = [Select Id, OwnerId, CreatedDate, IsDeleted, Name, Auto_Num__c, Cancellation_Reason__c, Contract_End_Date__c, Error__c,
          Contract_Start__c, Customer__c, Grade__c, Product_Sub_Group__c, Handling_Type__c, Location__c, PO_Type__c, Transaction_Id__c,
          MRC_Number__c, MRC__c, PSP__c, Product_Catalogue__c, Product_Category__c, SHT_Contract_Number__c, SP_100L__c, Sales_Price__c, Sales_Type__c,
           Select__c, Sold_Price__c, Status__c, Tranche__c, Volume_CBM__c, Deal_Comment__c, BSP__c, Created_Time__c, Effective_Margin__c,
