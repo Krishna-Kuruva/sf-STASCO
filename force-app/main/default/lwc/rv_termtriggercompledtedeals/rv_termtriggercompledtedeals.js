@@ -583,7 +583,7 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
             shtIds :retryDeal
         }).then(GSAPResult =>{
             console.log('GSAPResult::'+JSON.stringify(GSAPResult));
-            //added by swarna as part of PBI 1659185
+            //added by swarna as part of PBI-1659185
             this.dispatchEvent(
                 new ShowToastEvent({
                 title: 'Success',
