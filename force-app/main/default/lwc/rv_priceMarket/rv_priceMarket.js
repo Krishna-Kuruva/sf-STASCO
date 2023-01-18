@@ -662,7 +662,7 @@ export default class Rv_PriceMarket extends LightningElement {
         }
         if(count == totalSize){
             isError=true;
-            msg='Please enter values for atleast one offer before saving!';
+            msg='Please enter values for at least one offer before saving!';
         }
         if(isError){
             this.isLoading = false;
