@@ -192,7 +192,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
     loadPMDeals(){
         var PMTemp = this.template.querySelector("c-rv_price-market");
         this.activeTab = 'TSFP_PM';
-        if(PMTemp!=null && PMTemp!=''){
+        if(PMTemp!=null && PMTemp!='' && PMTemp != undefined){
             console.log('Inside PMTemp -- this.parentMessage:'+JSON.stringify(this.parentMessage));
             this.template.querySelector("c-rv_price-market").recieveData(this.parentMessage);
         }
@@ -560,7 +560,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                          }
                                         //Surbhi-Start-PBI-1539864
                                         if((this.filteredMasterTriggerData1).length == 0){
-                                            alert('I am here');
+                                            //alert('I am here');
                                             this.renderCreateDealMasterTable = false;
                                             this.triggerDealEntrySHTDataAvailability = '';
                                         }

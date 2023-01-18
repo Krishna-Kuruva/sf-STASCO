@@ -98,7 +98,7 @@ export default class Rv_PriceMarket extends LightningElement {
         console.log('inside price market: Message : '+message);
     }
 
-    recieveData(message){
+    @api recieveData(message){
         this._onLoad = true;
         this.completedMasterTriggerSHTData = [];
         this.parentMessage = message;
@@ -106,6 +106,7 @@ export default class Rv_PriceMarket extends LightningElement {
         window.clearInterval(this.timerRef);
         window.localStorage.removeItem('startTimer');
         this.setTimer1();
+        if(message != undefined && message != null){
         if(message.eventType === 'search'){                               //'search' for search MRC and 'publish' for custom info section
             let filterObj = message.filterData; // for search MRC section
             console.log('at recieveData::'+JSON.stringify(filterObj));
@@ -126,6 +127,7 @@ export default class Rv_PriceMarket extends LightningElement {
                 this.mrcsAvailable = 'Please select TSFP PO Type to book the offers in Price & Market!';
             }
         }
+    }
     }
     getPM_MRCData(filterObj){
         if(filterObj.poType != 'TTTT' && filterObj.poType != 'TTTI'){
@@ -368,7 +370,9 @@ export default class Rv_PriceMarket extends LightningElement {
             const str = this.timer;
 
             const before_ = str.substring(0, str.indexOf(' '));
-
+            if(before_ >= 30){
+                before_ = 1
+            }
             //console.log(before_);
              this.timer = 30 - before_;
         }, 1000)
@@ -385,7 +389,7 @@ export default class Rv_PriceMarket extends LightningElement {
         //alert(sDisplay);
         if(sDisplay == '30 seconds'){
             //alert('sdsdsd'+sDisplay);
-            if(this.parentMessage['eventType'] == 'search'){
+            if(this.parentMessage != null && this.parentMessage['eventType'] == 'search'){
                 let msgdata = this.parentMessage.filterData;
                 this.getPM_MRCData(msgdata);
                 window.clearInterval(this.timerRef);
