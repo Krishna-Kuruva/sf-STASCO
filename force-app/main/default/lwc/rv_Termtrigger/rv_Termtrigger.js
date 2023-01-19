@@ -793,7 +793,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
           }
           if(count== totalSize || allTriggerRecords == [] || allTriggerRecords.length == 0 || allTriggerRecords == null || allTriggerRecords == undefined){
               isError=true;
-              msg='Please Enter Values for atleast one Deal before Saving!';
+              msg='Please Enter Values for at least one Deal before Saving!';
           }
          if(isError){
              this.isLoading = false;

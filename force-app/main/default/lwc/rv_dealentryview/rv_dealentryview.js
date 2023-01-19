@@ -585,7 +585,7 @@
          if(count== totalSize){
 		    this.isLoading = false;
              isError=true;
-             msg='Please Enter Values for atleast one Deal before Saving!';
+             msg='Please Enter Values for at least one Deal before Saving!';
          }
         if(isError){
 			this.isLoading = false;
