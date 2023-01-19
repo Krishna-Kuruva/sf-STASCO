@@ -73,11 +73,11 @@
                                     <thead>
                                         <tr class="slds-text-title_caps slds-line-height_reset">
 
-                                            <th class="putborderLeft putborderHeader  slds-color__background_gray-5"
+                                            <!--th class="putborderLeft putborderHeader  slds-color__background_gray-5"
                                                 scope="col">
                                                 <div class="slds-truncate">MRC NAME</div>
 
-                                            </th>
+                                            </th-->
                                             <th class="putborderLeft putborderHeader  slds-color__background_gray-5"
                                                 scope="col">
                                                 <div class="slds-truncate">PLANT NAME</div>
@@ -136,18 +136,18 @@
                                                 style="background-color: lightgrey;font-weight:900;">
                                                 {mrc.mrcNo}</td>
                                         </tr>
-                                        <!--template for:each={mrc.plants} for:item="cmPlant1" for:index="pIndex1">
-                                            <tr  key={cmPlant1.location} class="slds-hint-parent">
-                                                <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{cmPlant1.mrcNum}-{cmPlant1.mrcContract_Description}</td>
-                                            </tr>
-                                        </template-->
+                                        <!--template for:each={mrc.mrcNums} for:item="cmPlant1" for:index="pIndex1"-->
+                                        <tr  key={mrc.mrcNums} class="slds-hint-parent">
+                                            <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{mrc.mrcNums}</td>
+                                        </tr>
+                                    <!--/template-->
                                         <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex">
                                             <tbody class="bgGrey" data-plant={cmPlant.location} key={cmPlant.location}>
-                                                <tr  key={cmPlant.location} class="slds-hint-parent">
+                                                <!--tr  key={cmPlant.location} class="slds-hint-parent">
                                                     <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{cmPlant.mrcNum}-{cmPlant.mrcContract_Description}</td>
-                                                </tr>
+                                                </tr-->
                                                 <tr>
-                                                    <td data-label="mrcNum" rowspan={cmPlant.rowspan}>{cmPlant.mrcNum}</td>
+                                                    <!--td data-label="mrcNum" rowspan={cmPlant.rowspan}>{cmPlant.mrcNum}</td-->
                                                     <td data-label="PlantName" rowspan={cmPlant.rowspan}>{cmPlant.location}</td>
                                                     <td data-label="PlantId" rowspan={cmPlant.rowspan}>{cmPlant.locationCode}</td>
 

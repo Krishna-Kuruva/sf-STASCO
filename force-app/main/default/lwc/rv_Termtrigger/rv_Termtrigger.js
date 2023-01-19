@@ -425,12 +425,13 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                     newTriggerGroup.tranche = this.masterTriggerData.termTriggerWrapperList[key].tranche;
                                     newTriggerGroup.count=count;
 
-                                    if(groupPlantData.has(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Name+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c)){
-                                        groupPlantData.get(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Name+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c).push(newTriggerGroup);
+                                    if(groupPlantData.has(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c)){
+                                        groupPlantData.get(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c).push(newTriggerGroup);
                                     }else{
                                         let plantGroupList =[];
                                         plantGroupList=[newTriggerGroup];
-                                        groupPlantData.set(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Name+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c,plantGroupList);
+
+                                        groupPlantData.set(temp[key].triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+temp[key].triggerMasterData.Trigger_Month__c+temp[key].triggerMasterData.MRC_Number__r.Contract__c,plantGroupList);
                                         }
                                     count++;
                                     }
@@ -452,9 +453,10 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                         newMRCGroup.locationId = mrcData.triggerMasterData.MRC_Number__r.Plant__c;
                                         newMRCGroup.locationCode = mrcData.triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c;
                                         newMRCGroup.shipToNum = mrcData.triggerMasterData.MRC_Number__r.Ship_to_Number__c;
-                                        newMRCGroup.gradeGroup = groupPlantData.get(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Name+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c);
-                                        newMRCGroup.rowspan = groupPlantData.get(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Name+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c).length+1;
-                                        if(!plantNames.has(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Name+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c)){
+										newMRCGroup.triggerMonth = mrcData.triggerMasterData.Trigger_Month__c;
+                                        newMRCGroup.gradeGroup = groupPlantData.get(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c);
+                                        newMRCGroup.rowspan = groupPlantData.get(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c).length+1;
+                                        if(!plantNames.has(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c)){
                                             if(_groupMRCData.has(mrcData.triggerMasterData.Trigger_Month__c)){
                                                 _groupMRCData.get(mrcData.triggerMasterData.Trigger_Month__c).push(newMRCGroup);
                                             }
@@ -462,18 +464,44 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                                 let mrcGroupList = [newMRCGroup];
                                                 _groupMRCData.set(mrcData.triggerMasterData.Trigger_Month__c, mrcGroupList);
                                             }
-                                        plantNames.add(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Name+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c);
+                                        plantNames.add(mrcData.triggerMasterData.MRC_Number__r.Plant__r.Plant_Code__c+mrcData.triggerMasterData.Trigger_Month__c+mrcData.triggerMasterData.MRC_Number__r.Contract__c);
                                     }
                                     }
 
                                     console.log("Master Data in tt:",_groupMRCData);
 
                                     let _mrcArray = [];
+									let _groupMRCLinesItemsData = new Map();
                                     _groupMRCData.forEach((values,keys)=>{
                                         console.log(keys+'---'+values);
                                         let mrc = {};
                                         mrc.mrcNo = keys;
-                                        mrc.plants = values;
+										let palnts = values;
+                                        console.log('plants::',JSON.stringify(palnts));
+                                        palnts.forEach(eachPlants =>{
+                                            console.log('mrcNum::'+eachPlants.mrcNum);
+                                            if(eachPlants.triggerMonth === keys){
+                                                if(_groupMRCLinesItemsData.has(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth)){
+                                                    _groupMRCLinesItemsData.get(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth).push(eachPlants);
+                                                }
+                                                else{
+                                                    let eachPlantsLst = [eachPlants];
+                                                    _groupMRCLinesItemsData.set(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth, eachPlantsLst);
+                                                }
+                                            }
+                                        });
+                                        console.log(_groupMRCLinesItemsData);
+                                        console.log('_groupMRCLinesItemsData::'+JSON.stringify(_groupMRCLinesItemsData));
+                                        _groupMRCLinesItemsData.forEach((values,keys)=>{
+                                                console.log('keys::'+JSON.stringify(keys));
+                                                alert(keys+'---'+mrc.mrcNo+'---'+keys.includes(mrc.mrcNo));
+                                                if(keys.includes(mrc.mrcNo)){
+                                                    mrc.mrcNums = keys.substring(0,keys.length-5);;
+                                                    mrc.plants = values;
+                                                    console.log('values::'+JSON.stringify(values));
+                                                }
+                                        });
+                                        //mrc.plants = _groupMRCLinesItemsData;
                                         _mrcArray.push(mrc);
                                         });
                                         console.log('mrcArray in TT::',_mrcArray);
