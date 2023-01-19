@@ -2420,7 +2420,7 @@ public class rv_sht_CreateControllerLWC {
             MRCNumber__c, MSP__c, Margin__c, Margin_vs_MSP__c, Material_Name__c, Material_No__c, Plant_No__c, Price_Condition__c, Price_Unit__c,
              SAP_Contract_Number__c, Sales_Organization__c, Ship_To__c, Target_Margin__c, Volume_Unit__c, Cancellation_Reason_Label__c,
              Contact_Email__c, Contact_Name__c, OLF_Deal_Number__c, OTM__c, isOlfDeal__c, Rv_LastModifiedById__c, Rv_LastModifiedDate__c, Deal_Hour__c,
-             Ship_To_Name__c, Sold_To_Name__c, Trigger_Master_Data__c from sht__C where Id IN :shtIds];
+             Ship_To_Name__c, Sold_To_Name__c, Trigger_Master_Data__c from sht__C where  Name IN :shtIds];
         RV_CreateSHTSAP.processStagingRecord(shtst,null);
     }
         return shtst[0].Name+' has been sent to GSAP again';

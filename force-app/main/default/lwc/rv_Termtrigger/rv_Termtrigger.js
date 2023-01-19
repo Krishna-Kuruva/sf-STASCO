@@ -445,7 +445,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                         let mrcData = res_ponse[key];
                                         console.log('mrcData::',JSON.stringify(mrcData));
                                         let newMRCGroup = {};
-                                        newMRCGroup.mrcNum = '0'+mrcData.triggerMasterData.MRC_Number__r.Contract__c;
+                                        newMRCGroup.mrcNum = mrcData.triggerMasterData.MRC_Number__r.Contract__c;
                                         newMRCGroup.mrcLineItem = mrcData.triggerMasterData.MRC_Number__r.Name;
                                         newMRCGroup.mrcContract_Description= mrcData.triggerMasterData.MRC_Number__r.Contract_Description__c;
                                         newMRCGroup.location = mrcData.triggerMasterData.MRC_Number__r.Plant__r.Name;

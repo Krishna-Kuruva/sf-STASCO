@@ -571,13 +571,17 @@ export default class Rv_termtriggercompledtedeals extends LightningElement {
 
     }
 
-    resendDealtoGsap(){
+    resendDealtoGsap(event){
         let retryDeal = [];
-        for(var key in this.completedMasterTriggerSHTData){
+        /*for(var key in this.completedMasterTriggerSHTData){
             if(this.completedMasterTriggerSHTData[key].gsapError != undefined &&
                     this.completedMasterTriggerSHTData[key].gsapError != null){
                         retryDeal.push(this.completedMasterTriggerSHTData[key].shtRecordId);
             }
+        }*/
+        //added by swarna as part of PBI-1659185
+        if(event.currentTarget.dataset.id != null && event.currentTarget.dataset.id != undefined){
+            retryDeal.push(event.currentTarget.dataset.id);
         }
         retryDealinGSAP({
             shtIds :retryDeal
