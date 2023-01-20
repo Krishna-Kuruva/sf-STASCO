@@ -471,22 +471,23 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                     console.log("Master Data in tt:",_groupMRCData);
 
                                     let _mrcArray = [];
-									let _groupMRCLinesItemsData = new Map();
+									var _groupMRCLinesItemsData = new Map();
                                     _groupMRCData.forEach((values,keys)=>{
                                         console.log(keys+'---'+values);
                                         let mrc = {};
                                         mrc.mrcNo = keys;
-										let palnts = values;
+										var palnts = values;
                                         console.log('plants::',JSON.stringify(palnts));
                                         palnts.forEach(eachPlants =>{
                                             console.log('mrcNum::'+eachPlants.mrcNum);
                                             if(eachPlants.triggerMonth === keys){
-                                                if(_groupMRCLinesItemsData.has(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth)){
-                                                    _groupMRCLinesItemsData.get(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth).push(eachPlants);
+                                                var uniqueKey = eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth;
+                                                if(_groupMRCLinesItemsData.has(uniqueKey)){
+                                                    _groupMRCLinesItemsData.get(uniqueKey).push(eachPlants);
                                                 }
                                                 else{
-                                                    let eachPlantsLst = [eachPlants];
-                                                    _groupMRCLinesItemsData.set(eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth, eachPlantsLst);
+                                                    var eachPlantsLst = [eachPlants];
+                                                    _groupMRCLinesItemsData.set(uniqueKey, eachPlantsLst);
                                                 }
                                             }
                                         });
@@ -494,23 +495,20 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                         console.log('_groupMRCLinesItemsData::'+JSON.stringify(_groupMRCLinesItemsData));
                                         _groupMRCLinesItemsData.forEach((values,keys)=>{
                                                 console.log('keys::'+JSON.stringify(keys));
-                                                alert(keys+'---'+mrc.mrcNo+'---'+keys.includes(mrc.mrcNo));
                                                 if(keys.includes(mrc.mrcNo)){
                                                     mrc.mrcNums = keys.substring(0,keys.length-5);;
                                                     mrc.plants = values;
                                                     console.log('values::'+JSON.stringify(values));
                                                 }
                                         });
-                                        //mrc.plants = _groupMRCLinesItemsData;
-                                        _mrcArray.push(mrc);
+                                       _mrcArray.push(mrc);
                                         });
-                                        console.log('mrcArray in TT::',_mrcArray);
                                         console.log('mrcArray in TT::'+JSON.stringify(_mrcArray));
                                         this.filteredMasterTriggerData1 = _mrcArray;
-                                       // this.filteredMasterTriggerData_1 = _mrcArray;
+
                                         this.renderCreateDealMasterTable = true;
                                         console.log('json::',this.filteredMasterTriggerData1);
-                                       // alert(JSON.stringify(this.filteredMasterTriggerData1));
+
 //****************************************//end ******************************************************************************
 
 
@@ -969,8 +967,6 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                 });
                 console.log('Confirm Data 1:: '+JSON.stringify(saveConfirmSHTData));
                  this.isConfirmLoading = true;
-                 //this.completedMasterTriggerSHTData = [];
-                 //this.savedMasterTriggerSHTData = [];
                  this.savedMasterTriggerSHTData = [];
                  confirmTermTriggerDeal({
                              confirmTriggerList : saveConfirmSHTData})
@@ -993,13 +989,11 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                      }
                                      console.log('soldTomap::', soldTomap);
                                      this.soldToOptions = soldTomap;
-                                     //his.completedMasterTriggerSHTData = result;
+
                                      console.log('============'+JSON.stringify(this.completedMasterTriggerSHTData));
-                                     /*this.acc.Name = '';
-                                     this.acc.AccountNumber = '';
-                                     this.acc.Phone = '';*/
+
 									 //Surbhi-Start-PBI-1539864
-                                     //this.isConfirmLoading = false;
+
                                      //Surbhi-End-PBI-1539864
 									 this.dispatchEvent(
                                          new ShowToastEvent({
@@ -1016,26 +1010,22 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                 //Surbhi-Start-PBI-1539864
                                  this.renderSavedDealMasterTable = false;
                                  this.renderCreateDealMasterTable = false;
-                                // this.renderSavedDealMasterTable = true;
-                                //this.renderCreateDealMasterTable = true;
+
                                 //Surbhi-Start-PBI-1539864
                                  this.renderCmpltdDealMasterTable = true;
                                  //this.recieveData(this.parentMessage);
                                  console.log(JSON.stringify(result));
                                  console.log("result", this.message);
                                  //added as part of Bug-1261339
-                                  //  this.interval = setInterval(() => {
+
                                         //unnecessary line 1280873
                                         //this.loadSavedDeals();
                                         const objCompletedChild = this.template.querySelector('c-rv_termtriggercompledtedeals');
                                         objCompletedChild.onLoad();
-                                   // }, 10000);
+
                                     //end Bug-1261339
-                                 /*const objCompletedChild = this.template.querySelector('c-rv_termtriggercompledtedeals');
-                                    objCompletedChild.onLoad();*/
-                                 /*console.log(' After adding Record List ', result);
-                                 this.accountList = result;
-                                 console.log(' After adding Record List ', this.accountList);*/
+
+
                                  this.republishfilterSection();
                                  this.activeTab = 'TSFP_PM';
                                  this.customerName='';
@@ -1058,8 +1048,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
          }
 
          republishfilterSection(){
-          //  alert('in publish from TT'+this.customerName);
-            this.customerName = '';
+           this.customerName = '';
             const payload = {
                 eventType: 'deSelectedCustomer_clear_TT',
                 customerId: '',
@@ -1082,21 +1071,11 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                   this.startDateVal = dt;
                   var month = dt.getMonth();
                   var year = dt.getFullYear();
-                 // var lastDate = new Date(year, month + 1, 0);
                   var monthVal = month+1;
                   let formatted_date =  dt.getFullYear()+ "-" + monthVal + "-" +dt.getDate();
                     this.startDte= formatted_date;
                     this.endDte=formatted_date;
 
-                /* var date=new Date();
-                 date = date.toString();
-                 var first1 = date.substring(0,2);
-                 var second2 = date.substring(2,4);
-                 var third3= date.substring(4,8);
-                 var date1=third3+'-'+second2+'-'+first1;
-                 this.startDate=date1;
-                 console.log('in advance filter::'+this.startDate);
-                 this.endDate=date1;*/
              }
              if(event.target.name == 'createdOn'){
                  this.createdOn = event.detail.value;
@@ -1112,27 +1091,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
              }
          }
 
-         /*get createdOnOptions() {
-                 return [
-                     { label: 'TODAY', value: 'TODAY',selected: "true"},
-                     { label: 'LAST DEAL DATE', value: 'LAST_DEAL_DATE' },
-                     { label: 'THIS WEEK', value: 'THIS_WEEK' },
-                     { label: 'LAST WEEK', value: 'LAST_WEEK' },
-                     { label: 'LAST 3 WEEKS', value: 'LAST_3_WEEKS' }
-                 ];
-             }
-         get statusOptions() {
-                         return [
-                             { label: 'COMPLETED', value: 'Completed',selected: "true"},
-                             { label: 'CANCELLED', value: 'Cancelled' },
-                             { label: 'EXPIRED', value: 'Expired' }
-                         ];
-                     }
 
-
-         /*get createdByOptions() {
-             return this.items;
-         }*/
 
          handleCustomerName(event){
             this.customerName = event.detail;
