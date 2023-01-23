@@ -123,9 +123,10 @@ jobs:
               mkdir -p -- "$(dirname -- "$i")"
               touch -- "$i"
             done
+            sfdx force:source:manifest:create -p "${arrIN[0]}" --manifestname package.xml
             sfdx force:source:manifest:create -p "${arrIN[1]}" --manifestname postDestruct.xml
             echo "$(<postDestruct.xml)"
-            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy -p "${arrIN[0]}" --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --manifest package.xml --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
           elif [ -z "${arrIN[0]}" ] && [ ! -z "${arrIN[1]}" ]; then
             echo "INSIDE 3RD CONDITION"
             IFS=',' #setting comma as delimiter  
