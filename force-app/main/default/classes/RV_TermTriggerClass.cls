@@ -271,7 +271,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 
 
 		 }
-          triggerMasterData += ' ORDER BY MRC_Number__r.MRC_Grade_Sort__c ASC';
+          triggerMasterData += ' ORDER BY MRC_Number__r.Plant__r.Name, MRC_Number__r.MRC_Grade_Sort__c ASC';
 
 
 		System.debug('query:'+triggerMasterData);
