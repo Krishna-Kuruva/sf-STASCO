@@ -469,13 +469,14 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                     }
 
                                     console.log("Master Data in tt:",_groupMRCData);
-
+                                    let monthsArray = [];
                                     let _mrcArray = [];
 									var _groupMRCLinesItemsData = new Map();
                                     _groupMRCData.forEach((values,keys)=>{
                                         console.log(keys+'---'+values);
-                                        let mrc = {};
-                                        mrc.mrcNo = keys;
+                                        //let mrc = {};
+                                        //mrc.mrcNo = keys;
+                                        let mrc_no = keys;
 										var palnts = values;
                                         console.log('plants::',JSON.stringify(palnts));
                                         palnts.forEach(eachPlants =>{
@@ -491,17 +492,29 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                                 }
                                             }
                                         });
+                                        //monthsArray = ['jan'];
                                         console.log(_groupMRCLinesItemsData);
                                         console.log('_groupMRCLinesItemsData::'+JSON.stringify(_groupMRCLinesItemsData));
                                         _groupMRCLinesItemsData.forEach((values,keys)=>{
+                                            let mrc = {};
+
                                                 console.log('keys::'+JSON.stringify(keys));
-                                                if(keys.includes(mrc.mrcNo)){
-                                                    mrc.mrcNums = keys.substring(0,keys.length-5);;
+                                                if(keys.includes(mrc_no)){
+                                                    mrc.mrcNums = keys.substring(0,keys.length-4);;
                                                     mrc.plants = values;
-                                                    console.log('values::'+JSON.stringify(values));
+                                                    console.log('_mrcArray::'+mrc_no+'-------'+JSON.stringify(_mrcArray));
+
+                                                    console.log('monthsArray::'+JSON.stringify(monthsArray));
+                                                    if(monthsArray.length == 0 || !monthsArray.includes(mrc_no)){
+                                                         mrc.mrcNo = mrc_no;
+                                                    }
+
+                                                    monthsArray.push(values[0].triggerMonth);
+                                                    _mrcArray.push(mrc);
                                                 }
+
                                         });
-                                       _mrcArray.push(mrc);
+
                                         });
                                         console.log('mrcArray in TT::'+JSON.stringify(_mrcArray));
                                         this.filteredMasterTriggerData1 = _mrcArray;

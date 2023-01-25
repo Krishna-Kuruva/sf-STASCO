@@ -126,11 +126,13 @@
                                     </thead>
 
                                     <template for:each={filteredMasterTriggerData1} for:item="mrc" for:index="indx">
-                                        <tr key={mrc.mrcNo} data-mrc= {mrc.mrcNo}>
-                                            <td data-label="PlantName" key={mrc.mrcNo}
-                                                style="background-color: lightgrey;font-weight:900;">
-                                                {mrc.mrcNo}</td>
-                                        </tr>
+                                        <template if:true={mrc.mrcNo} >
+                                            <tr key={mrc.mrcNo} data-mrc= {mrc.mrcNo}>
+                                                <td data-label="PlantName" key={mrc.mrcNo}
+                                                    style="background-color: lightgrey;font-weight:900;">
+                                                    {mrc.mrcNo}</td>
+                                            </tr>
+                                        </template>
 
                                         <tr  key={mrc.mrcNums} class="slds-hint-parent">
                                             <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{mrc.mrcNums}</td>
