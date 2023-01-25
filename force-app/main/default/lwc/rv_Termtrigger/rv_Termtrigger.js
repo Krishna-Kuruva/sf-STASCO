@@ -474,8 +474,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
 									var _groupMRCLinesItemsData = new Map();
                                     _groupMRCData.forEach((values,keys)=>{
                                         console.log(keys+'---'+values);
-                                        //let mrc = {};
-                                        //mrc.mrcNo = keys;
+
                                         let mrc_no = keys;
 										var palnts = values;
                                         console.log('plants::',JSON.stringify(palnts));
@@ -492,7 +491,6 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                                 }
                                             }
                                         });
-                                        //monthsArray = ['jan'];
                                         console.log(_groupMRCLinesItemsData);
                                         console.log('_groupMRCLinesItemsData::'+JSON.stringify(_groupMRCLinesItemsData));
                                         _groupMRCLinesItemsData.forEach((values,keys)=>{
@@ -505,7 +503,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                                     console.log('_mrcArray::'+mrc_no+'-------'+JSON.stringify(_mrcArray));
 
                                                     console.log('monthsArray::'+JSON.stringify(monthsArray));
-                                                    if(monthsArray.length == 0 || !monthsArray.includes(mrc_no)){
+                                                    if(monthsArray.length === 0 || !monthsArray.includes(mrc_no)){
                                                          mrc.mrcNo = mrc_no;
                                                     }
 
