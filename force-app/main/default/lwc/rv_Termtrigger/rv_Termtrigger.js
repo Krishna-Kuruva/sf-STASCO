@@ -232,6 +232,7 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
      recieveData(message){
          console.log('recieve data in TT:::'+JSON.stringify(message));
          this.parentMessage = message;
+	     this.filteredMasterTriggerData1 = [];
          console.log('this.parentMessage:'+this.parentMessage);
             //Surbhi-Start-PBI-1539864
    			//console.log(message.eventType);
