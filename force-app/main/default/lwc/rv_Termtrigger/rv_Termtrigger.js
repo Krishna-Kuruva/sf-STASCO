@@ -644,7 +644,8 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
              else{
                 if(message.eventType == 'deSelectedCustomer_clear'){
                     console.log('Here is in else');
-                    this.activeTab='TSFP_PM';
+			//removed as part of BUG-1733181
+                    //this.activeTab='TSFP_PM';
                     this.customerName = 'CUSTOMER(S) : ';
                     this.parentMessage = null;
                 }
@@ -1039,7 +1040,8 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
 
 
                                  this.republishfilterSection();
-                                 this.activeTab = 'TSFP_PM';
+			 	//removed as part of BUG-1733181
+                                 //this.activeTab = 'TSFP_PM';
                                  this.customerName='';
                              })
                              .catch(error => {
