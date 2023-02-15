@@ -1,5 +1,4 @@
-public class OLF_Utility {
-    
+public class OLF_Utility {    
     public static String connectionErrMsg;
     public static Boolean global_overrideChecks = false;
 
