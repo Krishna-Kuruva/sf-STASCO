@@ -119,18 +119,29 @@ public class OLF_Utility {
     public static Map<String,Decimal> getCustomerSpecificVolume(Map<String, Decimal> atpGrdLocMap, Id accId, List<String> trancheList){
         List<Customer_Sales_Management__c> csmLst=new List<Customer_Sales_Management__c>();
         Map<String,Decimal> atpLocCustVolMap = new Map<String,Decimal>();
-        csmLst = [SELECT Customer__c,
+        //START | Surbhi | Date - 16-12-2022 | PBI - 1590609
+        String strQuery = 'SELECT Customer__c,Plant__c,Plant_Code__c,Product_Category__c,Tranche__c,Sales_CBM__c'+
+                          ' FROM Customer_Sales_Management__c WHERE Tranche__c IN :trancheList';
+        if(accId != null){
+           strQuery += ' AND Customer__c = :accId'; 
+        }
+        System.debug('strQuery ::' +strQuery);
+        csmLst = Database.query(strQuery);
+        //END | Surbhi | Date - 16-12-2022 | PBI - 1590609
+       //START | Surbhi | Date - 16-12-2022 | PBI - 1590609 | Commented below query
+       /* csmLst = [SELECT Customer__c,
                          Plant__c,
                          Plant_Code__c,
                          Product_Category__c,
                          Tranche__c,
                          Sales_CBM__c FROM Customer_Sales_Management__c WHERE Customer__c =: accId AND 
-                                                                              Tranche__c IN: trancheList];
-    //END | Rahul Sharma | Date - 17-Mar-2020 : Updated method parameters to take account Id instead of Account object
+                                                                              Tranche__c IN: trancheList]; */
+       //End | Surbhi | Date - 16-12-2022 | PBI - 1590609 | Commented 
+       //END | Rahul Sharma | Date - 17-Mar-2020 : Updated method parameters to take account Id instead of Account object
         if(csmLst.size()>0){
             for(Customer_Sales_Management__c csm :csmLst){
                 atpLocCustVolMap.put(csm.Plant_Code__c+csm.Product_Category__c+csm.Tranche__c, csm.Sales_CBM__c); 
-    //END | Rahul Sharma | Date - 27-Jan-2021 : Updated logic to fetch ATP volume based on tranche.
+        //END | Rahul Sharma | Date - 27-Jan-2021 : Updated logic to fetch ATP volume based on tranche.
             }   
         }
         for(string plantGrd : atpGrdLocMap.keyset()){
@@ -141,7 +152,7 @@ public class OLF_Utility {
         }
         return atpGrdLocMap;
     }
-    
+
     //START | Rahul Sharma | Date - 30-Oct-2020 : Updated logic to check if the account is eligible for the given tranche.
     public static List<Account> queryForCustomerDetail(String customerEmail, String tranche){
         //START | Rahul Sharma | Date - 16-March-2020 : Updated query and record type
