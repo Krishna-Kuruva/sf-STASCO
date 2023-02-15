@@ -125,7 +125,7 @@ public class OLF_Utility {
         if(accId != null){
            strQuery += ' AND Customer__c = :accId'; 
         }
-        System.debug('strQuery ::' +strQuery);
+        System.debug('strQuery ::' +strQuery);        
         csmLst = Database.query(strQuery);
         //END | Surbhi | Date - 16-12-2022 | PBI - 1590609
        //START | Surbhi | Date - 16-12-2022 | PBI - 1590609 | Commented below query
