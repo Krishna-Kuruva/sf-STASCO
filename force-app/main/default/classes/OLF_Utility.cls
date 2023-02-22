@@ -1,4 +1,5 @@
-public class OLF_Utility {    
+public class OLF_Utility {
+    
     public static String connectionErrMsg;
     public static Boolean global_overrideChecks = false;
 
@@ -123,8 +124,8 @@ public class OLF_Utility {
                           ' FROM Customer_Sales_Management__c WHERE Tranche__c IN :trancheList';
         if(accId != null){
            strQuery += ' AND Customer__c = :accId'; 
-        }        
-        System.debug('strQuery ::' +strQuery);        
+        }
+        System.debug('strQuery ::' +strQuery);
         csmLst = Database.query(strQuery);
         //END | Surbhi | Date - 16-12-2022 | PBI - 1590609
        //START | Surbhi | Date - 16-12-2022 | PBI - 1590609 | Commented below query
