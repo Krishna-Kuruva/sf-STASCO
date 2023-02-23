@@ -1030,12 +1030,13 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                  console.log(JSON.stringify(result));
                                  console.log("result", this.message);
                                  //added as part of Bug-1261339
-
+                                //time interval added as a part of PBI-1684386 (RE: INC7536790)
+                                this.interval=setTimeout(() => {
                                         //unnecessary line 1280873
                                         //this.loadSavedDeals();
                                         const objCompletedChild = this.template.querySelector('c-rv_termtriggercompledtedeals');
                                         objCompletedChild.onLoad();
-
+                                }, 5000);
                                     //end Bug-1261339
 
 
