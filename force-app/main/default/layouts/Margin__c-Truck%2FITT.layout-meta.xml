@@ -87,7 +87,7 @@
                 <behavior>Edit</behavior>
                 <field>Fixed_Surcharge_GTL_B0__c</field>
             </layoutItems>
-        </layoutColumns>
+        
          <!--added by Swarna PBI-PBI1659161-->
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -106,6 +106,7 @@
                 <field>Target_Mgn_GTL_B7__c</field>
             </layoutItems>
             <!--end PBi-PBI1659161-->
+        </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
