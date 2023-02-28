@@ -30,6 +30,11 @@
                 <default>false</default>
                 <label>GTL B0</label>
             </value>
+            <value>
+                <fullName>GTL B7</fullName>
+                <default>false</default>
+                <label>GTL B7</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
