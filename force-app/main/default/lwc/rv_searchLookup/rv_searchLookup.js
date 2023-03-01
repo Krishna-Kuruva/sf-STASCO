@@ -174,8 +174,8 @@ export default class SearchComponent extends LightningElement{
         });
         this.dispatchEvent(selectedEvent);
     }
-
-    handleClose(){
+    //added api as part of PBI-1439256
+    @api handleClose(){
         this.selectedRecord = undefined;
         this.searchResult  = undefined;
         const selectedEvent = new CustomEvent('lookup', {

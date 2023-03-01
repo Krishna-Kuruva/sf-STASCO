@@ -1,6 +1,6 @@
-import {LightningElement, track, wire} from 'lwc';
+import {LightningElement, track, wire,api} from 'lwc';
 import {getObjectInfo} from 'lightning/uiObjectInfoApi';
-import {publish, MessageContext} from 'lightning/messageService';
+import {publish, MessageContext,subscribe,APPLICATION_SCOPE} from 'lightning/messageService';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import searchFilterChannel from '@salesforce/messageChannel/Rv_DiPublishSearchFilter__c';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
@@ -124,7 +124,38 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
         this.trancheVal = 'Prompt';
 		this.tranche = 'ATP1';					  
+        //added by swarna
+        this.subscribeToMessageChannel();
     }
+
+    /*added by swarna */
+    subscribeToMessageChannel(){
+        if(!this.subscription && this.messageContext != null){
+             this.subscription = subscribe(
+                 this.messageContext,
+                 searchFilterChannel,
+                 (message) => this.publishCustomerDeSelectMessage1(message),
+                 {
+                     scope: APPLICATION_SCOPE
+                 }
+             );
+         }
+     }
+
+     publishCustomerDeSelectMessage1(message){
+         console.log('****',message);
+         if(message.eventType == 'deSelectedCustomer_clear' || message.eventType == 'deSelectedCustomer_clear_TT'){
+             this.clearAllFilters();
+             this.customerRecId= "";
+             if(this.template.querySelector('c-rv_search-lookup') != null){
+                 this.template.querySelector('c-rv_search-lookup').handleClose();
+             }else{
+                     this.inputMRCVal= '';
+                     this.handleDeselectMrc();
+                }
+         }
+     }
+     //end
 
     addDaysToDate(date, days){
         var someDate = new Date(date);
@@ -427,8 +458,13 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             searchFilterChannel,
             payload
         );
+         //INC6439788 - fix
+        this.startDateVal = new Date().toISOString().slice(0, 10);
         this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
+        this.template.querySelector(".trancheSel").classList.add('slds-hide');
+        this.template.querySelector(".trancheSel").classList.remove('slds-show');
+        this.clearAllFilters();
     }
 
     //Handle input change on MRC search bar.
@@ -932,6 +968,12 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
 			this.validMRC_Check = true;	
             this.retailSelectedMix = false;
             this.retailMix = false;	
+            this.igoSelected = true;
+            this.agoSelected = true;
+            this.mogasSelected = true;
+            this.igo = true;
+            this.mogas = true;
+            this.ago = true;
         //this.startDateVal = '';
         //this.endDateVal = '';
     }
