@@ -278,13 +278,13 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                          this.filteredMasterTriggerData1 = [];
                                          this.renderCreateDealMasterTable = true;
                                         //Surbhi-Start-PBI-1539864
-                                        if(this.isConfirmTriggerSavedDeal || this.isCancelTriggerSavedDeal || this.isCancelTriggerCompletedDeal){
+                                       /* if(this.isConfirmTriggerSavedDeal || this.isCancelTriggerSavedDeal || this.isCancelTriggerCompletedDeal){
                                             this.renderCreateDealMasterTable = false;
                                         }
                                         //setting to its default value
                                         this.isConfirmTriggerSavedDeal = false;
                                         this.isCancelTriggerSavedDeal = false;
-                                        this.isCancelTriggerCompletedDeal = false;
+                                        this.isCancelTriggerCompletedDeal = false; */
                                         //Surbhi-End-PBI-1539864
                                           if(data.hasEditAccess ===  false){
                                             this.isDisabled = true;
@@ -518,7 +518,16 @@ import getTriggerSavedDeal from '@salesforce/apex/RV_TermTriggerClass.getTrigger
                                         console.log('mrcArray in TT::'+JSON.stringify(_mrcArray));
                                         this.filteredMasterTriggerData1 = _mrcArray;
 
-                                        this.renderCreateDealMasterTable = true;
+                                       // this.renderCreateDealMasterTable = true;
+			               //Surbhi-Start-PBI-1539864
+                                        if(this.isConfirmTriggerSavedDeal || this.isCancelTriggerSavedDeal || this.isCancelTriggerCompletedDeal){
+                                            this.renderCreateDealMasterTable = false;
+                                        }
+                                        //setting to its default value
+                                        this.isConfirmTriggerSavedDeal = false;
+                                        this.isCancelTriggerSavedDeal = false;
+                                        this.isCancelTriggerCompletedDeal = false;
+                                        //Surbhi-End-PBI-1539864
                                         console.log('json::',this.filteredMasterTriggerData1);
 
 //****************************************//end ******************************************************************************
