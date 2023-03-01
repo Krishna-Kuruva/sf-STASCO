@@ -190,9 +190,9 @@
 
         String triggerMasterData = 'SELECT Id, Name,Sold_to_Name__c,Sold_to_Name__r.Name, Sold_to_Number__c, MRC_Number__r.Contract_Description__c, MRC_Number__r.Name,MRC_Number__r.Contract__c, MRC_Number__r.Material_Description__c, MRC_Number__r.Material_Name__c, MRC_Number__r.Product__r.Name, MRC_Number__r.Ship_to_Number__c, '+
                 ' MRC_Number__r.Mode_Of_Transport__c,MRC_Number__r.PO_Type__c,MRC_Number__r.Plant__r.Name,MRC_Number__r.Plant__r.Plant_Code__c,MRC_Number__r.Handling_Type__c,Monthly_volume__c, Trigger_Month__c, Trigger_Year__c,MRC_Number__r.Shipping_Condition__c, '+
-                ' Min_Trigger_Volume__c, Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_triggers__c, Remaining_trigger_volume__c FROM RV_Trigger_Master_Data__c ';
+                ' Min_Trigger_Volume__c, Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_triggers__c, Remaining_trigger_volume__c FROM RV_Trigger_Master_Data__c  Where MRC_Number__r.Active__c = true ';
         if(!String.isBlank(poType)){
-			triggerMasterData+=' where MRC_Number__r.PO_Type__c =: poType';
+			triggerMasterData+=' and MRC_Number__r.PO_Type__c =: poType';
         }
         if(!String.isBlank(soldToAccId)) {
           triggerMasterData+=' And Sold_to_Name__c =:soldToAccId';
