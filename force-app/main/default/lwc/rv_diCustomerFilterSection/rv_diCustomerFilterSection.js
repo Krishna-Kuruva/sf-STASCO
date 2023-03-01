@@ -1,13 +1,13 @@
 import {LightningElement, track, wire} from 'lwc';
 import {getObjectInfo} from 'lightning/uiObjectInfoApi';
-import {publish, MessageContext} from 'lightning/messageService';
+import {publish, MessageContext,subscribe,APPLICATION_SCOPE} from 'lightning/messageService';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import searchFilterChannel from '@salesforce/messageChannel/Rv_DiPublishSearchFilter__c';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import getFilterData from '@salesforce/apex/RV_DiSearchController.searchRelatedMRCs';
 import searchMrcHeaders from '@salesforce/apex/RV_DiSearchController.searchMrcHeader';
 import saveFilterData from '@salesforce/apex/RV_DiSearchController.saveCustomerFilter';
-import getNegotiationData from '@salesforce/apex/RV_DiSearchController.getNegotiationsData';						   
+import getNegotiationData from '@salesforce/apex/RV_DiSearchController.getNegotiationsData';
 import getNegotiationCustMrcData from '@salesforce/apex/RV_DiSearchController.getNegotiationsCustMrcData';
 import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 import TickerSymbol from '@salesforce/schema/Account.TickerSymbol';
@@ -17,7 +17,7 @@ import ApexClassErrorLabel from '@salesforce/label/c.RV_ErrorMessagesApexClassAc
 
 
 export default class Rv_diCustomerFilterSection extends LightningElement {
-    
+
     //Customer search var---
     customerRecId = '';
     customerFilter = 'Has_MRC__c = true AND (Rv_AT01_Deletion_Flag__c = false OR Rv_DE01_Deletion_Flag__c = false)';
@@ -34,7 +34,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     //Ship To dropdown variables
     shipToNumOptions;
     shipToNumVal;
-				  
+
     //MOT dropdown variables
     motOptions;
     motVal = [];
@@ -51,7 +51,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     retailMix = false;
 	ago = true;
     igo = true;
-    mogas = true;			 
+    mogas = true;
     //PO Type dropdown variables
     poTypeOptions;
     poTypeVal = '';
@@ -86,20 +86,20 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     searchResult;
     tranche1EndDate;
     trancheVal;
-	tranche;		
+	tranche;
     energyTax;
     //contract duration variable
     contractDuration;
-	durationError = false;					   
-	searchBtn = false;		
-        		   
+	durationError = false;
+	searchBtn = false;
+
     endDateDisabled = false;
 	customerName;
-								 
-			   
 
-							 
-    //Energy Tax Option 
+
+
+
+    //Energy Tax Option
     /*get energyTaxOptions(){
         return [
             {label: 'Taxed', value: 'Taxed'},
@@ -123,26 +123,57 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
         this.trancheVal = 'Prompt';
-		this.tranche = 'ATP1';					  
+		this.tranche = 'ATP1';
+        //added by swarna
+        this.subscribeToMessageChannel();
     }
+
+    /*added by swarna */
+    subscribeToMessageChannel(){
+        if(!this.subscription && this.messageContext != null){
+             this.subscription = subscribe(
+                 this.messageContext,
+                 searchFilterChannel,
+                 (message) => this.publishCustomerDeSelectMessage1(message),
+                 {
+                     scope: APPLICATION_SCOPE
+                 }
+             );
+         }
+     }
+
+     publishCustomerDeSelectMessage1(message){
+         console.log('****',message);
+         if(message.eventType == 'deSelectedCustomer_clear' || message.eventType == 'deSelectedCustomer_clear_TT'){
+             this.clearAllFilters();
+             this.customerRecId= "";
+             if(this.template.querySelector('c-rv_search-lookup') != null){
+                 this.template.querySelector('c-rv_search-lookup').handleClose();
+             }else{
+                     this.inputMRCVal= '';
+                     this.handleDeselectMrc();
+                }
+         }
+     }
+     //end
 
     addDaysToDate(date, days){
         var someDate = new Date(date);
-        someDate.setDate(someDate.getDate() + parseInt(days)); 
+        someDate.setDate(someDate.getDate() + parseInt(days));
         var dateFormated = someDate.toISOString().substring(0,10);
         console.log('line 120:'+dateFormated);
         return dateFormated;
     }
     calculateDaysDiff(endDate, startDate){
         //const diffTime = Math.abs(new Date(this.endDateVal) - new Date(this.startDateVal));
-		if(startDate != null && startDate != undefined && endDate != null && endDate != undefined){		   
+		if(startDate != null && startDate != undefined && endDate != null && endDate != undefined){
 			const diffTime = Math.abs(new Date(endDate) - new Date(startDate));
-			const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+			const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 			console.log(diffDays + " days");
-			this.durationError = false;							   
+			this.durationError = false;
             if(endDate >= startDate){
                 this.searchBtn = false;
-            }			
+            }
             return diffDays;
 		}
 		else if(startDate == null && endDate == null ){
@@ -161,8 +192,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.searchBtn = false;
             //Please enter date format as [DD.MM.YYYY] OR [DDMMYYYY] .
             return 'Please enter end date format as [DD/MM/YYYY]';
-        }																			
-		
+        }
+
 	}
     calculateDays(){
         console.log('In Calculate Days:'+this.startDateVal+'<--->'+this.tranche1EndDate+'**'+new Date());
@@ -170,14 +201,14 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         if(this.startDateVal < todaysDate.toISOString().substring(0,10)){
             this.endDateVal = todaysDate.toISOString().substring(0,10);
             this.trancheVal = 'Prompt';
-			this.tranche = 'ATP1';					  
+			this.tranche = 'ATP1';
             this.tranche1EndDate = this.endDateVal;
         }
         if(this.startDateVal > this.tranche1EndDate){
             this.endDateVal = this.addDaysToDate(this.startDateVal,13);
             this.trancheVal = 'Flex1';
-			this.tranche = 'ATP2';					  
-            
+			this.tranche = 'ATP2';
+
         }
         console.log('In Calculate Days Flex2:'+new Date());
         var flex2date = this.addDaysToDate(new Date(),28);
@@ -187,7 +218,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         if(parseInt(ddiff) > 30){
            this.endDateVal = this.addDaysToDate(this.startDateVal,15);
            this.trancheVal = 'Flex2';
-			this.tranche = 'ATP3';					 
+			this.tranche = 'ATP3';
         }
         this.dateDifferenceInDays();
     }
@@ -218,20 +249,20 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     //Get filter data based on Account Name for MRC Name search string.
     @wire(getFilterData, {acctId: '$customerRecId', mrcHeadStr: '$mrcHeader'})
     setFilterData(result){
-			 
+
 
         this.searchResult = result;
         const {data, error} = result;
         if(data){
             console.log('Data: '+this.customerRecId+'--'+JSON.stringify(data));
-			 
+
 			if(data != null && data.mrcNoList != null && data.mrcNoList.length > 0){
                 this.validMRC_Check = true;
                   this.getNegotinCustMrcData();
-												   
+
              }else{
                 this.validMRC_Check = false;
-				
+
             }
             if(this.customerRecId){
                 this.setPrimaryFilters(data);
@@ -285,7 +316,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
 
        }
    }
-   
+
    checkmrcnumber(event){
        //alert(event.detail.value);
        this.inputMRCVal = event.detail.value;
@@ -300,19 +331,19 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
        }else if((this.inputMRCVal).length == 0){
             this.handleDeselectMrc();
        }
-       
+
        //alert('this.inputMRCVal::'+(this.inputMRCVal).length);
        if((this.inputMRCVal).length > 0){
             this.handleSelectMrc(event);
        }
-       
-			  
-			
-				   
 
-		  
 
-	
+
+
+
+
+
+
    }
 
    validateMRCNumberInput(){
@@ -336,7 +367,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         })
         .then(result => {
             console.log('result::'+result);
-			
+
         })
         .catch(error => {
             console.error('Error: '+ JSON.stringify(error));
@@ -348,22 +379,22 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                         eventType: 'publish',
                         customerId: this.customerRecId,
                         mrcId: this.mrcHeader
-        };							 
-					  
+        };
+
         publish(
-            this.messageContext, 
+            this.messageContext,
             searchFilterChannel,
             payload
         );
     }
 
     publishSearchFilter(filterObj){
-											  
+
         const payload = {
                         eventType: 'search',
                         filterData: filterObj};
         publish(
-            this.messageContext, 
+            this.messageContext,
             searchFilterChannel,
             payload
         );
@@ -374,7 +405,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.template.querySelector('rv_search-lookup').handleKeyPress(event.target.value);
         }
     }
-    
+
     handleLookup(event){
         this.energyTax = false;
         let selectedRec = event.detail.data;
@@ -390,22 +421,22 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         if(selectedRec){
             if(selectedRec.currentRecordId == 'Account'){
                 if(selectedRec.record){
-																					   
+
                     console.log('AccountRecordId:'+selectedRec.record.Id);
                     this.customerRecId = selectedRec.record.Id;
 					this.customerName = selectedRec.record.Name;
                     this.showMrcSearch = false;
                     this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
-				   
+
                     this.getNegotinCustMrcData();
 					//this.getNegotiationDetails();
      //this.showSoldToSearch = false;//SK
-                    
+
                     this.publishCustomerId();
                 }
                 else{
                     this.showMrcSearch = true;
-                    this.endDateVal =this.addDaysToDate(this.startDateVal, 14); 
+                    this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
                     this.customerRecId = '';
                     this.clearAllFilters();
                     this.publishCustomerDeSelectMessage();
@@ -420,10 +451,10 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                         eventType: 'deSelectedCustomer',
                         customerId: this.customerRecId,
                         mrcId: this.mrcHeader
-        };							 
-					  
+        };
+
         publish(
-            this.messageContext, 
+            this.messageContext,
             searchFilterChannel,
             payload
         );
@@ -435,14 +466,14 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     handleMrcInput(event){
         let searchStr = event.target.value;
         this.mrcSearchStr = searchStr;
-        
+
     }
 
     //Handle MRC select event.
     handleSelectMrc(event){
         console.log('@292');
-							 
-											  
+
+
         let mrcNo = this.inputMRCVal;
         console.log('MRC Select: '+mrcNo);
         this.showCustomerSearch = false;
@@ -450,22 +481,22 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.mrcSearchOpts = undefined;
         this.mrcHeader = mrcNo;
         this.poTypeRow2 = true;
-        //this.depotSelectedVal=[]; 
+        //this.depotSelectedVal=[];
         this.energyTax = false;//SK
        // this.showMrcSearch = false;
         console.log('MRC header: '+this.mrcHeader);
-		this.publishCustomerId();	
+		this.publishCustomerId();
          var stCmp = this.template.querySelector(".stDate");
         stCmp.setCustomValidity("") ;
         stCmp.reportValidity();
 
         var endDateCmp = this.template.querySelector(".edDate");
         endDateCmp.setCustomValidity("") ;
-        endDateCmp.reportValidity();					 
+        endDateCmp.reportValidity();
     }
 
     handleDeselectMrc(){
-		
+
         this.showCustomerSearch = true;
        // this.showSoldToSearch = true;//SK
         this.poTypeRow2 = false;
@@ -476,7 +507,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.publishCustomerDeSelectMessage();
         this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
-													 
+
     }
 
     handleValueChange(event){
@@ -491,7 +522,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }
             console.log('MRC Array'+mrcarray);
             this.mrcVal = mrcarray;
-       
+
     }
     handleshipToValueChange(event){
         console.log('***from multi select shipTo dropdown::'+JSON.stringify(event.detail));
@@ -516,18 +547,18 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }
             console.log('Depot array'+depotarray.toString());
             this.depotVal = depotarray;
-			this.depotSelectedVal = this.depotVal; 
-       
+			this.depotSelectedVal = this.depotVal;
+
     }
 
     //Handle input change in filter fields
     handleChange(event){
         if(event.target.name == 'mrcFilter'){
             this.mrcVal = event.target.value;
-        }  
-        if(event.target.name == 'shipToFilter')  
+        }
+        if(event.target.name == 'shipToFilter')
             this.shipToNumVal = event.target.value;
-        if(event.target.name == 'poTypeFilter'){  
+        if(event.target.name == 'poTypeFilter'){
             this.poTypeVal = event.target.value;
             this.setTrancheWithPoType();
             console.log('this.poTypeVal in handlechange::'+this.poTypeVal);
@@ -546,17 +577,17 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 this.endDateVal = todaysDate.toISOString().substring(0,10);
             }
             diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);
-                
+
             if(diff<=14){
                 this.trancheVal = 'Prompt';
-                this.tranche = 'ATP1';					  
+                this.tranche = 'ATP1';
             }else if(diff>14 && diff <=28){
                 this.trancheVal = 'Flex1';
-                this.tranche = 'ATP2';					  
+                this.tranche = 'ATP2';
             }else if(diff>28){
                 this.trancheVal = 'Flex2';
-                this.tranche = 'ATP3';					  
-            } 
+                this.tranche = 'ATP3';
+            }
             this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
         }
 
@@ -565,10 +596,10 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             let date1 = new Date(this.startDateVal);
             let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
             lastDay.setDate(lastDay.getDate() + 1);
-           
+
             let currentMonth = parseInt((date1.getMonth()+1));
             let endDate = this.addDaysToDate(this.startDateVal, 14);
-                                                                                             
+
             let endDateMonth = parseInt(endDate.substring(5, 7));
 
             let todaysDate = new Date();
@@ -579,36 +610,36 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     this.endDateVal = todaysDate.toISOString().substring(0,10);
                 }
                 else if(this.startDateVal > todaysDate.toISOString().substring(0,10)){
-                    this.endDateVal = this.addDaysToDate(this.startDateVal, 13);    
+                    this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
                 }
                 else if(this.startDateVal == todaysDate.toISOString().substring(0,10)){
-                    this.endDateVal = this.addDaysToDate(this.startDateVal, 14);    
-                }                                
+                    this.endDateVal = this.addDaysToDate(this.startDateVal, 14);
+                }
                 else if(this.startDateVal != null){
                     this.endDateVal = endDate;
                 }
             }
-            diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);                
+            diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);
             if(diff<=14){
                 this.trancheVal = 'Prompt';
-                this.tranche = 'ATP1';					  
+                this.tranche = 'ATP1';
             }else if(diff>14 && diff <=28){
                 this.trancheVal = 'Flex1';
-                this.tranche = 'ATP2';					  
+                this.tranche = 'ATP2';
             }else if(diff>28){
                 this.trancheVal = 'Flex2';
-                this.tranche = 'ATP3';					  
+                this.tranche = 'ATP3';
             }
             this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
         }
-        //PBI: 1375726 END			
+        //PBI: 1375726 END
         }
-						  
-		 
-        if(event.target.name == 'depotFilter')  
+
+
+        if(event.target.name == 'depotFilter')
             this.depotVal = event.target.value;
             console.log('this.depotVal in handlechange:::'+ this.depotVal);
-        if(event.target.name == 'salesOrgFilter')  
+        if(event.target.name == 'salesOrgFilter')
             this.salesOrgVal = event.target.value;
             console.log('this.salesOrgVal in handlechange:::'+ this.salesOrgVal);
         if(event.target.name == 'motFilter'){
@@ -622,11 +653,11 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }
             }
             this.motArr = motArr;
-            console.log('this.motarr in handlechange:::'+ this.motArr);  
+            console.log('this.motarr in handlechange:::'+ this.motArr);
             //this.motVal = this.motArr;
         }
         if(event.target.name == 'productFilter')
-           this.productVal = event.target.value; 
+           this.productVal = event.target.value;
 		if (event.target.name == 'ago') {
             console.log('AGO:: '+event.target.label + '---' + event.detail.label);
             this.ago = event.target.checked;
@@ -654,9 +685,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 this.productVal = '';
             }
         }
-        if(event.target.name == 'retailMix')  
-            this.retailMix = event.target.checked; 
-        if(event.target.name == 'energyTaxFilter')  
+        if(event.target.name == 'retailMix')
+            this.retailMix = event.target.checked;
+        if(event.target.name == 'energyTaxFilter')
             this.energyTaxVal = event.target.value;
         if(event.target.name == 'olfMrcOnly')  {
             this.olfOnly = event.target.checked;
@@ -664,21 +695,21 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         }
     //SK
         if(event.target.name == 'startDate')  {
-            //alert(this.startDateVal);// = event.target.value; 
+            //alert(this.startDateVal);// = event.target.value;
             let startDate = event.target.value;
 
-			//Added for 1304836													  
+			//Added for 1304836
 			if(startDate < new Date().toISOString().slice(0, 10)){
                  this.endDateVal = new Date().toISOString().slice(0, 10);
-            }									
-																		 
-											   
+            }
+
+
 			let endDateMonth;
-            let diff;   
+            let diff;
             let date1 = new Date(startDate);
             let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
             lastDay.setDate(lastDay.getDate() + 1);
-            
+
             if(this.poTypeVal == 'TSFP' || this.poTypeVal == ''){
                 this.startDateVal = event.target.value;
                 //added by swarna BUG-1264522
@@ -686,11 +717,11 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
                     this.endDateVal = todaysDate.toISOString().substring(0,10);
                 }else if(this.startDateVal > todaysDate.toISOString().substring(0,10)){
-                    this.endDateVal = this.addDaysToDate(this.startDateVal, 13);    
+                    this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
                 }
                 else if(this.startDateVal == todaysDate.toISOString().substring(0,10)){
-                    this.endDateVal = this.addDaysToDate(this.startDateVal, 14);    
-                } 
+                    this.endDateVal = this.addDaysToDate(this.startDateVal, 14);
+                }
                 else if(this.startDateVal != null){
                    // this.endDateVal = this.addDaysToDate(startDate, 13);
                    //changing date diff to 14 as per US1304836
@@ -699,23 +730,23 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 //end BUG-1264522
                 //end BUG-1264522
                 diff = this.calculateDaysDiff(this.endDateVal,startDate);
-                
+
                 if(diff<=14){
                     this.trancheVal = 'Prompt';
-					this.tranche = 'ATP1';					  
+					this.tranche = 'ATP1';
                 }else if(diff>14 && diff <=28){
                     this.trancheVal = 'Flex1';
-					this.tranche = 'ATP2';					  
+					this.tranche = 'ATP2';
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
-					this.tranche = 'ATP3';					  
+					this.tranche = 'ATP3';
                 }
                 this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
             } else if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI') {
                 this.startDateVal = event.target.value;
                 let currentMonth = parseInt((date1.getMonth()+1));
                 let endDate = this.addDaysToDate(startDate, 14);
-																								 
+
                 let endDateMonth = parseInt(endDate.substring(5, 7));
                 //added by swarna BUG-1264522
                 let todaysDate = new Date();
@@ -725,37 +756,37 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
                         this.endDateVal = todaysDate.toISOString().substring(0,10);
                     }else if(this.startDateVal > todaysDate.toISOString().substring(0,10)){
-                        this.endDateVal = this.addDaysToDate(this.startDateVal, 13);    
+                        this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
                     }
                     else if(this.startDateVal == todaysDate.toISOString().substring(0,10)){
-                        this.endDateVal = this.addDaysToDate(this.startDateVal, 14);    
-                    } 
+                        this.endDateVal = this.addDaysToDate(this.startDateVal, 14);
+                    }
                     else if(this.startDateVal != null){
                         this.endDateVal = endDate;
                     }
                 }
                 //end BUG-1264522
                 diff = this.calculateDaysDiff(this.endDateVal,startDate);
-                
+
                  if(diff<=14){
                     this.trancheVal = 'Prompt';
-					this.tranche = 'ATP1';					  
+					this.tranche = 'ATP1';
                 }else if(diff>14 && diff <=28){
                     this.trancheVal = 'Flex1';
-					this.tranche = 'ATP2';					  
+					this.tranche = 'ATP2';
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
-					this.tranche = 'ATP3';					  
+					this.tranche = 'ATP3';
                 }
                 this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
             }
         }
         if(event.target.name == 'endDate'){
-            
+
             let startDate = this.startDateVal;
             let endDate = event.target.value;
             let diff;
-            this.endDateVal = event.target.value; 
+            this.endDateVal = event.target.value;
             if(endDate < startDate){
                 this.searchBtn = true;
 				this.dispatchEvent(
@@ -767,8 +798,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 );
 
                // alert('Contract End Date should be Greater than Contract Start Date and within M+15 from Today\'s Date');
-   
-   
+
+
             }
             let date1 = new Date(startDate);
             let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
@@ -777,13 +808,13 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 diff = this.calculateDaysDiff(endDate,startDate);
                 if(diff<=14){
                     this.trancheVal = 'Prompt';
-					this.tranche = 'ATP1';					  
+					this.tranche = 'ATP1';
                 }else if(diff>14 && diff <=28){
                     this.trancheVal = 'Flex1';
-					this.tranche = 'ATP2';					  
+					this.tranche = 'ATP2';
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
-					this.tranche = 'ATP3';					  
+					this.tranche = 'ATP3';
                 }
                 this.contractDuration =  this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter end date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
            } else if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI') {
@@ -796,35 +827,35 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     this.endDateVal = endDate;
                 }
                 diff = this.calculateDaysDiff(this.endDateVal,startDate);
-                
+
               if(diff<=14){
                     this.trancheVal = 'Prompt';
-					this.tranche = 'ATP1';					  
+					this.tranche = 'ATP1';
                 }else if(diff>14 && diff <=28){
                     this.trancheVal = 'Flex1';
-					this.tranche = 'ATP2';					  
+					this.tranche = 'ATP2';
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
-					this.tranche = 'ATP3';					  
+					this.tranche = 'ATP3';
                 }
                 this.contractDuration =  this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter end date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
             }
         }
-        
+
     //SK
     console.log('startdate::'+this.startDateVal+'-'+this.endDateVal+'-'+this.retailMix+'-'+this.productVal+'--'+this.motVal);
-	 
+
 
     }
 
-    
+
     setTrancheWithPoType(){
         //alert(this.poTypeVal);
         if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI'){
             this.dateDifferenceInDays();
         }
     }
-    
+
 
     //Primary filters are MRC and Ship To dropdown list
     setPrimaryFilters(data){
@@ -833,7 +864,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     }
 
     setSecondaryFilter(data){
-		
+
         //this.productOptions = data.productList.map(key => ({ label: key, value: key }));
         let products = ['IGO','AGO','MOGAS'];
         let productsList = [];
@@ -846,7 +877,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         }
         console.log('this.productsList:'+JSON.stringify(this.productsList));
         this.productOptions = productsList.map(key => ({ label: key, value: key }));
-        
+
         this.processMotFilter(data.motList);
         console.log('motlist in secondary filter:::'+ data.motList);
         this.processPoTypeFilter(JSON.parse(JSON.stringify(data.poTypeList)));
@@ -855,7 +886,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.processDepotFilter(JSON.parse(JSON.stringify(data.plantIdVsNameMap)));
         this.processShipToFilter(JSON.parse(JSON.stringify(data.shipToIdVsNumberMap)));
         this.salesOrgOptions = data.salesOrgList.map(key => ({ label: key, value: key }));
-        
+
         if(!this.negotiationRecord){
             this.productVal = data.productList;
            // this.salesOrgVal = data.salesOrgList;
@@ -928,10 +959,10 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.trancheVal = 'Prompt';
 			this.tranche = 'ATP1';
             this.olfOnly = false;
-            this.olfMrcOnlyVal = false;				  
-			this.validMRC_Check = true;	
+            this.olfMrcOnlyVal = false;
+			this.validMRC_Check = true;
             this.retailSelectedMix = false;
-            this.retailMix = false;	
+            this.retailMix = false;
         //this.startDateVal = '';
         //this.endDateVal = '';
     }
@@ -939,7 +970,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.searchOffers('onButtonclick');
     }
     searchOffers(fromWhere){
-       
+
         if(this.template.querySelector('[data-id="motFilter"]') != null){
             let motSelectedVal = this.template.querySelector('[data-id="motFilter"]').value;
             let motArr1 = [];
@@ -992,15 +1023,15 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         //const eddte = new Date(this.endDateVal);
         //console.log('End Date::'+eddte.format('YYYY-MM-DD'));
         searchObj.endDate = this.endDateVal != undefined ? this.endDateVal : '';
-		searchObj.tranche = this.tranche;								 
+		searchObj.tranche = this.tranche;
 
         searchObj.showAvailableOffers = true; // added by Mohan
         console.log('searchobj in searchoffers:::'+ searchObj);
         var msg="";
         var filterError = false;
-		
-																																																																			 
-																									 
+
+
+
 		if(!this.showCustomerSearch && fromWhere == 'onButtonclick' && (searchObj.mrcNo).length < 9){
             this.showToast('Error','MRC length is not sufficient','error');
         }
@@ -1014,7 +1045,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         }
         /*else if(searchObj.customerRecId != "" && (searchObj.shipToNum == "" || searchObj.shipToNum == undefined)){
             filterError = true;
-            msg="Please select Ship To Number to search"; 
+            msg="Please select Ship To Number to search";
         }*/
         //else if(searchObj.mot == "" || searchObj.mot == undefined){
          //   filterError = true;
@@ -1032,14 +1063,14 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
          if(searchObj.startDate == "" || searchObj.startDate == undefined){
             filterError = true;
             msg="Please select Contract Start Date to search";
-			this.searchBtn = true;					  
+			this.searchBtn = true;
         }
         else if(searchObj.endDate == "" || searchObj.endDate == undefined){
             filterError = true;
             msg="Please select Contract End Date to search";
-			this.searchBtn = true;					  
+			this.searchBtn = true;
 		}else{
-            this.searchBtn = false;					   
+            this.searchBtn = false;
         }
 
         if(filterError){
@@ -1056,7 +1087,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             filterError = false;
             this.publishSearchFilter(searchObj);
         }
-        
+
     }
 
     //Save filter data
@@ -1087,7 +1118,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         }
         filterData.product =prodSelected;
         //filterData.product = this.productVal != undefined ? (this.productVal.toString()).replaceAll(',',';') : '';
-	
+
         filterData.retailMix = this.retailMix;
         filterData.poType = this.poTypeVal != undefined ? this.poTypeVal : '';
         filterData.depot = this.depotVal != undefined ? this.depotVal.toString() : '';
@@ -1099,8 +1130,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         //SK
         let filterDataStr = JSON.stringify(filterData);
         console.log('filterDataStr::'+filterDataStr);
-																																																					  
-																																																																	  
+
+
         var msg="";
         var filterError = false;
        /*if(filterData.mrcNo == "" || filterData.mrcNo == undefined){
@@ -1109,11 +1140,11 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         }
         else if(filterData.customerId != "" && (filterData.shipToNum == "" || filterData.shipToNum == undefined)){
             filterError = true;
-            msg="Please select Ship To Number to search"; 
+            msg="Please select Ship To Number to search";
         }else if(filterData.salesOrg == ""){
-							   
-											  
-											  
+
+
+
             filterError = true;
             msg="Please select Sales Org to search";
         }else if(filterData.product == ""){
@@ -1156,7 +1187,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                         } else {
                         this.showToast('Error', error.body.message, 'error');
                         }
-                    });   
+                    });
             }
         }
 
@@ -1177,7 +1208,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             const startdte = new Date(this.startDateVal);
             if(startdte > this.addDaysToDate(this.startDateVal, 15)){
                 this.trancheVal = 'Flex1';
-				this.tranche = 'ATP2';					  
+				this.tranche = 'ATP2';
                 this.addDaysToDate(this.startDateVal, 15);
             }
             var month = startdte.getMonth();
@@ -1186,7 +1217,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             /*var lastDate = new Date(year, month + 1, 0);
             var monthVal = month + 1;
             let current_datetime = lastDate;
-            let formatted_date =  current_datetime.getFullYear()+ "-" + monthVal + "-" +current_datetime.getDate(); 
+            let formatted_date =  current_datetime.getFullYear()+ "-" + monthVal + "-" +current_datetime.getDate();
             console.log('formatted_date @ 588:'+formatted_date);*/
             let current_datetime;
             let formatted_date;
@@ -1194,7 +1225,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 var lastDate = new Date(year, month + 1, 0);
                 var monthVal = month + 1;
                 current_datetime = lastDate;
-                 formatted_date =  current_datetime.getFullYear()+ "-" + monthVal + "-" +current_datetime.getDate(); 
+                 formatted_date =  current_datetime.getFullYear()+ "-" + monthVal + "-" +current_datetime.getDate();
                 console.log('formatted_date @ 588:'+formatted_date);
             }else{
                 formatted_date = this.endDateVal;
@@ -1208,10 +1239,10 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }
             if(startdte <= edDateVal){
                 let flex2Val = this.calculateDaysDiff(this.endDateVal,startdte);
-             
+
                 if(flex2Val != undefined && parseInt(flex2Val) > 26){
                     this.trancheVal = 'Flex2';
-					this.tranche = 'ATP3';					  
+					this.tranche = 'ATP3';
                 }
                 this.contractDuration = this.calculateDaysDiff(this.endDateVal, this.startDateVal) + 1;
             }
@@ -1219,7 +1250,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     }
 
     getNegotinCustMrcData(){
-		
+
         console.log('get Negotiation Data'+this.customerRecId+'--'+this.inputMRCVal);
         getNegotiationCustMrcData({
             customerId : this.customerRecId,
@@ -1262,7 +1293,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }
 
             console.log('Product Val::'+this.productVal);
-            var motarray = result[0].Mode_Of_Transport__c != null ? (result[0].Mode_Of_Transport__c).split(';') : [];      
+            var motarray = result[0].Mode_Of_Transport__c != null ? (result[0].Mode_Of_Transport__c).split(';') : [];
             this.motVal = motarray;//(result[0].Product__c.toString());//.replaceAll(';',',');
             console.log('MOT Val::'+this.motVal);
             this.poTypeVal = result[0].PO_Type__c;
@@ -1271,12 +1302,12 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             //this.energyTaxVal = result[0].Energy_Tax__c;
 
             this.olfMrcOnlyVal =result[0].OLF_MRC_Only__c;
-																   
-															   
+
+
             //console.log('mrcVal::'+this.mrcSelectedVal+' '+result[0].MRC_Numbers__c.split(','));
             this.retailSelectedMix=result[0].retailMix__c;
             this.retailMix = result[0].retailMix__c;
-            console.log('retaiMix::'+this.retailSelectedMix+' '+result[0].retailMix__c);          
+            console.log('retaiMix::'+this.retailSelectedMix+' '+result[0].retailMix__c);
             console.log('depot val:'+this.depotVal);
             this.dateDifferenceInDays();
         })
@@ -1284,9 +1315,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 console.log('Error:'+JSON.stringify(error));
         })
     }
- 
 
-	
+
+
     refreshComponent(event){
         eval("$A.get('e.force:refreshView').fire();");
     }
@@ -1294,11 +1325,11 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     setDatesOnLoad(){
         let date1 = new Date(this.startDateVal);
         let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
-        lastDay.setDate(lastDay.getDate() + 1);                   
-       
+        lastDay.setDate(lastDay.getDate() + 1);
+
         let currentMonth = parseInt((date1.getMonth()+1));
         let endDate = this.addDaysToDate(this.startDateVal, 14);
-                                                                                                        
+
         let endDateMonth = parseInt(endDate.substring(5, 7));
         let todaysDate = new Date();
 
@@ -1307,9 +1338,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
          this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
        }else{
          this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
-         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1; 
-       }      
-   
+         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
+       }
+
     }
-    
+
 }

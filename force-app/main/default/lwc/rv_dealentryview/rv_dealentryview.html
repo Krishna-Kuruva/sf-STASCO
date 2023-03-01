@@ -10,6 +10,22 @@
             <p style="font-weight:bold;color:Red;">{dealEntrySHTDataAvailability}</p>
         </template>
         <template if:true={dealEntrySHTData.length}>
+            <!--lightning-layout-item padding="around-small" size="12">
+                <p>Last Sync: {datetime}</p>
+            </lightning-layout-item-->
+
+            <lightning-layout>
+                <lightning-layout-item  >
+                    <div style="border-radius:10px; border: 1px black solid; overflow: hidden;padding:5px 7px;width:274px;">
+                        <div style="background-color:#EEEEEE;font-size:medium;">
+                            &nbsp;&nbsp;<lightning-icon icon-name="utility:rotate" alternative-text="Prices Updates!" title="Prices Updates" size="small" ></lightning-icon>&nbsp; Price updates in <b>{timer}</b> seconds
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="10">
+
+                </lightning-layout-item>
+            </lightning-layout>
         <lightning-layout-item padding="around-small" size="12">
         <div class="slds-grid tableFixHead scrollbarEdit" >
             <div class={dealEntryCss}>
@@ -53,10 +69,10 @@
                                 Phone ATP(cbm)
                             </th>
                             <th
-                            
-                            
-                            
-                            
+
+
+
+
                             class="putborderHeader slds-cell-wrap " scope="col">
                                 BSP (€/100L)
                             </th>
@@ -91,7 +107,7 @@
 
                         </tr>
                         </thead>
-                       
+
                         <!--GetMRCData::[{"accId":"0012500001RIxCsAAL","accName":"ADOLF ROTH GMBH & CO","atpLive":8284,"atpVoltoBeReduced":true,
                         "finalbspCal":78.73,"finalSalesPriceCal":78.73,"grade":"AGO B7","isGsapDealCancelOn":true,"isGsapDealCreateOn":true,
                         "isPricingTaxed":true,"isVolToBeHedged":true,"isZeroPriceDeal":false,"landedCostCal":38.88,"location":"D229",
@@ -100,39 +116,39 @@
                         "retroAtpVoltoBeReduced":false,"retroGsapDealCancelOn":true,"retroGsapDealCreateOn":true,"retroVolToBeHedged":false,
                         "salesOrg":"AT01","shipToNumber":"0012567495"}]-->
                         <template for:each={dealEntrySHTData} for:item="mrc" for:index="indx">
-                        
+
                             <tr key={mrc} data-mrc= {mrc.mrcNo} class="slds-hint-parent">
                                 <td data-label="MrcNo" style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{mrc.mrcNo}</td>
                         </tr>
-                        <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex"> 
+                        <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex">
                             <tbody class="bgGrey" key = "{cmPlant.location}" data-plant = {cmPlant.location}>
                             <tr>
                             <td data-label="PlantName" rowspan = {cmPlant.rowspan} >{cmPlant.location}</td>
                             <td data-label="PlantId" rowspan = {cmPlant.rowspan}  >{cmPlant.locationCode}</td>
-                                
+
                             </tr>
                                     <template for:each={cmPlant.gradeGroup} for:item="cmPlantGrade" for:index="gIndex">
                                         <tr data-grade= {cmPlantGrade.grade} key={cmPlantGrade}>
-                                        <td  data-label="GRADE" style="font-weight:bold;">{cmPlantGrade.grade}  </td> 
-                                        <td  data-label="MAT NO">{cmPlantGrade.materialNo}  </td>  
+                                        <td  data-label="GRADE" style="font-weight:bold;">{cmPlantGrade.grade}  </td>
+                                        <td  data-label="MAT NO">{cmPlantGrade.materialNo}  </td>
                                         <td data-label="SALES(CBM)">{cmPlantGrade.dailySales}</td>
                                         <td  data-label="ONLINE ATP(CBM)">{cmPlantGrade.onlineATP}  </td>
-                                        <td  data-label="PHONE ATP(CBM)"> {cmPlantGrade.phoneATP}</td>  
-                                        <td  data-label="BSP">{cmPlantGrade.finalbspCal}  </td>  
-                                        <td  data-label="LAP(/100L)"> {cmPlantGrade.finalSalesPriceCal}</td>  
-                                        <td  data-label="MARGIN"> {cmPlantGrade.dealmargin} </td>  
+                                        <td  data-label="PHONE ATP(CBM)"> {cmPlantGrade.phoneATP}</td>
+                                        <td  data-label="BSP">{cmPlantGrade.finalbspCal}  </td>
+                                        <td  data-label="LAP(/100L)"> {cmPlantGrade.finalSalesPriceCal}</td>
+                                        <td  data-label="MARGIN"> {cmPlantGrade.dealmargin} </td>
                                         <td  data-label="STAND.OTM">
                                             <template if:true= {cmPlantGrade.showOTM}>
                                                 {cmPlantGrade.otm}
                                             </template>
-                                        </td>  
+                                        </td>
                                         <td  data-label="FINAL OTM" style="font-weight:bold">
-                                             <template if:true={cmPlantGrade.showFinalOTM}>    
+                                             <template if:true={cmPlantGrade.showFinalOTM}>
                                             {cmPlantGrade.finalOTM}
                                            </template>
                                             </td>
                                         <td  data-label="LAST OFFER">{cmPlantGrade.lastOfferedPrice}</td>
-                                        <td  data-label="VOLUME CBM"> 
+                                        <td  data-label="VOLUME CBM">
                                             <template if:false= {cmPlantGrade.mogas}>
                                                 <lightning-input type="number"  step=".01" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.volumeCBM}  onchange={onchangeTriggerVolume}>
                                                 </lightning-input>
@@ -141,14 +157,14 @@
                                                     <lightning-input  data-plant= {pIndex} data-mrc = {indx} data-id= {cmPlantGrade.mogasId} value={cmPlantGrade.mogasSummation} disabled>
                                                     </lightning-input>
                                                 </template>
-                                        </td>  
+                                        </td>
                                         <td data-label="SALES PRICE">
                                             <template if:false= {cmPlantGrade.mogas}>
-                                                <lightning-input  type="number" step=".01" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.pricePerVol}  onchange={onchangeTriggerSP}>
+                                                <lightning-input  type="number" step=".01" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.priceperVol}  onchange={onchangeTriggerSP}>
                                                 </lightning-input>
                                             </template>
                                         </td>
-                                        
+
                                         <td data-label="SALES MARGIN">{cmPlantGrade.salesMargin}</td>
                                         <td data-label="COMMENT">
                                             <template if:false= {cmPlantGrade.mogas}>
@@ -161,7 +177,7 @@
                                 </tbody>
                             </template>
                         </template>
-                        
+
                     </table>
                 </div>
             </div>
@@ -171,7 +187,7 @@
             <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
             <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
             <lightning-layout-item  size="1">
-                <lightning-button variant="brand" label="Save" name="Save" disabled={isDisabled} 
+                <lightning-button variant="brand" label="Save" name="Save" disabled={isDisabled}
                 onclick={saveSHTFromDealEntry} style="display: flex;justify-content: flex-end;margin-top:-10px"></lightning-button>
             </lightning-layout-item>
         </lightning-layout>
@@ -189,7 +205,7 @@
         <h3 style=" font-weight: 700;padding: 10px;color: black;background-color: rgb(246, 250, 213);border: 1px solid #b5b6b9;margin-top: 10px;margin-bottom:10px;border-radius:4px;">
             Saved Deals</h3>
      </lightning-layout-item>
-    
+
     <lightning-layout-item padding="around-small" size="12">
         <div class={dealEntryCss}>
             <div class="slds-grid " >
@@ -247,50 +263,50 @@
                     <tbody>
                         <template if:true={savedDealEntrySHTData}>
                     <template for:each={savedDealEntrySHTData} for:item="mrc" for:index="indx">
-                       
+
                         <tr key={mrc} data-mrc= {mrc.MrcNo} class="slds-hint-parent">
-                           
+
                             <td data-label="MrcNo" >{mrc.MrcNo}</td>
                             <td data-label="Customer">{mrc.Customer}</td>
                             <td data-label="shipToNumber">{mrc.shipToNumber}</td>
                             <td data-label="poType">{mrc.poType}</td>
                             <td data-label="location" >{mrc.location}</td>
                             <td data-label="GRADE" >{mrc.product}</td>
-                            <td  data-label="MAT NO">{mrc.materialNo}  </td>  
+                            <td  data-label="MAT NO">{mrc.materialNo}  </td>
                             <td data-label="SALES(CBM)">{mrc.c_StartDate}</td>
                             <td  data-label="ONLINE ATP(CBM)">{mrc.c_EndDate}  </td>
-                            <td  data-label="VOLUME CBM"> 
+                            <td  data-label="VOLUME CBM">
                                 <lightning-input  step=".01" data-id={indx}  value={mrc.volCbm} onchange={onUpdateTriggerVolume}>
                                 </lightning-input>
                             </td>
                            <!--td data-label="VOLUME CBM">
                                 <template if:true={mrc.salesPriceCheck}>
-                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} 
+                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo}
                                                 value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={spPerCondBlack}>
                                     </lightning-input>
                                 </template>
                                 <template if:false={mrc.salesPriceCheck}>
-                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} 
+                                    <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo}
                                                     value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={spPerCondRed}>
                                     </lightning-input>
                                 </template>
                             </td-->
-							<td  data-label="VOLUME CBM"> 
-                                <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={mrc.spColor}> 
+							<td  data-label="VOLUME CBM">
+                                <lightning-input step=".01" data-id={indx} data-name={mrc.MrcNo} value={mrc.spPer100L} onchange={onUpdateTriggerSP} style={mrc.spColor}>
                                  </lightning-input>
                             </td>
-                            <td  data-label="PHONE ATP(CBM)"> {mrc.targetMargin}</td>  
-                            <td  data-label="BSP">{mrc.msp}  </td>  
-                            
+                            <td  data-label="PHONE ATP(CBM)"> {mrc.targetMargin}</td>
+                            <td  data-label="BSP">{mrc.msp}  </td>
+
                             <td data-label="COMMENT">
                                 <lightning-textarea data-id={indx} value={mrc.Comment}  onchange={onUpdateDealComment} max-length="255">
                                 </lightning-textarea>
                             </td>
                             <td data-label="Action">
-                                <lightning-button label="Cancel" name="Cancel" data-recid ={mrc.shtRecordId} onclick={cancelSavedSHTDeal}
+                                <lightning-button label="Cancel" name="Cancel" data-recid ={mrc.shtRecordId} variant="destructive" onclick={cancelSavedSHTDeal}
                                 disabled={confirmCancelDisable}></lightning-button>
                             </td>
-                            
+
                      </tr>
                     </template>
                 </template>
@@ -300,13 +316,13 @@
         </div>
     </lightning-layout-item>
     <lightning-layout>
-        <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
-        <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
-        <lightning-layout-item padding="around-small" size="1">
-            <lightning-button label="Confirm" name="Confirm Deals" onclick={confirmSavedDeals} variant="brand" style="display: flex;justify-content: flex-end;" 
+        <lightning-layout-item padding="around-small" size="11"></lightning-layout-item>
+        <!--lightning-layout-item padding="around-small" size="3"></lightning-layout-item-->
+        <lightning-layout-item  size="1">
+            <lightning-button label="Confirm" name="Confirm Deals" onclick={confirmSavedDeals} variant="brand" style="display: flex;justify-content: flex-end;"
             disabled={confirmCancelDisable}></lightning-button>
         </lightning-layout-item>
-        
+
     </lightning-layout>
     </template>
      <lightning-layout-item size="12"></lightning-layout-item>
@@ -337,7 +353,7 @@
                   </button>
                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">SP €/100L is lesser than PSP for below Deal(s). Do you want to proceed?</h2>
                </header>
-           
+
                <!-- modal body start -->
                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="overflow-x: scroll;">
                      <table class="slds-table slds-table_cell-buffer slds-table_bordered">
@@ -448,13 +464,13 @@
                         </tbody>
                     </table>
                </div>
-     
+
                <!-- modal footer start-->
                <footer class="slds-modal__footer">
                   <button class="slds-button slds-button_neutral" onclick={handleClickReview}>No, Review it</button>
                   <lightning-button variant="brand" label="Yes, Confirm" title="Yes, Confirm" onclick={handleClickConfirm}></lightning-button>
                </footer>
-            
+
             </div>
          </section>
          <div class="slds-backdrop slds-backdrop_open"></div>
