@@ -705,11 +705,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         FROM SHT__c where CreatedById =:LoggedInUsr AND Status__c = 'Saved' AND (PO_Type__c = 'TTTT' OR PO_Type__c = 'TTTI') order by createdDate desc];
         return shtupdateLst;
     }
+
     //Start-Added by Surbhi-PBI-1539864
     @AuraEnabled
     public static List<SHT__c> getTriggerSavedDeal(){
         string LoggedInUsr=UserInfo.getUserId();
-        //PBI-1592108, Added Location__r.Name in the query
+        //PBI-1592108, Added Location__r.Name in the query and added field Trigger_Master_Data__c in query
         List<SHT__c> lstofSavedSHTDeals = [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
@@ -719,11 +720,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 Product_Catalogue__c,Product_Category__c,Product_Sub_Group__c,PSP__c,Rv_LastModifiedById__c,Rv_LastModifiedDate__c,
                 Sales_Organization__c,Sales_Price__c,Sales_Type__c,SAP_Contract_Number__c,Select__c,Ship_To_Name__c,Ship_To__c,
                 SHT_Contract_Number__c,Sold_Price__c,Sold_To_Name__c,SP_100L__c,Status__c,SystemModstamp,Target_Margin__c,Tranche__c,
-                Transaction_Id__c,UserTimezoneOffset__c,Volume_CBM__c,Volume_Unit__c
+                Transaction_Id__c,UserTimezoneOffset__c,Volume_CBM__c,Volume_Unit__c,Trigger_Master_Data__c
         FROM SHT__c where CreatedById =:LoggedInUsr AND Status__c = 'Saved' AND (PO_Type__c = 'TTTT' OR PO_Type__c = 'TTTI') order by createdDate desc];
         return lstofSavedSHTDeals;
     }
      //End-Added by Surbhi-PBI-1539864
+
     @AuraEnabled
     public static List<SHT__c> confirmTermTriggerDeal(List<SHT__c> confirmTriggerList){
         System.debug('=========confirmTriggerList=========='+confirmTriggerList);
