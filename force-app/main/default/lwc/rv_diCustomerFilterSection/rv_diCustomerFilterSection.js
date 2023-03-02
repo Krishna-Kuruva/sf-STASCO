@@ -54,7 +54,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     mogas = true;			 
     //PO Type dropdown variables
     poTypeOptions;
-    poTypeVal = '';
+    @track poTypeVal = '';
     //Depot dropdown variables
     depotOptions;
     shipToOptions;
@@ -85,7 +85,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     //Search result from customer/MRC filter.
     searchResult;
     tranche1EndDate;
-    trancheVal;
+    trancheVal='';
 	tranche;		
     energyTax;
     //contract duration variable
@@ -95,6 +95,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         		   
     endDateDisabled = false;
 	customerName;
+    tracheRadioDisabled = false;
+    @api dateFormatError = 'Please enter start date format as [DD/MM/YYYY]';
+    @api endDateFormatError = 'Please enter end date format as [DD/MM/YYYY]';
 								 
 			   
 
@@ -185,13 +188,13 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.durationError = true;
             this.searchBtn = false;
             //Please enter date format as [DD.MM.YYYY] OR [DDMMYYYY] .
-            return 'Please enter start date format as [DD/MM/YYYY]';
+            return this.dateFormatError;
         }
         else if( endDate == null || endDate == undefined){
             this.durationError = true;
             this.searchBtn = false;
             //Please enter date format as [DD.MM.YYYY] OR [DDMMYYYY] .
-            return 'Please enter end date format as [DD/MM/YYYY]';
+            return this.dateFormatError;
         }																			
 		
 	}
@@ -259,7 +262,16 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
 			if(data != null && data.mrcNoList != null && data.mrcNoList.length > 0){
                 this.validMRC_Check = true;
                   this.getNegotinCustMrcData();
-												   
+                  this.poTypeVal = data.poTypeList[0] !=null ? data.poTypeList[0] : '';
+                  if(this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI' && this.poTypeVal !=''){
+                    this.tracheRadioDisabled = false;
+                    this.template.querySelector(".trancheSel").classList.add('slds-show');
+                    this.template.querySelector(".trancheSel").classList.remove('slds-hide');
+                  } else {
+                    this.tracheRadioDisabled = true;
+                    this.template.querySelector(".trancheSel").classList.add('slds-hide');
+                    this.template.querySelector(".trancheSel").classList.remove('slds-show');
+                  }
              }else{
                 this.validMRC_Check = false;
 				
@@ -277,6 +289,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 this.negotiationRecord = true;
                // alert('no data'+data.size);
             }
+
+             this.setTrancheValue();
+
         }
         else if(error){
             console.error('Error: '+JSON.stringify(error));
@@ -426,7 +441,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     this.customerRecId = selectedRec.record.Id;
 					this.customerName = selectedRec.record.Name;
                     this.showMrcSearch = false;
-                    this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
+                    this.setTrancheValue();
 				   
                     this.getNegotinCustMrcData();
 					//this.getNegotiationDetails();
@@ -436,7 +451,6 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }
                 else{
                     this.showMrcSearch = true;
-                    this.endDateVal =this.addDaysToDate(this.startDateVal, 14); 
                     this.customerRecId = '';
                     this.clearAllFilters();
                     this.publishCustomerDeSelectMessage();
@@ -510,8 +524,13 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.clearAllFilters();
         // prod deployment
         this.publishCustomerDeSelectMessage();
+        //INC6439788 - fix
+        this.startDateVal = new Date().toISOString().slice(0, 10);
         this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
+        this.template.querySelector(".trancheSel").classList.add('slds-hide');
+        this.template.querySelector(".trancheSel").classList.remove('slds-show');
+
 													 
     }
 
@@ -558,6 +577,22 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
 
     //Handle input change in filter fields
     handleChange(event){
+        if(event.target.name == 'tranche'){
+           if(event.target.value == 'Prompt'){
+            this.startDateVal = new Date().toISOString().slice(0, 10);
+            this.endDateVal = this.addDaysToDate(this.startDateVal, 14);
+           } else if (event.target.value == 'Flex1'){
+            this.startDateVal =  new Date().toISOString().slice(0, 10);
+               this.startDateVal = this.addDaysToDate(this.startDateVal, 15);
+               this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
+           } else if (event.target.value == 'Flex2'){
+               this.startDateVal = this.addDaysToDate((new Date().toISOString().slice(0, 10)), 29);
+               this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
+           }
+           this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) !=this.dateFormatError ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
+
+        }
+
         if(event.target.name == 'mrcFilter'){
             this.mrcVal = event.target.value;
         }  
@@ -565,11 +600,21 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.shipToNumVal = event.target.value;
         if(event.target.name == 'poTypeFilter'){  
             this.poTypeVal = event.target.value;
+           if(this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI' && this.poTypeVal !=''){
+            this.tracheRadioDisabled = false;
+            this.template.querySelector(".trancheSel").classList.add('slds-show');
+            this.template.querySelector(".trancheSel").classList.remove('slds-hide');
+            this.setTrancheValue();
+          } else {
+            this.tracheRadioDisabled = true;
+            this.template.querySelector(".trancheSel").classList.add('slds-hide');
+            this.template.querySelector(".trancheSel").classList.remove('slds-show');
+          }
             this.setTrancheWithPoType();
             console.log('this.poTypeVal in handlechange::'+this.poTypeVal);
 			//set end date based on PO Type
         //ASHISH: PBI: 1375726 START =>
-        if(this.poTypeVal == 'TSFP'){
+        if(this.poTypeVal != undefined && this.poTypeVal != '' && this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI'){
             let diff;
             let todaysDate = new Date();
             if(this.startDateVal != null && this.startDateVal > todaysDate.toISOString().substring(0,10)){
@@ -581,9 +626,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             else if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
                 this.endDateVal = todaysDate.toISOString().substring(0,10);
             }
-            diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);
+           // diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);
                 
-            if(diff<=14){
+           /* if(diff<=14){
                 this.trancheVal = 'Prompt';
                 this.tranche = 'ATP1';					  
             }else if(diff>14 && diff <=28){
@@ -592,8 +637,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }else if(diff>28){
                 this.trancheVal = 'Flex2';
                 this.tranche = 'ATP3';					  
-            } 
-            this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
+            } */
+            this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) != this.dateFormatError ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
         }
 
         if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI'){
@@ -608,7 +653,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             let endDateMonth = parseInt(endDate.substring(5, 7));
 
             let todaysDate = new Date();
-            if(endDateMonth>currentMonth && this.startDateVal >= todaysDate.toISOString().substring(0,10)){
+            if((((endDateMonth>currentMonth) || (endDateMonth == 1 && currentMonth ==12)) && this.startDateVal >= todaysDate.toISOString().substring(0,10))  ){
                 this.endDateVal = lastDay.toISOString().substring(0,10);
             }else{
                 if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
@@ -624,8 +669,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     this.endDateVal = endDate;
                 }
             }
-            diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);                
-            if(diff<=14){
+            //diff = this.calculateDaysDiff(this.endDateVal,this.startDateVal);
+           /* if(diff<=14){
                 this.trancheVal = 'Prompt';
                 this.tranche = 'ATP1';					  
             }else if(diff>14 && diff <=28){
@@ -634,8 +679,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             }else if(diff>28){
                 this.trancheVal = 'Flex2';
                 this.tranche = 'ATP3';					  
-            }
-            this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
+            }*/
+            this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) != this.dateFormatError ? this.calculateDaysDiff(this.endDateVal,this.startDateVal) +1:this.calculateDaysDiff(this.endDateVal,this.startDateVal);
         }
         //PBI: 1375726 END			
         }
@@ -715,7 +760,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
             lastDay.setDate(lastDay.getDate() + 1);
             
-            if(this.poTypeVal == 'TSFP' || this.poTypeVal == ''){
+            if((this.poTypeVal == '') || (this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI')){
                 this.startDateVal = event.target.value;
                 //added by swarna BUG-1264522
                 let todaysDate = new Date();
@@ -734,9 +779,32 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }
                 //end BUG-1264522
                 //end BUG-1264522
-                diff = this.calculateDaysDiff(this.endDateVal,startDate);
+               // diff = this.calculateDaysDiff(this.endDateVal,startDate);
+                console.log('****beforechecking if tranche');
+                let trancheField = this.template.querySelector(".trancheSel");
+                if((this.startDateVal<=new Date().toISOString().slice(0, 10)) || (this.startDateVal <= this.addDaysToDate(new Date().toISOString().slice(0, 10), 14))){
+                    console.log('****inside if tranche',this.trancheVal);
+                    if(trancheField!=null){
+                        trancheField.value ='Prompt';
+                        this.trancheVal = 'Prompt';
+                        this.tranche = 'ATP1';
+                    }
                 
-                if(diff<=14){
+                } else if((this.startDateVal >= this.addDaysToDate(new Date().toISOString().slice(0, 10), 15)) && (this.startDateVal < this.addDaysToDate(new Date().toISOString().slice(0, 10), 29))){
+                    if(trancheField!=null){
+                    trancheField.value ='Flex1';
+                    this.trancheVal = 'Flex1';
+					this.tranche = 'ATP2';
+                    }
+                } else if(this.startDateVal >= this.addDaysToDate(new Date().toISOString().slice(0, 10), 29)){
+                    if(trancheField!=null){
+                    trancheField.value ='Flex2';
+                    this.trancheVal = 'Flex2';
+					this.tranche = 'ATP3';
+                    }
+                }
+
+              /*  if(diff<=14){
                     this.trancheVal = 'Prompt';
 					this.tranche = 'ATP1';					  
                 }else if(diff>14 && diff <=28){
@@ -745,8 +813,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
 					this.tranche = 'ATP3';					  
-                }
-                this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
+                }*/
+                this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) != this.dateFormatError ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
             } else if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI') {
                 this.startDateVal = event.target.value;
                 let currentMonth = parseInt((date1.getMonth()+1));
@@ -755,7 +823,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 let endDateMonth = parseInt(endDate.substring(5, 7));
                 //added by swarna BUG-1264522
                 let todaysDate = new Date();
-                if(endDateMonth>currentMonth && this.startDateVal >= todaysDate.toISOString().substring(0,10)){
+                if(((endDateMonth>currentMonth) || (endDateMonth == 1 && currentMonth ==12)) && this.startDateVal >= todaysDate.toISOString().substring(0,10)){
                     this.endDateVal = lastDay.toISOString().substring(0,10);
                 }else{
                     if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
@@ -771,9 +839,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                     }
                 }
                 //end BUG-1264522
-                diff = this.calculateDaysDiff(this.endDateVal,startDate);
+                //diff = this.calculateDaysDiff(this.endDateVal,startDate);
                 
-                 if(diff<=14){
+               /*  if(diff<=14){
                     this.trancheVal = 'Prompt';
 					this.tranche = 'ATP1';					  
                 }else if(diff>14 && diff <=28){
@@ -782,8 +850,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
 					this.tranche = 'ATP3';					  
-                }
-                this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter start date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
+                }*/
+                this.contractDuration = this.calculateDaysDiff(this.endDateVal,startDate) != this.dateFormatError ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
             }
         }
         if(event.target.name == 'endDate'){
@@ -809,9 +877,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             let date1 = new Date(startDate);
             let lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
             lastDay.setDate(lastDay.getDate() + 1);
-            if(this.poTypeVal == 'TSFP' || this.poTypeVal == ''){
-                diff = this.calculateDaysDiff(endDate,startDate);
-                if(diff<=14){
+            if((this.poTypeVal == '') || (this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI')){
+                //diff = this.calculateDaysDiff(endDate,startDate);
+               /* if(diff<=14){
                     this.trancheVal = 'Prompt';
 					this.tranche = 'ATP1';					  
                 }else if(diff>14 && diff <=28){
@@ -820,20 +888,21 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
 					this.tranche = 'ATP3';					  
-                }
-                this.contractDuration =  this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter end date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
+                }*/
+                this.contractDuration =  this.calculateDaysDiff(this.endDateVal,startDate) != this.endDateFormatError ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
            } else if(this.poTypeVal == 'TTTT' || this.poTypeVal == 'TTTI') {
                 let currentMonth = parseInt((date1.getMonth()+1));
                 let endDateMonth = endDate != null ? parseInt(endDate.substring(5, 7)) : endDate;
                 //let endDateMonth = parseInt(endDate.substring(5, 7));
-                if(endDateMonth>currentMonth){
+                if( ((endDateMonth>currentMonth) || (endDateMonth == 1 && currentMonth ==12))   && (endDateMonth != 12 && currentMonth !=1)){
                     this.endDateVal = lastDay.toISOString().substring(0,10);
+
                 }else{
                     this.endDateVal = endDate;
                 }
-                diff = this.calculateDaysDiff(this.endDateVal,startDate);
+               // diff = this.calculateDaysDiff(event.target.value,startDate);
                 
-              if(diff<=14){
+              /*if(diff<=14){
                     this.trancheVal = 'Prompt';
 					this.tranche = 'ATP1';					  
                 }else if(diff>14 && diff <=28){
@@ -842,8 +911,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
                 }else if(diff>28){
                     this.trancheVal = 'Flex2';
 					this.tranche = 'ATP3';					  
-                }
-                this.contractDuration =  this.calculateDaysDiff(this.endDateVal,startDate) !='Please enter end date format as [DD/MM/YYYY]' ? this.calculateDaysDiff(this.endDateVal,startDate) +1:this.calculateDaysDiff(this.endDateVal,startDate);
+                }*/
+                this.contractDuration =  this.calculateDaysDiff(event.target.value,startDate) != this.endDateFormatError ? this.calculateDaysDiff(event.target.value,startDate) +1:this.calculateDaysDiff(event.target.value,startDate);
             }
         }
         
@@ -958,8 +1027,9 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.depotVal = '';
         this.salesOrgOptions = '';
         this.salesOrgVal = '';
-        this.startDateVal = new Date().toISOString().slice(0, 10);
-        this.endDateVal =this.addDaysToDate(this.startDateVal, 13);
+        //commented for INC6439788
+       // this.startDateVal = new Date().toISOString().slice(0, 10);
+       // this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
         this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
         this.trancheVal = 'Prompt';
 			this.tranche = 'ATP1';
@@ -1212,7 +1282,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     }
 
     dateDifferenceInDays(){
-        this.setDatesOnLoad();
+        //commented to fix issuethis.setDatesOnLoad();
         console.log('line 494:'+this.startDateVal+'-'+this.endDateVal+'-'+this.poTypeVal);
         if(this.startDateVal != undefined  ){
 
@@ -1308,6 +1378,18 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.motVal = motarray;//(result[0].Product__c.toString());//.replaceAll(';',',');
             console.log('MOT Val::'+this.motVal);
             this.poTypeVal = result[0].PO_Type__c;
+            //added this callout for INC6439788
+            this.setDatesOnLoad();
+            if(this.poTypeVal != 'TTTT' && this.poTypeVal != 'TTTI' && this.poTypeVal !=''){
+                this.tracheRadioDisabled = false;
+                this.template.querySelector(".trancheSel").classList.add('slds-show');
+                this.template.querySelector(".trancheSel").classList.remove('slds-hide');
+              } else {
+                this.tracheRadioDisabled = true;
+                this.template.querySelector(".trancheSel").classList.add('slds-hide');
+                this.template.querySelector(".trancheSel").classList.remove('slds-show');
+              }
+
             //this.motVal = result[0].MOT__c;
             console.log('poTypeVal Val::'+this.poTypeVal);
             //this.energyTaxVal = result[0].Energy_Tax__c;
@@ -1344,14 +1426,53 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         let endDateMonth = parseInt(endDate.substring(5, 7));
         let todaysDate = new Date();
 
-       if((endDateMonth>currentMonth && this.startDateVal >= todaysDate.toISOString().substring(0,10)) && (this.poTypeVal =='TTTT' || this.poTypeVal == 'TTTI')){
+        if((((endDateMonth>currentMonth) || (endDateMonth == 1 && currentMonth ==12)) && this.startDateVal >= todaysDate.toISOString().substring(0,10)) && (this.poTypeVal =='TTTT' || this.poTypeVal == 'TTTI')){
          this.endDateVal = lastDay.toISOString().substring(0,10);
          this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1;
        }else{
-         this.endDateVal =this.addDaysToDate(this.startDateVal, 14);
+        //changed for INC6439788
+       /* if(this.startDateVal != null && this.startDateVal < todaysDate.toISOString().substring(0,10)){
+            this.endDateVal = todaysDate.toISOString().substring(0,10);
+        }else if(this.startDateVal > todaysDate.toISOString().substring(0,10)){
+            this.endDateVal = this.addDaysToDate(this.startDateVal, 13);
+        }
+        else if(this.startDateVal == todaysDate.toISOString().substring(0,10)){
+            this.endDateVal = this.addDaysToDate(this.startDateVal, 14);
+        }*/
          this.contractDuration = this.calculateDaysDiff(this.endDateVal,this.startDateVal) + 1; 
        }      
+       this.setTrancheValue();
+
+    }
+
+    setTrancheValue(){
+        console.log('****setTrancheValue cALLED');
+        let trancheField = this.template.querySelector(".trancheSel");
+        console.log('****setTrancheValue cALLED trancheField',trancheField);
+        if((this.startDateVal<=new Date().toISOString().slice(0, 10)) || (this.startDateVal <= this.addDaysToDate(new Date().toISOString().slice(0, 10), 14))){
+            console.log('****inside if tranche',this.trancheVal);
+
+                trancheField.value ='Prompt';
+                this.trancheVal = 'Prompt';
+                this.tranche = 'ATP1';
+                console.log('****setTrancheValue cALLED Prompt');
+
+
+        } else if((this.startDateVal >= this.addDaysToDate(new Date().toISOString().slice(0, 10), 15)) && (this.startDateVal < this.addDaysToDate(new Date().toISOString().slice(0, 10), 29))){
+
+            trancheField.value ='Flex1';
+            this.trancheVal = 'Flex1';
+            this.tranche = 'ATP2';
+            console.log('****setTrancheValue cALLED Flex1');
+
+        } else if(this.startDateVal >= this.addDaysToDate(new Date().toISOString().slice(0, 10), 29)){
+
+            trancheField.value ='Flex2';
+            this.trancheVal = 'Flex2';
+            this.tranche = 'ATP3';
+            console.log('****setTrancheValue cALLED Flex2');
    
+        }
     }
     
 }
