@@ -1,6 +1,6 @@
 /**
  * Created by===========> Dhriti.GhoshMoulick on 8/9/2021.*/
-public  class RV_TermTriggerClass {
+ public  class RV_TermTriggerClass {
     @AuraEnabled
     public static List < Map < String, String >> getPickListValuesMonth(String objApiName, String fieldName) {
         List < Map < String, String >> options = new List < Map < String, String >> ();
@@ -76,7 +76,7 @@ public  class RV_TermTriggerClass {
             List<String> salesOrg,String startDate,String endDate, Boolean isRetailMixChecked ){
                 try{
         // Integer motInteger = Integer.valueOf(mot);
-        System.debug('=======soldToAccId======='+soldToAccId);
+        /*System.debug('=======soldToAccId======='+soldToAccId);
         System.debug('=======mrcNumber======='+mrcNumber);
         System.debug('=======shipToAccNum======='+shipToAccNum);
         System.debug('=======mot======='+mot);
@@ -86,35 +86,34 @@ public  class RV_TermTriggerClass {
         System.debug('=======plantId======='+plantId);
         System.debug('=======salesOrg======='+salesOrg);
         System.debug('=======startDate======='+startDate);
-        System.debug('=======endDate======='+endDate);
-        /* Prod Deployment */
+        System.debug('=======endDate======='+endDate);*/
         string tranche ;
         List<String> mrcNumbersList = new List<String>();
         for(String mrcNo1:mrcNumber){
-			if(mrcNo1 != null && mrcNo1 != '' && mrcNo1 != ' '){													
+			if(mrcNo1 != null && mrcNo1 != '' && mrcNo1 != ' '){
             system.debug('mrcNo1:'+mrcNo1);
             List<String> mrcStr = mrcNo1.split(',');
             for(String mrcNo2:mrcStr){
                 system.debug('mrcNo2:'+mrcNo2);
                 String mrcNumber1 = mrcNo2.replaceAll('"','');
                 mrcNumbersList.add(mrcNumber1);
-				} 
+				}
             }
         }
 
         List<Integer> motIntegerLst = new List<Integer>();
                 String startMonth;
-		if(mot.size()>0){				 
+		if(mot.size()>0){
         for(String str : mot){
             //motIntegerLst.add(Integer.valueOf(str));
             List<String> motList = str.split(';');
             for(String motVal : motList){
                 motIntegerLst.add(Integer.valueOf(motVal));
                 system.debug('motVal:'+motVal);
-				 }	 
+				 }
             }
         }
-		
+
         System.debug('=======motIntegerLst======='+motIntegerLst);
         List<String> salesOrgLst = new List<String>();
         if(salesOrg != null) {
@@ -165,7 +164,7 @@ public  class RV_TermTriggerClass {
         }
         system.debug('finalProductName:'+finalProductName);
         if(!String.isBlank(startDate)) {
-            
+
             List<String> startDateList = startDate.split('-');
             String startYear = startDateList[0];
              startMonth = startDateList[1];
@@ -177,7 +176,7 @@ public  class RV_TermTriggerClass {
                 system.debug('monthset::'+monthset);
             }
              if(Integer.ValueOf(strtDate) > 25){
-                
+
                  Integer sm = Integer.valueOf(startMonth) + 1 ;
                  system.debug('sm::'+sm);
                  string sm1 = (String.valueOf(sm)).length() == 1 ? '0'+String.valueOf(sm): String.valueOf(sm);
@@ -189,11 +188,11 @@ public  class RV_TermTriggerClass {
             system.debug('monthSet::'+monthset);
         }
 
-        String triggerMasterData = 'SELECT Id, Name,Sold_to_Name__c,Sold_to_Name__r.Name, Sold_to_Number__c, MRC_Number__r.Name,MRC_Number__r.Contract__c, MRC_Number__r.Material_Description__c, MRC_Number__r.Product__r.Name, MRC_Number__r.Ship_to_Number__c, '+
+        String triggerMasterData = 'SELECT Id, Name,Sold_to_Name__c,Sold_to_Name__r.Name, Sold_to_Number__c, MRC_Number__r.Contract_Description__c, MRC_Number__r.Name,MRC_Number__r.Contract__c, MRC_Number__r.Material_Description__c, MRC_Number__r.Material_Name__c, MRC_Number__r.Product__r.Name, MRC_Number__r.Ship_to_Number__c, '+
                 ' MRC_Number__r.Mode_Of_Transport__c,MRC_Number__r.PO_Type__c,MRC_Number__r.Plant__r.Name,MRC_Number__r.Plant__r.Plant_Code__c,MRC_Number__r.Handling_Type__c,Monthly_volume__c, Trigger_Month__c, Trigger_Year__c,MRC_Number__r.Shipping_Condition__c, '+
-                ' Min_Trigger_Volume__c, Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_triggers__c, Remaining_trigger_volume__c FROM RV_Trigger_Master_Data__c ';
+                ' Min_Trigger_Volume__c, Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_triggers__c, Remaining_trigger_volume__c FROM RV_Trigger_Master_Data__c  Where MRC_Number__r.Active__c = true ';
         if(!String.isBlank(poType)){
-			triggerMasterData+=' where MRC_Number__r.PO_Type__c =: poType';
+			triggerMasterData+=' and MRC_Number__r.PO_Type__c =: poType';
         }
         if(!String.isBlank(soldToAccId)) {
           triggerMasterData+=' And Sold_to_Name__c =:soldToAccId';
@@ -207,9 +206,9 @@ public  class RV_TermTriggerClass {
             if(mrcList.size()>0){
             triggerMasterData+=' AND MRC_Number__r.Contract__c IN: mrcNumbersList';
             }
-       
-		
-      // START: Added as part of 1306836 : ASHISH  
+
+
+      // START: Added as part of 1306836 : ASHISH
         List<String> shipToListNew = new List<String>();
         if(shipToAccNum!= null && shipToAccNum.size() > 0){
             List<String> shipToAccNum1 = shipToAccNum[0].split(',');
@@ -223,34 +222,34 @@ public  class RV_TermTriggerClass {
                         shpTo = '0'+ shpTo;
                     shipToListNew.add(shpTo);
                 }
-            } 
+            }
         }
         system.debug('shipToList::'+shipToAccNum);
                             system.debug('shipToListNew::'+shipToListNew);
 
         if(shipToListNew.size()>0){
             triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c IN:shipToListNew';
-            
+
         }// END: 1306836
-		
+
                  /*   if(shipToAccNum.size()>0){
                         triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c IN:shipToAccNum';
-                        
+
                     }*/
                     /* if(!String.isBlank(shipToAccNum)){
 triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 
 }*/
-        
+
 		if(!finalProductName.isEmpty()){
             triggerMasterData+=' AND MRC_Number__r.Material_Description__c in:finalProductName';
         }
-		
+
         if(!motIntegerLst.isEmpty()){
             triggerMasterData+=' AND MRC_Number__r.Mode_Of_Transport__c in:motIntegerLst';
-            																		
+
         }
-		  
+
         List<String> plantList = new List<String>();
         for(String plnt : plantId){
             if(plnt != null && plnt != '' && plnt != ' '){
@@ -261,7 +260,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         if(plantList.size()>0){
             triggerMasterData+=' AND MRC_Number__r.Plant__c IN: plantList';
 		}
-		
+
         system.debug('salesOrgLst::'+salesOrgLst+'--'+salesOrgLst.size());
 		if(!salesOrgLst.isEmpty() && salesOrgLst.size() > 0){
             triggerMasterData+=' AND MRC_Number__r.Sales_Organization__c in:salesOrgLst';
@@ -269,18 +268,18 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         if(!String.isBlank(startDate)) {
             triggerMasterData += ' AND Trigger_Month__c IN :monthset';
            triggerMasterData += ' AND Trigger_Year__c =: startYear';
-         
-		 
-		 }
-          triggerMasterData += ' ORDER BY MRC_Number__r.MRC_Grade_Sort__c ASC';
 
-        
+
+		 }
+          triggerMasterData += ' ORDER BY MRC_Number__r.Plant__r.Name, MRC_Number__r.MRC_Grade_Sort__c ASC';
+
+
 		System.debug('query:'+triggerMasterData);
         List<termTriggerWrapper> termWrapperList = new List<termTriggerWrapper>();
         List<String> triggerIdLst = new List<String>();
-											   
+
                 system.debug('values::'+soldToAccId+'-'+mrcNumber+'--'+poType+'--'+monthset);
-		set<String> mrcIds = new set<String>();//added by swarna														
+		set<String> mrcIds = new set<String>();//added by swarna
         for(Sobject sobj: Database.query(triggerMasterData)){
             triggerIdLst.add(sobj.Id);
 			//added by swarna
@@ -288,8 +287,8 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
             mrcIds.add(rvtm1.MRC_Number__c);
             //end
         }
-		 List<MRC__c> mrcfinalList = [Select Id, Name, Contract_Description__c, Customer_Payment_Term__c, Distribution_Channel__c, Division__c, Ship_To__c, Handling_Type__c, MRC_Number__c, 
-                        Material_Description__c, Mode_Of_Transport__c, Load_Id__c, RV_OLF_MRC_Only__c, Active__c, Cust_SoldTo_Cr_Limit__c, RV_Condition_group_2_Description__c, RV_Condition_group_2__c, 
+		 List<MRC__c> mrcfinalList = [Select Id, Name, Contract_Description__c, Customer_Payment_Term__c, Distribution_Channel__c, Division__c, Ship_To__c, Handling_Type__c, MRC_Number__c,
+                        Material_Description__c, Mode_Of_Transport__c, Load_Id__c, RV_OLF_MRC_Only__c, Active__c, Cust_SoldTo_Cr_Limit__c, RV_Condition_group_2_Description__c, RV_Condition_group_2__c,
                         RV_Incoterms_Part1__c, RV_Incoterms_Part2__c, RV_Invoicing_date__c, PO_Number__c, Payment_Term__c, Plant_Code__c, Plant_Description__c, Plant__c, Pricing_Date__c, Product__c,
                         Quantity__c, Rejection_Reasons__c, Sales_Doc_Type__c, Sales_Document_Item__c, Sales_Document__c, Sales_Organization__c, Ship_to_City__c, Ship_to_County__c, Ship_to_Customer_group__c,
                         Ship_to_Name__c, Ship_to_Number__c, Ship_to_State__c, Ship_to_Street__c, Shipping_Condition__c, Sold_To_Number__c, Sold_To__c, Storage_Location__c, Target_Quantity__c, UOM__c,
@@ -298,18 +297,19 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                         Plant_Name__c, Rv_Available_for_OLF__c, MRC_Grade_Sort__c, RV_Invoicing_dates_Description__c, RV_Payment_Method_Description__c, RV_Payment_Method__c, RV_Payment_Terms_Description__c,
                         RV_Rejection_Code__c, RV_Shipping_Condition_Description__c,Product__r.Commodity_Grade_L2__c,Product__r.BEHG_Value_100l__c,
                 Product__r.Current_BEHG_valid_from_date__c,Product__r.Current_BEHG_valid_to_date__c,Product__r.Future_BEHG_value_in_100l__c,
-                Product__r.Future_BEHG_valid_from_date__c,Product__r.Future_BEHG_valid_to_date__c,Product__r.Name  from MRC__c where ID IN :mrcIds];			 
+                Product__r.Future_BEHG_valid_from_date__c,Product__r.Future_BEHG_valid_to_date__c,Product__r.Name  from MRC__c where ID IN :mrcIds];
         system.debug('triggerIdLst size:'+triggerIdLst.size());
         List<String> returnSHTList = new List<String>();
         List<String> returnSoldToList = new List<String>();
         List<String> returnPotypeList = new List<String>();
         // System.debug(termWrapperList);
         string LoggedInUsr=UserInfo.getUserId();
+        //PBI-1592108, Added Location__r.Name in the query
         List<SHT__c> shtupdateLst = [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Customer__r.Name,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
                 IsGsapDealCreateOn__c,isOlfDeal__c,IsPricingTaxed__c,IsVolumeHedged__c,IsZeroPriceDeal__c,LastModifiedById,LastModifiedDate,
-                LastReferencedDate,LastViewedDate,Location__c,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
+                LastReferencedDate,LastViewedDate,Location__c,Location__r.Name,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
                 MRC_Number__c,MRC__c,MSP__c,Name,OLF_Deal_Number__c,OTM__c,OwnerId,Plant_No__c,PO_Type__c,Price_Condition__c,Price_Unit__c,
                 Product_Catalogue__c,Product_Category__c,Product_Sub_Group__c,PSP__c,Rv_LastModifiedById__c,Rv_LastModifiedDate__c,
                 Sales_Organization__c,Sales_Price__c,Sales_Type__c,SAP_Contract_Number__c,Select__c,Ship_To_Name__c,Ship_To__c,
@@ -318,7 +318,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         FROM SHT__c where (PO_Type__c = 'TTTT' OR PO_Type__c = 'TTTI') AND  CreatedById =:LoggedInUsr];
         finalTermTriggerWrap finalTerm = new finalTermTriggerWrap();
         finalTerm.shtList = shtupdateLst;
-		//added by swarna 
+		//added by swarna
         tranche = rv_PriceAndMarket.getTranche(date.valueOf(startDate));
         //setting Inut data wrap for price calculation
         List<RV_SPCalculationController.salesPriceWrap> salesPriceWrapLst=new List<RV_SPCalculationController.salesPriceWrap>();
@@ -335,7 +335,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         //end
 		//Deal Event Manager metadata
         Map<String,Deal_Event_Manager__mdt> poTypeHandlingDealMdtMap=rv_sht_CreateControllerLWC.getDealEventMetdataMap();
-        //system.debug('poTypeHandlingDealMdtMap==>'+poTypeHandlingDealMdtMap); 
+        //system.debug('poTypeHandlingDealMdtMap==>'+poTypeHandlingDealMdtMap);
 
         //Shipping Condition Map
         Map<Integer,String> ShipCondNoNameMap= new Map<Integer,String>();
@@ -345,12 +345,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
             ShipCondNoNameMap.put(Integer.valueOf(shp.Shipping_Condition__c),shp.Mot__c);
         }
 
-															 
+
         for(Sobject sobj: Database.query(triggerMasterData)){
-			termTriggerWrapper termTrigger = new termTriggerWrapper();		 
+			termTriggerWrapper termTrigger = new termTriggerWrapper();
             RV_Trigger_Master_Data__C rvtm = (RV_Trigger_Master_Data__C)sobj;
             rvtm.MRC_Number__r.Product__r.Name = (rvtm.MRC_Number__r.Product__r.Name).right(4);
-			if(mrcNoSPwrap != null && mrcNoSPwrap.get(rvtm.MRC_Number__r.Name) != null ){													  
+			if(mrcNoSPwrap != null && mrcNoSPwrap.get(rvtm.MRC_Number__r.Name) != null ){
 			if(mrcNoSPwrap.get(rvtm.MRC_Number__r.Name).BSP != null){
                     system.debug('BSP::'+mrcNoSPwrap.get(rvtm.MRC_Number__r.Name));
                     system.debug('bsp Val::'+(mrcNoSPwrap.get(rvtm.MRC_Number__r.Name)).BSP);
@@ -390,17 +390,17 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 termTrigger.retroVolToBeHedged=dealEvent.IsRetroVolumeHedged__c;
             }
 
-            termTrigger.tranche = tranche ;												
+           termTrigger.tranche = tranche ;
             termTrigger.triggerMasterData = rvtm;//sobj;
             termWrapperList.add(termTrigger);
         }
         system.debug('termWrapperList::'+termWrapperList.size());
         finalTerm.termTriggerWrapperList = termWrapperList;
         if(!(sht__c.sObjectType.getDescribe().isCreateable() && sht__c.sObjectType.getDescribe().isUpdateable())){
-            finalTerm.hasEditAccess = false;   
+            finalTerm.hasEditAccess = false;
         }else{
-            finalTerm.hasEditAccess = true;  
-        } 
+            finalTerm.hasEditAccess = true;
+        }
         for(SHT__c sht : shtupdateLst){
             // system.debug('tw::'+tw);
             returnSHTList.add(sht.Name);
@@ -423,19 +423,19 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
     }
 
 }
-   
+
     @AuraEnabled
     public static List<SHT__c> saveTermTriggerDeal1(String triggerdata, String startDate,
      String endDate, boolean checked, String trancheVal){
          System.debug('##### triggerData'+triggerdata);
          //added by swarna aspart of PBI-1238303
          string stDateMonth;
-		 				   
+
          Date nextMonthStDate;
          if(startDate != null){
              Date stDate = Date.valueOf(startDate);
-								  
-             DateTime dtConverted = Datetime.newInstance(stDate.year(), stDate.month(),stDate.day(),0,0,0); 
+
+             DateTime dtConverted = Datetime.newInstance(stDate.year(), stDate.month(),stDate.day(),0,0,0);
              stDateMonth = string.valueOf(dtConverted.format('MMM'));
              nextMonthStDate = stDate.addMonths(1);
              nextMonthStDate = nextMonthStDate.toStartOfMonth();
@@ -460,11 +460,11 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 system.debug('each termTriggerWrapperData::'+dataObj);
                 termTriggerWrapperData rvTriggerMasterData = (termTriggerWrapperData)dataObj;
                 system.debug('rvTriggerMasterData::'+rvTriggerMasterData);
-                if(dataObj.TriggerVolume != Null && dataObj.TriggerVolume >0){
+                if(dataObj.TriggerVolume1 != Null && dataObj.TriggerVolume1 >0){
                     accntIdSet.add(rvTriggerMasterData.Sold_to_Name);
                     mrcId.add(rvTriggerMasterData.MRC_Number);
                 }
-                
+
             }
         }
 
@@ -474,9 +474,9 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 Supply_Type__c,Product__c,Product__r.Name,Product__r.Commodity_Grade_L2__c,Product__r.BEHG_Value_100l__c,Product__r.Current_BEHG_valid_from_date__c,
                 Product__r.Current_BEHG_valid_to_date__c,Product__r.Future_BEHG_value_in_100l__c,Product__r.Future_BEHG_valid_from_date__c,Product__r.Future_BEHG_valid_to_date__c,
                 Material_Name__c,PO_Type__c,Sold_To__r.Name,Handling_Type__c,Sales_Organization__c,MRC_Number__c,Ship_to_Name__c,Shipping_Condition__c,Online_Location_Name__c,
-                Online_Material_Name_Taxed__c,Online_Material_Name_UnTaxed__c,Online_Customer_Name__c,Ship_to_Number__c FROM Mrc__c WHERE 
+                Online_Material_Name_Taxed__c,Online_Material_Name_UnTaxed__c,Online_Customer_Name__c,Ship_to_Number__c FROM Mrc__c WHERE
                  Sold_To__c IN :accntIdSet AND Material_Description__c IN :retailMixMatSet];
-            
+
             if(mrcRetMixMrcLst.size()>0){
                 for(mrc__c mr:mrcRetMixMrcLst){
                     mrcRetMixMrcMap.put(mr.Sold_To__c+mr.Ship_to_Number__c+mr.Plant_Code__c+mr.Material_Description__c, mr.Name);
@@ -493,12 +493,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
             System.debug('termTrigger::'+termTrigger);
             termTriggerWrapperData rvTriggerMasterData = (termTriggerWrapperData)termTrigger;
 
-            if(rvTriggerMasterData.TriggerVolume != Null && rvTriggerMasterData.TriggerVolume>0){
-				tmd = new RV_Trigger_Master_Data__c();							  
+            if(rvTriggerMasterData.TriggerVolume1 != Null && rvTriggerMasterData.TriggerVolume1>0){
+				tmd = new RV_Trigger_Master_Data__c();
                 createTriggerSHT = new SHT__c();
                 boolean retailMixAdded=false;
-                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map. 
-                
+                Map<String, RV_SPCalculationController.salesPriceWrap> mrcNoVsSalesPriceWrapMap = new Map<String, RV_SPCalculationController.salesPriceWrap>(); //Rahul Sharma | Date- 28-Jan-2021 ; Added mrc numberr vs salesPriceWrap map.
+
                 if(checked && rvTriggerMasterData.MRC_Number_Material_Description == 'ULG95 E10' && rvTriggerMasterData.salesOrg !='AT01' ){
                     newSHTObj1 = new SHT__c();
                     newSHTObj2 = new SHT__c();
@@ -507,7 +507,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 }else{
                     retailMixAdded=false;
                 }
-					tmd.Id = rvTriggerMasterData.Id;								
+					tmd.Id = rvTriggerMasterData.Id;
                     createTriggerSHT.Trigger_Master_Data__c = rvTriggerMasterData.Id;
                     createTriggerSHT.MRC__c = rvTriggerMasterData.MRC_Number;
                     createTriggerSHT.MRC_Number__c = rvTriggerMasterData.MRC_Number_Name;
@@ -515,14 +515,14 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                     createTriggerSHT.SP_100L__c = 0;
                     createTriggerSHT.Status__c = 'Saved';
                     createTriggerSHT.Select__c = true;
-                    createTriggerSHT.Sales_Type__c = 'Obam Sales';
                     createTriggerSHT.Tranche__c = rvTriggerMasterData.tranche;
+                    createTriggerSHT.Sales_Type__c = 'Obam Sales';
                     createTriggerSHT.Product_Category__c = rvTriggerMasterData.MRC_Number_Material_Description;
                     //added by swarna aspart of PBI-1238303
                     createTriggerSHT.Contract_Start__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(startDate) : nextMonthStDate;
                     createTriggerSHT.Contract_End_Date__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(endDate) : nextMonthStDate.addDays(13);
                     //end PBI-1238303
-                    createTriggerSHT.Deal_Comment__c = rvTriggerMasterData.TriggerComment;
+                    createTriggerSHT.Deal_Comment__c = rvTriggerMasterData.TriggerComment1;
 					//added aspart of gsap connectivity1261339
                     createTriggerSHT.IsATPVolumeReduced__c= rvTriggerMasterData.atpVoltoBeReduced !=null ? Boolean.valueOf(rvTriggerMasterData.atpVoltoBeReduced) : false;
                     createTriggerSHT.IsVolumeHedged__c= rvTriggerMasterData.isVolToBeHedged !=null ? Boolean.valueOf(rvTriggerMasterData.isVolToBeHedged) : false;
@@ -536,25 +536,25 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 					createTriggerSHT.BSP__c = rvTriggerMasterData.BSP;
                     createTriggerSHT.MSP__c = rvTriggerMasterData.MSP;
                     createTriggerSHT.Target_Margin__c = (createTriggerSHT.SP_100L__c!=null && createTriggerSHT.BSP__c!=null) ? createTriggerSHT.SP_100L__c - createTriggerSHT.BSP__c : 0;
-																	  
+
                     if(checked && rvTriggerMasterData.MRC_Number_Material_Description == 'ULG95 E10' && rvTriggerMasterData.salesOrg !='AT01'){
-                        createTriggerSHT.Volume_CBM__c=rvTriggerMasterData.TriggerVolume * 0.15; 
+                        createTriggerSHT.Volume_CBM__c=rvTriggerMasterData.TriggerVolume1 * 0.15;
                     }
                     else{
-                        createTriggerSHT.Volume_CBM__c = rvTriggerMasterData.TriggerVolume;
+                        createTriggerSHT.Volume_CBM__c = rvTriggerMasterData.TriggerVolume1;
                     }
                     createSHTList.add(createTriggerSHT);
 
                    //for retail mix functionality
-																																																							
+
 			string retmixKey = rvTriggerMasterData.Sold_to_Name;
 			string shitopnum = rvTriggerMasterData.MRC_Number_Ship_to_Number ;
-			retmixKey = retmixKey + shitopnum+ rvTriggerMasterData.MRC_Number_Plant_Plant_Code;																																																																																							   
-																 
+			retmixKey = retmixKey + shitopnum+ rvTriggerMasterData.MRC_Number_Plant_Plant_Code;
+
             if(newSHTObj1 != null && retailMixAdded
             && mrcRetMixMrcIdMap.containsKey(retmixKey+'ULG95 E5')
             ){
-                
+
                 system.debug('@392::'+rvTriggerMasterData.Sold_to_Name+rvTriggerMasterData.shipToNumber+rvTriggerMasterData.MRC_Number_Plant_Plant_Code);
                 if(mrcRetMixMrcIdMap.size()>0){
                     system.debug('@394::'+retmixKey);
@@ -578,12 +578,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 newSHTObj1.SP_100L__c = 0;
                 newSHTObj1.Status__c = 'Saved';
                 newSHTObj1.Select__c = true;
+                newSHTObj1.Tranche__c =  rvTriggerMasterData.tranche;
                 newSHTObj1.Sales_Type__c = 'Obam Sales';
                 newSHTObj1.Product_Category__c = 'ULG95 E5';
-                newSHTObj1.Tranche__c =  rvTriggerMasterData.tranche;
                 newSHTObj1.Contract_Start__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(startDate) : nextMonthStDate;
                 newSHTObj1.Contract_End_Date__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(endDate) : nextMonthStDate.addDays(13);
-                newSHTObj1.Deal_Comment__c = rvTriggerMasterData.TriggerComment;
+                newSHTObj1.Deal_Comment__c = rvTriggerMasterData.TriggerComment1;
 				//added aspart of GSAP BUG-1261339
                 newSHTObj1.IsATPVolumeReduced__c=Boolean.valueOf(termTrigger.atpVoltoBeReduced);
                 newSHTObj1.IsVolumeHedged__c=Boolean.valueOf(termTrigger.isVolToBeHedged);
@@ -594,19 +594,21 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 newSHTObj1.IsPricingTaxed__c = rvTriggerMasterData.isPricingTaxed !=null ? Boolean.valueOf(rvTriggerMasterData.isPricingTaxed): false;
                 //end
                 newSHTObj1.Location__c =rvTriggerMasterData.MRC_Number_Plant;
-                newSHTObj1.Volume_CBM__c=rvTriggerMasterData.TriggerVolume* 0.80; 
-				if(!mrcNoVsSalesPriceWrapMap.isEmpty() && mrcNoVsSalesPriceWrapMap.containsKey(newSHTObj1.MRC_Number__c)){
-                    newSHTObj1.BSP__c = ((mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c)).BSP).setScale(2, RoundingMode.HALF_UP);
-                    newSHTObj1.MSP__c = (mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c).MSP).setScale(2, RoundingMode.HALF_UP);
+                newSHTObj1.Volume_CBM__c=rvTriggerMasterData.TriggerVolume1* 0.80;
+				//newSHTObj1.BSP__c = rvTriggerMasterData.BSP;
+                //newSHTObj1.MSP__c = rvTriggerMasterData.MSP;
+                if(!mrcNoVsSalesPriceWrapMap.isEmpty() && mrcNoVsSalesPriceWrapMap.containsKey(newSHTObj1.MRC_Number__c)){
+                        newSHTObj1.BSP__c = mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c).BSP;
+                        newSHTObj1.MSP__c = mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c).MSP;
                 }
                 else{
                         newSHTObj1.BSP__c = rvTriggerMasterData.BSP;
                 		newSHTObj1.MSP__c = rvTriggerMasterData.MSP;
-                }									 
+                }
                 newSHTObj1.Target_Margin__c = (newSHTObj1.SP_100L__c!=null && newSHTObj1.BSP__c!=null) ? newSHTObj1.SP_100L__c - newSHTObj1.BSP__c : 0;
             }
-																																									
-																
+
+
             if(newSHTObj2 != null && retailMixAdded
             && mrcRetMixMrcIdMap.containsKey(retmixKey+'ULG98')
             ){
@@ -622,38 +624,40 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 }
 
                 newSHTObj2.Trigger_Master_Data__c = rvTriggerMasterData.Id;
-               // newSHTObj2.MRC__c = rvTriggerMasterData.MRC_Number;
+                //newSHTObj2.MRC__c = rvTriggerMasterData.MRC_Number;
                 //newSHTObj2.MRC_Number__c = rvTriggerMasterData.MRC_Number_Name;
                 newSHTObj2.Customer__c = rvTriggerMasterData.Sold_to_Name;
                 newSHTObj2.SP_100L__c = 0;
                 newSHTObj2.Status__c = 'Saved';
                 newSHTObj2.Select__c = true;
-                newSHTObj2.Tranche__c =  rvTriggerMasterData.tranche;	
+                 newSHTObj2.Tranche__c =  rvTriggerMasterData.tranche;
                 newSHTObj2.Sales_Type__c = 'Obam Sales';
                 newSHTObj2.Product_Category__c = 'ULG98';
                 newSHTObj2.Contract_Start__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(startDate) : nextMonthStDate;
                 newSHTObj2.Contract_End_Date__c = (stDateMonth == rvTriggerMasterData.Trigger_Month) ?Date.valueof(endDate) : nextMonthStDate.addDays(13);
-                newSHTObj2.Deal_Comment__c = rvTriggerMasterData.TriggerComment;
+                newSHTObj2.Deal_Comment__c = rvTriggerMasterData.TriggerComment1;
 				//added aspart of GSAP BUG-1261339
                 newSHTObj2.IsATPVolumeReduced__c=Boolean.valueOf(termTrigger.atpVoltoBeReduced);
                 newSHTObj2.IsVolumeHedged__c=Boolean.valueOf(termTrigger.isVolToBeHedged);
                 newSHTObj2.IsZeroPriceDeal__c=Boolean.valueOf(termTrigger.isZeroPriceDeal);
                 newSHTObj2.IsGsapDealCreateOn__c=Boolean.valueOf(termTrigger.isGsapDealCreateOn);
                 newSHTObj2.IsGsapDealCancelOn__c=Boolean.valueOf(termTrigger.isGsapDealCancelOn);
-                newSHTObj2.Price_Condition__c =termTrigger.pricingCondition;
                 newSHTObj2.IsPricingTaxed__c = rvTriggerMasterData.isPricingTaxed !=null ? Boolean.valueOf(rvTriggerMasterData.isPricingTaxed): false;
+                newSHTObj2.Price_Condition__c =termTrigger.pricingCondition;
                 //end
                 newSHTObj2.Location__c =rvTriggerMasterData.MRC_Number_Plant;
-                newSHTObj2.Volume_CBM__c=rvTriggerMasterData.TriggerVolume* 0.05;
-				if(!mrcNoVsSalesPriceWrapMap.isEmpty() && mrcNoVsSalesPriceWrapMap.containsKey(newSHTObj2.MRC_Number__c)){
-                        newSHTObj2.BSP__c = ((mrcNoVsSalesPriceWrapMap.get(newSHTObj2.MRC_Number__c)).BSP).setScale(2, RoundingMode.HALF_UP);
-                        newSHTObj2.MSP__c = (mrcNoVsSalesPriceWrapMap.get(newSHTObj2.MRC_Number__c).MSP).setScale(2, RoundingMode.HALF_UP);
+                newSHTObj2.Volume_CBM__c=rvTriggerMasterData.TriggerVolume1* 0.05;
+				//newSHTObj2.BSP__c = rvTriggerMasterData.BSP;
+                //newSHTObj2.MSP__c = rvTriggerMasterData.MSP;
+                if(!mrcNoVsSalesPriceWrapMap.isEmpty() && mrcNoVsSalesPriceWrapMap.containsKey(newSHTObj2.MRC_Number__c)){
+                        newSHTObj2.BSP__c = mrcNoVsSalesPriceWrapMap.get(newSHTObj2.MRC_Number__c).BSP;
+                        newSHTObj2.MSP__c = mrcNoVsSalesPriceWrapMap.get(newSHTObj2.MRC_Number__c).MSP;
                     }
                     else{
                         newSHTObj2.BSP__c = rvTriggerMasterData.BSP;
                 		newSHTObj2.MSP__c = rvTriggerMasterData.MSP;
                     }
-                newSHTObj2.Target_Margin__c = newSHTObj2.SP_100L__c - newSHTObj2.BSP__c;														
+                newSHTObj2.Target_Margin__c = newSHTObj2.SP_100L__c - newSHTObj2.BSP__c;
             }
             if(newSHTObj1 != null && retailMixAdded ){
                 system.debug('sht1::'+newSHTObj1.MRC_Number__c+'--'+newSHTObj1.Contract_Start__c+'--'+newSHTObj1.Contract_End_Date__c);
@@ -664,15 +668,16 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 createSHTList.add(newSHTObj2);
             }
            triggerMasterIdLst.add(rvTriggerMasterData.Id);
-            tmd.Remaining_trigger_volume__c = rvTriggerMasterData.Remaining_trigger_volume != null ?  rvTriggerMasterData.Remaining_trigger_volume - termTrigger.TriggerVolume : rvTriggerMasterData.Monthly_volume - termTrigger.TriggerVolume ;
+            tmd.Remaining_trigger_volume__c = rvTriggerMasterData.Remaining_trigger_volume != null ?  rvTriggerMasterData.Remaining_trigger_volume - termTrigger.TriggerVolume1 : rvTriggerMasterData.Monthly_volume - termTrigger.TriggerVolume1 ;
+            //if(rvTriggerMasterData.MRC_Number_PO_Type != 'TTTI'){
             if(rvTriggerMasterData.Max_number_of_triggers_per_month != null){
                 tmd.Remaining_triggers__c = rvTriggerMasterData.Remaining_triggers != NULL ?rvTriggerMasterData.Remaining_triggers - 1: rvTriggerMasterData.Max_number_of_triggers_per_month - 1;
             }
             //updateTriggerMaster.add(rvTriggerMasterData);
             updateTriggerMaster.add(tmd);
-		 
+
         }
-        
+
     }
         if(!createSHTList.isEmpty()){
             insert createSHTList;
@@ -686,11 +691,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
             shtIdList.add(sht.Id);
         }
         string LoggedInUsr=UserInfo.getUserId();
+        //PBI-1592108, Added Location__r.Name in the query
         List<SHT__c> shtupdateLst = [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
                 IsGsapDealCreateOn__c,isOlfDeal__c,IsPricingTaxed__c,IsVolumeHedged__c,IsZeroPriceDeal__c,LastModifiedById,LastModifiedDate,
-                LastReferencedDate,LastViewedDate,Location__c,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
+                LastReferencedDate,LastViewedDate,Location__c,Location__r.Name,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
                 MRC_Number__c,MRC__c,MSP__c,Name,OLF_Deal_Number__c,OTM__c,OwnerId,Plant_No__c,PO_Type__c,Price_Condition__c,Price_Unit__c,
                 Product_Catalogue__c,Product_Category__c,Product_Sub_Group__c,PSP__c,Rv_LastModifiedById__c,Rv_LastModifiedDate__c,
                 Sales_Organization__c,Sales_Price__c,Sales_Type__c,SAP_Contract_Number__c,Select__c,Ship_To_Name__c,Ship_To__c,
@@ -719,19 +725,19 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         return lstofSavedSHTDeals;
     }
      //End-Added by Surbhi-PBI-1539864
-    
+
     @AuraEnabled
     public static List<SHT__c> confirmTermTriggerDeal(List<SHT__c> confirmTriggerList){
         System.debug('=========confirmTriggerList=========='+confirmTriggerList);
         List<SHT__c> updateSHTList = new List<SHT__c>();
         List<String> triggerMasterIdLst = new List<String>();
-													   
-												
-																	   
-										   
 
-		   
-         //added by swarna Bug-1287854 
+
+
+
+
+
+         //added by swarna Bug-1287854
         Map<String,RV_SPCalculationController.salesPriceWrap> mrcSalesPrcWrp=new Map<String,RV_SPCalculationController.salesPriceWrap>();
         Map<string,Id> mrcShtIdMap = new Map<string,Id>();
         set<Id> mrcId = new set<Id>();
@@ -750,8 +756,8 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
             contractStartDate=termTrigger.Contract_Start__c;
             contractEndDate=termTrigger.Contract_End_Date__c;
         }
-       												  
-  
+
+
          //Fetching Price for ALL deals to be Confirmed
         RV_SPCalculationController.salesPriceCalAndAuditWrap spAdtWrp = new RV_SPCalculationController.salesPriceCalAndAuditWrap();
         List<RV_SPCalculationController.salesPriceWrap> savedDealSpWrp = new List<RV_SPCalculationController.salesPriceWrap>();
@@ -779,7 +785,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         if(!updateSHTList.isEmpty()){
             update updateSHTList;
         }
-
+       System.debug('#### triggerMasterIdLst 787 size'+triggerMasterIdLst);
         List<SHT__c> shtupdateLst = [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
@@ -791,6 +797,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 SHT_Contract_Number__c,Sold_Price__c,Sold_To_Name__c,SP_100L__c,Status__c,SystemModstamp,Target_Margin__c,Tranche__c,
                 Transaction_Id__c,Trigger_Master_Data__c,UserTimezoneOffset__c,Volume_CBM__c,Volume_Unit__c
         FROM SHT__c where Trigger_Master_Data__c in:triggerMasterIdLst AND Status__c = 'Completed'];
+        System.debug('#### shtquery 787 size'+shtupdateLst.size());
         return shtupdateLst;
     }
 
@@ -800,12 +807,12 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 		List<String> tmdIds = new List<String>();
         List<RV_Trigger_Master_Data__c> updatetrgrMsterDataLst = new List<RV_Trigger_Master_Data__c>();
         Map<String,Decimal> shtMap = new Map<String,Decimal>();
-																																														 
+		//PBI-1592108, Added-Location__r.Name in the below query
         SHT__c shtupdateLst = [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
                 IsGsapDealCreateOn__c,isOlfDeal__c,IsPricingTaxed__c,IsVolumeHedged__c,IsZeroPriceDeal__c,LastModifiedById,LastModifiedDate,
-                LastReferencedDate,LastViewedDate,Location__c,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
+                LastReferencedDate,LastViewedDate,Location__c,Location__r.Name,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
                 MRC_Number__c,MRC__c,MSP__c,Name,OLF_Deal_Number__c,OTM__c,OwnerId,Plant_No__c,PO_Type__c,Price_Condition__c,Price_Unit__c,
                 Product_Catalogue__c,Product_Category__c,Product_Sub_Group__c,PSP__c,Rv_LastModifiedById__c,Rv_LastModifiedDate__c,
                 Sales_Organization__c,Sales_Price__c,Sales_Type__c,SAP_Contract_Number__c,Select__c,Ship_To_Name__c,Ship_To__c,
@@ -816,32 +823,31 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         shtupdateLst.Status__c = 'Cancelled';
         update shtupdateLst;
 			shtMap.put(shtupdateLst.Trigger_Master_Data__c , shtupdateLst.Volume_CBM__c);
-		
-		List<RV_Trigger_Master_Data__c> trgrMsterDataLst = [Select Id, Name, Sold_to_Name__c, Sold_to_Number__c, MRC_Number__c, Remaining_triggers__c, 
+
+		List<RV_Trigger_Master_Data__c> trgrMsterDataLst = [Select Id, Name, Sold_to_Name__c, Sold_to_Number__c, MRC_Number__c, Remaining_triggers__c,
                                                                 Ship_To_Number__c, Monthly_volume__c, Trigger_Month__c, Trigger_Year__c, Min_Trigger_Volume__c,
-                                                                 Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_trigger_volume__c, SHT__c  
+                                                                 Max_Trigger_Volume__c, Max_number_of_triggers_per_month__c, Remaining_trigger_volume__c, SHT__c
                                                                  from RV_Trigger_Master_Data__c where Id =:shtupdateLst.Trigger_Master_Data__c];
                     if(trgrMsterDataLst.size() > 0){
                         for(RV_Trigger_Master_Data__c eachTMD : trgrMsterDataLst){
-                            
+
 					    eachTMD.Remaining_trigger_volume__c = eachTMD.Remaining_trigger_volume__c != null ? eachTMD.Remaining_trigger_volume__c + shtMap.get(eachTMD.Id) : shtMap.get(eachTMD.Id);
-                        if(eachTMD.Max_number_of_triggers_per_month__c != null){
-                            eachTMD.Remaining_triggers__c = eachTMD.Remaining_triggers__c != null ? eachTMD.Remaining_triggers__c + 1 : 1;
-                        } 
-                          																											  
-						  
+                        eachTMD.Remaining_triggers__c = eachTMD.Remaining_triggers__c != null ? eachTMD.Remaining_triggers__c + 1 : 1;
+
+
                            // eachTMD.Remaining_trigger_volume__c = eachTMD.Remaining_trigger_volume__c +  shtMap.get(eachTMD.Id) ;
                            // eachTMD.Remaining_triggers__c = eachTMD.Remaining_triggers__c + 1;
                             updatetrgrMsterDataLst.add(eachTMD);
                         }
                     }
             update updatetrgrMsterDataLst;
-			string LoggedInUsr = UserInfo.getUserId();														   
+			string LoggedInUsr = UserInfo.getUserId();
+        //PBI-1592108, Added-Location__r.Name in the below query
         return [SELECT Auto_Num__c,BSP__c,Cancellation_Reason_Label__c,Cancellation_Reason__c,Contact_Email__c,
                 Contact_Name__c,Contract_End_Date__c,Contract_Start__c,CreatedById,CreatedDate,Created_Time__c,Customer__c,Deal_Comment__c,
                 Deal_Hour__c,Effective_Margin__c,Error__c,Grade__c,Handling_Type__c,Id,IsATPVolumeReduced__c,IsDeleted,IsGsapDealCancelOn__c,
                 IsGsapDealCreateOn__c,isOlfDeal__c,IsPricingTaxed__c,IsVolumeHedged__c,IsZeroPriceDeal__c,LastModifiedById,LastModifiedDate,
-                LastReferencedDate,LastViewedDate,Location__c,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
+                LastReferencedDate,LastViewedDate,Location__c,Location__r.Name,Margin_vs_MSP__c,Margin__c,Material_Name__c,Material_No__c,MRCNumber__c,
                 MRC_Number__c,MRC__c,MSP__c,Name,OLF_Deal_Number__c,OTM__c,OwnerId,Plant_No__c,PO_Type__c,Price_Condition__c,Price_Unit__c,
                 Product_Catalogue__c,Product_Category__c,Product_Sub_Group__c,PSP__c,Rv_LastModifiedById__c,Rv_LastModifiedDate__c,
                 Sales_Organization__c,Sales_Price__c,Sales_Type__c,SAP_Contract_Number__c,Select__c,Ship_To_Name__c,Ship_To__c,
@@ -860,7 +866,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 
         if (Schema.sObjectType.PermissionSetAssignment.isAccessible())
         {
-            PermissionSetAssignment[] psa = [SELECT Id, AssigneeId, Assignee.name FROM PermissionSetAssignment where PermissionSet.name='RV_DI' order by Assignee.name];
+            PermissionSetAssignment[] psa = [SELECT Id, AssigneeId, Assignee.name FROM PermissionSetAssignment where PermissionSet.name='RV_DI' and Assignee.isActive = true order by Assignee.name];
 
             if(psa.size()>0)
             {
@@ -879,11 +885,11 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         @AuraEnabled
         public String Id{get;set;}
         @AuraEnabled
-        public Decimal TriggerVolume{get;set;}
+        public Decimal TriggerVolume1{get;set;}
         @AuraEnabled
         public Integer TriggersLeft{get;set;}
         @AuraEnabled
-        public String TriggerComment{get;set;}
+        public String TriggerComment1{get;set;}
         @AuraEnabled
         public String salesOrg{get;set;}
           @AuraEnabled
@@ -937,7 +943,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 		@AuraEnabled
         public Decimal BSP{get;set;}
         @AuraEnabled
-        public Decimal MSP{get;set;}						
+        public Decimal MSP{get;set;}
         @AuraEnabled
         public boolean isPricingTaxed{get;set;}
         @AuraEnabled
@@ -968,11 +974,11 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
         @AuraEnabled
         public Sobject triggerMasterData{get;set;}
         @AuraEnabled
-        public Integer TriggerVolume{get;set;}
+        public Integer TriggerVolume1{get;set;}
         @AuraEnabled
         public Integer TriggersLeft{get;set;}
         @AuraEnabled
-        public String TriggerComment{get;set;}
+        public String TriggerComment1{get;set;}
         @AuraEnabled
         public String salesOrg{get;set;}
         @AuraEnabled
@@ -1004,8 +1010,8 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
 
         public termTriggerWrapper(){
             //triggerMasterData = new Sobject();
-            TriggerVolume = 0;
-            TriggerComment = '';
+            TriggerVolume1 = 0;
+            TriggerComment1 = '';
         }
     }
 

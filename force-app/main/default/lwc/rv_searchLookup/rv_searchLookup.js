@@ -59,9 +59,9 @@ export default class SearchComponent extends LightningElement{
                 combinedFields.push( field.trim() );
             }
         });
-        this.fields = combinedFields.concat( JSON.parse(JSON.stringify(this.fields)) ); 
+        this.fields = combinedFields.concat( JSON.parse(JSON.stringify(this.fields)) );
     }
- 
+
     @wire(searchRecords, {
                             objectName: '$objName',
                             fields: '$fields',
@@ -94,7 +94,7 @@ export default class SearchComponent extends LightningElement{
     handleInputChange(event){
         this.searchKey = event.target.value;
     }
-    
+
     @api
     handleKeyPress(event){
         var key     = event.which || event.keyCode;
@@ -134,12 +134,12 @@ export default class SearchComponent extends LightningElement{
         let selectRecord = this.searchResult.find((item) => {
             return item.Id === recordId;
         });
-        this.selectedRecord = selectRecord; 
+        this.selectedRecord = selectRecord;
         const selectedEvent = new CustomEvent('lookup', {
             bubbles    : true,
             composed   : true,
             cancelable : true,
-            detail: {  
+            detail: {
                 data : {
                     record : selectRecord,
                     recordId : recordId,
@@ -147,7 +147,7 @@ export default class SearchComponent extends LightningElement{
                 }
             }
         });
-        this.dispatchEvent(selectedEvent);       
+        this.dispatchEvent(selectedEvent);
     }
 
     handleBlur(){
@@ -164,7 +164,7 @@ export default class SearchComponent extends LightningElement{
             bubbles    : true,
             composed   : true,
             cancelable : true,
-            detail: {  
+            detail: {
                 data : {
                     record : selectRecord,
                     recordId : recordId,
@@ -182,7 +182,7 @@ export default class SearchComponent extends LightningElement{
             bubbles    : true,
             composed   : true,
             cancelable : true,
-            detail: {  
+            detail: {
                 data : {
                     record: undefined,
                     recordId: undefined,
