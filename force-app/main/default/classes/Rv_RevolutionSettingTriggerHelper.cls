@@ -42,8 +42,10 @@ public class Rv_RevolutionSettingTriggerHelper {
             User u = [select id,name from user where id = :olfConnSetting.LastModifiedById limit 1];
             
             OLF_EmailTemplate__mdt et = new OLF_EmailTemplate__mdt();
-            List<String> emailTo = new List<String>();
-            List<String> emailCC=new List<String>();
+            //Added by Surbhi, PBI-1756697
+            Set<String> setToAddress = new Set<String>();            
+            Set<String> setCCAddress = new Set<String>();
+            //Ended by Surbhi, PBI-1756697
             String emailTemplate='';
             String emailSubject='';
             String emailBody =  '';
@@ -72,32 +74,45 @@ public class Rv_RevolutionSettingTriggerHelper {
                 emailTemplate = et.EMAIL_TEMPLATE__c;
                 
                 try{
-                            List<String> ccList=et.EMAIL_CC__c.split(';');
-                            for(String cc : ccList)
-                            {
-                                if(cc.length()>0)
-                                    emailCC.add(cc);
-                            }
-                        
-                        }catch(Exception e){
-                             system.debug('Error while finding email CC :'+e);
-                            emailCC = new List<String>();
+                    //Added by Surbhi, PBI-1756697
+                    if(String.isNotEmpty(et.EMAIL_CC__c)){
+                        List<String> ccList=et.EMAIL_CC__c.split(';');
+                        for(String cc : ccList)
+                        {
+                            setCCAddress.add(cc);
                         }
-                
+                    }
+                    //Ended by Surbhi, PBI-1756697                    
+                }catch(Exception e){
+                    //Added by Surbhi, PBI-1756697
+                    system.debug('Error while finding email CC :'+e);
+                    setCCAddress = new Set<String>();
+                    //Ended by Surbhi, PBI-1756697
+                }                
                 try{
-                            List<String> toList=et.EMAIL_TO__c.split(';');
-                            for(String to : toList)
-                            {
-                                if(to.length()>0)
-                                    emailTo.add(to);
-                            }
+                    //Added by Surbhi, PBI-1756697
+                    //Fetching TO email address from EMAIL_TO_c custom field from custom metadata
+                    if(String.isNotEmpty(et.EMAIL_TO__c)){
+                        List<String> lstToAddress=et.EMAIL_TO__c.split(';');
                         
-                        }catch(Exception e){
-                            system.debug('Error while finding email TO :'+e);
-                            emailTo = new List<String>();
+                        for(String toAddress : lstToAddress)
+                        {
+                            setToAddress.add(toAddress);
                         }
-                
-                
+                    }
+                    //Fetching TO email address from permission set 
+                    List<String> lstToAddressFromPermissionSet = OLF_DashboardApexController.getUserEmailFromPermissionSet('RV_OnlineSalesManagement');                    
+                    if(lstToAddressFromPermissionSet.size() > 0){
+                        setToAddress.addAll(lstToAddressFromPermissionSet);
+                    }
+                    //Ended by Surbhi, PBI-1756697
+                }catch(Exception e){
+                    system.debug('Error while finding email TO :'+e);
+                    //Added by Surbhi, PBI-1756697
+                    setToAddress = new Set<String>();
+                    //Ended by Surbhi, PBI-1756697
+                }
+
                 emailBody = emailTemplate;
                 if(et.EMAIL_CSS__c!=null)
                 	emailBody = emailBody.replace('{!EMAIL_CSS__C}', et.EMAIL_CSS__c);
@@ -110,17 +125,27 @@ public class Rv_RevolutionSettingTriggerHelper {
                 }
                 if(et.EMAIL_FOOTER__c!=null)
                 	emailBody = emailBody.replace('{!EMAIL_FOOTER__C}', et.EMAIL_FOOTER__c);
+                //Added by Surbhi, PBI-1756697
+                System.debug('setToAddress='+setToAddress);
+                System.debug('setCCAddress='+setCCAddress);
+                //Ended by Surbhi, PBI-1756697
                 
-                System.debug('emailTo='+emailTo);
-                System.debug('emailCC='+emailCC);
                 System.debug('emailSubject='+emailSubject);
                 System.debug('emailBody='+emailBody);
                 
-                if(emailTo.size()>0)
-                    {
-                        mail.setToAddresses(emailTo);
-                        if(emailCC.size()>0)
-                            mail.setCcAddresses(emailCC);
+                //Added by Surbhi, PBI-1756697
+                if(setToAddress.size()>0)
+                    {   
+                        //Added by Surbhi, PBI-1756697
+                        List<String> toAddresses = new List<String>();
+                        toAddresses.addAll(setToAddress);
+                        mail.setToAddresses(toAddresses);                        
+                        if(setCCAddress.size()>0){
+                            List<String> ccAddresses = new List<String>();
+                            ccAddresses.addAll(setCCAddress); 
+                            mail.setCcAddresses(ccAddresses);
+                        }
+                        //Ended by Surbhi, PBI-1756697   
                         mail.setSubject(emailSubject);
                         mail.setHtmlBody(emailBody);
                         mail.setSaveAsActivity(false);

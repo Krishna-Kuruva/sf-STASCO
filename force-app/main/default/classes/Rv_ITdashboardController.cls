@@ -1419,26 +1419,28 @@ public class Rv_ITdashboardController {
     static void sendEmailAlert(List<errorWrapper> errorLst){
         String emailTemplateLabel = 'default';
         IT_Alert_Email_Template__mdt et = new IT_Alert_Email_Template__mdt();
-        List<String> emailTo = new List<String>();
-        List<String> emailCC=new List<String>();
+        //Added by Surbhi, PBI-1756697
+        Set<String> setToAddress = new Set<String>();            
+        Set<String> setCCAddress = new Set<String>();
+        //Ended by Surbhi, PBI-1756697
         String emailTemplate='';
         String emailSubject='';
         String emailBody =  '';
         
         try{
-            	et = [select EMAIL_TEMPLATE__c
-                             ,EMAIL_SUBJECT__c
-                             ,EMAIL_CC__c
-                             ,EMAIL_CSS__c
-                             ,EMAIL_HEADER__c
-                             ,EMAIL_TO__c
-                             ,EMAIL_FOOTER__c 
-                       from IT_Alert_Email_Template__mdt 
-                       where MasterLabel= :emailTemplateLabel limit 1];
-			}catch(Exception e){
-            			system.debug('Error while finding Email Template'+e);
-                		et = new IT_Alert_Email_Template__mdt();
-                    }
+            et = [select EMAIL_TEMPLATE__c
+                  ,EMAIL_SUBJECT__c
+                  ,EMAIL_CC__c
+                  ,EMAIL_CSS__c
+                  ,EMAIL_HEADER__c
+                  ,EMAIL_TO__c
+                  ,EMAIL_FOOTER__c 
+                  from IT_Alert_Email_Template__mdt 
+                  where MasterLabel= :emailTemplateLabel limit 1];
+        }catch(Exception e){
+            system.debug('Error while finding Email Template'+e);
+            et = new IT_Alert_Email_Template__mdt();
+        }
         
         if(et.EMAIL_TEMPLATE__c != null && et.EMAIL_TO__c!=null)
         {  
@@ -1447,30 +1449,43 @@ public class Rv_ITdashboardController {
             emailTemplate = et.EMAIL_TEMPLATE__c;
             
             try{
-                        List<String> toList=et.EMAIL_TO__c.split(';');
-                        for(String to : toList)
-                        {
-                            if(to.length()>0)
-                                emailTo.add(to);
-                        }
-                    
-                    }catch(Exception e){
-                         //system.debug('Error while finding email To :'+e);
-                        emailTo = new List<String>();
+                //Added by Surbhi, PBI-1756697
+                //Fetching TO email address from EMAIL_TO_c custom field from custom metadata
+                    List<String> lstToAddress=et.EMAIL_TO__c.split(';');                    
+                    for(String toAddress : lstToAddress)
+                    {
+                        setToAddress.add(toAddress);
                     }
+                //Fetching TO email address from permission set
+                List<String> lstToAddressFromPermissionSet = OLF_DashboardApexController.getUserEmailFromPermissionSet('RV_OnlineSalesManagement');                 
+                if(lstToAddressFromPermissionSet.size() > 0){
+                    setToAddress.addAll(lstToAddressFromPermissionSet);
+                }
+                //Ended by Surbhi, PBI-1756697
+                
+            }catch(Exception e){
+                //system.debug('Error while finding email To :'+e);
+                //Added by Surbhi, PBI-1756697
+                setToAddress = new Set<String>();
+                //Ended by Surbhi, PBI-1756697
+            }
             
             try{
-                        List<String> ccList=et.EMAIL_CC__c.split(';');
-                        for(String cc : ccList)
-                        {
-                            if(cc.length()>0)
-                                emailCC.add(cc);
-                        }
-                    
-                    }catch(Exception e){
-                         //system.debug('Error while finding email CC :'+e);
-                        emailCC = new List<String>();
+                //Added by Surbhi, PBI-1756697
+                if(String.isNotEmpty(et.EMAIL_CC__c)){
+                    List<String> ccList=et.EMAIL_CC__c.split(';');
+                    for(String cc : ccList)
+                    {
+                        setCCAddress.add(cc);
                     }
+                }
+                //Ended by Surbhi, PBI-1756697                  
+            }catch(Exception e){
+                //Added by Surbhi, PBI-1756697
+                system.debug('Error while finding email CC :'+e);
+                setCCAddress = new Set<String>();
+                //Ended by Surbhi, PBI-1756697
+            }
             
             emailBody = emailTemplate;
             emailBody = emailBody.replace('{!EMAIL_CSS__C}', et.EMAIL_CSS__c);
@@ -1479,28 +1494,36 @@ public class Rv_ITdashboardController {
             
             String emailTableBody = '';
             for(errorWrapper err :errorLst)
-                {
-                    emailTableBody = emailTableBody +'<tr>' 
-                                                        +'<td>'+err.ErrorMsg+'</td>'
-                                                    +'</tr>';
-                }
+            {
+                emailTableBody = emailTableBody +'<tr>' 
+                    +'<td>'+err.ErrorMsg+'</td>'
+                    +'</tr>';
+            }
             emailBody = emailBody.replace('<!--<TABLE_BODY/>-->', emailTableBody);
             
-            if(emailTo.size()>0)
-                {
-                    mail.setToAddresses(emailTo);
-                    if(emailCC.size()>0)
-                        mail.setCcAddresses(emailCC);
-                    mail.setSubject(emailSubject);
-                    mail.setHtmlBody(emailBody);
-                    mail.setSaveAsActivity(false);
-                    
-                    try{
-                        Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
-                    }catch(Exception e){
-                         System.debug('Error while sending email :'+e);
-                    }
+            //Added by Surbhi, PBI-1756697
+            if(setToAddress.size()>0)
+            {
+                //Added by Surbhi, PBI-1756697
+                List<String> toAddresses = new List<String>();
+                toAddresses.addAll(setToAddress);
+                mail.setToAddresses(toAddresses); 
+                if(setCCAddress.size()>0){
+                    List<String> ccAddresses = new List<String>();
+                    ccAddresses.addAll(setCCAddress); 
+                    mail.setCcAddresses(ccAddresses);
                 }
+                //Ended by Surbhi, PBI-1756697
+                mail.setSubject(emailSubject);
+                mail.setHtmlBody(emailBody);
+                mail.setSaveAsActivity(false);
+                
+                try{
+                    Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
+                }catch(Exception e){
+                    System.debug('Error while sending email :'+e);
+                }
+            }
         }
         else
         {
