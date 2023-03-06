@@ -164,9 +164,15 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     addDaysToDate(date, days){
         var someDate = new Date(date);
         someDate.setDate(someDate.getDate() + parseInt(days));
-        var dateFormated = someDate.toISOString().substring(0,10);
-        console.log('line 120:'+dateFormated);
-        return dateFormated;
+        const UTCDate = new Date(date);
+        UTCDate.setDate(UTCDate.getDate() + parseInt(days));
+           
+        var year = UTCDate.toLocaleString("default", {  year: "numeric" });
+        var month = UTCDate.toLocaleString("default", {  month: "2-digit" });
+        var day = UTCDate.toLocaleString("default", {  day: "2-digit" }); 
+        
+        var formattedDate = year + "-" + month + "-" + day;
+        return formattedDate;
     }
     calculateDaysDiff(endDate, startDate){
         //const diffTime = Math.abs(new Date(this.endDateVal) - new Date(this.startDateVal));
