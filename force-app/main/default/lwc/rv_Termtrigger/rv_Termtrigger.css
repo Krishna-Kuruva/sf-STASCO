@@ -56,6 +56,34 @@
     pointer-events: none;
 }
 
+.bgGrey {
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.bgNewWhite {
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.bgNewGrey {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 0 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.bgGrey:nth-child(odd) {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 0 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
 /*.THIS .slds-section > .sectionCss{
     justify-content: space-between;
     display: flex !important;

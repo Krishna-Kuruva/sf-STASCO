@@ -8,524 +8,570 @@
     <div class="slds-section" style="justify-content: space-between;display: flex;flex-direction: row;
     background-color: #f2f5f9;padding: 8px 5px;border-radius: 10px;">
         <h3 class="slds-section__title slds-theme_shade" style="font-size: 18px;font-weight: 600;color: #000000;">
-          <span class="slds-truncate slds-p-horizontal_small"  title="Section Title">Offer & Deal Creation </span>
+            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Offer & Deal Creation </span>
 
         </h3>
-        <div style="display: flex;align-items: center;"><h3 style="text-align: right;margin-right: 30px;"><a onclick={handleToggleChange} style="padding: 1px 10px;
-            color: #ffffff;font-size: 14px;background: #212946;border-radius: 10px;">{sectionLabel}</a></h3></div>
+
+        <div style="display: flex;align-items: center;">
+            <h3 style="text-align: right;margin-right: 30px;"><a onclick={handleToggleChange} style="padding: 1px 10px;
+            color: #ffffff;font-size: 14px;background: #212946;border-radius: 10px;">{sectionLabel}</a></h3>
+        </div>
     </div>
+
 
     <!--<template if:true={show}>-->
     <div data-id="tabset" class="setTabset slds-hide">
 
-    <!--<lightning-button label="Price & market view" onclick={handlePriceMarketClick} class="slds-m-left_x-large"></lightning-button>
-    <lightning-button label="Deal entry view" onclick={handleDealEntryClick} class="slds-m-left_x-small"></lightning-button>
-    <lightning-button label="Trigger" onclick={handleTriggerClick} class="slds-m-left_x-small"></lightning-button>
-    <div data-id="priceMarketComponent" class="slds-hidden">
-        <c-rv_price-market></c-rv_price-market>
-    </div>
-    <div data-id="dealEntryComponent" class="slds-hidden">
-        <c-rv_dealentryview></c-rv_dealentryview>
-    </div>-->
 
-    <lightning-tabset variant="scoped" active-tab-value={activeTab}>
-    <lightning-tab label="Price & Market View" value="TSFP_PM">
-        <lightning-layout>
-            <div class="slds-size_12-of-12">
-            <p class="tableCaption"><b>{customerName}</b></p>
-            <c-rv_price-market oncustomervaluechange={handleCustomerName}></c-rv_price-market>
-           </div>
-        </lightning-layout>
-    </lightning-tab>
-    <lightning-tab label="Deal Entry View" value="TSFP_DE" onactive={loadDeals}>
-        <lightning-layout>
-            <div class="slds-size_12-of-12">
-             <p class="tableCaption"><b>{customerName}</b></p>
-			<c-rv_dealentryview onpass={loadDeals}></c-rv_dealentryview>
-           </div>
-        </lightning-layout>
-	</lightning-tab>
+        <lightning-tabset variant="scoped" active-tab-value={activeTab}>
+            <lightning-tab label="Price & Market View" value="TSFP_PM" onactive={loadPMDeals}>
+               <!--Surbhi-Start-PBI-1539864-->
+			   <lightning-layout padding="around-small">
+			   <!--Surbhi-End-PBI-1539864-->
+                    <div class="slds-size_12-of-12">
 
-    <lightning-tab label="Trigger" value="TTTT">
-    <!--<div class="offerdeal-box">
+                        <p class="tableCaption"><b>{customerName}</b></p>
+                        <c-rv_price-market oncustomervaluechange={handleCustomerName}></c-rv_price-market>
+
+                    </div>
+                </lightning-layout>
+            </lightning-tab>
+            <lightning-tab label="Deal Entry View" value="TSFP_DE" onactive={loadDeals}>
+                <lightning-layout>
+                    <div class="slds-size_12-of-12">
+                        <p class="tableCaption"><b>{customerName}</b></p>
+                        <c-rv_dealentryview onpass={loadDeals}></c-rv_dealentryview>
+                    </div>
+                </lightning-layout>
+            </lightning-tab>
+
+            <lightning-tab label="Trigger" value="TTTT">
+                <!--<div class="offerdeal-box">
         <lightning-button  label="Price & market view" name="priceMarketView" title="Price&MarketView" onclick={handleTab} class="slds-m-left_x-small"></lightning-button>
         <lightning-button  label="Deal entry view" name="DealEntryView" title="DealEntryView" onclick={handleTab} class="slds-m-left_x-small"> </lightning-button>
         <lightning-button  label="Trigger" title="trigger" name="termTrigger" onclick={handleTab} class="slds-m-left_x-small"> </lightning-button>
     </div>
     <template if:true = {termTriggerTab}>-->
-    <div class="c-container" data-id="triggerComponent" >
-        <lightning-layout horizontal-align="spread" style="margin-top: 10px;">
-            <lightning-layout-item  size="2">
-                <lightning-input type="text" value={monthValue} disabled></lightning-input>
-                <!--<lightning-combobox name="month"
-                                            label="Month"
-                                           value={monthValue}
-                                            placeholder="--Select--"
-                                            options={monthOptions}
-                                            onchange={onchangeMonth} disabled>
-                        </lightning-combobox>-->
-            </lightning-layout-item>
-            <lightning-layout-item padding="around-small" size="2">
-                <!--<lightning-combobox name="year"
-                                        label="Year"
-                                        value={yearValue}
-                                        placeholder="--Select--"
-                                        options={yearOptions}
-                                        onchange={onchangeYear}>
-                        </lightning-combobox>-->
-            </lightning-layout-item>
-            <lightning-layout-item padding="around-small" size="8">
-                <!--<div class="slds-col slds-size_1-of-3">
-                    <div class="slds-col slds-size_1-of-2">
-                        <div class="slds-grid">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label">
-                                    <template if:true={isAttributeRequired}>
-                                        <abbr title="required">*</abbr>
-                                    </template>
-                                    <span class="">Month</span>
-                                </label>
-                                <div class="slds-form-element__control slds-grow">
-                                    <div class="slds-select_container">
-                                        <select class="slds-select"
-                                                onchange={onchangeMonth}>
-
-                                            <template for:each={monthOptions} for:item="option">
-                                                <option key={option.label} class="uiInputSelectOption" value={option.value}>{option.value}</option>
-                                            </template>
-                                        </select>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="slds-form-element">
-
-                                <div class="slds-form-element__control slds-grow">
-                                    <div class="slds-select_container">
-
-                                        <label class="slds-form-element__label">
-                                            <span class="">Year</span>
-                                        </label>
-                                        <select class="slds-select"
-                                                onchange={onchangeYear}>
-
-                                            <template for:each={yearOptions} for:item="option">
-                                                <option key={option.label} class="uiInputSelectOption" value={option.value}>{option.value}</option>
-                                            </template>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!--Surbhi-Start-PBI-1539864-->
+                <lightning-layout padding="around-small">
+                    <div class="slds-size_12-of-12">
+                        <p class="tableCaptionBottom"><b>{customerName}</b></p>
                     </div>
-                </div>-->
-            </lightning-layout-item>
-        </lightning-layout>
-        <lightning-accordion allow-multiple-sections-open
-                             onsectiontoggle={handleSectionToggle} active-section-name={activeSections}
-                             ><!--active-section-name="A"-->
-            <template if:true={renderCreateDealMasterTable}>
-                <lightning-accordion-section name="A" label="Create Deal">
-
-                        <lightning-layout multiple-rows="true" horizontal-align="spread" >
-                <lightning-layout-item padding="around-small" size="12">
-                    <p class="tableCaptionBottom"><b>{customerName}</b></p>
-                    <div class="row">
-                        <div class="slds-grid tableFixHead" >
-                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-                                <thead>
-                                    <tr class="slds-text-title_caps">
-                                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
-                                           MRC Name
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                                Plant Name
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                             Plant Code
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                             Grade
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                            Mat No
-                                       </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                              Monthly Volume
-                                              (CBM)
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                              Remaining Volume
-                                              (CBM)
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                             Min. Trigger Volume
-                                             (CBM)
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                             Max. Trigger Volume
-                                             (CBM)
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                           Max. No. of Triggers
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Triggers left
-                                         </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                              Trigger
-                                              (CBM)
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Comment
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!--added now-->
-                                    <template for:each={filteredMasterTriggerData} for:item="mrc" for:index="indx">
-                                        <tr key={mrc.months}>
-                                            <td data-label="PlantName"  key={mrc.months} style="background-color: lightgrey;font-weight:900;" >{mrc.months}</td>
-                                        </tr>
-                                            <template for:each={mrc.monthsdata} for:item="monthlyTriggerData" for:index="pIndex">
-                                                <tr key = "{monthlyTriggerData.Id}" id={monthlyTriggerData.Id}>
-                                                <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.MRC_Number_Name}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Plant Name">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.MRC_Number_Plant_Name}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Plant Code">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.MRC_Number_Plant_Plant_Code}</div>
-                                                </td>
-                                                <td  scope="row" class="putborderHeader" data-label="Material Description">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.MRC_Number_Material_Description}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Material No">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.MRC_Number_Product_Name}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Monthly Volume">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Monthly_volume}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Remaining Volume">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Remaining_trigger_volume}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Min_Trigger_Volume}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Max_Trigger_Volume}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Max_number_of_triggers_per_month}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                                    <div class="slds-cell-wrap">{monthlyTriggerData.Remaining_triggers}</div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="TriggerVolume">
-                                                    <div class="slds-cell-wrap">
-                                                        <lightning-input type="number"  step=".01" data-plant= {pIndex}  data-id= {indx} value={monthlyTriggerData.TriggerVolume}  onchange={onchangeTriggerVolume}>
-                                                        </lightning-input>
-                                                       <!-- <lightning-input data-id={indx} value={monthlyTriggerData.TriggerVolume} onchange={onchangeTriggerVolume}>
-                                                        </lightning-input>-->
-
-                                                    </div>
-                                                </td>
-                                                <td scope="row" class="putborderHeader" data-label="Comment">
-                                                    <div class="slds-cell-wrap">
-                                                        <lightning-textarea data-plant= {pIndex}  data-id= {indx} value={monthlyTriggerData.TriggerComment}  onchange={onchangeTriggerComment} max-length="255">
-                                                        </lightning-textarea>
-                                                        <!--<lightning-input data-id={indx} value={monthlyTriggerData.TriggerComment}  onchange={onchangeTriggerComment}>
-                                                        </lightning-input>-->
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </template>
-
-                                </template>
-                                    <!--end now-->
-
-                                </tbody>
-                            </table>
-                        </div>
+                </lightning-layout>
+    <!--**************************************************************************************************-->
+                <template if:false={filteredMasterTriggerData1.length}>
+                    <div>
+                        <p style="font-weight:bold;color:Red;">{triggerDealEntrySHTDataAvailability}</p>
                     </div>
-                    <div class="slds-m-around_large">
-                        <div if:true={isLoading} class="slds-is-relative">
-                            <lightning-spinner
-                                alternative-text="Loading..." variant="brand">
-                            </lightning-spinner>
-                        </div>
-                    </div>
-                </lightning-layout-item>
-                <template if:true={filteredMasterTriggerData.length}>
-                <lightning-layout-item padding="around-small" size="12">
-                    <div class="slds-float_right slds-p-around_small">
-                        <lightning-button variant="brand" label="Save" title="Save" onclick={saveTriggerDeal}
-                        disabled={isDisabled}>
-                        </lightning-button>
-                    </div>
-                </lightning-layout-item>
                 </template>
-            </lightning-layout>
-
-                </lightning-accordion-section>
-            </template>
-            <template if:true={renderSavedDealMasterTable}>
-                <lightning-accordion-section name="B" label="My Saved Deal">
-
-                            <lightning-layout multiple-rows="true" horizontal-align="spread" >
-                    <lightning-layout-item padding="around-small" size="12">
+                <div class="c-container" data-id="triggerComponent">
+                    <template if:true={renderCreateDealMasterTable}>
+                        <lightning-layout-item padding="around-small" size="12">
                         <div class="row">
-                            <div class="slds-grid " >
-                                <template if:true={savedMasterTriggerSHTData}>
-                                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                            <div class="slds-grid tableFixHead scrollbarEdit">
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                                     <thead>
-                                    <tr class="slds-text-title_caps">
-                                        <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
-                                            MRC No
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                            Sold To
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                            Ship To
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                            PO Type
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                            Plant
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Grade
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Mat No
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Contract Start Date
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Contract End Date
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Volume CBM
-                                        </th>
+                                        <tr class="slds-text-title_caps slds-line-height_reset">
 
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Comment
-                                        </th>
-                                        <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <template for:each={savedMasterTriggerSHTData} for:item="it" for:index="indx">  <!--<template iterator:it={filteredMasterTriggerData}>-->
-                                        <tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
-                                            <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
-                                                <div class="slds-cell-wrap">{it.MRC_Number__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Plant Name">
-                                                <div class="slds-cell-wrap">{it.Sold_To_Name__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Plant Code">
-                                                <div class="slds-cell-wrap">{it.Ship_To__c}</div>
-                                            </td>
-                                            <td  scope="row" class="putborderHeader" data-label="Material Description">
-                                                <div class="slds-cell-wrap">{it.PO_Type__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Monthly Volume">
-                                                <div class="slds-cell-wrap">{it.Plant_No__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Remaining Volume">
-                                                <div class="slds-cell-wrap">{it.Product_Category__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
-                                                <div class="slds-cell-wrap">{it.Material_No__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
-                                                <div class="slds-cell-wrap">{it.Contract_Start__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                                <div class="slds-cell-wrap">{it.Contract_End_Date__c}</div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="TriggerVolume">
-                                                <div class="slds-cell-wrap">
-                                                    <lightning-input data-id={indx} value={it.Volume_CBM__c} onchange={onchangeTriggerVolumeOnSave}>
+                                            <th class="putborderLeft putborderHeader  slds-color__background_gray-5"
+                                                scope="col">
+                                                <div class="slds-truncate">PLANT NAME</div>
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                <div class="slds-truncate">PLANT CODE</div>
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                <div class="slds-truncate">GRADE</div>
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                <div class="slds-truncate"> MAT NO</div>
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                MONTHLY VOLUME (CBM)
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                REMAINING VOLUME (CBM)
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                MIN. TRIGGER VOLUME (CBM)
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                MAX. TRIGGER VOLUME (CBM)
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                MAX. NO. OF TRIGGERS
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                TRIGGERS LEFT
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                TRIGGER (CBM)
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                COMMENT
+                                            </th>
 
-                                                    </lightning-input>
-
-                                                </div>
-                                            </td>
-
-                                            <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
-                                                <div class="slds-cell-wrap">
-                                                    <lightning-textarea data-id={indx} value={it.Deal_Comment__c} onchange={onchangeTriggerCommentOnSave}>
-
-                                                    </lightning-textarea>
-
-                                                </div>
-                                            </td>
-                                            <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                                <div class="slds-cell-wrap">
-                                                    <lightning-button data-recid={it.Id} variant="destructive" label="Cancel"
-                                                                      title="Cancel" onclick={cancelTriggerDeal} disabled={isDisabled}>
-                                                    </lightning-button>
-                                                </div>
-                                            </td>
                                         </tr>
+                                    </thead>
+
+                                    <template for:each={filteredMasterTriggerData1} for:item="mrc" for:index="indx">
+                                        <template if:true={mrc.mrcNo} >
+                                            <tr key={mrc.mrcNo} data-mrc= {mrc.mrcNo}>
+                                                <td data-label="PlantName" key={mrc.mrcNo}
+                                                    style="background-color: lightgrey;font-weight:900;">
+                                                    {mrc.mrcNo}</td>
+                                            </tr>
+                                        </template>
+
+                                        <tr  key={mrc.mrcNums} class="slds-hint-parent">
+                                            <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{mrc.mrcNums}</td>
+                                        </tr>
+
+                                        <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex">
+                                            <tbody class={cmPlant.rowbgColor} data-plant={cmPlant.location} key={cmPlant.location}>
+                                                <!--tr  key={cmPlant.location} class="slds-hint-parent">
+                                                    <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{cmPlant.mrcNum}-{cmPlant.mrcContract_Description}</td>
+                                                </tr-->
+                                                <tr >
+                                                    <!--td data-label="mrcNum" rowspan={cmPlant.rowspan}>{cmPlant.mrcNum}-{cmPlant.mrcLineItem}</td-->
+                                                    <td data-label="PlantName" rowspan={cmPlant.rowspan}>{cmPlant.location}</td>
+                                                    <td data-label="PlantId" rowspan={cmPlant.rowspan}>{cmPlant.locationCode}</td>
+
+                                                </tr>
+                                                <template for:each={cmPlant.gradeGroup} for:item="cmPlantGrade"
+                                                            for:index="gIndex">
+
+                                                            <tr data-grade={cmPlantGrade.MRC_Number_Plant_Name} key={cmPlantGrade}>
+                                                                <td  data-label="Grade" style="font-weight: bold;">{cmPlantGrade.MRC_Number_Material_Description}  </td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.MRC_Number_Product_Name}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Monthly_volume}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Remaining_trigger_volume}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Min_Trigger_Volume}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Max_Trigger_Volume}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Max_number_of_triggers_per_month}</td>
+                                                                <td data-label = "MatNo">{cmPlantGrade.Remaining_triggers}</td>
+                                                                <td data-label = "MatNo">
+                                                                    <lightning-input type="number"  step=".01" data-plant= {pIndex}   data-mrc = {indx} data-id= {gIndex} value= {cmPlantGrade.TriggerVolume1}  onchange= {onchangeTriggerVolume1}>
+                                                                    </lightning-input>
+                                                                    <!--lightning-input type="number" step=".01" data-plant= {pIndex} data-id= {indx} value= {cmPlantGrade.TriggerVolume} onchange= {onchangeTriggerVolume}>
+                                                                    </lightning-input-->
+                                                                </td>
+
+                                                                <td data-label = "MatNo">
+                                                                    <lightning-textarea data-plant={pIndex} data-mrc = {indx} data-id= {gIndex}  value={cmPlantGrade.TriggerComment1}
+                                                                        onchange={onchangeTriggerComment1}
+                                                                        max-length="255">
+                                                                    </lightning-textarea>
+                                                                    <!--lightning-textarea data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} value={cmPlantGrade.Comment}  onchange={onchangeDealComment} max-length="255">
+                                                                    </lightning-textarea-->
+                                                                </td>
+                                                            </tr>
+                                                </template>
+                                            </tbody>
+                                        </template>
                                     </template>
+                                    <tbody>
+
                                     </tbody>
                                 </table>
-                                </template>
-                                <template if:false={savedMasterTriggerSHTData}>
-                                    <p>No Saved Deals.</p>
-                                </template>
                             </div>
                         </div>
-                        <div class="slds-m-around_large">
+                        <template if:true={isLoading}>
+                            <div class="slds-p-around_x-large">
+                                <lightning-spinner alternative-text="Loading" class="slds-is-fixed" size="medium" variant="brand"></lightning-spinner>
+                            </div>
+                        </template><br/>
+
+                    <!--lightning-layout>
+                        <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
+                        <lightning-layout-item size="1">
+                            <lightning-button variant="brand" label="Save" title="Save" onclick={saveTriggerDeal}  disabled={isDisabled}>
+                            </lightning-button>
+
+                        </lightning-layout-item>
+                    </lightning-layout-->
+                </lightning-layout-item>
+                    <lightning-layout-item size="12"></lightning-layout-item>
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small" size="8"></lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="3"></lightning-layout-item>
+                            <lightning-layout-item size="1">
+                                <lightning-button variant="brand" label="Save" title="Save" onclick={saveTriggerDeal}
+                                    style="display: flex;justify-content: flex-end;margin-top:-10px"
+                                    disabled={isDisabled}>
+                                </lightning-button>
+
+                            </lightning-layout-item>
+                        </lightning-layout>
+                </template>
+
+    <!--**************************************************************************************************-->
+
+                    <!--Surbhi-Start-PBI-1539864-->
+                    <template if:true={savedMasterTriggerSHTData.length}>
+                        <!--lightning-accordion-section name="B" label="My Saved Deal"-->
+                        <!--Surbhi-End-PBI-1539864-->
+                        <!--Surbhi-Start-PBI-1539864-->
+                        <!--lightning-layout multiple-rows="true" horizontal-align="spread" class="cust_saveDealSectionHeight"-->
+                        <lightning-layout-item padding="around-small" size="12">
+                            <h3
+                                style=" font-weight: 700;padding: 10px;color: black;background-color: rgb(246, 250, 213);border: 1px solid #b5b6b9;margin-top: 10px;margin-bottom:10px;border-radius:4px;">
+                                Saved Deals</h3>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="12">
+                        <!--Surbhi-End-PBI-1539864->
+                        <lightning-layout-item padding="around-small" size="12"-->
+							<div class="row">
+							    <!--Surbhi-Start-PBI-1539864-->
+                                <div class="slds-grid cust_savedDealTableCSS">
+
+                                    <template if:true={savedMasterTriggerSHTData.length}>
+                                        <!--Surbhi-End-PBI-1539864-->
+                                        <table
+                                            class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                                            <thead>
+                                                <tr class="slds-text-title_caps">
+                                                    <th class="putborderLeft putborderHeader  slds-color__background_gray-5"
+                                                        scope="col">
+                                                        MRC No
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Sold To
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Ship To
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                        scope="col">
+                                                        PO Type
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Plant
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Grade
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Mat No
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Contract Start Date
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Contract End Date
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Volume CBM
+                                                    </th>
+
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Comment
+                                                    </th>
+                                                    <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                        scope="col">
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={savedMasterTriggerSHTData} for:item="it"
+                                                    for:index="indx">
+                                                    <!--<template iterator:it={filteredMasterTriggerData}>-->
+                                                    <tr class="slds-hint-parent" key={it.Id} id={it.Id}>
+                                                        <td scope="row" class="putborderHeader putborderLeft"
+                                                            data-label="MRC Name">
+                                                            <div class="slds-cell-wrap">{it.MRC_Number__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader" data-label="Plant Name">
+                                                            <div class="slds-cell-wrap">{it.Sold_To_Name__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader" data-label="Plant Code">
+                                                            <div class="slds-cell-wrap">{it.Ship_To__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Material Description">
+                                                            <div class="slds-cell-wrap">{it.PO_Type__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Monthly Volume">
+                                                            <div class="slds-cell-wrap">{it.Location__r.Name}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Remaining Volume">
+                                                            <div class="slds-cell-wrap">{it.Product_Category__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Min Trigger Volume">
+                                                            <div class="slds-cell-wrap">{it.Material_No__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Max Trigger Volume">
+                                                            <div class="slds-cell-wrap">{it.Contract_Start__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Max No of Trigger">
+                                                            <div class="slds-cell-wrap">{it.Contract_End_Date__c}</div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="TriggerVolume">
+                                                            <div class="slds-cell-wrap">
+                                                                <lightning-input data-id={indx} value={it.Volume_CBM__c}
+                                                                    onchange={onchangeTriggerVolumeOnSave}>
+
+                                                                </lightning-input>
+
+                                                            </div>
+                                                        </td>
+
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Max Trigger Volume">
+                                                            <div class="slds-cell-wrap">
+                                                                <lightning-textarea data-id={indx}
+                                                                    value={it.Deal_Comment__c}
+                                                                    onchange={onchangeTriggerCommentOnSave}>
+
+                                                                </lightning-textarea>
+
+                                                            </div>
+                                                        </td>
+                                                        <td scope="row" class="putborderHeader"
+                                                            data-label="Max No of Trigger">
+                                                            <div class="slds-cell-wrap">
+                                                                <lightning-button data-recid={it.Id}
+                                                                    variant="destructive" label="Cancel" title="Cancel"
+                                                                    onclick={cancelTriggerDeal} disabled={isDisabled}>
+                                                                </lightning-button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </template>
+                                    <template if:false={savedMasterTriggerSHTData}>
+                                        <p>No Saved Deals.</p>
+                                    </template>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                            <!--Surbhi-Start-PBI-1539864-->
+                            <!--div class="slds-m-around_large">
                             <div if:true={isConfirmLoading} class="slds-is-relative">
                                 <lightning-spinner
                                     alternative-text="Loading..." variant="brand">
                                 </lightning-spinner>
                             </div>
-                        </div>
-                    </lightning-layout-item>
-                    <template if:false={saveDealsData}>
-                        <lightning-layout-item padding="around-small" size="12">
-                            <div class="slds-float_right slds-p-around_small">
-                                <p>No Saved Deals to Confirm</p>
-                            </div>
-                        </lightning-layout-item>
-                    </template>
-                    <template if:true={savesDealsData}>
-                    <template if:true={savedMasterTriggerSHTData}>
-                        <lightning-layout-item padding="around-small" size="12">
-                            <div class="slds-float_right slds-p-around_small">
-                                <lightning-button variant="brand" label="Confirm" title="Confirm" onclick={confirmTriggerDeal}
+                        </div-->
+                            <!--Surbhi-End-PBI-1539864->
+                        </lightning-layout-item-->
+                        <template if:false={saveDealsData}>
+                            <lightning-layout-item padding="around-small" size="12">
+                                <div class="slds-float_right slds-p-around_small">
+                                    <p>No Saved Deals to Confirm</p>
+                                </div>
+                            </lightning-layout-item>
+                        </template>
+
+                        <template if:true={savesDealsData}>
+                            <template if:true={savedMasterTriggerSHTData}>
+							    <!--Surbhi-Start-PBI-1539864-->
+                                <!--lightning-layout-item padding="around-small" size="12">
+
+						   <div class="slds-float_right slds-p-around_small">
+
+								<lightning-button variant="brand" label="Confirm" title="Confirm" onclick={confirmTriggerDeal}
                                 disabled={isDisabled}>
                                 </lightning-button>
                             </div>
-                        </lightning-layout-item>
-                    </template>
-                    </template>
-                </lightning-layout>
-                <!--Trigger contacts 25 and above-->
-                <lightning-layout>
-                <template if:true ={renderSavedDealMasterTableFuture}>
-                    <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
-                        <thead>
-                        <tr class="slds-text-title_caps">
-                            <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
-                                MRC No
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                Sold To
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                Ship To
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                PO Type
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                Plant
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Grade
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Mat No
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Contract Start Date
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Contract End Date
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Volume CBM
-                            </th>
 
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Comment
-                            </th>
-                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5" scope="col">
-                                Action
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <template for:each={savedMasterTriggerSHTData} for:item="it" for:index="indx">  <!--<template iterator:it={filteredMasterTriggerData}>-->
-                            <tr class="slds-hint-parent" key = {it.Id} id={it.Id}>
-                                <td scope="row" class="putborderHeader putborderLeft" data-label="MRC Name">
-                                    <div class="slds-cell-wrap">{it.MRC_Number__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Plant Name">
-                                    <div class="slds-cell-wrap">{it.Sold_To_Name__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Plant Code">
-                                    <div class="slds-cell-wrap">{it.Ship_To__c}</div>
-                                </td>
-                                <td  scope="row" class="putborderHeader" data-label="Material Description">
-                                    <div class="slds-cell-wrap">{it.PO_Type__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Monthly Volume">
-                                    <div class="slds-cell-wrap">{it.Plant_No__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Remaining Volume">
-                                    <div class="slds-cell-wrap">{it.Product_Category__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
-                                    <div class="slds-cell-wrap">{it.Material_No__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
-                                    <div class="slds-cell-wrap">{it.Contract_Start__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                    <div class="slds-cell-wrap">{it.Contract_End_Date__c}</div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="TriggerVolume">
-                                    <div class="slds-cell-wrap">
-                                        <lightning-input data-id={indx} value={it.Volume_CBM__c} onchange={onchangeTriggerVolumeOnSave}>
-
-                                        </lightning-input>
-
-                                    </div>
-                                </td>
-
-                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
-                                    <div class="slds-cell-wrap">
-                                        <lightning-textarea data-id={indx} value={it.Deal_Comment__c} onchange={onchangeTriggerCommentOnSave}>
-
-                                        </lightning-textarea>
-
-                                    </div>
-                                </td>
-                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
-                                    <div class="slds-cell-wrap">
-                                        <lightning-button data-recid={it.Id} variant="destructive" label="Cancel"
-                                                          title="Cancel" onclick={cancelTriggerDeal} disabled={isDisabled}>
-                                        </lightning-button>
-                                    </div>
-                                </td>
-                            </tr>
+                        </lightning-layout-item-->
+                        <lightning-layout-item size="12"></lightning-layout-item>
+                                <lightning-layout>
+                                    <lightning-layout-item  size="11"></lightning-layout-item>
+                                    <lightning-layout-item  size="1"><!--class="cust_confirmBtn"-->
+                                        <!--lightning-button label="Confirm" name="Confirm" onclick={confirmTriggerDeal}
+                                            variant="brand"  disabled={isDisabled}>
+                                        </lightning-button-->
+                                        <lightning-button variant="brand" label="Confirm" title="Confirm" onclick={confirmTriggerDeal}
+                                    style="display: flex;justify-content: flex-end;margin-top:-10px"
+                                    disabled={isDisabled}>
+                                </lightning-button>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
                         </template>
-                        </tbody>
-                    </table>
-                  </template>
-                </lightning-layout>
-                <!--Trigger contacts 25 and above-->
-                </lightning-accordion-section>
-            </template>
-            <template if:true={renderCmpltdDealMasterTable}>
-                <lightning-accordion-section name="B" label="My Completed Deal">
+                        <!--/lightning-layout-->
+						<!--Surbhi-End-PBI-1539864-->
+                        <!--Trigger contacts 25 and above-->
+                        <lightning-layout>
+                            <template if:true={renderSavedDealMasterTableFuture}>
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th class="putborderLeft putborderHeader  slds-color__background_gray-5"
+                                                scope="col">
+                                                MRC No
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                Sold To
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                Ship To
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                PO Type
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5"
+                                                scope="col">
+                                                Plant
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Grade
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Mat No
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Contract Start Date
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Contract End Date
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Volume CBM
+                                            </th>
 
-                        <c-rv_useadvancefilter></c-rv_useadvancefilter>
-                       <!--<lightning-layout multiple-rows="true" horizontal-align="spread" >
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Comment
+                                            </th>
+                                            <th class="putborderHeader slds-cell-wrap slds-color__background_gray-5"
+                                                scope="col">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={savedMasterTriggerSHTData} for:item="it" for:index="indx">
+                                            <!--<template iterator:it={filteredMasterTriggerData}>-->
+                                            <tr class="slds-hint-parent" key={it.Id} id={it.Id}>
+                                                <td scope="row" class="putborderHeader putborderLeft"
+                                                    data-label="MRC Name">
+                                                    <div class="slds-cell-wrap">{it.MRC_Number__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Name">
+                                                    <div class="slds-cell-wrap">{it.Sold_To_Name__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Plant Code">
+                                                    <div class="slds-cell-wrap">{it.Ship_To__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader"
+                                                    data-label="Material Description">
+                                                    <div class="slds-cell-wrap">{it.PO_Type__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Monthly Volume">
+                                                    <div class="slds-cell-wrap">{it.Plant_No__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Remaining Volume">
+                                                    <div class="slds-cell-wrap">{it.Product_Category__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Min Trigger Volume">
+                                                    <div class="slds-cell-wrap">{it.Material_No__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">{it.Contract_Start__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                                                    <div class="slds-cell-wrap">{it.Contract_End_Date__c}</div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="TriggerVolume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-input data-id={indx} value={it.Volume_CBM__c}
+                                                            onchange={onchangeTriggerVolumeOnSave}>
+
+                                                        </lightning-input>
+
+                                                    </div>
+                                                </td>
+
+                                                <td scope="row" class="putborderHeader" data-label="Max Trigger Volume">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-textarea data-id={indx} value={it.Deal_Comment__c}
+                                                            onchange={onchangeTriggerCommentOnSave}>
+
+                                                        </lightning-textarea>
+
+                                                    </div>
+                                                </td>
+                                                <td scope="row" class="putborderHeader" data-label="Max No of Trigger">
+                                                    <div class="slds-cell-wrap">
+                                                        <lightning-button data-recid={it.Id} variant="destructive"
+                                                            label="Cancel" title="Cancel" onclick={cancelTriggerDeal}
+                                                            disabled={isDisabled}>
+                                                        </lightning-button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </template>
+                        </lightning-layout>
+                        <!--Trigger contacts 25 and above-->
+                        <!--Surbhi-Start-PBI-1539864-->
+                        <!--/lightning-accordion-section-->
+                        <!--Surbhi-End-PBI-1539864-->
+                    </template>
+                    <div>
+                        <!--Surbhi-Start-PBI-1539864-->
+                        <lightning-layout-item size="12">
+                            <!--<h3>Completed Deals</h3>-->
+                            <h3
+                                style=" font-weight: 700;padding: 10px;color: black;background-color: rgb(246, 250, 213);border: 1px solid #b5b6b9;margin-top: 10px;margin-bottom:10px;border-radius:4px;">
+                                Completed Deals</h3>
+                        </lightning-layout-item>
+                        <!--Surbhi-End-PBI-1539864-->
+                        <template if:true={renderCmpltdDealMasterTable}>
+                            <!--Surbhi-Start-PBI-1539864-->
+                            <!--lightning-accordion-section name="B" label="My Completed Deal"-->
+                            <!--Surbhi-End-PBI-1539864-->
+                            <!--Surbhi-Start-PBI-1539864-->
+                            <lightning-layout-item>
+                                <!--Surbhi-End-PBI-1539864-->
+                                <c-rv_useadvancefilter></c-rv_useadvancefilter>
+                                <!--Surbhi-Start-PBI-1539864-->
+                            </lightning-layout-item>
+                            <!--Surbhi-End-PBI-1539864-->
+                            <!--<lightning-layout multiple-rows="true" horizontal-align="spread" >
                            <lightning-layout-item class="" size="2">
                             <lightning-input type="checkbox"
                                  label="Use Advanced Filter"
@@ -642,8 +688,10 @@
                             </lightning-layout-item>
                         </template>
                     </lightning-layout>-->
-                    <lightning-layout multiple-rows="true" horizontal-align="spread" >
-                        <!--<lightning-layout-item padding="around-small" size="12">
+                            <!--Surbhi-Start-PBI-1539864-->
+                            <!--lightning-layout multiple-rows="true" horizontal-align="spread"-->
+                            <!--Surbhi-End-PBI-1539864-->
+                            <!--<lightning-layout-item padding="around-small" size="12">
                             <div class="row">
                                 <div class="slds-grid " >
                                     <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
@@ -753,26 +801,45 @@
                                 </div>
                             </div>
                         </lightning-layout-item>-->
-                        <!--<c-r-v-_-term-trigger-completed-deals></c-r-v-_-term-trigger-completed-deals>-->
-                        <div class={completedDealCss}>
-                        <c-rv_termtriggercompledtedeals onrefreshtermtriggercmp={refreshData}></c-rv_termtriggercompledtedeals>
-                        </div>
-                        <!--<lightning-layout-item padding="around-small" size="12">
+                            <!--<c-r-v-_-term-trigger-completed-deals></c-r-v-_-term-trigger-completed-deals>-->
+                            <!--Surbhi-Start-PBI-1539864-->
+                            <lightning-layout-item>
+                                <div class={completedDealCss}>
+                                    <template if:true={isConfirmLoading}>
+                                        <div class="slds-p-around_x-large">
+                                            <lightning-spinner alternative-text="Loading" class="slds-is-fixed"
+                                                size="medium" variant="brand"></lightning-spinner>
+                                        </div>
+                                    </template>
+                                    <c-rv_termtriggercompledtedeals onrefreshtermtriggercmp={refreshData}>
+                                    </c-rv_termtriggercompledtedeals>
+                                </div>
+                                <!--Surbhi-End-PBI-1539864-->
+                                <!--<lightning-layout-item padding="around-small" size="12">
                             <div class="slds-float_right slds-p-around_small">
                                 <lightning-button variant="brand" label="Confirm" title="Confirm" onclick={saveTriggerDeal}>
                                 </lightning-button>
                             </div>
                         </lightning-layout-item>-->
-                    </lightning-layout>
+                            <!--Surbhi-Start-PBI-1539864-->
+                            </lightning-layout-item>
+                            <!--/lightning-layout-->
 
-                </lightning-accordion-section>
-            </template>
-        </lightning-accordion>
+
+                            <!--/lightning-accordion-section-->
+                            <!--Surbhi-End-PBI-1539864-->
+						</template>
+
+                    </div>
+					<!--Surbhi-Start-PBI-1539864-->
+                    <!--/lightning-accordion-->
+					<!--Surbhi-End-PBI-1539864-->
+                </div>
+                <!--</template>-->
+            </lightning-tab>
+
+
+        </lightning-tabset>
     </div>
-    <!--</template>-->
-    </lightning-tab>
-
-    </lightning-tabset>
-</div>
     <!--</template>-->
 </template>

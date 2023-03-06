@@ -233,7 +233,7 @@
                      console.log('GetMRCData inside');
                      //this.dealEntrySHTData = returnResponse;
                  }
-                     let groupMRCData = new Map();
+                     var groupMRCData = new Map();
                      let groupPlantData = new Map();
                      let count =0;
                      let gradeset = new Set();
@@ -359,8 +359,18 @@
                    
                      let itr = groupMRCData;
                      let mrcArray =[];
+                     var rowColor = 'bgNewWhite';
                      groupMRCData.forEach((values,keys)=>{
-                         console.log(JSON.stringify(values)+' '+ JSON.stringify(keys));
+                        
+                      var palnts = values;
+                                        palnts.forEach(eachPlants =>{
+                                            if(rowColor=='bgNewGrey'){
+                                                rowColor = 'bgNewWhite';
+                                            }else{
+                                                rowColor = 'bgNewGrey';
+                                            }
+                                            eachPlants.rowbgColor = rowColor;
+                                        });
                          let mrc = {};
                          const headerSplit = keys.split("-");
                          mrc.mrcNo = headerSplit[0]+'--'+values[0].contractDesc+'--'+values[0].shipToNum;
