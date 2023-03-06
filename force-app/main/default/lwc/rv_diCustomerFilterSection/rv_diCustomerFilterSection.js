@@ -54,7 +54,7 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
     mogas = true;			 
     //PO Type dropdown variables
     poTypeOptions;
-    poTypeVal = '';
+    @track poTypeVal = '';
     //Depot dropdown variables
     depotOptions;
     shipToOptions;
@@ -95,6 +95,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         		   
     endDateDisabled = false;
 	customerName;
+   
+     cname = "depot";
 								 
 			   
 
@@ -529,7 +531,18 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.shipToNumVal = event.target.value;
         if(event.target.name == 'poTypeFilter'){  
             this.poTypeVal = event.target.value;
-            this.setTrancheWithPoType();
+    
+           
+            this.template.querySelectorAll("c-rv_multiselectdropdown").forEach(element => {
+                element.handleReset();
+        });
+        this.processDepotFilter(this.depotData);//by shivam for PBI 1748339
+        
+
+         
+        this.depotSelectedVal=[];
+        this.depotVal = '';           
+         this.setTrancheWithPoType();
             console.log('this.poTypeVal in handlechange::'+this.poTypeVal);
 			//set end date based on PO Type
         //ASHISH: PBI: 1375726 START =>
@@ -832,6 +845,8 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         this.shipToNumOptions = data.shipToList.map(key =>({ label: key, value: key }));
     }
 
+    @track depotData ;
+
     setSecondaryFilter(data){
 		
         //this.productOptions = data.productList.map(key => ({ label: key, value: key }));
@@ -849,10 +864,13 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
         
         this.processMotFilter(data.motList);
         console.log('motlist in secondary filter:::'+ data.motList);
-        this.processPoTypeFilter(JSON.parse(JSON.stringify(data.poTypeList)));
+      //  this.processPoTypeFilter(JSON.parse(JSON.stringify(data.poTypeList)));//by shivam for PBI 1748339
         //this.depotOptions = data.plantIdVsNameMap.map(item => ({console.log('Map: '+item)}));
         this.plantNameVsId=JSON.parse(JSON.stringify(data.plantIdVsNameMap));
-        this.processDepotFilter(JSON.parse(JSON.stringify(data.plantIdVsNameMap)));
+       // this.processDepotFilter(JSON.parse(JSON.stringify(data.plantIdVsNameMap)));////by shivam for PBI 1748339
+        this.depotData=JSON.parse(JSON.stringify(data.plantIdVsNameMap));////by shivam for PBI 1748339
+        this.processPoTypeFilter(JSON.parse(JSON.stringify(data.poTypeList)));//by shivam for PBI 1748339
+
         this.processShipToFilter(JSON.parse(JSON.stringify(data.shipToIdVsNumberMap)));
         this.salesOrgOptions = data.salesOrgList.map(key => ({ label: key, value: key }));
         
@@ -881,18 +899,34 @@ export default class Rv_diCustomerFilterSection extends LightningElement {
             this.poTypeOptions = poTypeList.map(key => ({ label: key, value: key }));
             //if(poTypeList[0] === 'TSFP')
                 this.poTypeVal = poTypeList[0];
+                this.processDepotFilter(this.depotData);//by shivam for PBI 1748339
         }
     }
 
-    processDepotFilter(depotMap){
+    // processDepotFilter(depotMap){ //by shivam for PBI 1748339
+    //     let depotOptions = [];
+    //     Object.keys(depotMap).map(function(key, index){
+    //         const obj = new Object({ label: depotMap[key], value: key });
+    //         depotOptions.push(obj);
+    //     });
+    //     this.depotOptions = depotOptions;
+    //     console.log("depot options"+this.depotOptions);
+    // }
+
+    processDepotFilter(depotMap){ //by shivam for PBI 1748339
         let depotOptions = [];
+        let poType = this.poTypeVal;
         Object.keys(depotMap).map(function(key, index){
-            const obj = new Object({ label: depotMap[key], value: key });
+            if(key.includes(poType)){
+                let value = key.split('-')[0];
+                const obj = new Object({ label: depotMap[key], value: value });
             depotOptions.push(obj);
+            }
         });
         this.depotOptions = depotOptions;
-        console.log("depot options"+this.depotOptions);
+        console.log("depot options"+JSON.parse(JSON.stringify(this.depotOptions)));
     }
+
     processShipToFilter(shipToMap){
         let shipToOptions = [];
         Object.keys(shipToMap).map(function(key, index){
