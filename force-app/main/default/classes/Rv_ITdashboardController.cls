@@ -1425,8 +1425,7 @@ public class Rv_ITdashboardController {
         //Ended by Surbhi, PBI-1756697
         String emailTemplate='';
         String emailSubject='';
-        String emailBody =  '';
-        
+        String emailBody =  '';       
         try{
             et = [select EMAIL_TEMPLATE__c
                   ,EMAIL_SUBJECT__c

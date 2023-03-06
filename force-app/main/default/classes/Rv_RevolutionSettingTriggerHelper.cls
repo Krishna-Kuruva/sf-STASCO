@@ -11,6 +11,7 @@ public class Rv_RevolutionSettingTriggerHelper {
                                           map<id,Revolution_Setting__c> newSettingMap
                                          )
     {
+        
         String activeLabel = 'OLF Connection Active';
         Revolution_Setting__c olfConnSetting = new Revolution_Setting__c();
         Boolean notifyOLFStatusChange = false;

@@ -12,6 +12,7 @@ public class OLF_SendEmail{
         Set<String> setToAddress = new Set<String>();            
         Set<String> setCCAddress = new Set<String>();
         //Ended by Surbhi, PBI-1756697
+        
         try{
             	et = [select EMAIL_TEMPLATE__c
                              ,EMAIL_SUBJECT__c
