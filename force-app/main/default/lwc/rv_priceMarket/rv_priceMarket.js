@@ -262,7 +262,17 @@ export default class Rv_PriceMarket extends LightningElement {
                   
                     let itr = groupMRCData;
                     let mrcArray =[];
+                    var rowColor = 'bgNewWhite';
                     groupMRCData.forEach((values,keys)=>{
+                        var palnts = values;
+                                        palnts.forEach(eachPlants =>{
+                                            if(rowColor=='bgNewGrey'){
+                                                rowColor = 'bgNewWhite';
+                                            }else{
+                                                rowColor = 'bgNewGrey';
+                                            }
+                                            eachPlants.rowbgColor = rowColor;
+                                        });
                         console.log(values+' '+keys);
                         let mrc = {};
                         
