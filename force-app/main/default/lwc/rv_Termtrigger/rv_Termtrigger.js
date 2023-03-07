@@ -473,13 +473,14 @@ export default class RvTermtrigger extends LightningElement {
                                    let monthsArray = [];
                                    let _mrcArray = [];
                                    var _groupMRCLinesItemsData = new Map();
+                                    var rowColor = 'bgNewWhite';
                                    _groupMRCData.forEach((values,keys)=>{
                                        console.log(keys+'---'+values);
 
                                        let mrc_no = keys;
                                        var palnts = values;
                                        console.log('plants::',JSON.stringify(palnts));
-                                        var rowColor = 'bgNewWhite';
+                                        
                                        palnts.forEach(eachPlants =>{
                                            console.log('mrcNum::'+eachPlants.mrcNum);
                                             if(rowColor=='bgNewGrey'){
