@@ -596,7 +596,7 @@ triggerMasterData+=' AND MRC_Number__r.Ship_to_Number__c =:shipToAccNum';
                 newSHTObj1.Location__c =rvTriggerMasterData.MRC_Number_Plant;
                 newSHTObj1.Volume_CBM__c=rvTriggerMasterData.TriggerVolume* 0.80; 
 				if(!mrcNoVsSalesPriceWrapMap.isEmpty() && mrcNoVsSalesPriceWrapMap.containsKey(newSHTObj1.MRC_Number__c)){
-                    newSHTObj1.BSP__c = ((mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c)).BSP).setScale(2, RoundingMode.HALF_UP);
+                    newSHTObj1.BSP__c = ((mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c)).BSP).setScale(2, RoundingMode.HALF_UP);//added to roundOf with 2 decimals
                     newSHTObj1.MSP__c = (mrcNoVsSalesPriceWrapMap.get(newSHTObj1.MRC_Number__c).MSP).setScale(2, RoundingMode.HALF_UP);
                 }
                 else{
