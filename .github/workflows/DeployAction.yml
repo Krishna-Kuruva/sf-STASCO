@@ -90,7 +90,7 @@ jobs:
               };
               return github.graphql(query, variables).then(result => { return result } );
             }
-            const fileExt = ['yml', 'md', 'CODEOWNERS', 'spackage', 'zip', 'csv', 'xlsx'];   ;           
+            const fileExt = ['yml', 'md', 'CODEOWNERS', 'spackage', 'zip', 'csv', 'xlsx'];         
             listFilesInPR.forEach(s=> {
                 if(!fileExt.some(r=> s.node.path.endsWith(r))){
                   let path = s.node.path.replaceAll(/[$]/g, '\\$');
