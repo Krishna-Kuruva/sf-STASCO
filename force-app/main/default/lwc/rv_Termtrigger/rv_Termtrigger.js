@@ -482,13 +482,7 @@ export default class RvTermtrigger extends LightningElement {
                                        console.log('plants::',JSON.stringify(palnts));
                                         
                                        palnts.forEach(eachPlants =>{
-                                           console.log('mrcNum::'+eachPlants.mrcNum);
-                                            if(rowColor=='bgNewGrey'){
-                                                rowColor = 'bgNewWhite';
-                                            }else{
-                                                rowColor = 'bgNewGrey';
-                                            }
-                                            eachPlants.rowbgColor = rowColor;
+                                            
                                            if(eachPlants.triggerMonth === keys){
                                                var uniqueKey = eachPlants.mrcNum+'-'+eachPlants.mrcContract_Description+'-'+eachPlants.shipToNum+'*'+eachPlants.triggerMonth;
                                                if(_groupMRCLinesItemsData.has(uniqueKey)){
@@ -503,6 +497,15 @@ export default class RvTermtrigger extends LightningElement {
                                        console.log(_groupMRCLinesItemsData);
                                        console.log('_groupMRCLinesItemsData::'+JSON.stringify(_groupMRCLinesItemsData));
                                        _groupMRCLinesItemsData.forEach((values,keys)=>{
+                                            var palnts = values;
+                                            palnts.forEach(eachPlants =>{
+                                                if(rowColor=='bgNewGrey'){
+                                                    rowColor = 'bgNewWhite';
+                                                }else{
+                                                    rowColor = 'bgNewGrey';
+                                                }
+                                                eachPlants.rowbgColor = rowColor;
+                                           });
                                            let mrc = {};
 
                                                console.log('keys::'+JSON.stringify(keys));
