@@ -91,7 +91,9 @@
                                     alternative-text="Delete">
                             </lightning-button-icon>
 
-                            <header class="slds-text-title_bold font-size:6 slds-text-color_weak text-transform text-align slds-text-body_small" key={note.Id} >
+
+                            <header class="slds-text-color_weak slds-grid_align-spread" style="font-size:11px" key={note.Id} >
+
                                 {note.CreatedBy.Name}
                                 (
                                 <lightning-formatted-date-time value={note.CreatedDate} year="numeric" month="numeric" day="numeric" 
@@ -100,8 +102,9 @@
                             </header>
 
 
+                            <!-- font-size:12 slds-text-color_weak text-transform text-align slds-text-body_small  font-size:0.8vw-->
+                            <p class="slds-text-title_bold creditStyle" style="font-weight: bold;" key={note.Id}><b>{note.Body}</b></p>
 
-                            <p class="slds-text-color_weak slds-grid_align-spread" key={note.Id}>{note.Body}</p>
                         </div>
                     </template>
                 </template>
