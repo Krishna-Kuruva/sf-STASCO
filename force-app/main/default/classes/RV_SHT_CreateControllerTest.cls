@@ -1,6 +1,6 @@
 @isTest
 public class RV_SHT_CreateControllerTest {
-    
+
     @testSetup
     static void setup() {
         List<Location__c> locList = new List<Location__c>();
@@ -19,10 +19,10 @@ public class RV_SHT_CreateControllerTest {
         loc.Depot_MOT__c='Barge;ITT;Rail;TRuck';
         loc.Custom_Record_Type__c = 'Revolution';
         loc.Scenario_Type__c = 'Import;Export;Balanced';
-        
+
         //insert====  loc;
         locList.add(loc);
-        
+
         //Location with aletrnate2
         Location__c locAlt2 = new Location__c();
         locAlt2.Name = 'Altmannshofen Shell Depot';
@@ -41,7 +41,7 @@ public class RV_SHT_CreateControllerTest {
         locAlt2.Scenario_Type__c = 'Import;Export;Balanced';
         //insert  locAlt2;
         locList.add(locAlt2);
-        
+
         //Insert Source Loc
         Location__c locSrc = new Location__c();
         locSrc.Name = 'ARA/Arnheim Shell depot';
@@ -70,28 +70,28 @@ public class RV_SHT_CreateControllerTest {
         locSrc1.add(locList[1]);
         locSrc1.add(locList[2]);
         update locSrc1;
-        
+
         //Insert Account Sold To
         Account accDmy = RV_TestDataFactory.createSoldToCustomer('Shell Revolution Special Co.(Dummy)', '11111111', true, true, false);
         accDmy.Rv_Olf_Customer_Email__c = 'test@shell.com';
         accDmy.Rv_Online_Customer_Name__c = 'Shell Revolution Special Co.(Dummy)';
-        
+
         insert accDmy;
-        
+
         //Insert Account Ship To
         Account accDmyShipTo = RV_TestDataFactory.createShipToCustomer(accDmy, 'Shell Revolution Special Co.(Dummy)', true, true, 'abc1@test.com', false, '11111111');
         accDmyShipTo.Rv_Online_Customer_Name__c = 'Shell Revolution Special Co.(Dummy)';
         insert accDmyShipTo;
-        
+
         //Insert Account Sold To
         Account acc = RV_TestDataFactory.createSoldToCustomer('ADAM OMMERT MINERALOELHANDEL', '22222222', true, true, false);
         acc.Rv_Online_Customer_Name__c = 'ADAM OMMERT MINERALOELHANDEL';
         insert acc;
-        
+
         //Insert Account Ship To
         Account accShipTo = RV_TestDataFactory.createShipToCustomer(acc, 'ADAM OMMERT MINERALOELHANDEL', true, true, 'abc2@test.com', false, '22222222');
         insert accShipTo;
-        
+
         //Material Insert
         List<Product_Catalogue__c> matList = new List<Product_Catalogue__c>();
         //AGO B7- 400001685
@@ -133,9 +133,9 @@ public class RV_SHT_CreateControllerTest {
         matAgo.Online_Material_Name_UnTaxed__c = 'Diesel B7 (unversteuert)';
         //insert matUlgE5;
         matList.add(matUlgE5);
-        
-        
-        
+
+
+
         Product_Catalogue__c matUlg98 = new Product_Catalogue__c();
         matUlg98.Name = '400001555';
         matUlg98.Level_0__c = 'Gasoline';
@@ -149,7 +149,7 @@ public class RV_SHT_CreateControllerTest {
         matList.add(matUlg98);
 
         insert matList;
-        
+
         //Insert Mrcs
         List<MRC__c> mrcList = new List<MRC__c>();
         Id RecordTypeIdMrc = Schema.SObjectType.Mrc__c.getRecordTypeInfosByName().get('MRC').getRecordTypeId();
@@ -171,7 +171,7 @@ public class RV_SHT_CreateControllerTest {
         mrAgo.Contract__c = '321799369';
         //insert mrAgo;
         mrcList.add(mrAgo);
-        
+
         Mrc__c mrAgoObj= new Mrc__c();
         mrAgoObj.Name='0321539467-100050';
         mrAgoObj.RecordTypeId=RecordTypeIdMrc;
@@ -241,7 +241,7 @@ public class RV_SHT_CreateControllerTest {
         mrUlg.Contract__c = '321799369';
         //insert mrUlg;
         mrcList.add(mrUlg);
-        
+
           //Insert Mrc ULG98 - 321751875-103004
         Mrc__c mrUlg98= new Mrc__c();
         mrUlg98.Name='000000000-100059';
@@ -261,10 +261,10 @@ public class RV_SHT_CreateControllerTest {
         //insert mrUlg;
         mrcList.add(mrUlg98);
 
-        
-        
+
+
         insert mrcList;
-        
+
         //Freight Rate
         List<Freight_Rate__c> frList = new List<Freight_Rate__c>();
         Freight_Rate__c routeAgo= new Freight_Rate__c();
@@ -323,7 +323,7 @@ public class RV_SHT_CreateControllerTest {
         //insert routeUlg3rd;
         frList.add(routeUlg3rd);
         insert frList;
-        
+
         //Hydrocarbon Formulas
         List<Third_Party_Contract_Master__c> hydroList = new List<Third_Party_Contract_Master__c>();
         Third_Party_Contract_Master__c hydroThrdAgo= new Third_Party_Contract_Master__c();
@@ -347,7 +347,7 @@ public class RV_SHT_CreateControllerTest {
         //insert hydroThrdUlg3rd;
         hydroList.add(hydroThrdUlg3rd);
         insert hydroList;
-        
+
         //Location Steer
         Id RecordTypeIdLocStrSrc = Schema.SObjectType.Location_Steer__c.getRecordTypeInfosByName().get('Source Steer').getRecordTypeId();
         Id RecordTypeIdLocStrDep = Schema.SObjectType.Location_Steer__c.getRecordTypeInfosByName().get('Depot Steer').getRecordTypeId();
@@ -404,7 +404,7 @@ public class RV_SHT_CreateControllerTest {
         Bio_AMVs__c bio= new Bio_AMVs__c();
         bio=RV_TestHelperPhase2.insertBioAmv(bio,loc);
         insert bio;
-        
+
         //Throughput
         List<Throughput__c> thpList = new List<Throughput__c>();
         Throughput__c thputAgo= new Throughput__c();
@@ -424,24 +424,24 @@ public class RV_SHT_CreateControllerTest {
         //insert thputUlg;
         thpList.add(thputUlg);
         insert thpList;
-        
+
         //Margin
         Id RecordTypeIdMarginTruck = Schema.SObjectType.Margin__c.getRecordTypeInfosByName().get('Truck/ITT').getRecordTypeId();
         Margin__c mgn = new Margin__c();
         mgn=RV_TestHelperPhase2.insertMargin(mgn,loc,RecordTypeIdMarginTruck);
         insert mgn;
-        
+
         Margin__c mgnOverriden = new Margin__c();
         mgnOverriden=RV_TestHelperPhase2.insertMargin(mgnOverriden,loc,RecordTypeIdMarginTruck);
         mgnOverriden.Valid_From__c=system.today().addDays(1);
         mgnOverriden.Valid_To__c=system.today().addDays(12);
         insert mgnOverriden;
-        
+
         //ATP Insert
         atp__c atp = new atp__c();
         atp=RV_TestHelper.insertATPRecord(atp,loc);
         insert atp;
-        
+
         RV_Trigger_Master_Data__c tmd = new RV_Trigger_Master_Data__c();
         tmd.Trigger_Month__c = 'Sep';
         tmd.Trigger_Year__c = '2022';
@@ -457,7 +457,7 @@ public class RV_SHT_CreateControllerTest {
         tmd.Remaining_trigger_volume__c = 100;
         tmd.SHT__c = null;
         insert tmd;
-        
+
         SHT__c newSHTObj = new SHT__c();
         newSHTObj.MRC__c = mrAgo.id;
         newSHTObj.MRC_Number__c = mrAgo.Name;
@@ -475,7 +475,7 @@ public class RV_SHT_CreateControllerTest {
         newSHTObj.Trigger_Master_Data__c = tmd.Id;
         newSHTObj.isOlfDeal__c = true;
         insert newSHTObj;
-        
+
         SHT__c newSHTObj1 = new SHT__c();
         newSHTObj1.MRC__c = mrAgo.id;
         newSHTObj1.MRC_Number__c = mrAgo.Name;
@@ -493,7 +493,7 @@ public class RV_SHT_CreateControllerTest {
         newSHTObj1.Deal_Comment__c='test122312';
         newSHTObj1.isOlfDeal__c = true;
         insert newSHTObj1;
-        
+
         Datetime yesterday = Datetime.now().addDays(-1);
         Test.setCreatedDate(newSHTObj1.Id, yesterday);
         SHT__c newSHTObj2 = new SHT__c();
@@ -512,9 +512,9 @@ public class RV_SHT_CreateControllerTest {
         newSHTObj2.Trigger_Master_Data__c = tmd.Id;
         newSHTObj2.isOlfDeal__c = true;
         insert newSHTObj2;
-        
+
     }
-    
+
     static testmethod void getMRCRecordsData(){
         List<Mrc__c> mrclst=[select id,name,Plant__c,Plant__r.Name,Plant_code__c,
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
@@ -529,7 +529,7 @@ public class RV_SHT_CreateControllerTest {
         RV_SHT_CreateController.getMRCRecordsData('ATP2', mrclst[0].MRC_Number__c, new Set<Id>(), '', false, true, true, true,'','','',String.valueOf(System.today().addDays(15)),String.valueOf(System.today().addDays(28)),true);
         RV_SHT_CreateController.getMRCRecordsData('ATP3', mrclst[1].MRC_Number__c, new Set<Id>(), '', false, true, true, true,'','','',String.valueOf(System.today().addDays(61)),String.valueOf(System.today().addDays(100)),false);
         // RV_SHT_CreateController.getMRCRecordsData('ATP1', '', accIdSet, '', true, true, true, true,'','','',String.valueOf(System.today().addDays(-10)),String.valueOf(System.today().addDays(5)),false);
-        
+
         //String tranche ,String Mrcno ,Set<Id> accIdSet,String shipto,Boolean checked ,Boolean agoChk,
         //  Boolean igoChk,Boolean mogasChk,string poType,List<String> plant,string mot,string contractStartDate,
         //string contractEndDate,boolean callFromOlf
@@ -552,7 +552,7 @@ public class RV_SHT_CreateControllerTest {
         /*added by Dharmendra for code coverage - End */
         test.stopTest();
     }
-    
+
     static testmethod void testGetMrcData(){
         List<Mrc__c> mrclst=[select id,name,Plant__c,Plant__r.Name,Plant_code__c,
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
@@ -568,7 +568,7 @@ public class RV_SHT_CreateControllerTest {
         RV_SHT_CreateController.searchRecords('OMMERT');
         test.stopTest();
     }
-    
+
     static testmethod void testGetMrcData_1(){
         List<Mrc__c> mrclst=[select id,name,Plant__c,Plant__r.Name,Plant_code__c,
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
@@ -587,12 +587,12 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         RV_SHT_CreateController.searchRecords('OMMERT');
         test.stopTest();
     }
-    
+
     private class RestMock implements HttpCalloutMock {
-        
+
         public HTTPResponse respond(HTTPRequest req) {
             String fullJson = '{"TotalItems":"1","Status":"01","SHTItems":[{"SfItemShtNo":"SHT - 146960","SfHeaderShtNo":"1-122815","SapMrcItemNo":"101323","SalesPrice":"20.00","RejectionReason":"","QuantityUom":"CBM","Quantity":"10.00","PriceInd":"F","MaterialNo":"400002410","ItemCount":"1","DealCreationTime":"92815","DealCreationDate":"20210212","CurrencyKey":"EUR","CondUnit":"L15","CondType":"YP23","CondPUnt":"100"}],"SfHeaderShtNo":"1-122815","SapSalesContNo":"","SapMrcNo":"320076181-","SalesOrg":"DE01","POType":"TSFP","MsgTxt":"","InstanceURL":"T","ContStartDate":"20210212","ContEndDate":"20210225","Action":"C"}';
-            
+
             HTTPResponse res = new HTTPResponse();
             res.setHeader('Content-Type', 'text/json');
             res.setBody(fullJson);
@@ -621,7 +621,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
             wrp.Comment='test';
         }
         RV_SHT_CreateController.saveResultsearchWrap srchwrp = new RV_SHT_CreateController.saveResultsearchWrap();
-        
+
         string mrcdata= JSON.serialize(wrplst);
         test.startTest();
         RV_SHT_CreateController.searchDependentShipToMRC(accLst[0].id, '');
@@ -632,7 +632,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         RV_SHT_CreateController.saveSHTObjectRecord(mrcdata,'ATP2',accLst[0].Id,'Obam Sales',string.valueof(system.today().addDays(15)),string.valueof(system.today().addDays(27)),false);
         srchwrp = RV_SHT_CreateController.saveSHTObjectRecord(mrcdata,'ATP1', accLst[0].Id,'Obam Sales',string.valueof(system.today().addDays(-10)),string.valueof(system.today().addDays(4)),true);
         List<RV_SHT_CreateController.SHTDisplayWrap> savedResult = srchwrp.savedResult;
-        
+
         RV_SHT_CreateController.getContarctEndDate(string.valueof(system.today()));
         RV_SHT_CreateController.getContarctEndDate(string.valueof(system.today().addDays(-1)));
         RV_SHT_CreateController.getAllSHTDeals();
@@ -654,7 +654,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         String userId = String.valueOf(UserInfo.getUserId());
         RV_SHT_CreateController.getCompletedSHTDealWithAdvanceFilterWrap(string.valueof(system.today()),string.valueof(system.today()),'5','Completed', 'Me','','',false, ''); //270192_OLFDealCancel_08Jul2019_Soumyajit
         RV_SHT_CreateController.getCompletedSHTDealWithAdvanceFilterWrap(null,null,'5','Completed', 'ALL','23323','',false, '');
-        
+
         RV_SHT_CreateController.getCompletedSHTDealWithAdvanceFilterWrap(string.valueof(system.today()),string.valueof(system.today()),'5','Completed',userId,'23323',mrclst[0].Name,false, '');
         RV_SHT_CreateController.getCompletedSHTDealWithAdvanceFilterWrap(string.valueof(system.today()),string.valueof(system.today().addDays(15)),'5','Completed',userId,'23323',mrclst[0].Name,false, '');
         //Fix_170853_13May2019_Soumyajit ends
@@ -665,7 +665,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         /* added by Dharmendra for code coverage - End*/
         test.stopTest();
     }
-    
+
     @isTest
     static void test_calculateRetailMixPrice(){
         List<Mrc__C> mrclst = [SELECT Id,
@@ -700,13 +700,13 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
                                Ship_to_Number__c FROM Mrc__c];
         RV_SHT_CreateController.calculateRetailMixPrice(mrclst, String.valueOf(Date.today()), String.valueOf(Date.today()));
     }
-    
+
     static testmethod void testmethod_lwc(){
         List<Mrc__c> mrclst=[select id,name,Plant__c,Plant__r.Name,Plant_code__c,Contract__c,
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
                              Sold_To__c,Sold_To__r.Name,Sales_Organization__c,Handling_Type__c,MRC_Number__c,Ship_to_Number__c,
                              Ship_to_Name__c,Shipping_Condition__c from MRC__c];
-        
+
         Set<Id> accIdSet = new Set<Id>();
         List<Id> accShipToId = new List<Id>();
         List<Id> accSoldToId = new List<Id>();
@@ -726,13 +726,13 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         }
         List<String> mot = new List<String>();
         mot.add('10');
-        
+
         List<SHT__c> shtList = [select id,name,MRC__c,MRC_Number__c,Customer__c,Tranche__c,BSP__c,MSP__c,Status__c,Select__c,Sales_Type__c,Contract_Start__c,Contract_End_Date__c,Deal_Comment__c,Product_Category__c from SHT__c];
         List<String> shtIds = new List<String>();
         for(SHT__c sh : shtList){
-            shtIds.add(sh.Id);
+            shtIds.add(sh.Name);
         }
-        
+
         rv_sht_CreateControllerLWC.MRCDataWrap mrcwrap = new rv_sht_CreateControllerLWC.MRCDataWrap();
         mrcwrap.mrcId = mrclst[0].id;
         mrcwrap.mrcName = '0321539467-100052';
@@ -741,11 +741,11 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         mrcwrap.atpLive = 100;
         mrcwrap.Comment = 'cancelled deal SHT -';
         mrcwrap.salesOrg = 'AT02';
-        
+
         List<rv_sht_CreateControllerLWC.MRCDataWrap> searchList = new List<rv_sht_CreateControllerLWC.MRCDataWrap>();
         searchList.add(mrcwrap);
         string searchList1= JSON.serialize(searchList);
-        
+
         rv_sht_CreateControllerLWC.MRCDataWrap mrcwrap1 = new rv_sht_CreateControllerLWC.MRCDataWrap();
         string contractStartDate = string.valueOf(system.today().addDays(-1));
         string contractEndDate = string.valueOf(system.today().addDays(15));
@@ -764,7 +764,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         mrcwrap1.mrcName = '000000000-100052';
         mrcwrap1.locationName = 'Godorf Shell Gantry';
         mrcwrap1.location = mrcUlg[0].Plant_code__c;
-        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c; 
+        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c;
         mrcwrap1.grade = 'ULG95 E10';
         mrcwrap1.atpLive = 100;
         mrcwrap1.volumeCBM = 100;
@@ -792,27 +792,27 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         String search4 = search3;
         search3 = search3.replace('[', '');
         search3 = search3.replace(']', '' );
-        
+
         Set<Id> mrcIds = new Set<Id>();
         mrcIds.add(mrcUlg[0].id);
         test.startTest();
         rv_sht_CreateControllerLWC.getMRCRecordsData('ATP1', '0321539467',accIdSet,new List<String>{'0012610307'},true, true, true, true,'TSFP','AT01;DE01',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false);
         //   rv_sht_CreateControllerLWC.getMRCRecordsData('ATP2', '0321539467',accIdSet,new List<String>{'0012610307'},true, true, true, true,'TSFP','AT01;DE01',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false);
-        
+
         //rv_sht_CreateControllerLWC.getMRCRecordsData('ATP2', '0321539467', accIdSet, '0012610307',true, true, true, true,'TSFP',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false);
         //rv_sht_CreateControllerLWC.getMRCRecordsData('ATP3', '0321539467', accIdSet, '0012610307',true, true, true, true,'TSFP',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false);
         rv_sht_CreateControllerLWC.updateDealComment(shtList[0].id,'Test1');
         rv_sht_CreateControllerLWC.cancelSHTDeal(shtList[0].id,'Saved','Wrong Product',searchList1);
         rv_sht_CreateControllerLWC.cancelSHTDeal(shtList[0].id,'Auto-Completed','Wrong Product',searchList1);
         rv_sht_CreateControllerLWC.cancelSHTDeal(shtList[0].id,'Completed','Wrong Product-Name',searchList1);
-        
+
       //  rv_sht_CreateControllerLWC.saveCancelledDealLWC(search3);
         RV_SHT_CreateController.saveCancelledDealLWC(search3);
         rv_sht_CreateControllerLWC.saveResultsearchWrap saveResult = rv_sht_CreateControllerLWC.saveSHTObjectRecordLWC(search4,'ATP1',contractStartDate,contractEndDate, true);
         system.debug('saveResult in testclass:'+saveResult);
         String account = string.valueOf(accShipToId[0]);
         rv_sht_CreateControllerLWC.saveSHTObjectRecord(search4,'ATP1',account,'Obam Sales',contractStartDate,contractEndDate,true);
-        
+
         rv_sht_CreateControllerLWC.getSavedDealPricePerMrc(mrcIds,contractStartDate, contractEndDate);
         rv_sht_CreateControllerLWC.searchDependentShipToMRC(account,'22222222');
         rv_sht_CreateControllerLWC.getShippingConditionMap();
@@ -828,11 +828,11 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         rv_sht_CreateControllerLWC.getContarctEndDate(string.valueOf(system.today()));
         rv_sht_CreateControllerLWC.getMaxContractEndDate();
         rv_sht_CreateControllerLWC.getMrcData('ATP1', '0321539467', account, new List<String>{'0012610307'},true, true, true, true,'TSFP','AT01;DE01',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false,false);
-        
+
         //rv_sht_CreateControllerLWC.getSHTDealsForPriceAndMarket
         rv_sht_CreateControllerLWC.retrySHTDealtoGSAP(shtIds);
-        
-        
+
+
         rv_sht_CreateControllerLWC.SHTDisplayWrap shtDispWrap = new rv_sht_CreateControllerLWC.SHTDisplayWrap();
         shtDispWrap.shtRecordId = shtList[0].id ;
         shtDispWrap.selected = false;
@@ -864,12 +864,12 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         shtDispWrap.poType='TSFP';
         shtDispWrap.otm=100;
         shtDispWrap.salesPrice=100;
-        
+
         List<rv_sht_CreateControllerLWC.SHTDisplayWrap> completedDeals = new List<rv_sht_CreateControllerLWC.SHTDisplayWrap>();
         completedDeals.add(shtDispWrap);
         //rv_sht_CreateControllerLWC.getSHTDealsForPriceAndMarket(completedDeals);
-        
-        
+
+
         RV_SHT_CreateController.SHTDisplayWrap rv_shtDispWrap = new RV_SHT_CreateController.SHTDisplayWrap();
         rv_shtDispWrap.shtRecordId = shtList[0].id ;
         rv_shtDispWrap.selected = false;
@@ -901,7 +901,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         rv_shtDispWrap.poType='TSFP';
         rv_shtDispWrap.otm=100;
         rv_shtDispWrap.salesPrice=100;
-        
+
         RV_SHT_CreateController.SHTDisplayWrap rv_shtDispWrapObj = new RV_SHT_CreateController.SHTDisplayWrap();
         rv_shtDispWrapObj.shtRecordId = shtList[1].id ;
         rv_shtDispWrapObj.selected = false;
@@ -933,10 +933,10 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         rv_shtDispWrapObj.poType='TSFP';
         rv_shtDispWrapObj.otm=100;
         rv_shtDispWrapObj.salesPrice=100;
-        
+
         List<RV_SHT_CreateController.SHTDisplayWrap> rv_completedDeals = new List<RV_SHT_CreateController.SHTDisplayWrap>();
         rv_completedDeals.add(rv_shtDispWrap);
-        rv_completedDeals.add(rv_shtDispWrapObj);             
+        rv_completedDeals.add(rv_shtDispWrapObj);
        // RV_SHT_CreateController.getSHTDealsForPriceAndMarket(rv_completedDeals);
         //retrySHTDealtoGSAP
         test.stopTest();
@@ -946,7 +946,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
                              Sold_To__c,Sold_To__r.Name,Sales_Organization__c,Handling_Type__c,MRC_Number__c,Ship_to_Number__c,
                              Ship_to_Name__c,Shipping_Condition__c from MRC__c];
-        
+
         Set<Id> accIdSet = new Set<Id>();
         List<Id> accShipToId = new List<Id>();
         List<Id> accSoldToId = new List<Id>();
@@ -966,13 +966,13 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         }
         List<String> mot = new List<String>();
         mot.add('10');
-        
+
         List<SHT__c> shtList = [select id,name,MRC__c,MRC_Number__c,Customer__c,Tranche__c,BSP__c,MSP__c,Status__c,Select__c,Sales_Type__c,Contract_Start__c,Contract_End_Date__c,Deal_Comment__c,Product_Category__c from SHT__c where MRC__c =:mrclst[0].id];
         List<String> shtIds = new List<String>();
         for(SHT__c sh : shtList){
             shtIds.add(sh.Id);
         }
-        
+
         rv_sht_CreateControllerLWC.MRCDataWrap mrcwrap1 = new rv_sht_CreateControllerLWC.MRCDataWrap();
         RV_SHT_CreateController.MRCDataWrap mrcwrap2 = new RV_SHT_CreateController.MRCDataWrap();
         string contractStartDate = string.valueOf(system.today());
@@ -987,7 +987,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         mrcwrap1.mrcName = '000000000-100052';
         mrcwrap1.locationName = 'Godorf Shell Gantry';
         mrcwrap1.location = mrcUlg[0].Plant_code__c;
-        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c; 
+        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c;
         mrcwrap1.grade = 'ULG95 E10';
         mrcwrap1.atpLive = 100;
         mrcwrap1.volumeCBM = 100;
@@ -1012,7 +1012,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         search2.add(mrcwrap1);
         string search3= JSON.serialize(search2);
         String search4 = search3;
-        
+
         mrcwrap2.mrcId = mrcUlg[0].id;
         mrcwrap2.accId = mrcUlg[0].Sold_To__c;
         mrcwrap2.mrcName = '000000000-100052';
@@ -1052,22 +1052,22 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         RV_SHT_CreateController.updateSHTObjectRecord(search7);
         rv_sht_CreateControllerLWC.getCompletedSHTDeal('LAST_DEAL_DATE', 'Saved', 'ALL');
         //  rv_sht_CreateControllerLWC.getMRCRecordsData('ATP1', '0321539467',accIdSet,new List<String>{'0012610307'},true, true, true, true,'TSFP','AT01;DE01',plantId,mot,String.valueOf(System.today()),String.valueOf(System.today().addDays(-1)),false);
-        
+
         try{
             rv_sht_CreateControllerLWC.checkMRC('321799369');
         }catch(Exception e){
-            
+
         }
         Test.stopTest();
-        
+
     }
-    
+
     static testmethod void test_saveSHTObjectRecordLWC(){
         List<Mrc__c> mrclst=[select id,name,Plant__c,Plant__r.Name,Plant_code__c,Contract__c,
                              Supply_Type__c,Product__c,Product__r.Name,Material_Description__c,Material_Name__c,PO_Type__c,
                              Sold_To__c,Sold_To__r.Name,Sales_Organization__c,Handling_Type__c,MRC_Number__c,Ship_to_Number__c,
                              Ship_to_Name__c,Shipping_Condition__c from MRC__c];
-        
+
         Set<Id> accIdSet = new Set<Id>();
         List<Id> accShipToId = new List<Id>();
         List<Id> accSoldToId = new List<Id>();
@@ -1087,28 +1087,28 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         }
         List<String> mot = new List<String>();
         mot.add('10');
-        
+
         List<SHT__c> shtList = [select id,name,MRC__c,MRC_Number__c,Customer__c,Tranche__c,BSP__c,MSP__c,Status__c,Select__c,Sales_Type__c,Contract_Start__c,Contract_End_Date__c,Deal_Comment__c,Product_Category__c from SHT__c];
         List<String> shtIds = new List<String>();
         for(SHT__c sh : shtList){
             shtIds.add(sh.Id);
         }
-        
+
         rv_sht_CreateControllerLWC.MRCDataWrap mrcwrap = new rv_sht_CreateControllerLWC.MRCDataWrap();
         mrcwrap.mrcId = mrclst[0].id;
         mrcwrap.mrcName = '0321539467-100052';
         mrcwrap.locationName = 'Godorf Shell Gantry';
         mrcwrap.location = mrclst[0].Plant_code__c;
-        mrcwrap.shipToNumber = mrclst[0].Ship_to_Number__c; 
+        mrcwrap.shipToNumber = mrclst[0].Ship_to_Number__c;
         mrcwrap.grade = 'ULG95 E10';
         mrcwrap.atpLive = 100;
         mrcwrap.Comment = 'cancelled deal SHT -';
         mrcwrap.salesOrg ='AT02';
-        
+
         List<rv_sht_CreateControllerLWC.MRCDataWrap> searchList = new List<rv_sht_CreateControllerLWC.MRCDataWrap>();
         searchList.add(mrcwrap);
         string searchList1= JSON.serialize(searchList);
-        
+
         rv_sht_CreateControllerLWC.MRCDataWrap mrcwrap1 = new rv_sht_CreateControllerLWC.MRCDataWrap();
         string contractStartDate = string.valueOf(system.today().addDays(-1));
         string contractEndDate = string.valueOf(system.today().addDays(15));
@@ -1127,7 +1127,7 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         mrcwrap1.mrcName = '000000000-100052';
         mrcwrap1.locationName = 'Godorf Shell Gantry';
         mrcwrap1.location = mrcUlg[0].Plant_code__c;
-        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c; 
+        mrcwrap1.shipToNumber = mrcUlg[0].Ship_to_Number__c;
         mrcwrap1.grade = 'ULG95 E10';
         mrcwrap1.atpLive = 100;
         mrcwrap1.volumeCBM = 100;
@@ -1156,12 +1156,12 @@ String contractEndDate,Boolean callFromOlf, Boolean OLFOnly)*/
         String search4 = search3;
         search3 = search3.replace('[', '');
         search3 = search3.replace(']', '' );
-        
+
         Set<Id> mrcIds = new Set<Id>();
         mrcIds.add(mrcUlg[0].id);
         List<Account> accLst=[Select Id from Account WHERE Customer_Type__c = 'Sold To'];
 
-        test.startTest();        
+        test.startTest();
         rv_sht_CreateControllerLWC.saveResultsearchWrap saveResult = rv_sht_CreateControllerLWC.saveSHTObjectRecordLWC(search4,'ATP1',contractStartDate,contractEndDate, true);
         rv_sht_CreateControllerLWC.searchDependentShipToMRC('', '000000');
         rv_sht_CreateControllerLWC.searchDependentShipToMRC('', '012222');
