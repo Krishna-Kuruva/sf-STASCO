@@ -309,11 +309,16 @@ export default class Rv_PriceMarket extends LightningElement {
                         for(var i = 0;i<this.completedMasterTriggerSHTData.length; i++){
                             for(var j = 0;j<this.completedMasterTriggerSHTData[i].plants.length; j++){
                                 for(var k = 0;k<this.completedMasterTriggerSHTData[i].plants[j].gradeGroup.length; k++){
-                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].dailySales = mrcArray[i].plants[j].gradeGroup[k].dailySales ;
-                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].onlineATP = mrcArray[i].plants[j].gradeGroup[k].onlineATP ;
+                                    //Added by swarna Bug1725181
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].dailySales = mrcArray[i].plants[j].gradeGroup[k].dailySales ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].onlineATP = mrcArray[i].plants[j].gradeGroup[k].onlineATP ;
                                     this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].phoneATP = mrcArray[i].plants[j].gradeGroup[k].phoneATP ;
-                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].bsp = mrcArray[i].plants[j].gradeGroup[k].bsp ;
-                                    //this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].finalSalesPriceCal = mrcArray[i].plants[j].gradeGroup[k].finalSalesPriceCal ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].bsp = mrcArray[i].plants[j].gradeGroup[k].bsp ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].finalSalesPriceCal = mrcArray[i].plants[j].gradeGroup[k].finalSalesPriceCal ;
+				    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].margin = mrcArray[i].plants[j].gradeGroup[k].margin ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].otm = mrcArray[i].plants[j].gradeGroup[k].otm ;
+                                    this.completedMasterTriggerSHTData[i].plants[j].gradeGroup[k].finalOtm = mrcArray[i].plants[j].gradeGroup[k].finalOtm ;
+				    //end
                                 }
                             }
                         }
