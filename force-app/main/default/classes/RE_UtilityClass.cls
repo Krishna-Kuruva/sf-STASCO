@@ -552,4 +552,42 @@ public without sharing class RE_UtilityClass {
         public Integer successCount;
         public Integer failureCount;
     }
+
+    public static string exceptionMessageFormatter(exception ex){
+        return 'Message: ' + ex.getMessage() + ' Line: '+ex.getLineNumber() + ' Trace: '+ex.getStackTraceString();
+    }
+
+    public static Integer jobRunCount(String jobType){
+        List<RE_Job_Run_Audit__c> lstMaxJobRunCount = [SELECT Id, RE_Job_Run_Count__c FROM RE_Job_Run_Audit__c WHERE CreatedDate = TODAY and RE_Job_Type__c =: jobType ORDER BY RE_Job_Run_Count__c DESC LIMIT 1];
+        return lstMaxJobRunCount.isEmpty() ? 0 : Integer.valueOf(lstMaxJobRunCount[0].RE_Job_Run_Count__c) + 1;
+    }
+
+
+    //returns the status for the given job run audit id
+    @auraEnabled
+    public static map<string,string> checkJobRunStatus(Id jrId){
+        map<string,string> resultmap = new map<string,string>();
+        RE_Job_Run_Audit__c jra = [select RE_Job_Status__c,RE_Exception__c from RE_Job_Run_Audit__c where Id =:jrId];
+        resultmap.put('Status',jra.RE_Job_Status__c);
+        return resultmap;
+    }
+
+    //returns any existing job for the given job run audit Type
+    @auraEnabled
+    public static map<string,string> checkExistingJob(string jobType){
+        map<string,string> resultmap = new map<string,string>();
+        list<RE_Job_Run_Audit__c> jra_lst = new list<RE_Job_Run_Audit__c>();
+        jra_lst = [select Name,createdDate from RE_Job_Run_Audit__c where
+                   RE_Job_Type__c =:jobType and createdDate=today AND
+                   RE_Job_Status__c = 'Processing' order by createdDate desc];
+        if(jra_lst.size() > 0){
+        	resultmap.put('ExistingJob','True');
+            DateTime dt = jra_lst[0].createddate;
+            resultmap.put('CreatedDate',dt.formatGmt('MMM dd, yyyy HH:mm'));
+            resultmap.put('JobName',jra_lst[0].Name);
+        } else{
+            resultmap.put('ExistingJob','False');
+        }
+        return resultmap;
+    }
 }

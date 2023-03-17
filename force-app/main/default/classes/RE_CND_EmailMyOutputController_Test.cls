@@ -10,7 +10,7 @@
 @isTest
 public class RE_CND_EmailMyOutputController_Test {
     
-    @isTest
+   @isTest
     static void emailMyOutputCreation_Test()
     {
         Test.startTest();
@@ -417,4 +417,74 @@ public class RE_CND_EmailMyOutputController_Test {
         
         Test.stopTest();
     }  
+    
+    @isTest
+    static void emailMyOutputCreation_Test12() {
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'Shell Canada Rack Notification\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0001","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Shell Canada Rack Notification", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0002","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Shell Canada Rack Notification", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'Internal Shell Canada BRPP Notification\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Internal Shell Canada BRPP Notification", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Internal Shell Canada BRPP Notification", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'SFJ Rack notification\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "SFJ Rack notification", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "SFJ Rack notification", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'Canadian Rack Prices\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Canadian Rack Prices", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Canadian Rack Prices", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+      	RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'7 Day Canadian Rack Prices\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "7 Day Canadian Rack Prices", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "7 Day Canadian Rack Prices", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'Canadian Rack Pricing and rack pricing Files\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Canadian Rack Pricing and rack pricing Files", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Canadian Rack Pricing and rack pricing Files", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));
+        RV_MetadataCoverageTest.setMetadata('Select id, MasterLabel, To_List__c, Cc_List__c, Bcc_List__c, Is_Active__c, Type__c FROM RE_Email_Recipient__mdt WHERE Country__c = \'Canada\' AND Type__c =\'Ready to Upload Notification\' AND Is_Active__c = TRUE',
+                                            (List<RE_Email_Recipient__mdt>) JSON.deserialize(
+                                                '['+
+                                                '{"MasterLabel": "ERTest0003","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Ready to Upload Notification", "Is_Active__c" : true},'+
+                                                '{"MasterLabel": "ERTest0004","Country__c": "Canada","To_List__c" : "abhilash.kt@shell.com","Cc_List__c" : "abhilash.kt@shell.com","Bcc_List__c" : "abhilash.kt@shell.com","Type__c" : "Ready to Upload Notification", "Is_Active__c" : true}'+
+                                                ']',
+                                                List<RE_Email_Recipient__mdt>.class));  
+        Test.startTest(); 
+            Map<String, String> emailNameMap = new Map<String, String>();
+            emailNameMap.put('Shell Canada Rack Notification', 'Shell Canada Rack Notification');
+            emailNameMap.put('Internal Shell Canada BRPP Notification', 'Internal Shell Canada BRPP Notification');
+            emailNameMap.put('SFJ Rack notification', 'SFJ Rack notification');
+            emailNameMap.put('Canadian Rack Prices', 'Canadian Rack Prices');
+            emailNameMap.put('7 Day Canadian Rack Prices', '7 Day Canadian Rack Prices');
+            emailNameMap.put('Canadian Rack Pricing and rack pricing Files', 'Canadian Rack Pricing and rack pricing Files');
+            emailNameMap.put('Ready to Upload Notification', 'Ready to Upload Notification');
+            RE_CND_EmailMyOutputController.shellCanadaRackNotificationEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.internalShellCndBRPPNotifiEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.sfjRacknotificationEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.canadianRackPricesEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.canadianRackPrices7DayEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.canadianRackPricngAndRackPricngEmail(emailNameMap, false);
+            RE_CND_EmailMyOutputController.readyToUploadNotificationEmail(emailNameMap, false);
+        Test.stopTest();       
+    }
 }
