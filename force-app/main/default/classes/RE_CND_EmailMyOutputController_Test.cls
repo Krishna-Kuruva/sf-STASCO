@@ -10,6 +10,18 @@
 @isTest
 public class RE_CND_EmailMyOutputController_Test {
     
+    public static String internalRackNotification = 'Internal Rack Notification';
+    public static String shellCanadaRackNotification = 'Shell Canada Rack Notification';
+    public static String internalShellCndBRPPNotifi = 'Internal Shell Canada BRPP Notification';
+    public static String sfjRacknotification = 'SFJ Rack notification';
+    public static String canadianRackPrices = 'Canadian Rack Prices';
+    public static String canadianRackPrices7Day = '7 Day Canadian Rack Prices';
+    public static String shellRackCustomerNotification = 'Shell Rack Customer Notification';
+    public static String shellCndBrandedCustomerNotifi = 'Shell Canada - Branded Customer Notification';
+    public static String canadianRackPricngAndRackPricng = 'Canadian Rack Pricing and rack pricing Files';
+    public static String readyToUploadNotification = 'Ready to Upload Notification';
+    public static String noRevisedPricing = 'No Revised Pricing';
+    
    @isTest
     static void emailMyOutputCreation_Test()
     {
@@ -24,17 +36,17 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Internal Rack Notification');
-        emailNames.add('Internal Shell Canada BRPP Notification');
-        emailNames.add('Shell Canada Rack Notification');
-        emailNames.add('Shell Rack Customer Notification');
-        emailNames.add('SFJ Rack notification');       
-        emailNames.add('Canadian Rack Prices');
-        emailNames.add('7 Day Canadian Rack Prices');
-        emailNames.add('Ready to Upload Notification');
-        emailNames.add('Shell Canada - Branded Customer Notification');
-        emailNames.add('No Revised Pricing');
-        emailNames.add('Canadian Rack Pricing and rack pricing Files');
+        emailNames.add(internalRackNotification);
+        emailNames.add(internalShellCndBRPPNotifi);
+        emailNames.add(shellCanadaRackNotification);
+        emailNames.add(shellRackCustomerNotification);
+        emailNames.add(sfjRacknotification);       
+        emailNames.add(canadianRackPrices);
+        emailNames.add(canadianRackPrices7Day);
+        emailNames.add(readyToUploadNotification);
+        emailNames.add(shellCndBrandedCustomerNotifi);
+        emailNames.add(noRevisedPricing);
+        emailNames.add(canadianRackPricngAndRackPricng);
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -77,9 +89,9 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Internal Rack Notification');      
-        emailNames.add('Shell Rack Customer Notification');
-        emailNames.add('SFJ Rack notification');
+        emailNames.add(internalRackNotification);      
+        emailNames.add(shellRackCustomerNotification);
+        emailNames.add(sfjRacknotification);
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -109,7 +121,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Internal Shell Canada BRPP Notification');  
+        emailNames.add(internalShellCndBRPPNotifi);  
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -141,7 +153,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Shell Canada - Branded Customer Notification');      
+        emailNames.add(shellCndBrandedCustomerNotifi);      
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -175,13 +187,13 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Shell Canada - Branded Customer Notification');   
-        emailNames.add('Internal Rack Notification');
-        emailNames.add('Internal Shell Canada BRPP Notification');
-        emailNames.add('Shell Canada Rack Notification');
-        emailNames.add('Shell Rack Customer Notification');
-        emailNames.add('SFJ Rack notification');      
-        emailNames.add('Canadian Rack Pricing and rack pricing Files'); 
+        emailNames.add(shellCndBrandedCustomerNotifi);   
+        emailNames.add(internalRackNotification);
+        emailNames.add(internalShellCndBRPPNotifi);
+        emailNames.add(shellCanadaRackNotification);
+        emailNames.add(shellRackCustomerNotification);
+        emailNames.add(sfjRacknotification);      
+        emailNames.add(canadianRackPricngAndRackPricng); 
         
         RE_CND_Conga_Output_Settings__c congOP =  RE_CND_TestDataFactory.createCongaOutputSettngs('CND_0001','RackCustomerNotification','Edmonton','RUG','','','Unbranded',
                                                                                                   'Edmonton','Edmonton','Regular', 'Ordinaire',1, 'left', true);
@@ -212,9 +224,9 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();          
-        emailNames.add('Internal Rack Notification');       
-        emailNames.add('Shell Rack Customer Notification');
-        emailNames.add('SFJ Rack notification');       
+        emailNames.add(internalRackNotification);       
+        emailNames.add(shellRackCustomerNotification);
+        emailNames.add(sfjRacknotification);       
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -246,7 +258,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Shell Canada - Branded Customer Notification');   
+        emailNames.add(shellCndBrandedCustomerNotifi);   
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -280,7 +292,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Internal Shell Canada BRPP Notification');      
+        emailNames.add(internalShellCndBRPPNotifi);      
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -310,7 +322,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Shell Canada Rack Notification');      
+        emailNames.add(shellCanadaRackNotification);      
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -342,7 +354,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Canadian Rack Pricing and rack pricing Files');      
+        emailNames.add(canadianRackPricngAndRackPricng);      
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -374,10 +386,10 @@ public class RE_CND_EmailMyOutputController_Test {
         prngFrmToDate = prngFrmToDate.addDays(1); 
         
         List<String> emailNames = New List<String>();
-        emailNames.add('No Revised Pricing');    
-        emailNames.add('Ready to Upload Notification'); 
-        emailNames.add('7 Day Canadian Rack Prices');
-        emailNames.add('Canadian Rack Prices');
+        emailNames.add(noRevisedPricing);    
+        emailNames.add(readyToUploadNotification); 
+        emailNames.add(canadianRackPrices7Day);
+        emailNames.add(canadianRackPrices);
         
         RE_CND_EmailMyOutputController.emailMyOutputCreation(emailNames,true,prngFrmToDate,jra,'Processing');
         
@@ -398,7 +410,7 @@ public class RE_CND_EmailMyOutputController_Test {
         List<RE_MY_CostPrice__c> newCostPriceDataList = RE_CND_TestDataFactory.createCostPriceDataForEmailOutput(prngDateTime,reqDate,prngFrmToDate);   
         
         List<String> emailNames = New List<String>();
-        emailNames.add('Shell Canada - Branded Customer Notification');      
+        emailNames.add(shellCndBrandedCustomerNotifi);      
         
         Id cndMyOutputRecdTypId = Schema.SObjectType.RE_MY_Output__c.getRecordTypeInfosByDeveloperName().get('Canada').getRecordTypeId();
         List<RE_MY_Output__c> cndMyOPdata = New List<RE_MY_Output__c>();
@@ -471,13 +483,13 @@ public class RE_CND_EmailMyOutputController_Test {
                                                 List<RE_Email_Recipient__mdt>.class));  
         Test.startTest(); 
             Map<String, String> emailNameMap = new Map<String, String>();
-            emailNameMap.put('Shell Canada Rack Notification', 'Shell Canada Rack Notification');
-            emailNameMap.put('Internal Shell Canada BRPP Notification', 'Internal Shell Canada BRPP Notification');
-            emailNameMap.put('SFJ Rack notification', 'SFJ Rack notification');
-            emailNameMap.put('Canadian Rack Prices', 'Canadian Rack Prices');
-            emailNameMap.put('7 Day Canadian Rack Prices', '7 Day Canadian Rack Prices');
-            emailNameMap.put('Canadian Rack Pricing and rack pricing Files', 'Canadian Rack Pricing and rack pricing Files');
-            emailNameMap.put('Ready to Upload Notification', 'Ready to Upload Notification');
+            emailNameMap.put(shellCanadaRackNotification, shellCanadaRackNotification);
+            emailNameMap.put(internalShellCndBRPPNotifi, internalShellCndBRPPNotifi);
+            emailNameMap.put(sfjRacknotification, sfjRacknotification);
+            emailNameMap.put(canadianRackPrices, canadianRackPrices);
+            emailNameMap.put(canadianRackPrices7Day, canadianRackPrices7Day);
+            emailNameMap.put(canadianRackPricngAndRackPricng, canadianRackPricngAndRackPricng);
+            emailNameMap.put(readyToUploadNotification, readyToUploadNotification);
             RE_CND_EmailMyOutputController.shellCanadaRackNotificationEmail(emailNameMap, false);
             RE_CND_EmailMyOutputController.internalShellCndBRPPNotifiEmail(emailNameMap, false);
             RE_CND_EmailMyOutputController.sfjRacknotificationEmail(emailNameMap, false);
