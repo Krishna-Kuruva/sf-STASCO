@@ -436,7 +436,7 @@ public class RV_PriceAndMarket {
                 grade = mrcObj.Material_Description__c;
             }
             wrapObj.grade = grade;
-            if(grade == 'ULG95 E5' || grade == 'ULG98' || grade == 'GTL B0' || grade=='GTL B7'){
+            if(grade == 'ULG95 E5' || grade == 'ULG98' ){ // || grade == 'GTL B0' || grade=='GTL B7'){ commented for PBI 1843678
                 wrapObj.showFinalOTM = false;
                 
             } else {
