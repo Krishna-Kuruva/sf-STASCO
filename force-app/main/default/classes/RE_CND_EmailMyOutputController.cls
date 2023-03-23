@@ -634,6 +634,10 @@ public with sharing class RE_CND_EmailMyOutputController {
                     
                     Database.executeBatch(new RE_CND_EmailMyOutput_Batch(tobeCreated, jrAudit, emailNames, isEmailToMe, reqFrmDate));
                 }
+                else{               					
+                   // Process Conga email part & Job Audit for 'No Revised Pricing'
+                   processCongaEmails(emailNames,isEmailToMe,jrAudit,reqFrmDate); 
+                }
                 // PBI#1826604 - End 
             }            
         }
