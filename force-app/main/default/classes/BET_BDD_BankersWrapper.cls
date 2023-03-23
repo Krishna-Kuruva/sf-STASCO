@@ -72,7 +72,7 @@ public with sharing class BET_BDD_BankersWrapper {
         @AuraEnabled
         public List<Sobject> clearingCodes {get;set;} 
         @AuraEnabled
-        public string linkToFullDetails {get;set;} 
+        public string linkToFullDetails {get;set;}
     }
     
     public class Location {
@@ -110,4 +110,10 @@ public with sharing class BET_BDD_BankersWrapper {
         public String iso3 {get;set;}
     }
     
+    public class Lei {
+        @AuraEnabled  
+        public String issuer {get;set;}
+        @AuraEnabled   
+        public String value {get;set;} 
+    }
 }

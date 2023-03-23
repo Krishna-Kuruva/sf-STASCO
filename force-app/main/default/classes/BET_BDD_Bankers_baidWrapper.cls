@@ -1,6 +1,8 @@
 /******************************************************************************************************************
 className           :    BET_BDD_Bankers_baidWrapper
 Description         :    This class contains a wrapper class of Bankers baid.
+----------------------Modiflication Logs------------------------------------
+20th March 2023 - added the new parameters as per Banker APIs BY Ashish.A.Jadhav@shell.com
 *******************************************************************************************************************/
 public class BET_BDD_Bankers_baidWrapper {
     public class responseParameterBaid{
@@ -166,7 +168,9 @@ public class BET_BDD_Bankers_baidWrapper {
         @AuraEnabled 
         public List<String> swiftBICs {get;set;} 
         @AuraEnabled 
-        public List<String> giin {get;set;} 
+        public List<String> giin {get;set;}
+        @AuraEnabled 
+            public Lei lei {get;set;}    
     }
     
     public class HeadOffice { 
@@ -223,7 +227,7 @@ public class BET_BDD_Bankers_baidWrapper {
         public String auditorType {get;set;} 
     }
     
-    public class Ownership {		
+    public class Ownership {    
         @AuraEnabled 
         public UltimateParent ultimateParent {get;set;} 
         @AuraEnabled 
@@ -257,7 +261,9 @@ public class BET_BDD_Bankers_baidWrapper {
         @AuraEnabled  
         public String lastVerifiedDate {get;set;} 
         @AuraEnabled  
-        public String entityType {get;set;} 
+        public String entityType {get;set;}
+        @AuraEnabled  
+        public String source {get;set;} 
     }
     
     public class Ubos{
@@ -306,38 +312,38 @@ public class BET_BDD_Bankers_baidWrapper {
         @AuraEnabled  
         public String country {get;set;} 
         @AuraEnabled  
-        public Double percentageOwnership {get;set;}		
+        public Double percentageOwnership {get;set;}    
         @AuraEnabled  
         public List<Children> children{get;set;}
     }
     
     
-    public class Personnel {		
+    public class Personnel {    
         @AuraEnabled  
-        public String name {get;set;} 		
+        public String name {get;set;}     
         @AuraEnabled  
-        public List<String> titles {get;set;} 		
+        public List<String> titles {get;set;}     
         @AuraEnabled  
         public String lastVerifiedDate {get;set;} 
     }
     
-    public class DueDiligenceDocuments {	
+    public class DueDiligenceDocuments {  
         @AuraEnabled  
-        public String nametype {get;set;} 	
+        public String nametype {get;set;}   
         @AuraEnabled  
-        public String link {get;set;} 	
+        public String link {get;set;}   
         @AuraEnabled  
-        public String filename {get;set;} 	
+        public String filename {get;set;}   
         @AuraEnabled  
-        public String publishedDate {get;set;} 	
+        public String publishedDate {get;set;}   
         @AuraEnabled  
-        public String documentRecordType {get;set;} 	
+        public String documentRecordType {get;set;}   
         @AuraEnabled  
-        public String documentStatus {get;set;} 	
+        public String documentStatus {get;set;}   
         @AuraEnabled  
-        public String documentGroup {get;set;} 	
+        public String documentGroup {get;set;}   
         @AuraEnabled  
-        public String documentSet {get;set;} 	
+        public String documentSet {get;set;}   
         @AuraEnabled  
         public ParentDocument parentDocument {get;set;} 
     }
@@ -415,6 +421,13 @@ public class BET_BDD_Bankers_baidWrapper {
         public String lineName {get;set;}
         @AuraEnabled   
         public Double lineValue {get;set;} 
+    }
+    
+    public class Lei {
+        @AuraEnabled  
+        public String issuer {get;set;}
+        @AuraEnabled   
+        public String value {get;set;} 
     }
     
 }
