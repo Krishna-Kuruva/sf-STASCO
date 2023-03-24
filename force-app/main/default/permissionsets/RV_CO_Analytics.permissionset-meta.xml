@@ -4579,11 +4579,7 @@
         <field>MRC__c.Valuation_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>MRC__c.rv_MRC_Unique_Key__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.AGO_B0_Sales_Margin__c</field>
