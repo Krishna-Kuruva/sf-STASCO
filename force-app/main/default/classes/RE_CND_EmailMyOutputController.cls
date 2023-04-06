@@ -116,6 +116,57 @@ public with sharing class RE_CND_EmailMyOutputController {
                         blnkRecordNo = blnkRecordNo+1;
                     }
                 }
+                // New combination start
+                 // Internal Shell Canada BRPP Notification 
+                 // & 
+                 // Shell Canada - Branded Customer Notification
+                else if((emailName.containsKey(internalShellCndBRPPNotifi)) && (emailName.containsKey(shellCndBrandedCustomerNotifi))){
+                    // Get all the NewRack and NewBAPP Records on the specified date
+                    for(RE_MY_CostPrice__c costPrice : [SELECT Id, RE_Product_Codes__c, RE_Depot_Code__c, RE_CND_Group__c, RE_CND_NewRack_Or_NewBAPP_File__c,                                              
+                                                        RE_CND_Old_Base_Value__c,RE_CND_Net_Move_Value__c,RE_CND_Final_Value__c, RE_CND_Rack__c, RE_CND_Product_Group__c,
+                                                        RE_Requested_Date__c, RE_CND_Effective_From_Date__c, RE_CND_Effective_To_Date__c
+                                                        FROM RE_MY_CostPrice__c WHERE RecordTypeId =: cndCostPriceRecdTypId
+                                                        AND RE_CND_Effective_From_Date__c <=: reqFrmDate AND RE_CND_Effective_To_Date__c >=: reqFrmDate
+                                                        AND RE_IsLatest__c =: TRUE AND RE_CND_Notify_Users__c =: TRUE                                                         
+                                                        AND RE_CND_NewRack_Or_NewBAPP_File__c IN ('NewRack','NewBAPP')])
+                    {       
+                        requestedDt = costPrice.RE_Requested_Date__c;
+                        effectveFromDt = costPrice.RE_CND_Effective_From_Date__c;
+                        effectveToDt = costPrice.RE_CND_Effective_To_Date__c;
+                        
+                        if(costPrice.RE_CND_NewRack_Or_NewBAPP_File__c == 'NewRack'){
+                            reqNewRackCostPrice.put(costPrice.RE_Product_Codes__c+'-'+costPrice.RE_Depot_Code__c+'-'+costPrice.RE_CND_Group__c, costPrice);}
+                        else if(costPrice.RE_CND_NewRack_Or_NewBAPP_File__c == 'NewBAPP'){
+                            reqNewBAPPCostPrice.put(costPrice.RE_Product_Codes__c+'-'+costPrice.RE_Depot_Code__c+'-'+costPrice.RE_CND_Group__c, costPrice);}               
+                    }
+                    
+                    for(RE_CND_Conga_Output_Settings__c settngs: [SELECT Id, File_Name__c, Product_Code__c, Location_Code__c, Group__c, Display_English_Rack_Name__c, Display_French_Rack_Name__c,
+                                                                  Display_English_Product_Group__c, Display_French_Product_Group__c, Sequence_No__c, Section_Name__c, Rack_Name__c, Product_Group_Name__c
+                                                                  FROM RE_CND_Conga_Output_Settings__c WHERE Is_Active__c = : TRUE 
+                                                                  AND File_Name__c IN ('RackCustomerNotification','BrandedNotificationChangeAmount','BrandedNotificationExternalWeb','NewBAPP')
+                                                                  ORDER BY Name])
+                    {
+                        if((settngs.File_Name__c.contains('RackCustomerNotification'))  && (!String.isEmpty(settngs.Product_Code__c)) && (!String.isEmpty(settngs.Location_Code__c)) && (!String.isEmpty(settngs.Display_English_Rack_Name__c)) && (!String.isEmpty(settngs.Display_English_Product_Group__c))){
+                            newRackSettngs.put(settngs.Product_Code__c+'-'+settngs.Location_Code__c+'-'+settngs.Group__c+'-#@#-'+settngs.Display_English_Rack_Name__c+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('RackCustomerNotification'))  && (String.isEmpty(settngs.Product_Code__c)) && (String.isEmpty(settngs.Location_Code__c))){
+                            newRackSettngs.put(settngs.Rack_Name__c+'-'+blnkRecordNo,settngs);}
+                        else if((settngs.File_Name__c.contains('BrandedNotificationChangeAmount')) && (!String.isEmpty(settngs.Rack_Name__c))){
+                            branNotiChangeAmtSettngs.put(settngs.Product_Code__c+'-'+settngs.Location_Code__c+'-'+settngs.Group__c+'-#@#-'+settngs.Display_English_Rack_Name__c+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('BrandedNotificationChangeAmount')) && (String.isEmpty(settngs.Rack_Name__c))){
+                            branNotiChangeAmtSettngs.put('BrNotiChgAmt_'+blnkRecordNo+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('BrandedNotificationExternalWeb')) && (!String.isEmpty(settngs.Rack_Name__c))){
+                            branNotiExtWebSettngs.put(settngs.Product_Code__c+'-'+settngs.Location_Code__c+'-'+settngs.Group__c+'-#@#-'+settngs.Display_English_Rack_Name__c+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('BrandedNotificationExternalWeb')) && (String.isEmpty(settngs.Rack_Name__c))){
+                            branNotiExtWebSettngs.put('BrNotiExtWeb_'+blnkRecordNo+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('NewBAPP')) && (!String.isEmpty(settngs.Product_Code__c)) && (!String.isEmpty(settngs.Location_Code__c)) && (!String.isEmpty(settngs.Display_English_Rack_Name__c)) && (!String.isEmpty(settngs.Display_English_Product_Group__c))){
+                            newBAPPSettngs.put(settngs.Product_Code__c+'-'+settngs.Location_Code__c+'-'+settngs.Group__c+'-#@#-'+settngs.Display_English_Rack_Name__c+'-'+settngs.Display_English_Product_Group__c,settngs);}
+                        else if((settngs.File_Name__c.contains('NewBAPP')) && (String.isEmpty(settngs.Product_Code__c)) && (String.isEmpty(settngs.Location_Code__c))){
+                            newBAPPSettngs.put(settngs.Rack_Name__c+'-'+blnkRecordNo,settngs);}
+                        
+                        blnkRecordNo = blnkRecordNo+1;
+                    }                    
+                }                
+                // New combination End                
                 // Only NewRack records
                 else if((emailName.containsKey(internalRackNotification)) 
                         || (emailName.containsKey(sfjRacknotification)) || (emailName.containsKey(shellRackCustomerNotification)))
