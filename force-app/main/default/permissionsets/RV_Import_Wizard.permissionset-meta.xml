@@ -1073,6 +1073,16 @@
         <field>RT_Setting__c.Value__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SAP_Staging_History__c.RV_SAPSHT_ExternalID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SAP_Staging__c.RV_SAPSHT_ExternalID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>RV Import Wizard</label>
     <license>Salesforce Platform</license>

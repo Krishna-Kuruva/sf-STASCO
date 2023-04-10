@@ -6901,6 +6901,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SAP_Staging_History__c.RV_SAPSHT_ExternalID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SAP_Staging_History__c.Record_Created_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7112,6 +7117,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     <fieldPermissions>
         <editable>false</editable>
         <field>SAP_Staging__c.Quantity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SAP_Staging__c.RV_SAPSHT_ExternalID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
