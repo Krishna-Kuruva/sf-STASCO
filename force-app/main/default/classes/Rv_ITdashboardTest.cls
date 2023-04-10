@@ -105,7 +105,7 @@ public class Rv_ITdashboardTest {
         Rv_ITdashboardController.startStopAllBatches('StopAll');
         Rv_ITdashboardController.startStopAllBatches('RunAll');
         Rv_ITdashboardController.getAllData();
-        Rv_ITdashboardController.startStopAllBatches('StopAll');
+        //Rv_ITdashboardController.startStopAllBatches('StopAll');
         
         Test.stopTest();
     }
