@@ -115,7 +115,7 @@
             <label>SAP Staging Record Created / Edited</label>
         </rules>
     </decisions>
-    <interviewLabel>Audit_History_for_SAP_Staging-6_InterviewLabel</interviewLabel>
+    <interviewLabel>Audit_History_for_SAP_Staging-7_InterviewLabel</interviewLabel>
     <label>Audit History for SAP Staging</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -793,6 +793,42 @@
             <field>Quantity__c</field>
             <value>
                 <elementReference>myVariable_current.Quantity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>RV SAPSHT ExternalID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>RV_SAPSHT_ExternalID__c</field>
+            <value>
+                <elementReference>myVariable_current.RV_SAPSHT_ExternalID__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
