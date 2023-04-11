@@ -2,40 +2,54 @@
  - Created by Sampada.Bhat on 12/23/2021.
  -->
 
-<!-- Rv PriceMarket----- ------------->
+<!-- Rv PriceMarket------------------>
 
 <template>
     <template if:true={showPricePage}>
+        <template if:true={completedMasterTriggerSHTData.length}>
+            <lightning-layout>
+                <lightning-layout-item  >
+                    <div style="border-radius:10px; border: 1px black solid; overflow: hidden;padding:5px 7px;width:274px;">
+                        <div style="background-color:#EEEEEE;font-size:medium;">
+                            &nbsp;&nbsp;<lightning-icon icon-name="utility:rotate" alternative-text="Prices Updates!" title="Prices Updates" size="small" ></lightning-icon>&nbsp; Price updates in <b>{timer}</b> seconds
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="10">
+
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
         <lightning-layout-item padding="around-small" size="12">
             <div class="slds-grid tableFixHead scrollbarEdit">
                 <div class={priceMarketCss}>
                 <template if:true={completedMasterTriggerSHTData.length}>
-                    
+
                 <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                     <thead>
                         <tr class="slds-text-title_caps slds-line-height_reset">
                            <!--<th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
-                            <div class="slds-truncate">   
+                            <div class="slds-truncate">
                              Mrc
                             </div>
                             </th>-->
                             <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
                                 <div class="slds-truncate">Plant</div>
-                                
+
                             </th>
                             <th class="putborderLeft putborderHeader  slds-color__background_gray-5" scope="col">
-                                <div class="slds-truncate">Plant Code</div> 
+                                <div class="slds-truncate">Plant Code</div>
                             </th>
                             <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                <div class="slds-truncate">Grade</div> 
+                                <div class="slds-truncate">Grade</div>
                             </th>
                             <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
-                                <div class="slds-truncate">Mat No</div> 
+                                <div class="slds-truncate">Mat No</div>
                             </th>
                             <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
                                 <div class="slds-truncate">  Sales
                                     (cbm)</div>
-                              
+
                             </th>
                             <th class="putborderHeader slds-cell-wrap  slds-color__background_gray-5" scope="col">
                                 Online ATP
@@ -83,39 +97,41 @@
 
                         </tr>
                     </thead>
-                   
+
                             <template for:each={completedMasterTriggerSHTData} for:item="mrc" for:index="indx">
-                                
+
                               <tr key={mrc} data-mrc= {mrc.mrcNo} class="slds-hint-parent">
                                     <td data-label="MrcNo" style="font-weight: bold;">
                                         {mrc.mrcNo}
                                     </td>
                              </tr>
+
                              <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex"> 
                                     <tbody class={cmPlant.rowbgColor} data-plant={cmPlant.location} key={cmPlant.location}>
+
                                 <tr>
                                  <td data-label="PlantName" rowspan = {cmPlant.rowspan} >{cmPlant.location}</td>
                                  <td data-label="PlantId" rowspan = {cmPlant.rowspan}  >{cmPlant.locationId}</td>
-                                      
+
                                  </tr>
                                        <template for:each={cmPlant.gradeGroup} for:item="cmPlantGrade" for:index="gIndex">
-                                        
+
                                         <tr data-grade= {cmPlantGrade.grade} key={cmPlantGrade}>
-                                           <td  data-label="Grade" style="font-weight: bold;">{cmPlantGrade.grade}  </td>  
+                                           <td  data-label="Grade" style="font-weight: bold;">{cmPlantGrade.grade}  </td>
                                            <td data-label = "MatNo">{cmPlantGrade.materialNo}</td>
                                            <td  data-label="SalesPrice">{cmPlantGrade.dailySales}  </td>
-                                           <td  data-label="OnlineATP">{cmPlantGrade.onlineATP} </td>                                             
-                                           <td  data-label="PhoneATP"> {cmPlantGrade.phoneATP}</td>  
-                                           <td  data-label="BSP">{cmPlantGrade.bsp}  </td>  
-                                           <td  data-label="LAP"> {cmPlantGrade.finalSalesPriceCal}</td>  
-                                           <td  data-label="Margin"> {cmPlantGrade.margin} </td>  
+                                           <td  data-label="OnlineATP">{cmPlantGrade.onlineATP} </td>
+                                           <td  data-label="PhoneATP"> {cmPlantGrade.phoneATP}</td>
+                                           <td  data-label="BSP">{cmPlantGrade.bsp}  </td>
+                                           <td  data-label="LAP"> {cmPlantGrade.finalSalesPriceCal}</td>
+                                           <td  data-label="Margin"> {cmPlantGrade.margin} </td>
                                            <td  data-label="OTM">
                                                 <template if:true= {cmPlantGrade.showOTM}>
                                                 {cmPlantGrade.otm}
                                                 </template>
-                                            </td>  
+                                            </td>
                                            <td  key= {cmPlantGrade.grade} data-label="Final OTM" style="font-weight:bold">
-                                            <div style="display: flex;align-items: center;">  
+                                            <div style="display: flex;align-items: center;">
                                             <span style="display: inline-block; vertical-align:top;flex: 2;">
                                                 <!--{cmPlantGrade.id}-->
                                                 <div  class="slds-var-p-right_medium" data-id ={cmPlantGrade.id}>
@@ -125,28 +141,28 @@
                                                  </div>
                                             </span>
                                                <template if:false= {cmPlantGrade.mogas}>
-                                        
-                                        <span  style="display: inline-block;text-align:center;border: 1px solid #d9e2ed;box-shadow: 0px 0px 2px #212946;background-color: #d9e2ed;text-align: center;border-radius: 5px;padding: 0px 2px;">                                                
+
+                                        <span  style="display: inline-block;text-align:center;border: 1px solid #d9e2ed;box-shadow: 0px 0px 2px #212946;background-color: #d9e2ed;text-align: center;border-radius: 5px;padding: 0px 2px;">
                                             <div>
                                                 <button style ="border: none;background: none;padding: 0;" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-count= {cmPlantGrade.count} onclick= {otmIncrement} ><i style="border: solid #212946;border-width: 0 2px 2px 0;display: inline-block;padding:3px;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);vertical-align: baseline;"></i></button>
-                                            </div>          
+                                            </div>
                                             <div style="margin-top:-6px;">
-                                                <button style ="border: none;background: none;padding:0;" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-count= {cmPlantGrade.count} onclick= {otmEquals} title="equals"> <span style="font-size:12px;font-weight:bold;">&#61;</span>  </button>     
+                                                <button style ="border: none;background: none;padding:0;" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-count= {cmPlantGrade.count} onclick= {otmEquals} title="equals"> <span style="font-size:12px;font-weight:bold;">&#61;</span>  </button>
                                             </div>
                                                 <div style="margin-top:-5px">
                                                     <button style ="border: none;background: none;padding: 0;" data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-count= {cmPlantGrade.count} onclick= {otmDecrement} title="Decrement counter">
                                                         <i style="border: solid #212946;border-width: 0 2px 2px 0;display: inline-block;padding:3px; transform: rotate(45deg);
                                                         -webkit-transform: rotate(45deg);vertical-align: baseline;"></i>
-                                                        </button> 
+                                                        </button>
                                                  </div>
                                             </span>
                                                 </template>
                                                 </div>
-                                           </td>  
+                                           </td>
 
                                            <td data-label="Offer" >
                                             <div class="emptyLabel" >
-                                               
+
                                                  <!--<lightning-input  type="number" pattern="^(0|[1-9][0-9]*)$" formatter="decimal" step="0.01" value={cmPlantGrade.offerValue} data-my-id = {cmPlantGrade.offerPrice}></lightning-input>
                                                  id:{gIndex} <br/>
                                                  Mrc: {indx} <br/>
@@ -154,7 +170,7 @@
                                                  -->
                                                 <template if:true= {cmPlantGrade.showOfferField}>
                                                  <!--  <span  >
-                                                    <lightning-input  type="number" value={cmPlantGrade.offerValue} data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-my-id = {cmPlantGrade.offerPrice} step="0.01" onchange={keycheck}></lightning-input></span>--> 
+                                                    <lightning-input  type="number" value={cmPlantGrade.offerValue} data-plant= {pIndex} data-mrc = {indx} data-id= {gIndex} data-my-id = {cmPlantGrade.offerPrice} step="0.01" onchange={keycheck}></lightning-input></span>-->
                                                     <span  >
                                                         <lightning-input  type="number" value={cmPlantGrade.offerValue} data-plant= {pIndex} data-mrc = {indx} data-id= {cmPlantGrade.count} data-my-id = {cmPlantGrade.offerPrice} step="0.01" onchange={keycheck}></lightning-input>
                                                     </span>
@@ -169,7 +185,7 @@
                                             <lightning-input  type="text" class="" value={cmPlantGrade.startDate}></lightning-input>
                                             <lightning-input  type="text" class="" value={cmPlantGrade.endDate} ></lightning-input>
 
-                                            
+
                                             <div style="font-style: italic;text-decoration: underline;">
                                             {cmPlantGrade.offer}
                                             </div>
@@ -177,7 +193,7 @@
                                            </td>
                                            <td data-label="Offered Volume">
                                             <div class="emptyLabel">
-                                                
+
                                                 <!--
                                                 {cmPlantGrade.offerId}
                                                 <lightning-input type="number" data-my-id= {cmPlantGrade.offerId} class="slds-col slds-size_12-of-12 slds-p-left_xx-small slds-align-left slds-float_left " value={cmPlantGrade.lastOfferedVolume} step="0.01" onchange={OfferedVolumeCheck}></lightning-input>-->
@@ -189,25 +205,25 @@
 
                                            </td>
                                            <td  data-label="LastOffer">
-                                               <span style="font-size: 7px;"><i>{cmPlantGrade.createdDate}</i></span> {cmPlantGrade.lastOfferedPrice} </td>  
+                                               <span style="font-size: 7px;"><i>{cmPlantGrade.createdDate}</i></span> {cmPlantGrade.lastOfferedPrice} </td>
                                             <td data-label="">
                                                 <span
                                                     style="font-size: 7px;"><i>&nbsp;</i></span>
-                                               
+
                                             </td>
-                                   
-                                   
+
+
                                             </tr>
                                        </template>
                                     </tbody>
                                </template>
 
 
-                             
+
 
                             </template>
-                
-                    
+
+
                 </table>
                 </template>
                 <template if:false={completedMasterTriggerSHTData.length}>
@@ -225,9 +241,9 @@
     </template>
     <lightning-layout-item>
         <template if:true={showSaveButton}> <!-- // Ashish: changes under 1165063,1182368 -->
-        <lightning-button variant="brand" label="Save" name="Save" class="slds-float_right" style="margin-top: 10px;" onclick={saveOfferPrice} 
+        <lightning-button variant="brand" label="Save" name="Save" class="slds-float_right" style="margin-top: 10px;" onclick={saveOfferPrice}
          disabled={isDisabled} ></lightning-button>
-    </template> 
+    </template>
     </lightning-layout-item>
     </template>
 </template>

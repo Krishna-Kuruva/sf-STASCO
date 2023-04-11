@@ -139,12 +139,10 @@
                                         </tr>
 
                                         <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex">
+
                                             <tbody class={cmPlant.rowbgColor} data-plant={cmPlant.location} key={cmPlant.location}>
-                                                <!--tr  key={cmPlant.location} class="slds-hint-parent">
-                                                    <td data-label="mrcNum"  style="background-color: var(--lwc-paletteYellow90);font-weight:bold;">{cmPlant.mrcNum}-{cmPlant.mrcContract_Description}</td>
-                                                </tr-->
+                                             
                                                 <tr >
-                                                    <!--td data-label="mrcNum" rowspan={cmPlant.rowspan}>{cmPlant.mrcNum}-{cmPlant.mrcLineItem}</td-->
                                                     <td data-label="PlantName" rowspan={cmPlant.rowspan}>{cmPlant.location}</td>
                                                     <td data-label="PlantId" rowspan={cmPlant.rowspan}>{cmPlant.locationCode}</td>
 

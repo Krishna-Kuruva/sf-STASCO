@@ -1,3 +1,10 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-02-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
 <template>
     <lightning-card class="filterSelection">
         <!--START ------------- Customer search section-->
@@ -274,7 +281,8 @@
                                             value={poTypeVal}
                                             placeholder="--Select--"
                                             options={poTypeOptions}
-                                            onchange={handleChange}>
+                                            onchange={handleChange}
+                                            data-id="poTypeFilter">
                         </lightning-combobox>
                     </lightning-layout-item>
                 </template>
@@ -304,6 +312,7 @@
                         if:true={depotOptions} 
                         options={depotOptions}
                         values={depotSelectedVal}
+                        cname={cname}
                         onvaluechange={handleDepotValueChange} 
                         >
                     </c-rv_multiselectdropdown>
@@ -474,11 +483,13 @@
                     <lightning-layout-item flexibility="auto" 
                                    class="slds-p-left_x-small slds-p-vertical_x-small"
                                    size="3">
-                        <lightning-radio-group name="tranche"
+               
+                        <lightning-radio-group class="trancheSel slds-hide"                                               
+                                             name="tranche"
                                             label="Tranche"
                                             options={trancheOptions}
                                             value={trancheVal}
-                                            type="radio" disabled>
+                                            type="radio" onchange={handleChange} disabled={tracheRadioDisabled}>
                         </lightning-radio-group>
                     </lightning-layout-item>
                 </lightning-layout>

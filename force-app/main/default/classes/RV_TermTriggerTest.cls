@@ -1,6 +1,6 @@
 @isTest
 public class RV_TermTriggerTest {
-    
+
     public static testmethod void getPicklistvaluesMonthTest(){
         //Insert Account Sold  TO
         Account acc = RV_TestDataFactory.createSoldToCustomer('ADAM OMMERT MINERALOELHANDEL', '22222222', true, true, false);
@@ -65,7 +65,7 @@ locSrc.Scenario_Type__c = 'Import;Export;Balanced';
 //insert locSrc;
 locList.add(locSrc);
 insert locList;*/
-        
+
         Location__c insertLoc = new Location__c();
         insertLoc = RV_TestHelper.insertLocation(insertLoc);
         insert insertLoc;
@@ -82,8 +82,8 @@ insert locList;*/
         matAgo.WASA_EUR_100l__c=0.4;
         //insert matAgo;
         matList.add(matAgo);
-        //IGO 50ppm -400002410 
-        Product_Catalogue__c matIgo50 = new Product_Catalogue__c();       
+        //IGO 50ppm -400002410
+        Product_Catalogue__c matIgo50 = new Product_Catalogue__c();
         matIgo50.Name = '400002410';
         matIgo50.Level_0__c = 'Gasoil';
         matIgo50.Commodity_Grade_L2__c = 'IGO 50ppm';
@@ -93,8 +93,8 @@ insert locList;*/
         matIgo50.WASA_EUR_100l__c=0.5;
         //insert matIgo50;
         matList.add(matIgo50);
-        //ULG95 E5 -400001637 
-        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();       
+        //ULG95 E5 -400001637
+        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();
         matUlgE5.Name = '400001637';
         matUlgE5.Level_0__c = 'Gasoline';
         matUlgE5.Commodity_Grade_L2__c = 'ULG95 E5';
@@ -104,8 +104,8 @@ insert locList;*/
         matUlgE5.WASA_EUR_100l__c=0.2;
         //insert matUlgE5;
         matList.add(matUlgE5);
-        
-        Product_Catalogue__c matUlg98 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matUlg98 = new Product_Catalogue__c();
         matUlg98.Name = '400001698';
         matUlg98.Level_0__c = 'Gasoline';
         matUlg98.Commodity_Grade_L2__c = 'ULG98';
@@ -115,8 +115,8 @@ insert locList;*/
         matUlg98.WASA_EUR_100l__c=0.2;
         //insert matUlgE5;
         matList.add(matUlg98);
-        
-        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();
         matUlg95E10.Name = '400001610';
         matUlg95E10.Level_0__c = 'Gasoline';
         matUlg95E10.Commodity_Grade_L2__c = 'ULG95 E10';
@@ -127,7 +127,7 @@ insert locList;*/
         //insert matUlgE5;
         matList.add(matUlg95E10);
         insert matList;
-        
+
         //Insert Mrcs
         List<MRC__c> mrcList = new List<MRC__c>();
         Id RecordTypeIdMrc = Schema.SObjectType.Mrc__c.getRecordTypeInfosByName().get('MRC').getRecordTypeId();
@@ -163,7 +163,7 @@ insert locList;*/
         mrDmyAgo.Valid_From_Date__c=system.today().addDays(-100);
         //insert mrDmyAgo;
         mrcList.add(mrDmyAgo);
-        //Insert Mrc IGO - 321492213-120004 
+        //Insert Mrc IGO - 321492213-120004
         Mrc__c mrIgo= new Mrc__c();
         mrIgo.Name='000000000-100051';
         mrIgo.RecordTypeId=RecordTypeIdMrc;
@@ -196,16 +196,16 @@ insert locList;*/
         //insert mrUlg;
         mrcList.add(mrUlg);
         insert mrcList;
-        
-        
+
+
         Account accInsert = new Account();
         accInsert = RV_TestHelper.insertAccount(accInsert);
-        accInsert.Rv_Available_for_OLF__c = true;	//OLFCustomerCreditChk_01Aug2019_Soumyajit 
+        accInsert.Rv_Available_for_OLF__c = true;	//OLFCustomerCreditChk_01Aug2019_Soumyajit
         accInsert.Ship_to_Number__c='0022222222';
         insert accInsert;
-        
-        
-        
+
+
+
         /*Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();
 matUlgE5.Name = '400001637';
 matUlgE5.Level_0__c = 'Gasoline';
@@ -225,16 +225,16 @@ insert matUlgE5;*/
         MRC__c insertMRC = new MRC__c();
         insertMRC = RV_TestHelper.insertMRC(insertMRC, accInsert, insertLoc, matUlgE5);
         //insertMRCLst.add(insertMRC);
-        
+
         MRC__c insertMRC1 = new MRC__c();
         insertMRC1 = RV_TestHelper.insertMRC(insertMRC, accInsert, insertLoc, matUlg98);
         //insertMRCLst.add(insertMRC1);
-        
+
         MRC__c insertMRC2 = new MRC__c();
         insertMRC2 = RV_TestHelper.insertMRC(insertMRC, accInsert, insertLoc, matUlg95E10);
-        insertMRCLst.add(insertMRC2);    
+        insertMRCLst.add(insertMRC2);
         insert insertMRC;
-        
+
         MRC__c insertmrcRecord = new MRC__c();
         insertmrcRecord.Name = '320076590-101004';
         insertmrcRecord.Valid_To_Date__c  = system.today().addDays(6);
@@ -255,9 +255,9 @@ insert matUlgE5;*/
         insertmrcRecord.Mode_Of_Transport__c=10;
         insertmrcRecord.Shipping_Condition__c=10;
         insert insertmrcRecord;
-        
-        
-        
+
+
+
         MRC__c tmrc = [Select Id, Name,Contract__c,Material_Description__c,Mode_Of_Transport__c,PO_Type__c,Sales_Organization__c,Plant__c,Ship_to_Number__c from MRC__c where  Id =: insertmrcRecord.id];
         RV_Trigger_Master_Data__c tmd = new RV_Trigger_Master_Data__c();
         tmd.Trigger_Month__c = 'Sep';
@@ -271,30 +271,30 @@ insert matUlgE5;*/
         tmd.Min_Trigger_Volume__c = 20;
         tmd.Monthly_volume__c = 300;
         insert tmd;
-        
+
         RV_Trigger_Master_Data__c triggerMaster = [Select Id,MRC_Number__r.Ship_to_Number__c,MRC_Number__r.PO_Type__c,
-                                                   MRC_Number__r.Contract__c,MRC_Number__r.Material_Description__c,	  
-                                                   MRC_Number__r.Mode_Of_Transport__c,MRC_Number__r.Sales_Organization__c 
+                                                   MRC_Number__r.Contract__c,MRC_Number__r.Material_Description__c,
+                                                   MRC_Number__r.Mode_Of_Transport__c,MRC_Number__r.Sales_Organization__c
                                                    from RV_Trigger_Master_Data__c where  Id =: tmd.id];
-        
+
         system.assertEquals(tmrc.Ship_to_Number__c, triggerMaster.MRC_Number__r.Ship_to_Number__c);
         system.assertEquals(tmrc.PO_Type__c, triggerMaster.MRC_Number__r.PO_Type__c );
         system.assertEquals(tmrc.Contract__c, triggerMaster.MRC_Number__r.Contract__c );
         system.assertEquals('ULG95 E10', triggerMaster.MRC_Number__r.Material_Description__c);
         system.assertEquals(10, triggerMaster.MRC_Number__r.Mode_Of_Transport__c );
         system.assertEquals('DE01', triggerMaster.MRC_Number__r.Sales_Organization__c );
-        
+
         SHT__c shtInsert = new SHT__c();
         shtInsert = RV_TestHelper.insertSHT(shtInsert,insertLoc,accInsert,insertMRC);
         shtInsert.IsATPVolumeReduced__c = true;
         shtInsert.IsVolumeHedged__c  = true;
         shtInsert.Trigger_Master_Data__c = tmd.Id;
         insert shtInsert;
-        
+
         system.debug('tmd::'+tmd.MRC_Number__c+'-1-'+tmd.Sold_to_Name__c+'-2-'+tmd.MRC_Number__r.Contract__c);
         system.debug('tmd1::'+tmd.MRC_Number__r.Material_Description__c+'-1-'+tmd.MRC_Number__r.Mode_Of_Transport__c+'-2-'+tmd.MRC_Number__r.PO_Type__c);
         system.debug('tmd2::'+tmd.MRC_Number__r.Plant__c+'-1-'+tmd.MRC_Number__r.Sales_Organization__c+'-2-'+tmd.Trigger_Month__c+'-3-'+tmd.Trigger_Year__c);
-        //RV_Trigger_Master_Data__c where Sold_to_Name__c =:soldToAccId AND MRC_Number__r.Contract__c IN: mrcNumbersList AND MRC_Number__r.Material_Description__c in:finalProductName AND MRC_Number__r.Mode_Of_Transport__c in:motIntegerLst 
+        //RV_Trigger_Master_Data__c where Sold_to_Name__c =:soldToAccId AND MRC_Number__r.Contract__c IN: mrcNumbersList AND MRC_Number__r.Material_Description__c in:finalProductName AND MRC_Number__r.Mode_Of_Transport__c in:motIntegerLst
         //AND MRC_Number__r.PO_Type__c =: poType AND MRC_Number__r.Plant__c IN: plantId AND MRC_Number__r.Sales_Organization__c in:salesOrgLst AND Trigger_Month__c IN :monthset AND Trigger_Year__c =: startYear
         List<String> salesOrg = new List<String>();
         salesOrg.add('DE01');
@@ -302,9 +302,9 @@ insert matUlgE5;*/
         test.startTest();
         List<RV_TermTriggerClass.termTriggerWrapperData> ttwraperLst = new List<RV_TermTriggerClass.termTriggerWrapperData>();
         RV_TermTriggerClass.termTriggerWrapperData ttwraper = new RV_TermTriggerClass.termTriggerWrapperData();
-        ttwraper.TriggerVolume = 30;
+        ttwraper.TriggerVolume1 = 30;
         ttwraper.TriggersLeft = 2;
-        ttwraper.TriggerComment = 'Test';
+        ttwraper.TriggerComment1 = 'Test';
         ttwraper.Max_number_of_triggers_per_month = 12;
         ttwraper.Max_Trigger_Volume = 500;
         ttwraper.Min_Trigger_Volume = 20;
@@ -315,7 +315,7 @@ insert matUlgE5;*/
         ttwraper.MRC_Number_Contract =insertMRC.Contract__c;
         String smrc = insertMRC.Name;
         List<String> lstsmrc = smrc.split('-');
-        ttwraper.MRC_Number_Id =lstsmrc[0]; 
+        ttwraper.MRC_Number_Id =lstsmrc[0];
         ttwraper.MRC_Number_Material_Description = 'ULG95 E10';
         ttwraper.MRC_Number_Mode_Of_Transport = 10;
         ttwraper.MRC_Number_Name = insertMRC.Name;
@@ -332,9 +332,9 @@ insert matUlgE5;*/
         ttwraper.shipToNumber = insertMRC.Ship_to_Number__c;
         ttwraper.Trigger_Month = 'Aug';
         ttwraper.Trigger_Year = '2022';
-        ttwraper.TriggerComment = 'testing';
+        ttwraper.TriggerComment1 = 'testing';
         ttwraper.TriggersLeft = 3;
-        ttwraper.TriggerVolume = 90;
+        ttwraper.TriggerVolume1= 90;
         ttwraper.Id = tmd.Id;
         ttwraper.Sold_to_Number = accInsert.Sold_To_Number__c;
         ttwraper.isGsapDealCreateOn = true;
@@ -344,11 +344,11 @@ insert matUlgE5;*/
         ttwraper.retroGsapDealCancelOn = true;
         system.debug('####'+ttwraper.Sold_to_Name+ttwraper.shipToNumber+ttwraper.MRC_Number_Plant_Plant_Code+'ULG95 E5');
         ttwraperLst.add(ttwraper);
-        
+
         String triggerDataString = JSON.serialize(ttwraperLst);
-        
-        
-        
+
+
+
         RV_TermTriggerClass.getPickListValuesMonth('RV_Trigger_Master_Data__c','Trigger_Month__c');
         RV_TermTriggerClass.fetchTermTriggerDeal1(acc.Id,new List<String>{lstsmrc[0]},new List<String>{accShipTo.Ship_to_Number__c},new List<String>{'10'},
                                                   'taxed',new List<String>{'AGO','IGO','Mogas'} , 'TTTT', new List<String>{insertMRC.Plant__c},
@@ -361,7 +361,7 @@ insert matUlgE5;*/
                                                   salesOrg,String.valueOf(system.today().addDays(5)),String.valueOf(system.today().addDays(6)),true);
         /* prod deployment */
         RV_TermTriggerClass.saveTermTriggerDeal1(triggerDataString,String.valueOf(system.today().addDays(-10)),String.valueOf(system.today().addDays(-9)),false,'ATP1');
-        RV_TermTriggerClass.confirmTermTriggerDeal(new List<SHT__c>{shtInsert}); 
+        RV_TermTriggerClass.confirmTermTriggerDeal(new List<SHT__c>{shtInsert});
         RV_TermTriggerClass.deleteTermTriggerDeal(shtInsert.Id);
         RV_TermTriggerClass.getUserList();
         RV_TermTriggerClass.getMonth('01');
@@ -378,19 +378,19 @@ insert matUlgE5;*/
     }
     @isTest public static void testSaveTermTriggerDealScenario1(){
         test.startTest();
-        
+
         Account accInsert = new Account();
         accInsert = RV_TestHelper.insertAccount(accInsert);
-        accInsert.Rv_Available_for_OLF__c = true;	
+        accInsert.Rv_Available_for_OLF__c = true;
         accInsert.Ship_to_Number__c='0022222222';
         insert accInsert;
-        
+
         Location__c insertLoc = new Location__c();
         insertLoc = RV_TestHelper.insertLocation(insertLoc);
         insert insertLoc;
-        
+
         List<Product_Catalogue__c> matList = new List<Product_Catalogue__c>();
-        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();       
+        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();
         matUlg95E10.Name = '400001610';
         matUlg95E10.Level_0__c = 'Gasoline';
         matUlg95E10.Commodity_Grade_L2__c = 'ULG95 E10';
@@ -399,8 +399,8 @@ insert matUlgE5;*/
         matUlg95E10.Dyeing_cost_EUR_100l__c=0.4;
         matUlg95E10.WASA_EUR_100l__c=0.2;
         matList.add(matUlg95E10);
-        
-        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();
         matUlgE5.Name = '400001637';
         matUlgE5.Level_0__c = 'Gasoline';
         matUlgE5.Commodity_Grade_L2__c = 'ULG95 E5';
@@ -409,8 +409,8 @@ insert matUlgE5;*/
         matUlgE5.Dyeing_cost_EUR_100l__c=0.4;
         matUlgE5.WASA_EUR_100l__c=0.2;
         matList.add(matUlgE5);
-        
-        Product_Catalogue__c matULG98 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matULG98 = new Product_Catalogue__c();
         matULG98.Name = '400001637';
         matULG98.Level_0__c = 'Gasoline';
         matULG98.Commodity_Grade_L2__c = 'ULG98';
@@ -418,15 +418,15 @@ insert matUlgE5;*/
         matULG98.Additive_cost_EUR_100l__c=0.3;
         matULG98.Dyeing_cost_EUR_100l__c=0.4;
         matULG98.WASA_EUR_100l__c=0.2;
-        matList.add(matULG98); 
-        
+        matList.add(matULG98);
+
         insert matList;
-        
-        MRC__c insertMRC = new MRC__c(); 
+
+        MRC__c insertMRC = new MRC__c();
         insertMRC = RV_TestHelper.insertMRC(insertMRC, accInsert, insertLoc, matUlgE5);
         insert insertMRC;
-        
-        MRC__c insertMRC1 = new MRC__c(); 
+
+        MRC__c insertMRC1 = new MRC__c();
         insertMRC1.Name = '320076590-101004';
         insertMRC1.Valid_To_Date__c  = system.today().addDays(6);
         insertMRC1.Valid_From_Date__c  = system.today().addDays(5);
@@ -446,7 +446,7 @@ insert matUlgE5;*/
         insertMRC1.Mode_Of_Transport__c=10;
         insertMRC1.Shipping_Condition__c=10;
         insert insertMRC1;
-        
+
         MRC__c insertmrcRecord = new MRC__c();
         insertmrcRecord.Name = '320076590-101004';
         insertmrcRecord.Valid_To_Date__c  = system.today().addDays(6);
@@ -467,9 +467,9 @@ insert matUlgE5;*/
         insertmrcRecord.Mode_Of_Transport__c=10;
         insertmrcRecord.Shipping_Condition__c=10;
         insert insertmrcRecord;
-        
-        
-        
+
+
+
         MRC__c tmrc = [Select Id, Name,Contract__c,Material_Description__c,Mode_Of_Transport__c,PO_Type__c,Sales_Organization__c,Plant__c,Ship_to_Number__c from MRC__c where  Id =: insertmrcRecord.id];
         RV_Trigger_Master_Data__c tmd = new RV_Trigger_Master_Data__c();
         tmd.Trigger_Month__c = 'Sep';
@@ -483,12 +483,12 @@ insert matUlgE5;*/
         tmd.Min_Trigger_Volume__c = 20;
         tmd.Monthly_volume__c = 300;
         insert tmd;
-        
+
         List<RV_TermTriggerClass.termTriggerWrapperData> ttwraperLst = new List<RV_TermTriggerClass.termTriggerWrapperData>();
         RV_TermTriggerClass.termTriggerWrapperData ttwraper = new RV_TermTriggerClass.termTriggerWrapperData();
-        ttwraper.TriggerVolume = 30;
+        ttwraper.TriggerVolume1 = 30;
         ttwraper.TriggersLeft = 2;
-        ttwraper.TriggerComment = 'Test';
+        ttwraper.TriggerComment1 = 'Test';
         ttwraper.Max_number_of_triggers_per_month = 12;
         ttwraper.Max_Trigger_Volume = 500;
         ttwraper.Min_Trigger_Volume = 20;
@@ -499,7 +499,7 @@ insert matUlgE5;*/
         ttwraper.MRC_Number_Contract =insertMRC.Contract__c;
         String smrc = insertMRC.Name;
         List<String> lstsmrc = smrc.split('-');
-        ttwraper.MRC_Number_Id =lstsmrc[0]; 
+        ttwraper.MRC_Number_Id =lstsmrc[0];
         ttwraper.MRC_Number_Material_Description = 'ULG95 E10';
         ttwraper.MRC_Number_Mode_Of_Transport = 10;
         ttwraper.MRC_Number_Name = tmrc.Name;
@@ -516,9 +516,9 @@ insert matUlgE5;*/
         ttwraper.shipToNumber = insertMRC.Ship_to_Number__c;
         ttwraper.Trigger_Month = 'Aug';
         ttwraper.Trigger_Year = '2022';
-        ttwraper.TriggerComment = 'testing';
+        ttwraper.TriggerComment1 = 'testing';
         ttwraper.TriggersLeft = 3;
-        ttwraper.TriggerVolume = 90;
+        ttwraper.TriggerVolume1 = 90;
         ttwraper.Id = tmd.Id;
         ttwraper.Sold_to_Number = accInsert.Sold_To_Number__c;
         ttwraper.isGsapDealCreateOn = true;
@@ -531,28 +531,28 @@ insert matUlgE5;*/
         ttwraper.isVolToBeHedged = true;
         ttwraper.isZeroPriceDeal = false;
         ttwraperLst.add(ttwraper);
-        
+
         String triggerDataString = JSON.serialize(ttwraperLst);
         RV_TermTriggerClass.saveTermTriggerDeal1(triggerDataString,String.valueOf(system.today().addDays(-10)),String.valueOf(system.today().addDays(-9)),true,'ATP1');
         test.stopTest();
-        
+
     }
-    
+
      @isTest public static void testSaveTermTriggerDealScenario2(){
         test.startTest();
-        
+
         Account accInsert = new Account();
         accInsert = RV_TestHelper.insertAccount(accInsert);
-        accInsert.Rv_Available_for_OLF__c = true;	
+        accInsert.Rv_Available_for_OLF__c = true;
         accInsert.Ship_to_Number__c='0022222222';
         insert accInsert;
-        
+
         Location__c insertLoc = new Location__c();
         insertLoc = RV_TestHelper.insertLocation(insertLoc);
         insert insertLoc;
-        
+
         List<Product_Catalogue__c> matList = new List<Product_Catalogue__c>();
-        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();       
+        Product_Catalogue__c matUlg95E10 = new Product_Catalogue__c();
         matUlg95E10.Name = '400001610';
         matUlg95E10.Level_0__c = 'Gasoline';
         matUlg95E10.Commodity_Grade_L2__c = 'ULG95 E10';
@@ -561,8 +561,8 @@ insert matUlgE5;*/
         matUlg95E10.Dyeing_cost_EUR_100l__c=0.4;
         matUlg95E10.WASA_EUR_100l__c=0.2;
         matList.add(matUlg95E10);
-        
-        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matUlgE5 = new Product_Catalogue__c();
         matUlgE5.Name = '400001637';
         matUlgE5.Level_0__c = 'Gasoline';
         matUlgE5.Commodity_Grade_L2__c = 'ULG95 E5';
@@ -571,8 +571,8 @@ insert matUlgE5;*/
         matUlgE5.Dyeing_cost_EUR_100l__c=0.4;
         matUlgE5.WASA_EUR_100l__c=0.2;
         matList.add(matUlgE5);
-        
-        Product_Catalogue__c matULG98 = new Product_Catalogue__c();       
+
+        Product_Catalogue__c matULG98 = new Product_Catalogue__c();
         matULG98.Name = '400001637';
         matULG98.Level_0__c = 'Gasoline';
         matULG98.Commodity_Grade_L2__c = 'ULG98';
@@ -580,16 +580,16 @@ insert matUlgE5;*/
         matULG98.Additive_cost_EUR_100l__c=0.3;
         matULG98.Dyeing_cost_EUR_100l__c=0.4;
         matULG98.WASA_EUR_100l__c=0.2;
-        matList.add(matULG98); 
-        
+        matList.add(matULG98);
+
         insert matList;
-        
-        MRC__c insertMRC = new MRC__c(); 
+
+        MRC__c insertMRC = new MRC__c();
         insertMRC = RV_TestHelper.insertMRC(insertMRC, accInsert, insertLoc, matULG98);
         insert insertMRC;
-        
-  
-        
+
+
+
         MRC__c insertmrcRecord = new MRC__c();
         insertmrcRecord.Name = '320076590-101004';
         insertmrcRecord.Valid_To_Date__c  = system.today().addDays(6);
@@ -610,9 +610,9 @@ insert matUlgE5;*/
         insertmrcRecord.Mode_Of_Transport__c=10;
         insertmrcRecord.Shipping_Condition__c=10;
         insert insertmrcRecord;
-        
-        
-        
+
+
+
         MRC__c tmrc = [Select Id, Name,Contract__c,Material_Description__c,Mode_Of_Transport__c,PO_Type__c,Sales_Organization__c,Plant__c,Ship_to_Number__c from MRC__c where  Id =: insertmrcRecord.id];
         RV_Trigger_Master_Data__c tmd = new RV_Trigger_Master_Data__c();
         tmd.Trigger_Month__c = 'Sep';
@@ -626,12 +626,12 @@ insert matUlgE5;*/
         tmd.Min_Trigger_Volume__c = 20;
         tmd.Monthly_volume__c = 300;
         insert tmd;
-        
+
         List<RV_TermTriggerClass.termTriggerWrapperData> ttwraperLst = new List<RV_TermTriggerClass.termTriggerWrapperData>();
         RV_TermTriggerClass.termTriggerWrapperData ttwraper = new RV_TermTriggerClass.termTriggerWrapperData();
-        ttwraper.TriggerVolume = 30;
+        ttwraper.TriggerVolume1 = 30;
         ttwraper.TriggersLeft = 2;
-        ttwraper.TriggerComment = 'Test';
+        ttwraper.TriggerComment1 = 'Test';
         ttwraper.Max_number_of_triggers_per_month = 12;
         ttwraper.Max_Trigger_Volume = 500;
         ttwraper.Min_Trigger_Volume = 20;
@@ -642,7 +642,7 @@ insert matUlgE5;*/
         ttwraper.MRC_Number_Contract =insertMRC.Contract__c;
         String smrc = insertMRC.Name;
         List<String> lstsmrc = smrc.split('-');
-        ttwraper.MRC_Number_Id =lstsmrc[0]; 
+        ttwraper.MRC_Number_Id =lstsmrc[0];
         ttwraper.MRC_Number_Material_Description = 'ULG95 E10';
         ttwraper.MRC_Number_Mode_Of_Transport = 10;
         ttwraper.MRC_Number_Name = tmrc.Name;
@@ -659,9 +659,9 @@ insert matUlgE5;*/
         ttwraper.shipToNumber = insertMRC.Ship_to_Number__c;
         ttwraper.Trigger_Month = 'Aug';
         ttwraper.Trigger_Year = '2022';
-        ttwraper.TriggerComment = 'testing';
+        ttwraper.TriggerComment1 = 'testing';
         ttwraper.TriggersLeft = 3;
-        ttwraper.TriggerVolume = 90;
+        ttwraper.TriggerVolume1 = 90;
         ttwraper.Id = tmd.Id;
         ttwraper.Sold_to_Number = accInsert.Sold_To_Number__c;
         ttwraper.isGsapDealCreateOn = true;
@@ -676,10 +676,10 @@ insert matUlgE5;*/
         ttwraper.BSP = 0;
         ttwraper.MSP = 0;
         ttwraperLst.add(ttwraper);
-        
+
         String triggerDataString = JSON.serialize(ttwraperLst);
         RV_TermTriggerClass.saveTermTriggerDeal1(triggerDataString,String.valueOf(system.today().addDays(-10)),String.valueOf(system.today().addDays(-9)),true,'ATP1');
         test.stopTest();
-        
+
     }
 }

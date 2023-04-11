@@ -90,15 +90,15 @@ jobs:
               };
               return github.graphql(query, variables).then(result => { return result } );
             }
-            const fileExt = ['yml', 'md', 'CODEOWNERS'];           
+            const fileExt = ['yml', 'md', 'CODEOWNERS', 'spackage', 'zip', 'csv', 'xlsx'];         
             listFilesInPR.forEach(s=> {
                 if(!fileExt.some(r=> s.node.path.endsWith(r))){
                   let path = s.node.path.replaceAll(/[$]/g, '\\$');
                   if(s.node.changeType == "DELETED"){
-                      deleteFile = deleteFile.length == 0 ? s.node.path : deleteFile.concat(',',s.node.path);
+                      deleteFile = deleteFile.length == 0 ? path : deleteFile.concat(',',path);
                   }
                   else{
-                      addModifiedFile = addModifiedFile.length == 0 ? s.node.path : addModifiedFile.concat(',',s.node.path);
+                      addModifiedFile = addModifiedFile.length == 0 ? path : addModifiedFile.concat(',',path);
                   }
                 }                    
             });
@@ -112,7 +112,7 @@ jobs:
           IFS=';' read -ra arrIN <<< "${{steps.checkFiles.outputs.result}}"
           if [ ! -z "${arrIN[0]}" ] && [ -z "${arrIN[1]}" ]; then
             echo "INSIDE 1ST CONDITION"
-            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy -p "${arrIN[0]}" --testlevel ${{inputs.test_level_run}}
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --ignorewarnings -p "${arrIN[0]}" --testlevel ${{inputs.test_level_run}}
           elif [ ! -z "${arrIN[0]}" ] && [ ! -z "${arrIN[1]}" ]; then
             echo "INSIDE 2ND CONDITION"
             IFS=',' #setting comma as delimiter  
@@ -126,7 +126,7 @@ jobs:
             sfdx force:source:manifest:create -p "${arrIN[0]}" --manifestname package.xml
             sfdx force:source:manifest:create -p "${arrIN[1]}" --manifestname postDestruct.xml
             echo "$(<postDestruct.xml)"
-            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --manifest package.xml --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --ignorewarnings --manifest package.xml --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
           elif [ -z "${arrIN[0]}" ] && [ ! -z "${arrIN[1]}" ]; then
             echo "INSIDE 3RD CONDITION"
             IFS=',' #setting comma as delimiter  
@@ -140,5 +140,5 @@ jobs:
             sfdx force:source:manifest:create -p config
             sfdx force:source:manifest:create -p "${arrIN[1]}" --manifestname postDestruct.xml
             echo "$(<postDestruct.xml)"
-            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --manifest package.xml --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
+            SFDX_DISABLE_DNS_CHECK=true sfdx force:source:deploy --ignorewarnings --manifest package.xml --testlevel ${{inputs.test_level_run}} --postdestructivechanges postDestruct.xml
           fi

@@ -29,6 +29,10 @@ export default class Rv_multiselectdropdown extends LightningElement {
    valueSelected=[];
     @api values;
     @api label = "";
+    @api cname;
+    
+
+
     _disabled = false;
     @api
     get disabled(){
@@ -164,6 +168,23 @@ export default class Rv_multiselectdropdown extends LightningElement {
         }
         
     }
+    @api
+    handleReset(){
+        if(this.cname=='depot'){
+            let listOfSelected=this.template.querySelectorAll('.slds-is-selected');
+            for(let isSelected of listOfSelected){
+                isSelected.classList.remove("slds-is-selected");
+    
+            }
+           // let noneOption = this.template.querySelector('[data-id="None"]');
+            let noneOption = this.template.querySelector('[data-id="--Select--"]');
+            noneOption.firstChild.classList.add("slds-is-selected");
+            this.value=[];
+            //this.inputValue='None';
+            this.inputValue='--Select--';
+        }
+    }
+   
     handleNoneOption(){
         let listOfSelected=this.template.querySelectorAll('.slds-is-selected');
         for(let isSelected of listOfSelected){
