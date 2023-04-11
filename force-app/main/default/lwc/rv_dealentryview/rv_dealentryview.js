@@ -6,7 +6,7 @@
 
  import { LightningElement, wire, track, api } from 'lwc';
  import getMRCData from '@salesforce/apex/rv_sht_CreateControllerLWC.getMrcData';
- import {subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} from 'lightning/messageService';
+ import {publish,subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} from 'lightning/messageService';
  import refreshDataChannel from '@salesforce/messageChannel/Rv_DiPublishSearchFilter__c';
  import saveEnteredDeals from '@salesforce/apex/rv_sht_CreateControllerLWC.saveSHTObjectRecordLWC';
  import updateSavedSHTRecord from '@salesforce/apex/rv_sht_CreateControllerLWC.updateSHTObjectRecord';
@@ -17,8 +17,15 @@
  import getAllSHTDeals from '@salesforce/apex/rv_sht_CreateControllerLWC.getAllSHTDeals';
  import UserAccessMessagesLabel from '@salesforce/label/c.RV_UserAccessMessages';
 
- 
+
  export default class RvDealentryview extends LightningElement {
+    /*added by Swarna as part of PBI-1558728*/
+	 timer = '0';
+     @track parentMessage;
+     @track _onLoad = true;
+     @track timerRef;
+
+     //end
      @api accountId;
      @track potype='TSFP';
      subscription = null;
@@ -42,10 +49,10 @@
     @track spPerCondBlack='color:black';
     confirmCancelDisable = false;
 
- 
+
  @wire(MessageContext)
      messageContext;
- 
+
  /* @wire(getsavedDeals)
  wiredSHTDeals({data, error}){
      console.log('data in wired function::'+JSON.stringify(data));
@@ -87,9 +94,9 @@
                 this.error = error;
             });
     }
- 
+
      loadSavedDeals() {
-        //commenting this as load saved deals is getting called at regular intervals 
+        //commenting this as load saved deals is getting called at regular intervals
        // this.isLoading = true;
          getsavedDeals()
              .then(result => {
@@ -97,18 +104,18 @@
                  this.savedDealEntrySHTData = result;
                  console.log('in savedDealEntrySHTData::'+JSON.stringify(savedDealEntrySHTData));
 			    this.isLoading = false;
-							
+
              })
              .catch(error => {
-			     this.isLoading = false;					   
+			     this.isLoading = false;
                  this.error = error;
              });
      }
- 
+
      disconnectedCallback(){
          this.unsubscribeToMessageChannel();
      }
- 
+
      subscribeToMessageChannel(){
          //alert('In subscribeToMessageChannel');
          if(!this.subscription){
@@ -122,7 +129,7 @@
              );
          }
      }
- 
+
      unsubscribeToMessageChannel(){
          unsubscribe(this.subscription);
          this.subscription = null;
@@ -135,8 +142,15 @@
 
     }
     @api recieveData(message){
-								 
+        this.parentMessage = message;//added by swarna as part of PBI-1558728
+		console.log('recieved message'+JSON.stringify(message));
          if(message != undefined){
+            //added by swarna as part of PBI-1558728
+			this._onLoad = true;
+			window.clearInterval(this.timerRef);
+            window.localStorage.removeItem('startTimer');
+                this.setTimer1();
+				//End PBI-1558728
          if(message.eventType === 'publish' || message.eventType === 'search'){
                  this.hideCreateDealsSection = true;
                  this.accountId = message.customerId;
@@ -146,18 +160,20 @@
             this.dealEntrySHTData = [];
             this.dealEntrySHTDataAvailability = 'Please select a Customer/MRC and TSFP PO Type to book the deals in Deal Entry!';
          }
-		
+
 		    this.getMRCDataToCreate(message);
          }else{
             this.dealEntrySHTData = [];
             this.dealEntrySHTDataAvailability = 'Please select a Customer/MRC and TSFP PO Type to view the deals in Deal Entry!';
         }
-		 
+
      }
  @track retailMixchecked;
  @track salesOrg;
      getMRCDataToCreate(message){
                  console.log('In DealEntry view');
+                 //added by swarna as part of PBI-1558728
+				if(message != undefined){
                   let filterObj = message.filterData;
                   if(filterObj != undefined){
                   //filterObj::{"customerRecId":"0012500001RIxDuAAL","mrcNo":["0320078090","0321295798"],"shipToNum":"11176945","mot":["10"],
@@ -189,7 +205,7 @@
                   }else{
                      mogasCheck = false;
                   }
-                  
+
                  /*"tranche" : tranche,
                                                  "Mrcno" : Mrcno,
                                                  "accId" : accnt,
@@ -229,7 +245,7 @@
                  console.log('GetMRCData::'+JSON.stringify(returnResponse));
                  this._customerName = returnResponse[0].accName;
                  if(returnResponse){
-                     
+
                      console.log('GetMRCData inside');
                      //this.dealEntrySHTData = returnResponse;
                  }
@@ -238,16 +254,16 @@
                      let count =0;
                      let gradeset = new Set();
                      returnResponse.forEach(mrcData =>{
-														
-																			
+
+
                          let newPlantGroupMogas = null;
                          if(!gradeset.has(mrcData.mrcNameMogas+mrcData.mrcNo+mrcData.locationName+'ULG') && mrcData.grade.startsWith('ULG')){
-                          
+
                              newPlantGroupMogas = {};
                              newPlantGroupMogas.grade = 'MOGAS';
                              newPlantGroupMogas.mogas = true;
                              newPlantGroupMogas.mogasSummation= 0;
-                             newPlantGroupMogas.mogasId = 'mogasRec'+mrcData.mrcNameMogas+(mrcData.locationId).replaceAll(' ',''); 
+                             newPlantGroupMogas.mogasId = 'mogasRec'+mrcData.mrcNameMogas+(mrcData.locationId).replaceAll(' ','');
                              let locGrade = mrcData.mrcNameMogas+mrcData.mrcNo+mrcData.locationName+'ULG';
                              gradeset.add(locGrade);
                              count++;
@@ -286,7 +302,7 @@
                          newPlantGroup.isGsapDealCancelOn = mrcData.isGsapDealCancelOn;
                          newPlantGroup.isGsapDealCreateOn = mrcData.isGsapDealCreateOn;
                          newPlantGroup.isPricingTaxed = mrcData.isPricingTaxed;
-						 newPlantGroup.pricingCondition = mrcData.pricingCondition;  
+						 newPlantGroup.pricingCondition = mrcData.pricingCondition;
                          newPlantGroup.isVolToBeHedged = mrcData.isVolToBeHedged;
                          newPlantGroup.isZeroPriceDeal = mrcData.isZeroPriceDeal;
                          newPlantGroup.retroGsapDealCreateOn = mrcData.retroGsapDealCreateOn;
@@ -312,20 +328,20 @@
                          else{
                              plantGroupList=[newPlantGroup];
                          }
-                         
-                       
+
+
                          groupPlantData.set(mrcData.locationName+mrcData.mrcName.split('-')[0],plantGroupList);
                          console.log('groupPlantData::'+JSON.stringify(groupPlantData));
-                     } 
-                    
+                     }
+
                          count++;
                      });
-                 
+
                      console.log('PlantData::'+groupPlantData);
                      let plantNames = new Set();
-										   
-                     returnResponse.forEach(mrcData => {     
-                         
+
+                     returnResponse.forEach(mrcData => {
+
                          let newMRCGroup = {};
                         newMRCGroup.mrcName = mrcData.mrcName.split('-')[0] + mrcData.shipToNumber;
                          newMRCGroup.contractDesc = mrcData.contractDescription;
@@ -337,26 +353,26 @@
                          newMRCGroup.gradeGroup = groupPlantData.get(mrcData.locationName+mrcData.mrcName.split('-')[0]);
                          newMRCGroup.rowspan = groupPlantData.get(mrcData.locationName+mrcData.mrcName.split('-')[0]).length+1;
 
-                        
+
                          if(!plantNames.has(mrcData.locationName+mrcData.mrcName.split('-')[0])){
                             if(groupMRCData.has(mrcData.mrcName.split('-')[0] +'-' + mrcData.shipToNumber)){
                                 groupMRCData.get(mrcData.mrcName.split('-')[0] +'-' + mrcData.shipToNumber).push(newMRCGroup);
                             }else{
-                                let mrcGroupList =[newMRCGroup];                                
+                                let mrcGroupList =[newMRCGroup];
                                 groupMRCData.set(mrcData.mrcName.split('-')[0] +'-' + mrcData.shipToNumber,mrcGroupList);
                             }
                             console.log('loc name + mrc Name::'+mrcData.locationName+mrcData.mrcName.split('-')[0]);
                          plantNames.add(mrcData.locationName+mrcData.mrcName.split('-')[0]);
                          console.log('plantNames in loop::'+JSON.stringify(plantNames));
                      }
-                  
- 
-                       console.log('plantNames::'+plantNames);  
+
+
+                       console.log('plantNames::'+plantNames);
                      });
-                     
- 
+
+
                      console.log("Master Data :"+groupMRCData);
-                   
+
                      let itr = groupMRCData;
                      let mrcArray =[];
                      groupMRCData.forEach((values,keys)=>{
@@ -369,9 +385,35 @@
                        //  mrc.mrcNo = headerSplit[0];
                        //  mrc.rowSpan = values.gradeGroup.length + 1;
                          mrc.plants = values;
-                         mrcArray.push(mrc);                      
+                         mrcArray.push(mrc);
                      })
-                     this.dealEntrySHTData = mrcArray;
+                     if(this._onLoad){
+                        this.dealEntrySHTData = mrcArray;
+                        this.refreshInSecs = this.intervalSecs * 1000;
+                            this._onLoad = false;
+                     }
+                     else if(!this._onLoad){
+                        for(var i = 0;i<this.dealEntrySHTData.length; i++){
+                            for(var j = 0;j<this.dealEntrySHTData[i].plants.length; j++){
+                                for(var k = 0;k<this.dealEntrySHTData[i].plants[j].gradeGroup.length; k++){
+                                this.dealEntrySHTData[i].plants[j].gradeGroup[k].dailySales = mrcArray[i].plants[j].gradeGroup[k].dailySales ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].onlineATP = mrcArray[i].plants[j].gradeGroup[k].onlineATP ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].phoneATP = mrcArray[i].plants[j].gradeGroup[k].phoneATP ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].finalbspCal = mrcArray[i].plants[j].gradeGroup[k].finalbspCal ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].finalSalesPriceCal = mrcArray[i].plants[j].gradeGroup[k].finalSalesPriceCal ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].dealmargin = mrcArray[i].plants[j].gradeGroup[k].dealmargin ;
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].otm = mrcArray[i].plants[j].gradeGroup[k].otm ;
+                                                                                                this.dealEntrySHTData[i].plants[j].gradeGroup[k].finalOTM = mrcArray[i].plants[j].gradeGroup[k].finalOTM ;
+
+                                        this.dealEntrySHTData[i].plants[j].gradeGroup[k].lastOfferedPrice = mrcArray[i].plants[j].gradeGroup[k].lastOfferedPrice ;
+
+             }
+                                }
+                            }
+    }
+                window.clearInterval(this.timerRef);
+                            window.localStorage.removeItem('startTimer');
+                            this.setTimer1();
                      console.log('MRC Array'+mrcArray+'----'+this.dealEntrySHTData);
                  /*GetMRCData::[{"accId":"0012500001RIxCsAAL","accName":"ADOLF ROTH GMBH & CO","atpLive":8284,"atpVoltoBeReduced":true,
                  "finalbspCal":78.73,"finalSalesPriceCal":78.73,"grade":"AGO B7","isGsapDealCancelOn":true,"isGsapDealCreateOn":true,
@@ -380,9 +422,9 @@
                  "materialNo":"1685","mrcId":"a0N25000006hnPjEAI","mrcName":"0321492213-106229","OTM":78.73,"pricingCondition":"YP23",
                  "retroAtpVoltoBeReduced":false,"retroGsapDealCancelOn":true,"retroGsapDealCreateOn":true,"retroVolToBeHedged":false,
                  "salesOrg":"AT01","shipToNumber":"0012567495"}]*/
- 
+
                  //this.saveSHTFromDealEntry();
- 
+
          }).catch(getMRCDataerror => {
                console.log('Error In DealEntry GetMRCData::'+JSON.stringify(getMRCDataerror));
                this.dealEntrySHTData = [];
@@ -394,10 +436,15 @@
                this.dealEntrySHTDataAvailability = 'Please select TSFP PO Type to book the deals in Deal Entry!';
         }
                   }
+                  else{
+                    console.log('DE::');
+                    clearInterval(this.timer);
+                  }
+                }
      }
      getSortOrder(groupPlantData){
          const sort_by = (field, reverse, primer) => {
- 
+
              const key = primer ?
                function(x) {
                  return primer(x[field])
@@ -405,14 +452,14 @@
                function(x) {
                  return x[field]
                };
-           
+
              reverse = !reverse ? 1 : -1;
-           
+
              return function(a, b) {
                return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
              }
            }
- 
+
            return groupPlantData.sort(sort_by('grade', false, (a) =>  a.toUpperCase()));
      }
      onchangeTriggerVolume(event){
@@ -434,31 +481,31 @@
          let countOfIndex=0
          //volumeArray = this.dealEntrySHTData[index].plants[pIndex];
          this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex].volumeCBM = event.target.value;
- 
+
          this.dealEntrySHTData[index].plants[pIndex].gradeGroup.forEach(gradeData =>{
              countOfIndex++;
              console.log("before"+gradeData.mogasId+" "+mrcPlantCombo+" "+totalVolume+" "+countOfIndex+" "+gradeData.volumeCBM+" "+gradeData.grade.startsWith('ULG')+" "+gradeData.grade);
              if(gradeData.volumeCBM != '' && gradeData.grade.startsWith('ULG') && gradeData.volumeCBM != null){
- 
+
                  totalVolume = totalVolume+parseInt(gradeData.volumeCBM);
              }
              if(gradeData.mogasId != null && gradeData.mogasId == mrcPlantCombo ){
                  indexOfMogas=countOfIndex;
              }
-             
+
          })
          if(this.dealEntrySHTData[index].plants[pIndex].gradeGroup[indexOfMogas-1] != undefined){
- 
+
              this.dealEntrySHTData[index].plants[pIndex].gradeGroup[indexOfMogas-1].mogasSummation=totalVolume;
          }
-         
-         
+
+
          /*if(this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex] == totalidx){
-             
+
              let currentMogasRec =this.template.querySelector("td[data-id="+totalidx+"]").innerHTML;
              this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex].mogasSummation = this.mogasSummation;
          }*/
- 
+
          //this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex-1].volumeCBM = event.target.value;
         /* var totalVol=0;
          for(var i=0; i<=gIndex; i++){
@@ -466,9 +513,9 @@
              this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex-i].volumeCBM = event.target.value;
              totalVol = totalVol+this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex-i].volumeCBM
          }*/
- 
+
      }
- 
+
      onchangeTriggerSP(event){
          console.log('SP Val::'+event.target.value);
          var str = (event.target.value).toString();
@@ -492,7 +539,7 @@
          }
          //pricePerVol
      }
- 
+
      onchangeDealComment(event){
          let gIndex = event.currentTarget.dataset.id;
          let pIndex = event.currentTarget.dataset.plant;
@@ -500,7 +547,7 @@
          this.dealEntrySHTData[index].plants[pIndex].gradeGroup[gIndex].Comment = event.target.value;
      }
      saveSHTFromDealEntry(event){
-        this.isLoading = true; 							   
+        this.isLoading = true;
          let allPlants=[];
           for(var i=0; i<(this.dealEntrySHTData).length; i++){
                  for(var j=0; j<(this.dealEntrySHTData[i].plants).length; j++ ){
@@ -536,12 +583,12 @@
              }
          }
          if(count== totalSize){
-		    this.isLoading = false; 							 
+		    this.isLoading = false;
              isError=true;
-             msg='Please Enter Values for atleast one Deal before Saving!';
+             msg='Please Enter Values for at least one Deal before Saving!';
          }
         if(isError){
-			this.isLoading = false;						 
+			this.isLoading = false;
 		      this.dispatchEvent(
                  new ShowToastEvent({
                  title: 'Error',
@@ -572,16 +619,16 @@
                          this.hideCreateDealsSection = false;
              }
 		    this.isLoading = false;
-							
- 
+
+
          })
          .catch(error =>{
-		     this.isLoading = false;							
+		     this.isLoading = false;
              console.log('error in saving deal::'+JSON.stringify(error));
          })
          }
      }
- 
+
      cancelSavedSHTDeal(event) {
          console.log('========event.currentTarget.dataset.recid========'+event.currentTarget.dataset.recid);
             this.isLoading = true;
@@ -624,14 +671,14 @@
          }).then(result =>{
              console.log('result at confirming::'+JSON.stringify(result));
              this.loadSavedDeals();
-             
+
          })
      }*/
- 
+
      @track correctionOnSavedDeal = [];
- 
+
      confirmSavedDeals(){
-	    this.isLoading = true;						   
+	    this.isLoading = true;
           console.log('Entered confirmed Deals');
          (this.savedDealEntrySHTData).forEach(savedDeal =>{
              if(savedDeal['spPer100L'] < savedDeal['msp']){
@@ -648,7 +695,7 @@
          }
 
      }
- 
+
      updateSavedSHTDealRecords(){
          var selLst=[];
          var priceLst=[];
@@ -657,12 +704,12 @@
          var isErrorV = false;
          var isErrorP = false;
          for(var i=0;i<(this.savedDealEntrySHTData).length;i++){
-             
+
              if(this.savedDealEntrySHTData[i].selected == true){
                  if(!this.savedDealEntrySHTData[i].isZeroPriceDeal){
                      priceLst.push(this.savedDealEntrySHTData[i].spPer100L);
                  }
-                 
+
                  volumeLst.push(this.savedDealEntrySHTData[i].volCbm);
              }
          }
@@ -716,14 +763,15 @@
                         }),
                     );
                     this.hideCreateDealsSection = false;
+                    this.republishfilterSection();
                 }, 10000);
-             }).catch(error => {                
+             }).catch(error => {
                 this.isLoading = false;
-            });										
-									   
-			   
+            });
+
+
          }else{
-	        this.isLoading = false;							   
+	        this.isLoading = false;
              this.dispatchEvent(
                  new ShowToastEvent({
                      title: 'Error',
@@ -733,6 +781,64 @@
              );
          }
      }
+     //added by swarna
+     StartTimerHandler(){
+        const startTime = new Date()
+        window.localStorage.setItem('startTimer', startTime)
+        return startTime
+    }
+
+    setTimer1(){
+        const startTime = new Date( window.localStorage.getItem("startTimer") || this.StartTimerHandler())
+        this.timerRef = window.setInterval(()=>{
+            const secsDiff = new Date().getTime() - startTime.getTime();
+            this.timer = this.secondToHms(Math.floor(secsDiff/1000));
+            const str = this.timer;
+
+            let before_ = str.substring(0, str.indexOf(' '));
+            if(before_ >= 30){
+                before_ = 1;
+            }
+            console.log(before_);
+             this.timer = 30 - before_;
+        }, 1000)
+
+    }
+
+	secondToHms(d){
+        d = Number(d)
+        const h = Math.floor(d / 3600);
+        const m = Math.floor(d % 3600 / 60);
+        const s = Math.floor(d % 3600 % 60);
+        const hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+        const mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+        const sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+        //alert(sDisplay);
+        if(sDisplay == '30 seconds'){
+            //alert('sdsdsd'+sDisplay);
+            this.getMRCDataToCreate(this.parentMessage);
+            window.clearInterval(this.timerRef);
+            window.localStorage.removeItem('startTimer');
+        }
+        return hDisplay + mDisplay + sDisplay;
+    }
+
+	republishfilterSection(){
+        console.log('in publish from de');
+        const payload = {
+            eventType: 'deSelectedCustomer_clear',
+            customerId: '',
+            mrcId: ''
+            };
+
+            publish(
+                this.messageContext,
+                refreshDataChannel,
+                payload
+            );
+
+     }
+     //end
      handleClickReview(event){
          this.spCheckModal = false;
          this.correctionOnSavedDeal = [];
@@ -740,37 +846,37 @@
     }
     handleClickConfirm(){
          this.updateSavedSHTDealRecords();
-         this.spCheckModal = false; 
+         this.spCheckModal = false;
     }
      @track spPerCond;
- 
+
      onUpdateTriggerSP(event){
          var selectedRow = event.currentTarget;
          var key = selectedRow.dataset.id;
          var str = (event.target.value).toString();
          str = str.replace(/-/g,'');
          event.target.value = str;
-         
+
          if (this.savedDealEntrySHTData[key] != undefined) {
             this.savedDealEntrySHTData[key].spPer100L = event.target.value;
             let currentSpPerVal = event.target.value;
-            let currentbspVal = this.savedDealEntrySHTData[key].bsp;            
+            let currentbspVal = this.savedDealEntrySHTData[key].bsp;
             let currentMargin = currentSpPerVal - currentbspVal;
             this.savedDealEntrySHTData[key].targetMargin = currentSpPerVal != '' ? parseFloat(currentMargin).toFixed(2) : '';
-        } 
+        }
         console.log('sp check::'+this.savedDealEntrySHTData[key].salesPriceCheck+' <--->'+this.savedDealEntrySHTData[key].spPer100L+'<-->'+this.savedDealEntrySHTData[key].msp);
             this.savedDealEntrySHTData[key].msp = this.savedDealEntrySHTData[key].msp == undefined ? null : this.savedDealEntrySHTData[key].msp;
         this.savedDealEntrySHTData[key].spColor = this.savedDealEntrySHTData[key].spPer100L < this.savedDealEntrySHTData[key].msp ? 'color:red;':'color: var(--slds-c-input-text-color, var(--sds-c-input-text-color));';
 
         /* if(this.savedDealEntrySHTData[key].salesPriceCheck){
-        
+
         this.spPerCondBlack= event.target.value < this.savedDealEntrySHTData[key].msp ? 'color:red;' : 'color: var(--slds-c-input-text-color, var(--sds-c-input-text-color));';
          //  this.spPerCondBlack= event.target.value < 40 ? 'color:red;' : 'color: var(--slds-c-input-text-color, var(--sds-c-input-text-color));';
 
     }
         else{
             this.spPerCondRed= event.target.value < this.savedDealEntrySHTData[key].msp ? 'color:red;' : 'color: var(--slds-c-input-text-color, var(--sds-c-input-text-color));';
-        
+
         }*/
          /*if(event.target.value < this.savedDealEntrySHTData[key].msp){
              this.template.querySelector("lightning-input[data-id='"+this.savedDealEntrySHTData[key].MrcNo+"']").style.color='red';
@@ -779,7 +885,7 @@
              this.template.querySelector("lightning-input[data-id='"+this.savedDealEntrySHTData[key].MrcNo+"']").style.color='var(--slds-c-input-text-color, var(--sds-c-input-text-color))';
          }*/
      }
- 
+
      onUpdateTriggerVolume(event){
          var selectedRow = event.currentTarget;
          var key = selectedRow.dataset.id;
@@ -788,20 +894,20 @@
          event.target.value = str;
          this.savedDealEntrySHTData[key].volCbm = event.target.value;
      }
- 
+
      onUpdateDealComment(event){
              var selectedRow = event.currentTarget;
              var key = selectedRow.dataset.id;
              this.savedDealEntrySHTData[key].Comment = event.target.value;
-             
+
      }
- 
-     
-     showModalBox() {  
+
+
+     showModalBox() {
          this.spCheckModal = true;
      }
- 
-     hideModalBox() {  
+
+     hideModalBox() {
          this.spCheckModal = false;
      }
  }

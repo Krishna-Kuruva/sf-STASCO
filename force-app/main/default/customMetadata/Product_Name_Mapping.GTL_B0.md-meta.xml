@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Margin_Mapping__c</field>
-        <value xsi:type="xsd:string">GTL B0</value>
+        <value xsi:type="xsd:string">GTL B7</value>
     </values>
     <values>
         <field>Product_Name__c</field>

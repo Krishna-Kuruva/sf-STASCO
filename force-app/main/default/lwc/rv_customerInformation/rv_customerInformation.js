@@ -15,10 +15,10 @@
  import {subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} from 'lightning/messageService';
  import refreshDataChannel from '@salesforce/messageChannel/Rv_DiPublishSearchFilter__c';
  import { refreshApex } from '@salesforce/apex';
- 
- 
+
+
  export default class RvCustomerInformation extends LightningElement {
- 
+
          recordId ;
          contactRecordId;
          Name = nameField;
@@ -29,21 +29,21 @@
          olfActive;
          creditPercentage;
          @track percentageColoring;
- 
+
          @api mrcHeader;
-         @track accountLinked = false;	   
+         @track accountLinked = false;
          error;
          deals;
- 
+
          @wire(getCustomerData, {accountId: '$recordId',mrcId:'$mrcHeader'})
              wiredCustomerData({error, data}){
-                               
+
                  if(data){
                      /*
                      [12/14/2021 1:50 PM] Meiring, Melina SDE-STP/SB21
                      % Credit open to trade = Current Credit/ (DE01 Customer Credit Limit + AT01 Customer Credit Limit)
                      >30% green5-30% orange <4,99% red*/
-                     
+
                      if(this.recordId == ""){
                          this.recordId = data.account.Id;
                      }
@@ -74,10 +74,10 @@
                      console.log('AT01 credit avialable::'+data.account.Rv_AT01_Customer_Credit_Limit__c);
                      let de01 = data.account.DE01_Customer_Credit_Limit__c != undefined ? parseFloat(data.account.DE01_Customer_Credit_Limit__c) : 0;
                      let AT01 = data.account.Rv_AT01_Customer_Credit_Limit__c != undefined ? parseFloat(data.account.Rv_AT01_Customer_Credit_Limit__c) : 0;
-                     
+
                      this.creditPercentage=data.account.Rv_Credit_Available__c == undefined ? '':(parseFloat(data.account.Rv_Credit_Available__c)/(parseFloat(de01) + parseFloat(AT01))).toFixed(2);
                      this.creditPercentage = this.creditPercentage == undefined ? '':(parseFloat(this.creditPercentage*100)).toFixed(2);
-                     
+
                      console.log('creditPercentage::'+this.creditPercentage);
                      if(parseInt(this.creditPercentage) >=30){
                          this.percentageColoring = 'color: green;font-size:12px;font-weight: 600;';
@@ -92,21 +92,21 @@
                      this.deals = undefined;
                  }
              }
- 
+
          subscription = null;
          @wire(MessageContext)
              messageContext;
- 
+
              connectedCallback(){
                 // this.creditPercentage= Math.floor(parseFloat(currentCreditField) / parseFloat(DEcustomerCredit));
                  console.log('creditPercentage::'+this.creditPercentage);
                  this.subscribeToMessageChannel();
              }
- 
+
              disconnectedCallback(){
                  this.unsubscribeToMessageChannel();
              }
- 
+
              subscribeToMessageChannel(){
                      if(!this.subscription){
                          this.subscription = subscribe(
@@ -119,38 +119,38 @@
                          );
                      }
                  }
- 
+
              unsubscribeToMessageChannel(){
                      unsubscribe(this.subscription);
                      this.subscription = null;
                  }
- 
+
              recieveData(message){
                      if(message.eventType === 'publish'){                               //'search' for search MRC and 'publish' for custom info section
                                                           this.recordId = message.customerId;
-                                                         this.mrcHeader = message.mrcId;																	
+                                                         this.mrcHeader = message.mrcId;
                                                           console.log('Record Id from channel :'+this.recordId);
                                                           refreshApex(this.wiredCustomerData);
-                       }  
-                    /* Prod deployment */                    
+                       }
+                    /* Prod deployment */
                     else if(message.eventType == 'deSelectedCustomer'){
                         this.recordId = message.customerId;
                         this.mrcHeader = message.mrcId;
                         console.log('Record Id from channel :' + this.recordId);
                         refreshApex(this.wiredCustomerData);
                         this.accountLinked = false;
-                        
+
                     }
-                    if( message.eventType != 'deSelectedCustomer' && ( this.recordId != null || this.recordId != undefined ||
-                                             this.mrcHeader != null || this.mrcHeader != undefined)){
+                    if( message.eventType != 'deSelectedCustomer_clear' && message.eventType != 'deSelectedCustomer_clear_TT' && message.eventType != 'deSelectedCustomer' && ( this.recordId != null || this.recordId != undefined ||
+                        this.mrcHeader != null || this.mrcHeader != undefined)){
                                                  this.accountLinked = true;
-                                             }																											
-                                                                                                                                                                                                                                           
-                                                                                                                
-                                              
- 
+                                             }
+
+
+
+
                  }
- 
- 
- 
+
+
+
  }
