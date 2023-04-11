@@ -41,6 +41,20 @@
     -webkit-box-shadow: 0px 0px 1px #000;
 }
 
+.bgNewWhite {
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
+.bgNewGrey {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 0 1px #000;
+    -moz-box-shadow: 0px 0px 1px #000;
+    -webkit-box-shadow: 0px 0px 1px #000;
+}
+
 .scrollbarEdit::-webkit-scrollbar-track
 {
 	 box-shadow: inset 0 0 6px rgba(0,0,0,.3);
