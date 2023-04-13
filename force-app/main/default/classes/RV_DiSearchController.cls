@@ -70,7 +70,9 @@ public with sharing class RV_DiSearchController{
                             system.debug('mrcVsMotListMap::'+mrcVsMotListMap);
                         }
                         if(mr.Plant__c !=null){
-                            plantIdVsNameMap.put(mr.Plant__c, mr.Plant__r.Name);
+                            
+                            // plantIdVsNameMap.put(mr.Plant__c, mr.Plant__r.Name);
+                            plantIdVsNameMap.put(mr.Plant__c+'-'+ mr.PO_Type__c, mr.Plant__r.Name );//by shivam for PBI 1748339
                             mrcNoVsPlanListtMap = populateStringMap(mrcHead, mr.Plant__c, mrcNoVsPlanListtMap); 
                         }  
                         if(mr.Ship_To__r.Ship_to_Number__c != null){

@@ -139,9 +139,10 @@
                                         </tr>
 
                                         <template for:each={mrc.plants} for:item="cmPlant" for:index="pIndex">
-                                            <tbody class="bgGrey" data-plant={cmPlant.location} key={cmPlant.location}>
 
-                                                <tr>
+                                            <tbody class={cmPlant.rowbgColor} data-plant={cmPlant.location} key={cmPlant.location}>
+                                             
+                                                <tr >
                                                     <td data-label="PlantName" rowspan={cmPlant.rowspan}>{cmPlant.location}</td>
                                                     <td data-label="PlantId" rowspan={cmPlant.rowspan}>{cmPlant.locationCode}</td>
 

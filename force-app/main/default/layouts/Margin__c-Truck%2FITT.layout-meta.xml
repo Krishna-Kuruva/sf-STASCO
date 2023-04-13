@@ -87,6 +87,25 @@
                 <behavior>Edit</behavior>
                 <field>Fixed_Surcharge_GTL_B0__c</field>
             </layoutItems>
+        
+         <!--added by Swarna PBI-PBI1659161-->
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Mgn_GTL_B7__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Min_Mgn_GTL_B7__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Night_Surcharges_GTL_B7__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Target_Mgn_GTL_B7__c</field>
+            </layoutItems>
+            <!--end PBi-PBI1659161-->
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
