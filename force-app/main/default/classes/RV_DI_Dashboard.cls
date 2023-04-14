@@ -152,14 +152,14 @@ public class RV_DI_Dashboard{
                          rdRecord.Total_Tax_GTL__c = mrcPriceWrapperMap.get(mr.Name).totalTax;
                          //Fix_260839_Soumyajit_22May2019 Ends
                      }
-                     /* INC9303327 Start - Added by Apoorva */
+                    /* INC9303327 Start - Added by Apoorva */
                      if(mr.Product__r.Name == Label.RV_MaterialName12162){
-                        rdRecord.BSP_AGO__c =  mrcPriceWrapperMap.get(mr.Name).BSP;
-                        rdRecord.PSP_AGO__c =  mrcPriceWrapperMap.get(mr.Name).MSP;
-                        rdRecord.Total_Tax_AGO__c = mrcPriceWrapperMap.get(mr.Name).totalTax;
-                        rdRecord.OTM_AGO__c=mrcPriceWrapperMap.get(mr.Name).OTM;
-                    }
-                    /* INC9303327 End - Added by Apoorva */
+                         rdRecord.BSP_MOGAS__c =  mrcPriceWrapperMap.get(mr.Name).BSP;
+                         rdRecord.PSP_MOGAS__c =  mrcPriceWrapperMap.get(mr.Name).MSP;
+                         rdRecord.Total_Tax_MOGAS__c = mrcPriceWrapperMap.get(mr.Name).totalTax;
+                         rdRecord.OTM_MOGAS__c=mrcPriceWrapperMap.get(mr.Name).OTM; 
+                     }
+                     /* INC9303327 End - Added by Apoorva */
 
                  }
              }
