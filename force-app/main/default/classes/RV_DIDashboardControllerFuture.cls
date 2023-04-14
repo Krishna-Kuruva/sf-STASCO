@@ -30,7 +30,7 @@ public class RV_DIDashboardControllerFuture{
         if(channelName=='DE01'){
 	  		MOGASOption='ULG95 E10';
         }else if(channelName=='AT01'){
-            MOGASOption='ULG95 E5';
+            MOGASOption='ULG95 E10';
         }
         //String  channelName = ApexPages.currentPage().getParameters().get('channel');
     }
