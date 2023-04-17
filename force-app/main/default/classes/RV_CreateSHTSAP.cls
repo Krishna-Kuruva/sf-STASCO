@@ -85,6 +85,9 @@ public class RV_CreateSHTSAP {
             stagingRecord.PO_Type__c =shtRecord.PO_Type__c ;
             stagingRecord.SHTId__c=shtRecord.Id;
             stagingRecord.Handling_Type__c = shtRecord.Handling_Type__c; //Rahul Sharma | Date - 11-Feb-2021 | Bug-732764 : Adding handling type field in SAP Staging.
+            //Added By Surbhi, PBI-1894547
+            stagingRecord.RV_SAPSHT_ExternalID__c = shtRecord.Id;
+            //Ended By Surbhi, PBI-1894547
             Boolean runningInASandbox = [SELECT IsSandbox FROM Organization LIMIT 1].IsSandbox;
 			System.debug('----runningInASandbox-----'+runningInASandbox);
             if(runningInASandbox == true){
@@ -149,6 +152,9 @@ public class RV_CreateSHTSAP {
             stagingRecord.PO_Type__c =shtRecord.PO_Type__c ;
             stagingRecord.SHTId__c=shtRecord.Id;
             stagingRecord.Handling_Type__c = shtRecord.Handling_Type__c; //Rahul Sharma | Date - 11-Feb-2021 | Bug-732764 : Adding handling type field in SAP Staging.
+            //Added By Surbhi, PBI-1894547
+            stagingRecord.RV_SAPSHT_ExternalID__c = shtRecord.Id;
+            //Ended By Surbhi, PBI-1894547
             Boolean runningInASandbox = [SELECT IsSandbox FROM Organization LIMIT 1].IsSandbox;
 			System.debug('----runningInASandbox-----'+runningInASandbox);
             if(runningInASandbox == true){
