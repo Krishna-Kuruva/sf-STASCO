@@ -104,9 +104,97 @@ public class Rv_ITdashboardTest {
         
         Rv_ITdashboardController.startStopAllBatches('StopAll');
         Rv_ITdashboardController.startStopAllBatches('RunAll');
-        Rv_ITdashboardController.getAllData();
-        Rv_ITdashboardController.startStopAllBatches('StopAll');
+        Rv_ITdashboardController.getAllData();     
+        Test.stopTest();
+    }
+    
+     @isTest
+    static void doTest1()
+    {
+        Rv_ITdashboardController.global_overrideChecks = true;
+        Rv_ITdashboardAlert.global_overrideChecks = true;
+        Rv_ITdashboardController.setMDTCalled = false;
         
+        list<Revolution_Setting__c> revSet = new list<Revolution_Setting__c>();
+        Revolution_Setting__c s1 = new Revolution_Setting__c();
+        s1.name='OLF Username';
+        s1.Value__c=UserInfo.getUserName();
+        revset.add(s1);
+        Revolution_Setting__c s2 = new Revolution_Setting__c();
+        s2.name='OLF Connection Active';
+        s2.Value__c='TRUE';
+        revset.add(s2);
+        Revolution_Setting__c s3 = new Revolution_Setting__c();
+        s3.name= OLF_DashboardApexController.global_ICELGO_thresholdLabel;
+        s3.Value__c='200';
+        revset.add(s3);
+        insert revset;
+        
+        Reuters_Quotes__c iceRQ = new Reuters_Quotes__c();
+        iceRQ.Quote_Display_Name__c = Rv_ITdashboardAlert.global_ICEquoteName;
+        iceRq.Valid_From_Date__c = System.today();
+        iceRq.Valid_To_Date__c = System.today();
+        iceRq.Price__c= 100;
+        iceRq.Quote_Name__c= Rv_ITdashboardAlert.global_ICEquoteName;
+        iceRq.CurrencyCode__c ='USD';
+        iceRq.Unit_Of_Measure__c = 't';
+        insert iceRq;
+        
+        Test.startTest();
+        
+        List<Revolution_Batch__mdt> batchMdt = Rv_ITdashboardController.getBatchMdt('IT Dashboard Alert every 0 Min','THIS');
+        
+        CronTrigger[] ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'IT Dashboard Alert every 0 Min' limit 1];
+        if(ct.size()==0)
+        {  
+            Rv_ITdashboardController.doBatchAction('IT Dashboard Alert every 0 Min', 'RUN');
+            CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'IT Dashboard Alert every 0 Min' limit 1];
+            if(ct2.size()>0)
+                Rv_ITdashboardController.doBatchAction(ct2[0].id, 'STOP');
+        }
+        else
+            Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
+        
+        Rv_ITdashboardController.global_limitQueries = 0;
+        Rv_ITdashboardController.getAllData();
+        Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
+        Rv_ITdashboardController.doBatchAction('DI Dashboard Snapshot 8 AM', 'RUNADHOC');
+        Rv_ITdashboardController.doBatchAction('Daily BSP & Price Trend', 'RUNADHOC');
+        
+        ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'ATP Daily Refresh Batch' limit 1];
+        if(ct.size()==0)
+        {  
+            Rv_ITdashboardController.doBatchAction('ATP Daily Refresh Batch', 'RUN');
+            CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'ATP Daily Refresh Batch' limit 1];
+            if(ct2.size()>0)
+                Rv_ITdashboardController.doBatchAction(ct2[0].id, 'STOP');
+        }
+        else
+            Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
+        batchMdt = Rv_ITdashboardController.getBatchMdt('ATP Daily Refresh Batch','THIS');
+        Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
+        
+        Rv_ITdashboardController.checkGovenorLimits('Test');
+        
+        //327368_Soumyajit_09Aug2019 starts
+        ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'OLF Scheduled Inactivation' limit 1];
+        if(ct.size()==0)
+        {  
+            Rv_ITdashboardController.doBatchAction('OLF Scheduled Inactivation', 'RUN');
+            CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'OLF Scheduled Inactivation' limit 1];
+            if(ct2.size()>0)
+                Rv_ITdashboardController.doBatchAction(ct2[0].id, 'STOP');
+        }
+        else
+            Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
+        batchMdt = Rv_ITdashboardController.getBatchMdt('OLF Scheduled Inactivation','THIS');
+        //327368_Soumyajit_09Aug2019 ends
+        
+        Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
+        
+        Rv_ITdashboardController.startStopAllBatches('StopAll');
+        Rv_ITdashboardController.startStopAllBatches('RunAll');
+        Rv_ITdashboardController.getAllData();     
         Test.stopTest();
     }
     
