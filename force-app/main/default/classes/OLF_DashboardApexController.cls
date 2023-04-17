@@ -382,8 +382,8 @@ public class OLF_DashboardApexController {
         if(!setSettingsCalled)
             qryOLFsettings();
         
-        String usernameLabel = global_usernameLabel;
-        String activeLabel = global_activeLabel;
+        String usernameLabel = global_usernameLabel; //OLF Username
+        String activeLabel = global_activeLabel; //OLF Connection Active
         map<String,OLF_Utility.settingWrapper> settWrap = global_SettWrap;
         
         String IntegrationUsername ='';
@@ -722,22 +722,24 @@ public class OLF_DashboardApexController {
     }
  /* Added by Sampada.Bhat */
     public static void startAndStopOLFMrcDataSchedulers(String actionType){
-        if(actionType == 'STOP'){
-    //        String qryBatchName = '%' + 'ATP2 Scheduler' + '%';
-            //List<String> arrayOfBatchNames = new List<String>{'%ATP1 Scheduler%','%ATP2 Scheduler%','%ATP3 Scheduler%'};
-            CronTrigger[] ct = [select id, CronJobDetailId, CronJobDetail.name, NextFireTime, State, CronExpression from CronTrigger where NextFireTime != null and state != 'DELETED' and CronJobDetail.name like '%ATP%'];
-           
-           for(CronTrigger cronT : ct){
-               System.abortJob(cronT.id);
-           }
-        }else if(actionType == 'Start'){
-            Datetime sysTime = System.now().addSeconds(5);
-		String chronExpression = '' + sysTime.second() + ' ' + sysTime.minute() + ' ' + sysTime.hour() + ' ' + sysTime.day() + ' ' + sysTime.month() + ' ? ' + sysTime.year();
-    System.schedule('ATP2 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP2Scheduler());
-    System.schedule('ATP3 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP3Scheduler());
-     System.schedule('ATP1 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP1Scheduler());
-         System.schedule('ATP4 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP5Scheduler());
-
+        try{
+            CronTrigger[] ct = [select id, CronJobDetailId, CronJobDetail.name, NextFireTime, State, CronExpression from CronTrigger where NextFireTime != null and state != 'DELETED' and CronJobDetail.name like '%ATP%Scheduler%'];
+            for(CronTrigger cronT : ct){
+                System.abortJob(cronT.id);
+            }
+            if(actionType == 'Start'){
+                Datetime sysTime = System.now().addSeconds(5);
+                String chronExpression = '' + sysTime.second() + ' ' + sysTime.minute() + ' ' + sysTime.hour() + ' ' + sysTime.day() + ' ' + sysTime.month() + ' ? ' + sysTime.year();
+                System.schedule('ATP1 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP1Scheduler());
+                System.schedule('ATP2 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP2Scheduler());
+                System.schedule('ATP3 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP3Scheduler());
+                System.schedule('ATP4 Scheduler' +sysTime.getTime(),chronExpression, new OLF_MRCDataATP5Scheduler());
+            }
+        }
+        catch(exception e){
+            System.debug('Something exception occured');
+            RV_Exception__c rvException = new RV_Exception__c(getMessage__c = 'Message: ' + e.getMessage() + ' Line: '+e.getLineNumber() + ' Trace: '+e.getStackTraceString(),Apex_Class__c = 'OLF_DashboardApexController',Method_Name__c = 'startAndStopOLFMrcDataSchedulers' );
+            insert rvException;
         }
     }
      //START | Surbhi | Date 2-Aug-2022 : PBI-1366142
@@ -828,6 +830,56 @@ public class OLF_DashboardApexController {
         return hasPermission;
     }
     //END | Surbhi | Date 2-Aug-2022 : PBI-1366142
+    
+/******************************************************************************************************************
+@Author | Surbhi | Date 27-Dec-2022 : 1593743
+@MethodName    : getUserEmailFromPermissionSet
+@PurposeMethod :  Generic method to retrieve the email address of all the assignee users from the permission set,
+                  just to pass only PS name as a parameter
+*******************************************************************************************************************/
+    public static List<String> getUserEmailFromPermissionSet(String permissionSetName){
+        List<PermissionSetAssignment> listOfPSRec = [SELECT ID, AssigneeId, Assignee.name, Assignee.Email FROM PermissionSetAssignment
+                                                     WHERE PermissionSet.name =: permissionSetName AND Assignee.isActive=true  Order by Assignee.name];
+        if(listOfPSRec.size() > 0){
+            List<String> listOfUserEmails = new List<String>();
+            for(PermissionSetAssignment psa : listOfPSRec){
+                listOfUserEmails.add(psa.Assignee.Email);
+            }
+            return listOfUserEmails;
+        }
+        return null;
+    }
+    
+/******************************************************************************************************************
+@Author | Rinkita | Date 14-Dec-2022 : PBI-1616869
+@MethodName : handleReadOnlyPermission
+@PurposeMethod :  Display OLF Tab Read Only For Define permission set in "RV_PermissionSetList" Custom Label
+*******************************************************************************************************************/
+  /*  @AuraEnabled
+    public static boolean handleReadOnlyPermission(){
+        List<String> permissionSetList = Label.RV_PermissionSetList.split(',');
+        String userId =UserInfo.getUserId();
+        boolean isReadOnlyPermission = false;
+        if (Schema.sObjectType.PermissionSetAssignment.isAccessible()){
+            PermissionSetAssignment[] psa = [SELECT ID, AssigneeId, Assignee.name, PermissionSet.Name
+                                             FROM PermissionSetAssignment
+                                             WHERE AssigneeId =: userId];
+            if(psa.size()>0) {
+                for (PermissionSetAssignment p : psa){
+                        if(p.PermissionSet.Name == 'RV_OnlineSalesManagement'){
+                            isReadOnlyPermission = false;
+                            break;
+                        }
+                        if(permissionSetList.contains(p.PermissionSet.Name)){
+                            isReadOnlyPermission = true;
+                        }
+                }
+            }
+        }
+        return isReadOnlyPermission;
+    }  */
+    
+
     //Wrapper Declarations starts here
     public class AccountWrap{
         @AuraEnabled
