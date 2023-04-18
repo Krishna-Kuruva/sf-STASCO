@@ -27,10 +27,9 @@ public class RV_DIDashboardControllerFuture{
         revolutionDashboardLst = new List<Revolution_Dashboard__c>();
         fetchDashboard(revolutionDashboardLst);
         //Added by Dharmendra : PBI328
-        if(channelName=='DE01'){
-	  		MOGASOption='ULG95 E10';
-        }else if(channelName=='AT01'){
-            MOGASOption='ULG95 E5';
+	    //Added as a part of INC9303327 by Apoorva
+        if(channelName=='DE01' || channelName=='AT01'){
+            MOGASOption='ULG95 E10';
         }
         //String  channelName = ApexPages.currentPage().getParameters().get('channel');
     }

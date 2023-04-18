@@ -763,28 +763,30 @@ public class RV_SHT_Calculation_Util {
             {
                 String reutersFutureName=reutersFuture.Quote_Display_Name__c;
                 String month=reutersFuture.Valid_Month__c;
-                if(futureQuoteName.equals(reutersFutureName)&& mapOfFutureAndAverage.containsKey(futureQuoteName)==false)
-                {
-                    
-                    
-                    
-                    Reuters_Quotes__c reuters=quotesValues.get(futureQuoteName+month);
-                    if(reuters!=null)
+                if(futureQuoteName != null){
+                    if(futureQuoteName.equals(reutersFutureName)&& mapOfFutureAndAverage.containsKey(futureQuoteName)==false)
                     {
-                        if(type==CONST_BRENT)
-                            month=month+'-'+CONST_BRENT;
-                        else if(type==CONST_RBOB)
-                            month=month+'-'+CONST_RBOB;
-                        Integer numberofDays=mapOfIceDays.get(month);
                         
                         
                         
-                        Decimal price=convertCurrencyAndUnitValue(reutersFuture.Price__c, reutersFuture.CurrencyCode__c, reutersFuture.Unit_Of_Measure__c);  
-                        //System.debug('Sum of '+futureQuoteName+month+' Price '+price+'numberofDays '+numberofDays+'mapOfIceDays '+mapOfIceDays);
-                        sumOfQuotes=sumOfQuotes+(price * numberofDays) ;
-                        //System.debug('Sum of '+futureQuoteName+month+' Price '+price);
+                        Reuters_Quotes__c reuters=quotesValues.get(futureQuoteName+month);
+                        if(reuters!=null)
+                        {
+                            if(type==CONST_BRENT)
+                                month=month+'-'+CONST_BRENT;
+                            else if(type==CONST_RBOB)
+                                month=month+'-'+CONST_RBOB;
+                            Integer numberofDays=mapOfIceDays.get(month);
+                            
+                            
+                            
+                            Decimal price=convertCurrencyAndUnitValue(reutersFuture.Price__c, reutersFuture.CurrencyCode__c, reutersFuture.Unit_Of_Measure__c);  
+                            //System.debug('Sum of '+futureQuoteName+month+' Price '+price+'numberofDays '+numberofDays+'mapOfIceDays '+mapOfIceDays);
+                            sumOfQuotes=sumOfQuotes+(price * numberofDays) ;
+                            //System.debug('Sum of '+futureQuoteName+month+' Price '+price);
+                        }
                     }
-                }
+                }    
             }
             
          //   if(brentMonthJumpWrap.isDuplicateMonth==true&&type==CONST_BRENT&&hasDuplicateNotRunnnedForBrent==true)
