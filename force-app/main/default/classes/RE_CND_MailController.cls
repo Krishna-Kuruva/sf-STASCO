@@ -1342,9 +1342,9 @@ public class RE_CND_MailController {
     }
 
     public static void createExceptionLog(Exception e, String clsName, String methName, String eamilkeyLabel) {
+        eamilkeyLabel = String.isBlank(eamilkeyLabel) ? 'EmailToMe' : eamilkeyLabel;
         eamilkeyLabel = 'RE Email Recipients No - ' + eamilkeyLabel;
         String message = 'Message: ' + e.getMessage() + ' Line: '+e.getLineNumber() + ' Trace: '+e.getStackTraceString();
-        System.debug('message=='+message);
         RE_UtilityClass.reInsertExceptionRecord('Exception', clsName, methName, message, eamilkeyLabel);
     }
 
