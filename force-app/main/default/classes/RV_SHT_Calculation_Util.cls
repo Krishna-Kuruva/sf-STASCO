@@ -763,7 +763,6 @@ public class RV_SHT_Calculation_Util {
             {
                 String reutersFutureName=reutersFuture.Quote_Display_Name__c;
                 String month=reutersFuture.Valid_Month__c;
-             if(futureQuoteName != null){//added as part of PBI1897308 currently issue is in UAT alone
                 if(futureQuoteName.equals(reutersFutureName)&& mapOfFutureAndAverage.containsKey(futureQuoteName)==false)
                 {
                     
@@ -786,7 +785,6 @@ public class RV_SHT_Calculation_Util {
                         //System.debug('Sum of '+futureQuoteName+month+' Price '+price);
                     }
                 }
-             }
             }
             
          //   if(brentMonthJumpWrap.isDuplicateMonth==true&&type==CONST_BRENT&&hasDuplicateNotRunnnedForBrent==true)
