@@ -300,6 +300,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>MDN_Trader_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>MDN_OI_DistChan__c</field>
             </layoutItems>
             <layoutItems>

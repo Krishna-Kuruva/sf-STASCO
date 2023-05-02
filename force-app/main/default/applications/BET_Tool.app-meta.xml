@@ -54,11 +54,12 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>BET Tool 3.5</label>
+    <label>BET Tool 3.6</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>BET_BDD_Form__c</tabs>
     <tabs>Mass_Upload_Page</tabs>
+    <tabs>BET_BDD_Trader__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>BET_Tool_UtilityBar</utilityBar>
 </CustomApplication>
