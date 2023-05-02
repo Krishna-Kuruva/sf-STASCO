@@ -1292,22 +1292,28 @@ public class RV_SHTTriggerHelper {
 	 *Description	: Updates OLF Deal number in SAP Staging object*/
     public static void updateOlfDealNoInStagning(Map<Id, SHT__c> shtNewMap, Map<Id, SHT__c> shtOldMap){
         System.debug('RV_SHTTriggerHelper >> updateOlfDealNoInStagning: Inside method');
+        System.debug('updateOlfDealNoInStagning: shtNewMap :::' +shtNewMap+ 'new keys :::' +shtNewMap.keySet());
+        System.debug('updateOlfDealNoInStagning: shtOldMap :::' +shtOldMap+ 'old keys :::' +shtOldMap.keySet());
         List<SAP_Staging__c> stagingList = new List<SAP_Staging__c>();
         Map<String, String> shtNoVsOlfNoMap = new Map<String, String>();
+
         for(SHT__c shtNew : shtNewMap.values()){
             SHT__c shtOld = shtOldMap.get(shtNew.Id);
             if(shtNew.OLF_Deal_Number__c != null && shtOld.OLF_Deal_Number__c == null){
-                shtNoVsOlfNoMap.put(shtNew.Name, shtNew.OLF_Deal_Number__c);
+               // shtNoVsOlfNoMap.put(shtNew.Name, shtNew.OLF_Deal_Number__c);
+               shtNoVsOlfNoMap.put(shtNew.Id, shtNew.OLF_Deal_Number__c);
             }
         }
         System.debug('RV_SHTTriggerHelper >> updateOlfDealNoInStagning >> shtNoVsOlfNoMap: '+shtNoVsOlfNoMap);
+
         if(!shtNoVsOlfNoMap.isEmpty()){
             for(SAP_Staging__c stagingObj : [SELECT Id, 
-                                                    SfItemShtNo__c,
-                                                    OLF_Deal_Number__c FROM SAP_Staging__c WHERE OLF_Deal_Number__c = null AND 
-                                                                                                 SfItemShtNo__c IN : shtNoVsOlfNoMap.keySet()]){
-                if(shtNoVsOlfNoMap.containsKey(stagingObj.SfItemShtNo__c) && shtNoVsOlfNoMap.get(stagingObj.SfItemShtNo__c) != null){
-                    stagingObj.OLF_Deal_Number__c = shtNoVsOlfNoMap.get(stagingObj.SfItemShtNo__c);
+                                                    SfItemShtNo__c, 
+                                                    OLF_Deal_Number__c,SHTId__c,RV_SAPSHT_ExternalID__c 
+                                                    FROM SAP_Staging__c WHERE RV_SAPSHT_ExternalID__c IN : shtNoVsOlfNoMap.keySet() 
+                                                    FOR UPDATE]){                                                    
+                if(shtNoVsOlfNoMap.containsKey(stagingObj.SHTId__c) && shtNoVsOlfNoMap.get(stagingObj.SHTId__c) != null){
+                    stagingObj.OLF_Deal_Number__c = shtNoVsOlfNoMap.get(stagingObj.SHTId__c);
                     stagingList.add(stagingObj);
                 }                                                                                     
             }

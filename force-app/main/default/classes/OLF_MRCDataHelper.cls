@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 02-09-2023
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public class OLF_MRCDataHelper {
     
     public static Map<String, Decimal> getAtpforPlant(Set<string> plantCodeSet, Id accId, List<String> trancheList){
@@ -105,7 +112,13 @@ public class OLF_MRCDataHelper {
         
         mrcfinalList.addAll(mrcList);
         
+        //Added by Surbhi , PBI-1600304
+        RV_SPCalculationController.isOlfDeal = true;
+        //Ended by Surbhi, PBI-1600304
         
+        //Added by Surbhi, PBI-1725277
+        RV_SPCalculationController.tranche = tranche;
+        //Ended by Surbhi, PBI-1725277
         //setting Inut data wrap for price calculation
         List<RV_SPCalculationController.salesPriceWrap> salesPriceWrapLst=new List<RV_SPCalculationController.salesPriceWrap>();
         List<RV_SPCalculationController.salesPriceWrap> finalSalesPriceWrapLst=new List<RV_SPCalculationController.salesPriceWrap>();
