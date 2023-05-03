@@ -1,0 +1,72 @@
+<template>
+    <div class="slds-size_12-of-12 mb24">
+        <div class="orderTitle">
+           <h1>My Shell Contacts</h1>
+           <p>Provides an overview of your Commercial Operator contacts at Shell.</p>
+        </div>
+    </div>
+   <!-- for coomops Customer droup down-->
+    <div class="slds-size_12-of-12 mtb24">
+        <div class="flex slds-grid slds-gutters">
+            <div class="slds-size_4-of-12 setPadding setInput">
+                
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <template if:true={logOnAsTCP}>
+                                <lightning-combobox
+                                    placeholder="Select a customer"
+                                    variant="label-hidden"
+                                    value={selectedObj}
+                                    options={customerOptions}
+                                    class="setCombobox placeordercheck"
+                                    onchange={handleOptionChange}
+                                    message-when-value-missing="Please select a customer"
+                                    required
+                                >
+                                </lightning-combobox>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+  <!-- for coomops Customer droup down-->
+
+  <!--<template for:each={records} for:item="conItem">-->
+    <div class="slds-size_12-of-12" >
+      <!---->  <div class="flex slds-grid slds-gutters ">
+        <template for:each={records} for:item="conItem">
+            <div class="slds-size_6-of-12 setPadding mb16" key={conItem.Id}>
+                
+                <div class="setTableVertical" >
+                    <table cellspacing="0" width="100%" class="slds-table slds-table_fixed-layout" style="width:100%;">
+
+                        <tbody>
+                            <tr key={conItem.Id}>
+                                <td style="width:25%">Products</td>
+                                <td class="boldTd">{conItem.product}</td>
+                            </tr>
+                            <tr>
+                                <td style="width:25%">Name</td>
+                                <td class="boldTd">{conItem.Name}</td>
+                            </tr>
+                            <tr>
+                                <td style="width:25%">Phone</td>
+                                <td class="boldTd">{conItem.Phone}</td>
+                            </tr>
+                            <tr>
+                                <td style="width:25%">Email</td>
+                                <td class="boldTd">  <p><lightning-formatted-email value={conItem.Email} hide-icon></lightning-formatted-email></p></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </template>
+        </div>
+    </div>
+     
+   
+</template>

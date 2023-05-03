@@ -1,0 +1,106 @@
+.outer-sidebar{
+    background-color: #fff;
+    height: 1024px;
+    position: relative;
+    margin-right: 45px;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 10%), 0px 2px 5px rgb(0 0 0 / 10%);
+}
+
+.sidebarMenu{
+    margin-left: 15px;
+    padding-top: 24px;
+    padding-right: 3px;
+}
+
+
+
+.sidebarMenu ul li a{
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText ;
+    display: block;
+    padding: 9px 0px;
+}
+
+a[aria-current="page"]{
+    color: #404040;
+    background-color: red!important;
+}
+
+.sidebarMenu ul li a:hover { 
+    text-decoration: none;
+}
+
+.sidebarMenu ul li.active a{
+    color: #404040;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProTextBold; 
+    border-right: 3px solid #FBCF09;  
+}
+
+.sidebarMenu ul li:last-child{
+    padding-bottom: 0px;
+}
+
+
+.quickLink{
+    position: absolute;
+    bottom: 27px;
+    left: 16px;
+} 
+
+.quickLink h3{
+    padding-bottom: 16px;
+    font-family: SFProTextBold; 
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+}
+
+.quickLink h6{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #757575;
+    font-family: SFProText ;
+}
+
+.quickLink ul li{
+    padding-bottom: 16px;
+    
+}
+
+.quickLink ul li a{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProText ;
+}
+
+.quickLink ul li a:hover { 
+    text-decoration: none;
+}
+
+.quickLink ul li:last-child{
+    padding-bottom: 24px;
+}
+
+.pl40{
+    padding-right: 20px;
+    padding-top: 36px;
+}
+
+.bgPage{
+    background-color: #f5f5f5;
+    padding-bottom: 30px;
+}
+
+:host {
+    --sds-c-icon-color-foreground-default: #404040;
+}

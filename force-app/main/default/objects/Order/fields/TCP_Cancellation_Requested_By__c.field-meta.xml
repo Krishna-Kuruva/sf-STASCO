@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_Cancellation_Requested_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>To identify the user who placed whole order cancellation, which can be approved/rejected by commops</description>
+    <externalId>false</externalId>
+    <inlineHelpText>To identify the user who placed whole order cancellation, which can be approved/rejected by commops</inlineHelpText>
+    <label>Cancellation Requested By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Order_Cancellation_Placed</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

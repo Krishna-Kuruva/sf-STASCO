@@ -1,0 +1,61 @@
+<template>
+    <!-- ================ Breadcrumbs Section Start ============= -->
+
+   <!-- <div id="top" class="slds-size_12-of-12 mb24">
+    <div class="flex slds-grid">
+        <div class="breadcrumbs setBreadcrumbs">
+            <nav role="navigation" aria-label="Breadcrumbs">
+                <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                    <li class="slds-breadcrumb__item">
+                        <a href="../s" onclick={handleHomepage} aria-label="Go to dashboard link">Dashboard</a>
+                    </li>
+                    <li class="slds-breadcrumb__item">
+                        <a href="javascript:void(0)" aria-label="Bulk Order ">Terms & Conditions</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+       
+    </div>
+   </div> -->
+   <!-- ================ Breadcrumbs Section Start ============= -->
+
+ <!-- ================ Terms & Conditions text ============= -->
+
+ <div class="slds-size_9-of-12">
+    <div class="orderTitle">
+       <h1>Terms & Conditions</h1>
+       <p>This website is using cookies. By accepting our Terms and Conditions of use at the bottom of this page you are also agreeing to our use of cookies.</p>
+       <h4>Find out more by reading our privacy policy.</h4>
+    </div>
+   </div>
+
+        <div class="slds-size_12-of-12  mtb20">
+            <div data-id="containerDiv" class="tearmsBox scrollBarStyle">
+                   <h5> Terms and conditions</h5>
+
+                   <lightning-formatted-rich-text value={TandCLabel}></lightning-formatted-rich-text>
+                  <br/>
+                <h5>Disclaimer and Limitation of Liability</h5>
+
+                <lightning-formatted-rich-text value={disclaimer}></lightning-formatted-rich-text>
+                  
+            </div>
+     </div>
+
+    <br />
+    <lightning-input
+      type="checkbox"
+      label="I have read and agreed to the Terms & Conditions."
+      name="input"
+      checked=True
+      class="setCheckboxLabel"
+      data-id="checkbox"
+      disabled=True
+    ></lightning-input><!--value="GRA" 
+        checked={graValue}-->
+    <template if:true={dateofaccept}>
+        <p class="checkedStatus">Last agreed to the Terms & Conditions on {dateofaccept}.</p>
+    </template>
+    
+</template>

@@ -1,0 +1,40 @@
+<template>
+  <!--ProcuctMultiSelect-->
+  
+  
+    <div class="slds-form-element">
+		<label class={labelStyle} for="combobox-input-1">Product</label>
+    <div class="slds-form-element__control">
+      <div class="slds-combobox_container">
+
+        <div  class={mainDivClass} aria-expanded="false" aria-haspopup="listbox" role="combobox"  aria-label="Product" tabindex="0">
+          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+            <input type="text" onfocus={closeDropdown} class="slds-hide " id="combobox-input-1" autocomplete="off" role="textbox">
+            <div tabindex="0" onclick={handleClick} onkeypress={handleKeyPress} class="slds-input slds-combobox__input" style="padding-left: .175rem;"
+              id="combobox-div-1">{hintText}
+              <c-tcp_pill-container items={selectedPills} onitemremove={handlePillRemove} onopenpill={handleOpenPill}></c-tcp_pill-container>
+            </div>
+            <span class="slds-input__icon-group slds-input__icon-group_right">
+              <lightning-icon icon-name="utility:down" size="xx-small" alternative-text="down" class="slds-input__icon slds-input__icon_right"></lightning-icon>
+            </span>
+          </div>
+          <div class={dropdownOuterStyle}   aria-label="Product">
+            <div class="slds-listbox slds-listbox_vertical" aria-label="Product listbox" role="listbox">
+              <template for:each={options_} for:item="option">
+                <c-tcp_multi-select-item key={option.key}
+                                     value={option.value}
+                                     label={option.label}
+                                     selected={option.selected}
+                                     onselected={handleSelectedClick}></c-tcp_multi-select-item>
+
+              </template>
+              
+                <c-tcp_multi-select></c-tcp_multi-select>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

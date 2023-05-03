@@ -1,0 +1,80 @@
+<template> 
+    <div aria-label="MyCompanyUser">
+    <lightning-layout-item size="12">
+        <div class="slds-grid bgPage">
+            <!--sidbar menu start-->
+            <div class="slds-size_3-of-12">
+               <div class="outer-sidebar">
+                    <div class="sidebarMenu">
+                                <lightning-vertical-navigation selected-item="link_mycompanyusers">
+                                    <lightning-vertical-navigation-section>
+                                        <lightning-vertical-navigation-item-icon href="../s" aria-label="Dashboard" label="Dashboard" name="link_Dashboard" icon-name="utility:all">
+                                        </lightning-vertical-navigation-item-icon>
+                                
+                                        <lightning-vertical-navigation-item-icon href="../s/?navigateTo=Ohistory" aria-label="Order History" label="Order History" name="link_orderhistory"
+                                            icon-name="utility:work_order_type">
+                                        </lightning-vertical-navigation-item-icon>
+                                
+                                
+                                        <lightning-vertical-navigation-item-icon href="../s/my-shell-contacts" onclick={myShellContactsEUClick} aria-label="My Shell Contacts" label="My Shell Contacts" name="link_myshellcontacts"
+                                            icon-name="utility:justify_text">
+                                        </lightning-vertical-navigation-item-icon>
+                                
+                                        <lightning-vertical-navigation-item-icon href="../s/my-company-users" onclick={myCompanyUsersClick} aria-label="My Company Users" label="My Company Users" name="link_mycompanyusers"
+                                            icon-name="utility:user">
+                                        </lightning-vertical-navigation-item-icon>
+                                
+                                        <lightning-vertical-navigation-item-icon href="../s/contact-us" onclick={ContactUsClick} aria-label="Contact Us" label="Contact Us" name="link_contactus"
+                                            icon-name="utility:quick_text">
+                                        </lightning-vertical-navigation-item-icon>
+                                
+                                
+                                    </lightning-vertical-navigation-section>
+                                
+                                
+                                </lightning-vertical-navigation>
+                           
+                        
+                        
+                    </div>
+                    <div class="quickLink">
+                        <h3>Quick Helps</h3>
+                        <ul>
+                            <template if:true={logOnAsTCP}>
+                                <li><a href={label.TCP_CSUserGuide} >Download quick start guide</a></li>
+                            </template>
+                            <template if:false={logOnAsTCP}>
+                                <li><a href={label.TCP_EUGuide} >Download quick start guide</a></li>
+                            </template>
+                             <template if:true={logOnAsTCP}>
+                                <li><a href={label.TCP_CSUserCreation} >Download user creation guide</a></li>
+                                <li><a href={label.TCP_CSAccountMapping} >Download account mapping guide</a></li>        
+                             </template>
+                                <li><a href={label.TCP_PlaceOrderVideo} >Watch how to place an order</a></li>
+                                <li><a href={label.TCP_PortalTourVideo} >Watch quick tour of portal video</a></li>
+                                <li><a href="../s/terms-conditions" >Terms & Conditions</a></li>
+                                <li><a href="javascript:void(0)" onclick={handleClickPrivacyPolicy}>Privacy Policy</a></li>
+    
+                            </ul>
+                        <h4>©Shell International B.V. 2022</h4>
+                    </div>
+               </div>
+            </div>
+            <!--sidbar menu end-->
+           
+            <div class="spinner">
+                <template if:true={isLoading}>
+                     <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+                     </lightning-spinner>
+                </template>
+            </div>
+            <!--right section start-->
+            <div class="slds-size_9-of-12 pl40">
+               <!--My Company User LWC-->
+               <c-tcp_-my-company-users></c-tcp_-my-company-users>
+            </div>
+            <!--right section end-->
+        </div>
+    </lightning-layout-item>
+</div>
+</template>

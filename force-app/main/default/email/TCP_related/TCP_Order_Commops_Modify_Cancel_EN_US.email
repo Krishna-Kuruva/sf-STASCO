@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Order {!relatedTo.Type__c} {!relatedTo.Status__c} {!relatedTo.Web_Order__r.OrderNumber}" recipientType="Contact" relatedToType="TCP_Change_Cancel_Request__c">
+<messaging:HTMLEmailBody >
+<c:TCP_ModifyCancelEmailTemplate Record_Id="{!relatedTo.Id}" Contact_Name="{!recipient.Firstname}" />
+
+</messaging:HTMLEmailBody>
+</messaging:emailTemplate>

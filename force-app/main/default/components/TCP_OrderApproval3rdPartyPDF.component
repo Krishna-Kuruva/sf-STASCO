@@ -1,0 +1,260 @@
+<apex:component controller="TCP_OrderAcknowEmailTemplateContrl" access="global">
+ <apex:attribute name="Record_Id" type="String" description="Related Record Id" assignTo="{!RecordId}"/>
+ <apex:attribute name="Contact_Name" type="String" description="Related Contact Name" assignTo="{!ContactName}"/>
+  <html>
+  <head>
+     <title>Sales Order Confirmation.pdf</title>   
+
+     <style>
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Shell Font, Arial, Helvetica, sans-serif;
+       }
+
+       body{
+        padding: 10px 25px;
+       }
+       p{
+        font-size:14px;
+        line-height: 18px;
+       }
+
+       
+        @page {
+         @Top-right {
+         content: "Page " counter(page);
+         }
+         }
+
+         table {
+        border-collapse: collapse;
+        border-spacing: -1px;
+        
+        }
+       
+
+     </style>
+  </head>
+  <body>
+<apex:repeat value="{!OrderDetails}" var="Ord">
+    <div style="margin-bottom:15px;clear:both">
+        <div style="float:left;width:50%">
+            <h1 style="font-weight:400;font-size:26px">
+
+                 <!--apex:image id="theImage" value="{!$Resource.Logo}" width="35px" height="35px" alt="Shell Logo" style="margin-right:10px;vertical-align: top;"/> 
+
+                <!-- <img id="theImage" value="{!$Site.Prefix}/Resource.Logo" width="35px" height="35px" alt="Shell Logo" style="margin-right:10px;vertical-align: top;"/> -->
+               
+               
+
+
+                Shell Chemicals</h1>
+            <p>VAT Reg. No.: ********</p>
+          
+
+            <div style="margin-top:50px;font-size:14px;width:230px;word-break: break-word;">
+                <p>{!Ord.Sold_To_Address__c}
+                </p>
+
+            </div>
+
+        </div>
+
+            <div style="float:right;width:50%">
+                <h1 style="text-align:right;font-size:22px;">Order Confirmation</h1>
+                <p style="text-align:right;font-size:12px"> 
+                    Date:
+                    <apex:outputText value="{0,date,dd MMM yyyy}">
+                    <apex:param value="{!NOW()}" />
+                    </apex:outputText>
+                </p>
+
+                <div style="width:80%;border:1px solid black;border-collapse: collapse;float:right;font-weight:400;margin-bottom:15px;"> 
+                <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;">
+                    <tr style="background:#cdcdcd">
+                        <th style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:1px solid #000000;">Order Number:</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px 10px;font-size:14px">{!Ord.Sales_Order_Number__c}</td>
+                    </tr>
+                </table>
+                </div>
+                <div style="clear:both;"></div>
+                <div style="width:80%;border:1px solid black;border-collapse: collapse;float:right;font-weight:400;margin-bottom:15px;"> 
+                <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;">
+                    <tr style="background:#cdcdcd">
+                        <th style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:1px solid #000000;">Deliver to:</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px 10px 20px;font-size:14px">
+                        {!Ord.Ship_To_Address__c}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+    </apex:repeat>
+    <div style="clear:both;"></div>
+    <div style="width:100%; border-top:1px solid black;border-bottom:1px solid black;">
+          <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;">
+            <apex:repeat value="{!OrderDetails}" var="Ord">
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;width:200px">Order date:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Customer PO number:</th>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                    <apex:outputText value="{0,date,dd MMM yyyy}">
+                        <apex:param value="{!Ord.CreatedDate}" />
+                   </apex:outputText>
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    {!Ord.Ponumber}
+                </td>
+            </tr>
+            </apex:repeat>
+        </table>
+      
+        <div style="clear:both;"></div>
+
+    </div>
+      <div style="clear:both;"></div>
+    <div style="width:100%;border-bottom:1px solid black;margin-bottom:10px;">
+        
+        <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;">
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;">Transport:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Payment terms:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Delivery terms:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Customer number:</th>
+            </tr>
+            <apex:repeat value="{!OrderDetails}" var="Ord">
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                  {!Ord.Mode_of_Transport__c}
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    *****
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                 {!Ord.Delivery_Terms__c}
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                 {!Ord.Account.AccountNumber}
+                </td>
+            </tr>
+            </apex:repeat>
+        </table>
+        <div style="clear:both;"></div>
+
+    </div>
+<div style="clear:both;"></div>
+    <div style="width:100%;">
+        <p> We are pleased to supply product to you as detailed herein, on the terms of the signed contract between us, or in the absence of a signed
+            contract, on our General Terms and Conditions of Sale ("GTC"). The GTC, and any applicable addenda, can be found on our website:
+        	******
+        </p>
+		<p style="margin-top:25px;margin-bottom:15px">
+                If you have any queries, please contact: *******
+            </p>
+
+            
+    </div>  
+    
+    <div style="clear:both;"></div>
+    <div style="width:100%;">
+        <table  class="tableSet" cellspacing="0" style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;">
+           
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;width:150px;border-bottom:  1px dashed #000000;">Item</th>
+                <th colspan="2" style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:  1px dashed #000000;">Details</th>
+                
+            </tr>
+
+            <!--repeate tr section -->
+           
+                <apex:variable value="{!1}" var="rowNum"/>
+                <apex:repeat var="LI" value="{!ProdWrapList}">
+             <tbody>
+            <tr>
+                <td  rowspan="5" style="padding:5px 10px;font-size:20px;font-weight:bold;width:150px;border-bottom:  1px dashed #000000;">
+                   <apex:outputText value="{!FLOOR(rowNum)}"/>
+                   <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                </td>
+                 <td style="padding:5px 10px;font-size:14px">
+                    Product Number:
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    {!LI.ProdNumber}
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    Product:
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    {!LI.ProdName}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                    Quantity:
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    {!LI.Qty}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                    Expected delivery date:
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    {!LI.CollectionDate}
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                    Expected dispatch date:
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                   ******
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000;">
+                    Net weight:
+                </td>
+                <td style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000;">
+                    *****
+                </td>
+            </tr>
+            </tbody>
+            </apex:repeat>
+         
+           <!--repeate tr section -->
+
+            
+        </table>
+    </div> 
+    <div style="clear:both;"></div>
+    <div style="width:100%;">
+            <p style="margin-top:25px;margin-bottom:40px">
+                Prices do not include VAT applicable on delivery.
+            </p>
+
+            <p style="width: 309px;word-break: break-word;">
+                ********
+                ******
+                *****
+                ****
+            </p>
+
+            
+    </div>  
+  </body>
+
+
+
+</html>
+ </apex:component>

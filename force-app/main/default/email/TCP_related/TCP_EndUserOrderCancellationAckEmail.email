@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Order cancellation acknowledgement {!relatedTo.OrderNumber}" recipientType="Contact" relatedToType="Order">
+<messaging:HTMLEmailBody >
+
+
+<c:TCP_EUCancellationEmailTemplate Record_Id="{!relatedTo.Id}" Contact_Name="{!recipient.Firstname}" />
+</messaging:HTMLEmailBody>
+</messaging:emailTemplate>

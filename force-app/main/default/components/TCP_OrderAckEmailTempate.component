@@ -1,0 +1,203 @@
+<apex:component controller="TCP_OrderAcknowEmailTemplateContrl" access="global">
+    
+    <apex:attribute name="Record_Id" type="String" description="Related Record Id" assignTo="{!RecordId}"/>
+    <apex:attribute name="Contact_Name" type="String" description="Related Contact Name" assignTo="{!ContactName}"/>
+    <html>
+        <body>
+            <STYLE type="text/css">
+                TH {font-size: 16px; font-face: verdana;
+                border-width: 1;  text-align: left } 
+                TD  {font-size: 16px; font-face: verdana }    
+                TR {border: solid #CCCCCC; border-width: 1}
+                tr td:last-child{
+                
+                
+                white-space: nowrap;
+                p {font-size: 16px; font-face: verdana;}
+                pre {font-family: verdana;font-face: verdana;font-size: 16px;}
+                
+                }
+            </STYLE>
+            <script>
+            
+            </script>
+            <font face="verdana" size="2">
+                
+                <table style="border: solid #FFFFFF; border-width: 0" width="70%">
+                    <tr style="border: solid #FFFFFF; border-width: 0">
+                        <td style="background: #FFFFFF; border: solid #FFFFFF; border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" >
+                            Dear {!Contact_Name},
+                            
+                            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have submitted your order to your Shell Trading and Supply.</p> 
+                            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Please note that this is only an acknowledgement of receipt. Acceptance of your order is dependent on approval by the appropriate Shell Trading and Supply Commercial operations Team and will be confirmed if requested or required via a separate notification.</p>
+                            
+                            <hr/>
+                            <p align="Center"><b>{!$Label.TCP_Order_Details}</b></p>
+                            <hr/>
+                            <br/>
+                            <table border="0" width="100%" style="border-width: 1;">
+                                <apex:repeat value="{!OrderDetails}" var="Ord">
+                                    <tr style="border-width: 1">
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Portal_order_number} 
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.OrderNumber}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                            <br/>
+                            
+                            <table border="0" width="100%" style="border-width: 1;font-family: verdana;font-face: verdana;font-size: 11px;table-layout: fixed;">
+                                <apex:repeat value="{!OrderDetails}" var="Ord">
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Customer_name}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Customer_Name__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Customer_PO}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Ponumber}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_order_name}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Deliver_to}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Ship_To_Address__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Delivery_terms}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Delivery_Terms__c} </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Mode_of_transport}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!Ord.Mode_of_Transport__c} </td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                            
+                            <br/><br/>
+                            <table border="0" width="100%" style="table-layout: fixed;">
+                                <apex:repeat value="{!OrderDetails}" var="Ord">
+                                    <tr >
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Other_instructions}
+                                        </th>
+                                        <td width="10%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;white-space:normal;word-break:break-all">     
+                                            {!Ord.Order_Other_Instructions__c} 
+                                            
+                                        </td>
+                                    </tr>
+                                </apex:repeat>
+                            </table> 
+                            <br/>
+                            <table border="0" width="100%" style="table-layout: fixed;">
+                                <apex:repeat value="{!OrderDetails}" var="Ord">
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Ordered_By} 
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!Ord.ordered_by__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Ordered_On}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!Ord.CreatedDate}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Modified_By}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!Ord.TCP_Modification_Requested_By__r.Name} </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Modified_Date}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!Ord.TCP_Modification_Requested_Date__c}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Cancelled_By}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!Ord.TCP_Cancellation_Placed_By__r.Name} </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Cancelled_Date}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!Ord.TCP_Cancellation_Requested_Date__c}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                </apex:repeat>
+                            </table> 
+                            <br/>
+                            
+                            <br/><br/>
+                            
+                            
+                            <table border="1" width="100%" style="table-layout: fixed;">
+                                <thead>
+                                    <tr style="border: 1px solid black;">
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Item}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Product_Number}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Product_name}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="15%" align="left" valign="middle">{!$Label.TCP_Quantity}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="30%" align="left" valign="middle">{!$Label.TCP_Delivery_Date}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="30%" align="left" valign="middle">{!$Label.TCP_Item_instructions}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:variable value="{!1}" var="count"/>
+                                    <apex:repeat var="LI" value="{!ProdWrapList}">
+                                        <tr style="border: 1px solid black;">
+                                            <td width="20%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                {!LPAD(TEXT(count),2,'0')}
+                                                <apex:variable value="{!count+1}" var="count" />
+                                                
+                                            </td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="20%" align="left">{!LI.ProdNumber}</td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="20%" align="left">{!LI.ProdName}</td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="15%" align="left">{!LI.Qty} {!LI.Unit}</td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="35%" align="left">{!LI.CollectionDate}</td>                                              
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="30%" align="left">{!LI.OtherInstruction}</td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                            
+                            
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Your Shell Trading and Supply Commercial operations Team will handle your order during normal business hours. If you have any problems or questions related to this order, please contact your Commercial operations Team.</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">End User can view order details here -> <a style="font-family: verdana;font-face: verdana;font-size: 11px;font-weight: bold" href="{!siteURL}">{!ordNumber}</a> (Note: Only compatible with Desktop and Laptop)</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Thank you,<br/>Shell Trading</p>
+            </font>
+        </body>
+    </html> 
+</apex:component>

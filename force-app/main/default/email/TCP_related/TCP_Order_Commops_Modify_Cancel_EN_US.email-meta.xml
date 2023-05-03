@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <available>true</available>
+    <description>To send to email when commops approve/reject Modify Cancel</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TCP Order Commops Modify Cancel EN US</name>
+    <style>none</style>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>STNSAP 1st service to get sold to accounts based on the sales area</description>
+    <enableFeeds>false</enableFeeds>
+    <label>TCP_STNSAP_1stService</label>
+    <visibility>Public</visibility>
+</CustomObject>

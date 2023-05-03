@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mode_of_Transport__c</fullName>
+    <externalId>false</externalId>
+    <label>Mode of Transport</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bulk tanker</fullName>
+                <default>false</default>
+                <label>Bulk tanker</label>
+            </value>
+            <value>
+                <fullName>Rail Tank Car</fullName>
+                <default>false</default>
+                <label>Rail Tank Car</label>
+            </value>
+            <value>
+                <fullName>Road Tank Truck</fullName>
+                <default>false</default>
+                <label>Road Tank Truck</label>
+            </value>
+            <value>
+                <fullName>Road IM Portable Tnk</fullName>
+                <default>false</default>
+                <label>Road IM Portable Tnk</label>
+            </value>
+            <value>
+                <fullName>Road (Bulk)  / Rail</fullName>
+                <default>false</default>
+                <label>Road (Bulk)  / Rail</label>
+            </value>
+            <value>
+                <fullName>Road(Bulk)/Short Sea</fullName>
+                <default>false</default>
+                <label>Road(Bulk)/Short Sea</label>
+            </value>
+            <value>
+                <fullName>Inland water-transpt</fullName>
+                <default>false</default>
+                <label>Inland water-transpt</label>
+            </value>
+            <value>
+                <fullName>Bulk Cont. road/sea</fullName>
+                <default>false</default>
+                <label>Bulk Cont. road/sea</label>
+            </value>
+            <value>
+                <fullName>No transport</fullName>
+                <default>false</default>
+                <label>No transport</label>
+            </value>
+            <value>
+                <fullName>Pack Cont. road/sea</fullName>
+                <default>false</default>
+                <label>Pack Cont. road/sea</label>
+            </value>
+            <value>
+                <fullName>Rail Hopper Car</fullName>
+                <default>false</default>
+                <label>Rail Hopper Car</label>
+            </value>
+            <value>
+                <fullName>Road Hopper Truck</fullName>
+                <default>false</default>
+                <label>Road Hopper Truck</label>
+            </value>
+            <value>
+                <fullName>Road Package Truck</fullName>
+                <default>false</default>
+                <label>Road Package Truck</label>
+            </value>
+            <value>
+                <fullName>Road Package Trk.LTL</fullName>
+                <default>false</default>
+                <label>Road Package Trk.LTL</label>
+            </value>
+            <value>
+                <fullName>Road (Bulk) / Barge</fullName>
+                <default>false</default>
+                <label>Road (Bulk) / Barge</label>
+            </value>
+            <value>
+                <fullName>Road(Pack)/Short Sea</fullName>
+                <default>false</default>
+                <label>Road(Pack)/Short Sea</label>
+            </value>
+            <value>
+                <fullName>Air-transport</fullName>
+                <default>false</default>
+                <label>Air-transport</label>
+            </value>
+            <value>
+                <fullName>Pipeline-transport</fullName>
+                <default>false</default>
+                <label>Pipeline-transport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

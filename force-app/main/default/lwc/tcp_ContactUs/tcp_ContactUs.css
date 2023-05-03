@@ -1,0 +1,141 @@
+:host .setCombobox{
+    --lwc-heightInput: 40px;
+    --lwc-borderRadiusMedium:2px;
+    --slds-c-input-color-border: rgba(0, 0, 0, 0.15);
+    /* width: 300px; */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+    font-family: SFProText;
+    
+    
+}
+.mtb36{
+    margin-top:36px;
+    margin-bottom:24px;
+}
+
+.mb24{
+    
+    margin-bottom:24px;
+}
+
+.mt20{
+    
+    margin-top:20px;
+}
+
+.mt24{
+    margin-top:24px;
+}
+
+.mtb24{
+    margin-top: 24px;
+    margin-bottom:24px;
+}
+
+.mb16{
+    margin-bottom:16px;
+
+}
+.mb36{
+    
+    margin-bottom:36px;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+.setPadding{
+    padding:0px 12px;
+}
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+
+}
+
+.orderTitle p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText;
+}
+
+.headingUser{
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold;
+}
+
+
+.nextBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold;
+    background-color: #FBCF09;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+
+.nextBtnDisable{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #D9D9D9;
+    font-family: SFProTextBold;
+    background-color:transparent;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    pointer-events: none;
+}
+
+
+.customToast{
+    background: #FFFFFF;
+    border: 1px solid #1C8450;
+    border-radius: 2px;
+    align-items: center;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.customToastError{
+    background: #FFFFFF;
+    border: 1px solid #D93638;
+    border-radius: 2px;
+    align-items: center;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.messageText{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #404040;
+    font-family: SFProText ;
+}
+
+.messageText img{
+    margin-right: 15px;
+}
+
+.iconColor svg {
+    fill: #000000;
+}

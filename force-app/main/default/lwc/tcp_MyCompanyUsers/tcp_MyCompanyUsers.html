@@ -1,0 +1,364 @@
+<template>
+    
+    <!--My Company Users Section Start -->
+        
+
+
+            <!--submitted successfully Section Start -->
+            <template if:true={isShowMyRequestSuccess}>
+                    <div class="slds-size_12-of-12 mb30">
+                        <div class="slds-grid">
+                            <div class="flex customToast" data-id="toast">
+                                <div>
+                                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user request has submitted successfully </p>
+                                
+                                </div>
+
+                                <div>
+                                <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    </template>
+                    <template if:true={isShowMyEditRequestSuccess}>
+                        <div class="slds-size_12-of-12 mb30">
+                            <div class="slds-grid">
+                                <div class="flex customToast" data-id="toast">
+                                    <div>
+                                        <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user edit request has submitted successfully </p>
+                                    
+                                    </div>
+    
+                                    <div>
+                                    <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                        </template>
+                        <template if:true={isShowMyDeleteRequestSuccess}>
+                            <div class="slds-size_12-of-12 mb30">
+                                <div class="slds-grid">
+                                    <div class="flex customToast" data-id="toast">
+                                        <div>
+                                            <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user delete request has submitted successfully </p>
+                                        
+                                        </div>
+        
+                                        <div>
+                                        <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            </template>
+                            <div class="spinner">
+                                <template if:true={isLoading}>
+                                     <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+                                     </lightning-spinner>
+                                </template>
+                            </div> 
+           <!--submitted successfully Section End -->
+           <template if:true={MyCompanyUsers}>
+            <div class="slds-size_12-of-12 mb36">
+                <div class="flex slds-grid">
+                        <div class="orderTitle">
+                        <h1>My Company Users</h1>
+                        <p>See an overview of all Customer Portal users at your company. Send us a request to create a new user or update an existing user.</p>
+                        </div>
+                        <div>
+                            <button class="slds-button yellowBtn" onclick={handelRequestNewUser} aria-label="yellow background color Request New User">Request New User</button>
+                        </div>
+            </div>
+            </div>
+            
+            <div class="slds-size_12-of-12 mb36">
+                <div style="height: 800px;">
+                    <lightning-datatable
+                    key-field="id"
+                    columns={columns}
+                    data={ContactList}
+                    hide-checkbox-column
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={onHandleSort}
+                    class="dashboardTable companyUser dotBtn sortBtn"
+                    onrowaction={handleRowActions}
+                    resize-column-disabled
+                   
+                >
+                </lightning-datatable> 
+                </div>
+            </div>
+        </template>
+        <!--My Company Users Section Start -->
+
+        <!--Request New User section start -->
+        <template if:true={RequestNewUser}>
+            <!-- ================ Breadcrumbs Section Start ============= -->
+
+                <div id="top" class="slds-size_12-of-12 mb24">
+                    <div class="flex1 slds-grid">
+                        <div class="breadcrumbs setBreadcrumbs">
+                            <nav role="navigation" aria-label="Breadcrumbs">
+                                <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                                    <li class="slds-breadcrumb__item">
+                                        <a href="javascript:void(0)" onclick={handlBack} aria-label="Go to My Company Users">My Company Users</a>
+                                    </li>
+                                    <li class="slds-breadcrumb__item">
+                                        <a href="javascript:void(0)" aria-label="Request New User ">Request New User</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-size_9-of-12 mb30">
+                    <div class="orderTitle">
+                       <h1>Request New User</h1>
+                    </div>
+                   </div>
+                <div class="slds-size_8-of-12 ">
+                    
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-size_6-of-12 setPadding setInput">
+                           
+                                <div class="slds-form-element">
+                                   
+                                    <div class="slds-form-element__control">
+                                        <lightning-combobox
+                                            placeholder=""
+                                            label="Send My Request To"
+                                            value={value}
+                                            options={contacts}
+                                            class="setCombobox placeordercheck"
+                                            onchange={handleRequest}
+                                           
+                                            
+                                        >
+                                        </lightning-combobox>
+                                    </div>
+                                
+                                </div>
+                            
+                            </div>
+                    </div>
+                    <div class="flexWrap slds-grid slds-gutters ">
+                    <div class="slds-size_6-of-12 setPadding">
+                        <div class="slds-p-vertical_x-small setInput">
+                            <lightning-input class="Step2 requiredSet" type="text" data-id="firstName" label="First Name" maxlength="" placeholder="" value="" onchange={handleRequestChange} required message-when-value-missing="Please enter First Name" pattern="[a-zA-Z0-9\s]+" message-when-pattern-mismatch="Special characters are not allowed">
+                            </lightning-input>
+                        </div>
+                    </div>
+    
+                    <div class="slds-size_6-of-12 setPadding">
+                        <div class="slds-p-vertical_x-small setInput">
+                            <lightning-input class="Step2 requiredSet" type="text" data-id="lastName" label="Last Name" maxlength="" placeholder="" value="" onchange={handleRequestChange} required message-when-value-missing="Please enter Last Name" pattern="[a-zA-Z0-9\s]+" message-when-pattern-mismatch="Special characters are not allowed">
+                            </lightning-input>
+                        </div>
+                    </div>  
+                    
+                    <div class="slds-size_6-of-12 setPadding">
+                        <div class="slds-p-vertical_x-small setInput">
+                            <lightning-input class="SStep2 requiredSet" type="text" data-id="phone" label="Phone" maxlength="" placeholder="" value="" onchange={handleRequestChange} required message-when-value-missing="Please enter Phone Number" pattern="[a-zA-z0-9]+" message-when-pattern-mismatch="Special characters are not allowed">
+                            </lightning-input>
+                        </div>
+                    </div>   
+    
+                    <div class="slds-size_6-of-12 setPadding">
+                        <div class="slds-p-vertical_x-small setInput">
+                            <lightning-input class="Step2 requiredSet" type="email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" data-id="email" label="Email" maxlength="" placeholder="" value="" onchange={handleRequestChange} required message-when-value-missing="Please enter Email" message-when-pattern-mismatch="Please enter a valid email address">
+                            </lightning-input>
+                        </div>
+                    </div>   
+    
+                    <div class="slds-size_12-of-12 setPadding">
+                        
+                        <div class="slds-p-vertical_x-small setTextareaContact" style="white-space: break-spaces;">
+                            <lightning-textarea type="text" data-id="additionalComment" maxlength="" label="Additional Comment" placeholder="Comment" onchange={handleRequestChange} >
+                            </lightning-textarea>
+                       
+                        </div>
+    
+                    </div>
+    
+                </div>  
+                    
+                <div class="mt20">
+                    <button class="slds-button slds-button_neutral backBtn mr16" onclick={handlBack} aria-label="gray border color with back icon Back"><lightning-icon icon-name="utility:back" alternative-text="back" title="back" size="xx-small" class="mr8 iconColor"></lightning-icon> Back</button>
+                    <template if:true={enableSubmit}>
+                    <button class="slds-button slds-button_brand submitBtn" onclick={handleReqSubmit} aria-label="yellow background color Submit"> Submit</button>
+                    </template>
+                    <template if:false={enableSubmit}>
+                        <button class="slds-button slds-button_brand btnDisabel mr16" aria-label="Disable Submit"> Submit</button>
+                </template>
+                </div>
+
+
+            </div>    
+
+        </template>
+        <!--Request New User section End -->
+
+        <!-- Users Edit  modal start -->
+            <template if:true={isShowUsersEdit}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Edit">
+                    <div class="setModal slds-modal__container">
+                        <!-- modal header start -->
+                        <!-- <header class="slds-modal__header"> -->
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalUsersEdit}>
+                            <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <!-- </header> -->
+                        <!-- modal body start -->
+                        <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-2">
+                            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate modalHeading">Enter the change request details for <span>{contactName}</span></h2>
+                            <div class="slds-size_12-of-12 ">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-size_8-of-12  setPadding ">
+                                        <div class="slds-p-vertical_xxx-small setInput">   
+                                           <div class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <lightning-combobox
+                                                        placeholder="Placeholder"
+                                                        label="Request To"
+                                                        value={value}
+                                                        options={contacts}
+                                                        class="setCombobox placeordercheck"
+                                                        onchange={handleRequest}
+                                                    >
+                                                    </lightning-combobox>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        </div>
+                                 </div>
+                                 <div class="slds-size_12-of-12 ">
+                                    <div class="slds-p-vertical_xxx-small setTextareaContact">
+                                        <lightning-textarea type="text" data-id="enterChangeReq" maxlength="" label="Enter change request details" placeholder="Placeholder" onchange={handleEditChange} >
+                                        </lightning-textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mt5">
+                                <button class="slds-button backBtn mr16" onclick={hideModalUsersEdit} title="Cancel" aria-label="gray border color  Cancel">Cancel</button>
+                                <template if:true={enableSubmit}>
+                                <button class="slds-button yellowBtn " onclick={handleUsersEdit} title="Submit" aria-label="yellow background color Submit">Submit</button>
+                            </template>
+                                <template if:false={enableSubmit}>
+                                    <button class="slds-button slds-button_brand nextBtnDisable mr16" aria-label="Disable Submit"> Submit</button>
+                                </template>
+                        </div>
+                        </div> 
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+         <!-- Users Edit  modal end -->
+
+         <!-- Users Delete  modal start -->
+          <template if:true={isShowUsersDelete}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="delete">
+                <div class="setModal slds-modal__container">
+                    <!-- modal header start -->
+                    <!-- <header class="slds-modal__header"> -->
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalUsersDelete}>
+                        <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <!-- </header> -->
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-3">
+                        <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate modalHeading">Enter the deletion request details for <span>{contactName}</span></h2>
+                        <div class="slds-size_12-of-12 ">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-size_8-of-12 setPadding">
+                                    <div class="slds-p-vertical_xxx-small setInput">
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <lightning-combobox
+                                                    placeholder="Placeholder"
+                                                    data-formfield="deleteValue"
+                                                    label="Request To"
+                                                    value={value}
+                                                    options={contacts}
+                                                    class="setCombobox placeordercheck"
+                                                    onchange={handleRequest}
+                                                >
+                                                </lightning-combobox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                             </div>
+                             <div class="slds-grid slds-gutters">
+                                <div class="slds-size_8-of-12 setPadding">
+                                    <div class="slds-p-vertical_xxx-small setInput">
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <lightning-combobox
+                                                    placeholder="Placeholder"
+                                                    label="Reason for Deletion"
+                                                    value={value}
+                                                    options={typeOfDeletionReason}
+                                                    class="setCombobox placeordercheck requiredSet"
+                                                    onchange={handleChangeDeletion}
+                                                    message-when-value-missing="Please select a reason for deletion"
+                                                    required 
+                                                >
+                                                </lightning-combobox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                             <template if:false={enableSpecify}>
+                             <div class="slds-size_12-of-12 ">
+                                <div class="slds-p-vertical_xxx-small setTextareaContact">
+                                    <lightning-textarea type="text" data-id="additionalComm" maxlength="" label="Additional Comments" placeholder="Placeholder" onchange={handleDeletion}>
+                                    </lightning-textarea>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={enableSpecify}>
+                            <div class="slds-size_12-of-12 ">
+                                <div class="slds-p-vertical_xxx-small setTextareaContact">
+                                    <lightning-textarea type="text" data-id="additionalComm" maxlength="" label="Specify the reason for Deletion" placeholder="Placeholder" onchange={handleDeletion}>
+                                    </lightning-textarea>
+                                </div>
+                            </div>
+                        </template>
+                        </div>
+                        <div class="mt5">
+                            <button class="slds-button backBtn mr16" onclick={hideModalUsersDelete} title="Cancel" aria-label="gray border color  Cancel">Cancel</button>
+                            <template if:true={enableSubmit}>
+                            <button class="slds-button yellowBtn " onclick={handleUsersDelete} title="Submit" aria-label="yellow background color Submit" >Submit</button>
+                        </template>
+                        <template if:false={enableSubmit}>
+                            <button class="slds-button slds-button_brand nextBtnDisable mr16" aria-label="Disable Submit"> Submit</button>
+                        </template>
+                    </div>
+                    </div> 
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+     <!-- Users Delete  modal end -->
+
+</template>

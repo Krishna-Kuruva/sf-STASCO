@@ -1,0 +1,307 @@
+<apex:component controller="TCP_ChangeCancelOrderEmailController" access="global">
+    <apex:attribute name="Record_Id" type="String" description="Related Record Id" assignTo="{!RecordId}"/>
+    <apex:attribute name="Contact_Name" type="String" description="Related Contact Name" assignTo="{!ContactName}"/>
+    <html>
+        <body>
+            <STYLE type="text/css">
+                TH {font-size: 16px; font-face: verdana;
+                border-width: 1;  text-align: left } 
+                TD  {font-size: 16px; font-face: verdana }    
+                TR {border: solid #CCCCCC; border-width: 1}
+                tr td:last-child{
+                
+                
+                white-space: nowrap;
+                p {font-size: 16px; font-face: verdana;}
+                pre {font-family: verdana;font-face: verdana;font-size: 16px;}
+                
+                }
+            </STYLE>
+            <script>
+            
+            </script>
+            <font face="verdana" size="2">
+                
+                <table style="border: solid #FFFFFF; border-width: 0" width="70%">
+                    <tr style="border: solid #FFFFFF; border-width: 0">
+                        <td style="background: #FFFFFF; border: solid #FFFFFF; border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" >
+                            Dear {!Contact_Name},
+                            <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
+                                <apex:outputPanel rendered="{!ChnOrd.Web_Order__r.TCP_Order_Status__c != 'Submitted'}">
+                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have modified your approved order to your Shell Trading and Supply. This request needs to be reviewed again to take a effect of modifications placed.</p>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!ChnOrd.Web_Order__r.TCP_Order_Status__c == 'Submitted'}">
+                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have modified your order to your Shell Trading and Supply</p>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Please note that this is only an acknowledgement of receipt. Acceptance of your order is dependent on approval by appropriate Shell Trading and Supply Commercial Operations Team and will be confirmed if requested or required via a separate notification</p>
+                            
+                            <hr/>
+                            <p align="Center"><b>{!$Label.TCP_Modify_Order}</b></p>
+                            <hr/>
+                            <br/>
+                            <table border="0" width="100%" style="border-width: 1;">
+                                <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
+                                    <tr style="border-width: 1">
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Portal_order_number} 
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Web_Order__r.OrderNumber}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                            <br/>
+                            
+                            <table border="0" width="100%" style="border-width: 1;font-family: verdana;font-face: verdana;font-size: 11px;table-layout: fixed;">
+                                <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Customer_name}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Web_Order__r.Customer_Name__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Customer_PO}
+                                        </th>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Customer_PO_New__c==ChnOrd.Customer_PO__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Customer_PO_New__c}</td>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Customer_PO_New__c!=ChnOrd.Customer_PO__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_Current_value}{!ChnOrd.Customer_PO__c}</td>
+                                            
+                                        </apex:outputPanel>
+                                    </tr>
+                                    <apex:outputPanel rendered="{!(ChnOrd.Customer_PO_New__c!=ChnOrd.Customer_PO__c)}">
+                                        <tr>
+                                            <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            </th>
+                                            <td width="10%" align="left" style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_New_Value}{!ChnOrd.Customer_PO_New__c} </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_order_name}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Web_Order__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Deliver_to}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Web_Order__r.Ship_To_Address__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Delivery_terms}
+                                        </th>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Delivery_Terms__c==ChnOrd.Delivery_Terms_New__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Delivery_Terms_New__c} </td>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Delivery_Terms__c!=ChnOrd.Delivery_Terms_New__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_Current_value}{!ChnOrd.Delivery_Terms__c} </td>
+                                            
+                                        </apex:outputPanel>
+                                    </tr>
+                                    <apex:outputPanel rendered="{!(ChnOrd.Delivery_Terms__c!=ChnOrd.Delivery_Terms_New__c)}">
+                                        <tr>
+                                            <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            </th>
+                                            <td width="10%" align="left" style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_New_Value}{!ChnOrd.Delivery_Terms_New__c} </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Mode_of_transport}
+                                        </th>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Mode_of_Transport__c!=ChnOrd.Mode_of_Transport_New__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_Current_value}{!ChnOrd.Mode_of_Transport__c} </td>
+                                            <!-- <td width="10%" style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_New_Value}{!ChnOrd.Mode_of_Transport_New__c} </td>-->
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Mode_of_Transport__c==ChnOrd.Mode_of_Transport_New__c)}">
+                                            <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all">{!ChnOrd.Mode_of_Transport_New__c} </td>
+                                        </apex:outputPanel>
+                                        
+                                    </tr>
+                                    <apex:outputPanel rendered="{!(ChnOrd.Mode_of_Transport__c!=ChnOrd.Mode_of_Transport_New__c)}">
+                                        <tr>
+                                            <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            </th>
+                                            <td width="10%" style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_New_Value}{!ChnOrd.Mode_of_Transport_New__c} </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                            </table>
+                            
+                            <br/><br/>
+                            <table border="0" width="100%" style="table-layout: fixed;">
+                                <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
+                                    <tr >
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            {!$Label.TCP_Other_instructions}
+                                        </th>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Other_Instruction__c!=ChnOrd.Other_Instruction_New__c)}">
+                                            <td width="10%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;white-space:normal;word-break:break-all">     
+                                                {!$Label.TCP_Current_value}{!ChnOrd.Other_Instruction__c} 
+                                                
+                                                
+                                            </td>
+                                            
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!(ChnOrd.Other_Instruction__c==ChnOrd.Other_Instruction_New__c)}">
+                                            <td width="10%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;white-space:normal;word-break:break-all">     
+                                                {!ChnOrd.Other_Instruction_New__c} 
+                                                
+                                                
+                                            </td>
+                                        </apex:outputPanel>
+                                    </tr>
+                                    <apex:outputPanel rendered="{!(ChnOrd.Other_Instruction__c!=ChnOrd.Other_Instruction_New__c)}">
+                                        <tr>
+                                            <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" align="left">
+                                            </th>
+                                            <td width="10%" align="left" style="border: 1px solid black;font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;word-break:break-all">{!$Label.TCP_New_Value}{!ChnOrd.Other_Instruction_New__c} </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                            </table> 
+                            <br/>
+                            <table border="0" width="100%" style="table-layout: fixed;">
+                                <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Ordered_By} 
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!ChnOrd.Web_Order__r.ordered_by__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;border-width: 0;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Ordered_On}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!ChnOrd.Web_Order__r.CreatedDate}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Modified_By}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!ChnOrd.Web_Order__r.TCP_Modification_Requested_By__r.Name} </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Modified_Date}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!ChnOrd.Web_Order__r.TCP_Modification_Requested_Date__c}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Cancelled_By}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">{!ChnOrd.Web_Order__r.TCP_Cancellation_Requested_By__r.Name} </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%" style="background: #FFFFFF;font-family: verdana;font-face: verdana;font-size: 11px;" align="left">
+                                            {!$Label.TCP_Cancelled_Date}
+                                        </th>
+                                        <td width="10%" align="left" style="font-family: verdana;font-face: verdana;font-size: 11px;">
+                                            <apex:outputText value="{0,date,dd MMM yyyy}">
+                                                <apex:param value="{!ChnOrd.Web_Order__r.TCP_Cancellation_Requested_Date__c}" />
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    
+                                </apex:repeat>
+                            </table>
+                            <br/>
+                            
+                            <br/><br/>
+                            
+                            
+                            <table border="1" width="100%" style="table-layout: fixed;">
+                                <thead>
+                                    <tr style="border: 1px solid black;">
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Item}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Product_Number}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="20%" align="left" valign="middle">{!$Label.TCP_Product_name}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="15%" align="left" valign="middle">{!$Label.TCP_Quantity}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="30%" align="left" valign="middle">{!$Label.TCP_Delivery_Date}</th>
+                                        <th style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;" class="block" width="30%" align="left" valign="middle">{!$Label.TCP_Item_instructions}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:variable value="{!1}" var="count"/>
+                                    <apex:repeat var="LI" value="{!ChangeProdWrapList}">
+                                        <tr>
+                                            <td width="20%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                {!LPAD(TEXT(count),2,'0')}
+                                                <apex:variable value="{!count+1}" var="count" />
+                                                
+                                            </td>
+                                            <td width="20%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                {!LI.ProdNumber}
+                                            </td>
+                                            <td width="20%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                {!LI.ProdName}
+                                            </td>
+                                            <td width="15%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                
+                                                <apex:outputPanel rendered="{!AND(LI.Qty==LI.QtyNew,LI.Unit==LI.UnitNew)}">
+                                                    <p>{!LI.QtyNew} {!LI.UnitNew}</p>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!OR(LI.Qty!=LI.QtyNew,LI.Unit!=LI.UnitNew)}">
+                                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;"  width="15%" align="left">{!$Label.TCP_Current_value}{!LI.Qty} {!LI.Unit}
+                                                    </p>
+                                                    <p style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;">{!$Label.TCP_New_Value}{!LI.QtyNew} {!LI.UnitNew}</p>
+                                                </apex:outputPanel>
+                                                
+                                            </td>
+                                            <td width="30%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                
+                                                <apex:outputPanel rendered="{!(LI.CollectionDate==LI.CollectionDateNew)}">
+                                                    <p>{!LI.CollectionDate}</p>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!(LI.CollectionDate!=LI.CollectionDateNew)}">
+                                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">{!$Label.TCP_Current_value}{!LI.CollectionDate}
+                                                    </p>
+                                                    <p style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;">{!$Label.TCP_New_Value}{!LI.CollectionDateNew}</p>
+                                                </apex:outputPanel>
+                                                
+                                            </td>
+                                            <td width="30%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
+                                                
+                                                <apex:outputPanel rendered="{!(LI.OtherInstruction==LI.OtherInstructionNew)}">
+                                                    <p>{!LI.OtherInstructionNew}</p>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!(LI.OtherInstruction!=LI.OtherInstructionNew)}">
+                                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">{!$Label.TCP_Current_value}{!LI.OtherInstruction}
+                                                    </p>
+                                                    <p style="font-family: verdana;color: #ff0000;font-face: verdana;font-size: 11px;" class="block">{!$Label.TCP_New_Value}{!LI.OtherInstructionNew}</p>
+                                                </apex:outputPanel>
+                                                
+                                                
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                            
+                            
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Your Shell Trading and Supply Commercial operations Team will handle your order during normal business hours. If you have any problems or questions related to this order, please contact your Commercial operations Team.</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">End User can view order details here -> <a style="font-family: verdana;font-face: verdana;font-size: 11px;font-weight: bold" href="{!siteURL}">{!ordNumber}</a> (Note: Only compatible with Desktop and Laptop)</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Thank you,<br/>Shell Trading</p>
+            </font>
+        </body>
+    </html> 
+</apex:component>

@@ -21,6 +21,16 @@
                 <default>false</default>
                 <label>Ship To</label>
             </value>
+            <value>
+                <fullName>Bill To</fullName>
+                <default>false</default>
+                <label>Bill To</label>
+            </value>
+            <value>
+                <fullName>Payer</fullName>
+                <default>false</default>
+                <label>Payer</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

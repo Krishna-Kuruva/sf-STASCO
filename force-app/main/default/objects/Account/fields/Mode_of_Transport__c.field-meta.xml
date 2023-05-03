@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mode_of_Transport__c</fullName>
+    <description>Mode of Transport</description>
+    <externalId>false</externalId>
+    <label>Mode of Transport</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>01</fullName>
+                <default>false</default>
+                <label>Rail</label>
+            </value>
+            <value>
+                <fullName>32</fullName>
+                <default>false</default>
+                <label>Road Tank Truck</label>
+            </value>
+            <value>
+                <fullName>11</fullName>
+                <default>false</default>
+                <label>Bulk tanker</label>
+            </value>
+            <value>
+                <fullName>36</fullName>
+                <default>false</default>
+                <label>Road IM Portable Tnk</label>
+            </value>
+            <value>
+                <fullName>1J</fullName>
+                <default>false</default>
+                <label>Bulk Cont. road/sea</label>
+            </value>
+            <value>
+                <fullName>24</fullName>
+                <default>false</default>
+                <label>Rail Tank Car</label>
+            </value>
+            <value>
+                <fullName>37</fullName>
+                <default>false</default>
+                <label>Road (Bulk)  / Rail</label>
+            </value>
+            <value>
+                <fullName>39</fullName>
+                <default>false</default>
+                <label>Road(Bulk)/Short Sea</label>
+            </value>
+            <value>
+                <fullName>80</fullName>
+                <default>false</default>
+                <label>Inland water-transpt</label>
+            </value>
+            <value>
+                <fullName>3A</fullName>
+                <default>false</default>
+                <label>Road(Pack)/Short Sea</label>
+            </value>
+            <value>
+                <fullName>40</fullName>
+                <default>false</default>
+                <label>Air-transport</label>
+            </value>
+            <value>
+                <fullName>70</fullName>
+                <default>false</default>
+                <label>Pipeline-transport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

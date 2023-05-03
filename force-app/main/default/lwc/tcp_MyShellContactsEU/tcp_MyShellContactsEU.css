@@ -1,0 +1,131 @@
+:host .setCombobox{
+    --lwc-heightInput: 40px;
+    --lwc-borderRadiusMedium:2px;
+    --slds-c-input-color-border: rgba(0, 0, 0, 0.15);
+    width: 300px;
+    
+}
+:host {
+    display: table-cell;
+}
+.mtb36{
+    margin-top:36px;
+    margin-bottom:24px;
+}
+
+.mb24{
+    
+    margin-bottom:24px;
+}
+.mtb24{
+    margin-top: 24px;
+    margin-bottom:24px;
+}
+
+.mb16{
+    margin-bottom:16px;
+
+}
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+
+}
+
+.orderTitle p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    font-family: SFProText;
+}
+
+.setTableVertical .slds-table{
+    background: #ffffff !important;
+}
+
+.setTableVertical{
+    background: #ffffff;
+    border-radius: 0px 0px 2px 2px;
+    
+
+}
+
+.setTableVertical table thead tr th{
+    padding: 15px 7px;
+    height: 48px;
+    color: #404040;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProTextBold; 
+
+}
+
+.setTableVertical table tbody{
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom:1px solid rgba(0, 0, 0, 0.15);
+}
+
+.setTableVertical table tbody tr{
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+
+
+.setTableVertical table tbody tr td{
+    padding: 10px 7px;
+    color: #404040;
+    height: 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText;
+    white-space: normal;
+    word-break: break-word;
+    
+
+}
+
+.setTableVertical table thead tr th:first-child, .setTableVertical table tbody tr td:first-child{
+    padding-left: 15px;
+}
+.setTableVertical table thead tr th:last-child, .setTableVertical table tbody tr td:last-child{
+    padding-right: 15px;
+    
+}
+
+.boldTd{
+    color: #404040;
+    font-weight: 700 !important;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProTextBold; 
+    white-space: normal;
+
+}
+
+.setPadding{
+    padding:0px 12px;
+    
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.setCombobox  .slds-form-element__label{
+
+    color: #404040;
+    font-weight: 700 !important;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProTextBold; 
+
+}

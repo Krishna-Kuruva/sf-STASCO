@@ -1143,7 +1143,14 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>RV_MaterialNameList</shortDescription>
-        <value>000000000400001685,000000000400002410,000000000400001637,000000000400001986,000000000400003805,000000000400002484,000000000400002498,000000000400002390</value>
+        <value>000000000400001685,000000000400002410,000000000400001637,000000000400001986,000000000400003805,000000000400002484,000000000400002498,000000000400002390,000000000400012162</value>
+    </labels>
+    <labels>
+        <fullName>RV_MaterialName12162</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_MaterialName12162</shortDescription>
+        <value>000000000400012162</value>
     </labels>
     <labels>
         <fullName>RV_MaterialName1637</fullName>
@@ -1243,6 +1250,13 @@
         <protected>false</protected>
         <shortDescription>RV_OLFInactiveDateHelptext</shortDescription>
         <value>To delete an existing OLF Connection Inactivation scheduler, please click on the &quot;Edit&quot; button and remove the existing values from &quot;Date&quot; and &quot;Time&quot; fields and &quot;Save&quot; it.</value>
+    </labels>
+    <labels>
+        <fullName>RV_PermissionSetList</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RV_PermissionSetList</shortDescription>
+        <value>RV_DI</value>
     </labels>
     <labels>
         <fullName>RV_RBOB_today_8_00_o_clock</fullName>
@@ -1494,6 +1508,666 @@
         <protected>false</protected>
         <shortDescription>Stuttgart</shortDescription>
         <value>D102</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Additional_Comments</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Additional Comments</shortDescription>
+        <value>Additional Comments:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ApprovalLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ApprovalLabel</shortDescription>
+        <value>Approval</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Approved_Mod_Can_Msg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Approved Mod Can Msg</shortDescription>
+        <value>Order cannot resend. Please approve/reject Order before resending the order</value>
+    </labels>
+    <labels>
+        <fullName>TCP_BatchJobOrderAlertHeaderText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_BatchJobOrderAlertHeaderText</shortDescription>
+        <value>The automated order check identified orders with a status needing immediate attention.&lt;br&gt;&lt;/br&gt;
+Sent Failed – the sending failed due to an issue &lt;/br&gt;
+No GSAP Response – the order has been sent but no GSAP response has been received.
+&lt;/br&gt;&lt;/br&gt;
+Please use ‘Resend Order’ capability to reprocess these failed order(s).  &lt;/br&gt;</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CIPM_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP CIPM URL</shortDescription>
+        <value>https://stasco--tcpqa2.sandbox.my.site.com/tradingandsupply/services/auth/sso/CIPM</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CS_Account_Mapping</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP CS Account Mapping</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.lightning.force.com/sfc/servlet.shepherd/document/download/0693H000001n1ooQAA?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CS_User_Creation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP CS User Creation</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.lightning.force.com/sfc/servlet.shepherd/document/download/0693H000001n1pCQAQ?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CS_User_Guide</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP CS User Guide</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.lightning.force.com/sfc/servlet.shepherd/document/download/0693H000001n01QQAQ?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CancellationReqLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CancellationReqLabel</shortDescription>
+        <value>Cancellation Requests</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Cancellation_OrderDetails</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Cancellation_OrderDetails</shortDescription>
+        <value>Cancelled Order Details</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CancelledOrderLabel</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CancelledOrderLabel</shortDescription>
+        <value>Cancelled Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Cancelled_By</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Cancelled By</shortDescription>
+        <value>Cancelled By:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Cancelled_Date</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Cancelled Date</shortDescription>
+        <value>Cancelled Date:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Change_requested</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Change requested</shortDescription>
+        <value>Change requested:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Chemical_GSAP_P_31</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Chemical GSAP P-31</shortDescription>
+        <value>Chemical GSAP P-31</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Comment</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Comment</shortDescription>
+        <value>Comment :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Comment_recorded_Description</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Comment - recorded Description</shortDescription>
+        <value>Comment - recorded Description:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Company</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Company</shortDescription>
+        <value>Company :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Created_By</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Created By</shortDescription>
+        <value>Created By:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Created_On</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Created On</shortDescription>
+        <value>Created On:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CurrentOrderCULabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CurrentOrderCULabel</shortDescription>
+        <value>Current Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CurrentOrderLabel</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CurrentOrderLabel</shortDescription>
+        <value>My Current</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CurrentOrderLineInfo</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CurrentOrderLineInfo</shortDescription>
+        <value>Current line items in this order are :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Current_value</fullName>
+        <categories>Used in VF page</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Current_value</shortDescription>
+        <value>Current:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_CustomerPO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_CustomerPO</shortDescription>
+        <value>Customer PO:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Customer_PO</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Customer PO</shortDescription>
+        <value>Customer PO:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Customer_name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Customer name</shortDescription>
+        <value>Customer name:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Deliver_to</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Deliver to</shortDescription>
+        <value>Deliver to:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Delivery_Date</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Delivery Date</shortDescription>
+        <value>Delivery/Collection date</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Delivery_terms</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Delivery terms</shortDescription>
+        <value>Delivery terms:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Description</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Description</shortDescription>
+        <value>Description:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Disclaimer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Disclaimer</shortDescription>
+        <value>&lt;p&gt;Shell companies have their own separate identities but in this web site SCL may sometimes use &quot;Shell&quot;, &quot;group&quot;, &quot;we&quot; or &quot;us&quot; when referring to Shell companies in general or where no useful purpose is served by identifying any particular Shell company. The expression &quot;Shell Chemicals&quot; refers to the Shell companies engaged in chemicals businesses.&lt;/p&gt; &lt;br/&gt;
+                     &lt;ul&gt;
+                        &lt;li&gt;This web site may include links to non-Shell (&quot;external&quot;) web sites. There is no responsibility on our part for the external web site concerned. These links are provided in order to help you find relevant web sites, services and/or products that may be of interest to you. It is your responsibility to decide whether any services and/or products available through any of these web sites are suitable for your purposes. Shell is not responsible for the owners or operators of any of these web sites or for any goods or services they supply nor for the content of their web sites.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_EU_Guide</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP EU Guide</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.my.site.com/tradingandsupply/sfc/servlet.shepherd/document/download/0693H000001n01LQAQ?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Email</shortDescription>
+        <value>Email :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_FirstName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_FirstName</shortDescription>
+        <value>First Name :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_From_Email_Address</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP From Email Address</shortDescription>
+        <value>TR TCP-do-not-reply SIETCO-STO/PE5</value>
+    </labels>
+    <labels>
+        <fullName>TCP_GSAPOrderProcessedMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_GSAPOrderProcessedMessage</shortDescription>
+        <value>Resending Order Record is not allowed due to GSAP status: Processed</value>
+    </labels>
+    <labels>
+        <fullName>TCP_GsapOrderAlreadySentMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_GsapOrderAlreadySentMessage</shortDescription>
+        <value>Resending Order Record is not allowed due to GSAP status: Already Sent</value>
+    </labels>
+    <labels>
+        <fullName>TCP_GsapOrderResentMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_GsapOrderResentMessage</shortDescription>
+        <value>Resending Order Record is not allowed due to GSAP status: Already Resent</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Inquiry_recorded_Description</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Inquiry - recorded Description</shortDescription>
+        <value>Inquiry - recorded Description:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_InvalidDateError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_InvalidDateError</shortDescription>
+        <value>The From date must be Equal to or Earlier than the To date.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Item</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Item</shortDescription>
+        <value>S. No</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Item_instructions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Item instructions</shortDescription>
+        <value>Instructions</value>
+    </labels>
+    <labels>
+        <fullName>TCP_LastName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_LastName</shortDescription>
+        <value>Last Name :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_LineItemLeftInfo</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_LineItemLeftInfo</shortDescription>
+        <value>Line Items remaining in this order are :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_LineItemMaxValueError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_LineItemMaxValueError</shortDescription>
+        <value>The maximum number of line items has been reached: 30.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_LineItemMinValueError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_LineItemMinValueError</shortDescription>
+        <value>The minimum number of line items to be copied should be 1.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_MinCharSearchError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_MinCharSearchError</shortDescription>
+        <value>Please enter at least 3 characters for &apos;Search&apos; to display the result.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Mode_of_transport</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Mode of transport:</shortDescription>
+        <value>Mode of transport:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ModificationOrCancelLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ModificationOrCancelLabel</shortDescription>
+        <value>Modification/</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ModifiedOrdersLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ModifiedOrdersLabel</shortDescription>
+        <value>Modified Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Modified_By</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Modified By</shortDescription>
+        <value>Modified By:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Modified_Date</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Modified Date</shortDescription>
+        <value>Modified Date:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Modify_Order</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Modify_Order</shortDescription>
+        <value>Order Modification Details</value>
+    </labels>
+    <labels>
+        <fullName>TCP_NO_CUSTOMER_DATA</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP NO CUSTOMER DATA</shortDescription>
+        <value>No Customer found. Please contact your Customer Center Representative for assistance.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_NO_DELIVERY_TO_DATA</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP NO DELIVERY TO DATA</shortDescription>
+        <value>No Delivery to found. Please contact your Customer Center Representative for assistance.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_NO_INVOICE_TO_DATA</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP NO INVOICE TO DATA</shortDescription>
+        <value>No Invoice to found. Please contact your Customer Center Representative for assistance.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_NO_PRODUCT_DATA</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP NO PRODUCT DATA</shortDescription>
+        <value>No Product found. Please contact your Customer Center Representative for assistance.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_New_Value</fullName>
+        <categories>Used in VF page</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_New_Value</shortDescription>
+        <value>New:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_NoDataFilterError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_NoDataFilterError</shortDescription>
+        <value>No Data found, please refine your search and/or Filter Criteria.</value>
+    </labels>
+    <labels>
+        <fullName>TCP_OrderLabel</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_OrderLabel</shortDescription>
+        <value>Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Order_Details</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Order Details</shortDescription>
+        <value>Order Details</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Ordered_By</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Ordered By</shortDescription>
+        <value>Ordered By:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Ordered_On</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Ordered On</shortDescription>
+        <value>Ordered Date:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Other_instructions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Other instructions</shortDescription>
+        <value>Other instructions:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Phone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Phone</shortDescription>
+        <value>Phone :</value>
+    </labels>
+    <labels>
+        <fullName>TCP_PlaceOrderLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_PlaceOrderLabel</shortDescription>
+        <value>Place Order</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Place_Order_Video</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Place Order Video</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.my.site.com/tradingandsupply/sfc/servlet.shepherd/document/download/0693H000001n01aQAA?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Portal_Tour_Video</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Portal Tour Video</shortDescription>
+        <value>https://stasco--tcpqa.sandbox.my.site.com/tradingandsupply/sfc/servlet.shepherd/document/download/0693H000001n01VQAQ?operationContext=S1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Portal_order_number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Portal order number</shortDescription>
+        <value>Portal order number:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_PreviousOrdersLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_PreviousOrdersLabel</shortDescription>
+        <value>Previous Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Product</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Product</shortDescription>
+        <value>Product:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Product_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Product Number</shortDescription>
+        <value>Product Number</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Product_code</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Product code</shortDescription>
+        <value>Product Code</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Product_name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Product name</shortDescription>
+        <value>Product name</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Quantity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Reason_for_Deletion</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Reason for Deletion</shortDescription>
+        <value>Reason for Deletion:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_RecentOrdersLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_RecentOrdersLabel</shortDescription>
+        <value>Recent Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_RejectLabel</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_RejectLabel</shortDescription>
+        <value>Rejected/</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ResendOrderDraftMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ResendOrderDraftMessage</shortDescription>
+        <value>Order cannot be resent as it is in Draft/ Submitted/ Rejected/ Cancelled stage</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ResentOrderMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ResentOrderMessage</shortDescription>
+        <value>Order Record has been resent</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ReviewOrApprovalLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ForReviewLabel</shortDescription>
+        <value>For Review/</value>
+    </labels>
+    <labels>
+        <fullName>TCP_SavedOrderLabel</fullName>
+        <categories>TCP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_SavedOrderLabel</shortDescription>
+        <value>Saved Orders</value>
+    </labels>
+    <labels>
+        <fullName>TCP_ShellContactName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_ShellContactName</shortDescription>
+        <value>Shell Trading &amp; Supply contact name:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Shell_Reference_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Shell Reference Number</shortDescription>
+        <value>Shell Reference Number:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Site_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Site_Name</shortDescription>
+        <value>Trading_Supply_Chemical_Portal1</value>
+    </labels>
+    <labels>
+        <fullName>TCP_TandC</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP TandC</shortDescription>
+        <value>&lt;p&gt;Terms and conditions for use of the Shell Chemicals Customer Portal &lt;/p&gt;&lt;br/&gt;
+
+&lt;p&gt;Welcome to the Shell Chemicals Customer Portal (www.chemicals-customer-portal.shell.com) This web site is owned and operated by Shell Chemicals Limited (&quot;SCL&quot;), a company incorporated in England and Wales with registered number 00228931 whose registered office is Shell Centre, London SE1 7NA. The Shell Chemicals Customer Portal is an Internet-based service for customers of Shell chemicals companies. &lt;/p&gt;
+&lt;br/&gt;
+
+&lt;p&gt;Visitors to this web site are bound by the following terms and conditions so please read these carefully before continuing.&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>TCP_Third_Party</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP_Third Party</shortDescription>
+        <value>Third Party</value>
+    </labels>
+    <labels>
+        <fullName>TCP_order_name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP order name</shortDescription>
+        <value>My order name:</value>
+    </labels>
+    <labels>
+        <fullName>TCP_terms_Liability</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TCP terms Liability</shortDescription>
+        <value>&amp;nbsp;Shell does not give or enter into any conditions, warranties or other terms or representations in relation to any of these web sites nor accept any liability in relation to any of these web sites (including any liability arising out of any claim that the content of any external web site infringes the intellectual property rights of any third party).&lt;/li&gt;
+                        &lt;li&gt;Although SCL has taken security measures to protect against the loss, misuse and unauthorized alteration of the information included or posted in the web site,&lt;/li&gt;
+&lt;/ui&gt;</value>
     </labels>
     <labels>
         <fullName>TYPE_OPTION_NOT_SELECTED</fullName>

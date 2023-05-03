@@ -1,0 +1,165 @@
+.mb24{
+    margin-bottom: 24px;
+}
+
+.mb36{
+    margin-bottom: 36px;
+}
+
+.mt36{
+    margin-top: 36px;
+}
+
+.setBreadcrumbs ol li {
+    font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #404040;
+font-family: SFProText ;
+}
+
+.setBreadcrumbs ol li a{
+color: #404040;
+margin-right: 5px;
+    margin-left: 5px;
+}
+
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+
+}
+
+
+.outer-viewDocumentsSidebar{
+    background-color: #fff;
+    height: auto;
+    position: relative;
+    margin-right: 10px;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 10%), 0px 2px 5px rgb(0 0 0 / 10%);
+}
+
+.viewDocumentsSidebar{
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+}
+
+.iframeBox{
+    background-color: #fff;
+    height: auto;
+    position: relative;
+    padding: 10px;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 10%), 0px 2px 5px rgb(0 0 0 / 10%);
+
+
+}
+
+iframe {
+    min-height: 675px;
+}
+
+.backBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.mr8{
+    margin-right: 8px;
+}
+
+
+ /*---------popup css----------*/
+
+ .setModal .slds-modal__container>.slds-modal__content:last-child, .setModalBody{
+    border-radius: 0px !important;
+}
+.setModalBody{
+    background-color: rgba(255, 255, 255, 0.97) !important;
+}
+.setModal .slds-modal__close{
+    top: 40px;
+right: 10px;
+}
+:host .setModal .slds-icon{
+    --sds-c-icon-color-foreground:#000000 !important;
+    --lwc-colorTextIconInverse:#000000 !important;
+}
+
+.setModalBody .modalHeading{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #404040;
+    margin-bottom: 8px;
+    margin-top: 10px;
+
+}
+
+.setModalBody p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText;
+
+}
+
+.modalBtn{
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.yellowBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold !important;
+    background-color: #FBCF09;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid #FBCF09 !important;
+}
+
+.borderBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold !important;
+    background-color: rgba(255, 255, 255, 0.97) !important;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.15)!important;
+    margin-left: 16px !important;
+}
+
+.cancelBtn {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    height: 40px;
+    font-family: SFProTextBold;
+    border: none;
+}
+
+
+
+
+/*---------popup css----------*/

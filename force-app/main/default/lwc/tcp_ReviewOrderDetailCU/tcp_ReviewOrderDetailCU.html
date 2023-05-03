@@ -1,0 +1,560 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+             </lightning-spinner>
+        </template>
+    </div>
+<!-- ================ Breadcrumbs Section Start ============= -->
+
+   <div class="slds-size_12-of-12 mb24">
+    <div class="flex slds-grid">
+        <div class="breadcrumbs setBreadcrumbs">
+            <nav role="navigation" aria-label="Breadcrumbs">
+                <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                    <li class="slds-breadcrumb__item">
+                        <template if:true={backToDashboard}>
+                            <a href="javascript:void(0)" onclick={handleBack} aria-label="Go to dashboard link">Dashboard</a>
+                        </template>
+                        <template if:false={backToDashboard}>
+                            <a href="javascript:void(0)" onclick={handleBack} aria-label="Go to Order History">Order History</a>
+                        </template>
+                    </li>
+                    <li class="slds-breadcrumb__item">
+                        <a href="javascript:void(0)" aria-label="Review Order Details page ">Review Order Details</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        
+    </div>
+   </div>
+ <!-- ================ Breadcrumbs Section Start ============= -->
+
+<!-- ================ Place order text ============= -->
+
+    <div class="slds-size_9-of-12 mb36">
+        <div class="orderTitle">
+        <h1>Web Order Number : {orderDetailList.orderNumber}</h1>
+        </div>
+    </div>
+
+<!-- ================ Place order text ============= -->
+
+
+    <div class="slds-size_12-of-12 ">
+       <div class="slds-grid ">
+           <div class="slds-size_12-of-12">
+               <div class="setTableVertical">    
+               <table class="slds-table " style="width:100%;border-collapse: collapse;" aria-label="Review Order Details table">
+                    <thead aria-hidden="true" class="slds-hide">
+                        <tr class="noBorder">
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                   <tbody>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Customer Name</td>
+                           <td>{orderDetailList.soldToNameWithAddr}</td>
+                       </tr>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Delivery To</td>
+                           <td>{orderDetailList.shipToNameWithAddr}</td>
+                       </tr>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Invoice To</td>
+                           <td>{orderDetailList.billToNameWithAddr}</td>
+                       </tr>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Order Name</td>
+                           <td>{orderDetailList.name}</td>
+                       </tr>
+                       <tr>
+                            <td class="boldTd" style="width:25%">Status</td>
+                            <td>{orderDetailList.status}</td>
+                       </tr>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Customer PO</td>
+                           <td>{orderDetailList.poNumber}</td>
+                       </tr>
+                       <tr>
+                        <td class="boldTd" style="width:25%">
+                            <span class="slds-assistive-text" aria-label="Shell Ref Number">Shell Ref Number</span>
+                            <span aria-hidden="true"> Shell Ref No.</span></td>
+                        <td>{orderDetailList.salesordernumber}</td>
+                       </tr>
+                       <tr>
+                        <td class="boldTd" style="width:25%">Mode of Transport</td>
+                        <td>{orderDetailList.modeOfTransport}</td>
+                       </tr>
+                       <tr>
+                           <td class="boldTd" style="width:25%">Delivery Terms</td>
+                           <td>{orderDetailList.deliveryTerms}</td>
+                       </tr>
+                       <tr>
+                        <td class="boldTd" style="width:25%">Other Instructions</td>
+                        <td>{orderDetailList.otherInstructions}</td>
+                       </tr>
+
+                       <template if:false={chevronrightShow}>
+                        <tr>
+                            <td class="boldTd" style="width:25%">Remarks</td>
+                            <td colspan="3">{orderDetailList.remarks}</td>
+                        </tr>
+                        </template>
+                   </tbody>
+               </table>       
+               </div>  
+           </div>
+       </div>
+   </div>
+    <div class="slds-size_12-of-12 ">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+                <div class="setTableVertical">
+                    <table class="slds-table " style="width:100%;table-layout: fixed;border-collapse: collapse;" aria-label="Review Order Details table">
+                        <thead aria-hidden="true" class="slds-hide">
+                            <tr class="noBorder">
+                                <th></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Ordered By</td>
+                                <td>{orderDetailList.orderedBy}</td>
+                                <td class="boldTd" style="width:25%">Ordered Date</td>
+                                <td>{orderDetailList.orderedDate}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="boldTd" style="width:25%">Modified By</td>
+                                <td>{orderDetailList.modificationBy}</td>
+                                <td class="boldTd" style="width:25%">Modified Date</td>
+                                <td>{orderDetailList.modificationDate}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="boldTd" style="width:25%">Cancelled By</td>
+                                <td>{orderDetailList.cancellationBy}</td>
+                                <td class="boldTd" style="width:25%">Cancelled Date</td>
+                                <td>{orderDetailList.cancellationDate}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="slds-size_12-of-12 mb24">
+    <template if:true={chevronrightShow}>
+    <div class="slds-grid ">
+        <div class="slds-size_12-of-12">
+            <div class="setTableVertical">
+                <table  class="slds-table " style="width:100%;table-layout: fixed;border-collapse: collapse;" aria-label="Review Order Details table">
+                    <thead aria-hidden="true" class="slds-hide">
+                        <tr class="noBorder">
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="boldTd" style="width:25%">Fulfilled By</td>
+                            <td>{orderDetailList.fullfilledBy}</td>
+                            <td class="boldTd" style="width:25%">Late Order</td>
+                            <td>{orderDetailList.isLateOrderVal}</td>
+                        </tr>
+                        <tr>
+                            <td class="boldTd" style="width:25%">Rush Order</td>
+                            <td>{orderDetailList.isRushOrderVal}</td>
+                            <td class="boldTd" style="width:25%">Last Minute Changes</td>
+                            <td>{orderDetailList.isLastMinuteChangeVal}</td>
+                        </tr>
+                        <tr>
+                            <td class="boldTd" style="width:25%">Reviewed By</td>
+                            <td>{orderDetailList.reviewedBy}</td>
+                            <td class="boldTd" style="width:25%">Reviewed Date/Time</td>
+                            <td>{orderDetailList.reviewedDateTime}</td>
+                        </tr>
+                        <tr>
+                            <td class="boldTd" style="width:25%">Remarks</td>
+                            <td colspan="3">{orderDetailList.remarks}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </template>
+</div>
+
+
+
+<div class="mb24 mt36 setScrollbarTable">
+    <div class={tableClassName}>
+        <div class="slds-scrollable_y" style="height:100%;">
+
+            <table
+                class="slds-table slds-table_cell-buffer slds-table--header-fixed setInputTable"
+                aria-label="Review Order Details table " style="table-layout: fixed;">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col" style="width:6%">
+                            <div class="slds-assistive-text" aria-label="Serial Number">Serial Number</div>
+                            <div class="slds-truncate slds-cell-fixed"  aria-hidden="true" title="Serial Number">
+                                S. No
+                            </div>
+                        </th>
+                        <th class="" scope="col" style="width:20%">
+                            <div class="slds-truncate slds-cell-fixed" title="Product Name">
+                            Product Name
+                            </div>
+                        </th>
+                        <th style="width:9%" class="" scope="col">
+                            <div class="slds-truncate slds-cell-fixed" title="Quantity">
+                                Quantity
+                            </div>
+                        </th>
+                        <th style="width:9%" class="" scope="col">
+                            <div class="slds-truncate slds-cell-fixed" title="Unit">
+                                Unit
+                            </div>
+                        </th>
+                        <th style="width:20%" class="" scope="col">
+                            <div class="slds-truncate slds-cell-fixed" title="Delivery/Collection Date">
+                                Delivery/Collection Date
+                            </div>
+                        </th>
+                        <th style="width:15%" class="" scope="col">
+                            <div class="slds-assistive-text" aria-label="Shell Contract Number">Shell Contract Number</div>
+                            <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Shell Contract Number">
+                                Shell Contract No
+                            </div>
+                        </th>
+                        <th style="width:21%" class="" scope="col">
+                            <div class="slds-truncate slds-cell-fixed" title="Instructions">
+                                Instructions
+                            </div>
+                        </th>
+                        
+                    </tr> 
+                </thead>
+                <tbody>
+                    <template for:each ={ordLineItemList} for:item="product">
+                        <tr key={product.Id} class="slds-hint-parent">
+                            <td style="width:6%">
+                                <div class="">
+                                    <template if:true={chevronrightShow}>
+                                        <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                            alternative-text="chevronright Button" title="chevronright"
+                                            onclick={showCollapseRow} size="xx-small" class="mr2">
+                                        </lightning-icon>
+                                    </template>
+                                    {product.sno}
+                                </div>
+                            </td>
+                            <td style="width:20%">
+                                <div class="tooltip">
+                                    {product.Material_Name__c}
+                                    <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                </div>
+                            </td>
+                            <td style="width:9%">
+                                <div class="">
+                                    {product.Quantity__c}
+                                </div>
+                            </td>
+                            <td style="width:9%">
+                                <div class="">
+                                    {product.Unit__c}
+                                </div>
+        
+                            </td>
+                            <td style="width:20%">
+                                <div class="">
+                                    <lightning-formatted-date-time class="textCapital" value={product.Delivery_Collection_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                   
+                                </div>
+                            </td>
+                            <td style="width:15%">
+                                <div class="">
+                                    {product.Contract_No__c}
+                                </div>
+                            </td>
+                            <td style="width:21%">
+                                <div class="">
+                                    {product.Other_Instruction__c}
+                                </div>
+                            </td>
+                            
+                        </tr>
+                        <tr key={product.Id} style="visibility:collapse;height:0px !important" class={product.Id}>
+                            <td colspan="7">
+                                <table class=" slds-table--fixed-layout" aria-label="Review Order Details table">
+                                    <thead aria-hidden="true" class="slds-hide">
+                                        <tr class="noBorder">
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="noBorder">
+                                        <td class="boldTd">Dispatch Date</td>
+                                        <td>{product.GSAP_Dispatch_Date__c}</td>
+                                    </tr>
+                                    <tr class="noBorder">
+                                        <td class="boldTd">Bol/Delivery</td>
+                                        <td>{product.GSAP_Bol_Delivery__c}</td>
+                                        <td class="boldTd">Mode of Transport ID</td>
+                                        <td>{product.GSAP_Mode_of_Transport_ID__c}</td>
+                                    </tr>
+                                    <tr class="noBorder">
+                                        <td class="boldTd">Goods Issue Date</td>
+                                        <td>{product.GSAP_Goods_Issue_Date__c}</td>
+                                        <td class="boldTd">Goods Issue</td>
+                                        <td>{product.GSAP_Goods_Issue_value__c}</td>
+                                    </tr>
+                                    <tr class="noBorder">
+                                        <td class="boldTd">Goods Issue Unit</td>
+                                        <td>{product.GSAP_Goods_Issue_Unit__c}</td>
+                                        <td class="boldTd">Goods Issue Status</td>
+                                        <td>{product.GSAP_Goods_Issue_Status__c}</td>
+                                    </tr>
+                                   </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+
+
+                    </template>       
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+
+<!-- Review Approval/Rejection Start-->
+<template if:true={showReviewOptions}>
+    <div class="slds-size_12-of-12 mtb36">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+
+                <div class="slds-size_11-of-12">
+                    <div class="slds-grid">
+
+                        <div class="slds-size_11-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small">
+                                <lightning-radio-group name="radioGroup1"
+                                    label="Order Approval"
+                                    options={options}
+                                    value={decision}
+                                    class="customRadioCls"
+                                    onchange={handleDecision}
+                                    type="radio"></lightning-radio-group>
+                            </div>
+                            
+                        </div>
+                    </div>   
+                    
+                    <div class="slds-grid">
+
+                        <div class="slds-size_5-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small">
+                                <lightning-radio-group name="radioGroup2"
+                                    label="To be Fulfilled by"
+                                    options={options1}
+                                    value={orderParty}
+                                    onchange={handleParty}
+                                    class="customRadioCls"
+                                    disabled={isDisableParty}
+                                    type="radio">
+                                </lightning-radio-group>
+                            </div>    
+                        </div>
+
+                        <div class="slds-size_7-of-12 setPadding">
+
+                             <div class="slds-p-vertical_x-small">
+                                <lightning-checkbox-group name="Checkbox Group"
+                                label="Select the order priority (Optional)"
+                                options={options2}
+                                value={orderPriority}
+                                class="customRadioCls"
+                                disabled={isDisableParty}
+                                onchange={handleOrderPriority}></lightning-checkbox-group>
+                            </div>
+                            
+                        </div>
+                    </div>    
+                    
+                    <div class="flex slds-grid">
+                        <div class="slds-size_11-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small setInput1">
+                                <lightning-textarea name="input3" maxlength="900" label="Remarks (Optional)" placeholder="" onchange={handleRemarks} value={remarks}></lightning-textarea>
+                                <div class="messageLine slds-float_right "><span>{remarksCount}</span><span>/900</span></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slds-m-vertical_xx-small">
+        <button class="slds-button slds-button_neutral backBtn mr16"  onclick={handleBack} aria-label="gray border color with back icon Back"><lightning-icon icon-name="utility:back"  title="back" size="xx-small" class="mr8 iconColor"></lightning-icon> Back</button>
+    
+        <template if:true={enableSubmit}>
+            <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleSubmit} aria-label="yellow background color Submit"> Submit</button>
+        </template>
+        <template if:false={enableSubmit}>
+            <button class="slds-button slds-button_brand borderBtnDisabel mr16" aria-label="Disabel Submit"> Submit</button>
+        </template>
+    </div>
+</template>
+<!-- Review Approval/Rejection End-->
+
+<!-- Modification Approval/Rejection Start-->
+<template if:true={showModificationOptions}>
+    <div class="slds-size_12-of-12 mtb36">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+
+                <div class="slds-size_11-of-12">
+                    <div class="slds-grid">
+
+                        <div class="slds-size_7-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small">
+                                <lightning-radio-group name="radioGroup1"
+                                    label="Order Modification Request"
+                                    options={modifyOptions}
+                                    value={modifyDecision}
+                                    class="customRadioCls"
+                                    onchange={handleModifyDecision}
+                                    type="radio"></lightning-radio-group>
+                            </div>
+                            
+                        </div>
+                    </div>   
+                    <div class="slds-grid">
+                        <div class="slds-size_7-of-12 setPadding">
+
+                             <div class="slds-p-vertical_x-small">
+                                <lightning-checkbox-group name="Checkbox Group"
+                                label="Select the order priority (Optional)"
+                                options={options2}
+                                value={modifyOrderPriority}
+                                class="customRadioCls"
+                                disabled={isDisableModifyPriority}
+                                onchange={handleModifyOrderPriority}></lightning-checkbox-group>
+                            </div>
+                            
+                        </div>
+                    </div>  
+                    
+                    <div class="flex slds-grid">
+                        <div class="slds-size_11-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small setInput1">
+                                <lightning-textarea name="input3" maxlength="900" label="Remarks" placeholder="" onchange={handleModifyRemarks} value={modifyCommopsRemarks}></lightning-textarea>
+                                <div class="messageLine slds-float_right "><span>{modifyCommopsRemarksCount}</span><span>/900</span></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slds-m-vertical_xx-small">
+        <button class="slds-button slds-button_neutral backBtn mr16"  onclick={handleBack} aria-label="gray border color with back icon Back"><lightning-icon icon-name="utility:back"  title="back" size="xx-small" class="mr8 iconColor"></lightning-icon> Back</button>
+    
+        <template if:true={enableModifySubmit}>
+            <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleModificationSubmit} aria-label="yellow background color Submit"> Submit</button>
+        </template>
+        <template if:false={enableModifySubmit}>
+            <button class="slds-button slds-button_brand borderBtnDisabel mr16" aria-label="Disabel Submit"> Submit</button>
+        </template>
+    </div>
+</template>
+<!-- Modification Approval/Rejection End-->
+
+<!-- Cancellation Approval/Rejection Start-->
+<template if:true={showCancellationOptions}>
+    <div class="slds-size_12-of-12 mtb36">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+
+                <div class="slds-size_11-of-12">
+                    <div class="slds-grid">
+
+                        <div class="slds-size_7-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small">
+                                <lightning-radio-group name="radioGroup1"
+                                    label="Order Cancellation Request"
+                                    options={cancelOptions}
+                                    value={cancelDecision}
+                                    class="customRadioCls"
+                                    onchange={handleCancelDecision}
+                                    type="radio"></lightning-radio-group>
+                            </div>
+                            
+                        </div>
+                    </div>   
+                                        
+                    <div class="flex slds-grid">
+                        <div class="slds-size_11-of-12 setPadding">
+                            <div class="slds-p-vertical_x-small setInput1">
+                                <lightning-textarea name="input3" maxlength="900" label="Remarks" placeholder="" onchange={handleCancelRemarks} value={cancelCommopsRemarks}></lightning-textarea>
+                                <div class="messageLine slds-float_right "><span>{cancelCommopsRemarksCount}</span><span>/900</span></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slds-m-vertical_xx-small">
+        <button class="slds-button slds-button_neutral backBtn mr16"  onclick={handleBack} aria-label="gray border color with back icon Back"><lightning-icon icon-name="utility:back"  title="back" size="xx-small" class="mr8 iconColor"></lightning-icon> Back</button>
+    
+        <template if:true={enableCancelSubmit}>
+            <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleCancelSubmit} aria-label="yellow background color Submit"> Submit</button>
+        </template>
+        <template if:false={enableCancelSubmit}>
+            <button class="slds-button slds-button_brand borderBtnDisabel mr16" aria-label="Disabel Submit"> Submit</button>
+        </template>
+    </div>
+</template>
+<!-- Cancellation Approval/Rejection End-->
+
+    <!-- modal start -->
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+            <div class="setModal slds-modal__container">
+                <!-- modal header start -->
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                    <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-1">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
+                    <p>There seems to be a data mapping/reference mismatch.</p>
+                </div> 
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+<!-- modal end -->
+
+</template>

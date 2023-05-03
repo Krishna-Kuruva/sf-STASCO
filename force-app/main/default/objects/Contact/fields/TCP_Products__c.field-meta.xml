@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_Products__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>To select products for CommOps user</inlineHelpText>
+    <label>TCP Products</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Glycol</fullName>
+                <default>false</default>
+                <label>Glycol</label>
+            </value>
+            <value>
+                <fullName>styrene</fullName>
+                <default>false</default>
+                <label>styrene</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

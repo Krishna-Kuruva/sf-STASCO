@@ -1,0 +1,4 @@
+<apex:page controller="TCP_GSAPDataService" showHeader="false" sidebar="false">
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'self' blob:; style-src 'self'; frame-src 'self'"></meta> -->
+<apex:iframe src="data:application/pdf;base64,{!PDFURL}" ></apex:iframe>
+</apex:page>

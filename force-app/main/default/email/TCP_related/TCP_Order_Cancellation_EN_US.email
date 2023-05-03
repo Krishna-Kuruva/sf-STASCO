@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Order Cancellation {!If(relatedTo.TCP_Order_Status__c='Cancelled','Approved','Rejection')} {!relatedTo.OrderNumber}" recipientType="Contact" relatedToType="Order">
+<messaging:HTMLEmailBody >
+<c:TCP_OrderCancellationCommops Record_Id="{!relatedTo.Id}" Contact_Name="{!recipient.Firstname}" />
+</messaging:HTMLEmailBody>
+</messaging:emailTemplate>

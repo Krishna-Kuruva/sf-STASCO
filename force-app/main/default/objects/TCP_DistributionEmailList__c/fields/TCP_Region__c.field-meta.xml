@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_Region__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Enter values in similar format as Sales Area&apos;s Sales Org</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter values in similar format as Sales Area&apos;s Sales Org</inlineHelpText>
+    <label>TCP Region</label>
+    <length>10</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>
