@@ -4,7 +4,8 @@
     <protected>false</protected>
     <values>
         <field>Callback_URL__c</field>
-        <value xsi:type="xsd:string">https://stasco--uat.sandbox.my.salesforce.com/services/authcallback/APIGEE_Provider</value>
+
+        <value xsi:type="xsd:string">https://stasco.my.salesforce.com/services/authcallback/APIGEE_Provider</value>
     </values>
     <values>
         <field>Consumer_Key__c</field>
@@ -20,7 +21,7 @@
     </values>
     <values>
         <field>Token_URL__c</field>
-        <value xsi:type="xsd:string">https://api-test.shell.com/v1/oauth/token</value>
+        <value xsi:type="xsd:string">https://api.shell.com/v1/oauth/token</value>
     </values>
     <values>
         <field>User_Info_URL__c</field>

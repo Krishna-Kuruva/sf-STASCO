@@ -4164,6 +4164,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SAP_Staging_History__c.RV_SAPSHT_ExternalID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SAP_Staging_History__c.Record_Created_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4340,6 +4345,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SAP_Staging__c.Quantity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SAP_Staging__c.RV_SAPSHT_ExternalID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,27 +1,28 @@
 @isTest
 public class OLF_DashboardApexController_Test {
     /*
-    Version : 0.0
-    Author  : Soumyajit
-    Date    : 03-May-2019
-    Details : Test Class for OLF_DashboardApexController
-    */
+Version : 0.0
+Author  : Soumyajit
+Date    : 03-May-2019
+Details : Test Class for OLF_DashboardApexController
+*/
     @isTest
     public static void doTest()
     {
         Location__c  loc = new Location__c(name='TestLocation');
-        insert loc;       
+        insert loc;
         Id revRcdTypId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Revolution').getRecordTypeId();
         Account  acc1 = new Account(name='TestAccount1',Customer_Type__c = 'Sold To',RecordTypeId = revRcdTypId, Rv_Available_for_OLF__c = true, Rv_Credit_Limit__c=100, Rv_Credit_Available__c=500);
         insert acc1;
         Account  acc2 = new Account(name='TestAccount2',RecordTypeId = revRcdTypId, Rv_Available_for_OLF__c = true);
-        insert acc2;        
+        insert acc2;
+
         Product_Catalogue__c mat = new Product_Catalogue__c(name='TestProduct',Commodity_Grade_L2__c='AGO B0',Level_1__c='AGO',Level_0__c='Gasoil');
         insert mat;
-        
+
         MRC__c  mc = new MRC__c(name='TestMRC',Sold_To__c = acc1.id, Plant__c = loc.id, Product__c=mat.id);
         insert mc;
-        
+
         list<Revolution_Setting__c> revSet = new list<Revolution_Setting__c>();
         Revolution_Setting__c s1 = new Revolution_Setting__c();
         s1.name='OLF Username';
@@ -44,12 +45,12 @@ public class OLF_DashboardApexController_Test {
         s6.name='Lifting Window 4';s6.Value__c='ATP4';s6.Start_Day__c = 46;s6.End_Day__c = 60;s6.Active__c = true;
         revset.add(s6);
         insert revset;
-        
-        OLF_DashboardApexController.global_overrideChecks = true;       
+
+        OLF_DashboardApexController.global_overrideChecks = true;
         //UserActivateButton_Soumyajit_01Aug2019 starts
         Online_User_API_Audit__c onlUsrApiAdt= new Online_User_API_Audit__c(API_Request_Time__c=system.now());
         insert onlUsrApiAdt;
-        
+
         User u=[Select Id from User where Id=:UserInfo.getUserId() limit 1];
         //UserActivateButton_Soumyajit_01Aug2019 ends
         SHT__c shtInsertATP1 = new SHT__c();
@@ -61,12 +62,13 @@ public class OLF_DashboardApexController_Test {
         shtInsertATP1.Tranche__c = 'ATP1';
         shtInsertATP1.SAP_Contract_Number__c = '3231232';
         shtInsertATP1.OLF_Deal_Number__c = '23232222';
-        insert shtInsertATP1;       
+        insert shtInsertATP1;
+
         SAP_Staging__c objSAP = new SAP_Staging__c();
         objSAP.Sent_to_OLF__c = 'Failed';
         objSAP.Deal_Created_Date__c = System.now();
         objSAP.SHTId__c = shtInsertATP1.Id;
-        insert objSAP;       
+        insert objSAP;
         Test.startTest();
         OLF_DashboardApexController.setThresholdPrice('100');	//ICELimit_Soumyajit_27Apr2020
         OLF_DashboardApexController.setSettingsCalled = false;
@@ -86,11 +88,58 @@ public class OLF_DashboardApexController_Test {
         OLF_DashboardApexController.checkUserPermission('RV_OnlineSalesManagement');
         OLF_DashboardApexController.getNextFireTimeOLFSInactivateSch();
         OLF_DashboardApexController.getOlfStagingRecordCount(objSAP.Deal_Created_Date__c,objSAP.Deal_Created_Date__c);
-        OLF_DashboardApexController.retryOlfStagingRecords(objSAP.Deal_Created_Date__c,objSAP.Deal_Created_Date__c);       
+        OLF_DashboardApexController.retryOlfStagingRecords(objSAP.Deal_Created_Date__c,objSAP.Deal_Created_Date__c);
         List<Revolution_Setting__c> objRVSettings = [SELECT ID,Name,Active__c,Start_Day__c,End_Day__c FROM Revolution_Setting__c WHERE Name LIKE 'Lifting Window%'];
         String trancheSetting =  '[{"endDay":14,"isActive":false,"settingID":"' + objRVSettings[0].Id + '","settingName":"Lifting Window 1","settingValue":"ATP1","startDay":1,"startDate":"2022-08-23T06:14:32.166Z","endDate":"2022-09-05T06:14:32.166Z"},{"endDay":28,"isActive":false,"settingID":"' + objRVSettings[1].Id + '","settingName":"Lifting Window 2","settingValue":"ATP2","startDay":15,"startDate":"2022-09-06T06:14:32.166Z","endDate":"2022-09-19T06:14:32.166Z"},{"endDay":45,"isActive":false,"settingID":"' + objRVSettings[2].Id + '","settingName":"Lifting Window 3","settingValue":"ATP3","startDay":29,"startDate":"2022-09-20T06:14:32.166Z","endDate":"2022-10-06T06:14:32.166Z"},{"endDay":60,"isActive":false,"settingID":"' + objRVSettings[3].Id + '","settingName":"Lifting Window 4","settingValue":"ATP4","startDay":46,"startDate":"2022-10-07T06:14:32.166Z","endDate":"2022-10-21T06:14:32.166Z"}]';
         OLF_DashboardApexController.updateTrancheSetting(trancheSetting);
         OLF_DashboardApexController.OLFAutoInactivationScheduleJob(system.now());
-        Test.stopTest();
     }
+
+    /******************************************************************************************************************
+    @Author | Rinkita | Date 14-Dec-2022 : PBI-1616869
+    @MethodName : handleReadOnlyPermissionTest
+    @PurposeMethod :  handleReadOnlyPermissionTest test menthod for OLF_DashboardApexController.handleReadOnlyPermission
+	***********************************************************************************************************************/
+  /*  @isTest
+    public static void handleReadOnlyPermissionTest(){
+        Test.startTest();
+        Profile p = [SELECT Id FROM Profile WHERE Name='Revolution (Platform)'];
+        User revolutionRV_DIUser = new User(Alias = 'standt', Email='adminuser@testorg.com',
+                                       EmailEncodingKey='UTF-8', LastName='Testing',
+                                       LanguageLocaleKey='en_US', LocaleSidKey='en_US',
+                                       ProfileId = p.Id, TimeZoneSidKey='America/Los_Angeles',
+                                       UserName='revolutionPlatDI@testorg.stasco.com');
+        insert revolutionRV_DIUser;
+
+        User revolutionRV_OSMUser = new User(Alias = 'standt', Email='adminuser@testorg.com',
+                                       EmailEncodingKey='UTF-8', LastName='Testing',
+                                       LanguageLocaleKey='en_US', LocaleSidKey='en_US',
+                                       ProfileId = p.Id, TimeZoneSidKey='America/Los_Angeles',
+                                       UserName='revolutionPlatOSM@testorg.stasco.com');
+        insert revolutionRV_OSMUser;
+        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'RV_DI'];
+        PermissionSet ps1 = [SELECT Id FROM PermissionSet WHERE Name = 'RV_OnlineSalesManagement'];
+        if(ps != null){
+            PermissionSetAssignment psa = new PermissionSetAssignment
+                (PermissionSetId = ps.Id, AssigneeId = revolutionRV_DIUser.Id);
+            insert psa;
+        }
+         if(ps1 != null){
+            PermissionSetAssignment psa1 = new PermissionSetAssignment
+                (PermissionSetId = ps1.Id, AssigneeId = revolutionRV_OSMUser.Id);
+            insert psa1;
+        }
+        system.runAs(revolutionRV_DIUser){
+            Boolean hasReadOnlyPermission = OLF_DashboardApexController.handleReadOnlyPermission();
+            system.assertEquals(hasReadOnlyPermission, true);
+        }
+             system.runAs(revolutionRV_OSMUser){
+            Boolean hasReadOnlyPermission = OLF_DashboardApexController.handleReadOnlyPermission();
+            system.assertEquals(hasReadOnlyPermission, false);
+        }
+        Test.stopTest();
+
+    } */
+
+
 }
