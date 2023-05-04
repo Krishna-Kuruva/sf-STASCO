@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>TCP_Place_Order_Confirmation_with_PDF</fullName>
+        <description>TCP Place Order Confirmation with PDF</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>tr-tcp-do-not-reply@shell.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>TCP_related/TCP_ET_Place_Order_Confirmation_with_PDF</template>
+    </alerts>
+</Workflow>
