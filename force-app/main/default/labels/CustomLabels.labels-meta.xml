@@ -1252,13 +1252,6 @@
         <value>To delete an existing OLF Connection Inactivation scheduler, please click on the &quot;Edit&quot; button and remove the existing values from &quot;Date&quot; and &quot;Time&quot; fields and &quot;Save&quot; it.</value>
     </labels>
     <labels>
-        <fullName>RV_PermissionSetList</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>RV_PermissionSetList</shortDescription>
-        <value>RV_DI</value>
-    </labels>
-    <labels>
         <fullName>RV_RBOB_today_8_00_o_clock</fullName>
         <language>en_US</language>
         <protected>false</protected>
