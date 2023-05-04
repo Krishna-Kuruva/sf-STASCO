@@ -3,13 +3,15 @@ public class OLF_SendEmail{
     public static void sendEmailtoCustomer(List<OLFWrapper.MrcPriceWrap> olfEmlWrpLst){
         String emailTemplateLabel = 'DealCreated';
         OLF_EmailTemplate__mdt et = new OLF_EmailTemplate__mdt();
-        List<String> emailTo = new List<String>();
         Set<String> contactEmailSet = new Set<String>();	//EmailNotifyChange_31Jan2020_Soumyajit
-        List<String> emailCC=new List<String>();
         String emailTemplate='';
         String emailSubject='';
         String emailBody =  '';
         String debugLogOn = System.label.OLF_ApexControllerDebugLogOn.toUpperCase();
+        //Added by Surbhi, PBI-1756697
+        Set<String> setToAddress = new Set<String>();            
+        Set<String> setCCAddress = new Set<String>();
+        //Ended by Surbhi, PBI-1756697
         
         try{
             	et = [select EMAIL_TEMPLATE__c
@@ -34,19 +36,22 @@ public class OLF_SendEmail{
             emailTemplate = et.EMAIL_TEMPLATE__c;
             
             try{
-                        List<String> ccList=et.EMAIL_CC__c.split(';');
-                        for(String cc : ccList)
-                        {
-                            if(cc.length()>0)
-                                emailCC.add(cc);
-                        }
-                    
+                //Added by Surbhi, PBI-1756697
+                if(String.isNotEmpty(et.EMAIL_CC__c)){                    
+                    List<String> ccList=et.EMAIL_CC__c.split(';');
+                    for(String cc : ccList)
+                    {
+                        setCCAddress.add(cc);
+                    }
+                }
+                //Ended by Surbhi, PBI-1756697                      
                     }catch(Exception e){
                          if(debugLogOn.equals('TRUE'))
                             system.debug('Error in OLF_SendEmailConfirmation.sendEmail while finding email CC :'+e);
-                        emailCC = new List<String>();
-                    }
-            
+                        //Added by Surbhi, PBI-1756697
+                        setCCAddress = new Set<String>();
+                        //Ended by Surbhi, PBI-1756697
+                    }            
             emailBody = emailTemplate;
             if(et.EMAIL_CSS__c!=null)
             	emailBody = emailBody.replace('{!EMAIL_CSS__C}', et.EMAIL_CSS__c);
@@ -76,7 +81,7 @@ public class OLF_SendEmail{
                 }
             emailBody = emailBody.replace('<!--<TABLE_BODY/>-->', emailTableBody);
             
-            System.debug('contactEmailSet='+ contactEmailSet);
+            System.debug('contactEmailSet='+ contactEmailSet); 
             
             //281404_MultipleEmail_08Jul2019_Soumyajit starts
             try{
@@ -88,17 +93,28 @@ public class OLF_SendEmail{
                         {
                             for(Account acc : actLst)
                             {
-                                List<String> toList=acc.Rv_Olf_EmailID__c.split(';');
-                                for(String toMail : toList)
-                                {
-                                    if(toMail.length()>0 && !emailTo.contains(toMail))
-                                        emailTo.add(toMail);
+                                //Added by Surbhi, PBI-1756697
+                                //Fetching TO email address from EMAIL_TO_c custom field from custom metadata
+                                if(String.isNotEmpty(acc.Rv_Olf_EmailID__c)){
+                                    List<String> lstToAddress=acc.Rv_Olf_EmailID__c.split(';');                                    
+                                    for(String toAddress : lstToAddress)
+                                    {
+                                        setToAddress.add(toAddress);
+                                    }
                                 }
+                                //Ended by Surbhi, PBI-1756697
                                 if(debugLogOn.equals('TRUE'))
-                                    system.debug('Adding email To from Account record :'+toList);
+                                    system.debug('Adding email To from Account record :'+setToAddress);
                             }
                         }
-                    
+                //Added by Surbhi, PBI-1756697
+                //Fetching TO email address from permission set 
+                List<String> lstToAddressFromPermissionSet = OLF_DashboardApexController.getUserEmailFromPermissionSet('RV_OnlineSalesManagement');                    
+                if(lstToAddressFromPermissionSet.size() > 0){
+                    setToAddress.addAll(lstToAddressFromPermissionSet);
+                }
+                //Ended by Surbhi, PBI-1756697
+                
                     }catch(Exception e){
                          if(debugLogOn.equals('TRUE'))
                             system.debug('Error in OLF_SendEmailConfirmation.sendEmail while finding email To from Account record :'+e);
@@ -106,26 +122,43 @@ public class OLF_SendEmail{
             //281404_MultipleEmail_08Jul2019_Soumyajit ends
             
             //EmailNotifyChange_31Jan2020_Soumyajit starts
-            if(emailTo.size()== 0 && emailCC.size()>0)
+            // Commented by Surbhi,PBI-1756697
+           /* if(emailTo.size()== 0 && emailCC.size()>0)
             {
                 emailTo.addAll(emailCC);
                 emailCC.clear();
+            } */
+            // Commented by Surbhi,PBI-1756697
+            // Added by Surbhi, PBI-1756697
+            if(setToAddress.size() == 0 && setCCAddress.size() > 0)
+            {
+                setToAddress.addAll(setCCAddress);
+                setCCAddress.clear();
             }
+            // Ended by Surbhi, PBI-1756697
             //EmailNotifyChange_31Jan2020_Soumyajit ends
-                
+            System.debug('setToAddress='+setToAddress);
+            System.debug('setCCAddress='+setCCAddress);   
             if(debugLogOn.equals('TRUE'))
             {
-                System.debug('emailTo='+emailTo);
-                System.debug('emailCC='+emailCC);
+                System.debug('setToAddress='+setToAddress);
+                System.debug('setCCAddress='+setCCAddress);
                 System.debug('emailSubject='+emailSubject);
                 System.debug('emailBody='+emailBody);
             }
             
-            if(emailTo.size()>0)
+            if(setToAddress.size()>0)
                 {
-                    mail.setToAddresses(emailTo);
-                    if(emailCC.size()>0)
-                        mail.setCcAddresses(emailCC);
+                    //Added by Surbhi, PBI-1756697
+                    List<String> toAddresses = new List<String>();
+                    toAddresses.addAll(setToAddress);
+                    mail.setToAddresses(toAddresses);  
+                    if(setCCAddress.size()>0){
+                        List<String> ccAddresses = new List<String>();
+                        ccAddresses.addAll(setCCAddress); 
+                        mail.setCcAddresses(ccAddresses);
+                    }
+                    //Ended by Surbhi, PBI-1756697
                     mail.setSubject(emailSubject);
                     mail.setHtmlBody(emailBody);
                     mail.setSaveAsActivity(false);

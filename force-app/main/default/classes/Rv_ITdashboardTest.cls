@@ -1,6 +1,6 @@
 @isTest
 public class Rv_ITdashboardTest {
-	
+
     @testSetup
     static void testData(){
         //Create IT Alert Custom Setting Data
@@ -18,13 +18,13 @@ public class Rv_ITdashboardTest {
         alertList.add(alert2);
         insert alertList;
     }
-    
+
     @isTest
     static void doTest()
     {
         Rv_ITdashboardController.global_overrideChecks = true;
         Rv_ITdashboardAlert.global_overrideChecks = true;
-        
+
         list<Revolution_Setting__c> revSet = new list<Revolution_Setting__c>();
         Revolution_Setting__c s1 = new Revolution_Setting__c();
         s1.name='OLF Username';
@@ -39,7 +39,7 @@ public class Rv_ITdashboardTest {
         s3.Value__c='200';
         revset.add(s3);
         insert revset;
-        
+
         Reuters_Quotes__c iceRQ = new Reuters_Quotes__c();
         iceRQ.Quote_Display_Name__c = Rv_ITdashboardAlert.global_ICEquoteName;
         iceRq.Valid_From_Date__c = System.today();
@@ -49,14 +49,14 @@ public class Rv_ITdashboardTest {
         iceRq.CurrencyCode__c ='USD';
         iceRq.Unit_Of_Measure__c = 't';
         insert iceRq;
-        
+
         Test.startTest();
-        
+
         List<Revolution_Batch__mdt> batchMdt = Rv_ITdashboardController.getBatchMdt('IT Dashboard Alert every 0 Min','THIS');
-        
+
         CronTrigger[] ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'IT Dashboard Alert every 0 Min' limit 1];
         if(ct.size()==0)
-        {  
+        {
             Rv_ITdashboardController.doBatchAction('IT Dashboard Alert every 0 Min', 'RUN');
             CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'IT Dashboard Alert every 0 Min' limit 1];
             if(ct2.size()>0)
@@ -64,16 +64,16 @@ public class Rv_ITdashboardTest {
         }
         else
             Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
-        
+
         Rv_ITdashboardController.global_limitQueries = 0;
         Rv_ITdashboardController.getAllData();
         Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
         Rv_ITdashboardController.doBatchAction('DI Dashboard Snapshot 8 AM', 'RUNADHOC');
         Rv_ITdashboardController.doBatchAction('Daily BSP & Price Trend', 'RUNADHOC');
-        
+
         ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'ATP Daily Refresh Batch' limit 1];
         if(ct.size()==0)
-        {  
+        {
             Rv_ITdashboardController.doBatchAction('ATP Daily Refresh Batch', 'RUN');
             CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'ATP Daily Refresh Batch' limit 1];
             if(ct2.size()>0)
@@ -83,13 +83,13 @@ public class Rv_ITdashboardTest {
             Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
         batchMdt = Rv_ITdashboardController.getBatchMdt('ATP Daily Refresh Batch','THIS');
         Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
-        
+
         Rv_ITdashboardController.checkGovenorLimits('Test');
-        
+
         //327368_Soumyajit_09Aug2019 starts
         ct = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'OLF Scheduled Inactivation' limit 1];
         if(ct.size()==0)
-        {  
+        {
             Rv_ITdashboardController.doBatchAction('OLF Scheduled Inactivation', 'RUN');
             CronTrigger[] ct2 = [SELECT Id FROM CronTrigger where CronJobDetail.name = 'OLF Scheduled Inactivation' limit 1];
             if(ct2.size()>0)
@@ -99,17 +99,15 @@ public class Rv_ITdashboardTest {
             Rv_ITdashboardController.doBatchAction(ct[0].id, 'STOP');
         batchMdt = Rv_ITdashboardController.getBatchMdt('OLF Scheduled Inactivation','THIS');
         //327368_Soumyajit_09Aug2019 ends
-        
+
         Rv_ITdashboardController.doBatchAction(batchMdt[0].Batch_Name__c, 'RUN');
-        
+
         Rv_ITdashboardController.startStopAllBatches('StopAll');
         Rv_ITdashboardController.startStopAllBatches('RunAll');
         Rv_ITdashboardController.getAllData();
-        Rv_ITdashboardController.startStopAllBatches('StopAll');
-        
         Test.stopTest();
     }
-    
+
     @isTest
     static void testCheckAlertValidity(){
         String startTime = '00:00:00';
@@ -117,21 +115,21 @@ public class Rv_ITdashboardTest {
         String timzoneIdKey = 'Europe/Amsterdam';
         Boolean isAlertValid = Rv_ITdashboardController.checkAlertValidity(startTime, endTime, timzoneIdKey);
         System.assertEquals(false, isAlertValid, 'Alert is not valid!');
-        
+
         startTime = '23:59:59';
         endTime = '00:00:00';
         Rv_ITdashboardController.checkAlertValidity(startTime, endTime, timzoneIdKey);
-        
+
         startTime = '';
         endTime = '00:00:00';
     }
-    
+
     @isTest
     static void testGetIceMonthDetails(){
         String quoteName = 'AGO/IGO';
         Rv_ITdashboardController.getIceMonthDetails(quoteName);
     }
-    
+
     @isTest
     static void testCheckAndSendAlert(){
         List<Rv_ITdashboardController.errorWrapper> errorList = new List<Rv_ITdashboardController.errorWrapper>();
@@ -189,7 +187,7 @@ public class Rv_ITdashboardTest {
         errorList.add(errorWraper5);
         Rv_ITdashboardController.checkAndSendAlert(errorList, true);
     }
-    
+
     @isTest
     static void testSaveError(){
         List<Rv_ITdashboardController.errorWrapper> errorList = new List<Rv_ITdashboardController.errorWrapper>();

@@ -20,7 +20,6 @@ public Class OLF_UtilityTest{
     }
 
     static testMethod void test1(){
-
         Profile p = [SELECT Id FROM Profile WHERE Name='Integration Profile']; //Fix_513491_lakshmi
         User u = new User(Alias = 'standt', Email='standarduser@testorg.com', 
             EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US', 
