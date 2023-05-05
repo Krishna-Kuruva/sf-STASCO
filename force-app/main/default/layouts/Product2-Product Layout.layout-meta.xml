@@ -68,7 +68,6 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Description Information</label>
-        <layoutColumns/>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
