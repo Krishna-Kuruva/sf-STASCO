@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Sales Order Confirmation {!relatedTo.Sales_Order_Number__c}" recipientType="Contact" relatedToType="Order" >
+<messaging:HTMLEmailBody >
+<c:TCP_OrderConfirmationEmailTemplate Record_Id="{!relatedTo.Id}" Contact_Name="{!recipient.Firstname}" />
+
+</messaging:HTMLEmailBody>
+<messaging:attachment renderAs="pdf" filename="Sales Order Confirmation"> <!-- Use the renderAs attribute here.-->
+    <c:TCP_PlaceOrderConfirmationPDF Record_Id="{!relatedTo.Id}" Contact_Name="{!recipient.Firstname}"></c:TCP_PlaceOrderConfirmationPDF>
+</messaging:attachment>
+</messaging:emailTemplate>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_STNSAP_ExternalId1__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>this is the unique and external Id reference field consider for the 1st Service STNSAP SoldTo</description>
+    <externalId>true</externalId>
+    <label>STNSAP ExternalId1</label>
+    <length>30</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

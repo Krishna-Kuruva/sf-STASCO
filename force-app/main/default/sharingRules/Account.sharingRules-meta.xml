@@ -78,6 +78,82 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+	<sharingCriteriaRules>
+        <fullName>TCP_EAST_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>TCP_EAST_Sharing</label>
+        <sharedTo>
+            <group>TCP_EAST_CommOpps</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>TCP_Sales_Area_text__c</field>
+            <operation>equals</operation>
+            <value>EAST</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>TCP_EUROPE_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>TCP_EUROPE_Sharing</label>
+        <sharedTo>
+            <group>TCP_EUROPE_CommOpps</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>TCP_Sales_Area_text__c</field>
+            <operation>equals</operation>
+            <value>EUROPE</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>TCP_EndUsers_Account_Share</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>TCP_EndUsers_Account_Share</label>
+        <sharedTo>
+            <group>TCP_End_users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Customer_Type__c</field>
+            <operation>equals</operation>
+            <value>Payer,Ship To,Bill To</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>TCP_NA_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>TCP_NA_Sharing</label>
+        <sharedTo>
+            <group>TCP_NA_CommOpps</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>TCP_Sales_Area_text__c</field>
+            <operation>equals</operation>
+            <value>NA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Allusers2</fullName>
         <accessLevel>Edit</accessLevel>

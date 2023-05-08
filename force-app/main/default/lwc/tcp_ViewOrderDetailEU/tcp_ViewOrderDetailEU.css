@@ -1,0 +1,387 @@
+:host{
+    
+    --slds-c-checkbox-color-background-checked:#0097BB;
+    --slds-c-checkbox-color-border-checked:#0097BB;
+    --slds-c-checkbox-mark-color-foreground:#ffffff;
+    --slds-c-checkbox-radius-border:2px;
+    --slds-c-checkbox-color-border-focus:rgba(0, 0, 0, 0.15);
+    --slds-c-radio-mark-color-foreground:#ffffff;
+    --slds-c-radio-color-background:#ffffff;
+    --slds-c-radio-color-background-checked:#0097BB;
+    --slds-c-radio-color-border:rgba(0, 0, 0, 0.06);
+    --slds-c-radio-color-border-checked:#0097BB;
+    --slds-c-textarea-sizing-min-height:84px;
+
+}
+.mtb{
+    margin-top:36px;
+    margin-bottom:36px;
+}
+
+.mb40{
+    margin-bottom: 40px;
+}
+
+.mb24{
+    
+    margin-bottom:24px;
+}
+
+.mb36{
+    
+    margin-bottom:36px;
+}
+
+.mr16{
+    margin-right: 16px;
+}
+.mr8{
+    margin-right: 8px;
+}
+.mr2{
+    margin-right: 3px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.textCapital{
+    text-transform: uppercase;
+}
+
+.setBreadcrumbs ol li {
+    font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #404040;
+font-family: SFProText, Arial, Helvetica, sans-serif;
+}
+
+.setBreadcrumbs ol li a{
+color: #404040;
+margin-right: 5px;
+    margin-left: 5px;
+}
+
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+
+}
+
+ .setTableVertical .slds-table{
+    background: #ffffff !important;
+}
+
+.setTableVertical{
+    background: #ffffff;
+    border-radius: 0px 0px 2px 2px;
+    
+
+}
+
+.setTableVertical table thead tr th{
+    padding: 15px 7px;
+    height: 48px;
+    color: #404040;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
+
+}
+
+.setTableVertical table tbody{
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom:1px solid rgba(0, 0, 0, 0.15);
+}
+
+.setTableVertical table tbody tr{
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.setTableVertical table tbody tr.showRow{
+    border:none !important;
+}
+
+.setTableVertical table tbody tr td{
+    padding: 10px 7px;
+    color: #404040;
+    height: 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    white-space: normal;
+    word-break: break-word;
+    
+
+}
+
+.showRow td{
+    padding: 4px 10px !important;
+}
+
+.setTableVertical table thead tr th:first-child, .setTableVertical table tbody tr td:first-child{
+    padding-left: 15px;
+}
+.setTableVertical table thead tr th:last-child, .setTableVertical table tbody tr td:last-child{
+    padding-right: 15px;
+    
+}
+
+.boldTd{
+    color: #404040;
+    font-weight: 700 !important;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
+    white-space: normal;
+
+}
+
+.actionTd{
+    overflow: visible !important;
+}
+
+.setScrollbarTable table tbody tr{
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.setScrollbarTable table tbody tr:not(.showRow){
+    border-bottom: none !important;
+}
+
+.setScrollbarTable table tbody tr.showRow{
+    border-top: none !important;
+}
+
+.noBorder{
+    border: none !important;
+}
+
+.setScrollbarTable table thead tr th{
+    color: #404040;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
+    white-space: normal;
+    padding-left: 4px;
+    padding-right: 4px;
+
+}
+
+.setScrollbarTable table tbody tr td{
+    padding: 5px 4px;
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    height: 40px;
+    white-space: normal;
+    word-break: break-word;
+
+}
+
+.setScrollbarTable table thead tr th:first-child, .setScrollbarTable table tbody tr td:first-child{
+    padding-left: 7px;
+}
+.setScrollbarTable table thead tr th:last-child, .setScrollbarTable table tbody tr td:last-child{
+    padding-right: 15px;
+    
+}
+
+
+
+.setScrollbarTable .slds-cell-fixed{
+    top: 15px !important;
+    min-height: 1rem !important;
+}
+
+
+.setScrollbarTable .slds-table--header-fixed_container::before {
+    padding: 8px 4px !important;
+}
+
+
+.backBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.mr8 svg{
+    fill:#404040;
+}
+
+.nextBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: #FBCF09;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+
+.nextBtn2{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: #c2b788;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+
+.cancelBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    height: 40px;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    border: none;
+}
+.nextBtn:focus, .backBtn:focus, .cancelBtn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.tableflex{
+    display: flex;
+    align-items: center;
+}
+
+.arrowtSet{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+    width: 12px;
+    align-items: center;
+   
+}
+
+.upArrow{
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid #757575;
+    border-top: 2px solid #757575;
+    transform: rotate(315deg);
+  margin-bottom: -2px;
+  cursor: pointer;
+}
+.downArrow{
+    cursor: pointer;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid #757575;
+    border-top: 2px solid #757575;
+    transform: rotate(133deg);
+   
+}
+
+.showRow{
+    visibility: visible !important;
+}
+
+.tableHeight{
+    height:320px;
+    padding-bottom: 17px;
+}
+
+
+ /*---------popup css----------*/
+
+ .setModal .slds-modal__container>.slds-modal__content:last-child, .setModalBody{
+    border-radius: 0px !important;
+}
+.setModalBody{
+    background-color: rgba(255, 255, 255, 0.97) !important;
+}
+.setModal .slds-modal__close{
+    top: 40px;
+right: 10px;
+}
+:host .setModal .slds-icon{
+    --sds-c-icon-color-foreground:#000000 !important;
+    --lwc-colorTextIconInverse:#000000 !important;
+}
+
+.setModalBody .modalHeading{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #404040;
+    margin-bottom: 8px;
+    margin-top: 10px;
+
+}
+
+.setModalBody p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+
+}
+
+.modalBtn{
+    margin-top: 24px;
+    margin-bottom: 15px;
+    /* display: flex; */
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.yellowBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: #FBCF09;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid #FBCF09 !important;
+}
+
+.borderBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: rgba(255, 255, 255, 0.97) !important;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.15)!important;
+    margin-left: 16px !important;
+}
+
+
+
+/*---------popup css----------*/

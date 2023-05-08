@@ -1,0 +1,162 @@
+:host{
+    --slds-c-checkbox-color-background-checked:#0097BB;
+    --slds-c-checkbox-color-border-checked:#0097BB;
+    --slds-c-checkbox-mark-color-foreground:#fff;
+    --slds-c-checkbox-radius-border:2px;
+    --slds-c-checkbox-color-border-focus:rgba(0, 0, 0, 0.15);
+
+}
+
+.mb24{
+    
+    margin-bottom:24px;
+}
+
+.mb20{
+    
+    margin-bottom:20px;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.setBreadcrumbs ol li {
+    font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #404040;
+font-family: SFProText ;
+}
+
+.setBreadcrumbs ol li a{
+color: #404040;
+margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+    margin-bottom: 4px;
+
+}
+
+.orderTitle p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText;
+}
+
+.orderTitle h4{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #404040;
+    font-family: SFProText;
+    margin: 16px 0px;
+}
+
+.tearmsBox{
+    height:648px;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    overflow-y: auto;
+    /* margin-bottom: 24px; */
+    padding-right: 30px;
+}
+
+.tearmsBox h5{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    font-family: SFProTextBold; 
+    margin-bottom:25px;
+}
+
+.tearmsBox p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    font-family: SFProText;
+    margin-bottom:25px;
+}
+
+
+.tearmsBox ul{
+    list-style: disc;
+    margin-left: 30px;
+  }
+
+
+.tearmsBox ul li{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    font-family: SFProText;
+}
+
+
+.textCheckbox{
+    font-weight: 400;
+    font-size: 16px !important;
+    line-height: 24px;
+    color: #404040;
+    font-family: SFProText;
+
+}
+
+.checkedStatus{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #595959;
+    font-family: SFProText;
+    margin-left: 25px;
+}
+
+.scrollBarStyle::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    border-radius: 4px;
+    background-color: #D9D9D9;
+  }
+  
+  .scrollBarStyle::-webkit-scrollbar {
+    width: 4px;
+    background: #D9D9D9 !important; 
+  }
+  
+  .scrollBarStyle::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    background-color: #757575;
+  }
+
+  .slds-rich-text-editor__output {
+    word-wrap: break-word;
+    hyphens: manual;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    font-family: SFProText;
+}
+.a {
+    color: black;
+    text-decoration: none;
+    transition: color .1s linear;
+}

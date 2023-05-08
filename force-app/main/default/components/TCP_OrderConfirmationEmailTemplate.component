@@ -1,0 +1,18 @@
+<apex:component controller="TCP_OrderAcknowEmailTemplateContrl" access="global">
+    
+    <apex:attribute name="Record_Id" type="String" description="Related Record Id" assignTo="{!RecordId}" access="global"/>
+    <apex:attribute name="Contact_Name" type="String" description="Related Contact Name" assignTo="{!ContactName}"/>
+    
+    <html>
+		<body>
+    		<apex:repeat value="{!OrderDetails}" var="Ord">
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Dear {!Ord.CreatedBy.contact.firstname},</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is a confirmation email that you order has been confirmed by Shell Trading &amp; Supply.<br/> Please find attached statement of your Order Confirmation.</p> 
+            
+            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Your Shell Trading  &amp; Supply Commercial operations Team will handle your order during normal business hours. If you have any problems or questions related to this order, please contact your Commercial operations Team.</p>
+            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">End User can view order details here -> <a style="font-family: verdana;font-face: verdana;font-size: 11px;font-weight: bold" href="{!siteURL}">{!Ord.OrderNumber}</a> (Note: Only compatible with Desktop and Laptop)</p>
+            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Thank you,<br/>Shell Trading</p>
+            </apex:repeat>    
+      </body>
+    </html> 
+</apex:component>

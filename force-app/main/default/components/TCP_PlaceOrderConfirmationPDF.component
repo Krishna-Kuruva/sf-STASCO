@@ -1,0 +1,395 @@
+<apex:component controller="TCP_PlaceOrderConfirmationCtrl" access="global" >
+ <apex:attribute name="Record_Id" type="String" description="Related Record Id" assignTo="{!RecordId}"/>
+ <apex:attribute name="Contact_Name" type="String" description="Related Contact Name" assignTo="{!ContactName}"/>
+  <html>
+  <head>
+     <title>Sales Order Confirmation.pdf</title>   
+
+     <style>
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Shell Font, Arial, Helvetica, sans-serif;
+       }
+
+       body{
+        padding: 10px 25px;
+       }
+       p{
+        font-size:14px;
+        line-height: 18px;
+       }
+
+       
+        @page {
+         @Top-right {
+         content: "Page " counter(page);
+         }
+         }
+
+         table {
+        border-collapse: collapse;
+        border-spacing: -1px;
+        
+        }
+
+        .cancelText{
+            font-size: 10px !important;
+            font-weight: bold !important;
+        }
+
+     </style>
+  </head>
+  <body>
+<apex:repeat value="{!OrderDetails}" var="Ord">
+    <!-- US region PDF -->
+   <!-- <apex:outputLabel rendered="{!Ord.CreatedBy.TCP_Region__c=='SETO'}" >
+        
+    </apex:outputLabel> -->
+    <div style="margin-bottom:15px;clear:both">
+        <div style="float:left;width:50%">
+            <h3 style="font-weight:300;font-size:20px">
+		 
+              <apex:image id="theImage" value="{!docId}" width="50" height="50"/>  
+               <!-- <apex:outputLabel rendered="{!Ord.CreatedBy.TCP_Region__c=='SETO'}" >
+ 				</apex:outputLabel> -->           
+
+                Shell Trading &amp; Supply </h3><br/>
+            <p>VAT Reg. No.: {!Ord.Sold_To__r.VAT_Reg_No__c}</p>
+          
+
+            <div style="margin-top:50px;font-size:14px;width:230px;word-break: break-word;">
+                <p>{!Ord.Sold_To_Address__c}
+                </p>
+
+            </div>
+
+        </div>
+
+            <div style="float:right;width:50%">
+                <h1 style="text-align:right;font-size:22px;">Order Confirmation</h1>
+                <p style="text-align:right;font-size:12px"> 
+                    Date:
+                    <apex:outputText value="{0,date,dd MMM yyyy}">
+                    <apex:param value="{!DATEVALUE(NOW())}" />
+                    </apex:outputText>
+                </p>
+
+                <div style="width:80%;border:1px solid black;border-collapse: collapse;float:right;font-weight:400;margin-bottom:15px;"> 
+                <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;">
+                    <tr style="background:#cdcdcd">
+                        <th style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:1px solid #000000;">Order Number:</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px 10px;font-size:14px">{!Ord.Sales_Order_Number__c}</td>
+                    </tr>
+                </table>
+                </div>
+                <div style="clear:both;"></div>
+                <div style="width:80%;border:1px solid black;border-collapse: collapse;float:right;font-weight:400;margin-bottom:15px;"> 
+                <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;">
+                    <tr style="background:#cdcdcd">
+                        <th style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:1px solid #000000;">Deliver to:</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:5px 10px 20px;font-size:14px">
+                        {!Ord.Ship_To_Address__c}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+   
+    </apex:repeat>
+    <div style="clear:both;"></div>
+    <div style="width:100%; border-top:1px solid black;border-bottom:1px solid black;">
+          <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;">
+            <apex:repeat value="{!OrderDetails}" var="Ord">
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;width:200px">Order date:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Customer PO number:</th>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                    <apex:outputText value="{0,date,dd MMM yyyy}">
+                        <apex:param value="{!DATEVALUE(Ord.CreatedDate)}" />
+                   </apex:outputText>
+                </td>
+             	  <td style="padding:5px 10px;font-size:14px">
+                    {!Ord.Ponumber}
+                </td>
+            </tr>
+            </apex:repeat>
+        </table>
+      
+        <div style="clear:both;"></div>
+
+    </div>
+      <div style="clear:both;"></div>
+    <div style="width:100%;border-bottom:1px solid black;margin-bottom:10px;">
+        
+        <table style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;">
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;">Transport:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Payment terms:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Delivery terms:</th>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px">Customer number:</th>
+            </tr>
+            <apex:repeat value="{!OrderDetails}" var="Ord">
+            <tr>
+                <td style="padding:5px 10px;font-size:14px">
+                  {!Ord.Mode_of_Transport__c}
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                    <p>{!Ord.Account.TCP_Payment_Terms__c}</p>
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                 {!Ord.Delivery_Terms__c}
+                </td>
+                <td style="padding:5px 10px;font-size:14px">
+                 {!Ord.Sold_To__r.accountnumber}
+                </td>
+            </tr>
+            </apex:repeat>
+        </table>
+        <div style="clear:both;"></div>
+
+    </div>
+<div style="clear:both;"></div>
+    <div style="width:100%;">
+    <p>
+         We are pleased to supply product to you as detailed herein, on the terms of the signed contract between us, or in the absence of a signed
+            contract, on our General Terms and Conditions of Sale ("GTC"). The GTC, and any applicable addenda, can be found on our website: <a href="www.shell.com/business-customers/chemicals/doing-business-with-us/terms-and-conditions-of-sale.html"  style="color:#000000;text-decoration:none"><span>www.shell.com/business-customers/chemicals/</span><span>doing-business-with-us/terms-and-conditions-of-sale.html.</span></a>
+        
+    </p>
+    
+    
+        <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EUROPE'}"> 
+            <br/>
+		<p>For information on Transport, Equipment, and Site Requirements, please refer to our website www.shell.com/chemicals/transport
+ 		</p>
+        </apex:outputtext>
+        <p style="margin-top:25px;margin-bottom:15px">
+                If you have any queries, please contact your Shell commercial operations team.
+        </p>
+
+            
+    </div>  
+    
+    <div style="clear:both;"></div>
+    <div style="width:100%;">
+        <table  class="tableSet" cellspacing="0" style="text-align:left;width:100%;border-collapse: collapse;float:right;font-weight:400;margin: 10px;table-layout: fixed;">
+           
+            <tr>
+                <th style="padding:5px 10px;font-weight:400;font-size:14px;width:80px;border-bottom:  1px dashed #000000;">Item</th>
+                <th colspan="2" style="padding:5px 10px;font-weight:400;font-size:14px;border-bottom:  1px dashed #000000;">Details</th>
+                
+            </tr>
+
+            <!--repeate tr section -->
+           
+                <apex:variable value="{!1}" var="rowNum"/>
+                <apex:repeat var="LI" value="{!ProdWrapList}">
+             <tbody>
+            <tr>
+                <td  rowspan="15" style="padding:5px 10px;font-size:20px;font-weight:bold;width:150px;border-bottom:  1px dashed #000000;">
+                   <apex:outputText value="{!FLOOR(rowNum)}" rendered="{!rowNum >= 10 }"/>
+                    <apex:outputText value="0{!FLOOR(rowNum)}" rendered="{!rowNum <= 9 }"/>
+                    
+                   <apex:variable var="rowNum" value="{!rowNum + 1}"/><br/>
+                   <apex:outputText rendered="{!LI.CancelledItem=='Cancelled'}">
+                   <span style="text-transform:uppercase;font-style: normal;font-size=10px" class="cancelText">{!LI.CancelledItem}</span>
+                </apex:outputText>
+                </td>
+                <td style="padding:5px 10px;font-size:14px; ">
+                    Product:
+                </td>
+                <td colspan="2" style="padding:5px 10px;font-size:14px">
+                    {!LI.ProdName} <br/>
+                    <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EAST'}">
+                        <div style="display:flex;justify-content:space-between">
+                            <span style="margin-right:20px"><apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EAST'}">{!LI.SICCcode}</apex:outputtext></span>
+                            <span><apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c!=''}">Shell Material Nr.&nbsp;{!LI.Prodnumber}</apex:outputtext></span>
+
+                        </div>
+                    </apex:outputtext>
+
+                    <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c!='EAST'}">
+                        <div style="display:flex;justify-content:space-between">
+                            <span><apex:outputtext >Shell Material Nr.&nbsp;{!LI.Prodnumber}</apex:outputtext></span>
+
+                        </div>
+                    </apex:outputtext>
+
+
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;">
+                    Quantity:
+                </td>
+                
+                <td colspan="2" style="padding:5px 10px;font-size:14px">
+                    <apex:outputText rendered="{!LI.Qty!=''}">
+                    	{!LI.Qty}&nbsp;{!LI.Unit}
+                    </apex:outputText>
+                    <apex:outputText rendered="{!LI.Qty==''}">
+                		0&nbsp;{!LI.Unit}
+               		</apex:outputText>
+                </td>
+                
+                
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;">
+                    Expected delivery date:
+                </td>
+                <td colspan="2" style="padding:5px 10px;font-size:14px">
+                     <apex:outputText value="{0,date,dd MMM yyyy}">
+                        <apex:param value="{!DATEVALUE(LI.CollectionDate)}" />
+                   </apex:outputText>
+                </td>
+                
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;">
+                    Expected dispatch date:
+                </td>
+                <td colspan="2" style="padding:5px 10px;font-size:14px">
+                   <!-- {!LI.DispatchDate}-->
+                  <apex:outputText value="{0,date,dd MMM yyyy}">
+                        <apex:param value="{!DATEVALUE(LI.DispatchDate)}" />
+                   </apex:outputText>
+                </td>
+            </tr>
+            <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='NA'}">
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000;">
+                    Net weight:
+                </td>
+               
+                <td colspan="2" style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000;">
+                    <apex:outputText rendered="{!LI.ProductNetweight!=null}">
+                    		{!LI.ProductNetweight} &nbsp;{!LI.Productmeasurment}
+                    </apex:outputText>
+                </td>
+               
+            </tr>
+        </apex:outputtext>
+        <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c!='NA'}">
+            <tr>
+                <td style="padding:5px 10px;font-size:14px;">
+                    Net weight:
+                </td>
+               
+                <td colspan="2" style="padding:5px 10px;font-size:14px;">
+                    <apex:outputText rendered="{!LI.ProductNetweight!=null}">
+                    		{!LI.ProductNetweight} &nbsp;{!LI.Productmeasurment}
+                    </apex:outputText>
+                </td>
+               
+            </tr>
+        </apex:outputtext>
+        
+            
+            <apex:outputtext rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c!='NA'}">
+                
+            <tr style="vertical-align: top; ">
+                <td style="padding:5px 10px;font-size:14px;">
+                    Plant:
+                </td>
+               
+                <td colspan="2" style="padding:5px 10px;font-size:14px;">
+                    <apex:outputText rendered="{!LI.Plant!=null}">
+                       
+                        <table cellspacing="10">
+                            <tr style="vertical-align: top;">
+                            <td style="width:90px">{!LI.Plant}</td>
+                            <td>{!LI.PlantName}</td>
+                            </tr>
+                            
+                        </table> 
+
+                    		<!-- {!LI.Plant} &nbsp;{!LI.PlantName} -->
+                    </apex:outputText>
+                </td>
+               
+            </tr>
+                 
+             <tr style="vertical-align: top; ">
+                <td style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000; ">
+                    Shipping Point:
+                </td>
+               
+                <td colspan="2" style="padding:5px 10px;font-size:14px;border-bottom:  1px dashed #000000;">
+                    <apex:outputText rendered="{!LI.ShippingPoint!=null}">
+                        <!-- {!LI.ShippingPoint} &nbsp;{!LI.ShippingPointName}<br/> -->
+                      
+                       <table cellspacing="10">
+                            <tr style="vertical-align: top;">
+                            <td style="width:90px">{!LI.ShippingPoint}</td>
+                             
+                                <td>{!LI.ShippingPointName}<br/>
+                                    {!LI.Street}<br/>
+                                    {!LI.City}<br/>
+                                    {!LI.Postcode}<br/>
+                                    {!LI.Country}
+                                </td>
+                            </tr>
+                            
+                        </table> 
+                     </apex:outputText>
+                </td>
+
+               
+            </tr>
+            
+             </apex:outputtext>    
+            </tbody>
+            </apex:repeat>
+         
+           <!--repeate tr section -->
+   
+        </table>
+    </div> 
+    <div style="clear:both;"></div>
+    <div style="width:100%;">
+        	<apex:outputText rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EUROPE'}">
+            <p style="margin-left:-10px;font-size:9px">*&nbsp;trademark of the Shell Group</p>
+            </apex:outputText>
+            <p style="margin-left:-10px;margin-top:25px;margin-bottom:40px">
+                Prices do not include VAT applicable on delivery.
+            </p>
+		<apex:outputText rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EAST'}" >
+ 				
+            <p style="margin-left:-10px;">
+                Shell International Eastern Trading Company<br/>
+				A registered business of Shell Eastern Trading (Pte) Ltd,<br/>
+				The Metropolis Tower 1, 9 North Buona Vista Drive, #07&shy;01, Singapore 138588<br/>
+            </p>
+		</apex:outputText>
+        <apex:outputText rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='NA'}" >
+ 				
+            <p style="margin-left:-10px;">
+                Shell Trading US Co Products<br/>
+				1000 Main Street<br/>
+				Houston TX 77002-6336
+            </p>
+		</apex:outputText>
+        <apex:outputText rendered="{!OrderDetails[0].CreatedBy.TCP_Region__c=='EUROPE'}" >
+ 				
+            <p style="margin-left:-10px;">
+                Shell Trading Rotterdam BV<br/>
+				Weena 505<br/>
+				3013 AL Rotterdam<br/>
+				The Netherlands
+			</p>
+		</apex:outputText>
+            
+    </div>  
+  </body>
+</html>
+</apex:component>

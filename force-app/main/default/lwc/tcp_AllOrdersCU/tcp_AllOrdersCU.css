@@ -1,0 +1,454 @@
+:host{
+    --slds-c-pill-color-background:#F0F0F0;
+    --slds-c-pill-radius-border:14px;
+    --slds-c-pill-spacing-inline-end:8px;
+    --slds-c-pill-spacing-inline-start:8px;
+    /* --lwc-tableColorBackgroundHeader:whitesmoke !important; */
+    }
+
+  :host .dashboardTable .slds-scrollable_x{
+
+   background-color:whitesmoke !important;
+  }  
+ 
+
+.mt16{
+    margin-top:16px;
+    
+}
+
+.mr8{
+    margin-right: 8px;
+}
+.mtb{
+    margin-top:36px;
+    margin-bottom:36px;
+}
+
+.verticalSet{
+    align-items: center;
+    margin-bottom: 16px;
+    
+}
+
+.setPadding{
+    padding:0px 12px;
+}
+
+.searchWidth{
+    width:281px;
+   
+}
+
+.filter{
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.mlr16{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.mr16{
+    margin-right: 16px;
+}
+
+.heading3{
+
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #404040;
+}
+
+.setBtnFilter{
+    background: transparent;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 8px 6px;
+
+}
+
+
+
+
+.setBtnReport{
+    background: #FBCF09;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    height: 32px;
+
+}
+
+.setBtnFilter img, .setBtnReport img{
+
+    margin-left: 6px;
+}
+
+.setSearch{
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+     border-radius: 2px;
+     font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+    font-family: SFProText, Arial, Helvetica, sans-serif ;
+}
+
+.filterResult{
+    background-color: #ffffff;
+    min-height: 44px;
+    width: 100%;
+    margin-bottom: 8px;
+    align-items: center;
+    display: flex;
+    padding: 5px 10px;
+
+}
+
+.sfRegular14{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProText, Arial, Helvetica, sans-serif ;
+    
+}
+
+.sfBold14{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProText, Arial, Helvetica, sans-serif ;
+    
+
+    
+}
+
+.filterLabel{
+   
+    white-space: nowrap;
+}
+
+.filterField{
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    padding-left: 10px;
+    margin-left: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin-right: 10px;
+}
+
+
+.filtersField{
+    margin-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    
+}
+
+.clearLabel{
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.noProduct{
+    padding: 5px 4px;
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    height: 40px;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+
+/* filter css*/
+:host .setCombobox{
+    --lwc-heightInput: 32px;
+    --lwc-borderRadiusMedium:2px;
+    --slds-c-input-color-border: rgba(0, 25, 51, 0.2);
+    /* --slds-c-input-color-background:#f5f5f5; */
+    color: #404040;
+    font-size: 14px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    
+}
+
+.filterSet{
+    position: relative;
+}
+
+.filterBox{
+    position: absolute;
+    top: -10px;
+    width: 332px;
+    z-index: 9999;
+    right: 8%;
+    padding: 26px 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1), 0px 6px 24px rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    border: none;
+}
+
+.backBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.nextBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: #FBCF09;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+
+.nextBtn2{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    background-color: #c2b788;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+
+.filterClear{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
+}
+.filterTitle{
+    font-weight: 700;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.filterBody{
+    -webkit-overflow-scrolling: touch;
+    height: 310px;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.filterFooter{
+    padding-left: 0px;
+    padding-bottom: 0px;
+   
+}
+
+
+.scrollBarStyle::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    border-radius: 4px;
+    background-color: #D9D9D9;
+  }
+  
+  .scrollBarStyle::-webkit-scrollbar {
+    width: 8px;
+    background: #D9D9D9 !important; 
+  }
+  
+  .scrollBarStyle::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    background-color: #757575;
+  }
+
+  .setPill{
+    margin-left: 5px;
+    position: absolute;
+    top: 29px;
+    white-space: nowrap;
+    width: 88%;
+    overflow-x: hidden;
+    background-color: #fff;
+  }
+
+  .pillBg{
+    background-color: rgba(0, 0, 0, 0.04);
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProText, Arial, Helvetica, sans-serif; 
+    margin-right: 10px;
+
+  }
+  .clear{
+    clear: both;
+  }
+
+.slds-form-element__help.slds-show {
+    height: 10px !important;
+}
+
+
+
+/* filter css*/
+
+/*---------popup css----------*/
+
+.setModal .slds-modal__container>.slds-modal__content:last-child, .setModalBody{
+    border-radius: 0px !important;
+}
+.setModalBody{
+    background-color: rgba(255, 255, 255, 0.97) !important;
+}
+.setModal .slds-modal__close{
+    top: 40px;
+right: 10px;
+}
+:host .setModal .slds-icon{
+    --sds-c-icon-color-foreground:#000000 !important;
+    --lwc-colorTextIconInverse:#000000 !important;
+}
+
+.setModalBody .modalHeading{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #404040;
+    margin-bottom: 8px;
+    margin-top: 10px;
+
+}
+
+.setModalBody p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+
+}
+
+.modalBtn{
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.yellowBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: #FBCF09;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid #FBCF09 !important;
+}
+
+.borderBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: rgba(255, 255, 255, 0.97) !important;
+    border-radius: 2px !important;
+    padding: 14px 24px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.15)!important;
+    margin-left: 16px !important;
+}
+
+.cancelBtn {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    height: 40px;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
+    border: none;
+}
+
+.messageLine{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #6B6B6B;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    margin-top: 8px;
+
+}
+
+
+
+
+/*---------popup css----------*/
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    border-radius: 4px;
+    background-color: #D9D9D9;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 4px;
+    background: #D9D9D9 !important; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px grey !important; 
+    -webkit-box-shadow: inset 0 0 5px grey !important;
+    background-color: #757575;
+  }

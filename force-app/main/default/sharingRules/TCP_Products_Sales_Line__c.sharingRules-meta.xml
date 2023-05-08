@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>TCP_ProductSalesEndUser_Share</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>TCP_ProductSalesEndUser_Share</label>
+        <sharedTo>
+            <group>TCP_End_users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>TCP_ProductSales_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>TCP_ProductSales_Share</label>
+        <sharedTo>
+            <group>TCP_All_Commopps</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

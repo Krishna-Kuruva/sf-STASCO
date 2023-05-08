@@ -1,0 +1,321 @@
+<apex:page standardStylesheets="false" showheader="false" applyBodyTag="false" applyHtmlTag="false" controller="TCP_LoginController">
+    
+    <html lang="en">
+    <apex:slds />
+    <div class="slds-scope">
+
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <meta name="description" content="Chemicals eCommerce Portal Customer Secure Login Page. Login to your Chemicals eCommerce Portal Customer Account."
+            />
+            <title>Login</title>
+
+            <meta name="apple-mobile-web-app-title" content="Chemicals customer portal" />
+            <meta name="application-name" content="Chemicals customer portal" />
+
+            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+
+            <meta name="msapplication-TileColor" content="#da532c" />
+            <meta name="theme-color" content="#fbce07" />
+            <link href="https://shell-fonts.azureedge.net/index.css" rel="stylesheet" />
+
+            <style>
+                @font-face {
+                    font-family: SFProText;
+                    src: url(/tradingandsupply/resource/SFProTextRegular) format('TrueType');
+                }
+
+                @font-face {
+                    font-family: SFProTextBold;
+                    src: url(/tradingandsupply/resource/SFProTextBold) format('TrueType');
+                }
+
+
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+                }
+
+                .Background {
+                    position: Fixed;
+
+
+                }
+
+                .slds-scope ul {
+                    list-style: disc ! important;
+                }
+
+                .container {
+                    Right: 154px;
+                    padding: 35px 35px 45px;
+                    width: 494px;
+                    height: auto;
+                    position: absolute;
+                    top: 80px;
+                    background-color: #ffffff;
+                }
+
+                .supportText h1 {
+                    margin-bottom: 25px !important;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #404040;
+                    font-family: SFProTextBold;
+
+                }
+
+                .logo {
+                    margin-top: 6px;
+                }
+
+                /* .username{
+                   height: 40px !important;
+                    width:341.33px !important;
+                    margin-top:9px !important;
+                    margin-bottom:9px !important;
+                   
+                    }
+                    .password{
+                    margin-top:9px !important;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    height: 40px !important;
+                    width:341.33px !important;
+                    } */
+
+                .showpassword {
+                    margin-top: 10px !important;
+
+                }
+
+                .btn {
+                    background-color: #FBCF09;
+                    border: none;
+                    color: black !important;
+                    padding: 10px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    color: #404040;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    font-weight: bold !important;
+                    Width: 93px !important;
+                    Height: 48px !important;
+                    top: 570px;
+                    left: 857px;
+
+                }
+
+                .customBtn {
+                    font-weight: 700 !important;
+                    font-size: 16px !important;
+                    line-height: 20px !important;
+                    color: #404040 !important;
+                    font-family: SFProTextBold !important;
+                    background-color: #FBCF09;
+                    border-radius: 2px !important;
+                    padding: 14px 24px;
+                    cursor: pointer;
+                    border: none;
+                }
+
+
+                .title {
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 24px;
+                    color: #404040;
+
+
+                }
+
+                .smallText {
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 16px;
+                    font-family: SFProText;
+                    color: #404040;
+                }
+
+              
+               
+                .label {
+
+                    Width: 153 px !important;
+                    Height: 42 px !important;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    font-family: SFProTextBold;
+                    color: #404040;
+                   
+
+                }
+
+                .setInput {
+                    background-color: #F5F5F5 !important;
+                    border: 1px solid rgba(0, 25, 51, 0.2) !important;
+                    border-radius: 2px !important;
+                    height: 40px;
+                    margin-bottom: 17px !important;
+                    margin-top: 9px !important;
+                }
+
+                .textPassword {
+
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 22px;
+                    font-family: SFProText;
+                    color: #404040;
+                }
+
+                .forgotPassword {
+                    float: right;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 22px;
+                    font-family: SFProText;
+                    color: #404040;
+
+                }
+
+                a {
+                    color: #404040 !important;
+                }
+
+                .errorMessages {
+                    color: #BF3D31;
+                    padding-left: 15px;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+
+                .errorMessages>ul {
+                    padding: 0px;
+                }
+
+                .bottonSec {
+                    margin-top: 10px;
+
+                }
+
+                .vl {
+                    border-left: 1px solid #B3B7BC;
+                    height: 45px;
+                    float: right;
+                    margin-right: 16px;
+                }
+
+                .header {
+                    margin-bottom: 35px;
+                }
+                 
+            </style>
+        </head>
+
+        <body style="background-color:powderblue;">
+
+            <main>
+            <div class="container">
+            <header>
+                <div class="slds-grid slds-wrap header">
+                    <div class="slds-col slds-size_1-of-6">
+                        <apex:image id="theImage" value="{!$Resource.Logo}" width="35px" height="35px" alt="shell logo with red border and yellow background" styleClass="logo" />
+                        <div class="vl"></div>
+                    </div>
+
+                    <div class="slds-col slds-size_5-of-6">
+                        <span class="smallText"> Trading &amp; Supply</span>
+                        <br/>
+                        <span class='title'>Chemical Customer Portal</span>
+                    </div>
+                </div>
+            </header>  
+            <section>  
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-6"></div>
+                    <div class="slds-col slds-size_5-of-6">
+                        <header class="supportText">
+                        <h1>
+                            Welcome, enter your details to get started.
+                        </h1>
+                        </header>
+                        <div class="loginForm">
+                            <apex:form id="theForm">
+                                <div class="form-group">
+                                <!-- <label for="theInput" class="required label">User Name  </label> -->
+                                <apex:outputLabel for="theInput" styleClass="required label" value="User Name" />
+                                <apex:inputtext label="username" title="username" value="{!username}" styleClass="form-control slds-input setInput" maxlength="40" id="theInput" />
+                               
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="thePassword" class="required label">Password </label>-->
+                                    <apex:outputLabel for="thePassword" styleClass="required label" value="Password" />
+                                    <apex:inputsecret label="password" title="password" value="{!password}" styleClass="form-control slds-input setInput" maxlength="30" id="thePassword" />
+                                    
+                                    <div class="bottonSec">
+                                        <span class="showpassword">
+                                            <label for="checkbx" class="textPassword">
+                                            <apex:inputCheckbox title="checkbx" id="checkbx" styleClass="checkbox" onclick="toggle();" />
+                                            Show Password</label>
+                                        </span>
+                                        <span class="forgotPassword">
+                                            <a href="{!$Site.BaseUrl}/apex/TCP_ForgotPassword" class="link" aria-label="link to Forgot Password">
+                                                Forgot Password?
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="errorMessages">
+                                    <apex:messages />
+                                </div>
+                                <apex:commandbutton value="Login" action="{!doLogin}" styleClass="customBtn" />
+                            </apex:form>
+
+
+                        </div>
+                    </div>
+                </div>
+                </section>
+            </div>
+            </main>
+        </body>
+        <script>
+
+            function setFocusToUserName() {
+
+                var userNameElement = document.getElementById("{!$Component.theForm.theInput}");
+                if (userNameElement) {
+                    userNameElement.focus();
+                }
+            }
+
+            window.onload = setFocusToUserName();
+            
+            
+            }
+        </script>
+        <script>
+            function toggle() {
+                var showPasswordCheckBox = document.getElementById('{!$Component.theForm.checkbx}');
+                if (showPasswordCheckBox.checked) {
+                    document.getElementById('{!$Component.theForm.thePassword}').type = "TEXT";
+                } else {
+                    document.getElementById('{!$Component.theForm.thePassword}').type = "PASSWORD";
+                }
+            }
+
+        </script>
+    </div>
+
+    </html>
+</apex:page>

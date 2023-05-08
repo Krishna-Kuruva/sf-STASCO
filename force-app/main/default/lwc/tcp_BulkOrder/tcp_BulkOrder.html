@@ -1,0 +1,1191 @@
+<template>
+    <!-- ================ Breadcrumbs Section Start ============= -->
+
+   <div id="top" class="slds-size_12-of-12 mb24">
+    <div class="flex slds-grid">
+        <div class="breadcrumbs setBreadcrumbs">
+            <nav role="navigation" aria-label="Breadcrumbs">
+                <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                    <li class="slds-breadcrumb__item">
+                        <a href="javascript:void(0)" onclick={handleHomepage} aria-label="Go to dashboard link">Dashboard</a>
+                    </li>
+                    <li class="slds-breadcrumb__item">
+                        <a href="javascript:void(0)" aria-label="Bulk Order ">Bulk Order</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        
+    </div>
+   </div>
+
+ <!-- ================ Breadcrumbs Section Start ============= -->
+ <!-- ================ Bulk order text ============= -->
+
+ <div class="slds-size_9-of-12">
+    <div class="orderTitle">
+       <h1>Bulk Order</h1>
+    </div>
+   </div>
+
+<!-- ================ Bulk order text ============= -->
+<div class="spinner">
+    <template if:true={isLoading}>
+         <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+         </lightning-spinner>
+    </template>
+</div> 
+<div class="slds-size_12-of-12  mtb20">
+    <div class="slds-progress slds-progress_vertical">
+        <ol class="slds-progress__list">
+
+         <!-- Select Product section -->
+          <li class="selectproduct slds-progress__item slds-is-active"><!--slds-is-completed slds-is-active slds-is-progress-->
+            <span tabindex="-1"  class="progressComplete slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" title="Complete" onclick={handelOpenSelectProduct}>
+              <span class="slds-icon slds-icon_xx-small" aria-hidden="false">
+                <lightning-button-icon icon-name="utility:check" variant="bare" class="iconpointerevents" alternative-text="close" title="close" ></lightning-button-icon>
+              </span>
+              <span class="slds-assistive-text">Complete</span>
+            </span>
+         
+          
+            <div tabindex="-1" class="progressActive slds-progress__marker" aria-hidden="true">
+              <span class="slds-assistive-text">Active</span>
+            </div>
+
+         
+            <div class="slds-progress__item_content slds-grid slds-grid_align-spread"> 
+                <div class="slds-size_12-of-12">
+                    <div class="selectedText">Select Product</div>
+
+
+                    <div if:true={selectproduct}> <!--*****   Select Product section start   *****-->
+                      <!--*****  Combobox and Card section Start   *****-->
+                       <div class="slds-size_12-of-12 mtb24">
+                        <!--*****  Combobox section Start   *****-->
+                        <template if:true={enableComboBox}>
+                            <div class="flex slds-grid slds-gutters">
+                                <!--*** Select Product Combobox Customer Name  ******-->
+                                <div class="slds-size_4-of-12 setPadding">
+                                    <div class="slds-p-vertical_x-small">
+                                        <div class="slds-form-element">
+                                            <div class="selectBg slds-form-element__control">
+                                                <lightning-combobox
+                                                    placeholder="Select Customer"
+                                                    variant="label-hidden"
+                                                    value={customerValue}
+                                                    options={customerOptions}
+                                                    class="selectProductCombobox Step1"
+                                                    onchange={handleCustomerChange}
+                                                    message-when-value-missing="Please select a Customer"
+                                                    required
+                                                    >
+                                                    
+                                                </lightning-combobox>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    
+                                </div>
+                            
+                                <div class="slds-size_4-of-12 setPadding">
+                                    <div class="slds-p-vertical_x-small">
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <lightning-combobox
+                                                    placeholder="Select Delivery To"
+                                                    variant="label-hidden"
+                                                    value={deliveryValue}
+                                                    options={deliveryOptions}
+                                                    class="selectProductCombobox Step1"
+                                                    onchange={handleDeliveryChange}
+                                                    message-when-value-missing="Please select a delivery to"
+                                                    required
+                                                    >
+                                                </lightning-combobox>
+                                                    
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            
+                          
+                          <div class="slds-size_4-of-12 setPadding">
+                              <div class="slds-p-vertical_x-small">
+                                  <div class="slds-form-element">
+                                      <div class="slds-form-element__control">
+                                             
+                                              <lightning-combobox
+                                                  placeholder="Select Invoice To"
+                                                  variant="label-hidden"
+                                                  value={billingValue}
+                                                  options={billingOptions}
+                                                  class="selectProductCombobox Step1"
+                                                  onchange={handleInvoiceChange}
+                                                  message-when-value-missing="Please select invoice to"
+                                                  required
+                                                  >
+                                              </lightning-combobox>
+                                      </div>
+                                  </div> 
+                              </div>
+                           </div>
+                       <!--****  Select Product Combobox Invoice To End  *****-->
+                        </div> 
+                    </template>
+                        <!--*****  Combobox section End   *****-->
+
+                        <!--***** Card section Start   *****-->
+                        <div class="flex slds-grid slds-gutters">
+                          <!--**** Select Product Customer Name Card  ****-->
+                          
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Customer:</h2>
+                                      
+                                      <p>{customerDetails}</p>
+                                      <template if:false={hasCustomerData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Customer found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                              
+                         
+                          <!--**** Select Product Customer Name Card End  *****-->
+
+                          <!--***** Select Product Delivery To Card ******-->
+                          
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Delivery To:</h2>
+                                      
+                                      <p>{deliveryDetails}</p>
+                                      <template if:false={hasDeliveryToData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Delivery To found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                          
+                          <!--***** Select Product Delivery To Card End ******-->
+
+                          <!--***** Select Product Invoice To Card   ****--> 
+                           
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Invoice To:</h2>
+                                      <p>{billingDetails}</p>
+                                      <template if:false={hasInvoiceToData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Invoice To found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                          
+                          <!--***** Select  Product Invoice To Card End  ****--> 
+
+                          </div> 
+                       <!--***** Card section End   *****--> 
+                       </div>
+                       <!--*****  Combobox and Card section End   *****-->
+
+                       <!--*********   Select Product Table Section Start   ********-->
+                      
+                        <div class="slds-grid verticalSet mb15">
+                           <div class="slds-size_8-of-12">
+                               <h2 class="heading3">My Products <span class="spText">Selected Products: {SelectedProdCount}</span></h2>
+                            </div>
+                           <div class="slds-size_4-of-12 setPadding">
+                               <div class="flex slds-grid slds-gutters">
+                                   <div class="mlAuto">
+                                       <div class="searchWidth">
+                                           <div class="slds-form-element">
+                                               <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                                 <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                                    <lightning-button-icon icon-name="utility:search"  variant="bare" alternative-text="search" title="search"></lightning-button-icon>
+                                               </span>
+                                                 <input type="text" id="search" placeholder="Search product"  class="slds-input setSearch" onkeyup={handleSearchProduct}/>
+                                               </div>
+                                             </div>
+                                        </div>
+                                           
+                                   </div>
+                               </div>
+                           </div>
+   
+                         </div>
+
+
+                         <div class="mb36 setScrollbarTable scrollBarStyle">
+                          
+                              <div class={tableClassName}>
+                              <div class={scrollBarEnable} style="height:100%;
+                              background-color: #f5f5f5;">
+
+                                  <table
+                                      class="slds-table slds-table_cell-buffer slds-table--header-fixed slds-table_fixed-layout"
+                                      aria-label="Select product table">
+                                      <thead>
+                                          <tr class="slds-line-height_reset">
+                                            <th class="" scope="col" style="width:25%">
+                                                <div class="slds-truncate slds-cell-fixed" title="Product Code">
+                                                    <div class="tableflex">
+                                                        <div class="ml35">Product Code</div>
+                                                        <div class="arrowtSet">
+                                                            <span class="upArrow" onclick={sortProductDesc}></span>
+                                                            <span class="downArrow" onclick={sortProductDesc}></span>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </th>
+                                               <th class="" scope="col">
+                                                  <div class="slds-truncate slds-cell-fixed" title="Product Name">
+                                                    <div class="tableflex">
+                                                        <div>Product Name</div>
+                                                        <div class="arrowtSet">
+                                                            <span class="upArrow" onclick={sortProductDesc}></span>
+                                                            <span class="downArrow" onclick={sortProductDesc}></span>
+                                                        </div>
+                                                    </div> 
+                                                  </div>
+                                              </th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                           <template if:true= {showProducts}>
+                                              <template for:each ={productList} for:item="product">
+                                                  <tr class="slds-hint-parent" key={product.Id}>  
+                                                      <td style="width:25%">
+                                                          <div class="slds-checkbox">
+                                                              <input  type="checkbox" name={product.Id}  id={product.Id} value={product.Name}  onclick={handleProduct}/>
+                                                              <label aria-label={product.Code} class="slds-checkbox__label" for={product.Id}>
+                                                                  <span class="slds-checkbox_faux setCheckbox mr12"></span>
+                                                                  <span class="slds-form-element__label setLabel">{product.Number}</span>
+                                                              </label>
+                                                          </div>
+                                                      </td> 
+                                                      <td>
+                                                        <div class="">
+                                                            {product.Name}
+                                                        </div>
+                                                    </td>
+                                                  </tr>
+                                              </template>       
+                                          </template>
+                                          <template if:true={productNoteMsgEnable}>
+                                              <tr class="slds-hint-parent">  
+                                                  <td colspan="2">
+                                                      <div>
+                                                      <p>Product list will be shown based on customer and delivery To details</p>
+                                                      </div>
+                                                  </td> 
+                                              </tr>
+                                          </template>
+                                          <template if:true={noSearchResult}>
+                                            <tr class="slds-hint-parent">  
+                                                <td colspan="2">
+                                                    <div>
+                                                        <p>No Products found.</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </template>   
+                                        <template if:false={hasProductData}>
+                                            <tr class="slds-hint-parent">  
+                                                <td colspan="2">
+                                                    <div>
+                                                    <p>No Product found. Please contact your Customer Center Representative for assistance.</p>
+                                                    </div>
+                                                </td> 
+                                            </tr>
+                                        </template>  
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <template if:false={hasSelectedProducts}>
+                            <div>                                       
+                                <p class="slds-text-color_error">Please select a product</p>
+                            </div>
+                         </template>
+                          
+                      </div>
+                      <div class="slds-m-vertical_large">
+                      <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleNextSelectProduct} aria-label="yellow background color with forward icon Next" > Next <lightning-icon icon-name="utility:forward" alternative-text="forward" title="forward" size="xx-small" class="ml8 iconColor"></lightning-icon></button>
+                      
+                       <template if:true={enableExitBtn}>
+                        <button class="slds-button cancelBtn mr16" onclick={handleExitBtn} aria-label="Exit">Exit</button>
+                       </template>
+                    </div>
+
+                      
+                    </div> <!--*****   Select Product section End   *****-->
+                    
+                </div>
+            </div>
+          </li>
+
+          <!-- Enter details section -->
+          <li class="enterdetails slds-progress__item slds-is-progress">
+
+               <span tabindex="-1" class="progressComplete slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" title="Complete">
+                <span class="slds-icon slds-icon_xx-small" aria-hidden="false" >
+                  <lightning-button-icon icon-name="utility:check" variant="bare" class="iconpointerevents" alternative-text="close" title="close" ></lightning-button-icon>
+                </span>
+                <span class="slds-assistive-text">Complete</span>
+              </span>
+           
+            
+              <div tabindex="-1" class="progressActive slds-progress__marker" aria-hidden="true">
+                <span class="slds-assistive-text">Active</span>
+              </div>
+            
+            <div class="slds-progress__item_content ">
+                <div class="slds-size_12-of-12">
+                    <div class="selectedText">Enter details </div>
+                   
+                    <div if:true={enterdetails}> <!-- Enter details section -->
+
+
+                         <!--***** Card section Start   *****-->
+                         <div class="slds-size_12-of-12 mtb20">
+                        <div class="flex slds-grid slds-gutters">
+                          <!--**** Select Product Customer Name Card  ****-->
+                          
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Customer:</h2>
+                                      
+                                      <p>{customerDetails}</p>
+                                      <template if:false={hasCustomerData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Customer found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                              
+                          
+                          <!--**** Select Product Customer Name Card End  *****-->
+
+                          <!--***** Select Product Delivery To Card ******-->
+                          
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Delivery To:</h2>
+                                      
+                                      <p>{deliveryDetails}</p>
+                                      <template if:false={hasDeliveryToData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Delivery To found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                          
+                          <!--***** Select Product Delivery To Card End ******-->
+
+                          <!--***** Select Product Invoice To Card   ****--> 
+                           
+                              <div class="slds-size_4-of-12 setPadding">
+                                  <div class="infoBox">
+                                      <h2>Invoice To:</h2>
+                                      
+                                      <p>{billingDetails}</p>
+                                      <template if:false={hasInvoiceToData}>
+                                          <div>                                       
+                                          <p class="slds-text-color_error">No Invoice To found. Please contact your Customer Center Representative for assistance.</p>
+                                          </div>
+                                   </template>
+                                  </div>
+                              </div>
+                          
+                          <!--***** Select Product Invoice To Card End  ****--> 
+
+                          </div> 
+                        </div>  
+                       <!--***** Card section End   *****--> 
+                  
+
+
+                          <!--********   Enter Details Form Start    **********-->
+                         
+                            <div class="slds-size_12-of-12 mtb20">
+                                <div class="slds-grid ">
+                                    <div class="slds-size_12-of-12">
+                                        <h2 class="heading2 mb8">Enter Details</h2>
+                        
+                        
+                                        <div class="slds-size_12-of-12">
+                                            <div class="slds-grid slds-gutters">
+
+                                                <div class="slds-size_4-of-12 setPadding">
+                                                    <div class="slds-p-vertical_x-small setInput">
+                                                        <lightning-input class="Step2" type="text" data-id="orderName" label="My Order Name (optional)" maxlength="20" placeholder="Enter order Name" onchange={handleOrdDetailsChange} value={orderName}>
+                                                        </lightning-input>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-size_4-of-12 setPadding">
+                                                    <div class="slds-p-vertical_x-small setInput">
+                                                        <lightning-input class="Step2 Step2CustPo requiredSet" type="text" data-id="customerPo"  maxlength="35" label="Customer PO" placeholder="Enter Customer PO" required onchange={handleOrdDetailsChange} value={customerPo} message-when-value-missing="Please enter Customer PO">
+                                                        </lightning-input>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-size_4-of-12 setPadding">
+                                                  <div class="slds-p-vertical_x-small setInput">
+                                                    <div class="slds-form-element">
+                                                        <div class="slds-form-element__control">
+                                                                <lightning-combobox
+                                                                    placeholder="Select Requested By"
+                                                                    label="Requested By"
+                                                                    value={selectedReqByValue}
+                                                                    options={reqByOptions}
+                                                                    onchange={handleRequestedBy}
+                                                                    dropdown-alignment="auto"
+                                                                    class="setCombobox Step2 Step2RequestBy requiredSet"
+                                                                    message-when-value-missing="Please select a Requested By"
+                                                                    required
+                                                                    >
+                                                                </lightning-combobox>
+                                                                
+                                                        </div>
+                                                    </div> 
+                                                    
+                                                </div>
+                                              </div>
+                                            </div> 
+                                          </div>
+                                          <div class="slds-size_12-of-12">
+                                            <div class="slds-grid slds-gutters">   
+                                                <div class="slds-size_4-of-12 setPadding">
+                                                    <div class="slds-p-vertical_x-small setInput">
+                                                        
+                                                        <div class="slds-form-element">
+                                                            <div class="slds-form-element__control">
+                                                                   
+                                                                    <lightning-combobox
+                                                                        placeholder="Select Delivery Term"
+                                                                        label="Delivery Terms"
+                                                                        value={deliveryTermsValue}
+                                                                        options={deliveryTermOptions}
+                                                                        onchange={handleDeliveryTermsChange}
+                                                                        dropdown-alignment="auto"
+                                                                        class="setCombobox Step2 Step2DevTerm requiredSet"
+                                                                        message-when-value-missing="Please select a Delivery Term"
+                                                                        required 
+                                                                        >
+                                                                    </lightning-combobox>
+                                                                    <template if:false={hasDeliveryTermsData}>
+                                                                        <div>                                       
+                                                                        <p class="slds-text-color_error">No Delivery Terms found. Please contact your Customer Center Representative for assistance.</p>
+                                                                        </div>
+                                                                    </template>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+
+                                                </div>
+                                                <div class="slds-size_4-of-12 setPadding">
+                                                   
+                                                    <div class="slds-p-vertical_x-small setInput">
+                                                        <div class="slds-form-element">
+                                                            <div class="slds-form-element__control">
+                                                                    <lightning-combobox
+                                                                        placeholder="Select Mode of Transport"
+                                                                        label="Mode of Transport"
+                                                                        value={modeOfTransportValue}
+                                                                        options={modeOfTransportOptions}
+                                                                        onchange={handleModeOfTransChange}
+                                                                        dropdown-alignment="auto"
+                                                                        class="setCombobox Step2 Step2Transport requiredSet"
+                                                                        message-when-value-missing="Please select a Mode of Transport"
+                                                                        required
+                                                                        >
+                                                                    </lightning-combobox>
+                                                                    <template if:false={hasTransportData}>
+                                                                        <div>                                       
+                                                                        <p class="slds-text-color_error">No Mode of Transport found. Please contact your Customer Center Representative for assistance.</p>
+                                                                        </div>
+                                                                    </template>
+                                                            </div>
+                                                        </div> 
+                                                        
+                                                    </div>
+                                                </div>
+      
+
+                                            </div>
+                                            <div class="flex slds-grid slds-gutters">
+                                                <div class="slds-size_8-of-12 setPadding">
+                                                    <div class="slds-p-vertical_x-small setInput1">
+                                                        <lightning-textarea type="text" data-id="otherInst" maxlength="900" label="Other Instructions" placeholder="" onchange={handleOrdDetailsChange} value={otherInstValue}>
+                                                        </lightning-textarea>
+                                                        <div class="messageLine slds-float_right "><span>{otherInstCount}</span><span>/900</span></div>
+                                                    </div>
+                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                          <!--*********   Enter Details Form End   **********-->
+
+
+                          <!--********  Enter Details Table Start   **********-->
+                          
+
+                            <div class="slds-size_12-of-12">
+                                <h2 class="headingNote">Note:<span class="headingNoteNormal">Maximum limit of product line item is 30</span> <span class="spText">Total Products: {prodLineCount}/30</span></h2>
+                             </div>
+                            <div class="mb36 setScrollbarTable scrollBarStyle">
+                                
+                                    <div class={tableClassName}>
+                                    <div class={scrollBarEnable} style="height:100%;
+                                    background-color: #f5f5f5;">
+    
+                                        <table
+                                            class="slds-table slds-table_cell-buffer slds-table--header-fixed setInputTable"
+                                            aria-label="Enter details table" style="table-layout:fixed;">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th class="" scope="col" style="width:6%">
+                                                        <div class="slds-assistive-text" aria-label="Serial Number">Serial Number</div>
+                                                        <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Serial Number">
+                                                            S. No
+                                                        </div>
+                                                    </th>
+
+                                                    <th class="" scope="col" style="width:14%">
+                                                        <div class="slds-truncate slds-cell-fixed" title="Product Name">
+                                                        Product Name
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:8%" class="" scope="col">
+                                                        <div class="slds-truncate slds-cell-fixed" title="Quantity">
+                                                            Quantity
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:9%" class="" scope="col">
+                                                        <div class="slds-cell-fixed" title="Unit">
+                                                            Unit
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:18%" class="" scope="col">
+                                                        <div class="slds-truncate slds-cell-fixed" title="Delivery/Collection Date" style="margin-top: -9px">
+                                                            Delivery/<br/>Collection Date
+                                                            
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:15%" class="" scope="col">
+                                                        <div class="slds-assistive-text" aria-label="Shell Contract Number">Shell Contract Number</div>
+                                                        <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Shell Contract Number">
+                                                            Shell Contract No
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:12%" class="" scope="col">
+                                                        <div class="slds-truncate slds-cell-fixed" title="Instructions">
+                                                            Instructions
+                                                        </div>
+                                                    </th>
+                                                    <th style="width:18%" class="" scope="col">
+                                                        <div class="slds-assistive-text" aria-label="Number of Orders/Action">Number of Orders/Action</div>
+                                                        <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Number of Orders/Action">
+                                                            No. of Orders/Action
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                    <template for:each ={selectedProdDetails} for:item="product">
+                                                        <tr key={product.Id} class="slds-hint-parent">
+                                                            <td style="width:6%">
+                                                                <div class="">
+                                                                    {product.sno}
+                                                                </div>
+                                                            </td>
+
+                                                            <td style="width:14%">
+                                                                <div class="tooltip">
+                                                                    {product.materialName}
+                                                                    <span tabindex="0" class="tooltiptext" role="tooltip">{product.productNumber}</span>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width:8%">
+                                                                <lightning-input data-id={product.Index} min="1" class="Step2 errorMsg" data-name={product.materialName} type="number" variant="label-hidden" value={product.quantity}  placeholder="Quantity"  maxlength="10" onblur={handleQuantityChange} required message-when-value-missing="Please enter the required quantity"  message-when-range-underflow="Please enter the Minimum quantity : 1"></lightning-input>
+                                                            </td>   
+                                                            <td style="width:9%">
+                                        
+                                                                <div class="slds-form-element">
+                                                                    <div class="slds-form-element__control">
+                                                                        <lightning-combobox
+                                                                            placeholder="Unit"
+                                                                            name={product.Index}
+                                                                            variant="label-hidden"
+                                                                            value={product.unit}
+                                                                            options={unitProdOptions}
+                                                                            dropdown-alignment="auto"
+                                                                            onchange={handleUnitChange}
+                                                                            class="setUnitCombobox Step2 errorMsg"
+                                                                            required
+                                                                            message-when-value-missing="Please select unit of measure"
+                                                                            >
+                                                                        </lightning-combobox>
+                                                                            
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                        
+                                                            </td>
+                                                            <!-- Delivery date select -->
+                                                            <td style="width:18%">                                                                       
+                                                                    <input type="date" id={datePickerId} data-id={product.Index} min={currentdate} max={maximumdate}  class="Step2 errorMsg" placeholder="Delivery date" name="myDate" value={product.deliveryCollDate} lwc:dom="manual" onchange={handleDeliveryDate}  required />
+                                                                    <div class="error" id={nameErr}></div>
+                                                            </td>
+                                                            <td style="width:15%">
+                                                                <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.shellContractNo} placeholder="Shell Contract No" max-length="10" pattern="[0-9]+" onblur={handleShellContract}></lightning-input>
+                                                            </td>
+                                                            <td style="width:12%">
+                                                                <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.instructions} placeholder="Instructions" maxlength="132" onblur={handleInstructions}></lightning-input>
+                                                            </td>
+                                                            <td style="width:18%">
+                                                                <div class="orderTd">
+                                                                <lightning-input type="text" data-id={product.Id}  name="demo" variant="label-hidden"  class="orderInput Step2" placeholder="" maxlength="2" pattern="[0-9]+" value={defaultOrdValue} onchange={handleOrderAction} aria-label="please enter Number of Orders"></lightning-input>
+                                                                <a data-id={product.Index} data-name={product.materialName} data-code={product.productNumber} data-title={product.Id} onclick={handleAddButton}><lightning-icon icon-name="utility:add" size="xx-small" alternative-text="add" title="add"></lightning-icon></a>
+                                                                <a data-id={product.Index} onclick={handleDeleteButton}><lightning-icon icon-name="utility:delete" size="xx-small" alternative-text="delete" title="delete"></lightning-icon></a>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> 
+                        
+                <!--************   Enter Details Table End   ***********-->
+
+                <div class="slds-m-vertical_large">
+                  <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleConfirmDetail} aria-label="yellow background color with forward icon Confirm Details"> Confirm Details <lightning-icon icon-name="utility:forward" alternative-text="forward" title="forward" size="xx-small" class="ml8 iconColor"></lightning-icon></button>
+                  
+                  <template if:true={enableExitBtn}>
+                    <button class="slds-button cancelBtn mr16" onclick={handleExitBtn} aria-label="Exit">Exit</button>
+                  </template>
+                </div>
+
+                    </div> <!-- Enter details End -->
+                </div>
+            </div>
+          </li>
+
+          <!-- Review & Submit section -->
+          <li class="review slds-progress__item slds-is-progress">
+            <span tabindex="-1"  class="progressComplete slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" title="Complete" onclick={handelOpenSelectProduct}>
+                <span class="slds-icon slds-icon_xx-small" aria-hidden="true" >
+                  <lightning-button-icon icon-name="utility:check" variant="bare" class="iconpointerevents" alternative-text="close" title="close" ></lightning-button-icon>
+                </span>
+                <span class="slds-assistive-text">Complete</span>
+              </span>
+           
+            
+              <div tabindex="-1" class="progressActive slds-progress__marker" aria-hidden="true">
+                <span class="slds-assistive-text">Active</span>
+              </div>
+            
+            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                <div class="slds-size_12-of-12">
+                    <div class="selectedText">Review & Submit </div>
+                    <div if:true={reviewsubmit}>
+                        <div class="slds-size_12-of-12 mt15">
+                            <h2 class="headingNote">Note:<span class="headingNoteNormal">Maximum limit of Order line item is 30</span> <span class="spText">Total Orders: {orderCount}/30</span></h2>
+                         </div>
+
+                         <div class="setScrollbarTable">
+                            
+                            <div class={reviewTable}>
+                                <div class={scrollForReview} style="height:100%;">
+                                    <table
+                                        class="slds-table slds-table_cell-buffer slds-table--header-fixed setInputTable"
+                                        aria-label="Review Submit table " style="table-layout: fixed;">
+                                        <thead>
+                                            <tr class="slds-line-height_reset">
+                                                <th class="" scope="col">
+                                                    <div class="slds-truncate slds-cell-fixed" title="My Order Name">
+                                                        
+                                                        My Order Name
+                                                    </div>
+                                                </th>
+                                                <th  class="" scope="col">
+                                                    <div class="slds-truncate slds-cell-fixed" title="Customer">
+                                                        Customer
+                                                    </div>
+                                                </th>
+                                                <th class="" scope="col">
+                                                    <div class="slds-truncate slds-cell-fixed" title="Delivery To">
+                                                        Delivery To
+                                                    </div>
+                                                </th>
+                                                <th  class="" scope="col">
+                                                    <div class="slds-truncate slds-cell-fixed" title=" Invoice To">
+                                                        Invoice To
+                                                    </div>
+                                                </th>
+                                                <th  class="" scope="col" style="width:8%">
+                                                    <div class="slds-truncate slds-cell-fixed " title="Action">
+                                                        Action
+                                                    </div>
+                                                </th>
+                                                
+                                            </tr> 
+                                        </thead>
+                                        <tbody>
+                                            <template for:each={reviewOrderList} for:item="order">
+                                                <tr key={order.randomId} data-name={order.randomId} class="slds-hint-parent"> <!--highlightTR-->
+                                                    <td>
+                                                        <div class="">
+                                                            <lightning-icon data-id={order.randomId} icon-name="utility:chevronright"
+                                                            alternative-text="chevronright" title="chevronright"
+                                                            onclick={showCollapseRow} size="xx-small" class="mr2">
+                                                        </lightning-icon>
+                                                            {order.Name}
+                                                        </div>
+                                                        </td>
+                                                    <td>
+                                                        <div >
+                                                            {order.soldToName}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div >
+                                                            {order.shipToName}
+                                                        </div>
+                                
+                                                    </td>
+                                                    <td>
+                                                        <div >
+                                                            {order.billToName}
+                                                        </div>
+                                                    </td>
+                                                   
+                                                    <td style="width:8%">
+                                                        <div class="">
+                                                            <div class="orderTd disableBtn"><!--disableIconColor-->
+                                                                
+                                                                <a data-id={order.randomId} onclick={handleEditButton}><lightning-icon icon-name="utility:edit" size="xx-small" alternative-text="edit" title="edit"></lightning-icon></a>
+                                                                <a data-id={order.randomId} onclick={handleOrderDelete}><lightning-icon icon-name="utility:delete" size="xx-small" alternative-text="delete" title="delete"></lightning-icon></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!--hidden row-->
+                                                <tr key={order.randomId} style="visibility:collapse;height:0px !important" class={order.randomId}>
+                                                    <td colspan="5" class="borderTop">
+                                                            <table class=" slds-table--fixed-layout" style="border-collapse: collapse; width: 100%;" aria-label="Review Submit table">
+                                                                <thead aria-hidden="true" class="slds-hide">
+                                                                    <tr class="noBorder">
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                            <tr class="noBorder">
+                                                                <td class="boldTd">Customer PO</td>
+                                                                <td>{order.poNumber}</td>
+                                                                <td class="boldTd">Mode Of Transport</td>
+                                                                <td>{order.modeOfTransport}</td>
+                                                            </tr>
+                                                            <tr class="noBorder">
+                                                                <td class="boldTd">Delivery Terms</td>
+                                                                <td>{order.deliveryTerms}</td>
+                                                                <td class="boldTd">Requested By</td>
+                                                                <td>{order.requestedByName}</td>
+                                                            </tr>
+                                                            <tr class="noBorder">   
+                                                                <td class="boldTd">Other Instructions</td>
+                                                                <td colspan="4">{order.otherInstructions}</td>
+                                                            </tr>
+
+                                                            <tr class="noBorder">
+                                                                <td colspan="5" class="no-padding">
+
+                                                                    <div class="setScrollbarTable ">
+    
+                                                                        <div class={reviewProdTable}>
+                                                                            <div class={scrollForReviewProd} style="height:100%;">
+                                                                    
+                                                                                <table
+                                                                                    class="slds-table slds-table_cell-buffer slds-table--header-fixed setInputTable"
+                                                                                    aria-label="Review Submit table " style="table-layout: fixed;">
+                                                                                    <thead>
+                                                                                        <tr class="slds-line-height_reset">
+                                                                                            <th class="" scope="col" style="width:6%">
+                                                                                                <div class="slds-assistive-text" aria-label="Serial Number">Serial Number</div>
+                                                                                                <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Serial Number">
+                                                                                                    S. No
+                                                                                                </div>
+                                                                                            </th>
+
+                                                                                            <th class="" scope="col" style="width:20%">
+                                                                                                <div class="slds-truncate slds-cell-fixed" title="Product Name">
+                                                                                                Product Name
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            <th style="width:10%" class="" scope="col">
+                                                                                                <div class="slds-truncate slds-cell-fixed" title="Quantity">
+                                                                                                    Quantity
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            <th style="width:8%" class="" scope="col">
+                                                                                                <div class="slds-truncate slds-cell-fixed" title="Unit">
+                                                                                                    Unit
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            <th style="width:22%" class="" scope="col">
+                                                                                                <div class="slds-truncate slds-cell-fixed" title="Delivery/Collection Date">
+                                                                                                    Delivery/Collection Date
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            <th style="width:18%" class="" scope="col">
+                                                                                                <div class="slds-assistive-text" aria-label="Shell Contract Number">Shell Contract Number</div>
+                                                                                                <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Shell Contract Number">
+                                                                                                    Shell Contract No
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            <th style="width:22%" class="" scope="col">
+                                                                                                <div class="slds-truncate slds-cell-fixed" title="Instructions">
+                                                                                                    Instructions
+                                                                                                </div>
+                                                                                            </th>
+                                                                                            
+                                                                                        </tr> 
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <template for:each ={order.orderLineItemList} for:item="product">
+                                                                                            <tr key={product.Id} class="slds-hint-parent borderBottom">
+                                                                                                <td style="width:6%">
+                                                                                                    <div class="">
+                                                                                                        {product.sno}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td style="width:20%" >
+                                                                                                    <div class="tooltip">
+                                                                                                        {product.materialName}
+                                                                                                        <span tabindex="0" class="tooltiptext" role="tooltip">{product.productNumber}</span>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td style="width:10%">
+                                                                                                    <div >
+                                                                                                        {product.quantity}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td style="width:18%">
+                                                                                                    <div >
+                                                                                                        {product.unit}
+                                                                                                    </div>
+                                                                            
+                                                                                                </td>
+                                                                                                <td style="width:22%">
+                                                                                                    <div >
+                                                                                                        <lightning-formatted-date-time class="textCapital" value={product.deliveryCollDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                                                                                        <!-- {product.deliveryCollDate} -->
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td style="width:18%">
+                                                                                                    <div >
+                                                                                                        {product.shellContractNo}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td style="width:22%">
+                                                                                                    <div >
+                                                                                                        {product.instructions}
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                        
+                                                                                        </template>
+                                                                    
+                                                                                           
+                                                                                            
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                        </table>
+
+                                                        
+                                                    </td>
+                                                </tr>
+                                                <!--hidden row-->
+                                            </template>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> 
+
+                    </div>
+                </div>
+            </div>
+          </li>
+
+        </ol>
+       
+      </div>
+</div>
+<div class="slds-size_12-of-12 slds-m-vertical_large">
+    <template if:true={enableActionBtn}>
+        <button class="slds-button borderBtn mr16" onclick={handleAddMoreOrder} aria-label="gray border color Add More Order">Add More Order</button>
+        <button class="slds-button yellowBtn mr16" onclick={showModalBulkOrder} aria-label="yellow background color Submit Order">Submit Order</button>
+    </template>
+    <template if:false={enableActionBtn}>
+        <button class="slds-button borderBtnDisabel mr16" aria-label="Disable Add More Order">Add More Order</button>
+        <button class="slds-button borderBtnDisabel mr16" aria-label="Disable Submit Order">Submit Order</button>
+    </template>    
+        <button class="slds-button cancelBtn mr16" onclick={handleBulkOrdCancel} aria-label="Cancel">Cancel</button>
+        
+</div>
+
+
+<!-- Delete Order modal start -->
+<template if:true={isShowDeleteOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Delete Order">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalDeleteOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-2">
+                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate modalHeading">Delete Order </h2>
+                <p>Are you sure you want to delete this individual order?</p>
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={handleConfirmDeleteOrder} title="Yes" aria-label="yellow background color Yes">Yes</button>
+                 <button class="slds-button borderBtn" onclick={hideModalDeleteOrder} title="No" aria-label="gray border color No">No</button>
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Delete Order modal end -->
+
+<!-- Exit Order modal start -->
+<template if:true={isShowExitCurrentOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Exit Order">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalExitCurrentOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-3">
+                <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate modalHeading">Exit Order </h2>
+                <p>{exitbuttonMsg1}</p>
+                <p>{exitbuttonMsg2}</p>
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={handleExitOrderYes} title="Yes" aria-label="yellow background color Yes">Yes</button>
+                 <button class="slds-button borderBtn" onclick={hideModalExitCurrentOrder} title="No" aria-label="gray border color No">No</button>
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Exit Order modal end -->
+
+<!-- Exit Order previous data modal start -->
+<template if:true={isShowExitOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Exit Order">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalExitOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-6">
+                <h2 id="modal-heading-06" class="slds-text-heading_medium slds-hyphenate modalHeading">Exit Order </h2>
+                <p>Are you sure you want to exit from the current order?</P>
+                <P>Exiting the order will discard your all the changes and you will be seeing the previous data of this order</p>
+                
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={handleExitOrder} title="Yes" aria-label="yellow background color Yes">Yes</button>
+                 <button class="slds-button borderBtn" onclick={hideModalExitOrder} title="No" aria-label="gray border color No">No</button>
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Exit Order modal end -->
+
+<!-- Cancel Order modal start -->
+<template if:true={isShowCancelOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Cancel Order">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalCancelOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-4">
+                <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate modalHeading">Cancel Order </h2>
+                <p>Are you sure you want to cancel the Bulk order?</p>
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={handleCancelOrder} title="Yes" aria-label="yellow background color Yes">Yes</button>
+                 <button class="slds-button borderBtn" onclick={hideModalCancelOrder} title="No" aria-label="gray border color No">No</button>
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Cancel Order modal end -->
+
+<!-- Bulk Order modal start -->
+<template if:true={isShowBulkOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Bulk Order">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBulkOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-5">
+                <h2 id="modal-heading-05" class="slds-text-heading_medium slds-hyphenate modalHeading">Bulk Order </h2>
+                <p>Are you sure you want to place the Bulk order?</p>
+                <p>Your bulk order will be placed as an individual order for individual client.</p>
+              
+                <p style="margin-top:15px">After clicking “Yes” if order is successful you will be redirected to the screen from where you initiated the “Bulk Order”.</p>
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={handleBulkOrderSubmit} title="Yes" aria-label="yellow background color Yes">Yes</button>
+                 <button class="slds-button borderBtn" onclick={hideModalBulkOrder} title="No" aria-label="gray border color No">No</button>
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Bulk Order modal end -->
+
+<!-- modal start for max popup -->
+<template if:true={isShowErrorModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-100">
+                <h2 id="modal-heading-100" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
+                <p>{lineItemError}</p>
+                <p>{lineItemInfo}</p>
+                <p>{lineItemleftInfo}</p>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- modal end -->
+
+
+<!-- Error Order modal start -->
+<template if:true={isShowError}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Error">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalError}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-7">
+                <h2 id="modal-heading-07" class="slds-text-heading_medium slds-hyphenate modalHeading">Error </h2>
+                <p>“Bulk Order” placement is unsuccessful due to an internal error.</p>
+                <p>Please try submitting the “Bulk Order” again.</p>
+                <div class="mt36">
+                 <button class="slds-button yellowBtn mr16" onclick={hideModalError} title="OK" aria-label="yellow background color OK">OK</button>
+                
+              </div>
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Error Order modal end -->
+
+
+<!-- maximum Order modal start -->
+<template if:true={isShowMaximumOrder}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalmaximumOrder}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-8">
+                <h2 id="modal-heading-08" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert </h2>
+                <p>The maximum number of Order line item has been reached to 30 and adding further order line in same Bulk Order is not allowed.</p>
+                                
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- maximum Order modal end -->
+
+
+</template>

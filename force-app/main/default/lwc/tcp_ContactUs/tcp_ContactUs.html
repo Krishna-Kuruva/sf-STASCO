@@ -1,0 +1,317 @@
+<template>
+
+     <!--submitted successfully section start--> 
+    <template if:true={successInquiry}>
+    <div class="slds-size_12-of-12 mb36">
+        <div class="slds-grid">
+            <div class="flex customToast" data-id="toast">
+                <div>
+                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your inquiry has submitted successfully </p>
+    
+                </div>
+
+                <div>
+                 <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </template>
+ <template if:true={successNewRequest}>
+    <div class="slds-size_12-of-12 mb36">
+        <div class="slds-grid">
+            <div class="flex customToast" data-id="toast">
+                <div>
+                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user request has submitted successfully </p>
+    
+                </div>
+
+                <div>
+                 <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </template>
+ <template if:true={successComment}>
+    <div class="slds-size_12-of-12 mb36">
+        <div class="slds-grid">
+            <div class="flex customToast" data-id="toast">
+                <div>
+                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your Comment has submitted successfully </p>
+    
+                </div>
+
+                <div>
+                 <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </template>
+ <template if:true={successComplaint}>
+    <div class="slds-size_12-of-12 mb36">
+        <div class="slds-grid">
+            <div class="flex customToast" data-id="toast">
+                <div>
+                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your Complaint has submitted successfully </p>
+    
+                </div>
+
+                <div>
+                 <a onclick={handleClose} ><lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="xx-small" class="ml8 iconColor"></lightning-icon></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </template>
+ <div class="spinner">
+    <template if:true={isLoading}>
+         <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+         </lightning-spinner>
+    </template>
+</div> 
+   <!--submitted successfully section End -->
+   
+    <div class="slds-size_12-of-12 mb24">
+        <div class="orderTitle">
+           <h1>Contact Us</h1>
+           <p>Send a comment, question or inquiry to your Customer Centre contact.</p>
+        </div>
+    </div>
+   
+    <div class="slds-size_12-of-12 mtb24">
+        <div class="flex slds-grid slds-gutters">
+            <div class="slds-size_4-of-12 setPadding setInput">
+               
+                    <div class="slds-form-element">
+                       
+                        <div class="slds-form-element__control">
+                            <template if:true={logOnAsTCP}>
+                            <lightning-combobox
+                                placeholder="Select a customer"
+                                label="Customer"
+                                data-formfield="custValue"
+                                value={value}
+                                options={customerOptions}
+                                class="setCombobox placeordercheck"
+                                onchange={handleAccountChange}
+                               
+                                
+                            >
+                            </lightning-combobox>
+                        </template>
+                        <template if:false={logOnAsTCP}>
+                            <lightning-combobox
+                                placeholder={custName}
+                                label="Customer"
+                                value={value2}
+                                options={custName}
+                                class="setCombobox placeordercheck"
+                                onchange={handleChange}
+                               disabled
+                                
+                            >
+                            </lightning-combobox>
+                        </template>
+                        </div>
+                    
+                    </div>
+                
+                </div>
+        </div>
+   
+        <div class="slds-size_8-of-12">
+            <div class="slds-grid slds-gutters">   
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                    <lightning-combobox
+                                        placeholder="Select Shell Contact"
+                                        data-formfield="contactValue"
+                                        label="Shell Contact"
+                                        value={convalue}
+                                        options={contacts}
+                                        onchange={handleshellContactChange}
+                                        class="Step2 valid setCombobox"
+                                        message-when-value-missing="Please select a Shell Contact"
+                                        
+                                        >
+                                    </lightning-combobox>
+                            </div>
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <div class="slds-form-element">
+                            <template if:true={contactUs}>
+                            <div class="slds-form-element__control">
+                                    <lightning-combobox
+                                        placeholder="Select Type of feedback"
+                                        data-formfield="typeValue"
+                                        label="Type of feedback"
+                                        value={typeOffeedbackValue}
+                                        options={typeOffeedbackOptions}
+                                        onchange={handletypeOffeedbackChange}
+                                        class="Step2 valid setCombobox"
+                                        message-when-value-missing="Please select a Type of feedback"
+                                        
+                                        >
+                                    </lightning-combobox>
+                            </div>
+                        </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Request New User section start-->
+            <template if:true={requestNewUser}>
+            <div class="flex slds-grid slds-gutters">
+                <div class="slds-size_12-of-12 setPadding">
+                    <h2 class="headingUser mt24">New User Details</h2>
+                </div> 
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="firstName" label="First Name" maxlength="50" placeholder="" onchange={handleNewUserDetailsChange} value="" pattern="[a-zA-Z0-9\s]+" required message-when-value-missing="Please enter First Name"  message-when-pattern-mismatch="Special characters are not allowed" >
+                        </lightning-input>
+                       
+                    </div>
+                </div>
+
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="lastName" label="Last Name" maxlength="50" placeholder="" onchange={handleNewUserDetailsChange} value="" pattern="[a-zA-Z0-9\s]+" required message-when-value-missing="Please enter Last Name" message-when-pattern-mismatch="Special characters are not allowed">
+                        </lightning-input>
+                        
+                    </div>
+                </div>  
+                
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="phone" label="Phone" maxlength="20" placeholder="" onchange={handleNewUserDetailsChange} value="" pattern="[a-zA-z0-9]+" required message-when-value-missing="Please enter Phone Number" message-when-pattern-mismatch="Special characters are not allowed">
+                        </lightning-input>
+                        
+                    </div>
+                </div>   
+
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" data-id="email" label="Email" maxlength="50" placeholder="" onchange={handleNewUserDetailsChange} value="" required message-when-value-missing="Please enter Email" message-when-pattern-mismatch="Please enter a valid email address">
+                        </lightning-input>
+                        
+                    </div>
+                </div>   
+
+                <div class="slds-size_12-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setTextareaContact">
+                        <lightning-textarea type="text" data-id="description" maxlength="" label="Additional Comment" placeholder="Comment" onchange={handleNewUserDetailsChange}>
+                        </lightning-textarea>
+                        
+                    </div>
+
+                </div>
+
+            </div>  
+           </template>
+           <!--Request New User section end-->
+
+
+            <!--Complaint section start-->
+            <template if:true={complaint}>
+            <div class="flex slds-grid slds-gutters">
+                <div class="slds-size_12-of-12 setPadding">
+                    <h2 class="headingUser mt24">Complaint Details</h2>
+                </div> 
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="shellRefNuber" label="Shell Reference Number" maxlength="50" placeholder="" onchange={handleComplaintDetailsChange} value="" pattern="[a-zA-z0-9]+" required message-when-value-missing="Please enter Shell Reference Number" message-when-pattern-mismatch="Special characters are not allowed">
+                        </lightning-input>
+                        
+                    </div>
+                </div>
+
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="customerpo" label="Customer PO" maxlength="50" placeholder="" onchange={handleComplaintDetailsChange} value="" pattern="[a-zA-z0-9]+" required message-when-value-missing="Please enter Customer PO" message-when-pattern-mismatch="Special characters are not allowed">
+                        </lightning-input>
+                        
+                    </div>
+                </div>  
+                
+                <div class="slds-size_6-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setInput">
+                        <lightning-input class="Step2 valid requiredSet" type="text" data-id="product" label="Product" maxlength="50" placeholder="" onchange={handleComplaintDetailsChange} value="" required message-when-value-missing="Please enter Product" pattern="[a-zA-z0-9]+" message-when-pattern-mismatch="Special characters are not allowed">
+                        </lightning-input>
+                        
+                    </div>
+                </div>  
+
+                <div class="slds-size_12-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setTextareaContact">
+                        <lightning-textarea type="text" data-id="description" maxlength="" label="Description" placeholder="Comment"  onchange={handleComplaintDetailsChange} value="" >
+                        </lightning-textarea>
+                        
+                    </div>
+
+                </div>
+
+            </div>  
+           </template> 
+           <!--Complaint section end-->
+
+           <!--Comment section start-->
+           <template if:true={comment}>
+            <div class="flex slds-grid slds-gutters">
+                <div class="slds-size_12-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setTextareaContact">
+                        <lightning-textarea class="requiredSet" type="text" data-id="description" maxlength="" label="Description" placeholder="Description" required message-when-value-missing="Please enter Description" onchange={handleCommentChange} value="" >
+                        </lightning-textarea>
+                        
+                    </div>
+
+                </div>
+            </div>
+           </template> 
+         <!--Comment section end-->
+
+         <!-- Inquiry section start-->
+         <template if:true={inquiry}>
+            <div class="flex slds-grid slds-gutters">
+                <div class="slds-size_12-of-12 setPadding">
+                    <div class="slds-p-vertical_x-small setTextareaContact">
+                        <lightning-textarea class="requiredSet" type="text" data-id="comment" maxlength="" label="Description" placeholder="Description" required message-when-value-missing="Please enter Description" onchange={handleInquiryChange} >
+                        </lightning-textarea>
+                        
+                    </div>
+
+                </div>
+            </div>
+           </template> 
+         <!-- Inquiry section end-->
+
+            <div class="mt20">
+                <template if:true={enableSubmit}>
+                <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleSubmit} aria-label="yellow background color Submit"> Submit</button>
+            </template>
+            <template if:false={enableSubmit}>
+                <button class="slds-button slds-button_brand nextBtnDisable mr16" aria-label="disable submit"> Submit</button>
+            </template>
+                <!-- <button class="slds-button slds-button_brand nextBtnDisable mr16"> Next <lightning-icon icon-name="utility:forward" alternative-text="forward" title="forward" size="xx-small" class="ml8 disableIconColor"></lightning-icon></button> -->
+            </div>
+
+
+            
+        </div>        
+
+
+
+    </div>
+</template>

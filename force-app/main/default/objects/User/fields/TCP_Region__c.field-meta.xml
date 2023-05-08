@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_Region__c</fullName>
+    <defaultValue>&quot;&quot;</defaultValue>
+    <description>Select the user region among Singapore, Europe and NA</description>
+    <externalId>false</externalId>
+    <label>TCP Region</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>TCP_Region</valueSetName>
+    </valueSet>
+</CustomField>

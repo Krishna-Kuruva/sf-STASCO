@@ -1,0 +1,371 @@
+<template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+            </lightning-spinner>
+        </template>
+    </div>
+    <!-- ================ Breadcrumbs Section Start ============= -->
+<template if:true={showDetails}>
+    <div class="slds-size_12-of-12 mb24">
+        <div class="flex slds-grid">
+            <div class="breadcrumbs setBreadcrumbs">
+                <nav role="navigation" aria-label="Breadcrumbs">
+                    <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item">
+                            <template if:true={backToDashboard}>
+                                <a href="javascript:void(0)" onclick={handleBack} aria-label="Go to dashboard link">Dashboard</a>
+                            </template>
+                            <template if:false={backToDashboard}>
+                                <a href="javascript:void(0)" onclick={handleBack} aria-label="Go to Order History">Order History</a>
+                            </template>    
+                        </li>
+                        <li class="slds-breadcrumb__item">
+                            <a href="javascript:void(0)" aria-label="Order Details page ">Order Details</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+    <!-- ================ Breadcrumbs Section Start ============= -->
+
+    <!-- ================ Heading text ============= -->
+
+    <div class="slds-size_9-of-12 mb24">
+        <div class="orderTitle">
+            <h1>Web Order Number : {orderDetailList.orderNumber}</h1>
+        </div>
+    </div>
+
+
+
+    <div class="slds-size_12-of-12">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+                <div class="setTableVertical">
+                    <table class="slds-table " style="width:100%;border-collapse: collapse;" aria-label="View Order Details table">
+                        <thead aria-hidden="true" class="slds-hide">
+                            <tr class="noBorder">
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Customer Name</td>
+                                <td>{orderDetailList.soldToNameWithAddr}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Delivery To</td>
+                                <td>{orderDetailList.shipToNameWithAddr}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Invoice To</td>
+                                <td>{orderDetailList.billToNameWithAddr}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Order Name</td>
+                                <td>{orderDetailList.name}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Status</td>
+                                <td>{orderDetailList.status}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Customer PO</td>
+                                <td>{orderDetailList.poNumber}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">
+                                    <span class="slds-assistive-text" aria-label="Shell Ref Number">Shell Ref Number</span>
+                                   <span aria-hidden="true"> Shell Ref No.</span></td>
+                                <td>{orderDetailList.salesordernumber}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Mode of Transport</td>
+                                <td>{orderDetailList.modeOfTransport}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Delivery Terms</td>
+                                <td>{orderDetailList.deliveryTerms}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Other Instructions</td>
+                                <td>{orderDetailList.otherInstructions}</td>
+                            </tr>
+                            <template if:false={chevronrightShow}>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Remarks</td>
+                                <td colspan="3">{orderDetailList.remarks}</td>
+                            </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="slds-size_12-of-12 ">
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+                <div class="setTableVertical">
+                    <table class="slds-table " style="width:100%;table-layout: fixed;border-collapse: collapse;" aria-label="View Order Details table">
+                        <thead aria-hidden="true" class="slds-hide">
+                            <tr class="noBorder">
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Ordered By</td>
+                                <td>{orderDetailList.orderedBy}</td>
+                                <td class="boldTd" style="width:25%">Ordered Date</td>
+                                <td>{orderDetailList.orderedDate}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="boldTd" style="width:25%">Modified By</td>
+                                <td>{orderDetailList.modificationBy}</td>
+                                <td class="boldTd" style="width:25%">Modified Date</td>
+                                <td>{orderDetailList.modificationDate}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="boldTd" style="width:25%">Cancelled By</td>
+                                <td>{orderDetailList.cancellationBy}</td>
+                                <td class="boldTd" style="width:25%">Cancelled Date</td>
+                                <td>{orderDetailList.cancellationDate}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-size_12-of-12 mb24">
+        <template if:true={chevronrightShow}>
+        <div class="slds-grid ">
+            <div class="slds-size_12-of-12">
+                <div class="setTableVertical">
+                    <table class="slds-table " style="width:100%;table-layout: fixed;border-collapse: collapse;" aria-label="View Order Details table">
+                        <thead aria-hidden="true" class="slds-hide">
+                            <tr class="noBorder">
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Fulfilled By</td>
+                                <td>{orderDetailList.fullfilledBy}</td>
+                                <td class="boldTd" style="width:25%">Late Order</td>
+                                <td>{orderDetailList.isLateOrderVal}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Rush Order</td>
+                                <td>{orderDetailList.isRushOrderVal}</td>
+                                <td class="boldTd" style="width:25%">Last Minute Changes</td>
+                                <td>{orderDetailList.isLastMinuteChangeVal}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Reviewed By</td>
+                                <td>{orderDetailList.reviewedBy}</td>
+                                <td class="boldTd" style="width:25%">Reviewed Date/Time</td>
+                                <td>{orderDetailList.reviewedDateTime}</td>
+                            </tr>
+                            <tr>
+                                <td class="boldTd" style="width:25%">Remarks</td>
+                                <td colspan="3">{orderDetailList.remarks}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </template>
+    </div>
+
+
+    <div class="setScrollbarTable mb24">
+        <div class={tableClassName}>
+            <div class="slds-scrollable_y scrollBarStyle" style="height:100%;">
+
+                <table class="slds-table slds-table_cell-buffer slds-table--header-fixed setInputTable"
+                    aria-label="View Order Detail table " style="table-layout: fixed;">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col" style="width:6%">
+                                <div class="slds-assistive-text" aria-label="Serial Number">Serial Number</div>
+                                <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="serial number">
+                                    S. No
+                                </div>
+                            </th>
+
+                            <th class="" scope="col" style="width:20%">
+                                <div class="slds-truncate slds-cell-fixed" title="Product Name">
+                                       Product Name
+                                </div>
+                            </th>
+                            <th style="width:10%" class="" scope="col">
+                                <div class="slds-truncate slds-cell-fixed" title="Quantity">
+                                         Quantity
+                                </div>
+                            </th>
+                            <th style="width:8%" class="" scope="col">
+                                <div class="slds-truncate slds-cell-fixed" title="Unit">
+                                        Unit
+                                </div>
+                            </th>
+                            <th style="width:14%" class="" scope="col">
+                                <div class="slds-truncate slds-cell-fixed" title="Delivery/Collection Date"  style="margin-top: -9px" >
+                                    Delivery/ <br/>Collection Date
+                                </div>
+                            </th>
+                            <th style="width:17%" class="" scope="col">
+                                <div class="slds-assistive-text" aria-label="Shell Contract Number">Shell Contract Number</div>
+                                <div class="slds-truncate slds-cell-fixed" aria-hidden="true" title="Shell Contract Number">
+                                         Shell Contract No
+                                </div>
+                            </th>
+                            <th style="width:17%" class="" scope="col">
+                                <div class="slds-truncate slds-cell-fixed" title="Instructions">
+                                        Instructions
+                                </div>
+                            </th>
+                            <template if:true={viewAllAction}>
+                                <th style="width:8%" scope="col">
+                                    <div class="slds-truncate slds-cell-fixed" title="Action">
+                                            Action
+                                    </div>
+                                </th>
+                            </template>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <template for:each={ordLineItemList} for:item="product">
+                        <tr key={product.Id} class="slds-hint-parent">
+                            <td style="width:6%">
+                                <div class="">
+                                    <template if:true={chevronrightShow}>
+                                        <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                            alternative-text="chevronright button" title="chevronright"
+                                            onclick={showCollapseRow} size="xx-small" class="mr2">
+                                        </lightning-icon>
+                                    </template>
+                                    {product.sno}
+                                </div>
+                            </td>
+                            <td style="width:20%">
+                                <div class="tooltip">
+                                    {product.Material_Name__c}
+                                    <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                </div>
+                            </td>
+                            <td style="width:10%">
+                                <div class="">
+                                    {product.Quantity__c}
+                                </div>
+                            </td>
+                            <td style="width:8%">
+                                <div class="">
+                                    {product.Unit__c}
+                                </div>
+
+                            </td>
+                            <td style="width:14%">
+                                <div>
+
+                                    <lightning-formatted-date-time class="textCapital" value={product.Delivery_Collection_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                    
+                                </div>
+                            </td>
+                            <td style="width:17%">
+                                <div class="">
+                                    {product.Contract_No__c}
+                                </div>
+                            </td>
+                            <td style="width:17%">
+                                <div class="">
+                                    {product.Other_Instruction__c}
+                                </div>
+                            </td>
+                            <template if:true={viewAllAction}>
+                             <td style="width:8%;text-align:center">
+                                <div class="">
+                                 
+                                  <a data-id={product.Id} data-name={product.GSAP_Bol_Delivery__c} onclick={handleViewAllDocument}><lightning-helptext alternative-text="View Documents" icon-name="utility:file" size="xx-small"  content="View Documents" class="iconColor newColor" nubbin="left" ></lightning-helptext></a>
+                                 
+                                </div>
+                             </td>
+                            </template>
+                        </tr>
+                    
+                        
+                        <tr key={product.Id} style="visibility:collapse;height:0px !important" class={product.Id}>
+                            <td colspan="7">
+                                    <table class="slds-table--fixed-layout" aria-label="View Order Details table">
+                                        <thead aria-hidden="true" class="slds-hide">
+                                            <tr class="noBorder">
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="noBorder">
+                                            <td class="boldTd">Dispatch Date</td>
+                                            <td>
+                                                <lightning-formatted-date-time class="textCapital" value={product.GSAP_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                                 
+                                           </td>
+                                        </tr>
+                                        <tr class="noBorder">
+                                            <td class="boldTd">Bol/Delivery</td>
+                                            <td>{product.GSAP_Bol_Delivery__c}</td>
+                                            <td class="boldTd">Mode of Transport ID</td>
+                                            <td>{product.GSAP_Mode_of_Transport_ID__c}</td>
+                                        </tr>
+                                        <tr class="noBorder">
+                                            <td class="boldTd">Goods Issue Date</td>
+                                            <td>
+                                                <lightning-formatted-date-time class="textCapital" value={product.GSAP_Goods_Issue_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                                 
+                                           </td>
+                                            <td class="boldTd">Goods Issue</td>
+                                            <td>{product.GSAP_Goods_Issue_Value__c}</td>
+                                        </tr>
+                                        <tr class="noBorder">
+                                            <td class="boldTd">Goods Issue Unit</td>
+                                            <td>{product.GSAP_Goods_Issue_Unit__c}</td>
+                                            <td class="boldTd">Goods Issue Status</td>
+                                            <td>{product.GSAP_Goods_Issue_Status__c}</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div class="slds-size_12-of-12 mb36">
+        <div class="slds-m-vertical_large">
+            <button class="slds-button slds-button_neutral backBtn mr16" onclick={handleBack} aria-label="gray border color with back icon Back">
+                <lightning-icon icon-name="utility:back" alternative-text="back" title="back" size="xx-small"
+                    class="mr8 iconColor"></lightning-icon> Back
+            </button>
+            
+        </div>
+    </div>
+</template>
+<template if:false={showDetails}>
+    <c-tcp_-view-all-documents onbackbutton={handleViewAllDocumentsBack} salesordnum={docSalesOrdNum}  boldel={docBolDelivery}> </c-tcp_-view-all-documents>
+</template>
+</template>

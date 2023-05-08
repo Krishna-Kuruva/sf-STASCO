@@ -1,0 +1,391 @@
+:host .setCombobox{
+    --lwc-heightInput: 40px;
+    --lwc-borderRadiusMedium:2px;
+    --slds-c-input-color-border: rgba(0, 0, 0, 0.15);
+    /* width: 341px;  */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+    font-family: SFProText;
+    
+}
+
+:host {
+    --sds-c-icon-color-foreground-default: #404040;
+}
+
+.mtb24{
+    margin-top: 24px;
+    margin-bottom:24px;
+}
+.mb36{
+    margin-bottom:36px;
+}
+
+.mb30{
+    margin-bottom:30px;
+}
+
+.mb24{
+    margin-bottom:24px;
+}
+
+.mb10{
+    margin-bottom:10px;
+}
+
+.mt5{
+    margin-top:5px;
+}
+
+.mt20{
+    margin-top:20px;
+}
+
+.mr16{
+    margin-right: 16px;
+}
+
+.mr8{
+    margin-right: 8px;
+}
+.ml8{
+    margin-left: 8px;
+}
+
+.orderTitle{
+    flex: 1;
+    padding-right: 65px;
+}
+
+.setBreadcrumbs ol li {
+    font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #404040;
+font-family: SFProText ;
+}
+
+.setBreadcrumbs ol li a{
+color: #404040;
+margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+
+.orderTitle h1{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    color: #404040;
+
+}
+
+.orderTitle p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.flex1{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+}
+
+.flexWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.yellowBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold !important;
+    background-color: #FBCF09;
+    border-radius: 2px !important;
+    padding: 10px 16px;
+    cursor: pointer;
+    height: 40px;
+    border: 1px solid #FBCF09 !important;
+}
+
+.backBtn{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold;
+    background-color: transparent;
+    height: 40px;
+    padding: 10px 16px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.submitBtn {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+    font-family: SFProTextBold;
+    background-color: #FBCF09;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+}
+.nextBtnDisable{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #D9D9D9;
+    font-family: SFProTextBold;
+    background-color:transparent;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    pointer-events: none;
+}
+.btnDisabel{
+    font-weight: 700 ;
+    font-size: 16px;
+    line-height: 20px ;
+    color: #D9D9D9 ;
+    font-family: SFProTextBold ;
+    background-color: transparent;
+    border-radius: 2px ;
+    height: 40px;
+    pointer-events: none;
+    border: 1px solid rgba(0, 0, 0, 0.06)!important;
+
+
+}
+
+
+.setPadding{
+    padding:0px 12px;
+}
+
+
+/*---------popup css----------*/
+
+.setModal .slds-modal__container>.slds-modal__content:last-child, .setModalBody{
+    border-radius: 0px !important;
+}
+.setModalBody{
+    background-color: rgba(255, 255, 255, 0.97) !important;
+}
+.setModal .slds-modal__close{
+    top: 40px;
+right: 10px;
+}
+:host .setModal .slds-icon{
+    --sds-c-icon-color-foreground:#000000 !important;
+    --lwc-colorTextIconInverse:#000000 !important;
+}
+
+.setModalBody .modalHeading{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #404040;
+    margin-bottom: 8px;
+    margin-top: 10px;
+
+}
+
+.setModalBody .modalHeading span{
+    display: block!important;
+}
+
+.setModalBody p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText;
+
+}
+
+.modalBtn{
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*---------popup css----------*/
+
+
+
+.customToast{
+    background: #FFFFFF;
+    border: 1px solid #1C8450;
+    border-radius: 2px;
+    align-items: center;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.customToastError{
+    background: #FFFFFF;
+    border: 1px solid #D93638;
+    border-radius: 2px;
+    align-items: center;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.messageText{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #404040;
+    font-family: SFProText ;
+}
+
+.messageText img{
+    margin-right: 15px;
+}
+
+.iconColor svg {
+    fill: #000000;
+}
+
+.setAction{
+    display: flex;
+    justify-content: center;
+}
+
+.THIS .companyUser th:last-child {
+    text-align: center !important;
+}
+
+.tableHeight{
+    height:800px;
+    padding-bottom: 17px;
+}
+
+/*sidebar*/
+
+.outer-sidebar{
+    background-color: #fff;
+    height: 1024px;
+    position: relative;
+    margin-right: 35px;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 10%), 0px 2px 5px rgb(0 0 0 / 10%);
+}
+
+.sidebarMenu{
+    margin-left: 15px;
+    padding-top: 24px;
+    padding-right: 3px;
+}
+
+
+
+.sidebarMenu ul li a{
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText ;
+    display: block;
+    padding: 9px 0px;
+}
+
+a[aria-current="page"]{
+    color: #404040;
+    background-color: red!important;
+}
+
+.sidebarMenu ul li a:hover { 
+    text-decoration: none;
+}
+
+.sidebarMenu ul li.active a{
+    color: #404040;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProTextBold; 
+    border-right: 3px solid #FBCF09;  
+}
+
+.sidebarMenu ul li:last-child{
+    padding-bottom: 0px;
+}
+
+
+.quickLink{
+    position: absolute;
+    bottom: 27px;
+    left: 16px;
+} 
+
+.quickLink h3{
+    padding-bottom: 16px;
+    font-family: SFProTextBold; 
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #404040;
+}
+
+.quickLink h6{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #757575;
+    font-family: SFProText ;
+}
+
+.quickLink ul li{
+    padding-bottom: 16px;
+    
+}
+
+.quickLink ul li a{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #404040;
+    font-family: SFProText ;
+}
+
+.quickLink ul li a:hover { 
+    text-decoration: none;
+}
+
+.quickLink ul li:last-child{
+    padding-bottom: 24px;
+}
+
+.pl40{
+    padding-right: 20px;
+    padding-top: 36px;
+}
+
+.bgPage{
+    background-color: #f5f5f5;
+    padding-bottom: 30px;
+}

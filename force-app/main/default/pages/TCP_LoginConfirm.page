@@ -1,0 +1,160 @@
+<apex:page standardStylesheets="false" showheader="false" applyBodyTag="false" applyHtmlTag="false" title="Login Confirm" controller="TCP_LoginConfirm" >
+    <html lang="en">
+        <apex:slds />
+        <div class="slds-scope">
+            <style>
+                 @font-face {
+                font-family: SFProText;
+                src: url(/tradingandsupply/resource/SFProTextRegular) format('TrueType');
+            }
+
+            @font-face {
+                font-family: SFProTextBold;
+                src: url(/tradingandsupply/resource/SFProTextBold) format('TrueType');
+            }
+
+                 body{
+              font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell, 'Helvetica Neue',sans-serif;
+}
+                .Background  {
+                    position:Fixed;
+                }
+             
+                .container {
+                Right:154px;
+                padding:30px;
+                width:494px;
+                height:auto;
+                position: absolute;
+                top:160px;
+                background-color:white;
+             
+                }
+                .title {
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 24px;
+                    color: #404040;
+
+
+                }
+
+                .smallText {
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 16px;
+                    font-family: SFProText;
+                    color: #404040;
+                }
+
+            .vl {
+                border-left: 1px solid #B3B7BC;
+                    height: 40px;
+                    float: right;
+                    margin-right: 16px;
+            }
+                .logo{
+                    margin-top: 4px;
+                    }
+             
+                    
+                .header{
+                margin-bottom:35px;
+                
+                }
+                .Congratulations {
+                    margin-bottom: 16px;
+                }
+
+                .Congratulations h1{
+                    font-weight: 600;
+                    font-size: 24px;
+                    line-height: 28px;
+                    color: #404040;
+                
+                }
+                a:link, a:visited{
+                    background-color:#FBCF09;
+                    border: none;
+                    text-align: center;
+                    text-decoration: none !important;
+                    display: inline-block;
+                    color: #404040;
+                    font-size: 16px;
+                    cursor: pointer;
+                    font-weight:bold !important;
+                    Width: 100px !important; 
+                    Height: 48px !important;
+                                    
+                }
+               .confirmMessage {
+                margin-bottom: 24px;
+               }
+                
+
+               .confirmMessage p{
+                font-weight: 700;
+                    font-size: 16px;
+                   line-height: 20px;
+                   font-family: SFProTextBold;
+                    color: #404040;
+                }
+
+                .customBtn {
+                    font-weight: 700 !important;
+                    font-size: 16px !important;
+                    line-height: 20px !important;
+                    color: #404040 !important;
+                    font-family: SFProTextBold !important;
+                    background-color: #FBCF09;
+                    border-radius: 2px !important;
+                    padding: 14px 24px;
+                    cursor: pointer;
+                    border: 1px solid #FBCF09 !important;
+                }
+            </style>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Login Confirm</title>
+               
+            </head>
+            
+                      
+            <body style="background-color:powderblue;">
+                <main>
+                <div class="container">
+                    <header>
+                    <div class="slds-grid slds-wrap header">
+                        <div class="slds-col slds-size_1-of-6">
+                            <apex:image id="theImage" value="{!$Resource.Logo}" width="35px" height="35px" alt="shell logo with red border and yellow background" styleClass="logo"/>
+                            <div class="vl"></div>
+                        </div>
+                        <div class="slds-col slds-size_5-of-6">
+                            Trading &amp; Supply<br/>
+                            <span class='title'>Chemical Customer Portal</span>  
+                        </div>
+                    </div> 
+                </header>
+                <section>
+                    
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-6"></div>
+                        <div class="slds-col slds-size_5-of-6">
+                            <div class="Congratulations">
+                                <h1> Congratulations! </h1></div>
+                            <div class="confirmMessage">
+                               <p>Your password has been updated successfully.</p>
+                            </div>
+                            <apex:form id="theForm" >
+               				<a href="{!$Site.CurrentSiteUrl}{!url}" aria-label="link to ok and redirect to home page" class="btn customBtn">{!buttonLabel}</a> 
+                            </apex:form>
+                        </div>
+                    </div>
+                </section>
+                </div>
+            </main>
+            </body>
+        </div>
+    </html>
+</apex:page>

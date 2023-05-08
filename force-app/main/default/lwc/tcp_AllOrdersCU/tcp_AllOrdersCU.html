@@ -1,0 +1,348 @@
+<template>
+    
+    <template if:true={isLoadingCU}>
+         <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+         </lightning-spinner>
+    </template>
+
+            <div class="slds-grid slds-gutters verticalSet">
+                <div class="slds-size_3-of-12 setPadding">
+                    <template if:false={isOrderHistory}>
+                    <h2 class="heading3">{cuselectedtile}</h2>
+                </template>
+                <template if:true={isOrderHistory}>
+                    <lightning-combobox
+                                        placeholder="Select a customer"
+                                        variant="label-hidden"
+                                        value={value}
+                                        options={options}
+                                        class="setCombobox placeordercheck"
+                                        onchange={handleOptionChange}
+                                        message-when-value-missing="Please select a customer"
+                                        required
+                                    >
+                                    </lightning-combobox>
+
+                </template>
+                 </div> 
+                <div class="slds-size_9-of-12 setPadding">
+                    <div class="flex slds-grid slds-gutters">
+                        <div class="slds-size_12-of-12 setPadding filter">
+                            
+                             <div class="searchWidth">
+                                     
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right slds-input-has-icon_group-right">
+                                          <span class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default iconEvent" aria-hidden="false">
+                                            <lightning-button-icon icon-name="utility:search"  class="iconpointerevents" variant="bare" alternative-text="search" title="search"  onclick={handleSearchClick} ></lightning-button-icon>
+                                          </span>
+                                          <input type="text" data-name="Clear" id="text-input-id-47" placeholder="Search" class="slds-input setSearch" onkeyup={handleSearch} value={searchTerm} />
+                                          <template if:true={issearchText}>
+                                            <div class="searchCloseIcon slds-input__icon-group slds-input__icon-group_right">
+                                                <span class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"  onclick={handleSearchCancel}>
+                                                
+                                                    <span class="slds-icon slds-input__icon slds-icon-text-default" aria-hidden="false">
+                                                    <lightning-button-icon icon-name="utility:close" variant="bare" class="iconpointerevents" alternative-text="close" title="close" ></lightning-button-icon>
+                                                </span>
+                                            </span>
+                                            </div>
+                                         </template>
+                                        </div>
+                                    </div>
+                                      
+                             </div>
+                            
+                       
+                            <div>
+                                <button class="slds-button slds-button_neutral setBtnFilter mlr16" onclick={filterClick} aria-label="gray border color with black icon Filter"> Filter <img src={tcpFilter} alt="Filter"></button>
+                            </div>
+                            <template if:true={isOrderHistory}>
+                                <div>
+                                    <button class="slds-button slds-button_neutral setBtnFilter mr16" onclick={handleBulkOrder} aria-label="gray border color Bulk Order"> Bulk Order</button>
+                                </div>
+                            </template>
+                            <div>
+                                <button class="slds-button slds-button_neutral setBtnReport" onclick={handleDownloadReportExcelCU} aria-label="yellow background color with black icon Download Report" > Download Report <img src={tcpDownloadIcon} alt="Download Report"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <!-- Filter section-->
+              <template if:true={filterSection}>
+                <div class="filterSet scrollBarStyle">
+                    <article class="slds-card filterBox">
+                        <div class="slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title" tabindex="-1">
+                                        <a href="javascript:void(0)" class="slds-card__header-link slds-truncate filterTitle" title="Filter by:">
+                                            <span>Filter by:</span>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="slds-no-flex">
+                                    <button onclick={handleClearFilter} class="slds-button filterClear">Clear All</button>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body filterBody scrollBarStyle">
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <lightning-input class="Step2" type="text"  label="Customers PO" maxlength="40" data-id="customerPo"  placeholder="" onchange={handleFilterChange} value={customerPo}></lightning-input>
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">                                           
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Delivery To"
+                                                value={selectedDeliveryTo}
+                                                options={deliveryToOptions}
+                                                onchange={handleDeliveryTo}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <!-- <div class="slds-p-vertical_xx-small setInputFilter">
+                                                                            
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Product"
+                                                value={selectedProduct}
+                                                options={productOptions}
+                                                onchange={handleProduct}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div> -->
+                            <template if:true={isProductActive}>
+                                <div class="slds-p-vertical_xx-small setInputFilter">
+                                    <div class="slds-form-element slds-is-relative">
+                                        <div class="slds-form-element__control">
+                                            <c-tcp_-product-multi-select productoptionsmulti={prodListOptions} populatestatus={selectedProduct} onchange={handleProduct}> </c-tcp_-product-multi-select>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </template>
+                            <template if:true={isStatusActive}>
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element slds-is-relative">
+                                    <div class="slds-form-element__control">
+                                        <c-tcp_multi-select populatestatus={orderStatus} onchange={handleStatus} tilename={cuselectedtile} iscommops> </c-tcp_multi-select>
+                                    </div>
+                                </div>
+                            </div> 
+                            </template>
+                            <div class="slds-p-vertical_xx-small setInputFilter">                                            
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Delivery Terms"
+                                                value={selectedDelValue}
+                                                options={deliveryTermsOptions}
+                                                onchange={handleDeliveryTerms}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+                           
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Mode of Transport"
+                                                value={modeOfTransValue}
+                                                options={modeOfTransportOptions}
+                                                onchange={handleMoT}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Ordered By"
+                                                value={selectedOrderedByValue}
+                                                options={ordByOptions}
+                                                onchange={handleOrderedBy}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Fulfilled By"
+                                                value={fulfillByValue}
+                                                options={fulfillByOptions}
+                                                onchange={handleFulfillBy}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Ordered Priority"
+                                                value={ordPriorityValue}
+                                                options={orderedPriorityOptions}
+                                                onchange={handleOrderPriority}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder=""
+                                                label="Date Type"
+                                                value={dateTypeValue}
+                                                options={dateTypeOptions}
+                                                onchange={handleDateType}
+                                                class="setCombobox"
+                                                onfocus={handleProdFocus}
+                                                >
+                                            </lightning-combobox>
+                                    </div>
+                                </div> 
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">                   
+                                <lightning-input type="date" required message-when-value-missing="Please select From date" value={fromDate} data-id="fromDate" label="From" class="errorMsg calIcon requiredSet" dropdown-alignment="auto"  style="bottom: 100%" name="input4" disabled={disableDate} onchange={handleFilterChange}>
+                                </lightning-input>
+                            </div>
+            
+                            <div class="slds-p-vertical_xx-small setInputFilter">                   
+                                <lightning-input type="date" required message-when-value-missing="Please select To date" value={toDate} data-id="toDate" label="To" class="errorMsg calIcon requiredSet" dropdown-alignment="auto" style="bottom: 100%"  name="input4" disabled={disableDate} onchange={handleFilterChange}>
+                                </lightning-input>
+                            </div>
+            
+                        </div>
+                        <footer class="slds-card__footer slds-text-align_left filterFooter">
+                            <template if:true={dateError}>
+                                <div>                                       
+                                <p class="slds-text-color_error slds-p-bottom_small">{label.TCP_InvalidDateError}</p>
+                                </div>
+                            </template>
+                            <button class="slds-button slds-button_brand nextBtn " onclick={handleApplyButton} aria-label="yellow background color Apply"> Apply</button>
+                            <button class="slds-button slds-button_neutral backBtn mlr16" onclick={closefilterClick} aria-label="gray border color  Cancel"> Cancel</button>
+                        </footer>
+                    </article>
+                </div>
+             </template>
+           <!-- Filter section end-->
+
+           <!--Active filter section-->
+            <template if:true={isFilterActive}>
+                <div class="slds-size_12-of-12 mtb30">
+                    <div class="slds-grid">
+                        <div class="filterResult">
+                            <div class="filterLabel">
+                                <p class="sfRegular14">Active Filters</p>
+                            </div>
+                            <div class="filterField">
+                            <template for:each ={activeFilters} for:item="data">
+                                
+                                    <div key={data.name} class="filtersField">
+                                        <span class="sfBold14 mr8">{data.name}</span> 
+                                        <span class="sfRegular14 iconHide" style="margin-right:5px;"><lightning-pill label={data.value}></lightning-pill></span>
+                                    </div>
+                                
+                            </template>
+                           </div>
+                            <div class="clearLabel">
+                                <a onclick={handleClearActiveFilters}><p class="sfBold14">Clear All</p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>  
+             <!--Active filter section end-->
+
+            <template if:true={tableShow}>
+                <div style={dataTableHeight}>
+                        <lightning-datatable
+                            key-field="id"
+                            columns={columns}
+                            data={orderList}
+                            hide-checkbox-column
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onsort={onHandleSort}
+                            class="dashboardTable dotBtn sortBtn scrollBarStyle"
+                            onrowaction={handleRowAction}
+                            resize-column-disabled
+                        >
+                    </lightning-datatable> 
+                    <template if:true={noDataFound}>
+                        <div class="noProduct">
+                            {label.TCP_NoDataFilterError} 
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+             <!-- modal start -->
+                <template if:true={isShowModal}>
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+                        <div class="setModal slds-modal__container">
+                            <!-- modal header start -->
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                                <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <!-- modal body start -->
+                            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-1">
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
+                                <p>{label.TCP_MinCharSearchError}</p>
+                            </div> 
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </template>
+            <!-- modal end -->
+</template>

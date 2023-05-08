@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" controller="TCP_ResendOrderController" access="global" >
+	<aura:attribute name="OrderResendMessage" type="String" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <div  class="slds-align_absolute-center errorClass">
+        
+        <h2><strong>{!v.OrderResendMessage} </strong></h2>
+        
+    </div>
+</aura:component>

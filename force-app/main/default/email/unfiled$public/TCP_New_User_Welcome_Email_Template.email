@@ -1,0 +1,20 @@
+<html >
+<body style="font-family:Verdana; font-size:13.33px;">
+Dear {!Receiving_User.FirstName}, 
+<br/><br/>
+Welcome to {!Community_Name}. <br/>
+Please click the following link to set your password: 
+<br/><br/>
+{!Community_Url} 
+
+<br/><br/>
+Your username: {!Receiving_User.Username}
+</br><br/>
+Please bookmark this URL {!$Setup.TCPBookmark_URL__c.Bookmark_Value__c}  for accessing the portal in the future. 
+<br/><br/>
+Please note that this link is active for 24 hours only.<br/>
+In case of further inquiry please reach to commercial operations team.<br/><br/>
+Thank you,<br/>
+Shell Trading
+</body>
+</html>

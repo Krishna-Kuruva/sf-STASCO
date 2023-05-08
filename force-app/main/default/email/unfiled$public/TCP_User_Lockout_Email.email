@@ -1,0 +1,10 @@
+Hi {!Receiving_User.FirstName},
+
+We recently received a request to reset your {!Community_Name} password. We can’t reset your password because your account is locked due to too many unsuccessful login attempts.
+
+To unlock your account, contact Salesforce administrator
+
+If you didn't request a password reset or haven’t tried to log in to your account recently, contact Salesforce administrator or reply to this email.
+
+Thanks,
+Shell Trading

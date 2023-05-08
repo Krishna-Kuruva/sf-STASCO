@@ -1,0 +1,16 @@
+<template>
+    <template if:false={logonastcp}>
+                <div class="welcome_Message">
+   <h1> Welcome to the Trading and Supply Chemical Customer Portal</h1>
+</div>
+ </template>
+ <template if:true={logonastcp}>
+                <div class="welcome_Message">
+                    <h1> Hi {orgusername}, you are currently logged in as {portalusername}</h1>
+</div>
+ </template>
+<div class="welcome_Note">
+    Trading & Supply Chemical Customer Portal is a one-stop shop to order and maintain Styrene & </br>
+    Glycol products. Please stay tuned to witness much more in future...
+</div>
+</template>

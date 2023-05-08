@@ -1,0 +1,45 @@
+<template>
+    <header>
+    <div class="headerOuter">
+        <lightning-layout-item size="12">
+            <div class="slds-grid">
+               
+                <div class="logoSection">
+                    <div class="Logo">
+                        <a href="javascript:void(0)"><img src={TCP_logo} alt="shell logo with red border and yellow background"></a>
+                    </div>
+                    <div class="fullName">
+                        <ul>
+                            <li class="sfRegular">Trading & Supply</li>
+                            <li class="sfBold">Chemical Customer Portal</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profileSection">
+                    <lightning-button-menu  style="border:initial" icon-name="utility:chevrondown" class="slds-float_right setBtn" variant="bare"
+                        menu-alignment="right">
+                        <lightning-menu-item value="Change Password" label="Change Password" href={changePassword}></lightning-menu-item>
+                        <lightning-menu-item value="Logout" label="Log Out" href={logoutLink}></lightning-menu-item>
+                    </lightning-button-menu>
+                    <b class="slds-float_right profileName"><img src={TCP_profileAvatar}
+                            class="profileImg" alt="User Profile image">{objUser.LastName} {objUser.FirstName}</b>
+    
+                </div>
+           
+            </div>
+        
+        </lightning-layout-item>
+    </div>
+</header>
+
+
+<!--
+    <div style="color:black; padding:1%;background:white;height:fit-content;">
+        <lightning-button-menu style="border:initial" class="slds-float_right" menu-alignment="right">
+            <lightning-menu-item value="Logout" label="Log Out" href={logoutLink}></lightning-menu-item>
+        </lightning-button-menu>
+	<b style="font-size:16px;" class="slds-float_right">Welcome, {objUser.LastName} {objUser.FirstName}</b>
+    </div>
+-->
+
+</template>

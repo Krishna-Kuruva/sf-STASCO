@@ -1,0 +1,77 @@
+.dummy{
+	color : black;
+}
+
+.headerOuter{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);
+	position: relative;
+	z-index: 999;
+    
+}
+
+.logoSection{
+    display: flex;
+    align-items: center;
+}
+
+.Logo{
+    padding-right: 0px;
+}
+
+.fullName{
+    border-left: 1px solid #B3B7BC;
+    padding-left: 12px;
+
+}
+.profileSection{
+    width: 300px;
+    margin-left: auto;
+    word-break: break-all;
+	margin-top: 14px;
+    margin-right: 12px;
+}
+
+.profileName{
+	font-size:11px;
+	margin-right: 8px;
+	color: #404040;
+	font-weight: 700;
+	line-height: 16px;
+	font-family: SFProTextBold;  
+}
+.profileImg{
+	height:36px;
+	width:36px;
+	margin-right:12px;
+    border-radius: 20px;
+}
+
+.sfRegular{
+   
+font-family: SFProText ;
+font-weight: 400;
+font-size: 11px;
+line-height: 16px;
+color: #404040;
+}
+
+.sfBold{
+	
+font-family: SFProTextBold;   
+font-weight: 700;
+font-size: 16px;
+line-height: 16px;
+color: #404040;
+
+
+}
+.setBtn{
+margin-top: 6px;
+
+}
+
+
+.setBtn:focus{
+	box-shadow:none;
+}

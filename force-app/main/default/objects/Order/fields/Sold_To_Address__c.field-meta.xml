@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sold_To_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(Sold_To__r.Name),&apos;&apos;,Sold_To__r.Name+&quot;, &quot;)+IF( ISBLANK(Sold_To__r.ShippingStreet ),&apos;&apos;,Sold_To__r.ShippingStreet +&quot;, &quot;)+IF( ISBLANK(Sold_To__r.ShippingCity),&apos;&apos;,Sold_To__r.ShippingCity+&quot;, &quot;)+IF( ISBLANK(Sold_To__r.ShippingState ),&apos;&apos;,Sold_To__r.ShippingState +&quot;, &quot;)+IF( ISBLANK(Sold_To__r.ShippingPostalCode),&apos;&apos;,Sold_To__r.ShippingPostalCode+&quot;, &quot;)+IF( ISBLANK(Sold_To__r.ShippingCountry),&apos;&apos;,Sold_To__r.ShippingCountry)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sold To Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
