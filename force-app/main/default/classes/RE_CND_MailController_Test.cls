@@ -132,13 +132,13 @@ public class RE_CND_MailController_Test {
         
         Test.startTest();
         Map<String,String> mailMap = new Map<String,String>();
-        mailMap.put('ER1','test@shell.com_null_null');
-        mailMap.put('ER2','test@shell.com_test1@shell.com_null');
-        mailMap.put('ER3','test@shell.com_test1@shell.com_test2@shell.com');
-        mailMap.put('ER4','test@shell.com_null_test2@shell.com'); 
-        mailMap.put('ER5','null_test1@shell.com_test2@shell.com');
-        mailMap.put('ER6','null_null_test2@shell.com');
-        mailMap.put('ER7','null_test2@shell.com_null');
+        mailMap.put('ER3','test@shell.comβ©¶nullβ©¶null');
+        mailMap.put('ER2','test@shell.comβ©¶test@shell.comβ©¶null');
+        mailMap.put('ER4','nullβ©¶test@shell.comβ©¶test@shell.com');
+        mailMap.put('ER5','nullβ©¶nullβ©¶test@shell.com');
+        mailMap.put('ER6','test@shell.comβ©¶nullβ©¶test@shell.com');
+        mailMap.put('ER7','nullβ©¶test@shell.comβ©¶null');
+        mailMap.put('ER8','test@shell.comβ©¶test@shell.comβ©¶test@shell.com');
         
         Test.setMock(HttpCalloutMock.class, new RE_MockHttpResponseGenerator());
         RE_CND_MailController.cndRackPrice7Day(false,mailMap);
@@ -154,7 +154,7 @@ public class RE_CND_MailController_Test {
         RE_CND_MailController.CanadianRackPricing(false,mailMap);         
         RE_CND_MailController.readyToUploadNotiUlr(false,mailMap);
         RE_CND_MailController.noRevisedPricingUlr(false,mailMap);
-        
+                
         Map<String,String> emptryMailMap = new Map<String,String>(); 
         RE_CND_MailController.cndRackPrice7Day(true,emptryMailMap);
         RE_CND_MailController.cndRackPricesUrl(true,emptryMailMap);
@@ -167,7 +167,7 @@ public class RE_CND_MailController_Test {
         RE_CND_MailController.CanadianRackPricing(true,emptryMailMap); 
         RE_CND_MailController.readyToUploadNotiUlr(true,emptryMailMap);   
         RE_CND_MailController.noRevisedPricingUlr(true,emptryMailMap);
-        
+        RE_CND_MailController.createExceptionLog(new DMLException(), 'Test', 'test', 'test');
         Test.stopTest();
     }
 }
