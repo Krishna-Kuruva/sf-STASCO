@@ -11,13 +11,17 @@
      --sds-c-card-body-spacing-block-end: 5px;
    }
  
- .textSet{
-     font-size: 11px;
-     padding: 0px 0px 4px;
-     font-weight: 400;
-     color: #181818;
-     
- }
+ .textSet {
+  font-size: 11px;
+  padding: 0px 0px 10px;
+  font-weight: 400;
+  color: #181818;
+
+}
+
+.padding-header {
+  padding-bottom: 10px;
+}
  
  /*.live-card-outer{
      min-height: 400px;

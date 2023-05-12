@@ -121,7 +121,6 @@
             <sortOrder>16</sortOrder>
         </platformActionListItems>
     </platformActionList>
-    <relatedObjects>ContractId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

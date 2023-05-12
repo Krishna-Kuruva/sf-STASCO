@@ -3,5 +3,5 @@
     <description>This URL is used to allow org to call list view records via REST API .</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://stasco--c.um9.visual.force.com</url>
+    <url>https://stasco--c.vf.force.com</url>
 </RemoteSiteSetting>

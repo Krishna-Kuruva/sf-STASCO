@@ -13,4 +13,5 @@
     <showTM2EnabledBanner>true</showTM2EnabledBanner>
     <t2ForecastAccessLevel>Read</t2ForecastAccessLevel>
     <tm2BypassRealignAccInsert>false</tm2BypassRealignAccInsert>
+    <tm2EnableUserAssignmentLog>false</tm2EnableUserAssignmentLog>
 </Territory2Settings>

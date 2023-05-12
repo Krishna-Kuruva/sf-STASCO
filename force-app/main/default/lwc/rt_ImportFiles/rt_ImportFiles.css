@@ -7,3 +7,9 @@
 .rowNumCol{background-color:#FEF2CC;}
 .mappingCol{background-color:#FCE4D6}
 .colorBox {width: 20px;height: 20px;}
+.overflow {
+    overflow: initial;
+}
+.button {
+    padding-top: 22px;
+}

@@ -2311,28 +2311,6 @@
         <field>Margin__c.Fixed_Surcharge_GTL_B0__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--added by Swarna-->
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <!--end-->
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.IGO_1000_Sales_Margin__c</field>
@@ -2380,12 +2358,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Min_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Min_Mgn_ULG95_E5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2410,6 +2398,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Sales_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2426,6 +2419,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Target_Mgn_AGO_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

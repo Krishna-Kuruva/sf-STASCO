@@ -117,11 +117,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.Actual_Margin_2019__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.Actual_Margin_2020__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -183,11 +178,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Actual_Volume_T_2018__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.Actual_Volume_T_2019__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -602,11 +592,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.Deals_Done_2020__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.Deals_Done_2021__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1003,11 +988,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Paper_deals_done_2018__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.Paper_deals_done_2019__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1803,16 +1783,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.X2019_Paper_Avg_Tonne__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.X2019_Paper_Margin__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.X2019_Paper_Volume__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -4919,28 +4919,6 @@ The PO role will be the most compliant way of working for a PO, as he/she should
         <field>Margin__c.IGO_50_Sales_Margin__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--added by Swarna-->
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <!--end-->
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.MOGAS_98_Sales_Margin__c</field>
@@ -4978,6 +4956,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Min_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4999,6 +4982,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Night_Surcharges_AGO_B7_Eur_100L__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5033,6 +5021,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Sales_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5049,6 +5042,11 @@ The PO role will be the most compliant way of working for a PO, as he/she should
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Target_Mgn_AGO_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

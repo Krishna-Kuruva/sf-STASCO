@@ -30,17 +30,18 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Revolution_Germany</fullName>
+        <fullName>Revolution_Germany_Import_Wizard_Import_Type</fullName>
         <accessLevel>Read</accessLevel>
-        <label>Revolution Germany</label>
+        <description>Sharing rule created to provide read access import type record for import wizard user only</description>
+        <label>Revolution Germany Import Wizard Import Type</label>
         <sharedTo>
-            <group>RV_Import_Buddy</group>
+            <group>RV_Import_Wizard</group>
         </sharedTo>
         <criteriaItems>
             <field>ApplicationName__c</field>
             <operation>equals</operation>
             <value>Revolution</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

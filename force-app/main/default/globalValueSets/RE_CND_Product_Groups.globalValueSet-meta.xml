@@ -325,6 +325,11 @@
         <default>false</default>
         <label>V-Power</label>
     </customValue>
+    <customValue>
+        <fullName>Furnace Oil QC02</fullName>
+        <default>false</default>
+        <label>Furnace Oil QC02</label>
+    </customValue>
     <description>Revolution Canada Product Groups</description>
     <masterLabel>RE_CND_Product_Groups</masterLabel>
     <sorted>false</sorted>

@@ -915,12 +915,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Max_Online_Volume_ATP2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Max_Online_Volume_ATP3__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -945,22 +945,22 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Min_Daily_Split_Vol_ATP2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Min_Daily_Split_Vol_ATP3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Min_Online_Volume_ATP2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Min_Online_Volume_ATP3__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -970,12 +970,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Minimum_Daily_Split_Volume__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Minimum_Online_Volume__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1080,17 +1080,17 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Vol_Cap_Customer_ATP2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Vol_Cap_Customer_ATP3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>ATP__c.Volume_Cap_Customer__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3735,7 +3735,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>MRC__c.RV_OLF_MRC_Only__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3929,28 +3929,6 @@
         <field>Margin__c.IGO_50_Sales_Margin__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--added by Swarna-->
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <!--end-->
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.MOGAS_98_Sales_Margin__c</field>
@@ -3988,6 +3966,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Min_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Min_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4009,6 +3992,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Night_Surcharges_AGO_B7_Eur_100L__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Margin__c.Night_Surcharges_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4043,6 +4031,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Margin__c.Sales_Mgn_GTL_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Margin__c.Sales_Mgn_IGO_50ppm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4059,6 +4052,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Margin__c.Target_Mgn_AGO_B7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Margin__c.Target_Mgn_GTL_B7__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

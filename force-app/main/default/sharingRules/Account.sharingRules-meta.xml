@@ -78,7 +78,7 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
-	<sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>TCP_EAST_Sharing</fullName>
         <accessLevel>Edit</accessLevel>
         <accountSettings>

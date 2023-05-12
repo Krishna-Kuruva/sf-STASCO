@@ -3,4 +3,5 @@
     <enableCallCoaching>false</enableCallCoaching>
     <enableCallCoachingZoom>false</enableCallCoachingZoom>
     <enableOpptyMatching>false</enableOpptyMatching>
+    <enableUnifiedActivities>false</enableUnifiedActivities>
 </ConversationalIntelligenceSettings>

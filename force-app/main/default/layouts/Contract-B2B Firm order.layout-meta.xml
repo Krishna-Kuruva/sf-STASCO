@@ -13,6 +13,10 @@
                 <behavior>Required</behavior>
                 <field>Status</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricebook2Id</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -27,6 +31,7 @@
     <miniLayout>
         <fields>AccountId</fields>
         <fields>Status</fields>
+        <fields>Pricebook2Id</fields>
     </miniLayout>
     <relatedContent>
         <relatedContentItems>

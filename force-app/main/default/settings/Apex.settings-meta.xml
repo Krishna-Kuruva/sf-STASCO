@@ -13,5 +13,6 @@
     <enableGaplessTestAutoNum>false</enableGaplessTestAutoNum>
     <enableMngdCtrlActionAccessPref>false</enableMngdCtrlActionAccessPref>
     <enableNonCertifiedApexMdCrud>false</enableNonCertifiedApexMdCrud>
+    <enableRestrictCommunityExecAnon>false</enableRestrictCommunityExecAnon>
     <enableSecureNoArgConstructorPref>false</enableSecureNoArgConstructorPref>
 </ApexSettings>

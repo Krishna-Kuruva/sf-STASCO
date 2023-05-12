@@ -8,6 +8,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Pricebook2Id</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
@@ -146,6 +150,9 @@
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
+    <miniLayout>
+        <fields>Pricebook2Id</fields>
+    </miniLayout>
     <relatedContent>
         <relatedContentItems>
             <layoutItem>

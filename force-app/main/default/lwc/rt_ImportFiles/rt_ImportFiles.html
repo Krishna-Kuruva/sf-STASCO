@@ -1,7 +1,6 @@
 <!--
  - Created by Soumyajit.Jagadev on 08-Jun-20.
  -->
-
 <!-- Rt Import Files -->
 <template>
     <template if:false={spinnerLoaded}>
@@ -22,20 +21,21 @@
                                                    class="slds-modal__close">
                             </lightning-button-icon>
                         </header>
-                        <div class="slds-modal__content slds-p-around_medium" id="Application-modal-content-id-1">
-                            <div class="slds-align--absolute-center" style="height: 200px; width: 100%;">
-                                <lightning-combobox
-                                        name="appSelect"
-                                        value={selectedAppFilter}
-                                        label="Application Name"
-                                        placeholder="Select Application"
-                                        options={appList}
-                                        onchange={setAppName}
-                                        required
-                                ></lightning-combobox>
-                                <span class="">&nbsp;&nbsp;</span>
-                                <lightning-button variant="brand" label="Proceed" title="Proceed" icon-name="utility:like" onclick={fetchAppData} disabled={disableAppProceedBtn}>
-                                </lightning-button>
+                        <div class="slds-modal__content slds-p-around_medium overflow" id="Application-modal-content-id-1">
+                        <div class="slds-align--absolute-center" style="height: 200px; width: 100%;">
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item size="6" class="slds-align--absolute-center">
+                                    <lightning-combobox name="appSelect" value={selectedAppFilter} style="width:400px;"
+                                        label="Application Name" placeholder="Select Application" options={appList}
+                                        onchange={setAppName} dropdown-alignment="auto" required>
+                                    </lightning-combobox>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" class="slds-align--absolute-center">
+                                    <lightning-button class="button" variant="brand" label="Proceed" title="Proceed"
+                                        icon-name="utility:like" onclick={fetchAppData} disabled={disableAppProceedBtn}>
+                                    </lightning-button>
+                                </lightning-layout-item>
+                            </lightning-layout>
                                 <template if:true={spinnerLoad}>
                                     <div class="slds-spinner_container">
                                         <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
@@ -97,15 +97,16 @@
                                             onchange={fetchFilter}
                                             disabled={filterDisabled}
                                             required
+                                            style="width:300px;"
                                     ></lightning-combobox>
                                     <span class="">&nbsp;&nbsp;</span>
-                                    <lightning-button variant="brand" label="Confirm" title="Confirm File Type" icon-name="utility:like" onclick={confirmSelection} disabled={disableConfirmBtn} class="slds-m-left_x-small">
+                                    <lightning-button variant="brand" label="Confirm" title="Confirm File Type" icon-name="utility:like" onclick={confirmSelection} disabled={disableConfirmBtn} class="slds-m-left_x-small button">
                                     </lightning-button>
-                                    <lightning-button variant="destructive-text" label="Reset" title="Reset Selection" icon-name="utility:refresh" onclick={resetSelection} disabled={disableResetBtn} class="slds-m-left_x-small">
+                                    <lightning-button variant="destructive-text" label="Reset" title="Reset Selection" icon-name="utility:refresh" onclick={resetSelection} disabled={disableResetBtn} class="slds-m-left_x-small button">
                                     </lightning-button>
                                     <template if:true={showViewMappingBtn}>
                                         <span class="">&nbsp;&nbsp;</span>
-                                        <lightning-button label="View Mapping" title="View Mapping" icon-name="utility:preview" onclick={viewMapping} class="">
+                                        <lightning-button label="View Mapping" title="View Mapping" icon-name="utility:preview" onclick={viewMapping} class="button">
                                         </lightning-button>
                                     </template>
                                 </div>
