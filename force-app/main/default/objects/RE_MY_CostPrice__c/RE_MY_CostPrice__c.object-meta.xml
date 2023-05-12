@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <label>Cost Price</label>
     <nameField>
         <displayFormat>RE-MY-C{000000}</displayFormat>

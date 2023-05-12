@@ -153,6 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <label>TMS Ticket Information</label>
     <nameField>
         <displayFormat>A-{000000}</displayFormat>

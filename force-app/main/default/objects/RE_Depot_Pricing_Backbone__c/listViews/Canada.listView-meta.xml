@@ -7,8 +7,8 @@
     <columns>RE_Product_Codes__c</columns>
     <columns>RE_Product_Name__c</columns>
     <columns>RE_Product_Classification__c</columns>
+    <columns>RE_CND_Product_Group__c</columns>
     <columns>RE_Location_Name__c</columns>
-    <columns>RE_CND_Parent_Rack__c</columns>
     <columns>RE_Is_Active__c</columns>
     <columns>RE_CND_Differential_Basis__c</columns>
     <columns>RE_CND_Product_Pricing_Basis__c</columns>
@@ -23,24 +23,9 @@
         <value>RE_Depot_Pricing_Backbone__c.Canada</value>
     </filters>
     <filters>
-        <field>RE_CND_Rack__c</field>
-        <operation>equals</operation>
-        <value>London</value>
-    </filters>
-    <filters>
-        <field>RE_Product_Classification__c</field>
-        <operation>equals</operation>
-        <value>Gas Oil</value>
-    </filters>
-    <filters>
-        <field>RE_CND_Group__c</field>
-        <operation>equals</operation>
-        <value>Unbranded</value>
-    </filters>
-    <filters>
-        <field>RE_CND_Product_Group__c</field>
-        <operation>equals</operation>
-        <value>ULSD</value>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>5/1/2023 12:00 AM</value>
     </filters>
     <label>Canada</label>
     <sharedTo>

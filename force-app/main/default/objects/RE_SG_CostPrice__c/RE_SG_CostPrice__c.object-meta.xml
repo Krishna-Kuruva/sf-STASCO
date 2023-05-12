@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Cost Price - Singapore</label>
     <nameField>
         <displayFormat>RE-SG-C{000000}</displayFormat>

@@ -8,41 +8,5 @@
         <plural>true</plural>
         <value>REV Price Books History</value>
     </caseValues>
-    <recordTypes>
-        <label></label>
-        <name>Canada_SFJ_Price</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Depot_Prices</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>MY_Price_Book</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>PH_Price_Book</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>RT_Rev_Contract_Prices</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Refinery_Prices</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Retail_Prices</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Turkey_Required_Fields</name>
-    </validationRules>
 </CustomObjectTranslation>

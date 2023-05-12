@@ -9,6 +9,7 @@
     <columns>CurrencyCode__c</columns>
     <columns>Pricing_Date__c</columns>
     <columns>Price__c</columns>
+    <columns>ProdDiff_Display_Name__c</columns>
     <columns>Price_USD__c</columns>
     <columns>Unit_Of_Measure__c</columns>
     <columns>LAST_UPDATE</columns>
@@ -16,10 +17,5 @@
     <columns>Valid_From_Date__c</columns>
     <columns>Valid_To_Date__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>Quote_Display_Name__c</field>
-        <operation>contains</operation>
-        <value>Platts FOB Barge R&apos;dam Diesel 10ppm (high)</value>
-    </filters>
     <label>Copy of All SOM</label>
 </ListView>

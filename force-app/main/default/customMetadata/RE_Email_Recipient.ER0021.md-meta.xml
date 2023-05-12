@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">4PricingCA@4Refuel.com;admin@exchangepetroleum.com;afdcanadapricing@afdpetroleum.com;akirouac@4refuel.com;alain.lacas@energiesonic.com;arps@cantire.com;Badru@CentexPetroleum.com;groupeprixcarburants@harnoisenergies.com;Berthin.ouellet@filgo-sonic.ca;bgrenier@afdpetroleum.com;bob@hughespetroleum.com;BradA@swpetroleum.ca;brenda@chalmersfuels.ca;BrianM@swpetroleum.ca;cdngasdept.53@costco.com;Pricing.Group@ufa.com;change.notice@ufa.com;chetpete@pris.ca;claude.cloutier@newgold.com;csr@afdpetroleum.com;darren@hughespetroleum.com;davidshepherd@costco.com;debbie@econogas.ca;debbiemobile@econogas.ca;dispatch@hughespetroleum.com;doug.granger@grangerfuels.com;ErikL@swpetroleum.ca;EmilyMcdonald@EdwardFuels.com;</value>
+        <value xsi:type="xsd:string">4PricingCA@4Refuel.com;admin@exchangepetroleum.com;afdcanadapricing@afdpetroleum.com;akirouac@4refuel.com;alain.lacas@energiesonic.com;arps@cantire.com;Badru@CentexPetroleum.com;groupeprixcarburants@harnoisenergies.com;Berthin.ouellet@filgo-sonic.ca;darren@hughespetroleum.com;BradA@swpetroleum.ca;brenda@chalmersfuels.ca;BrianM@swpetroleum.ca;cdngasdept.53@costco.com;Pricing.Group@ufa.com;change.notice@ufa.com;chetpete@pris.ca;claude.cloutier@newgold.com;csr@afdpetroleum.com;darren@hughespetroleum.com;davidshepherd@costco.com;debbie@econogas.ca;debbiemobile@econogas.ca;dispatch@hughespetroleum.com;doug.granger@grangerfuels.com;ErikL@swpetroleum.ca;EmilyMcdonald@EdwardFuels.com;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

@@ -158,6 +158,7 @@ c.	If such row exists , replace the “Base Quote – Supplement quote” with t
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Future Differential</label>
     <nameField>
         <displayFormat>DIFF-{0000000}</displayFormat>

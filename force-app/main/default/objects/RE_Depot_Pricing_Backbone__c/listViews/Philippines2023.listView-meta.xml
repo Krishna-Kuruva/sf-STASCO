@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Philippines2023</fullName>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Backbone_Name__c</columns>
+    <columns>RE_PH_MISC_Port_Charges__c</columns>
+    <columns>RE_PH_MISC_Port_Charges_Unit__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Depot_Pricing_Backbone__c.Philippines</value>
+    </filters>
+    <filters>
+        <field>RE_Depot_Name__c</field>
+        <operation>equals</operation>
+        <value>PH Tabangao</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_To__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Philippines2023</label>
+</ListView>

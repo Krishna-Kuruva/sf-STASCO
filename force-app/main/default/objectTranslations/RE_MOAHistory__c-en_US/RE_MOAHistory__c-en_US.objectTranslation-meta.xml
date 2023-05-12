@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>MOA History</value>
     </caseValues>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada_Execute_Pricing</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada_Market_Moves</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>RE_MY_List_Price</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

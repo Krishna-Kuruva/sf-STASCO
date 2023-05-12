@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Philippines</fullName>
+    <columns>RE_PH_Varkey__c</columns>
+    <columns>RE_Product_Name__c</columns>
+    <columns>RE_Depot_Name__c</columns>
+    <columns>Material_Code__c</columns>
+    <columns>RE_Primary_Transport_Cost__c</columns>
+    <columns>RE_PH_S_H__c</columns>
+    <columns>RE_Snh_Cost__c</columns>
+    <columns>NAME</columns>
+    <columns>RE_PH_Premium__c</columns>
+    <columns>RE_Fixed_Premium__c</columns>
+    <columns>RE_Fixed_Premium_Unit__c</columns>
+    <columns>RE_PH_Freight_Charges__c</columns>
+    <columns>RE_Fixed_Premium_Percentage__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_Depot_Pricing_Backbone__c.Philippines</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_To__c</field>
+        <operation>equals</operation>
+        <value>12/31/2023</value>
+    </filters>
+    <label>Copy of Philippines</label>
+</ListView>

@@ -15,7 +15,7 @@
     <filters>
         <field>RE_Location_Code__c</field>
         <operation>equals</operation>
-        <value>c123</value>
+        <value>c146</value>
     </filters>
     <label>Canada</label>
     <sharedTo>

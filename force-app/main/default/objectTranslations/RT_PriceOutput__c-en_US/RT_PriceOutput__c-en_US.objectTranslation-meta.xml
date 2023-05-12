@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>Turkey Price Outputs</value>
     </caseValues>
-    <layouts>
-        <layout>Price Output Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

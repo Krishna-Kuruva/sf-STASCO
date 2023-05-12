@@ -23,14 +23,9 @@
         <value>RE_MY_Output__c.Canada</value>
     </filters>
     <filters>
-        <field>RE_CND_Rack_English__c</field>
+        <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>Vancouver</value>
-    </filters>
-    <filters>
-        <field>RE_CND_Product_Group_English__c</field>
-        <operation>equals</operation>
-        <value>ULSD BC02</value>
+        <value>4/16/2023 4:35 PM</value>
     </filters>
     <filters>
         <field>RE_CND_Reporting_Name__c</field>

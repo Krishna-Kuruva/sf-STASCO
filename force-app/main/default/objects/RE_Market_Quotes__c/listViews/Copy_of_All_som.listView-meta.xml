@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All_som</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Quote_Type__c</columns>
+    <columns>RE_Quote_Name__c</columns>
+    <columns>RE_Price__c</columns>
+    <columns>RE_Pricing_Date__c</columns>
+    <columns>RE_Rate_Unit__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>RE_Is_MTDWTD__c</columns>
+    <columns>RE_Tracker__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RE_Country_Name__c</columns>
+    <columns>Temperature_Gain_MY_cent_l__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Quote_Type__c</field>
+        <operation>equals</operation>
+        <value>Freight</value>
+    </filters>
+    <filters>
+        <field>RE_Quote_Name__c</field>
+        <operation>equals</operation>
+        <value>FREIGHT MPI09</value>
+    </filters>
+    <label>Copy of All som</label>
+</ListView>

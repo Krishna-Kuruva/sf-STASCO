@@ -12,14 +12,9 @@
     <columns>RE_Quote_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CREATED_DATE</field>
-        <operation>greaterOrEqual</operation>
-        <value>7/5/2022 12:00 AM</value>
-    </filters>
-    <filters>
-        <field>RE_Quote_No__c</field>
-        <operation>contains</operation>
-        <value>OTHER PREMIA GSE01</value>
+        <field>RE_Default_Currency__c</field>
+        <operation>notEqual</operation>
+        <value>PHP</value>
     </filters>
     <label>All</label>
 </ListView>

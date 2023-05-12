@@ -52,6 +52,6 @@
     </values>
     <values>
         <field>RE_SG_Valid_To__c</field>
-        <value xsi:type="xsd:date">2022-12-31</value>
+        <value xsi:type="xsd:date">2023-12-31</value>
     </values>
 </CustomMetadata>

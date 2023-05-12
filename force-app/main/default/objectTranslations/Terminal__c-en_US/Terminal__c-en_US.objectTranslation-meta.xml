@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Terminals</value>
     </caseValues>
-    <layouts>
-        <layout>Terminal Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <quickActions>
-        <label></label>
-        <name>TMS_Terminal</name>
-    </quickActions>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

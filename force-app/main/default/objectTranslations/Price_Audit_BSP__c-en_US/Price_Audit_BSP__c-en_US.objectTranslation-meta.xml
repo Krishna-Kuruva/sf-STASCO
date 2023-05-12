@@ -8,28 +8,5 @@
         <plural>true</plural>
         <value>Price Audit-BSP</value>
     </caseValues>
-    <layouts>
-        <layout>Price Audit Layout</layout>
-        <sections>
-            <label></label>
-            <section>BSP/MSP Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Customer Individual Pricing</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Pricing Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

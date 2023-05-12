@@ -15,5 +15,15 @@
     <columns>CREATEDBY_USER</columns>
     <columns>OBJECT_ID</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RE_MY_Output__c.RE_Malaysia</value>
+    </filters>
+    <filters>
+        <field>RE_Product_Name__c</field>
+        <operation>equals</operation>
+        <value>Gasoil 0.001% S</value>
+    </filters>
     <label>All</label>
 </ListView>

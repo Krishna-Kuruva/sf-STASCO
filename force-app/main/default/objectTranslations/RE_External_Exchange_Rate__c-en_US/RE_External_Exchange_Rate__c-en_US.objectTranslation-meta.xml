@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>RE External Exchange Rate</value>
     </caseValues>
-    <layouts>
-        <layout>RE External Exchange Rate Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

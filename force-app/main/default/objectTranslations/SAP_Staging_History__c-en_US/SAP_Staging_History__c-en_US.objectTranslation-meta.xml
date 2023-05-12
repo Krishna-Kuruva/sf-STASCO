@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>SAP Staging History</value>
     </caseValues>
-    <layouts>
-        <layout>SAP Staging History Layout</layout>
-        <sections>
-            <label></label>
-            <section>Contract Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Deal Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>GSAP Response</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

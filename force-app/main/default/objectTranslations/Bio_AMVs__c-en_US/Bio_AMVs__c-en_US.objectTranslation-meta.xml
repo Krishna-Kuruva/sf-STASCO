@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>Bio AMVs</value>
     </caseValues>
-    <layouts>
-        <layout>Bio AMV Layout</layout>
-        <sections>
-            <label></label>
-            <section>Additional Info (Read-Only)</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Bio Values</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

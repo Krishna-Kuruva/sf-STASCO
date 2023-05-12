@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>EMAIL_CC__c</field>
-        <value xsi:type="xsd:string">Felix.Hoppe@shell.com;andreas.heeschen@shell.com</value>
+        <value xsi:type="xsd:string">Felix.Hoppe@shell.com;andreas.heeschen@shell.com; GX-TR-IT-CPO-PB-AMS@shell.com</value>
     </values>
     <values>
         <field>EMAIL_CSS__c</field>

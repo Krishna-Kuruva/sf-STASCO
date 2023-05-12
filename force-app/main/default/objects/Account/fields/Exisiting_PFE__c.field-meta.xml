@@ -18,7 +18,7 @@
     <summaryFilterItems>
         <field>Opportunity.CloseDate</field>
         <operation>greaterThan</operation>
-        <value>1/1/2023</value>
+        <value>6/1/2023</value>
     </summaryFilterItems>
     <summaryFilterItems>
         <field>Opportunity.Shell_Entity__c</field>

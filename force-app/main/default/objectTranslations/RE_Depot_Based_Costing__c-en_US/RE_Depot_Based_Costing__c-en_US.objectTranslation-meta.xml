@@ -8,17 +8,5 @@
         <plural>true</plural>
         <value>AMV Depot Costings</value>
     </caseValues>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Recalculate</name>
-    </webLinks>
 </CustomObjectTranslation>

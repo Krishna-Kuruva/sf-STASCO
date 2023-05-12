@@ -2,6 +2,7 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Malaysia_and_Singapore</fullName>
     <columns>NAME</columns>
+    <columns>RT_Product_Code__c</columns>
     <columns>RE_Product_Group__c</columns>
     <columns>RE_Product_Subgroup__c</columns>
     <columns>RE_Material__c</columns>
@@ -11,11 +12,12 @@
     <columns>RECORDTYPE</columns>
     <columns>RE_Country__c</columns>
     <columns>Active__c</columns>
+    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>RECORDTYPE</field>
+        <field>RE_Country__c</field>
         <operation>equals</operation>
-        <value>RE_Product__c.Malaysia</value>
+        <value>Malaysia</value>
     </filters>
     <label>Malaysia and Singapore</label>
     <sharedTo>

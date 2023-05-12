@@ -14,13 +14,18 @@
     <columns>UniqueKey__c</columns>
     <columns>PSP_IGO__c</columns>
     <columns>CREATED_DATE</columns>
-    <columns>BSP_MOGAS__c</columns>
-    <columns>OTM_MOGAS__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>Revolution_Dashboard__c.Dashboard</value>
+    </filters>
+    <filters>
+        <field>Sales_Channel__c</field>
+        <operation>equals</operation>
+        <value>AT01</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

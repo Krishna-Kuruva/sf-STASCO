@@ -8,20 +8,5 @@
         <plural>true</plural>
         <value>BET Integration Settings</value>
     </caseValues>
-    <layouts>
-        <layout>BET Integration Setting Layout</layout>
-        <sections>
-            <label></label>
-            <section>Authorization Setting</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>SharePoint Auto Upload Setting</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

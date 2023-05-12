@@ -8,37 +8,5 @@
         <plural>true</plural>
         <value>MY Output</value>
     </caseValues>
-    <layouts>
-        <layout>Costing Output Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Philippines</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>RE_Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>RE_Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Conga_Composer_Costing_Output_Solution</name>
-    </webLinks>
 </CustomObjectTranslation>

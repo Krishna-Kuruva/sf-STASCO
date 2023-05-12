@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>TriggerActiveInactives</value>
     </caseValues>
-    <layouts>
-        <layout>TriggerActiveInactive Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

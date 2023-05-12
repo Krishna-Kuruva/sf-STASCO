@@ -6,16 +6,16 @@
     <columns>RE_Ship_To_Number__c</columns>
     <columns>RE_Sold_To_Number__c</columns>
     <columns>RT_Material_Desc__c</columns>
-    <columns>RT_Plant_Desc__c</columns>
     <columns>UPDATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
     <columns>RT_Valid_From__c</columns>
     <columns>RT_Valid_To__c</columns>
     <columns>RE_Account_Manager__c</columns>
     <columns>RE_Is_Active_Contract__c</columns>
-    <columns>RE_Final_Price_Unit__c</columns>
-    <columns>RE_Secondary_Transport_Cost__c</columns>
+    <columns>Active__c</columns>
+    <columns>RE_Calculation_Type__c</columns>
     <columns>OBJECT_ID</columns>
+    <columns>RE_PH_Approval_Scheme__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Country_Name__c</field>
@@ -23,24 +23,14 @@
         <value>PH</value>
     </filters>
     <filters>
-        <field>RE_Account_Manager__c</field>
+        <field>Active__c</field>
         <operation>equals</operation>
-        <value>Cheilthy.Perlas</value>
+        <value>1</value>
     </filters>
     <filters>
-        <field>RT_Material_Desc__c</field>
+        <field>RE_Calculation_Type__c</field>
         <operation>equals</operation>
-        <value>Diesoline 10ppm B2</value>
-    </filters>
-    <filters>
-        <field>RE_Customer_Name__c</field>
-        <operation>contains</operation>
-        <value>CRUZ</value>
-    </filters>
-    <filters>
-        <field>RE_Ship_To_Number__c</field>
-        <operation>equals</operation>
-        <value>12545257</value>
+        <value>GPC</value>
     </filters>
     <label>PH Contracts</label>
     <sharedTo>

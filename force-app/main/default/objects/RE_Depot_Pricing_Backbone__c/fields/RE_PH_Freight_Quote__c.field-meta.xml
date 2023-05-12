@@ -47,6 +47,11 @@
                 <default>false</default>
                 <label>FREIGHT GPI01</label>
             </value>
+            <value>
+                <fullName>FREIGHT MPI09</fullName>
+                <default>false</default>
+                <label>FREIGHT MPI09</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>RE Midday Pricing</label>
     <nameField>
         <displayFormat>MDP-{000000000}</displayFormat>

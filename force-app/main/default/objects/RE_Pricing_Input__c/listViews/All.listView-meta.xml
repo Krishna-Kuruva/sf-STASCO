@@ -10,16 +10,13 @@
     <columns>RE_GPCAmnt__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>RE_Is_latest__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RE_Type__c</field>
         <operation>equals</operation>
         <value>GPC</value>
-    </filters>
-    <filters>
-        <field>RE_Material__c</field>
-        <operation>contains</operation>
-        <value>400008612</value>
     </filters>
     <label>GPC</label>
 </ListView>

@@ -328,4 +328,16 @@
         <name>Salesforce_to_SalesforceIQ_Secure_Connected_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Conga_Platform_prod</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Trading &amp; Supply Chemical Portal</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>TradingSupply_Chemical_Customer_Portal</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

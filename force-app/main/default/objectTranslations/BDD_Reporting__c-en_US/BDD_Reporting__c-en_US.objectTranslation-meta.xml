@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>BDD Reporting</value>
     </caseValues>
-    <layouts>
-        <layout>BDD Reporting Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Notes</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Review Actions</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>System_Group</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

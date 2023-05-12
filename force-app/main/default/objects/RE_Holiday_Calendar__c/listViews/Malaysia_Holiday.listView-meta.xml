@@ -5,11 +5,19 @@
     <columns>Comments__c</columns>
     <columns>RE_Holiday__c</columns>
     <columns>RE_Holiday_Date__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>RE_Holiday_Calendar__c.RE_MY_Holiday_Calendar</value>
+    </filters>
+    <filters>
+        <field>RE_Holiday_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2023</value>
     </filters>
     <label>Malaysia Holiday</label>
     <sharedTo>

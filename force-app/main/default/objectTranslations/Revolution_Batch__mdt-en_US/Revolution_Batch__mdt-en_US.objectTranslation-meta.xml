@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>Revolution Batches</value>
     </caseValues>
-    <layouts>
-        <layout>Revolution Batch Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

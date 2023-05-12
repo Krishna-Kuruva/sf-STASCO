@@ -153,6 +153,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Terminal Issue</label>
     <nameField>
         <label>Terminal Issues Name</label>

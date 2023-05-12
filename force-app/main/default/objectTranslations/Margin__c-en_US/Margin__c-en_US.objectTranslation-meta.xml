@@ -8,47 +8,5 @@
         <plural>true</plural>
         <value>Margins</value>
     </caseValues>
-    <layouts>
-        <layout>Massive Means</layout>
-        <sections>
-            <label></label>
-            <section>AGO/IGO Product Margins</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Fields</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>MOGAS Product Margins</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>Truck/ITT</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Night Surcharges</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Massive_Means</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Truck_ITT</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

@@ -6,25 +6,22 @@
     <columns>RE_Depot_Name__c</columns>
     <columns>Material_Code__c</columns>
     <columns>NAME</columns>
-    <columns>RE_PH_BIO_Fixed__c</columns>
-    <columns>RE_PH_Premium__c</columns>
+    <columns>RE_Primary_Transport_Cost__c</columns>
+    <columns>RE_PH_BIO_2__c</columns>
+    <columns>RE_PH_Freight_Charges__c</columns>
+    <columns>RE_PH_Freight_Charges_Unit__c</columns>
     <columns>RE_Fixed_Premium__c</columns>
     <columns>RE_Fixed_Premium_Unit__c</columns>
-    <columns>RE_Fixed_Premium_Percentage__c</columns>
-    <columns>RE_Final_Price_Unit__c</columns>
-    <columns>RE_Valid_To__c</columns>
-    <columns>RE_Valid_From__c</columns>
-    <columns>RE_Backbone_Name__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>RE_Depot_Pricing_Backbone__c.Malaysia</value>
+        <value>RE_Depot_Pricing_Backbone__c.Philippines</value>
     </filters>
     <filters>
-        <field>RE_Valid_From__c</field>
+        <field>RE_Valid_To__c</field>
         <operation>greaterOrEqual</operation>
-        <value>THIS_YEAR</value>
+        <value>TODAY</value>
     </filters>
     <label>Philippines</label>
 </ListView>

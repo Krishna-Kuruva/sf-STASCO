@@ -152,6 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Covamo FS Product</label>
     <nameField>
         <displayFormat>FSP-{000}</displayFormat>

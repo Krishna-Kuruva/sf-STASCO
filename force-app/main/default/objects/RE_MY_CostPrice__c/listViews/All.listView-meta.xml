@@ -11,11 +11,11 @@
     <columns>RE_Oil_Loss__c</columns>
     <columns>RE_Bio_Cost__c</columns>
     <columns>RE_Depot_Name__c</columns>
-    <columns>RE_Hydrocarbon_Value__c</columns>
     <columns>RE_Product_Name__c</columns>
     <columns>RE_Pricing_Date__c</columns>
     <columns>RE_Country__c</columns>
     <columns>CREATEDBY_USER</columns>
+    <columns>RE_Marketing_Selling_Tariff__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>

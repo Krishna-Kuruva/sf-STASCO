@@ -3,29 +3,34 @@
     <fullName>MY_Price_Book_MidDay</fullName>
     <columns>OBJECT_ID</columns>
     <columns>NAME</columns>
-    <columns>RE_Contract_Master__c</columns>
     <columns>RT_Location__c</columns>
     <columns>RE_CND_Product_Name__c</columns>
     <columns>RE_Customer_Name__c</columns>
-    <columns>RE_Sold_To_Number__c</columns>
-    <columns>RE_Ship_To_Number__c</columns>
-    <columns>RE_Final_Price_Rebate__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>RE_Valid_From__c</columns>
     <columns>RE_Valid_To__c</columns>
+    <columns>RE_Is_CBU__c</columns>
+    <columns>RE_Final_Price_Rebate__c</columns>
+    <columns>RE_Customer_Type__c</columns>
     <columns>RE_Is_Latest__c</columns>
     <columns>RE_Custom_Opp_Approve__c</columns>
-    <columns>RT_Effective_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>RE_ApprovalProcess__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>RE_Valid_From__c</field>
+        <field>RT_Country__c</field>
         <operation>equals</operation>
-        <value>12/9/2022</value>
+        <value>MY</value>
     </filters>
     <filters>
-        <field>RE_Valid_To__c</field>
+        <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>12/11/2022</value>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <operation>equals</operation>
+        <value>Rejected</value>
     </filters>
     <label>MY Price Book MidDay</label>
     <sharedTo>

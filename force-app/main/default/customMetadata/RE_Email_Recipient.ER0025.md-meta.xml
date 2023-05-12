@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">Camille.Faubert-Letellier@filgo-sonic.ca;petrole@regie-energie.qc.ca;davidburns@goco.net;cgagne@jeandenisgagne.com;recevables@jeandenisgagne.com;recevables@jeandenisgagne.com;Charlene.Stallard@parkland.ca;mlafortune@energielafortune.com;klafortune@petrolesexpert.com;smcveay@petrolesexpert.com;Naghmeh.Heshami@calgary.ca;Kevin.Ertmoed@calgary.ca;Bobbi-LynnBondy@EdwardFuels.com;pdonald@afdpetroleum.com;imclarty@afdpetroleum.com;</value>
+        <value xsi:type="xsd:string">Camille.Faubert-Letellier@filgo-sonic.ca;petrole@regie-energie.qc.ca;davidburns@goco.net;cgagne@jeandenisgagne.com;recevables@jeandenisgagne.com;recevables@jeandenisgagne.com;Charlene.Stallard@parkland.ca;mlafortune@energielafortune.com;klafortune@petrolesexpert.com;smcveay@petrolesexpert.com;Naghmeh.Heshami@calgary.ca;Kevin.Ertmoed@calgary.ca;Bobbi-LynnBondy@EdwardFuels.com;pdonald@afdpetroleum.com;imclarty@afdpetroleum.com;ElMehdi.Zaid@filgo-sonic.ca;Isabelle.Caron@energiesonic.com;mason.zimmerman@calgary.ca;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

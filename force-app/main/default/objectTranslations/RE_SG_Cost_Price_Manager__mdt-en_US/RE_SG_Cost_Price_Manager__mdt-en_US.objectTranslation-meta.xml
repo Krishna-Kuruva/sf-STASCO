@@ -8,28 +8,5 @@
         <plural>true</plural>
         <value>RE_SG_Cost Price Manager</value>
     </caseValues>
-    <layouts>
-        <layout>RE_SG_Cost Price Manager Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Formula Info</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Hydrocarbon Quote Info</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Market Premium Info</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Oil Loss Info</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

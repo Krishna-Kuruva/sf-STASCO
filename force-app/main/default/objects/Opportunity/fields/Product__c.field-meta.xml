@@ -918,6 +918,21 @@
                 <default>false</default>
                 <label>ICISNEACFLBUTD</label>
             </value>
+            <value>
+                <fullName>ICISSEACFLETHY</fullName>
+                <default>false</default>
+                <label>ICISSEACFLETHY</label>
+            </value>
+            <value>
+                <fullName>BD10ARGRDAMBSM</fullName>
+                <default>false</default>
+                <label>BD10ARGRDAMBSM</label>
+            </value>
+            <value>
+                <fullName>KJRDAMB-IPEB</fullName>
+                <default>false</default>
+                <label>KJRDAMB-IPEB</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>TSP</controllingFieldValue>
@@ -1016,6 +1031,10 @@
             <valueName>G10SPRCFMM</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>TSP</controllingFieldValue>
+            <valueName>BD10ARGRDAMBSM</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Chemicals</controllingFieldValue>
             <controllingFieldValue>Bitumen</controllingFieldValue>
             <controllingFieldValue>Commercial Fuels</controllingFieldValue>
@@ -1046,6 +1065,10 @@
         <valueSettings>
             <controllingFieldValue>Chemicals</controllingFieldValue>
             <valueName>ICISNEACFLBUTD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chemicals</controllingFieldValue>
+            <valueName>ICISSEACFLETHY</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Aviation</controllingFieldValue>
@@ -1622,6 +1645,10 @@
         <valueSettings>
             <controllingFieldValue>Manufacturing</controllingFieldValue>
             <valueName>NPHNWECCM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Manufacturing</controllingFieldValue>
+            <valueName>KJRDAMB-IPEB</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

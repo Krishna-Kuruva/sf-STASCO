@@ -5,25 +5,22 @@
     <columns>Backbone_Route_Name__c</columns>
     <columns>Source__c</columns>
     <columns>Destination__c</columns>
-    <columns>Freight_Quotation__c</columns>
-    <columns>Alt_Type__c</columns>
-    <columns>PlantGradeUnq__c</columns>
+    <columns>Bio_Split__c</columns>
     <columns>Destination_Code__c</columns>
     <columns>SubGrade_3P__c</columns>
     <columns>Freight_rate_EUR_mt__c</columns>
+    <columns>Third_Party__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>Valid_To__c</columns>
     <columns>Valid_From__c</columns>
+    <columns>Route_Utilization__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Destination_Code__c</field>
-        <operation>equals</operation>
-        <value>D037</value>
-    </filters>
-    <filters>
-        <field>CREATEDBY_USER</field>
+        <field>Backbone_Route_Name__c</field>
         <operation>contains</operation>
-        <value>Anja</value>
+        <value>AGO-B7_Shell_Harburg</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

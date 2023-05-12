@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Customer Sales Management</value>
     </caseValues>
-    <layouts>
-        <layout>Customer Sales Management Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

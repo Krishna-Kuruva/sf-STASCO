@@ -23,5 +23,10 @@
         <operation>equals</operation>
         <value>TSAP</value>
     </filters>
+    <filters>
+        <field>Request_Status__c</field>
+        <operation>equals</operation>
+        <value>In Progress</value>
+    </filters>
     <label>In Progress - TSAP</label>
 </ListView>

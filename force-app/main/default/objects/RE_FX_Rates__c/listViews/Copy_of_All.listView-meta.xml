@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Country__c</columns>
+    <columns>RE_Conversion_Unit__c</columns>
+    <columns>RE_Is_MTDWTD__c</columns>
+    <columns>RE_Base_Unit__c</columns>
+    <columns>RE_Forex_Rate__c</columns>
+    <columns>RE_Forex_Name__c</columns>
+    <columns>RE_Trade_Type__c</columns>
+    <columns>RE_Pricing_Date__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>RE_Tracker__c</columns>
+    <columns>RE_Ric_Code__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Conversion_Unit__c</field>
+        <operation>equals</operation>
+        <value>PHP</value>
+    </filters>
+    <filters>
+        <field>RE_Is_MTDWTD__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Copy of All</label>
+</ListView>

@@ -4,10 +4,12 @@
     <columns>NAME</columns>
     <columns>ImportType__c</columns>
     <columns>ImportStatus__c</columns>
-    <columns>SuccessCount__c</columns>
     <columns>ErrorCount__c</columns>
+    <columns>SuccessCount__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>CREATEDBY_USER</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>ErrorMessage__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

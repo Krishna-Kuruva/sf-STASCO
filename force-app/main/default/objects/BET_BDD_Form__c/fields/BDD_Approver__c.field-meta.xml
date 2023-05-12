@@ -16,7 +16,7 @@
     <referenceTo>User</referenceTo>
     <relationshipName>BDD_Forms_Approver</relationshipName>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

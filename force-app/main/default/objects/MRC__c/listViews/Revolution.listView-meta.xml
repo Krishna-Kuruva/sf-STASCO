@@ -4,8 +4,6 @@
     <columns>Sold_To__c</columns>
     <columns>Plant__c</columns>
     <columns>Product__c</columns>
-    <columns>Rv_Available_for_OLF__c</columns>
-    <columns>Plant_Code__c</columns>
     <columns>Handling_Type__c</columns>
     <columns>Material_Description__c</columns>
     <columns>NAME</columns>
@@ -16,11 +14,8 @@
     <columns>UPDATEDBY_USER</columns>
     <columns>LAST_UPDATE</columns>
     <columns>Valid_From_Date__c</columns>
+    <columns>Sales_Organization__c</columns>
+    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>RECORDTYPE</field>
-        <operation>equals</operation>
-        <value>MRC__c.DI_Dashboard</value>
-    </filters>
     <label>Revolution</label>
 </ListView>

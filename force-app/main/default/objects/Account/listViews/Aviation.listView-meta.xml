@@ -7,8 +7,6 @@
     <columns>X2021_Paper_Margin__c</columns>
     <columns>X2020_Paper_Volume__c</columns>
     <columns>X2020_Paper_Margin__c</columns>
-    <columns>X2019_Paper_Volume__c</columns>
-    <columns>X2019_Paper_Margin__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>ACCOUNT.INDUSTRY</field>

@@ -3,9 +3,9 @@
     <fullName>All_SOM</fullName>
     <columns>OBJECT_ID</columns>
     <columns>NAME</columns>
+    <columns>Description__c</columns>
     <columns>Level_0__c</columns>
     <columns>Level_1__c</columns>
-    <columns>Marketing_Cost__c</columns>
     <columns>Commodity_Grade_L2__c</columns>
     <columns>Material_Name__c</columns>
     <columns>Total_Additive_cost_EUR_100l__c</columns>
@@ -14,11 +14,12 @@
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <columns>UPDATEDBY_USER</columns>
+    <columns>Material_L3__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>3477,400002390</value>
+        <value>000000000400001685,000000000400002410,000000000400001637,000000000400001986,000000000400003805,000000000400002484,000000000400002498,000000000400002390</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>Value_Eur_100L__c</field>
-        <value xsi:type="xsd:double">0.04</value>
+        <value xsi:type="xsd:double">0.03</value>
     </values>
 </CustomMetadata>

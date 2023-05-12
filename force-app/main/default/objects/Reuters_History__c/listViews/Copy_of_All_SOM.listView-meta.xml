@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All_SOM</fullName>
+    <columns>NAME</columns>
+    <columns>Quote_Name__c</columns>
+    <columns>Quote_Display_Name__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Reuters_Created_Date__c</columns>
+    <columns>Price__c</columns>
+    <columns>Pricing_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>3/20/2023 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Quote_Display_Name__c</field>
+        <operation>contains</operation>
+        <value>Platts FOB Barge R&apos;dam Diesel 10ppm (high),ICE LGO Low Sulfur Gasoil (settlement)</value>
+    </filters>
+    <label>Copy of All(SOM)</label>
+</ListView>

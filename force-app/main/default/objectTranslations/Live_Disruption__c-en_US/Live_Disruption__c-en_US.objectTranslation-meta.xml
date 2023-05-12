@@ -8,47 +8,5 @@
         <plural>true</plural>
         <value>Live Disruptions</value>
     </caseValues>
-    <layouts>
-        <layout>Live Disruption Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Disruption Dates</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Enter External Comments</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Enter Internal Comments</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Resolution</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>Live Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <quickActions>
-        <label></label>
-        <name>Resolve</name>
-    </quickActions>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>External_checkbox_true</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>External_comment_mandatory</name>
-    </validationRules>
 </CustomObjectTranslation>

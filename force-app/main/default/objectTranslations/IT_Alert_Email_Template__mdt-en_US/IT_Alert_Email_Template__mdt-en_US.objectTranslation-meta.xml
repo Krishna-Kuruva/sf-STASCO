@@ -9,8 +9,4 @@
         <value>IT Alert Email Templates</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>To_is_required</name>
-    </validationRules>
 </CustomObjectTranslation>

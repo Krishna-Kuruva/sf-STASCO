@@ -9,12 +9,19 @@
     <columns>RE_MY_Product__c</columns>
     <columns>RE_MY_Region__c</columns>
     <columns>RE_MY_Plant__c</columns>
+    <columns>RE_MY_Small_lot_premium__c</columns>
+    <columns>RE_MY_Small_lot_premium_Unit__c</columns>
     <columns>RE_MY_HCV_Quote_Percentage__c</columns>
     <columns>RE_MY_Market_Premium_Percentage__c</columns>
     <columns>RE_MY_Market_Premium_Quote__c</columns>
     <columns>RE_MY_Oil_Loss_Percentage__c</columns>
     <columns>RE_MY_Bio_Loss_Percentage__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_MY_Valid_From__c</field>
+        <operation>equals</operation>
+        <value>12/31/2021</value>
+    </filters>
     <label>All Columns View 01</label>
     <language>en_US</language>
 </ListView>

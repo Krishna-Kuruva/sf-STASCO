@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>IT Dashboard Settings</value>
     </caseValues>
-    <layouts>
-        <layout>IT Dashboard Setting Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

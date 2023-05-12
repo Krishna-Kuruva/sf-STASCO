@@ -227,6 +227,7 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
+    <externalSharingModel>Private</externalSharingModel>
     <profileSearchLayouts>
         <fields>ACCOUNT.NAME</fields>
         <fields>CORE.USERS.FIRST_NAME</fields>

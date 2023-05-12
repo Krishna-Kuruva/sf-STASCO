@@ -40,8 +40,8 @@ Please take necessary action(s) for below alert(s).&lt;br/&gt;&lt;br/&gt;</value
     </values>
     <values>
         <field>EMAIL_TO__c</field>
-        <value xsi:type="xsd:string">EMAIL TO has changed from andreas.heeschen@shell.com;Ganesh.G.Bhat@shell.com;Melina.Meiring@shell.com; alexandra.schiller@shell.com; Inger.Lueth@shell.com; GXSDECFCPD@shell.com; Matthias.Zimbrich@shell.com; Dennis.Gerken@shell.com;gurkaran.singh@shell.com; j.srivastava@shell.com; N.Kondur@shell.com;mika.tiusanen@shell.com;
+        <value xsi:type="xsd:string">andreas.heeschen@shell.com;Inger.Lueth@shell.com; Matthias.Zimbrich@shell.com; Dennis.Gerken@shell.com;gurkaran.singh@shell.com; j.srivastava@shell.com; N.Kondur@shell.com;mika.tiusanen@shell.com;
 Victor.mukherjee@shell.com;
-p.gurujula@shell.com;nilima.ganvir@shell.com;Mrunal.Vyawahare@shell.com;sahil.mujbaile@shell.com;linda.luedde@shell.com</value>
+p.gurujula@shell.com;nilima.ganvir@shell.com;sahil.mujbaile@shell.com;linda.luedde@shell.com;SDE-CPD@shell.com; surekha.giri@shell.com</value>
     </values>
 </CustomMetadata>

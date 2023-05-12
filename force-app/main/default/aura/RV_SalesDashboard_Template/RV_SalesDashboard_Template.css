@@ -441,3 +441,13 @@
     height: 25px;
     width: 25px;
 }
+
+/*=========  KURT Banner  ========*/
+
+.slds-page-header.header.flexipageHeader {
+    display: none;
+}
+
+[app_flexipage-header_header-host] {
+    display: none;
+}

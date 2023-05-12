@@ -3,24 +3,11 @@
     <fullName>Actual_Margin_2019__c</fullName>
     <externalId>false</externalId>
     <label>Actual Margin $ 2019</label>
-    <summarizedField>Opportunity.Total_Margin__c</summarizedField>
-    <summaryFilterItems>
-        <field>Opportunity.Year__c</field>
-        <operation>equals</operation>
-        <value>2019</value>
-    </summaryFilterItems>
-    <summaryFilterItems>
-        <field>Opportunity.StageName</field>
-        <operation>equals</operation>
-        <value>Deal Done, Exposure Management</value>
-    </summaryFilterItems>
-    <summaryFilterItems>
-        <field>Opportunity.RecordTypeId</field>
-        <operation>equals</operation>
-        <value>Risk Marketing Physical</value>
-    </summaryFilterItems>
-    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
-    <summaryOperation>sum</summaryOperation>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>Summary</type>
+    <type>Number</type>
+    <unique>false</unique>
 </CustomField>

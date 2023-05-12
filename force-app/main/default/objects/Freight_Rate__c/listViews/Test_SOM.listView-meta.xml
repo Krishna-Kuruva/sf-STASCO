@@ -8,18 +8,18 @@
     <columns>Freight_Quotation__c</columns>
     <columns>Alt_Type__c</columns>
     <columns>PlantGradeUnq__c</columns>
-    <columns>Destination_Code__c</columns>
     <columns>SubGrade_3P__c</columns>
-    <columns>Freight_rate_EUR_mt__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>Valid_To__c</columns>
     <columns>Valid_From__c</columns>
     <columns>CREATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Destination__c</field>
+        <field>LAST_UPDATE</field>
         <operation>equals</operation>
-        <value>Hannover Tanquid Depot</value>
+        <value>4/24/2023 12:00 AM</value>
     </filters>
     <label>Test SOM</label>
 </ListView>

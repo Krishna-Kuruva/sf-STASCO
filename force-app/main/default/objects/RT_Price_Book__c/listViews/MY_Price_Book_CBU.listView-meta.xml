@@ -4,8 +4,8 @@
     <columns>OBJECT_ID</columns>
     <columns>NAME</columns>
     <columns>RE_Contract_Master__c</columns>
+    <columns>RE_ApprovalProcess__c</columns>
     <columns>LAST_UPDATE</columns>
-    <columns>UPDATEDBY_USER</columns>
     <columns>RT_Product__c</columns>
     <columns>RE_Customer_Name__c</columns>
     <columns>RE_Is_CBU__c</columns>
@@ -13,9 +13,9 @@
     <columns>RE_Valid_To__c</columns>
     <columns>RE_Custom_Opp_Approve__c</columns>
     <columns>RE_Final_Price_Rebate__c</columns>
-    <columns>CREATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
-    <columns>RE_AM_Code__c</columns>
+    <columns>RE_Customer_Type__c</columns>
+    <columns>RE_Temp_Discount__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RT_Country__c</field>

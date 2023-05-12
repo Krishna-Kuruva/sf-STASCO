@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>RE_MY_Oil_Loss_Percentage__c</field>
-        <value xsi:type="xsd:double">0.21</value>
+        <value xsi:type="xsd:double">0.2</value>
     </values>
     <values>
         <field>RE_MY_Plant__c</field>
@@ -128,6 +128,6 @@
     </values>
     <values>
         <field>RE_MY_Valid_To__c</field>
-        <value xsi:type="xsd:date">2022-12-31</value>
+        <value xsi:type="xsd:date">2023-12-31</value>
     </values>
 </CustomMetadata>

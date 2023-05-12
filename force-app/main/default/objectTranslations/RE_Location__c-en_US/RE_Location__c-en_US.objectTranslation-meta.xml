@@ -8,45 +8,5 @@
         <plural>true</plural>
         <value>RE Locations</value>
     </caseValues>
-    <layouts>
-        <layout>Location Layout Canada</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>RT Location Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Philippines</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Turkey</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

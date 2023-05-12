@@ -15,7 +15,7 @@
     <filters>
         <field>RE_Job_Type__c</field>
         <operation>equals</operation>
-        <value>Philippines Output,PH Customer Opps CBU</value>
+        <value>Philippines Output,PH Customer Opps CBU,PH Customer Opps</value>
     </filters>
     <label>ph test som list view</label>
 </ListView>

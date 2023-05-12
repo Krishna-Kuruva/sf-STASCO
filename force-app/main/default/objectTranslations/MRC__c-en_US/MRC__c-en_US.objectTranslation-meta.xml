@@ -8,45 +8,5 @@
         <plural>true</plural>
         <value>MRC</value>
     </caseValues>
-    <layouts>
-        <layout>MRC Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Header Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Line Item Details</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Online Description</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>DI_Dashboard</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>MRC</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>MRC_Name_not_editable_by_DI_User</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>RV_OLF_MRC_Only_Validation</name>
-    </validationRules>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

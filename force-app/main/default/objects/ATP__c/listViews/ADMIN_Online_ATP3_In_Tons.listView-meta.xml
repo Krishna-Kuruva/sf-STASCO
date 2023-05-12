@@ -5,6 +5,7 @@
     <columns>NAME</columns>
     <columns>Plant_Code__c</columns>
     <columns>Location__c</columns>
+    <columns>Company_Code__c</columns>
     <columns>Grade_Level2__c</columns>
     <columns>ATP3__c</columns>
     <columns>Min_Daily_Split_Vol_ATP3__c</columns>

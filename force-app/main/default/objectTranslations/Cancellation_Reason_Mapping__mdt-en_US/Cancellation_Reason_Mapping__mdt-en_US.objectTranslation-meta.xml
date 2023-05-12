@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>Cancellation Reason Mapping</value>
     </caseValues>
-    <layouts>
-        <layout>Cancellation Reason Mapping Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

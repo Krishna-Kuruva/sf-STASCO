@@ -4,18 +4,18 @@
     <columns>NAME</columns>
     <columns>OBJECT_ID</columns>
     <columns>RE_Customer_Name__c</columns>
-    <columns>RE_Custom_Opp_Approve__c</columns>
-    <columns>CREATEDBY_USER</columns>
+    <columns>RT_Product__c</columns>
     <columns>RT_Location__c</columns>
     <columns>RE_Final_Price_Rebate__c</columns>
     <columns>CREATED_DATE</columns>
+    <columns>RE_ApprovalProcess__c</columns>
+    <columns>RE_Backstop_Margin__c</columns>
+    <columns>RE_Reference_Period__c</columns>
     <columns>RE_Contract_Master__c</columns>
-    <columns>RE_CBU_valid_from__c</columns>
-    <columns>RE_CBU_valid_To__c</columns>
     <columns>RE_Valid_From__c</columns>
     <columns>RE_Valid_To__c</columns>
-    <columns>RT_Active__c</columns>
     <columns>RE_AM_Code__c</columns>
+    <columns>RE_Custom_Opp_Approve__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RT_Country__c</field>
@@ -23,29 +23,14 @@
         <value>PH</value>
     </filters>
     <filters>
-        <field>RE_Custom_Opp_Approve__c</field>
+        <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>Auto Approved</value>
-    </filters>
-    <filters>
-        <field>RE_Valid_From__c</field>
-        <operation>equals</operation>
-        <value>11/25/2022</value>
-    </filters>
-    <filters>
-        <field>RE_Valid_To__c</field>
-        <operation>equals</operation>
-        <value>11/28/2022</value>
-    </filters>
-    <filters>
-        <field>RE_Customer_Name__c</field>
-        <operation>notContain</operation>
-        <value>NORTHERN STAR ENERGY</value>
+        <value>TODAY</value>
     </filters>
     <filters>
         <field>RE_AM_Code__c</field>
         <operation>contains</operation>
-        <value>Michelle</value>
+        <value>Ingrid</value>
     </filters>
     <label>RE PH customer Opps</label>
     <sharedTo>

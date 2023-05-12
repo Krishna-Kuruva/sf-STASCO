@@ -16,7 +16,12 @@
     <filters>
         <field>RE_Job_Type__c</field>
         <operation>contains</operation>
-        <value>Philippines Output,PH Customer Opps CBU</value>
+        <value>Malaysia Output,CustomerOps Output,MY Export Report,MY Customer Opps CBU</value>
+    </filters>
+    <filters>
+        <field>RE_User__c</field>
+        <operation>equals</operation>
+        <value>Christine Ngau</value>
     </filters>
     <label>All test</label>
 </ListView>

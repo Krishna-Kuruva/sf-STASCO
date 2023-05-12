@@ -8,40 +8,5 @@
         <plural>true</plural>
         <value>Sales Dashboard</value>
     </caseValues>
-    <layouts>
-        <layout>Revolution Dashboard Layout</layout>
-        <sections>
-            <label></label>
-            <section>AGO</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>GTL</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>IGO</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>MOGAS</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Dashboard</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Snapshot</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

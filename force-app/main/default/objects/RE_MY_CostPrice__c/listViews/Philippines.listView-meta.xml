@@ -11,14 +11,26 @@
     <columns>RE_Costprice_Laid_Down_Cost__c</columns>
     <columns>RE_Hydrocarbon_Value__c</columns>
     <columns>RE_Market_Premium__c</columns>
-    <columns>RE_Pricing_Date__c</columns>
     <columns>RE_Costprice_Unit__c</columns>
-    <columns>RE_Type__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>RE_Storage_Handling_Cost__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>RE_MY_CostPrice__c.Philippines</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>RE_Depot_Name__c</field>
+        <operation>contains</operation>
+        <value>NMIF</value>
     </filters>
     <label>Philippines</label>
     <sharedTo>

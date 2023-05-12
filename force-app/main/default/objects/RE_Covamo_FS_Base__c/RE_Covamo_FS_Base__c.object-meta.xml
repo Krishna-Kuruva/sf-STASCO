@@ -152,6 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>RE Covamo FS Base</label>
     <nameField>
         <label>RE Covamo Name</label>

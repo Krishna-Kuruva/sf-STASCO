@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>Future Differentials</value>
     </caseValues>
-    <layouts>
-        <layout>Future Differential Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Differential Validity</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Differential Value</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

@@ -8,21 +8,5 @@
         <plural>true</plural>
         <value>TMS Users</value>
     </caseValues>
-    <layouts>
-        <layout>TMS User Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <quickActions>
-        <label></label>
-        <name>TMS_User_Details</name>
-    </quickActions>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>User_Record</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

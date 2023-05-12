@@ -8,28 +8,5 @@
         <plural>true</plural>
         <value>Product Differentials</value>
     </caseValues>
-    <layouts>
-        <layout>Product Differential Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Pricing Information</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Dashboard</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Snapshot</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

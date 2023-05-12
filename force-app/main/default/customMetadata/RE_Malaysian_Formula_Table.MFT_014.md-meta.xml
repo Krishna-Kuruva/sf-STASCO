@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>RE_MY_Oil_Loss_Percentage__c</field>
-        <value xsi:type="xsd:double">0.17</value>
+        <value xsi:type="xsd:double">0.1</value>
     </values>
     <values>
         <field>RE_MY_Plant__c</field>
@@ -108,7 +108,7 @@
     </values>
     <values>
         <field>RE_MY_Small_lot_premium__c</field>
-        <value xsi:type="xsd:double">0.2</value>
+        <value xsi:type="xsd:double">1.65</value>
     </values>
     <values>
         <field>RE_MY_TP_Premium_Percentage__c</field>
@@ -128,6 +128,6 @@
     </values>
     <values>
         <field>RE_MY_Valid_To__c</field>
-        <value xsi:type="xsd:date">2022-12-31</value>
+        <value xsi:type="xsd:date">2023-12-31</value>
     </values>
 </CustomMetadata>

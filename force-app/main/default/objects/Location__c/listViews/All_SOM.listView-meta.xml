@@ -18,9 +18,9 @@
     <columns>Online_Location_Name__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Plant_Code__c</field>
+        <field>Company_Code__c</field>
         <operation>equals</operation>
-        <value>D037</value>
+        <value>AT01</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

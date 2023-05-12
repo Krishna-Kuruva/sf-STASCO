@@ -8,44 +8,5 @@
         <plural>true</plural>
         <value>SHT</value>
     </caseValues>
-    <layouts>
-        <layout>SHT Layout</layout>
-        <sections>
-            <label></label>
-            <section>Contract Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Deal Event Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Deal Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Online Deal Description</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Pricing Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Revolution Auditing</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>SAP Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

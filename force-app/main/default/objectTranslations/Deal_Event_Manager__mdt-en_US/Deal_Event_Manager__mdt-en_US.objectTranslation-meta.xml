@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>Deal Event Manager</value>
     </caseValues>
-    <layouts>
-        <layout>Deal Event Manager Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Event Manager Information</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>Tax Mapping Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Event Manager Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

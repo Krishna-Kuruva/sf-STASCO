@@ -461,6 +461,11 @@
                 <default>false</default>
                 <label>SERE - Shell Energy Europe B.V.(Renewables and Energy Solutions)</label>
             </value>
+            <value>
+                <fullName>SG03 - SES Power Trading</fullName>
+                <default>false</default>
+                <label>SG03 - SES Power Trading</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>4</visibleLines>

@@ -4,18 +4,38 @@
     <columns>NAME</columns>
     <columns>RE_Contract_Master__c</columns>
     <columns>CREATED_DATE</columns>
+    <columns>RE_ApprovalProcess__c</columns>
     <columns>RE_Customer_Name__c</columns>
     <columns>RT_Active__c</columns>
+    <columns>RT_Product__c</columns>
     <columns>RE_Ship_To_Number__c</columns>
     <columns>RE_Sold_To_Number__c</columns>
     <columns>RE_Valid_From__c</columns>
     <columns>RE_Valid_To__c</columns>
     <columns>RE_Final_Price_Rebate__c</columns>
     <columns>RE_Custom_Opp_Approve__c</columns>
-    <columns>RE_Is_CBU__c</columns>
-    <columns>RE_Is_Latest__c</columns>
-    <columns>RT_Condition_Type__c</columns>
+    <columns>RE_Customer_Type__c</columns>
+    <columns>RE_AM_Code__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_ApprovalProcess__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>RT_Price_Book__c.PH_Price_Book</value>
+    </filters>
+    <filters>
+        <field>RE_Custom_Opp_Approve__c</field>
+        <operation>equals</operation>
+        <value>Not Submitted</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
     <label>RE customer Opps</label>
     <sharedTo>
         <allInternalUsers></allInternalUsers>

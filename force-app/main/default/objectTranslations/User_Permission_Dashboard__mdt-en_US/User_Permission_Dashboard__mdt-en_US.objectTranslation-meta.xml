@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>User Permissions Dashboard</value>
     </caseValues>
-    <layouts>
-        <layout>User Permission Dashboard Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

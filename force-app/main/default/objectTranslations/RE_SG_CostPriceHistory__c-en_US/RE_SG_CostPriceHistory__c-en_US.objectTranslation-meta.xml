@@ -9,12 +9,4 @@
         <value>Cost Price History - Singapore</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Conga_Composer_RESGConga_Solution</name>
-    </webLinks>
-    <webLinks>
-        <label></label>
-        <name>Conga_Composer_Singapore_CBU_Costing_Output</name>
-    </webLinks>
 </CustomObjectTranslation>

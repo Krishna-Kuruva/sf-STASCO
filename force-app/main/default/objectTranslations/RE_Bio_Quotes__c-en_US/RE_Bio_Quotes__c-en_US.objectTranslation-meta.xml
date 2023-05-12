@@ -8,31 +8,5 @@
         <plural>true</plural>
         <value>RE Bio Quotes</value>
     </caseValues>
-    <layouts>
-        <layout>Bio Quotes Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>Thailand</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

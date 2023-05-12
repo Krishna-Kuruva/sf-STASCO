@@ -8,13 +8,5 @@
         <plural>true</plural>
         <value>RE Route Based Costing</value>
     </caseValues>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

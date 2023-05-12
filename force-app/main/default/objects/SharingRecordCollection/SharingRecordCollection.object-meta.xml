@@ -72,6 +72,7 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <searchLayouts>
         <lookupDialogsAdditionalFields>Description</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>LastModifiedDate</lookupDialogsAdditionalFields>

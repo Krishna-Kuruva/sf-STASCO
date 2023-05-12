@@ -8,31 +8,5 @@
         <plural>true</plural>
         <value>REV Contract Master</value>
     </caseValues>
-    <layouts>
-        <layout>Aureus Data Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>Canada SFJ</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Ensure_value_population_for_fields</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>RE_Check_active_contract</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>RE_MY_Pricing_Structure</name>
-    </validationRules>
 </CustomObjectTranslation>

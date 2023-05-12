@@ -99,6 +99,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Furnace Oil QC02</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Furnace Oil QC09</fullName>
             <default>false</default>
         </values>

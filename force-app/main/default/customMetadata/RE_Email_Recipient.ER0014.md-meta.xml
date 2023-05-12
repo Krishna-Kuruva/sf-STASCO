@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>To_List__c</field>
-        <value xsi:type="xsd:string">Martin.Choquette@shell.com;Susan.Hanley@shell.com;SCAN-Nucleus-Pricing@shell.com;Taylor.Schenk@shell.com;SSSCMLA-DM-CANADAFUELS-Pricing@Shell.com;SSSCMLA-DM-CANADAFUELS-Sales-Support@shell.com;N.Hoang@shell.com;Nisha.Nayyar@shell.com;</value>
+        <value xsi:type="xsd:string">Martin.Choquette@shell.com;Susan.Hanley@shell.com;SCAN-Nucleus-Pricing@shell.com;Taylor.Schenk@shell.com;SSSCMLA-DM-CANADAFUELS-Pricing@Shell.com;SSSCMLA-DM-CANADAFUELS-Sales-Support@shell.com;N.Hoang@shell.com;Nisha.Nayyar@shell.com;Liz.Lyle@shell.com;</value>
     </values>
     <values>
         <field>Type__c</field>

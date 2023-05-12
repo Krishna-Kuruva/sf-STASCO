@@ -5,6 +5,7 @@
     <externalId>false</externalId>
     <label>Disclaimer</label>
     <length>32768</length>
+    <trackHistory>false</trackHistory>
     <type>LongTextArea</type>
     <visibleLines>10</visibleLines>
 </CustomField>

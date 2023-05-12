@@ -11,11 +11,16 @@
     <columns>SapMrcNo__c</columns>
     <columns>SfItemShtNo__c</columns>
     <columns>SapSalesContNo__c</columns>
+    <columns>SHTId__c</columns>
     <columns>SHT_Transaction_Id__c</columns>
     <columns>Processing_Indicator__c</columns>
-    <columns>Rejection_Reason__c</columns>
     <columns>LAST_UPDATE</columns>
     <columns>Status__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
     <label>All (SOM)</label>
 </ListView>

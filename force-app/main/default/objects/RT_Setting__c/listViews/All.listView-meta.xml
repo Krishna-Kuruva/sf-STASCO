@@ -13,5 +13,10 @@
     <columns>RE_Delegate_Approver__c</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Country__c</field>
+        <operation>equals</operation>
+        <value>PH</value>
+    </filters>
     <label>All</label>
 </ListView>

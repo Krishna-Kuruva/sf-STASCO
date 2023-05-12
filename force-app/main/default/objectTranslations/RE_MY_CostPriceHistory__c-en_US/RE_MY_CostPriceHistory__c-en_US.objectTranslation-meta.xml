@@ -8,29 +8,5 @@
         <plural>true</plural>
         <value>Cost Price History</value>
     </caseValues>
-    <recordTypes>
-        <label></label>
-        <name>Canada</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Covamo_Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Philippines</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

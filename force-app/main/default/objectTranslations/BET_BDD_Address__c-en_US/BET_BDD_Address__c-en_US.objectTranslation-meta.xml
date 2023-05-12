@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>BDD Address</value>
     </caseValues>
-    <layouts>
-        <layout>BET GT Address Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>BET MDN Address Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>GOLDTIER</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>MDN</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -38,7 +38,7 @@ Reason: {!REASON}&lt;br/&gt;</value>
     </values>
     <values>
         <field>EMAIL_TO__c</field>
-        <value xsi:type="xsd:string">andreas.heeschen@shell.com;Inger.Lueth@shell.com;marc.reinke@shell.com;Linda.Luedde@shell.com</value>
+        <value xsi:type="xsd:string">andreas.heeschen@shell.com;Inger.Lueth@shell.com;marc.reinke@shell.com;Linda.Luedde@shell.com;j.geisler-knickmann@shell.com; GX-TR-IT-CPO-PB-AMS@shell.com</value>
     </values>
     <values>
         <field>TABEL_HEADER__c</field>

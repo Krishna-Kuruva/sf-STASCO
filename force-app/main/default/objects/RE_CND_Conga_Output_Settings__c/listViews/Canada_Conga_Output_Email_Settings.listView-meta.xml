@@ -16,21 +16,6 @@
     <columns>Section_Name__c</columns>
     <columns>Is_Active__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>Display_English_Rack_Name__c</field>
-        <operation>equals</operation>
-        <value>Vancouver</value>
-    </filters>
-    <filters>
-        <field>Location_Code__c</field>
-        <operation>equals</operation>
-        <value>c316</value>
-    </filters>
-    <filters>
-        <field>Product_Group_Name__c</field>
-        <operation>equals</operation>
-        <value>ulsd</value>
-    </filters>
     <label>Canada Conga Output Email Settings</label>
     <language>en_US</language>
 </ListView>

@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>OLF Email Templates</value>
     </caseValues>
-    <layouts>
-        <layout>OLF Email Template Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Table_Header_is_Required</name>
-    </validationRules>
 </CustomObjectTranslation>

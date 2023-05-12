@@ -152,6 +152,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Customer Sales Management Archive</label>
     <nameField>
         <displayFormat>CSMA-{0000000}</displayFormat>

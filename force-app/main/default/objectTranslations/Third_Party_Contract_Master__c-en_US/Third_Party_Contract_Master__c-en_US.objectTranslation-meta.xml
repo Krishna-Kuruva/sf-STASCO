@@ -8,52 +8,5 @@
         <plural>true</plural>
         <value>Hydrocarbon Formulas</value>
     </caseValues>
-    <layouts>
-        <layout>Third Party Contract Master Layout</layout>
-        <sections>
-            <label></label>
-            <section>Additive Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>BIO Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Contract Validity</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Delta Quote Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Differential Quote Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Freight Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Future Quote Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>More Information (Read-Only)</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Making_Fields_Required_for_Third_Party</name>
-    </validationRules>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

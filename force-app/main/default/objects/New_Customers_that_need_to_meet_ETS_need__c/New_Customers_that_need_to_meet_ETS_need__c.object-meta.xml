@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>New Customers that need to meet ETS need</label>
     <nameField>
         <label>New Customers that need to meet ETS need Name</label>

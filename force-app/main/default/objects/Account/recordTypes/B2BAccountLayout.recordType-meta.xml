@@ -242,6 +242,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Billing_Block__c</picklist>
+        <values>
+            <fullName>01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>08</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>09</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Business_Type__c</picklist>
         <values>
             <fullName>CF- Branded Resellers</fullName>
@@ -884,6 +919,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Delivery_Block__c</picklist>
+        <values>
+            <fullName>01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>03</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>04</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>05</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>06</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>07</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>08</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>ETS_Interest__c</picklist>
         <values>
             <fullName>Australia</fullName>
@@ -1066,6 +1136,41 @@
         </values>
         <values>
             <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Incoterms1__c</picklist>
+        <values>
+            <fullName>CFR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1265,6 +1370,72 @@
         </values>
         <values>
             <fullName>Signed and attached</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mode_of_Transport__c</picklist>
+        <values>
+            <fullName>01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1J</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>32</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>36</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>37</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>39</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>70</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>80</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Order_Block__c</picklist>
+        <values>
+            <fullName>01</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>02</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>03</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -2062,6 +2233,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>TCP_STNSAP_Status__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nodata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Trade_type__c</picklist>
         <values>
             <fullName>CO2 Only</fullName>
@@ -2144,6 +2330,17 @@
         <values>
             <fullName>Tonnes</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Unit_of_Measure__c</picklist>
+        <values>
+            <fullName>KG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MT</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>

@@ -8,32 +8,5 @@
         <plural>true</plural>
         <value>Price Audit-Backbone AMV</value>
     </caseValues>
-    <layouts>
-        <layout>Backbone AMV Audit Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Freight Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>HCV Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Netback Calculator</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Other Pricing Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

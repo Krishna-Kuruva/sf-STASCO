@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>som</fullName>
+    <columns>OBJECT_ID</columns>
+    <columns>NAME</columns>
+    <columns>Handling_Type__c</columns>
+    <columns>Valid_From_Date__c</columns>
+    <columns>Valid_To_Date__c</columns>
+    <columns>Plant_Code__c</columns>
+    <columns>Plant__c</columns>
+    <columns>Sold_To__c</columns>
+    <columns>Material_Description__c</columns>
+    <columns>Material_Name__c</columns>
+    <columns>Product__c</columns>
+    <columns>Sales_Organization__c</columns>
+    <columns>Shipping_Condition__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Handling_Type__c</field>
+        <operation>equals</operation>
+        <value>CA</value>
+    </filters>
+    <filters>
+        <field>Material_Description__c</field>
+        <operation>contains</operation>
+        <value>GTL</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>MRCXXD033</value>
+    </filters>
+    <label>som</label>
+</ListView>

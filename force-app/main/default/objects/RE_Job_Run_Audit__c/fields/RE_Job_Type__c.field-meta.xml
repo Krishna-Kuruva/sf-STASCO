@@ -119,6 +119,11 @@
                 <default>false</default>
                 <label>PH Customer Opps CBU</label>
             </value>
+            <value>
+                <fullName>PH Customer Opps</fullName>
+                <default>false</default>
+                <label>PH Customer Opps</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

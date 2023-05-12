@@ -15,6 +15,7 @@
     <columns>Lifting_Validity_From1__c</columns>
     <columns>Comment_Prompt_Sales__c</columns>
     <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <label>ATP D(00-14) In Tons</label>
 </ListView>

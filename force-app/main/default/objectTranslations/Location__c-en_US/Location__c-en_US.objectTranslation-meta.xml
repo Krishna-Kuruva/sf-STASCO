@@ -8,28 +8,5 @@
         <plural>true</plural>
         <value>Locations</value>
     </caseValues>
-    <layouts>
-        <layout>Location Layout</layout>
-        <sections>
-            <label></label>
-            <section>Availibility Informtion</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Location Type Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Reporting Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

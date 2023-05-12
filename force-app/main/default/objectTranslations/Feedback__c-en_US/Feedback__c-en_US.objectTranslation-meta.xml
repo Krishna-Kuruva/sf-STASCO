@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Feedback</value>
     </caseValues>
-    <layouts>
-        <layout>Feedback Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Feedback</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

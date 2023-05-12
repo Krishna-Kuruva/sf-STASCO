@@ -3,19 +3,11 @@
     <fullName>X2019_Paper_Volume__c</fullName>
     <externalId>false</externalId>
     <label>2019 Paper Volume</label>
-    <summarizedField>Opportunity.Volume__c</summarizedField>
-    <summaryFilterItems>
-        <field>Opportunity.Year__c</field>
-        <operation>equals</operation>
-        <value>2019</value>
-    </summaryFilterItems>
-    <summaryFilterItems>
-        <field>Opportunity.StageName</field>
-        <operation>equals</operation>
-        <value>Closed Won</value>
-    </summaryFilterItems>
-    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
-    <summaryOperation>sum</summaryOperation>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>Summary</type>
+    <type>Number</type>
+    <unique>false</unique>
 </CustomField>

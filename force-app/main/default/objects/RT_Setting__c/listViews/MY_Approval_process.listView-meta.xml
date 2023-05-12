@@ -15,6 +15,11 @@
         <operation>equals</operation>
         <value>MY</value>
     </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>equals</operation>
+        <value>Malaysia Approval Scheme</value>
+    </filters>
     <label>MY Approval process</label>
     <sharedTo>
         <territory>Revolution_Territory.Malaysia</territory>

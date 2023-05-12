@@ -56,9 +56,9 @@ public class RV_SPCalculationController {
                 marginGradeMap.put(prd.MasterLabel,prd.MasterLabel);
                 gtlProdMap.put(prd.MasterLabel,prd.Product_Name__c);
             }else{
-		    MapOfProductMapping.put(prd.MasterLabel,prd.Product_Name__c);
-		    marginGradeMap.put(prd.MasterLabel,prd.Margin_Mapping__c);
-		}
+                MapOfProductMapping.put(prd.MasterLabel,prd.Product_Name__c);
+                marginGradeMap.put(prd.MasterLabel,prd.Margin_Mapping__c);
+		        }
             //end PBI-1659161 --> GTL B7 Margin
             BioAmvGardeMap.put(prd.MasterLabel,prd.Bio_AMV_Grade_Name__c);//PBI_166949_Lakshmi_31032020
            // mrcBAMVGradeMap.put(prd.Product_Name__c,prd.MasterLabel);
@@ -103,7 +103,9 @@ public class RV_SPCalculationController {
                        plantGradeThptSet.add(mr.Plant_Code__c+mr.Material_Description__c+shippingCondMap.get(Integer.valueOf(mr.Shipping_Condition__c)).MOT__c);
 
                    }else{
-                       plantGradeThptSet.add(mr.Plant_Code__c+MapOfProductMapping.get(mr.Material_Description__c)+shippingCondMap.get(Integer.valueOf(mr.Shipping_Condition__c)).MOT__c);
+
+			string mapofProductMappingVal = MapOfProductMapping.get(mr.Material_Description__c) == 'GTL B7' ? gtlProdMap.get(mr.Material_Description__c) : MapOfProductMapping.get(mr.Material_Description__c);
+                       plantGradeThptSet.add(mr.Plant_Code__c+mapofProductMappingVal+shippingCondMap.get(Integer.valueOf(mr.Shipping_Condition__c)).MOT__c);
                    }
                }
             plantGradeMrcObjMap.put(mr.Plant_Code__c+BioAmvGardeMap.get(mr.Material_Description__c)+mr.Name,mr);
@@ -558,8 +560,8 @@ public class RV_SPCalculationController {
             for(Freight_Rate__c bav :bavLst){
 
                 //Added standard Grade for wasa and additive conversion
-                string standardGrade=MapOfProductMapping.get(mrcNoMap.get(key).Material_Description__c);
-
+                //string standardGrade=MapOfProductMapping.get(mrcNoMap.get(key).Material_Description__c);
+		string standardGrade=MapOfProductMapping.get(mrcNoMap.get(key).Material_Description__c) == 'GTL B7' ? gtlProdMap.get(mrcNoMap.get(key).Material_Description__c) : MapOfProductMapping.get(mrcNoMap.get(key).Material_Description__c);
                 if((BioAmvGardeMap.get(mrcNoMap.get(key).Material_Description__c) == bav.SubGrade_3P__c)
                    && (mrcNoMap.get(key).Plant_Code__c == bav.Destination_Code__c))
                 {
@@ -826,7 +828,8 @@ public class RV_SPCalculationController {
             decimal depotMargin=0;
             if(mrcNoLandedCostMap.containsKey(mrcno)  && mrcNoLandedCostMap.get(mrcno) != null)
                 landedcostEuroMt=mrcNoLandedCostMap.get(mrcno);
-            string standardGrade=MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
+            //string standardGrade=MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
+	    string standardGrade=MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c) == 'GTL B7' ? gtlProdMap.get(mrcNoMap.get(mrcno).Material_Description__c) : MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
             string key=mrcNoMap.get(mrcno).Plant_Code__c+standardGrade;
             //Grade
 
@@ -847,7 +850,8 @@ public class RV_SPCalculationController {
             if(shippingCondMap.containskey(Integer.valueOf(mrcNoMap.get(mrcno).Shipping_Condition__c)))
             	 mot=shippingCondMap.get(Integer.valueOf(mrcNoMap.get(mrcno).Shipping_Condition__c)).MOT__c;
             string SalesOrg=mrcNoMap.get(mrcno).Sales_Organization__c;
-            string grade=MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
+            //string grade=MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
+	string grade= MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c) == 'GTL B7' ? gtlProdMap.get(mrcNoMap.get(mrcno).Material_Description__c) : MapOfProductMapping.get(mrcNoMap.get(mrcno).Material_Description__c);
             string subgrade=mrcNoMap.get(mrcno).Material_Description__c;
             decimal costWithThrpt;
 
@@ -916,7 +920,10 @@ public class RV_SPCalculationController {
             if(mrcMaterialWrapMap.containskey(mrcno)){
                 mrcMaterialWrap mrcMat = mrcMaterialWrapMap.get(mrcno);
                 //START - Rahul Sharma | Date - 05-May-2021 | PBI - 791775 : Apply CO2 surcharge only if energy fee is applied.
-                if(MapOfProductMapping.get(mrcMat.gradeL2) == grade && mrcMat.handlingtype == handlingType && mrcMat.salesOrg == SalesOrg
+               /* if(MapOfProductMapping.get(mrcMat.gradeL2) == grade && mrcMat.handlingtype == handlingType && mrcMat.salesOrg == SalesOrg
+                   && mrcMat.behgeuro100l != null && energyFees != null && energyFees != 0){*/
+		string gradeL2val = MapOfProductMapping.get(mrcMat.gradeL2) == 'GTL B7' ? gtlProdMap.get(mrcMat.gradeL2) : MapOfProductMapping.get(mrcMat.gradeL2);
+		if(gradeL2val == grade && mrcMat.handlingtype == handlingType && mrcMat.salesOrg == SalesOrg
                    && mrcMat.behgeuro100l != null && energyFees != null && energyFees != 0){
                     if((SalesOrg == 'DE01' && mrcMat.salesOrg == 'DE01') || (SalesOrg == 'AT01' && mrcMat.salesOrg == 'AT01')){
                         //CO2 = mrcMat.behgeuro100l;
@@ -1216,8 +1223,8 @@ public class RV_SPCalculationController {
                                           MOGAS_E0_Sales_Margin__c,
                                           RecordTypeId,
                                           Valid_From__c,
-                                          Valid_To__c,
-				  	  Night_Surcharges_GTL_B7__c,
+                                           Valid_To__c,
+                                          Night_Surcharges_GTL_B7__c,
                                           Night_Surcharges_IGO_ppm_Eur_100L__c,
                                           Night_Surcharges_AGO_B7_Eur_100L__c,
                                           Night_Surcharges_ULG95_E5_Eur_100L__c,

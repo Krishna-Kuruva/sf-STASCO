@@ -8,20 +8,5 @@
         <plural>true</plural>
         <value>Direct List Pricing</value>
     </caseValues>
-    <layouts>
-        <layout>Intraday Pricing Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Direct</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Reseller</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

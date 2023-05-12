@@ -18,9 +18,9 @@
     <columns>RE_PH_Approval_Scheme__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Country_Name__c</field>
+        <field>RT_Material_Number__c</field>
         <operation>equals</operation>
-        <value>MY</value>
+        <value>400005570</value>
     </filters>
     <label>All</label>
 </ListView>

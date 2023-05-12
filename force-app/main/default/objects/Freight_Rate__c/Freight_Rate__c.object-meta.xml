@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Backbone AMV/Freight Rate</label>
     <nameField>
         <displayFormat>BA-{0}</displayFormat>

@@ -4,18 +4,18 @@
     <columns>NAME</columns>
     <columns>RE_Depot_Name__c</columns>
     <columns>RE_Product_Name__c</columns>
+    <columns>Material_Code__c</columns>
     <columns>RE_Valid_From__c</columns>
     <columns>RE_Valid_To__c</columns>
     <columns>RE_Final_Price_Unit__c</columns>
+    <columns>RE_Fixed_Premium__c</columns>
+    <columns>RE_Fixed_Premium_Percentage__c</columns>
     <columns>RE_Primary_Transport_Cost__c</columns>
     <columns>RE_Primary_Transport_Offset__c</columns>
     <columns>RE_Primary_Transport_Unit__c</columns>
     <columns>RE_Snh_Cost__c</columns>
     <columns>RE_SnH_Unit__c</columns>
     <columns>RE_Cost_Price_Adjustment__c</columns>
-    <columns>RE_Cost_Price_Adjustment_Unit__c</columns>
-    <columns>RECORDTYPE</columns>
-    <columns>RE_IsDistillisationRate__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
@@ -23,14 +23,9 @@
         <value>RE_Depot_Pricing_Backbone__c.Singapore</value>
     </filters>
     <filters>
-        <field>RE_Valid_From__c</field>
-        <operation>lessOrEqual</operation>
-        <value>TODAY</value>
-    </filters>
-    <filters>
         <field>RE_Valid_To__c</field>
-        <operation>notEqual</operation>
-        <value>12/31/2021</value>
+        <operation>equals</operation>
+        <value>12/31/2023</value>
     </filters>
     <label>Singapore</label>
 </ListView>

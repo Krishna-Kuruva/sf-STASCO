@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>APIGEE_Provider__mdt.APIGEE_Provider</customMetadataTypeRecord>
-    <executionUser>n.mandapati@shell.com.stasco</executionUser>
+    <executionUser>tcpsuperuser@stasco.com</executionUser>
     <friendlyName>APIGEE Provider</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <plugin>APIGEE_AuthProvider</plugin>

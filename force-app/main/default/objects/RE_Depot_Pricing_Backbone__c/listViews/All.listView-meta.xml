@@ -15,5 +15,15 @@
     <columns>RE_Cost_Price_Adjustment__c</columns>
     <columns>RE_Cost_Price_Adjustment_Unit__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Product_Codes__c</field>
+        <operation>equals</operation>
+        <value>400004754</value>
+    </filters>
+    <filters>
+        <field>RE_CND_Location_Code__c</field>
+        <operation>equals</operation>
+        <value>c169</value>
+    </filters>
     <label>All</label>
 </ListView>

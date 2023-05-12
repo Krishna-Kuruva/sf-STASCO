@@ -22,5 +22,10 @@
         <operation>notEqual</operation>
         <value>CA</value>
     </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
     <label>All</label>
 </ListView>

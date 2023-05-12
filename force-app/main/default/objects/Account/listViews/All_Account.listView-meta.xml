@@ -10,10 +10,5 @@
     <columns>ACCOUNT.PHONE1</columns>
     <columns>CORE.USERS.ALIAS</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>ACCOUNT.ACCOUNT_NUMBER</field>
-        <operation>equals</operation>
-        <value>11518609</value>
-    </filters>
     <label>All Accounts</label>
 </ListView>

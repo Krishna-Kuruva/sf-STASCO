@@ -5,11 +5,12 @@
     <columns>RE_PH_Percent_Base_Fuel__c</columns>
     <columns>RE_Material__c</columns>
     <columns>RE_Additive_Cost_Unit__c</columns>
-    <columns>CREATED_DATE</columns>
     <columns>RE_Additive_Cost__c</columns>
     <columns>RE_Country__c</columns>
     <columns>RE_Product_Code__c</columns>
+    <columns>CREATED_DATE</columns>
     <columns>RE_Product_Group__c</columns>
+    <columns>CREATEDBY_USER</columns>
     <columns>RE_PH_Index__c</columns>
     <columns>RECORDTYPE</columns>
     <filterScope>Everything</filterScope>

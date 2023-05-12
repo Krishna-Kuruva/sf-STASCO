@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SOM_list</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Product_Type__c</columns>
+    <columns>RE_Tax_Value__c</columns>
+    <columns>RE_Tax_Unit__c</columns>
+    <columns>RE_Publish_Date__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Region__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Region__c</field>
+        <operation>equals</operation>
+        <value>Philippines</value>
+    </filters>
+    <label>SOM list</label>
+</ListView>

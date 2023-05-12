@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>RE FX Rates</value>
     </caseValues>
-    <layouts>
-        <layout>FX_Rates Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>RE_StopDuplicateFxCreation</name>
-    </validationRules>
 </CustomObjectTranslation>

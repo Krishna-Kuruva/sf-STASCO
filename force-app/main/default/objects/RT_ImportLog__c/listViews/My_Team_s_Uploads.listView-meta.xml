@@ -9,5 +9,10 @@
     <columns>CREATED_DATE</columns>
     <columns>CREATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>ImportType__c</field>
+        <operation>contains</operation>
+        <value>PH Quotes</value>
+    </filters>
     <label>My Team&apos;s Uploads</label>
 </ListView>

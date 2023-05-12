@@ -4,33 +4,28 @@
     <columns>OBJECT_ID</columns>
     <columns>NAME</columns>
     <columns>Plant_Code__c</columns>
+    <columns>Active__c</columns>
     <columns>Valid_From_Date__c</columns>
     <columns>Valid_To_Date__c</columns>
     <columns>Plant__c</columns>
     <columns>Sold_To__c</columns>
     <columns>Material_Description__c</columns>
-    <columns>Material_Name__c</columns>
     <columns>Product__c</columns>
+    <columns>Shipping_Condition__c</columns>
+    <columns>Handling_Type__c</columns>
     <columns>Sales_Organization__c</columns>
-    <columns>RECORDTYPE</columns>
-    <columns>CREATEDBY_USER</columns>
-    <columns>LAST_UPDATE</columns>
     <columns>CREATED_DATE</columns>
+    <columns>RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Plant__c</field>
-        <operation>contains</operation>
-        <value>Magdeburg</value>
+        <field>Sales_Organization__c</field>
+        <operation>equals</operation>
+        <value>AT01</value>
     </filters>
     <filters>
-        <field>Sold_To__c</field>
+        <field>Product__c</field>
         <operation>contains</operation>
-        <value>shell</value>
-    </filters>
-    <filters>
-        <field>Material_Description__c</field>
-        <operation>contains</operation>
-        <value>GTL B0,GTL B7</value>
+        <value>12162</value>
     </filters>
     <label>Copy of All (SOM)</label>
 </ListView>

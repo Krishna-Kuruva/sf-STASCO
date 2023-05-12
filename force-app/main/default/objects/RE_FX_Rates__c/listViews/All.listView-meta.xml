@@ -18,9 +18,9 @@
     <columns>UPDATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>RE_Forex_Name__c</field>
+        <field>RE_Conversion_Unit__c</field>
         <operation>contains</operation>
-        <value>SGD,MYR</value>
+        <value>PHP</value>
     </filters>
     <label>All</label>
 </ListView>

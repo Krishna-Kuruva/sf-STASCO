@@ -5,15 +5,19 @@
     <columns>GradeLocation__c</columns>
     <columns>Base_Quote_1__c</columns>
     <columns>Base_Quote_1_Percent__c</columns>
-    <columns>Bio_Quote__c</columns>
-    <columns>Bio_Quotes__c</columns>
-    <columns>Bio_surcharge__c</columns>
-    <columns>SalesOrg_Customer__c</columns>
+    <columns>Average_Quote_1__c</columns>
+    <columns>Supplement_Quote_1__c</columns>
     <columns>Valid_From__c</columns>
     <columns>Valid_To__c</columns>
     <columns>Grade__c</columns>
     <columns>Product_sub_grade__c</columns>
     <columns>Depot__c</columns>
+    <columns>Additive_provider__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>GradeLocation__c</field>
+        <operation>equals</operation>
+        <value>DE01_AGO-GTL.B0_STR_Magdeburg_Truck_Magdeburg,DE01_AGO-GTL.B7_STR_Magdeburg_Truck_Magdeburg</value>
+    </filters>
     <label>All</label>
 </ListView>

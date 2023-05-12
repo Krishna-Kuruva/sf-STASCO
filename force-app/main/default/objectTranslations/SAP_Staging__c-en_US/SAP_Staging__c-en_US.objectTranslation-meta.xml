@@ -8,36 +8,5 @@
         <plural>true</plural>
         <value>SAP Staging</value>
     </caseValues>
-    <layouts>
-        <layout>SAP Staging Layout</layout>
-        <sections>
-            <label></label>
-            <section>Contract Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Deal Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>GSAP Response</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>OLF Push Information</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>System Information</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

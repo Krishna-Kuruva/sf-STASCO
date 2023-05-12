@@ -5,11 +5,18 @@
     <columns>Value__c</columns>
     <columns>Type__c</columns>
     <columns>RE_Country__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RE_User_Name__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>RT_Setting__c.PH_Code_Value_Mapping</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>PH AM</value>
     </filters>
     <label>PH setting</label>
     <sharedTo>

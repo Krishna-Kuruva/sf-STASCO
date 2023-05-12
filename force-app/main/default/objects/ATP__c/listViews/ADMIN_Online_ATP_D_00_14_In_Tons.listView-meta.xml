@@ -2,6 +2,8 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ADMIN_Online_ATP_D_00_14_In_Tons</fullName>
     <columns>ATP_Auto_Refresh__c</columns>
+    <columns>NAME</columns>
+    <columns>Company_Code__c</columns>
     <columns>Plant_Code__c</columns>
     <columns>Location__c</columns>
     <columns>Grade_Level2__c</columns>
@@ -12,9 +14,7 @@
     <columns>Maximum_Online_Volume__c</columns>
     <columns>Live_Online_00_14__c</columns>
     <columns>Volume_Cap_Customer__c</columns>
-    <columns>NAME</columns>
     <columns>CREATED_DATE</columns>
-    <columns>UPDATEDBY_USER</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <label>ADMIN - Online ATP D(00-14) In Tons</label>

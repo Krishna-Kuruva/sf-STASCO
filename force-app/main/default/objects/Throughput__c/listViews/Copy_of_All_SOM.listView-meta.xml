@@ -4,11 +4,11 @@
     <columns>NAME</columns>
     <columns>Plant__c</columns>
     <columns>Plant_Code__c</columns>
+    <columns>Throughput_Cost__c</columns>
     <columns>MOT__c</columns>
     <columns>Standard_grade__c</columns>
     <columns>Product_Sub_Grade__c</columns>
     <columns>Apply_Throughput__c</columns>
-    <columns>Throughput_Cost__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>CREATEDBY_USER</columns>
     <columns>LAST_UPDATE</columns>

@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>RE SAP Contracts</value>
     </caseValues>
-    <layouts>
-        <layout>RT Contract Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Turkey</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

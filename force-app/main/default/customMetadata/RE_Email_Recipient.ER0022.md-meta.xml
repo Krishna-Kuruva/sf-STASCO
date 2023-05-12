@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">Francois.Gingras@energiesonic.com;Gasbuying@costco.com;goldy.singh@econopetro.com;gsanzone@costco.com;gsimpson@exchangepetroleum.com;Isabelle.Aube@parkland.ca;isabelle.caron@energiesonic.com;Javid.Khan@parkland.ca;jcox@vianet.ca;jean-christophe.benoi@costco.com;jeff.kaarto@econopetro.com;Josee.Poirier@energiesonic.com;kareem@hughespetroleum.com;laval.germain@costco.com;LenoreW@swpetroleum.ca;ljohnson@4Refuel.com;Luis.Hernandez@cantire.com;m.rai@rrfns.com;Marie-Catherine_Diouf@viarail.ca;mariodesmarais@harnoisgroupepetrolier.com;</value>
+        <value xsi:type="xsd:string">Gasbuying@costco.com;goldy.singh@econopetro.com;gsanzone@costco.com;gsimpson@exchangepetroleum.com;Isabelle.Aube@parkland.ca;isabelle.caron@energiesonic.com;Javid.Khan@parkland.ca;jcox@vianet.ca;jean-christophe.benoi@costco.com;jeff.kaarto@econopetro.com;Josee.Poirier@energiesonic.com;kareem@hughespetroleum.com;laval.germain@costco.com;LenoreW@swpetroleum.ca;ljohnson@4Refuel.com;Luis.Hernandez@cantire.com;Marie-Catherine_Diouf@viarail.ca;mariodesmarais@harnoisgroupepetrolier.com;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

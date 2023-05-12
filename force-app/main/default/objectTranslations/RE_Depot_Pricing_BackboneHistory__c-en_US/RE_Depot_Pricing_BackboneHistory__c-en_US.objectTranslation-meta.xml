@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>Depot Pricing Backbone History</value>
     </caseValues>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Malaysia</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Philippines</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>Singapore</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Thailand</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>POPSAs</value>
     </caseValues>
-    <layouts>
-        <layout>POPSA Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>POPSA</section>
-        </sections>
-    </layouts>
-    <quickActions>
-        <label></label>
-        <name>Log_a_Call</name>
-    </quickActions>
-    <quickActions>
-        <label></label>
-        <name>New_Meeting_Note</name>
-    </quickActions>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -8,12 +8,5 @@
         <plural>true</plural>
         <value>Custom Ops Configuration</value>
     </caseValues>
-    <layouts>
-        <layout>Custom Ops Configuration Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -13,13 +13,9 @@
     <columns>Handling_Type__c</columns>
     <columns>Shipping_Condition__c</columns>
     <columns>Valid_To_Date__c</columns>
-    <columns>LAST_UPDATE</columns>
     <columns>CREATED_DATE</columns>
+    <columns>Valid_From_Date__c</columns>
+    <columns>RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>NAME</field>
-        <operation>contains</operation>
-        <value>MRCXXD002</value>
-    </filters>
     <label>All</label>
 </ListView>

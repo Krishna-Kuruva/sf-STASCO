@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Import Types</value>
     </caseValues>
-    <layouts>
-        <layout>Import Type Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Apex_Method_Field_Read_Only</name>
-    </validationRules>
 </CustomObjectTranslation>

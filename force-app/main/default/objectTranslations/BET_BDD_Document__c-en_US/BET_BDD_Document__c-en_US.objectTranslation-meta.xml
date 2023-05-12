@@ -8,44 +8,5 @@
         <plural>true</plural>
         <value>BDD Documents</value>
     </caseValues>
-    <layouts>
-        <layout>BDD Document Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-        <sections>
-            <label></label>
-            <section>Upload Status</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>GLOBAL</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>SENA</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>STUSCO</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>WONA</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>MDN_Support_Doc_Not_Valid_For_Remediated</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Prevent_Future_Created_Date</name>
-    </validationRules>
-    <webLinks>
-        <label></label>
-        <name>Export</name>
-    </webLinks>
 </CustomObjectTranslation>

@@ -6,10 +6,19 @@
     <columns>Ship_to_Number__c</columns>
     <columns>Sold_To_Number__c</columns>
     <columns>ACCOUNT.ACCOUNT_NUMBER</columns>
-    <columns>ACCOUNT.PHONE1</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Customer_Type__c</columns>
     <columns>ACCOUNT.SITE</columns>
     <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sold_To_Number__c</field>
+        <operation>equals</operation>
+        <value>0012745821</value>
+    </filters>
     <label>All Account (SOM)</label>
 </ListView>

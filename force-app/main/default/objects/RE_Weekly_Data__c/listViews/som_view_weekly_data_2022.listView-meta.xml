@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>som_view_weekly_data_2022</fullName>
+    <columns>NAME</columns>
+    <columns>RE_Year__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
+    <columns>RE_Week_Start_Date__c</columns>
+    <columns>RE_Week_End_Date__c</columns>
+    <columns>RE_Week_Number__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>SETUP_TYPE</columns>
+    <columns>RE_Month__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RE_Year__c</field>
+        <operation>equals</operation>
+        <value>2022</value>
+    </filters>
+    <label>som view weekly data 2022</label>
+    <language>en_US</language>
+</ListView>

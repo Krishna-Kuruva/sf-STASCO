@@ -207,6 +207,13 @@
         <lookupPhoneDialogsAdditionalFields>CORE.USERS.PHONE</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CORE.USERS.EXTENSION</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CORE.USERS.CELL</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>CORE.USERS.FIRST_NAME</searchFilterFields>
+        <searchFilterFields>CORE.USERS.LAST_NAME</searchFilterFields>
+        <searchFilterFields>CORE.PROFILE.NAME</searchFilterFields>
+        <searchFilterFields>CORE.USERS.USERNAME</searchFilterFields>
+        <searchFilterFields>CORE.USERS.ALIAS</searchFilterFields>
+        <searchFilterFields>CORE.USERS.ACTIVE</searchFilterFields>
+        <searchFilterFields>CORE.USERS.LAST_LOGIN</searchFilterFields>
         <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CORE.USERS.TITLE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CORE.USERS.PHONE</searchResultsAdditionalFields>

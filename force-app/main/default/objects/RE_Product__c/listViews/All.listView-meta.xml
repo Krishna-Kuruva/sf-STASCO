@@ -13,7 +13,7 @@
     <filters>
         <field>RECORDTYPE</field>
         <operation>notEqual</operation>
-        <value>RE_Product__c.Canada,RE_Product__c.Turkey</value>
+        <value>RE_Product__c.Singapore</value>
     </filters>
     <label>All</label>
 </ListView>

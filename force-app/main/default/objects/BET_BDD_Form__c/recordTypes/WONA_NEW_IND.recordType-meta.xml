@@ -11805,6 +11805,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>SG03 - SES Power Trading</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>SG39 - Shell Gas Marketing Pte Ltd Singapore</fullName>
             <default>false</default>
         </values>

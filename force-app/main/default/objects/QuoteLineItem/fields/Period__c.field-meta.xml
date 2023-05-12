@@ -4,5 +4,6 @@
     <externalId>false</externalId>
     <label>Period</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>TextArea</type>
 </CustomField>

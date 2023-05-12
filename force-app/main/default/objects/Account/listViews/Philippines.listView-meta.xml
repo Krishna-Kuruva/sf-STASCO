@@ -8,11 +8,18 @@
     <columns>RE_Parent_Customer__c</columns>
     <columns>RT_Active__c</columns>
     <columns>ACCOUNT.TYPE</columns>
+    <columns>RE_Account_Manager__c</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>ACCOUNT.RECORDTYPE</field>
         <operation>equals</operation>
         <value>Account.Revolution_PH</value>
+    </filters>
+    <filters>
+        <field>RE_Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>Nico.Chua</value>
     </filters>
     <label>Philippines</label>
     <sharedTo>

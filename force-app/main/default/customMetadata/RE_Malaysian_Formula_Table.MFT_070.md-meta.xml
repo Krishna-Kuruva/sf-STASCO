@@ -24,11 +24,11 @@
     </values>
     <values>
         <field>RE_MY_BreakBulk_Premium_Quote_Percentage__c</field>
-        <value xsi:type="xsd:double">88.0</value>
+        <value xsi:type="xsd:double">30.0</value>
     </values>
     <values>
         <field>RE_MY_BreakBulk_Premium_Quote__c</field>
-        <value xsi:type="xsd:string">Breakbulk Premium</value>
+        <value xsi:type="xsd:string">Breakbulk Premium - GBI02</value>
     </values>
     <values>
         <field>RE_MY_Fixed_Premium_Unit__c</field>
@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>RE_MY_Oil_Loss_Percentage__c</field>
-        <value xsi:type="xsd:double">0.12</value>
+        <value xsi:type="xsd:double">0.18</value>
     </values>
     <values>
         <field>RE_MY_Plant__c</field>
@@ -128,6 +128,6 @@
     </values>
     <values>
         <field>RE_MY_Valid_To__c</field>
-        <value xsi:type="xsd:date">2022-12-31</value>
+        <value xsi:type="xsd:date">2023-12-31</value>
     </values>
 </CustomMetadata>

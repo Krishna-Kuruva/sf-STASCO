@@ -19,5 +19,10 @@
         <operation>equals</operation>
         <value>Account.Revolution</value>
     </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>contains</operation>
+        <value>Shell Revolut</value>
+    </filters>
     <label>Revolution</label>
 </ListView>

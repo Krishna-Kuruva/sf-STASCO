@@ -8,22 +8,5 @@
         <plural>true</plural>
         <value>RE Market Quotes</value>
     </caseValues>
-    <layouts>
-        <layout>Market_Quotes Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada_Competitor</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>Canada_OPIS_Spot_Ticker</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>BDD States</value>
     </caseValues>
-    <layouts>
-        <layout>Country Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <layouts>
-        <layout>State Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>Country</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>State</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

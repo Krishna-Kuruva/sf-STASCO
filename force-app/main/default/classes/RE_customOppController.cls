@@ -860,11 +860,11 @@ public class RE_customOppController {
                 } 
                 
                 if(!updatePriceBook.isEmpty())
-                    //update updatePriceBook; 
-                {
+                    update updatePriceBook; 
+                /*{
                     RE_PriceBookBatchUpdate updatePB = New RE_PriceBookBatchUpdate(updatePriceBook, insertJob);
                     Database.executeBatch(updatePB);                      
-                }             
+                }*/            
             }
             ReportFolderID =[SELECT Id, DeveloperName,Name,Type FROM Folder WHERE Name = 'RE MY Customer Opps' And  Type = 'Report' limit 1].id;
             resultdata.resultdata=ReportFolderID; 

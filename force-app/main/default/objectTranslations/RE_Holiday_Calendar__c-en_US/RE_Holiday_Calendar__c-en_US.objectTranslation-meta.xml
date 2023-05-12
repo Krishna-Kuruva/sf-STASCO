@@ -8,24 +8,5 @@
         <plural>true</plural>
         <value>Holiday Calendars</value>
     </caseValues>
-    <layouts>
-        <layout>Holiday Calendar Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>RE_MY_Holiday_Calendar</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>RE_PH_Holiday_Calendar</name>
-    </recordTypes>
-    <recordTypes>
-        <label></label>
-        <name>RE_TH_Holiday_Calendar</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

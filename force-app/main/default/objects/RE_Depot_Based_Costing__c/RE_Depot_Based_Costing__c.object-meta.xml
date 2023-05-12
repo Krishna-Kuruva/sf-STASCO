@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>AMV Depot Costing</label>
     <nameField>
         <displayFormat>DBC-{000000000}</displayFormat>

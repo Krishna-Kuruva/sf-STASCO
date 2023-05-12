@@ -4,22 +4,33 @@
     <columns>RE_Depot_Name__c</columns>
     <columns>RE_Product_Name__c</columns>
     <columns>NAME</columns>
-    <columns>RE_Cost_Price_Adjustment__c</columns>
-    <columns>RE_Cost_Price_Adjustment_Unit__c</columns>
-    <columns>RE_Final_Price_Unit__c</columns>
-    <columns>RE_PH_Blend_Percentage__c</columns>
-    <columns>RE_Primary_Transport_Cost__c</columns>
-    <columns>RE_Primary_Transport_Offset__c</columns>
-    <columns>RE_Primary_Transport_Unit__c</columns>
-    <columns>RE_Snh_Cost__c</columns>
-    <columns>RE_SnH_Unit__c</columns>
-    <columns>RE_Valid_From__c</columns>
-    <columns>RE_Valid_To__c</columns>
+    <columns>Material_Code__c</columns>
+    <columns>RE_PH_Premium__c</columns>
+    <columns>RE_PH_Freight_Quote__c</columns>
+    <columns>RE_PH_Freight_Charges__c</columns>
+    <columns>RE_PH_Freight_Charges_Unit__c</columns>
+    <columns>RE_Fixed_Premium__c</columns>
+    <columns>RE_Fixed_Premium_Unit__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>RE_Depot_Pricing_Backbone__c.Philippines</value>
+    </filters>
+    <filters>
+        <field>RE_Depot_Name__c</field>
+        <operation>contains</operation>
+        <value>PH Masbate,PH Pasacao,PH Calapan,PH Poro,PH Puerto Princesa</value>
+    </filters>
+    <filters>
+        <field>Material_Code__c</field>
+        <operation>equals</operation>
+        <value>400008602,400008571,400008601,400008567</value>
+    </filters>
+    <filters>
+        <field>RE_Valid_To__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
     </filters>
     <label>PH - 2021</label>
     <sharedTo>

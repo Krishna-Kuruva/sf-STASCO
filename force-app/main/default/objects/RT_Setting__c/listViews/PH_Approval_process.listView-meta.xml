@@ -4,6 +4,7 @@
     <columns>NAME</columns>
     <columns>RE_Approver_Role_1__c</columns>
     <columns>RE_User_Name__c</columns>
+    <columns>Active__c</columns>
     <columns>RE_Approver_Role_2__c</columns>
     <columns>RE_Delegate_Approver__c</columns>
     <columns>RE_Min_Margin__c</columns>
@@ -13,7 +14,13 @@
     <columns>CREATED_DATE</columns>
     <columns>Country__c</columns>
     <columns>RE_Country__c</columns>
+    <columns>Type__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>equals</operation>
+        <value>Margin_OCLS_CF_AGO_WHOLESALE AND MARINE</value>
+    </filters>
     <label>PH Approval process</label>
     <sharedTo>
         <territory>Revolution_Territory.Philippines</territory>

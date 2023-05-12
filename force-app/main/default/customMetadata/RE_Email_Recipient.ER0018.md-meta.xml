@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">Mary.Casella@ihsmarkit.com;pricedata@opisnet.com;Marell.Butler@parkland.ca;rcoulombe@petrolescoulombe.com;ChantelB@swpetroleum.ca;kel-dispatch@afdpetroleum.com;David.joyce@calgary.ca;fuelmanagement@calgary.ca;</value>
+        <value xsi:type="xsd:string">Mary.Casella@ihsmarkit.com;pricedata@opisnet.com;Marell.Butler@parkland.ca;rcoulombe@petrolescoulombe.com;ChantelB@swpetroleum.ca;kel-dispatch@afdpetroleum.com;David.joyce@calgary.ca;Darren.Benell@calgary.ca;michelle.bremner@4refuel.com;Infocomptesmajeur.que@filgo.ca;Jackson.Rempel@shell.com;mikepaz@pazfuels.com;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

@@ -8,27 +8,5 @@
         <plural>true</plural>
         <value>Benefits</value>
     </caseValues>
-    <layouts>
-        <layout>Benefit Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>L1</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>L2</name>
-    </recordTypes>
-    <recordTypes>
-        <description></description>
-        <label></label>
-        <name>L3</name>
-    </recordTypes>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

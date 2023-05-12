@@ -8,28 +8,5 @@
         <plural>true</plural>
         <value>E-Rate All Requests</value>
     </caseValues>
-    <layouts>
-        <layout>E-Rate All Request Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <recordTypes>
-        <label></label>
-        <name>System_Group</name>
-    </recordTypes>
     <startsWith>Vowel</startsWith>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>If_Status_is_Complete</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>If_Status_is_In_Progress</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage></errorMessage>
-        <name>Request_Type_is_Necessary</name>
-    </validationRules>
 </CustomObjectTranslation>
