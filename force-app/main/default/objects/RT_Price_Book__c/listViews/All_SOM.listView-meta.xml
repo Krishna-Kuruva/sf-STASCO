@@ -20,7 +20,12 @@
     <filters>
         <field>RT_Country__c</field>
         <operation>equals</operation>
-        <value>PH</value>
+        <value>MY</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

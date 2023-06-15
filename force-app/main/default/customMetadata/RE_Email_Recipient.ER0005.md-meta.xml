@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">facturation.carburant@petrolesexpert.com;administration@petrolesexpert.com;POS.Shell@filgo-sonic.ca;price.axxis@filgo.ca;pricing@michaudpetroleum.com;rjeffrey@edwardfuels.com;sclientele@petroleleger.ca;scott.kernighan@edwardfuels.com;sonny.lehoux@filgo.ca;stephen@manitoulinfuels.com;tina@stephensfuels.ca;customerservice@grangerfuels.com;emilymcdonald@edwardfuels.com;cgagne@jeandenisgagne.com;recevables@jeandenisgagne.com;recevables@jeandenisgagne.com;mlafortune@energielafortune.com;klafortune@petrolesexpert.com;smcveay@petrolesexpert.com;Bobbi-LynnBondy@EdwardFuels.com;</value>
+        <value xsi:type="xsd:string">facturation.carburant@petrolesexpert.com;administration@petrolesexpert.com;POS.Shell@filgo-sonic.ca;price.axxis@filgo.ca;pricing@michaudpetroleum.com;rjeffrey@edwardfuels.com;sclientele@petroleleger.ca;scott.kernighan@edwardfuels.com;sonny.lehoux@filgo.ca;stephen@manitoulinfuels.com;tina@stephensfuels.ca;customerservice@grangerfuels.com;emilymcdonald@edwardfuels.com;cgagne@jeandenisgagne.com;recevables@jeandenisgagne.com;recevables@jeandenisgagne.com;mlafortune@energielafortune.com;klafortune@petrolesexpert.com;smcveay@petrolesexpert.com;Bobbi-LynnBondy@EdwardFuels.com;mlafortune@energieslafortune.com;joel@psfuels.ca;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

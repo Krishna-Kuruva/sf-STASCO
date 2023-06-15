@@ -8,19 +8,34 @@
     <columns>Valid_To_Date__c</columns>
     <columns>Plant__c</columns>
     <columns>Sold_To__c</columns>
+    <columns>Sales_Organization__c</columns>
+    <columns>RECORDTYPE</columns>
     <columns>Material_Description__c</columns>
     <columns>Material_Name__c</columns>
     <columns>Product__c</columns>
-    <columns>Sales_Organization__c</columns>
-    <columns>CREATEDBY_USER</columns>
-    <columns>LAST_UPDATE</columns>
-    <columns>CREATED_DATE</columns>
     <columns>PO_Type__c</columns>
+    <columns>Shipping_Condition__c</columns>
+    <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CREATEDBY_USER</field>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>MRC__c.MRC</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>5/31/2023 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Sold_To__c</field>
         <operation>contains</operation>
-        <value>apoorva</value>
+        <value>Shell AT</value>
+    </filters>
+    <filters>
+        <field>Material_Description__c</field>
+        <operation>contains</operation>
+        <value>IGO</value>
     </filters>
     <label>Test issue (SOM)</label>
 </ListView>

@@ -19,27 +19,8 @@
     <filterScope>Everything</filterScope>
     <filters>
         <field>SAP_Contract_Number__c</field>
-        <operation>equals</operation>
-    </filters>
-    <filters>
-        <field>Status__c</field>
-        <operation>equals</operation>
-        <value>Completed</value>
-    </filters>
-    <filters>
-        <field>CREATED_DATE</field>
-        <operation>greaterOrEqual</operation>
-        <value>10/1/2022 12:00 AM</value>
-    </filters>
-    <filters>
-        <field>PO_Type__c</field>
-        <operation>equals</operation>
-        <value>Dummy</value>
-    </filters>
-    <filters>
-        <field>IsGsapDealCreateOn__c</field>
-        <operation>equals</operation>
-        <value>0</value>
+        <operation>contains</operation>
+        <value>323073872</value>
     </filters>
     <label>Copy of All (SOM)</label>
 </ListView>

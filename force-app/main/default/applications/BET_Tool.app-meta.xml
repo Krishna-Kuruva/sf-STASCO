@@ -54,7 +54,7 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>BET Tool 3.6</label>
+    <label>BET Tool 3.7</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>BET_BDD_Form__c</tabs>

@@ -23,14 +23,9 @@
         <value>PH</value>
     </filters>
     <filters>
-        <field>Active__c</field>
+        <field>NAME</field>
         <operation>equals</operation>
-        <value>1</value>
-    </filters>
-    <filters>
-        <field>RE_Calculation_Type__c</field>
-        <operation>equals</operation>
-        <value>GPC</value>
+        <value>REV-0074174,REV-0042744,REV-0042743,REV-0074175,REV-0066977,REV-0066971,REV-0066978</value>
     </filters>
     <label>PH Contracts</label>
     <sharedTo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NoWeightage__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To be checked only if the source steer calculation to be done on origination steer &amp; Manual adjustment, also not considering the weightages if any</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>NoWeightage</label>
+    <type>Checkbox</type>
+</CustomField>

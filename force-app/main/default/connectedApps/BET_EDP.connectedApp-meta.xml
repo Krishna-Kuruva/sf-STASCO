@@ -7,7 +7,6 @@
         <callbackUrl>https://stasco.my.salesforce.com/services/authcallback/DemoPage</callbackUrl>
         <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQEwjNPATpjA_8oRnEp2ifF3Xt1hzW5kddBM3FZFUxPJzz_IkxqQ7BnCMYVjau</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>

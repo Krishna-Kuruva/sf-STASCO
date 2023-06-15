@@ -18,18 +18,9 @@
     <columns>RE_AM_Code__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>RE_ApprovalProcess__c</field>
-        <operation>equals</operation>
-    </filters>
-    <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
         <value>RT_Price_Book__c.PH_Price_Book</value>
-    </filters>
-    <filters>
-        <field>RE_Custom_Opp_Approve__c</field>
-        <operation>equals</operation>
-        <value>Not Submitted</value>
     </filters>
     <filters>
         <field>CREATED_DATE</field>

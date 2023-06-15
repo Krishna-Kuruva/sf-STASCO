@@ -19,7 +19,7 @@
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>3/31/2023 12:00 AM</value>
+        <value>YESTERDAY</value>
     </filters>
     <filters>
         <field>RECORDTYPE</field>

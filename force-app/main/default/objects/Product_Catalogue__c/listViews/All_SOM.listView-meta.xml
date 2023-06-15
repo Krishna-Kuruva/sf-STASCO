@@ -13,13 +13,13 @@
     <columns>CREATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
-    <columns>UPDATEDBY_USER</columns>
     <columns>Material_L3__c</columns>
+    <columns>Status__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>NAME</field>
-        <operation>contains</operation>
-        <value>000000000400001685,000000000400002410,000000000400001637,000000000400001986,000000000400003805,000000000400002484,000000000400002498,000000000400002390</value>
+        <field>Level_1__c</field>
+        <operation>equals</operation>
+        <value>AGO</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

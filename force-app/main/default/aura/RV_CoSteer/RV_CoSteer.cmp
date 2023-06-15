@@ -85,7 +85,13 @@
                     <lightning:select name="selectItem" label="Select Grade" onchange="{!c.getSelGrdSteer}" value="{!v.gradeSel}">
                         <option value="">-- None --</option>
                         <aura:iteration items="{!v.gradeList}" var="grd">
-                            <option value="{!grd}" text="{!grd}"></option>
+                            <!-- Swarna - Changing label of E5 to E10 -->
+                            <aura:if isTrue="{!grd== 'ULG95 E5'}">
+                                <option value="{!grd}" text='ULG95 E10'></option>
+								<aura:set attribute="else">
+                                    <option value="{!grd}" text="{!grd}"></option>
+                                </aura:set>
+                            </aura:if>
                         </aura:iteration>
                     </lightning:select>
                    </div>

@@ -20,12 +20,12 @@
     <filters>
         <field>RE_Conversion_Unit__c</field>
         <operation>equals</operation>
-        <value>PHP</value>
+        <value>MYR,SGD</value>
     </filters>
     <filters>
-        <field>RE_Is_MTDWTD__c</field>
+        <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>0</value>
+        <value>6/10/2023 12:00 AM</value>
     </filters>
     <label>Copy of All</label>
 </ListView>

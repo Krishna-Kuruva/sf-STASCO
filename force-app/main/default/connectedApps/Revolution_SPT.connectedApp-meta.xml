@@ -6,7 +6,6 @@
         <callbackUrl>https://c.eu3.visual.force.com/apex/Revolution_CallBackPage</callbackUrl>
         <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE8B7XJiOr3e9k1ND1tGFgxuvpuxWrMoF29M3UlBHzcCJffHgWtu.DvlTuHry</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>

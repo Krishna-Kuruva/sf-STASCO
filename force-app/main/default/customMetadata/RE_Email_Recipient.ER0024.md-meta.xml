@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bcc_List__c</field>
-        <value xsi:type="xsd:string">stacey@northarm.bc.ca;stephane.asselin@energiesonic.com;stephen@manitoulinfuels.com;Supply.Pricing@parkland.ca;t.friesen@rrfns.com;tina@hughespetroleum.com;tkennedy@4refuel.com;Vanessa_Ranco@viarail.ca;vendorpricing@econopetro.com;Yannick.Manach@energiesonic.com;Jeff.Urquhart@circlek.com;Colin.Carroll@circlek.com;shellrackpricing@chalmersfuels.ca;Jean-Michel.Pare@ufa.com;</value>
+        <value xsi:type="xsd:string">stacey@northarm.bc.ca;stephane.asselin@energiesonic.com;stephen@manitoulinfuels.com;Supply.Pricing@parkland.ca;t.friesen@rrfns.com;tina@hughespetroleum.com;tkennedy@4refuel.com;Vanessa_Ranco@viarail.ca;vendorpricing@econopetro.com;Yannick.Manach@energiesonic.com;Jeff.Urquhart@circlek.com;Colin.Carroll@circlek.com;shellrackpricing@chalmersfuels.ca;Jean-Michel.Pare@ufa.com;fuelap@kagcanada.ca;</value>
     </values>
     <values>
         <field>Cc_List__c</field>

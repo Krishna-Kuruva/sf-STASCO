@@ -20,12 +20,17 @@
     <filters>
         <field>RE_Quote_Type__c</field>
         <operation>equals</operation>
-        <value>Freight</value>
+        <value>Assessed Premium</value>
     </filters>
     <filters>
-        <field>RE_Quote_Name__c</field>
+        <field>RE_Is_MTDWTD__c</field>
         <operation>equals</operation>
-        <value>FREIGHT MPI09</value>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>5/29/2023 12:00 AM</value>
     </filters>
     <label>Copy of All som</label>
 </ListView>

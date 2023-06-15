@@ -27,11 +27,6 @@
         <operation>equals</operation>
         <value>TODAY</value>
     </filters>
-    <filters>
-        <field>RE_Depot_Name__c</field>
-        <operation>contains</operation>
-        <value>NMIF</value>
-    </filters>
     <label>Philippines</label>
     <sharedTo>
         <territoryAndSubordinates>Revolution_Territory.Philippines</territoryAndSubordinates>

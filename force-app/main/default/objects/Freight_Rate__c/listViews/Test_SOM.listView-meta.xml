@@ -17,9 +17,24 @@
     <columns>UPDATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>LAST_UPDATE</field>
+        <field>SubGrade_3P__c</field>
         <operation>equals</operation>
-        <value>4/24/2023 12:00 AM</value>
+        <value>ULG95 E10</value>
+    </filters>
+    <filters>
+        <field>Backbone_Route_Name__c</field>
+        <operation>contains</operation>
+        <value>Linz</value>
+    </filters>
+    <filters>
+        <field>Backbone_Route_Name__c</field>
+        <operation>startsWith</operation>
+        <value>Mogas</value>
+    </filters>
+    <filters>
+        <field>Valid_To__c</field>
+        <operation>greaterThan</operation>
+        <value>TODAY</value>
     </filters>
     <label>Test SOM</label>
 </ListView>

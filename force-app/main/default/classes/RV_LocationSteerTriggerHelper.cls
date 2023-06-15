@@ -175,7 +175,10 @@ public class RV_LocationSteerTriggerHelper {
         set<String> differentialSet2 = new set<String>();
         Map<String,Location_Steer_Metadata__mdt> locationSteerMetadatanewMapUpdate = new 
                       Map<String,Location_Steer_Metadata__mdt>();
-      
+        //added by swarna as part of PBI-1625464
+        set<String> quoteName1Set1 = new set<String>();//added for weighing quotes
+        set<String> quoteName2Set1 = new set<String>();//added for weighing quotes
+        //end PBI-1625464
         
         for(Location_Steer__c locationSteer : onBeforeInsertNewLst){
             String keyToFetchMetadata = locationSteer.productPlantScenarioKey__c; // Generating the key
@@ -184,15 +187,19 @@ public class RV_LocationSteerTriggerHelper {
                 originationSteerTypeSet.add(locationSteerMetadatanewMap.get(keyToFetchMetadata).Origination_Steer_Type__c);
                 differentialSet1.add(locationSteerMetadatanewMap.get(keyToFetchMetadata).Differential_Value_1__c);
                 differentialSet2.add(locationSteerMetadatanewMap.get(keyToFetchMetadata).Differential_Value_2__c);
-                
+                //added by swarna as part of PBI-1625464
+                quoteName1Set1.add(locationSteerMetadatanewMap.get(keyToFetchMetadata).Quote_Name1__c);
+                quoteName2Set1.add(locationSteerMetadatanewMap.get(keyToFetchMetadata).Quote_Name2__c);
+                //end PBI-1625464
             }
         }
        
-        
-        List<Reuters_Quotes__c> fetchReutersQuoteLst = [select id,Quote_Display_Name__c,CurrencyCode__c,Price__c,Price_USD__c,LastModifiedDate from Reuters_Quotes__c where 
-                                                        (Quote_Display_Name__c in:differentialSet1 OR Quote_Display_Name__c in:differentialSet2) 
+        //added  by swarna as part of PBI-1625464
+        List<Reuters_Quotes__c> fetchReutersQuoteLst_new = [select id,Quote_Display_Name__c,CurrencyCode__c,Price__c,Price_USD__c,LastModifiedDate from Reuters_Quotes__c where 
+                                                        (Quote_Display_Name__c in:quoteName1Set1 OR Quote_Display_Name__c in:quoteName2Set1) 
                                                         order by LastModifiedDate DESC ];
         
+        //end
         List<Reuters_Quotes__c> fetchConversionRateLst = [select id,Name,Price__c,Quote_Display_Name__c from 
                                                           Reuters_Quotes__c where Quote_Display_Name__c= 'EUR/USD' 
                                                           LIMIT 1];
@@ -204,16 +211,17 @@ public class RV_LocationSteerTriggerHelper {
                 
         Map<String,Reuters_Quotes__c> mapOfReuter = new Map<String,Reuters_Quotes__c>();
         
-        if(!fetchReutersQuoteLst.isEmpty()){
-            
-            for(Reuters_Quotes__c reuter : fetchReutersQuoteLst){
-                if(reuter.Quote_Display_Name__c <> null){
-                    if(!mapOfReuter.containskey(reuter.Quote_Display_Name__c)){
-                       mapOfReuter.put(reuter.Quote_Display_Name__c,reuter);
-                    }
+        //added by swarna as part of PBI-1625464
+
+        if(!fetchReutersQuoteLst_new.isEmpty()){
+            for(Reuters_Quotes__c reuters : fetchReutersQuoteLst_new){
+                if(reuters.Quote_Display_Name__c <> null && !mapOfReuter.containskey(reuters.Quote_Display_Name__c)){
+                        mapOfReuter.put(reuters.Quote_Display_Name__c,reuters);
+
                 }
             }
         }
+        //end
             
         Map<String,Freight_Rate__c> mapOfNameFreightRate = mapOfNameFreightRate(); // fetching freight Rate
         String OriginationRTID = fetchOriginationRecordType(); // fetching originationrecordTypeid
@@ -295,43 +303,38 @@ public class RV_LocationSteerTriggerHelper {
                 /*----logic to consider route value in case invalid Freight Rate records used in 
 						Steer Calculation field -- PBI728069_Dharam_11thMay2021*/
                 
-                if(mapOfNameFreightRate.containskey(metadataVal.Route_1__c)){
-                    route1 = mapOfNameFreightRate.get(metadataVal.Route_1__c).Freight_rate_EUR_mt__c;
-                    mapOfNameFreightRate.get(metadataVal.Route_1__c).Rv_Required_for_Scenario_Calculation__c = True;
-                    freightsToUpdate.add(mapOfNameFreightRate.get(metadataVal.Route_1__c));
+                //added by swarna as part of PBI-1625464
+                Decimal quoteweightage = 0;
+                Decimal quoteweightage2 = 0;
+                if(mapOfReuter.containsKey(metadataVal.Quote_Name1__c)){
+                    system.debug('q1::'+mapOfReuter.get(metadataVal.Quote_Name1__c));
+                    Reuters_Quotes__c reuterData = mapOfReuter.get(metadataVal.Quote_Name1__c);
+                    quoteweightage = reuterData.Price__c;
+                }else if(mapOfNameFreightRate.containskey(metadataVal.Quote_Name1__c)){
+                    //route1
+                    quoteweightage = mapOfNameFreightRate.get(metadataVal.Quote_Name1__c).Freight_rate_EUR_mt__c;
+                    mapOfNameFreightRate.get(metadataVal.Quote_Name1__c).Rv_Required_for_Scenario_Calculation__c = True;
+                    freightsToUpdate.add(mapOfNameFreightRate.get(metadataVal.Quote_Name1__c));
                 }else{
-                    route1 = Decimal.valueOf(Label.Rv_Invalid_route_value);
+                    //route1
+                    quoteweightage = Decimal.valueOf(Label.Rv_Invalid_route_value);
                 }
-                if(mapOfNameFreightRate.containskey(metadataVal.Route_2__c)){
-                    route2 = mapOfNameFreightRate.get(metadataVal.Route_2__c).Freight_rate_EUR_mt__c;
-                    mapOfNameFreightRate.get(metadataVal.Route_2__c).Rv_Required_for_Scenario_Calculation__c = True;
-                    freightsToUpdate.add(mapOfNameFreightRate.get(metadataVal.Route_2__c));
+
+                if(mapOfReuter.containsKey(metadataVal.Quote_Name2__c)){
+                    system.debug('q2::'+mapOfReuter.get(metadataVal.Quote_Name2__c));
+                    Reuters_Quotes__c reuterData = mapOfReuter.get(metadataVal.Quote_Name2__c);
+                    quoteweightage2 = reuterData.Price__c;
+                }else if(mapOfNameFreightRate.containskey(metadataVal.Quote_Name2__c)){
+                    //route2
+                    quoteweightage2 = mapOfNameFreightRate.get(metadataVal.Quote_Name2__c).Freight_rate_EUR_mt__c;
+                    mapOfNameFreightRate.get(metadataVal.Quote_Name2__c).Rv_Required_for_Scenario_Calculation__c = True;
+                    freightsToUpdate.add(mapOfNameFreightRate.get(metadataVal.Quote_Name2__c));
                 }else{
-                    route2 = Decimal.valueOf(Label.Rv_Invalid_route_value);
+                    //route2
+                    quoteweightage2 = Decimal.valueOf(Label.Rv_Invalid_route_value);
                 }
-                
-                Decimal diferentialVal1 =0;
-                if(mapOfReuter.containskey(metadataVal.Differential_Value_1__c)){
-                    
-                    Reuters_Quotes__c reuterData = mapOfReuter.get(metadataVal.Differential_Value_1__c);
-                    if(reuterData.CurrencyCode__c.toLowerCase().contains('usd')){
-                        diferentialVal1 = reuterData.Price__c /conversionRate ;
-                    }
-                    else{
-                         diferentialVal1 = reuterData.Price__c;
-                    }
-                }
-                
-                Decimal diferentialVal2 =0;
-                if(mapOfReuter.containskey(metadataVal.Differential_Value_2__c)){
-                  
-                    Reuters_Quotes__c reuterData = mapOfReuter.get(metadataVal.Differential_Value_2__c);
-                    if(reuterData.CurrencyCode__c.toLowerCase().contains('usd')){
-                      diferentialVal2 = reuterData.Price__c/conversionRate;
-                    }else{
-                        diferentialVal2 = reuterData.Price__c;
-                    }
-                }
+
+                //end
                 Decimal factorRoute1 =0;
                 Decimal factorRoute2 =0;
                 if(metadataVal.Factor_Route_1__c <> 0){
@@ -340,24 +343,42 @@ public class RV_LocationSteerTriggerHelper {
                 if(metadataVal.Factor_Route_2__c <> 0){
                     factorRoute2 = metadataVal.Factor_Route_2__c;
                 }
+                //added by swarna as part of PBI-1625464
+                if(quoteweightage == null){
+                    quoteweightage = 0;
+                }
+                if(quoteweightage2 == null){
+                    quoteweightage2 = 0;
+                }
+                //end
                 if(route1 == null){
                     route1 = 0;
                 }
                 if(route2 == null){
                     route2 = 0;
                 }
-                if(diferentialVal1 == null){
-                    diferentialVal1 = 0;
+                //added by swarna as part of PBI-1625464
+                decimal wwp1 = 0;
+                decimal wwp2 = 0;
+                if(metadataVal.Weighting_of_Quote1__c != null &&  metadataVal.Weighting_of_Quote1__c <> 0){
+                    wwp1 = metadataVal.Weighting_of_Quote1__c/100;
                 }
-                if(diferentialVal2 == null){
-                    diferentialVal2 = 0;
+                if(metadataVal.Weighting_of_Quote2__c != null &&  metadataVal.Weighting_of_Quote2__c <> 0){
+                    wwp2 = metadataVal.Weighting_of_Quote2__c/100;
                 }
-
-               locationSteer.Scenario_Value__c = (originationSteerVal +(diferentialVal1 - diferentialVal2))+ (factorRoute1 * route1) + (factorRoute2 * route2);
-                
+                decimal quotageValue =((wwp1 * quoteweightage) - (wwp2 * quoteweightage2));
+		if(metadataVal.NoWeightage__c){
+                    quotageValue = 0;
+                }
+                if(locationSteer.Scenario__c == 'Export' && quotageValue >= 0){
+                    locationSteer.Scenario_Value__c = originationSteerVal + (-1 * quotageValue);
+               }
+                else {
+                    locationSteer.Scenario_Value__c = originationSteerVal + (1 * quotageValue);
+                }
+               //end
                 //LocationSteerPBI_Soumyajit_24Jul2019 starts
-                System.debug('ID='+locationSteer.id);
-                System.debug('originationSteerVal='+originationSteerVal+', diferentialVal1='+diferentialVal1+', diferentialVal2='+diferentialVal2);
+                System.debug('ID='+locationSteer.id);                
                 System.debug('factorRoute1='+factorRoute1+',route1='+route1+',factorRoute2='+factorRoute2+',route2='+route2);
                 System.debug('Scenario_Value__c='+locationSteer.Scenario_Value__c);
                 
@@ -369,8 +390,10 @@ public class RV_LocationSteerTriggerHelper {
         }
         /*----: updating Freight_Rate__c records which are used in steer calculations
 			PBI728069_Dharam_11thMay2021	:----*/
-        List<Freight_Rate__c> freightListUpdate = new List<Freight_Rate__c>(); 
-        freightListUpdate.addAll(freightsToUpdate);
+        List<Freight_Rate__c> freightListUpdate = new List<Freight_Rate__c>();
+        if(freightsToUpdate.size() > 0){
+                freightListUpdate.addAll(freightsToUpdate);
+        }
         if(freightListUpdate.size() >0){
             Update freightListUpdate;	
         }
@@ -391,7 +414,7 @@ public class RV_LocationSteerTriggerHelper {
          putValidationRule(onBeforeUpdateNewLst); // call this function to put all the validations
         
          calculateSteerVal(onBeforeUpdateNewLst); //calculate CO steer value 
-        
+        publishSteerEvent(onBeforeUpdateNewLst);//added as part of Select CO steer dependency
         System.debug('---------------------onBeforeUpdate updated--------------------------' + onBeforeUpdateNewLst); //LocationSteerPBI_Soumyajit_24Jul2019
     }
     
@@ -559,7 +582,7 @@ public class RV_LocationSteerTriggerHelper {
         
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
                                                                Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
-                                                               Differential_Value_2__c  from Location_Steer_Metadata__mdt];
+                                                               Differential_Value_2__c,Quote_Name1__c, Quote_Name2__c, Weighting_of_Quote1__c, Weighting_of_Quote2__c, NoWeightage__c  from Location_Steer_Metadata__mdt];
         
         Map<String,Location_Steer_Metadata__mdt> locationSteerMap = new Map<String,Location_Steer_Metadata__mdt>();
         

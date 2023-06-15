@@ -6,7 +6,6 @@
         <callbackUrl>https://stasco--c.eu13.visual.force.com/apex/DemoPage</callbackUrl>
         <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE3ybXkVXpZ59q73WbywS2gey7Cu7dCEjVSkzNWzLBunF1N488JAzQ6z.bDU_</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>

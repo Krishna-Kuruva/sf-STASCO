@@ -35,7 +35,8 @@ public class RV_FreightRateTriggerHelperTest {
              freightRateInsert = RV_TestHelperPhase2.insertFreightRate(freightRateInsert, locinsert1, locinsert);
              freightRateInsert.Freight_Quotation__c = 'Reuters (PJK) Rhine Freight Gasoline ARA-Karlsruhe';
              insert freightRateInsert;
-            
+            //added by swarna to cover queuable class
+             freightRateInsert.Valid_To__c = System.today().addDays(7);
              freightRateInsert.Marker__c = 23.56;
              freightRateInsert.Freight_Quotation__c = 'Reuters (PJK) Rhine Freight Gasoline ARA-Frankfurt';
              update freightRateInsert;

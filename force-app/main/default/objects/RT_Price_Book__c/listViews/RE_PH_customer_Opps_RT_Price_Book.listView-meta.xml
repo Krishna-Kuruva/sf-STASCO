@@ -9,13 +9,13 @@
     <columns>RE_Final_Price_Rebate__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>RE_ApprovalProcess__c</columns>
-    <columns>RE_Backstop_Margin__c</columns>
     <columns>RE_Reference_Period__c</columns>
     <columns>RE_Contract_Master__c</columns>
     <columns>RE_Valid_From__c</columns>
     <columns>RE_Valid_To__c</columns>
-    <columns>RE_AM_Code__c</columns>
     <columns>RE_Custom_Opp_Approve__c</columns>
+    <columns>RE_Ship_To_Number__c</columns>
+    <columns>RE_Sold_To_Number__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RT_Country__c</field>
@@ -26,11 +26,6 @@
         <field>CREATED_DATE</field>
         <operation>equals</operation>
         <value>TODAY</value>
-    </filters>
-    <filters>
-        <field>RE_AM_Code__c</field>
-        <operation>contains</operation>
-        <value>Ingrid</value>
     </filters>
     <label>RE PH customer Opps</label>
     <sharedTo>

@@ -22,17 +22,17 @@
     <filters>
         <field>RE_CND_Differential_Type__c</field>
         <operation>equals</operation>
-        <value>Plant Differential</value>
+        <value>Product Differential</value>
     </filters>
     <filters>
         <field>RE_Product_Classification_L0__c</field>
         <operation>equals</operation>
-        <value>Gas Oil,Kerosine,Residual Fuel Oil</value>
+        <value>Gasoline</value>
     </filters>
     <filters>
-        <field>RE_CND_Rack__c</field>
+        <field>RE_CND_Product_Groups__c</field>
         <operation>equals</operation>
-        <value>London,Sarnia</value>
+        <value>Premium,V-Power</value>
     </filters>
     <label>Canada Pricing Differential</label>
     <sharedTo>

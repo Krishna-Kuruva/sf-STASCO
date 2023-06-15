@@ -6,7 +6,9 @@
     <columns>Has_MRC__c</columns>
     <columns>Customer_Type__c</columns>
     <columns>Sold_To_Number__c</columns>
+    <columns>Ship_to_Number__c</columns>
     <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>PARENT_NAME</columns>
     <columns>ACCOUNT.ADDRESS1_CITY</columns>
     <columns>ACCOUNT.ADDRESS1_COUNTRY</columns>
     <columns>ACCOUNT.ADDRESS1_STATE</columns>
@@ -17,12 +19,7 @@
     <filters>
         <field>ACCOUNT.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Account.Revolution</value>
-    </filters>
-    <filters>
-        <field>ACCOUNT.NAME</field>
-        <operation>contains</operation>
-        <value>Shell Revolut</value>
+        <value>Account.Revolution,Account.Revolution_Ship_To</value>
     </filters>
     <label>Revolution</label>
 </ListView>

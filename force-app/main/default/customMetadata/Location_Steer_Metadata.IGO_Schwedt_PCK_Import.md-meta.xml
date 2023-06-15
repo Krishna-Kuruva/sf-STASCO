@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>IGO-Schwedt-PCK-Import</label>
+    <protected>false</protected>
+    <values>
+        <field>Differential_Value_1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Differential_Value_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Factor_Route_1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Factor_Route_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NoWeightage__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Origination_Steer_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Plant_Code__c</field>
+        <value xsi:type="xsd:string">D028</value>
+    </values>
+    <values>
+        <field>Product_Sub_Group__c</field>
+        <value xsi:type="xsd:string">IGO</value>
+    </values>
+    <values>
+        <field>Quote_Name1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Quote_Name2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Route_1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Route_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Scenario__c</field>
+        <value xsi:type="xsd:string">Import</value>
+    </values>
+    <values>
+        <field>Select_CO_Steer__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Source__c</field>
+        <value xsi:type="xsd:string">Schwedt-PCK</value>
+    </values>
+    <values>
+        <field>Weighting_of_Quote1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Weighting_of_Quote2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

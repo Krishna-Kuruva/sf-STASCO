@@ -141,13 +141,15 @@ public class RV_FreightRateTriggerHelper {
         
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,
                                                                Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
-                                                               Differential_Value_2__c  from Location_Steer_Metadata__mdt ];
+                                                               Differential_Value_2__c,Quote_Name1__c,Quote_Name2__c from Location_Steer_Metadata__mdt ];
         
         Map<String,Location_Steer_Metadata__mdt> locationSteerMap = new Map<String,Location_Steer_Metadata__mdt>();
         
         if(!locationSteerLst.isEmpty()){
             for(Location_Steer_Metadata__mdt locationSteerMeta : locationSteerLst){
-                if(freightRateName.contains(locationSteerMeta.Route_1__c) || freightRateName.contains(locationSteerMeta.Route_2__c) ||
+                //added new metadata feids on freights comparision
+                if(freightRateName.contains(locationSteerMeta.Quote_Name2__c) || freightRateName.contains(locationSteerMeta.Quote_Name1__c) || 
+                freightRateName.contains(locationSteerMeta.Route_1__c) || freightRateName.contains(locationSteerMeta.Route_2__c) ||
                   freightRateName.contains(locationSteerMeta.Differential_Value_1__c) || freightRateName.contains(locationSteerMeta.Differential_Value_2__c)){
                 	locationSteerMap.put(locationSteerMeta.Product_Sub_Group__c + '-' + locationSteerMeta.Source__c + '-' + locationSteerMeta.Scenario__c , locationSteerMeta);
                 }
@@ -176,6 +178,7 @@ public class RV_FreightRateTriggerHelper {
         System.debug('%%%%%mapOfReuter%%%%%'+mapOfReuter);
 		return mapOfReuter;
     }
+    /* commented as part of Bug-1760340 from Batch future methods cannot b called
     @future
     public static void insertGroupMembersToGroup(List<String> freighRateIdLst){
         List<Freight_Rate__c> freighRate = [SELECT id,Valid_To_Fomula__c,LastModifiedById from Freight_Rate__c where 
@@ -197,5 +200,11 @@ public class RV_FreightRateTriggerHelper {
                 }       
             }
         }
+    }*/
+	//added as part of Bug-1760340
+    public static void insertGroupMembersToGroup(List<String> freighRateIdLst){
+        RV_InsertGroupMembersToGroupQueueable insertGroupMembers = new RV_InsertGroupMembersToGroupQueueable(freighRateIdLst);
+        // enqueue the job for processing
+        ID jobID = System.enqueueJob(insertGroupMembers);
     }
 }

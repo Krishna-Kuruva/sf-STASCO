@@ -18,19 +18,9 @@
     <columns>RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Handling_Type__c</field>
-        <operation>equals</operation>
-        <value>CA</value>
-    </filters>
-    <filters>
-        <field>Material_Description__c</field>
-        <operation>contains</operation>
-        <value>GTL</value>
-    </filters>
-    <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>MRCXXD033</value>
+        <value>323073872</value>
     </filters>
     <label>som</label>
 </ListView>

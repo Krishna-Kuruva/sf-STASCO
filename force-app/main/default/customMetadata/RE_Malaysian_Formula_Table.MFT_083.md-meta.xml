@@ -24,11 +24,11 @@
     </values>
     <values>
         <field>RE_MY_BreakBulk_Premium_Quote_Percentage__c</field>
-        <value xsi:type="xsd:double">30.0</value>
+        <value xsi:type="xsd:double">100.0</value>
     </values>
     <values>
         <field>RE_MY_BreakBulk_Premium_Quote__c</field>
-        <value xsi:type="xsd:string">Breakbulk Premium - GBI02</value>
+        <value xsi:type="xsd:string">Breakbulk Premium</value>
     </values>
     <values>
         <field>RE_MY_Fixed_Premium_Unit__c</field>

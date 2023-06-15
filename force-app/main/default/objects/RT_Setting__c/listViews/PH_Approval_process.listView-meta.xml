@@ -16,11 +16,6 @@
     <columns>RE_Country__c</columns>
     <columns>Type__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>NAME</field>
-        <operation>equals</operation>
-        <value>Margin_OCLS_CF_AGO_WHOLESALE AND MARINE</value>
-    </filters>
     <label>PH Approval process</label>
     <sharedTo>
         <territory>Revolution_Territory.Philippines</territory>

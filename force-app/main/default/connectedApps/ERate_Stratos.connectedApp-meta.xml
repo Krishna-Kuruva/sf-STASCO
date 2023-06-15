@@ -6,7 +6,6 @@
         <callbackUrl>https://login.salesforce.com</callbackUrl>
         <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE.IAHy4P2F0o2XStIZqetm3Uy8wGLt4gRYqnyKzbBXmjqLnM200S_zr7QFbL</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>

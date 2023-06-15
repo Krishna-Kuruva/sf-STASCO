@@ -5,17 +5,15 @@
     <columns>RE_Depot_Name__c</columns>
     <columns>RE_Product_Name__c</columns>
     <columns>Material_Code__c</columns>
-    <columns>RE_Valid_From__c</columns>
-    <columns>RE_Valid_To__c</columns>
     <columns>RE_Final_Price_Unit__c</columns>
     <columns>RE_Fixed_Premium__c</columns>
-    <columns>RE_Fixed_Premium_Percentage__c</columns>
+    <columns>RE_Snh_Cost__c</columns>
     <columns>RE_Primary_Transport_Cost__c</columns>
     <columns>RE_Primary_Transport_Offset__c</columns>
     <columns>RE_Primary_Transport_Unit__c</columns>
-    <columns>RE_Snh_Cost__c</columns>
     <columns>RE_SnH_Unit__c</columns>
-    <columns>RE_Cost_Price_Adjustment__c</columns>
+    <columns>RE_Valid_From__c</columns>
+    <columns>RE_Valid_To__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>RECORDTYPE</field>
@@ -26,6 +24,11 @@
         <field>RE_Valid_To__c</field>
         <operation>equals</operation>
         <value>12/31/2023</value>
+    </filters>
+    <filters>
+        <field>RE_Product_Name__c</field>
+        <operation>equals</operation>
+        <value>FuelSave95,FuelSave98,Vpower</value>
     </filters>
     <label>Singapore</label>
 </ListView>

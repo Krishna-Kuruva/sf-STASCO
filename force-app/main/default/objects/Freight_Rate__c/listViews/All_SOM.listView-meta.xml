@@ -19,8 +19,8 @@
     <filterScope>Everything</filterScope>
     <filters>
         <field>Backbone_Route_Name__c</field>
-        <operation>contains</operation>
-        <value>AGO-B7_Shell_Harburg</value>
+        <operation>equals</operation>
+        <value>AGO-B7_Shell_Wesseling_Pipe_Ludwigshafen</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

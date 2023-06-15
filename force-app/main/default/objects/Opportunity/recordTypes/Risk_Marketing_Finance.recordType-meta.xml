@@ -889,6 +889,10 @@
     <picklistValues>
         <picklist>BO_Analyst__c</picklist>
         <values>
+            <fullName>Arunkumar RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Chandramouli J</fullName>
             <default>false</default>
         </values>

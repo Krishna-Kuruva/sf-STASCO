@@ -32,10 +32,5 @@
         <operation>equals</operation>
         <value>12/31/2023</value>
     </filters>
-    <filters>
-        <field>RE_Depot_Name__c</field>
-        <operation>equals</operation>
-        <value>kvdt</value>
-    </filters>
     <label>Malaysia</label>
 </ListView>

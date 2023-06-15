@@ -19,6 +19,10 @@
         <value xsi:type="xsd:double">-1.0</value>
     </values>
     <values>
+        <field>NoWeightage__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
         <field>Origination_Steer_Type__c</field>
         <value xsi:type="xsd:string">Harburg AGO steer</value>
     </values>
@@ -29,6 +33,14 @@
     <values>
         <field>Product_Sub_Group__c</field>
         <value xsi:type="xsd:string">AGO</value>
+    </values>
+    <values>
+        <field>Quote_Name1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Quote_Name2__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Route_1__c</field>
@@ -49,5 +61,13 @@
     <values>
         <field>Source__c</field>
         <value xsi:type="xsd:string">Schwedt-PCK</value>
+    </values>
+    <values>
+        <field>Weighting_of_Quote1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Weighting_of_Quote2__c</field>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

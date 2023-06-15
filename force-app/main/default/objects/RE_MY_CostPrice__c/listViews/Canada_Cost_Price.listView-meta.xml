@@ -25,7 +25,7 @@
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>YESTERDAY</value>
+        <value>TODAY</value>
     </filters>
     <label>Canada Cost Price</label>
     <sharedTo>

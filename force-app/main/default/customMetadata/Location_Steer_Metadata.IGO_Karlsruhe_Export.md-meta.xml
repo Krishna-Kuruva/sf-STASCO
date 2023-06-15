@@ -19,6 +19,10 @@
         <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
+        <field>NoWeightage__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>Origination_Steer_Type__c</field>
         <value xsi:type="xsd:string">ARA IGO Steer</value>
     </values>
@@ -29,6 +33,14 @@
     <values>
         <field>Product_Sub_Group__c</field>
         <value xsi:type="xsd:string">IGO</value>
+    </values>
+    <values>
+        <field>Quote_Name1__c</field>
+        <value xsi:type="xsd:string">Reuters (PJK) Rhine Freight Gasoil ARA-Karlsruhe</value>
+    </values>
+    <values>
+        <field>Quote_Name2__c</field>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Route_1__c</field>
@@ -49,5 +61,13 @@
     <values>
         <field>Source__c</field>
         <value xsi:type="xsd:string">Karlsruhe</value>
+    </values>
+    <values>
+        <field>Weighting_of_Quote1__c</field>
+        <value xsi:type="xsd:double">47.14</value>
+    </values>
+    <values>
+        <field>Weighting_of_Quote2__c</field>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

@@ -3,7 +3,7 @@ public class RV_LocationSteerTriggerHelperTest {
         
     static testmethod void testLocationSteer1(){
          List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          
@@ -66,7 +66,7 @@ public class RV_LocationSteerTriggerHelperTest {
     static testmethod void testLocationSteer(){
         
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          
@@ -108,7 +108,7 @@ public class RV_LocationSteerTriggerHelperTest {
     static testmethod void testLocationSteerReuter(){
         
          List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          
@@ -169,7 +169,7 @@ public class RV_LocationSteerTriggerHelperTest {
     }
     static testmethod void testValidationAvailability(){
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          
@@ -246,7 +246,7 @@ public class RV_LocationSteerTriggerHelperTest {
      static testmethod void testOverLappingDateValidationSrc(){
         
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          
@@ -302,7 +302,7 @@ public class RV_LocationSteerTriggerHelperTest {
     static testmethod void testOverLappingDateValidationDestination(){
         
         List<Location_Steer_Metadata__mdt> locationSteerLst = [select id,MasterLabel,DeveloperName,Factor_Route_1__c,Factor_Route_2__c,Origination_Steer_Type__c,Select_CO_Steer__c,
-                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,
+                                                               Plant_Code__c,Product_Sub_Group__c,Route_1__c,Route_2__c,Scenario__c,Source__c,Differential_Value_1__c ,Quote_Name2__c,Quote_Name1__c,
                                                                Differential_Value_2__c  from Location_Steer_Metadata__mdt];
          System.debug('----------->'+locationSteerLst);
          

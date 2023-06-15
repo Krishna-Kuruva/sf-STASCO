@@ -20,7 +20,7 @@
     <filters>
         <field>OBJECT_ID</field>
         <operation>equals</operation>
-        <value>a3i8e000000TZTG</value>
+        <value>a3i8e000000UhZf,a3i8e000000UhZZ,a3i8e000000UhZY,a3i8e000000UhZX</value>
     </filters>
     <label>Copy of RE customer Opps</label>
 </ListView>

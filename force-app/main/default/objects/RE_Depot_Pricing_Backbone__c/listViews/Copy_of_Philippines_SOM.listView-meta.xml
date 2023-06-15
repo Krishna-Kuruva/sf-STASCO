@@ -29,8 +29,8 @@
     </filters>
     <filters>
         <field>RE_Depot_Name__c</field>
-        <operation>equals</operation>
-        <value>PH Tabangao</value>
+        <operation>contains</operation>
+        <value>NMIF</value>
     </filters>
     <label>Copy of Philippines SOM</label>
 </ListView>

@@ -15,12 +15,7 @@
     <filters>
         <field>Apex_Class__c</field>
         <operation>notEqual</operation>
-        <value>Rv_ITdashboardAlert,RV_DealGSAPMulesoft</value>
-    </filters>
-    <filters>
-        <field>CREATED_DATE</field>
-        <operation>equals</operation>
-        <value>3/31/2023 12:00 AM</value>
+        <value>Rv_ITdashboardAlert,Rv_ITdashboardController</value>
     </filters>
     <label>Copy of all SOM</label>
 </ListView>

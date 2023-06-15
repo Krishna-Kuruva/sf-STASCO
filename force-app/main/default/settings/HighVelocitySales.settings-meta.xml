@@ -9,7 +9,5 @@
     <enableHighVelocitySalesSetup>false</enableHighVelocitySalesSetup>
     <enableLogACallForCTIPref>false</enableLogACallForCTIPref>
     <enableLogTasksForLinkedInPref>false</enableLogTasksForLinkedInPref>
-    <enableMultipleCadencesPref>false</enableMultipleCadencesPref>
     <enableOpportunityAttributionPermPref>false</enableOpportunityAttributionPermPref>
-    <enableTaskLoggingPref>false</enableTaskLoggingPref>
 </HighVelocitySalesSettings>

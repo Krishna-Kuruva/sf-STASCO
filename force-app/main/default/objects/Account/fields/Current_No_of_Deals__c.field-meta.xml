@@ -8,7 +8,7 @@
     <summaryFilterItems>
         <field>Opportunity.CloseDate</field>
         <operation>greaterThan</operation>
-        <value>5/1/2023</value>
+        <value>6/1/2023</value>
     </summaryFilterItems>
     <summaryFilterItems>
         <field>Opportunity.StageName</field>

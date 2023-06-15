@@ -19,13 +19,23 @@
     <filterScope>Everything</filterScope>
     <filters>
         <field>RE_Country_Name__c</field>
-        <operation>notEqual</operation>
-        <value>CA</value>
+        <operation>includes</operation>
+        <value>SG</value>
     </filters>
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>TODAY</value>
+        <value>6/10/2023 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>RE_Quote_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Midday</value>
+    </filters>
+    <filters>
+        <field>RE_Is_MTDWTD__c</field>
+        <operation>equals</operation>
+        <value>0</value>
     </filters>
     <label>All</label>
 </ListView>

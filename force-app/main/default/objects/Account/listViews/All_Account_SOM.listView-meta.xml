@@ -3,22 +3,23 @@
     <fullName>All_Account_SOM</fullName>
     <columns>ACCOUNT.NAME</columns>
     <columns>ACCOUNT.ADDRESS1_STATE</columns>
-    <columns>Ship_to_Number__c</columns>
     <columns>Sold_To_Number__c</columns>
-    <columns>ACCOUNT.ACCOUNT_NUMBER</columns>
+    <columns>Ship_to_Number__c</columns>
     <columns>Customer_Type__c</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>ACCOUNT.ACCOUNT_NUMBER</columns>
     <columns>ACCOUNT.SITE</columns>
+    <columns>Has_MRC__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
     <columns>ACCOUNT.TYPE</columns>
     <columns>CORE.USERS.FIRST_NAME</columns>
     <columns>CORE.USERS.LAST_NAME</columns>
     <columns>CREATEDBY_USER.ALIAS</columns>
-    <columns>ACCOUNT.CREATED_DATE</columns>
-    <columns>ACCOUNT.RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Sold_To_Number__c</field>
+        <field>ACCOUNT.NAME</field>
         <operation>equals</operation>
-        <value>0012745821</value>
+        <value>JOSEF KESSEL MINERALOELHANDEL</value>
     </filters>
     <label>All Account (SOM)</label>
 </ListView>

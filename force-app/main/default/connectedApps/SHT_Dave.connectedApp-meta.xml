@@ -6,7 +6,6 @@
         <callbackUrl>https://shell--revqa--c.cs88.visual.force.com/apex/DemoPage</callbackUrl>
         <consumerKey>3MVG9WtWSKUDG.x4B71kMbneQE40mYtgkvsRSfS2sQhSSS5qFWfj0nbncKFq4QqLIND1WKrpsMOELO9j713I_</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>

@@ -20,7 +20,7 @@
     <filters>
         <field>SAP_Contract_Number__c</field>
         <operation>contains</operation>
-        <value>323073676</value>
+        <value>323073872</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

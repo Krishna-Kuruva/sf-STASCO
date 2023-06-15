@@ -4,23 +4,23 @@
     <columns>NAME</columns>
     <columns>Plant_Code__c</columns>
     <columns>Location_Type__c</columns>
+    <columns>Company_Code__c</columns>
+    <columns>Products_Availability__c</columns>
     <columns>OMR_Region__c</columns>
     <columns>Sales_Region__c</columns>
-    <columns>Quote_Region__c</columns>
     <columns>Region_Name__c</columns>
+    <columns>CREATEDBY_USER</columns>
     <columns>CREATED_DATE</columns>
     <columns>Country__c</columns>
+    <columns>LAST_UPDATE</columns>
     <columns>Depot_MOT__c</columns>
     <columns>Supply_Type__c</columns>
-    <columns>Source_Location__c</columns>
-    <columns>Products_Availability__c</columns>
-    <columns>Scenario_Type__c</columns>
     <columns>Online_Location_Name__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Company_Code__c</field>
+        <field>Plant_Code__c</field>
         <operation>equals</operation>
-        <value>AT01</value>
+        <value>D002,D038,D323,D033</value>
     </filters>
     <label>All (SOM)</label>
 </ListView>

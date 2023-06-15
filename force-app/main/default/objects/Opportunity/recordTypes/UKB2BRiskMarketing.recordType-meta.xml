@@ -881,6 +881,10 @@
     <picklistValues>
         <picklist>BO_Analyst__c</picklist>
         <values>
+            <fullName>Arunkumar RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Chandramouli J</fullName>
             <default>false</default>
         </values>
@@ -3877,6 +3881,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>G01RDAMB-IPEB</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>G10SPRCFMM</fullName>
             <default>false</default>
         </values>
@@ -4070,6 +4078,10 @@
         </values>
         <values>
             <fullName>KJRDAMB-LGSTRIP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KR-G10SPRCFM</fullName>
             <default>false</default>
         </values>
         <values>

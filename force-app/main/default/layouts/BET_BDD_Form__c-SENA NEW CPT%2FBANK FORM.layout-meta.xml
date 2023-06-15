@@ -288,7 +288,7 @@
                 <field>MDN_OI_OnBId__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>MDN_OI_Requester__c</field>
             </layoutItems>
         </layoutColumns>
