@@ -6,7 +6,7 @@ on:
       - main
 
   pull_request:
-      branches: [main,sandbox/RevQA,sandbox/BAUQA,sandbox/BETQA,sandbox/TCPQA,sandbox/HotFixQA]
+      branches: [main,sandbox/RevQA,sandbox/BAUQA,sandbox/BETQA,sandbox/TCPQA,sandbox/HotFixQA,sandbox/UAT]
       types: [opened, synchronize, reopened]
 
 name: Code Analysis
