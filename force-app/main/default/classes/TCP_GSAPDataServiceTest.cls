@@ -6,19 +6,19 @@ public class TCP_GSAPDataServiceTest {
     static void createTestData() {
         
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+        TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
         List<Order> testOrder=TCP_TestDataUtilities.createOrders(3,testAccounts[0]);
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,testOrder[0]);
+        TCP_TestDataUtilities.createOrderLineItems(1,testOrder[0]);
         List<TCP_KeyValueSettings__c> createKeyValueSet=TCP_TestDataUtilities.createKeyValueSet();
         
     }
     
     @istest
-    static void GetCurrentOrdersFromGsapTest(){
+    static void getCurrentOrdersFromGsapTest(){
         
         Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' limit 1];
         
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
+        TCP_TestDataUtilities.createOrderLineItems(1,ord);
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];
         acc.recordtype.id=tcpAccountRecTypeid;
@@ -33,7 +33,7 @@ public class TCP_GSAPDataServiceTest {
         mock1.Weborder__c=ord.OrderNumber;
         mock1.SalesItemNo__c='000010';
         mock1.Soldto__c=acc.GSAP_Account_Number__c;
-        //mock1.DueDate__c=dateFormat;
+        
         mock1.CustomerPoNo__c=ord.PoNumber;
         mock1.Quantity__c=ordLine.Quantity__c;
         mock1.ProductName__c=ordLine.Material_Name__c;
@@ -59,73 +59,24 @@ public class TCP_GSAPDataServiceTest {
             TCP_GSAPDataService.getPDFURL();
         }
         catch(Exception e){
-            
+            system.debug('getCurrentOrdersFromGsapTest exception=====>');
         }
         
         test.stopTest();
     } 
-   /** @istest
-    static void GetCurrentOrdersFromGsapTestNegative(){
-        
-        Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' limit 1];
-        
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
-        string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
-        Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];
-        acc.recordtype.id=tcpAccountRecTypeid;
-        update acc;
-        TCP_OrderLineItem__c ordLine=[Select Id, Order__c,Quantity__c, Unit__c, Delivery_Collection_Date__c, MaterialNumber__c, Material_Name__c, Contract_No__c, Special_Price__c, Other_Instruction__c from TCP_OrderLineItem__c where Order__c=:ord.Id];
-        String dateFormat ='IEQ';
-        Date lastCallDate = date.valueOf(ord.createddate);
-        String lastCallDateFormat =  String.valueOf(lastCallDate.year()) + String.valueOf(lastCallDate.month()).leftpad(2,'0') + String.valueOf(lastCallDate.Day()).leftpad(2,'0');
-        dateFormat += lastCallDateFormat; 
-        List<CurrentOrders__x > mockRecords = new List<CurrentOrders__x >();
-        CurrentOrders__x mock1 = new CurrentOrders__x ();
-        mock1.Weborder__c=ord.OrderNumber;
-        mock1.SalesItemNo__c='000010';
-        mock1.Soldto__c=acc.GSAP_Account_Number__c;
-        //mock1.DueDate__c=dateFormat;
-        mock1.CustomerPoNo__c=ord.PoNumber;
-        mock1.Quantity__c=ordLine.Quantity__c;
-        mock1.ProductName__c=ordLine.Material_Name__c;
-        mock1.Unit__c=ordLine.Unit__c;
-        mock1.DueDate__c=String.valueOf(system.today()+1);
-        mock1.GmStat__c='WER';
-        mock1.GmDate__c=system.today()+2;
-        mock1.GmUnit__c='TO';
-        mock1.BolDeliveryNo__c='1234sdfg';
-        mock1.MotId__c='12345asdfghj';
-        
-        mockRecords.add(mock1);
-        TCP_GSAPDataService.MocklistGetCurrentOrder1=mockRecords;
-        
-        
-        string completeString = 'Select Soldto__c,Ztype__c,Weborder__c,SalesOrder__c,SalesItemNo__c,GmQuan__c,GmDate__c,Months__c,DueDate__c,GmStat__c,GmUnit__c,BolDelItemNo__c,BolDeliveryNo__c,CustomerPoNo__c,DeliverOn__c,DeliverTo__c,DisplayUrl,TotVatAmount__c,TotGrossAmount__c,InvoiceAmount__c,InvoiceItm__c,InvoiceNo__c,InvoiceType__c,Mot__c,MotId__c,MotKey__c,OrderCreatedOn__c,Ordername__c,ProductId__c,ProductName__c,Quantity__c,ShipDspOn__c,Status__c,Unit__c,Terms__c,Currency__c from CurrentOrders__x where ';
-        completeString = completeString+'Soldto__c=\''+acc.GSAP_Account_Number__c+'\''+' and '+'DueDate__c=\''+dateFormat+'\'';                    
-         DmlException exceptionOccurred;
-        test.startTest();
-        try{
-            TCP_GSAPDataService.GetCurrentOrdersFromGsap(completeString, acc.GSAP_Account_Number__c, acc.AccountNumber);  
-        }
-        catch(DmlException e){
-          exceptionOccurred = e;
-          
-        }
-        system.assertEquals(null, exceptionOccurred, 'Exceptions should be handled by the method');
-        test.stopTest();
-    }**/
+   
     
     @istest
-    static void GetOrderConfirmationFromGsapTest(){
+    static void getOrderConfirmationFromGsapTest(){
         
         Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' AND Is_Order_Confirmed__c=False Limit 1];
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];
         acc.recordtype.id=tcpAccountRecTypeid;
         update acc;
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
-        List<Product2> ProductsList=TCP_testDataUtilities.createProducts(1);
-        //Order ord1=[select id,OrderNumber,Name,PoNumber,Sales_Order_Number__c,TCP_Order_Status__c,Is_Order_Confirmed__c,(select id,Sales_Order_Line_Item_No__c,Material_Name__c,MaterialNumber__c,Expected_Dispatch_Date__c,SICC_Code__c,Net_Weight__c,Netweight_Unitprice__c,Plant__c,Shipping_Point__c,Plant_Name__c,Shipping_Point_Name__c,Shipping_City__c,Shipping_Country__c,Shipping_Postcode__c,Shipping_Street__c from order_line_items__r) from order where Is_Order_Confirmed__c = FALSE AND TCP_Order_Status__c != 'shipped' AND TCP_Order_Status__c = 'Approved' ORDER BY OrderNumber DESC];
+        TCP_TestDataUtilities.createOrderLineItems(1,ord);
+        List<Product2> productsList=TCP_testDataUtilities.createProducts(1);
+        
         String dateFormat ='IGT';
         Date lastCallDate = date.valueOf(ord.createddate-1);
         String lastCallDateFormat =  String.valueOf(lastCallDate.year()) + String.valueOf(lastCallDate.month()).leftpad(2,'0') + String.valueOf(lastCallDate.Day()).leftpad(2,'0');
@@ -137,11 +88,11 @@ public class TCP_GSAPDataServiceTest {
         mock1.Weradnam__c=dateFormat;
         mock1.SalesItemNo__c='00010';
         mock1.MatDes__c='testing';
-        mock1.ProductId__c=ProductsList[0].Id;
+        mock1.ProductId__c=productsList[0].Id;
         mock1.LoadDate__c=System.today()+1;
         mock1.SiccCode__c='124';
         mock1.NetWeight__c=1000;
-        // mock1.WUnit__c='123';
+        
         mock1.PlantId__c='1233';
         mock1.ShipPnt__c='qwer';
         mock1.WerkNam__c='testing';
@@ -156,24 +107,24 @@ public class TCP_GSAPDataServiceTest {
         
         string completeString = 'SELECT Id, ExternalId, DisplayUrl, DelvDate__c, Descrs__c, LoadDate__c, MatDes__c, NetWeight__c, OrdDate__c, PlantId__c, ProductId__c, SalesItemNo__c, Salesorder__c, ShipPnt__c, SiccCode__c, Soldto__c, Status__c, WUnit__c, Weborder__c, Inco1__c, Inco2__c, PayTerm__c, SlcCity__c, SlcCtry__c, SlcPost__c, SlcStrt__c, Slcadnam__c, SlocNam__c, WerCity__c, WerCtry__c, WerPost__c, WerStrt__c, Weradnam__c, WerkNam__c FROM OrdCnfDet__x where ';
         completeString = completeString+'Soldto__c=\''+acc.GSAP_Account_Number__c+'\''+' and '+' Weradnam__c=\''+dateFormat+'\'';                    
-        system.debug('completeString=====>'+completeString);
+        
         test.startTest();
         try{
             TCP_GSAPDataService.GetOrderConfirmationFromGsap(completeString, acc.GSAP_Account_Number__c, acc.AccountNumber);  
         }
         catch(Exception e){
-            
+            system.debug('completeString exception=====>');
         }
         test.stopTest();
         
     }
     @istest
-    static void GenerateGSAPQueryStringForModifyCancelTest(){
+    static void generateGSAPQueryStringForModifyCancelTest(){
         
-        List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
+        
         Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
         List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
-        List<TCP_OrderLineItem__c> ordLine=[Select Id, Order__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, MaterialNumber__c, Material_Name__c, Contract_No__c, Special_Price__c, Other_Instruction__c from TCP_OrderLineItem__c where Order__c=:ord.Id];
+        
         
         List<CcpOrdr__x> mockRecords=new List<CcpOrdr__x>();
         CcpOrdr__x mock1=new CcpOrdr__x();
@@ -189,17 +140,17 @@ public class TCP_GSAPDataServiceTest {
             TCP_GSAPDataService.GenerateGSAPQueryStringForModifyCancel(Ord, ordLine1, 'ResentRequest');
         }
         catch(Exception e){
-            
+            System.debug('Exception in GenerateGSAPQueryStringForModifyCancelTest');
         }
         test.stopTest();
         
     } 
     @istest
-    static void GenerateGSAPQueryStringTest(){
-        List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
+    static void generateGSAPQueryStringTest(){
+        
         Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Sales_Order_Number__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
         List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(3,ord);
-        List<TCP_KeyValueSettings__c> keyValue=[Select id,TCP_DocID__c,TCP_ServiceName__c,TCP_Value__c from TCP_KeyValueSettings__c];
+        
         list<Filenet__x> mockRecords = new list<Filenet__x>();
         Filenet__x mockfetchFiles1  = new Filenet__x();
         mockfetchFiles1.Document__c='1002109791';
@@ -217,7 +168,7 @@ public class TCP_GSAPDataServiceTest {
             
         }
         catch(Exception e){
-            
+            System.debug('Exception in GenerateGSAPQueryStringTest');
         }
         
         TCP_GSAPDataService.saveDocIdToCS('1002109700');
@@ -231,10 +182,9 @@ public class TCP_GSAPDataServiceTest {
 
         Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Sales_Order_Number__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
         
-        List<CurrentOrders__x> cuOrdList=[Select Id,Soldto__c,Weborder__c,Unit__c,Terms__c from CurrentOrders__x where Weborder__c=:ord.Id ];
         TCP_OrderManagementProcessor.trackStatusGSAPOrder(ord.Id,true, false, ord.Sales_Order_Number__c,false);
         TCP_OrderManagementProcessor.trackStatusGSAPOrder(ord.Id,false, true, ord.Sales_Order_Number__c,false);
-        // TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(cuOrdList,ord.Sold_To__r.GSAP_Account_Number__c,acc.AccountNumber);
+        
     }
     
     
@@ -244,14 +194,14 @@ public class TCP_GSAPDataServiceTest {
             TCP_GSAPDataService.fetchFilesFromGSAP('sales', 'boldel');
             TCP_GSAPDataService.fetchFilesFromGSAP('sales', '');
         }catch(Exception e){
-            
+            System.debug('Exception in testFetchFilesFromGSAP');
         }
     } 
            @isTest
     public static void testgetPDFURL(){
         TCP_MockHttpResponseGenerator mock=new TCP_MockHttpResponseGenerator();
         test.setMock(HttpCalloutMock.class, mock);
-     //   TCP_GSAPDataService.getPDFURL();
+     
         TCP_GSAPdataService.getAccessToken();
       
     } 

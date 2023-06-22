@@ -28,7 +28,6 @@ public with sharing class TCP_OrderConfirmQueueable implements Queueable, Databa
             jrAudit.RE_User__c = UserInfo.getUserId();
             jrAudit.RE_Job_Run_Count__c = 1;
             jrAudit.RE_Job_Status__c='Processing';
-            //jrAudit.RE_Country_Name__c='CA';
             insert jrAudit;
             if(!soldToIds.isEmpty()){
                 for(string tempSoldID :  soldToIds){

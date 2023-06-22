@@ -29,8 +29,6 @@ public class TCP_STNSAPSoldToShipToQueueable implements Queueable, Database.Allo
                 }
             }
             
-            //TCP_STNSAPDataService.fetchSTNSAPSoldToShipTo(soldToIds); //pass the list of sold id's
-            
             //Finalizer class to manage final actions based on outcome of current job
             TCP_Queueable_finalizer tcpFinalActions = new TCP_Queueable_finalizer(jrAudit);
             System.attachFinalizer(tcpFinalActions);

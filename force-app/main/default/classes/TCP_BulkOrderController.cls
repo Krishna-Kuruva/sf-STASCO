@@ -7,14 +7,14 @@ public with sharing class TCP_BulkOrderController {
         try {
             User userData = TCP_Utilities.getLoggedInUserDetails();
             if(userData.TCP_Role__C == 'CommOpps user'){
-                acrList = [SELECT id, Account__r.name, Account__r.Active__c, Account__c,  Account__r.AccountNumber, Account__r.ShippingAddress FROM Account_Contact_Relationship__c WHERE Account__r.recordtypeid =: tcpAccountRecTypeid AND Portal_User_Contact__r.Email =:userData.Email AND Account__r.Active__c = true order by CreatedDate ASC];
+                acrList = [SELECT id, Account__r.name, Account__r.Active__c, Account__c,  Account__r.AccountNumber, Account__r.ShippingAddress FROM Account_Contact_Relationship__c WHERE Account__r.recordtypeid =: tcpAccountRecTypeid AND Portal_User_Contact__r.Email =:userData.Email AND Account__r.Active__c = true order by Account__r.name];
                 if(acrList.size()>0){
                     return acrList;
                 }
             }
             
         } catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order exception',e.getMessage(),'TCP_BulkOrderController','getCustomerDetails','Exception');
+            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order customer details exception',e.getMessage(),'TCP_BulkOrderController','getCustomerDetails','Exception');
             throw new AuraHandledException(e.getMessage());
         }
         return acrList;
@@ -26,7 +26,7 @@ public with sharing class TCP_BulkOrderController {
             return [Select Id, Name, ContactId, Contact.Name, IsActive from user where IsActive = true AND Contact.AccountId =: soldToId order by Contact.Name];
             
         } catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order exception',e.getMessage(),'TCP_BulkOrderController','getContactsByCustomerId','Exception');
+            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order contacts exception',e.getMessage(),'TCP_BulkOrderController','getContactsByCustomerId','Exception');
             throw new AuraHandledException(e.getMessage());
         }
     }
@@ -37,7 +37,9 @@ public with sharing class TCP_BulkOrderController {
         List<TCP_OrderLineItem__c> ordLineItemList = new List<TCP_OrderLineItem__c>();
         Map<String,List<TCP_OrderLineItemWrapper>> orderLineMap = new Map<String,List<TCP_OrderLineItemWrapper>>();
         try {
-            if(ordWrapList.size()>0){
+            if(ordWrapList.size()<1){
+                return null;
+            }
                 List<Id> orderIds = new List<Id>();
                 List<Id> requestedByIds = new List<Id>();
                 List<Id> accountIds = new List<Id>();
@@ -69,9 +71,7 @@ public with sharing class TCP_BulkOrderController {
                     if(String.isNotBlank(orderWrapper.billToId)){
                         orderObj.Bill_To__c = orderWrapper.billToId;
                     }
-                    // if(String.isNotBlank(orderWrapper.soldToNumber)){
-                    //     orderObj.AccountNumber = orderWrapper.soldToNumber;
-                    // }
+                    
                     if(String.isNotBlank(orderWrapper.shipToNumber)){
                         orderObj.ShipToNo__c = orderWrapper.shipToNumber;
                     }
@@ -184,20 +184,25 @@ public with sharing class TCP_BulkOrderController {
                     }
 
                 }
-            }
+            
         } catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order exception',e.getMessage(),'TCP_BulkOrderController','saveBulkOrderDetails','Exception');
-            throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('Bulk order save exception',e.getMessage(),'TCP_BulkOrderController','saveBulkOrderDetails','Exception');
+            //throw new AuraHandledException(e.getMessage());
         }
         return orderList;
     }
 
     public static List<TCP_OrderLineItem__c> saveOrderLineItems(List<TCP_OrderLineItemWrapper> orderLineWrapList, String orderId){
-        List<TCP_OrderLineItem__c> OrdLineItemList = new List<TCP_OrderLineItem__c>();
+        List<TCP_OrderLineItem__c> ordLineItemList = new List<TCP_OrderLineItem__c>();
         try{ 
-            if(orderLineWrapList != null){  
-                Integer salesItemNo = 10;
+            if(orderLineWrapList.size()<1){
+                return null;
+            }
+              
+                //Integer salesItemNo = 10;
                 for(TCP_OrderLineItemWrapper wrap: orderLineWrapList){
+                    Integer salesItemNo=wrap.sno*10;
+                    system.debug('****Index'+salesItemNo+'****'+wrap.sno);
                     TCP_OrderLineItem__c objData = new TCP_OrderLineItem__c();
                     objData.Sales_Order_Line_Item_No__c = String.valueOf(salesItemNo).leftPad(6, '0');
                     if(String.isNotBlank(wrap.shellContractNo)){
@@ -228,15 +233,15 @@ public with sharing class TCP_BulkOrderController {
                     if(String.isNotBlank(wrap.instructions)){
                         objData.Other_Instruction__c = wrap.instructions;
                     }
-                    salesItemNo += 10;
-                    OrdLineItemList.add(objData);
+                    //salesItemNo += 10;
+                    ordLineItemList.add(objData);
                 }
-            }
+            
 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-        return OrdLineItemList;
+        return ordLineItemList;
     }
 
     @future
@@ -247,35 +252,35 @@ public with sharing class TCP_BulkOrderController {
             }
         }
         catch(Exception excptn) {
+            TCP_ExceptionLogClass.insertExceptionRecord('TCP Bulk Email',excptn.getMessage(),'TCP_BulkOrderController','sendOrderAcknowledgement','Exception');
             throw excptn;
         }
     }
 
     public static void sendBulkEmail(Id recordId, Id recipientId, id accountId, id recipientUserId, String templateName,Boolean useOrgAddress) {
-        try {
+        
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             
             if(String.isNotEmpty(templateName))
-            {
-                
+            {    
                 EmailTemplate emailtemplate = [SELECT DeveloperName, Id, TemplateType FROM EmailTemplate WHERE DeveloperName =:templateName];
                 mail.setTemplateId(emailtemplate.id);
             }
             if(useOrgAddress)
             {
                 
-                OrgWideEmailAddress OrgWideEmail = [Select id From OrgWideEmailAddress o where o.DisplayName= :Label.TCP_From_Email_Address];
-          	  mail.setOrgWideEmailAddressId(OrgWideEmail.Id);
+                OrgWideEmailAddress orgWideEmail = [Select id From OrgWideEmailAddress o where o.DisplayName= :Label.TCP_From_Email_Address];
+          	  mail.setOrgWideEmailAddressId(orgWideEmail.Id);
             }
             if(accountId!=null)
             {
                
                 Account accSalesorg = [Select id,sales_area__r.Sales_Region__c from account where id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
-          	    String AccountSalesRegion=accSalesorg.sales_area__r.Sales_Region__c;
-                System.debug('after accsales::'+AccountSalesRegion);
-                if(AccountSalesRegion!=null){
+          	    String accountSalesRegion=accSalesorg.sales_area__r.Sales_Region__c;
+                System.debug('after accsales::'+accountSalesRegion);
+                if(accountSalesRegion!=null){
                      System.debug('inside accsales::');
-                    TCP_DistributionEmailList__c ccListBasedOnRegion = TCP_DistributionEmailList__c.getValues(AccountSalesRegion);
+                    TCP_DistributionEmailList__c ccListBasedOnRegion = TCP_DistributionEmailList__c.getValues(accountSalesRegion);
                     System.debug('inside accsales  adsds::'+ccListBasedOnRegion);
                         if(ccListBasedOnRegion!=null){
                            List<string> ccEmailList=ccListBasedOnRegion.TCP_Commops_Delivery_Lists__c.split(';'); 
@@ -295,16 +300,10 @@ public with sharing class TCP_BulkOrderController {
             }
             mail.setWhatId(Id.valueof(recordId));
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
-		 mails.add(mail);
-            if(!mails.isempty()){
-                if(!Test.isRunningTest()){
-                	Messaging.sendEmail(mails);
-                }
+		    mails.add(mail);
+            if(!mails.isempty() && !Test.isRunningTest()){
+                Messaging.sendEmail(mails);
             }
-        }
-        catch(Exception excptn) {
-            TCP_ExceptionLogClass.insertExceptionRecord('TCP EmailService',excptn.getMessage(),'TCP_EmailService','sendEmail','Exception');
-            throw excptn;
-        }
+        
     }
 }

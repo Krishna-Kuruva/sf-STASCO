@@ -62,10 +62,10 @@ public with sharing class TCP_PlaceOrderConfirmationCtrl {
       }
     }
     
-    public Map<String, Decimal> getchangeQuantityMap(String OrderId){
+    public Map<String, Decimal> getchangeQuantityMap(String orderid){
         try{
         Map<String, Decimal> changeOLIMap = new Map<String, Decimal>(); 
-        for(TCP_Change_Cancel_Order_Line_Items__c  changeOLI : [select Quantity__c,TCP_Modification_Cancellation_Status__c, Quantity_New__c,Item_number__c from TCP_Change_Cancel_Order_Line_Items__c where Change_Cancel_Request_Order__r.Web_Order__c =:OrderId and TCP_Modification_Cancellation_Status__c='Cancelled' order by createddate desc ])
+        for(TCP_Change_Cancel_Order_Line_Items__c  changeOLI : [select Quantity__c,TCP_Modification_Cancellation_Status__c, Quantity_New__c,Item_number__c from TCP_Change_Cancel_Order_Line_Items__c where Change_Cancel_Request_Order__r.Web_Order__c =:orderid and TCP_Modification_Cancellation_Status__c='Cancelled' order by createddate desc ])
             {	
                 if(!changeOLIMap.containsKey(changeOLI.Item_number__c)){
                 changeOLIMap.put(changeOLI.Item_number__c ,changeOLI.Quantity__c);
@@ -84,7 +84,7 @@ public with sharing class TCP_PlaceOrderConfirmationCtrl {
     public list<TCP_OrderLineItem__c> getOrderLIDetails(){
         try{
         list<TCP_OrderLineItem__c> orderLineItemDetails;
-        orderLineItemDetails= [Select TCP_Modify_Cancel_Status__c,SICC_Code__c,Shipping_City__c,Shipping_Street__c,Shipping_Country__c,Shipping_Postcode__c,Unit__c,Net_Weight__c,Plant_Name__c,Shipping_Point__c,Shipping_Point_Name__c,Plant__c, Netweight_Unitprice__c, Expected_Dispatch_Date__c,Special_Price__c,Shell_Material_No__c, Quantity__c, Other_Instruction__c, Order__c, Name, Material_Name__c, MaterialNumber__c, Contract_No__c,Delivery_Collection_Date__c,Product__r.Net_Weight__c, Product__r.Product_Number__c,Product__r.Unit_of_Measure__c From TCP_OrderLineItem__c where Order__r.Id=: RecordId];
+        orderLineItemDetails= [Select TCP_Modify_Cancel_Status__c,SICC_Code__c,Shipping_City__c,Shipping_Street__c,Shipping_Country__c,Shipping_Postcode__c,Unit__c,Net_Weight__c,Plant_Name__c,Shipping_Point__c,Shipping_Point_Name__c,Plant__c, Netweight_Unitprice__c, Expected_Dispatch_Date__c,Special_Price__c,Shell_Material_No__c, Quantity__c, Other_Instruction__c, Order__c, Name, Material_Name__c, MaterialNumber__c, Contract_No__c,Delivery_Collection_Date__c,Product__r.Net_Weight__c, Product__r.Product_Number__c,Product__r.Unit_of_Measure__c From TCP_OrderLineItem__c where Order__r.Id=: RecordId and Cancelled_in_Submitted__c=false Order By Sales_Order_Line_Item_No__c];
         return orderLineItemDetails; 
         }
 	  catch (Exception e) {
@@ -95,39 +95,39 @@ public with sharing class TCP_PlaceOrderConfirmationCtrl {
     public list<ProdWrapper> getProdWrapList(){    
         try{
         If(!LineItemDetails.isempty()){
-            List<ProdWrapper> ProdWrapList = new List<ProdWrapper>();
+            List<ProdWrapper> prodwrapList = new List<ProdWrapper>();
             for(TCP_OrderLineItem__c LI:LineItemDetails){
-                ProdWrapper PWrp = new ProdWrapper();            
-                PWrp.ProdName = LI.Material_Name__c;
-                PWrp.SICCcode = LI.SICC_Code__c;
-                PWrp.Prodnumber = LI.MaterialNumber__c;
-                PWrp.Unit = LI.Unit__c; 
-                PWrp.CollectionDate=LI.Delivery_Collection_Date__c;//LI.Delivery_Collection_Date__c.day()+'.'+TCP_Utilities.getMonthName(LI.Delivery_Collection_Date__c.month())+'.'+LI.Delivery_Collection_Date__c.year();
-                PWrp.DispatchDate=LI.Expected_Dispatch_Date__c;
-                PWrp.SpecialPrice = LI.Special_Price__c;
-                PWrp.OtherInstruction= LI.Other_Instruction__c;
-                PWrp.ShellContractNo= LI.Contract_No__c;
-                PWrp.ProductNetweight=string.valueOf(LI.Net_Weight__c);
-                PWrp.Productmeasurment=LI.Netweight_Unitprice__c;
-                PWrp.Plant = LI.Plant__c;
-                PWrp.PlantName= LI.Plant_Name__c;
-                PWrp.ShippingPoint= LI.Shipping_Point__c;
-                PWrp.ShippingPointName= LI.Shipping_Point_Name__c;
-                PWrp.City = LI.Shipping_City__c;
-                PWrp.Street= LI.Shipping_Street__c;
-                PWrp.Postcode= LI.Shipping_Postcode__c;
-                PWrp.Country= LI.Shipping_Country__c;
-                PWrp.CancelledItem= LI.TCP_Modify_Cancel_Status__c;
+                ProdWrapper pwrp = new ProdWrapper();            
+                pwrp.ProdName = LI.Material_Name__c;
+                pwrp.SICCcode = LI.SICC_Code__c;
+                pwrp.Prodnumber = LI.MaterialNumber__c;
+                pwrp.Unit = LI.Unit__c; 
+                pwrp.CollectionDate=LI.Delivery_Collection_Date__c;
+                pwrp.DispatchDate=LI.Expected_Dispatch_Date__c;
+                pwrp.SpecialPrice = LI.Special_Price__c;
+                pwrp.OtherInstruction= LI.Other_Instruction__c;
+                pwrp.ShellContractNo= LI.Contract_No__c;
+                pwrp.ProductNetweight=string.valueOf(LI.Net_Weight__c);
+                pwrp.Productmeasurment=LI.Netweight_Unitprice__c;
+                pwrp.Plant = LI.Plant__c;
+                pwrp.PlantName= LI.Plant_Name__c;
+                pwrp.ShippingPoint= LI.Shipping_Point__c;
+                pwrp.ShippingPointName= LI.Shipping_Point_Name__c;
+                pwrp.City = LI.Shipping_City__c;
+                pwrp.Street= LI.Shipping_Street__c;
+                pwrp.Postcode= LI.Shipping_Postcode__c;
+                pwrp.Country= LI.Shipping_Country__c;
+                pwrp.CancelledItem= LI.TCP_Modify_Cancel_Status__c;
                 if(LI.TCP_Modify_Cancel_Status__c=='Cancelled' && LI.Quantity__c==0){
                     if(!changeQuantityMap.isEmpty()) {
-                        PWrp.Qty = string.valueof(changeQuantityMap.get(LI.Name));
+                        pwrp.Qty = string.valueof(changeQuantityMap.get(LI.Name));
                     }
                 }else{
-                     PWrp.Qty = string.valueof(LI.Quantity__c);
+                     pwrp.Qty = string.valueof(LI.Quantity__c);
                 }
-                ProdWrapList.add(PWrp);
+                prodwrapList.add(pwrp);
             }
-            return ProdWrapList; 
+            return prodwrapList; 
             }
         return null;
         }

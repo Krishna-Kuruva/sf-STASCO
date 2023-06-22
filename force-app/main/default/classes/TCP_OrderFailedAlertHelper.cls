@@ -1,4 +1,4 @@
-public class TCP_OrderFailedAlertHelper {
+public with sharing class TCP_OrderFailedAlertHelper {
 	public static void processFailedOrderList(List<sObject> scope){
         List<Order> ordList = new List<Order>();
         for(sObject objScope : scope){

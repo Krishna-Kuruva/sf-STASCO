@@ -30,7 +30,7 @@ export default class Tcp_TermsCondition extends LightningElement {
       
       let formatedDate = `${da} ${mo} ${ye}`;
       
-      this.dateofaccept=formatedDate;//JSON.parse(JSON.stringify(data.TCP_TandC_Accepted_Date__c));
+      this.dateofaccept=formatedDate;
       } else if (error) {
         console.log(error);
       }

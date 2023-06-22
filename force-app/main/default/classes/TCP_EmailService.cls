@@ -22,13 +22,8 @@ public static string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordT
             }
             if(accountId!=null)
             {
-                system.debug('Checking acc Id '+[Select id,sales_area__r.Sales_Region__c from account where id=:accountId]);
-                String AccountSalesRegion;
                 Account accSalesorg = [Select id,sales_area__r.Sales_Region__c from account where id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
-                if(accSalesorg != null)
-                {
-          	       AccountSalesRegion=accSalesorg.sales_area__r.Sales_Region__c;
-                }
+          	  String AccountSalesRegion=accSalesorg.sales_area__r.Sales_Region__c;
                 if(AccountSalesRegion!=null){
                     TCP_DistributionEmailList__c ccListBasedOnRegion = TCP_DistributionEmailList__c.getValues(AccountSalesRegion);
                         if(ccListBasedOnRegion!=null){

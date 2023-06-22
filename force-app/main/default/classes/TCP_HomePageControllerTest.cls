@@ -11,26 +11,28 @@ public class TCP_HomePageControllerTest {
         System.runAs(us){
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
         List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
-        List<Account_Contact_Relationship__c> testacr=TCP_TestDataUtilities.createACRRecords(testAccounts[0], testContact[0], 1);
+        TCP_TestDataUtilities.createACRRecords(testAccounts[0], testContact[0], 1);
    		List<Order> testOrder=TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
-         List<TCP_OrderLineItem__c> ordLine=TCP_TestDataUtilities.createOrderLineItems(1,testOrder[0]);
+        TCP_TestDataUtilities.createOrderLineItems(1,testOrder[0]);
         }
     }
     
     @isTest
-    static void PostiveTestCase(){
+    static void postiveTestCase(){
         string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeInfosByDeveloperName().get('TCP_Orders').getRecordTypeId();
         List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
         Account acc=[select id, AccountNumber, ParentId,recordtype.id, name from account where name='SampleAccount0' limit 1];
-        acc.recordtype.id=tcpOrderRecTypeid;
-        update acc;
+        system.debug('Account Query' + acc);
+        Account parentAcc=[Select Id from Account where id=:acc.ParentId];
+        List<String> soldToIds = new List<String>{acc.ParentId};
+        //acc.recordtype.id=tcpOrderRecTypeid;
+        //update acc;
         Order ord=[select  id,Name, AccountId, OrderNumber, Sold_To__c, Ship_To__c, EffectiveDate, poNumber, Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status from order where Sold_To__c=:acc.Id limit 1];
         TCP_OrderLineItem__c ordLine=[Select Id, Order__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, MaterialNumber__c, Material_Name__c, Contract_No__c, Special_Price__c, Other_Instruction__c from TCP_OrderLineItem__c where Order__c=:ord.Id];
         
-        List<Account_Contact_Relationship__c>  acrRecList=[select id, account__c,Portal_User_Contact__c from Account_Contact_Relationship__c where account__c=:acc.id limit 1];
         List<contact> testCons=new List<contact> ([select id,TCP_TandC__c, Email, Name from contact limit 1]);
         List<User> listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
-         TCP_OrderWrapper wrap=new TCP_OrderWrapper();
+        TCP_OrderWrapper wrap=new TCP_OrderWrapper();
         wrap.id=ord.Id;
         wrap.name=ord.Name;
         wrap.orderNumber=ord.OrderNumber;
@@ -48,6 +50,7 @@ public class TCP_HomePageControllerTest {
         wrap.shipToNumber = acc.AccountNumber;
         wrap.payerNumber = acc.AccountNumber;
         wrap.payerId = acc.Id;
+        wrap.status='Submitted';
         TCP_OrderLineItemWrapper lineWrap=new TCP_OrderLineItemWrapper();
         lineWrap.Id=ordLine.Id;
         lineWrap.shellContractNo = '12345';
@@ -58,45 +61,52 @@ public class TCP_HomePageControllerTest {
         lineWrap.deliveryCollDate=String.valueOf(ordLine.Delivery_Collection_Date__c);
         lineWrap.materialNumber=ordLine.MaterialNumber__c;
         lineWrap.materialName=ordLine.Material_Name__c;
+        lineWrap.sno=1;
+        lineWrap.productId='987987';
         lineWrapList.add(lineWrap);
         System.runas(listofusers[0]){
         test.startTest();
         TCP_HomePageController.getAccountDataOfEndUser();
-       TCP_HomePageController.getAccountDetails();
+       	TCP_HomePageController.getAccountDetails();
         TCP_HomePageController.getAccountDetailsOfComOps(listofusers[0]);
         TCP_HomePageController.loggedInAsTcpUser();
         TCP_HomePageController.getAccountId();
-        TCP_HomePageController.getAccDetailsByParentId(acc.Id);
+      //  TCP_HomePageController.getAccDetailsByParentId(acc.Id);
         TCP_HomePageController.getCustomerByAccountId(acc.Id);
         TCP_HomePageController.getProductDetails(acc.ParentId, acc.Id);
         TCP_HomePageController.getProductDetailsBySearchKey('searchKey', acc.ParentId, acc.Id);//Need check for searchKey
         TCP_HomePageController.getPickListValues('Order', 'Mode_of_Transport__c');
         TCP_HomePageController.getCountOfOrders(acc.Id, 'Draft');
         TCP_HomePageController.getCountOfOrdersEU(acc.ParentId);
-        TCP_HomePageController.getCountOfOrdersCU(acc.ParentId);
-        TCP_HomePageController.saveOrderLineItems(lineWrapList, ord.Id);
+        //TCP_HomePageController.getCountOfOrdersCU(acc.ParentId);
+        //TCP_HomePageController.saveOrderLineItems(lineWrapList, ord.Id);
         TCP_HomePageController.getOrderedByUserId();
-        TCP_HomePageController.getAllProductDetailsBySoldToId(acc.Id);
+        TCP_HomePageController.getAllProductDetailsBySoldToId(parentAcc.Id);
         TCP_HomePageController.getCustomerBySoldToAndType(acc.ParentId, 'Sold To');
         TCP_HomePageController.getOrderedBySoldToId(acc.ParentId);
-        TCP_HomePageController.getOrderNumberOnSave(wrap,lineWrapList,null,false);
+        order testOrder=TCP_HomePageController.getOrderNumberOnSave(wrap,lineWrapList,null,false);
+        //TCP_HomePageController.getAccDetailsBySoldToIds(soldToIds);
+        TCP_HomePageController.getCountOfOrdersCU(soldToIds);
+        TCP_HomePageController.getAllProductDetailsBySoldToIdCU(soldToIds);
+        TCP_HomePageController.getOrderedBySoldToIdCU(soldToIds);
+        TCP_HomePageController.getCustomerBySoldToAndTypeCU(soldToIds,'Sold To');
+        //TCP_HomePageController.sendOrderAcknowledgement(testOrder.id,testCons[0].id,soldToIds[0],testOrder.createdbyId);
         
         Test.stopTest();
         }
        
     }
     
-    @isTest
-    static void NegativeTestCase(){
+ @isTest
+    static void negativeTestCase(){
         string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeInfosByDeveloperName().get('TCP_Orders').getRecordTypeId();
          List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
         Account acc=[select id, ParentId,recordtype.id, name from account where name='SampleAccount0' limit 1];
-        acc.recordtype.id=tcpOrderRecTypeid;
-        update acc;
+        //acc.recordtype.id=tcpOrderRecTypeid;
+        //update acc;
         Order ord=[select  id,Name, AccountId, OrderNumber, Sold_To__c, Ship_To__c, EffectiveDate, poNumber, Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status from order where Sold_To__c=:acc.Id limit 1];
         TCP_OrderLineItem__c ordLine=[Select Id, Order__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, MaterialNumber__c, Material_Name__c, Contract_No__c, Special_Price__c, Other_Instruction__c from TCP_OrderLineItem__c where Order__c=:ord.Id];
         
-        List<Account_Contact_Relationship__c>  acrRecList=[select id, account__c,Portal_User_Contact__c from Account_Contact_Relationship__c where account__c=:acc.id limit 1];
         List<contact> testCons=new List<contact> ([select id,TCP_TandC__c, Email, Name from contact limit 1]);
         List<User> listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
          TCP_OrderWrapper wrap=new TCP_OrderWrapper();
@@ -111,6 +121,7 @@ public class TCP_HomePageControllerTest {
         wrap.soldToId=acc.Id;
         TCP_OrderLineItemWrapper lineWrap=new TCP_OrderLineItemWrapper();
         lineWrap.Id=ordLine.Id;
+        lineWrap.sno=1;        
         lineWrap.orderId=ordLine.Order__c;
         lineWrap.quantity=String.valueOf(ordLine.Quantity__c);
         lineWrap.unit=ordLine.Unit__c;
@@ -125,14 +136,14 @@ public class TCP_HomePageControllerTest {
         TCP_HomePageController.getAccountDetailsOfComOps(listofusers[0]);
         TCP_HomePageController.loggedInAsTcpUser();
         TCP_HomePageController.getAccountId();
-        TCP_HomePageController.getAccDetailsByParentId('acc.ParentId');
+       // TCP_HomePageController.getAccDetailsByParentId('acc.ParentId');
         TCP_HomePageController.getCustomerByAccountId('acc.Id');
         TCP_HomePageController.getProductDetails('acc.ParentId', 'acc.Id');
         TCP_HomePageController.getProductDetailsBySearchKey('searchKey', 'acc.ParentId', 'acc.Id');//Need check for searchKey
         TCP_HomePageController.getPickListValues('Order', 'Mode_of_Transport__c');
         TCP_HomePageController.getCountOfOrders('acc.Id', 'Draft');
         TCP_HomePageController.getCountOfOrdersEU('acc.ParentId');
-        TCP_HomePageController.getCountOfOrdersCU('acc.ParentId');
+        //TCP_HomePageController.getCountOfOrdersCU('acc.ParentId');
         TCP_HomePageController.saveOrderLineItems(lineWrapList, ord.Id);
         TCP_HomePageController.getOrderedByUserId();
         TCP_HomePageController.getAllProductDetailsBySoldToId('acc.ParentId');

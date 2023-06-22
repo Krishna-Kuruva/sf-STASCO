@@ -9,7 +9,7 @@ public class TCP_TermsandConditionCtrlTest {
     static void createTestData() {
         
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+        TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
         
             
     }
@@ -19,10 +19,6 @@ public class TCP_TermsandConditionCtrlTest {
     @isTest 
     static void communityusersContactTest() {
        
-        List<contact> testCons=new List<contact> ([select id,TCP_TandC__c from contact limit 1]);
-        //List<User> listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
-        //List<User> listofusers=[select id,name,contactId,ProfileId,email from user where email='testuser2@test.com' limit 1];
-        boolean istrue=true;
         Test.startTest();
        		TCP_TermsandConditionCtrl.getCommUserContactId();
         Test.stopTest();
@@ -45,13 +41,11 @@ public class TCP_TermsandConditionCtrlTest {
             u.LocaleSidKey = 'en_US';
             u.ProfileId = profileId;
             u.TimeZoneSidKey = 'America/Los_Angeles';
-  			//u.ContactId=testCons[0].id;
-            u.Username = 'test1user001@test.com';
+  			u.Username = 'test1user001@test.com';
             u.Email = testCons[0].email;
             u.LastName = 'Test1';
             insert u;
         
-            boolean istrue=true;
         System.runAs(u){
                Test.startTest();
                 TCP_TermsandConditionCtrl.getCommUserContactId();

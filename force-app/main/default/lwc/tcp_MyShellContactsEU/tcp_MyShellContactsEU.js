@@ -3,21 +3,50 @@ import loggedInAsTcpUser from '@salesforce/apex/TCP_HomePageController.loggedInA
 import getAccountDetails from '@salesforce/apex/TCP_HomePageController.getAccountDetails';
 import getAccountDetailsforEnduser from '@salesforce/apex/TCP_HomePageController.getAccountDataOfEndUser';
 import getCommOpsContacts from '@salesforce/apex/TCP_MyShellContactsCtrl.getShellContacts';
+import { getRecord } from 'lightning/uiRecordApi';
+import USER_ID from '@salesforce/user/Id';
+import NAME_FIELD from '@salesforce/schema/User.TCP_Region__c';
 
 export default class Tcp_MyShellContactsEU extends LightningElement {
 @api soldtoid;
 @api customeroptionscu;
 @track customerOptions = [];
-
+@track currentUserRegion;
 @track logOnAsTCP;
-error;
+@track error;
 @track accountId;
 @track selectedObj;
-
-
+@track productsText='Products';
+@track nameText='Name';
+@track phoneText='Phone';
+@track emailText='Email';
 @track records;
-    @track errorMsg;   
-    
+@track errorMsg;  
+isEuropeUser;
+isEastUser;
+
+     @wire(getRecord, {
+         recordId: USER_ID,
+         fields: [NAME_FIELD]
+     }) wireuser({
+         error,
+         data
+     }) {
+         if (error) {
+            this.error = error ; 
+         } else if (data) {
+             this.currentUserRegion = data.fields.TCP_Region__c.value;
+             if(data.fields.TCP_Region__c.value==='EUROPE'){
+              this.isEuropeUser = true;
+             }else if(data.fields.TCP_Region__c.value==='EAST'){
+              this.isEastUser = true;
+             }
+                                  
+         }
+         
+         
+     }
+   
      //handle results
      handleOptionChange(event) {
         this.accountId=event.detail.value;
@@ -39,9 +68,10 @@ error;
   }
     constructor(){
         super();
+        
+        
         loggedInAsTcpUser().then(result=>{
             this.logOnAsTCP=result;
-            
 
         }).catch(error=>{
             this.error=error;

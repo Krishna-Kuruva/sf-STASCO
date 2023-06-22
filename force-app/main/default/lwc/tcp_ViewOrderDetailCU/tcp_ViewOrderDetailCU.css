@@ -42,9 +42,9 @@
     margin-right: 8px;
 }
 .mr2{
-    margin-right: 3px;
     cursor: pointer;
     vertical-align: top;
+    margin-left: -15px;
 }
 
 .textCapital{

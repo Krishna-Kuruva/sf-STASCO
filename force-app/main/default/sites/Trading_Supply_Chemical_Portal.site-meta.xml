@@ -8,14 +8,16 @@
     <allowStandardLookups>false</allowStandardLookups>
     <allowStandardPortalPages>true</allowStandardPortalPages>
     <allowStandardSearch>false</allowStandardSearch>
-    <authorizationRequiredPage>CommunitiesLogin</authorizationRequiredPage>
+    <authorizationRequiredPage>TCPLandingPage</authorizationRequiredPage>
     <bandwidthExceededPage>BandwidthExceeded</bandwidthExceededPage>
     <browserXssProtection>true</browserXssProtection>
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
+    <changePasswordPage>TCP_ChangePassword</changePasswordPage>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <enableAuraRequests>true</enableAuraRequests>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
+    <forgotPasswordPage>TCP_ForgotPassword</forgotPasswordPage>
     <genericErrorPage>Exception</genericErrorPage>
     <inMaintenancePage>InMaintenance</inMaintenancePage>
     <indexPage>CommunitiesLanding</indexPage>
@@ -23,8 +25,9 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <siteAdmin>n.mandapati@shell.com.stasco</siteAdmin>
-    <siteGuestRecordDefaultOwner>n.mandapati@shell.com.stasco</siteGuestRecordDefaultOwner>
+    <serverIsDown>SNA_Trading_Supply_Chemical_Portal1_sf_default_cdn_XhRsk</serverIsDown>
+    <siteAdmin>ashok.pelluru@shell.com.stasco</siteAdmin>
+    <siteGuestRecordDefaultOwner>ashok.pelluru@shell.com.stasco</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <urlPathPrefix>tradingandsupply</urlPathPrefix>
 </CustomSite>

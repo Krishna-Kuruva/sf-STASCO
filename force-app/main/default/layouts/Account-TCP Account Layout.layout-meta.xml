@@ -60,6 +60,22 @@
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_P94_Cust_ExternalID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_P94_Partner_Account_Group__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_P94_Sold_To_Account_Group__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_P94_Partner_Account_Number__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

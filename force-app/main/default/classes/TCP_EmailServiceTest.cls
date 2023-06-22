@@ -7,13 +7,11 @@ private class TCP_EmailServiceTest {
         List<contact> testContact= new List<contact>();
         List<Order> testOrders=new List<Order>();
         List<TCP_OrderLineItem__c> testOrderLineItem= new  List<TCP_OrderLineItem__c>();   
-        List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,true);
+        TCP_TestDataUtilities.createAccounts(1,true);
        string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         Account acc=[select id,name,recordtype.id,Active__c from account where name='SampleAccount0' limit 1];
         acc.recordtypeId=tcpAccountRecTypeid;
         update acc;
-        System.debug('Checking Record Type Id '+tcpAccountRecTypeid);
-        system.debug('checking '+ acc);
             testContact=TCP_TestDataUtilities.createContacts(1,acc);
             testOrders=TCP_TestDataUtilities.createOrders(1,acc);
                 for(Order testOrder:testOrders){

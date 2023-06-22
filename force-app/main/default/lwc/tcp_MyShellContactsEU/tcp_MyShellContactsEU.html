@@ -5,7 +5,86 @@
            <p>Provides an overview of your Commercial Operator contacts at Shell.</p>
         </div>
     </div>
-   <!-- for coomops Customer droup down-->
+    <template lwc:if={isEuropeUser}>
+     
+        <div class="slds-size_12-of-12" >
+            <div class="flex slds-grid slds-gutters ">
+                 <div class="slds-size_6-of-12 setPadding mb16">
+                     <div class="setTableVertical" >
+                         <table class="slds-table slds-table_fixed-layout tableSet" aria-label="My Shell Contacts table">
+                             <thead aria-hidden="true" class="slds-hide">
+                                 <tr class="noBorder">
+                                     <th></th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <td class="width25">{productsText}</td>
+                                     <td class="boldTd">STYRENE MONOMER</td>
+                                 </tr>
+                                 <tr>
+                                     <td class="width25">{nameText}</td>
+                                     <td class="boldTd">COMMERCIAL OPERATIONS TEAM - STYRENE</td>
+                                 </tr>
+                                 <tr>
+                                     <td class="width25">{phoneText}</td>
+                                     <td class="boldTd">+31 6 1566 6248</td>
+                                 </tr>
+                                 <tr>
+                                     <td class="width25">{emailText}</td>
+                                     <td
+                                       class="boldTd">
+                                       <p><lightning-formatted-email
+                                       value='GX-STR-STYRENEOPS@shell.com'
+                                       hide-icon></lightning-formatted-email></p></td>
+                                 </tr>
+                                 
+                             </tbody>
+                         </table>
+                        </div>
+                    </div>
+                         <div class="slds-size_6-of-12 setPadding mb16">
+                         <div class="setTableVertical" >
+                          
+                         <table class="slds-table slds-table_fixed-layout tableSet" aria-label="My Shell Contacts table">
+                            <thead aria-hidden="true" class="slds-hide">
+                                <tr class="noBorder">
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="width25">{productsText}</td>
+                                    <td class="boldTd">GLYCOLS</td>
+                                </tr>
+                                <tr>
+                                    <td class="width25">{nameText}</td>
+                                    <td class="boldTd">COMMERCIAL OPERATIONS TEAM - GLYCOLS</td>
+                                </tr>
+                                <tr>
+                                    <td class="width25">{phoneText}</td>
+                                    <td class="boldTd">+31 6 1566 6248</td>
+                                </tr>
+                                <tr>
+                                    <td class="width25">{emailText}</td>
+                                    <td
+                                      class="boldTd">
+                                      <p><lightning-formatted-email
+                                      value='GX-STR-GLYCOLOPS@shell.com'
+                                      hide-icon></lightning-formatted-email></p></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                     </div>
+                     
+                 </div>
+           
+             </div>
+         </div>
+    </template>
+    <template lwc:if={isEastUser}>
+   <!-- for coomops Customer droup down -->
     <div class="slds-size_12-of-12 mtb24">
         <div class="flex slds-grid slds-gutters">
             <div class="slds-size_4-of-12 setPadding setInput">
@@ -30,33 +109,40 @@
                 </div>
         </div>
     </div>
-  <!-- for coomops Customer droup down-->
+  <!-- for coomops Customer droup down -->
 
-  <!--<template for:each={records} for:item="conItem">-->
+ 
     <div class="slds-size_12-of-12" >
-      <!---->  <div class="flex slds-grid slds-gutters ">
+       <div class="flex slds-grid slds-gutters ">
         <template for:each={records} for:item="conItem">
             <div class="slds-size_6-of-12 setPadding mb16" key={conItem.Id}>
-                
                 <div class="setTableVertical" >
-                    <table cellspacing="0" width="100%" class="slds-table slds-table_fixed-layout" style="width:100%;">
-
+                    <table class="slds-table slds-table_fixed-layout tableSet" aria-label="My Shell Contacts table">
+                        <thead aria-hidden="true" class="slds-hide">
+                            <tr class="noBorder">
+                                <th></th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr key={conItem.Id}>
-                                <td style="width:25%">Products</td>
+                                <td class="width25">{productsText}</td>
                                 <td class="boldTd">{conItem.product}</td>
                             </tr>
                             <tr>
-                                <td style="width:25%">Name</td>
+                                <td class="width25">{nameText}</td>
                                 <td class="boldTd">{conItem.Name}</td>
                             </tr>
                             <tr>
-                                <td style="width:25%">Phone</td>
+                                <td class="width25">{phoneText}</td>
                                 <td class="boldTd">{conItem.Phone}</td>
                             </tr>
                             <tr>
-                                <td style="width:25%">Email</td>
-                                <td class="boldTd">  <p><lightning-formatted-email value={conItem.Email} hide-icon></lightning-formatted-email></p></td>
+                                <td class="width25">{emailText}</td>
+                                <td
+                                  class="boldTd">
+                                  <p><lightning-formatted-email
+                                  value={conItem.Email}
+                                  hide-icon></lightning-formatted-email></p></td>
                             </tr>
                             
                         </tbody>
@@ -67,6 +153,6 @@
         </template>
         </div>
     </div>
-     
+</template>
    
 </template>

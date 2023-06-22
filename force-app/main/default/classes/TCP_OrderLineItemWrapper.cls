@@ -30,6 +30,8 @@ public class TCP_OrderLineItemWrapper{
     public String dateType{get;set;}
     @AuraEnabled
     public Boolean quantityCheck{get;set;}
+    @AuraEnabled
+    public Integer sno{get;set;}
     
     @AuraEnabled
     public List<TCP_OrderLineItem__c> orderLineItemList{get;set;}

@@ -31,10 +31,10 @@
                                     <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have modified your approved order to your Shell Trading and Supply. This request needs to be reviewed again to take a effect of modifications placed.</p>
                                 </apex:outputPanel>
                                 <apex:outputPanel rendered="{!ChnOrd.Web_Order__r.TCP_Order_Status__c == 'Submitted'}">
-                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have modified your order to your Shell Trading and Supply</p>
+                                    <p style="font-family: verdana;font-face: verdana;font-size: 11px;">This is an acknowledgement that you have modified your order to your Shell Trading and Supply.</p>
                                 </apex:outputPanel>
                             </apex:repeat>
-                            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Please note that this is only an acknowledgement of receipt. Acceptance of your order is dependent on approval by appropriate Shell Trading and Supply Commercial Operations Team and will be confirmed if requested or required via a separate notification</p>
+                            <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Please note that this is only an acknowledgement of receipt. Acceptance of your order is dependent on approval by appropriate Shell Trading and Supply Commercial Operations Team and will be confirmed if requested or required via a separate notification.</p>
                             
                             <hr/>
                             <p align="Center"><b>{!$Label.TCP_Modify_Order}</b></p>
@@ -299,7 +299,7 @@
                     </tr>
                 </table>
                 <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Your Shell Trading and Supply Commercial operations Team will handle your order during normal business hours. If you have any problems or questions related to this order, please contact your Commercial operations Team.</p>
-                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">End User can view order details here -> <a style="font-family: verdana;font-face: verdana;font-size: 11px;font-weight: bold" href="{!siteURL}">{!ordNumber}</a> (Note: Only compatible with Desktop and Laptop)</p>
+                <p style="font-family: verdana;font-face: verdana;font-size: 11px;">End User can view order details here -> <a style="font-family: verdana;font-face: verdana;font-size: 11px;font-weight: bold" href="{!siteURL}">{!ordNumber}</a> (Note: Only compatible with Desktop and Laptop).</p>
                 <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Thank you,<br/>Shell Trading</p>
             </font>
         </body>

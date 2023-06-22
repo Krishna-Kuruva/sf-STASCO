@@ -16,11 +16,11 @@ export default class TCP_UserDropdownLWC extends LightningElement {
 
     handleChange(event) {
         this.value = event.detail.value; 
-        if (this.value == 'changePassword') {
+        if (this.value === 'changePassword') {
             this.changePasswordVal = true;            
             window.open(basePath.substring(0,basePath.length - 2) + "/TS_ChangePassword");
         }
-        else if (this.value == 'logout'){
+        else if (this.value === 'logout'){
             window.open(basePath.substring(0,basePath.length - 2) + "/TCP_Login","_self");
         }
             

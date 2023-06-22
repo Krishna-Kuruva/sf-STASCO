@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UnitInv__c</fullName>
+    <description>UnitInv</description>
+    <externalDeveloperName>UnitInv</externalDeveloperName>
+    <externalId>false</externalId>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>UnitInv</label>
+    <length>3</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

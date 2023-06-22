@@ -2,9 +2,7 @@
 public class TCP_STNSAPDataServiceTest {
 	@TestSetup
     static void createTestData() {
-        
-        List<Account> testAccounts=TCP_TestDataUtilities.createAccountsWithExternalId(1);
-        
+      TCP_TestDataUtilities.createAccountsWithExternalId(1);
     }
     @isTest
     static void fetchSTNSAPSoldToTest(){
@@ -24,7 +22,6 @@ public class TCP_STNSAPDataServiceTest {
         mock.DIST_CHNL__c='D';
         mock.PARTNER_FUNC__c='SP';
         mock.NAME__c='PayerAccount';
-       // mock.PARTNER_CNT__c='123';
         mock.BILLING_BLK__c='test';
         mock.DELIVERY_BLK__c='test1';
         mock.ORDER_BLK__c='ord';
@@ -36,7 +33,7 @@ public class TCP_STNSAPDataServiceTest {
         
         mock.INCO1__c='inco1';
         mock.INCO2__c='inco2';
-          mock.SHIP_COND__c='Bulk Cont. road/sea';
+        mock.SHIP_COND__c='Bulk Cont. road/sea';
         mock.DELETION_FLAG__c=true;
         mock.STATUS__c='shipped';
         mock.SALESORG__c='SETO';
@@ -64,7 +61,6 @@ public class TCP_STNSAPDataServiceTest {
         mock.DIST_CHNL__c='D';
         mock.PARTNER_FUNC__c='SH';
         mock.NAME__c='PayerAccount';
-       // mock.PARTNER_CNT__c='123';
         mock.BILLING_BLK__c='test';
         mock.DELIVERY_BLK__c='test1';
         mock.ORDER_BLK__c='ord';
@@ -105,7 +101,6 @@ public class TCP_STNSAPDataServiceTest {
         mock.DIST_CHNL__c='D';
         mock.PARTNER_FUNC__c='BP';
         mock.NAME__c='PayerAccount';
-       // mock.PARTNER_CNT__c='123';
         mock.BILLING_BLK__c='test';
         mock.DELIVERY_BLK__c='test1';
         mock.ORDER_BLK__c='ord';
@@ -116,7 +111,7 @@ public class TCP_STNSAPDataServiceTest {
         mock.POST_CODE__c='1234';
         mock.INCO1__c='inco1';
         mock.INCO2__c='inco2';
-          mock.SHIP_COND__c='Bulk Cont. road/sea';
+        mock.SHIP_COND__c='Bulk Cont. road/sea';
         mock.DELETION_FLAG__c=true;
         mock.STATUS__c='shipped';
         mock.SALESORG__c='SETO';
@@ -159,7 +154,7 @@ public class TCP_STNSAPDataServiceTest {
         mock.PARTNER_NO__c=acc.AccountNumber;
         mock.INCO1__c='inco1';
         mock.INCO2__c='inco2';
-          mock.SHIP_COND__c='Bulk Cont. road/sea';
+        mock.SHIP_COND__c='Bulk Cont. road/sea';
         mock.DELETION_FLAG__c=true;
         mock.STATUS__c='shipped';
         mock.SALESORG__c='SETO';

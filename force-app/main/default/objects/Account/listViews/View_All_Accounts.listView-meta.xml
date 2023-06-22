@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_All_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ACCOUNT_NUMBER</columns>
+    <columns>Active__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <columns>Customer_Type__c</columns>
+    <columns>PARENT_NAME</columns>
+    <columns>Sales_Area__c</columns>
+    <columns>TCP_Sales_Area_text__c</columns>
+    <columns>GSAP_Account_Number__c</columns>
+    <columns>Incoterms1__c</columns>
+    <columns>Mode_of_Transport__c</columns>
+    <columns>Partner_Function__c</columns>
+    <columns>TCP_STNSAP_ExternalId1__c</columns>
+    <columns>TCP_STNSAP_ExternalId2__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>View All Accounts</label>
+</ListView>

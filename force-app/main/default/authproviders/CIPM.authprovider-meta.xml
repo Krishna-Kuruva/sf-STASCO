@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://dev.account.shell.com/authorize</authorizeUrl>
+    <consumerKey>qa4cax6ftb74uq95y8j6pbpxabxvmkfp</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <executionUser></executionUser>
+    <friendlyName>CIPM</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <logoutUrl>https://stasco--devtcp.sandbox.my.site.com/tradingandsupply/TCPLandingPage</logoutUrl>
+    <providerType>OpenIdConnect</providerType>
+    <registrationHandler></registrationHandler>
+    <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+    <tokenUrl>https://dev.account.shell.com/token</tokenUrl>
+    <userInfoUrl>https://dev.account.shell.com/userinfo</userInfoUrl>
+</AuthProvider>

@@ -184,12 +184,6 @@
                    <apex:outputText value="{!FLOOR(rowNum)}"/>
                    <apex:variable var="rowNum" value="{!rowNum + 1}"/>
                 </td>
-                 <td style="padding:5px 10px;font-size:14px">
-                    Product Number:
-                </td>
-                <td style="padding:5px 10px;font-size:14px">
-                    {!LI.ProdNumber}
-                </td>
                 <td style="padding:5px 10px;font-size:14px">
                     Product:
                 </td>

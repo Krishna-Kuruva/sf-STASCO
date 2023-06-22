@@ -159,18 +159,22 @@
                             <tr>
                                 <td class="boldTd" style="width:25%">Fulfilled By</td>
                                 <td>{orderDetailList.fullfilledBy}</td>
+                                <td class="boldTd" style="width:25%">Sold To</td>
+                                <td>{orderDetailList.gsapSoldToName}</td>
+                            </tr>
+                            <tr>
                                 <td class="boldTd" style="width:25%">Late Order</td>
                                 <td>{orderDetailList.isLateOrderVal}</td>
-                            </tr>
-                            <tr>
                                 <td class="boldTd" style="width:25%">Rush Order</td>
                                 <td>{orderDetailList.isRushOrderVal}</td>
+                            </tr>
+                            <tr>                               
                                 <td class="boldTd" style="width:25%">Last Minute Changes</td>
                                 <td>{orderDetailList.isLastMinuteChangeVal}</td>
-                            </tr>
-                            <tr>
                                 <td class="boldTd" style="width:25%">Reviewed By</td>
                                 <td>{orderDetailList.reviewedBy}</td>
+                            </tr>
+                            <tr>                                
                                 <td class="boldTd" style="width:25%">Reviewed Date/Time</td>
                                 <td>{orderDetailList.reviewedDateTime}</td>
                             </tr>
@@ -204,8 +208,8 @@
                             </th>
 
                             <th class="" scope="col" style="width:20%">
-                                <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                                       Product Name
+                                <div class="slds-truncate slds-cell-fixed" title="Product Name/Code" style="margin-top: -9px">
+                                       Product Name/<br/>Code
                                 </div>
                             </th>
                             <th style="width:10%" class="" scope="col">
@@ -246,22 +250,29 @@
                     </thead>
                     <tbody>
                      <template for:each={ordLineItemList} for:item="product">
-                        <tr key={product.Id} class="slds-hint-parent">
+                        <tr key={product.Id} class={product.oliStatusAttr.customClass}>
                             <td style="width:6%">
-                                <div class="">
-                                    <template if:true={chevronrightShow}>
-                                        <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                <div class="slds-text-align_center">
+                                    <template lwc:if={chevronrightShow}>
+                                        <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
                                             alternative-text="chevronright button" title="chevronright"
+                                            onclick={showCollapseRow} size="xx-small" class="mr2">
+                                        </lightning-icon>
+                                    </template>
+                                    <template lwc:elseif={product.oliStatusAttr.expStatus}>
+                                        <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
+                                            alternative-text="chevronright Button" title="chevronright"
                                             onclick={showCollapseRow} size="xx-small" class="mr2">
                                         </lightning-icon>
                                     </template>
                                     {product.sno}
                                 </div>
                             </td>
+                            
                             <td style="width:20%">
-                                <div class="tooltip">
-                                    {product.Material_Name__c}
-                                    <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                <div class="productName">
+                                      {product.Material_Name__c}
+                                     <span class="tooltiptext">{product.MaterialNumber__c}</span>
                                 </div>
                             </td>
                             <td style="width:10%">
@@ -277,7 +288,6 @@
                             </td>
                             <td style="width:14%">
                                 <div>
-
                                     <lightning-formatted-date-time class="textCapital" value={product.Delivery_Collection_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
                                     
                                 </div>
@@ -305,7 +315,7 @@
                     
                         
                         <tr key={product.Id} style="visibility:collapse;height:0px !important" class={product.Id}>
-                            <td colspan="7">
+                            <td colspan="8">
                                     <table class="slds-table--fixed-layout" aria-label="View Order Details table">
                                         <thead aria-hidden="true" class="slds-hide">
                                             <tr class="noBorder">
@@ -313,12 +323,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <template if:true={chevronrightShow}>
                                         <tr class="noBorder">
                                             <td class="boldTd">Dispatch Date</td>
                                             <td>
                                                 <lightning-formatted-date-time class="textCapital" value={product.GSAP_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
                                                  
                                            </td>
+                                           <td class="boldTd">Loading Date</td>
+                                            <td>
+                                                <lightning-formatted-date-time class="textCapital" value={product.Expected_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+
+                                            </td>
                                         </tr>
                                         <tr class="noBorder">
                                             <td class="boldTd">Bol/Delivery</td>
@@ -341,6 +357,14 @@
                                             <td class="boldTd">Goods Issue Status</td>
                                             <td>{product.GSAP_Goods_Issue_Status__c}</td>
                                         </tr>
+                                        </template>
+                                        <template if:true={product.oliStatusAttr.expStatus}>
+                                            <tr class="noBorder">
+                                                <td class="boldTd width25">Alert <lightning-icon icon-name="utility:warning" alternative-text="Alert!" variant="error"
+                                                    title="Alert" size="xx-small"></lightning-icon></td>
+                                                <td>{product.oliStatusAttr.expStatus}</td>
+                                            </tr>
+                                        </template>
                                     </tbody>
                                     </table>
                                 </td>

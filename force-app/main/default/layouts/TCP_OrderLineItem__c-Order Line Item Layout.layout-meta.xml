@@ -16,10 +16,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Order_Line_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Delivery_Collection_Date__c</field>
             </layoutItems>
             <layoutItems>
@@ -86,12 +82,6 @@
                 <behavior>Edit</behavior>
                 <field>GSAP_Mode_of_Transport_ID__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>TCP_Modify_Cancel_Status__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Sales_Order_Line_Item_No__c</field>
@@ -147,6 +137,20 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Shipping_Street__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Cancelled_in_Submitted__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Invoice_Status__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_Modify_Cancel_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -208,7 +212,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3L000000K9mi</masterLabel>
+        <masterLabel>00h3H000000VdZ6</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

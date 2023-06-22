@@ -4,8 +4,8 @@ public class TCP_SAPRetry_ServiceTest {
     static void createTestData() {
         
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
-        List<Order> testOrder=TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
+        TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+        TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
         
     }
     @istest
@@ -43,9 +43,9 @@ public class TCP_SAPRetry_ServiceTest {
     
     @isTest
     static void testPositive2(){
-        //   Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
+        
         Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
+        TCP_TestDataUtilities.createOrderLineItems(1,ord);
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         
         Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];
@@ -59,7 +59,7 @@ public class TCP_SAPRetry_ServiceTest {
         mock1.Weborder__c=ord.OrderNumber;
         mock1.SalesItemNo__c='000010';
         mock1.Soldto__c=acc.GSAP_Account_Number__c;
-        //mock1.DueDate__c=dateFormat;
+        
         mock1.CustomerPoNo__c=ord.PoNumber;
         mock1.Quantity__c=ordLine.Quantity__c;
         mock1.ProductName__c=ordLine.Material_Name__c;
@@ -81,7 +81,7 @@ public class TCP_SAPRetry_ServiceTest {
             TCP_SAPRetry_Service.p31ModifyCancelRetry('completeString', 'ord.Id');
         }
         catch(Exception e){
-            
+            system.debug('testPositive2 exception=====>');
         }
         test.stopTest();
         System.assert(true);
@@ -90,9 +90,9 @@ public class TCP_SAPRetry_ServiceTest {
     
     @isTest
     static void testNegative2(){
-        //   Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
+        
         Order ord=[select id,Name,recordtype.id, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order limit 1];
-        List<TCP_OrderLineItem__c> ordLine1=TCP_TestDataUtilities.createOrderLineItems(1,ord);
+        TCP_TestDataUtilities.createOrderLineItems(1,ord);
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         
         Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];

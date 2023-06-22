@@ -16,6 +16,8 @@ import getCustomerBySoldToAndType from '@salesforce/apex/TCP_HomePageController.
 import getOrderedBySoldToId from '@salesforce/apex/TCP_HomePageController.getOrderedBySoldToId';
 import getOrderDetailsByFilter from '@salesforce/apex/TCP_OrderController.getOrderDetailsByFilter';
 import getOrderDetailsBySearchKey from '@salesforce/apex/TCP_OrderSearchController.getOrderDetailsBySearchKey';
+import getOrderDetailsByWONumber from '@salesforce/apex/TCP_OrderController.getOrderDetailsByWONumber';
+import fetchDeliveryNotedetails from '@salesforce/apex/TCP_OrderController.fetchDeliveryNotedetails';
 
 
 const custPo='Customer PO';
@@ -109,7 +111,11 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
     @track issearchText = false;
     @track clearFilterData = false;
     @track dateError = false;
+    @track isShowModalDnCreated = false;
     @track prodIdList=[];
+    @track dnMessage='';
+    @track rcMessage='';
+    @track cnMessage='';
     productNameCodeMap = new Map();
     productMap = new Map();
     deliveryToMap = new Map();
@@ -309,7 +315,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
    handleDownloadPDFEU(data){
         if(data){
         this.isLoadingEU=true;
-        generatePDF({orderNumber:data,soldToId:this.accountId}).then(response => {
+        generatePDF({orderNumber:data}).then(response => {
         console.log(response);
         if(response){
         const element = document.createElement('a');
@@ -329,7 +335,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
     }
 
     handleDownloadReportExcelEU(){
-        if(this.orderList && this.orderList.length>0){
+        if(this.orderList){
             this.isLoadingEU=true;
             const orderNumbersInReport=[];
             this.orderList.forEach(ord =>{
@@ -337,7 +343,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
 
             });
             
-            const columnHeader = ['Customer Name','Web Order Number',custPo,'Order Name',devTo,'Product Number','Product','Invoice To','Status','Delivery/Collection Date','Quantity','Unit','Ordered Quantity in TO','Shell Contract No.','Shell Ref No.','Goods Issue Date','Goods Issue','Goods Issue Unit','Goods Issue Quantity in TO','Goods Issue status','Mode of Transport','Dispatch Date','Delivery Term','Other Instruction','Instructions','Ordered by','Ordered Date','Bol/Delivery','Mode of Transport ID','Remarks from Comm Ops','Modified By','Modified Date','Cancelled By','Cancelled Date'];
+            const columnHeader = ['Customer Name','Web Order Number',custPo,'Order Name',devTo,'Product Code','Product','Invoice To','Status','Delivery/Collection Date','Quantity','Unit','Ordered Quantity in TO','Shell Contract No.','Shell Ref No.','Goods Issue Date','Goods Issue','Goods Issue Unit','Goods Issue Quantity in TO','Goods Issue status','Loading Date','Mode of Transport','Dispatch Date','Delivery Term','Other Instruction','Instructions','Ordered by','Ordered Date','Bol/Delivery','Mode of Transport ID','Remarks from Comm Ops','Modified By','Modified Date','Cancelled By','Cancelled Date'];
             
             getOrderEUReport({soldToId:this.accountId, ordersInReport:orderNumbersInReport})
             .then(result=>{
@@ -424,10 +430,11 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
             doc += this.handleHtmlNullTextCheck(lineItem[item].Contract_No__c);
             doc += this.handleHtmlNullTextCheck(result[key].salesordernumber);
             doc += this.handleHtmlNullDCheck(lineItem[item].GSAP_Goods_Issue_Date__c);
-            doc += this.handleHtmlNullCheck(lineItem[item].GSAP_Goods_Issue_Value__c);
+            doc += this.handleHtmlNullCheckQuantity(lineItem[item].GSAP_Goods_Issue_Value__c);
             doc += this.handleHtmlNullCheck(lineItem[item].GSAP_Goods_Issue_Unit__c);
             doc += this.handleHtmlNullCheckUnit(lineItem[item].GSAP_Goods_Issue_Unit__c,lineItem[item].GSAP_Goods_Issue_Value__c);
             doc += this.handleHtmlNullTextCheck(lineItem[item].GSAP_Goods_Issue_Status__c);
+            doc += this.handleHtmlNullDCheck(lineItem[item].Expected_Dispatch_Date__c);
             doc += this.handleHtmlNullCheck(result[key].modeOfTransport);
             doc += this.handleHtmlNullDCheck(lineItem[item].GSAP_Dispatch_Date__c);
             doc += this.handleHtmlNullCheck(result[key].deliveryTerms);
@@ -456,6 +463,14 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
         }
     }
 
+    handleHtmlNullCheckQuantity(inputValue){
+        if(inputValue){
+            return `<td>${inputValue}</td>`;
+        }else{
+            return '<td>0</td>';
+        }
+    }
+
     handleHtmlNullTextCheck(inputValue){
         if(inputValue){
             return `<td id="textTD">${inputValue}</td>`;
@@ -472,7 +487,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
                 return `<td>${inputValue}</td>`; 
             }
         }else{
-            return '<td></td>';
+            return '<td>0</td>';
         }
 
     }
@@ -516,7 +531,10 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
                             this.wrapList[3] = this.searchTerm ? this.searchTerm : '';
                         }
                     }
-                this.navigateToModifyOrder(data,this.euselectedtile, this.wrapList, 'Modify Order Action');
+                window.console.log('data.soldToId'+data.soldToId);
+                window.console.log('row.WebOrderNo'+row.WebOrderNo);
+                this.isLoadingEU = true;
+                this.fetchDnDetails(data.soldToId,row.WebOrderNo)
                 break;
             case 're_order':
                     this.wrapList = [];  
@@ -560,12 +578,79 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
     navigateToReOrder(data,type,filterdata){
         this.dispatchEvent(new CustomEvent('reorder',{detail : {"data":data, "type":type, "filterdata": filterdata}}));
     }
+    
+    fetchDnDetails(soldTo,webOrderNo){
+        window.console.log('fetchDnDetails');
+        this.dnMessage='';
+        this.rcMessage='';
+        this.cnMessage='';
+    fetchDeliveryNotedetails({soldToId : soldTo})
+         .then(result=>{
+            window.console.log('result'+JSON.stringify(result));
+            if(result==='Success'){
+            this.getOrderwithWebOrderNumber(webOrderNo);
+            }
+         })
+         .catch(error => {
+            this.isLoadingEU = true;
+             this.error = error;
+             window.console.log('error in DN'+JSON.stringify(this.error));
+         });
+    }
+
+    getOrderwithWebOrderNumber(webordnumber){
+        //call apex method
+        getOrderDetailsByWONumber({woNumber : webordnumber})
+         .then(result=>{
+             var recordData = result;
+             if(result){
+                let editAllowed=false; 
+                const data = recordData[0];
+                const updOliList=data.orderLineItemList;
+                for(let i=0; i<updOliList.length;i++){
+                    window.console.log(i);
+                    let j=i+1;
+                    if((!updOliList[i].GSAP_Bol_Delivery__c)&&(updOliList[i].TCP_Modify_Cancel_Status__c!=='Cancelled')&&(updOliList[i].TCP_Modify_Cancel_Status__c!=='Cancellation')){
+                        editAllowed=true; 
+                    }else if(updOliList[i].GSAP_Bol_Delivery__c){
+                        this.dnMessage=this.getNotifyText(this.dnMessage,j);
+                    }else if(updOliList[i].TCP_Modify_Cancel_Status__c==='Cancelled'){
+                        this.cnMessage=this.getNotifyText(this.cnMessage,j);
+                    }else if(updOliList[i].TCP_Modify_Cancel_Status__c==='Cancellation'){
+                        this.rcMessage=this.getNotifyText(this.rcMessage,j);
+                    }
+                }
+                if(editAllowed){
+                    this.navigateToModifyOrder(data,this.euselectedtile, this.wrapList, 'Modify Order Action');
+                }else{
+                    this.isShowModalDnCreated=true;
+                }
+                this.isLoadingEU = false;
+                }
+            
+         })
+         .catch(error => {
+            this.isLoadingEU = false;
+             this.error = error;
+             window.console.log('error in web order details'+JSON.stringify(this.error));
+         });
+    }
+
+    getNotifyText(prev,add){
+        if(prev){
+            return `${prev}, ${add}`;
+        }else{
+            return add;
+        }
+    }
 
     filterClick(){
         this.filterSection = true;
         this.isStatusActive = true;
        // this.isProductActive = true;
         this.populateFilterPickListData();
+        this.clearStatusData();
+        this.clearProductData();
     }
 
     placeOrderClick(){
@@ -618,6 +703,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
            { label: 'None', value: 'None' },
            { label: 'Delivery Date', value: 'DeliveryDate' },
            { label: 'Dispatch Date', value: 'DispatchDate' },
+           { label: 'Loading Date', value: 'LoadingDate' },
        ];
    }
 
@@ -843,11 +929,11 @@ populateFilterPickListData(){
         this.disableDate = true;
         this.dateError = false;
 
-        if(this.orderStatus && this.orderStatus.length >0){
+        if(this.orderStatus && this.orderStatus.length >0 && this.filterSection){
             this.template.querySelector('c-tcp_multi-select').clearStatusPills();
         }
         this.orderStatus = '';
-        if(this.selectedProduct && this.selectedProduct.length>0)
+        if(this.selectedProduct && this.selectedProduct.length>0 && this.filterSection)
           {
             this.template.querySelector('c-tcp_-product-multi-select').clearStatusPills();
             }       
@@ -872,6 +958,8 @@ populateFilterPickListData(){
         this.orderWrapper = {};
         this.orderLineWrapper = {};
         this.activeFilters = [];
+        this.prodNameList=[];
+       
         if(this.soldtoid && this.soldtoid.length >0){
             this.orderWrapper.soldToId = this.soldtoid;
             if(this.customerPo && this.customerPo.length >0){
@@ -1111,7 +1199,7 @@ populateFilterPickListData(){
         this.isLoadingEU = true;
         let soldToIds = [];
         soldToIds = [...soldToIds,this.soldtoid];
-        getOrderDetailsBySearchKey({soldToId: this.soldtoid, searchKey: this.searchTerm.toLowerCase(), defaultStatus: this.defaultStatusOnSearch, userType: this.userType, selectedTile: this.euselectedtile})
+        getOrderDetailsBySearchKey({soldToIds: soldToIds, searchKey: this.searchTerm.toLowerCase(), defaultStatus: this.defaultStatusOnSearch, userType: this.userType, selectedTile: this.euselectedtile})
         .then(result=>{
             if(result && result.length>0){
                 this.isSearchActive = true;
@@ -1234,6 +1322,9 @@ populateFilterPickListData(){
     handleCloseModal() {  
         this.isShowModal = false;
     }
+    hideModalDnCreated(){
+        this.isShowModalDnCreated=false;
+    }
 
     handleSearchClick(event){
         if(this.searchTerm && this.searchTerm.length>2){
@@ -1301,6 +1392,14 @@ populateFilterPickListData(){
         if(this.orderStatus.length==0){
             this.template.querySelector('c-tcp_multi-select').clearStatusPills();
         }
+    }
+    clearProductData(){
+        window.console.log('Coming to product data');
+        if(this.selectedProduct.length===0){
+            window.console.log('hecking coming inside');
+            this.template.querySelector(this.tcpProductMultiSelect).clearStatusPills();
+        }
+        
     }
 
     scrollToTopOfPage(){

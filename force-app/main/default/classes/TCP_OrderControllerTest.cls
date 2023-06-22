@@ -4,23 +4,21 @@
 ***************************************************************************************************************************/
 @isTest(SeeAllData=false)
 public class TCP_OrderControllerTest {
-
+static final String PREVIOUS_ORDERS = 'Previous Orders';
 @TestSetup
 static void createTestData() {
     List<User> listofusers=new List<user>();
-    system.debug('Checking1' + listofusers);
      List<Account> testAccounts=new List<Account>();
       User us=TCP_TestDataUtilities.createAdminUsers();
         System.runAs(us){
-        
         testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+        TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
         List<contact> testCons=new List<contact> ([select id,TCP_TandC__c,Email,Name from contact limit 1]);
        	listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
         }
             System.runAs(listofusers[0]) {
                  List<Order> testOrders=TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
-           		 List<TCP_OrderLineItem__c> testOrderLineItem=TCP_TestDataUtilities.createOrderLineItems(1,testOrders[0]);
+           		 TCP_TestDataUtilities.createOrderLineItems(1,testOrders[0]);
             
               }
 }
@@ -29,13 +27,13 @@ static void createTestData() {
 static void generatePDFTest() {
        List<Order> testOrderRec=new List<Order>([select id,ordernumber,Accountid from order limit 1]);
        Test.startTest();
-       String positiveData=TCP_OrderController.generatePDF(testOrderRec[0].ordernumber,testOrderRec[0].Accountid);
-       String NegativeData=TCP_OrderController.generatePDF(null,null);
-       String NegativeData2=TCP_OrderController.generatePDF(testOrderRec[0].ordernumber,'randomValue');
+       String positiveData=TCP_OrderController.generatePDF(testOrderRec[0].ordernumber);
+       String negativeData=TCP_OrderController.generatePDF(null);
+       String negativeData2=TCP_OrderController.generatePDF('randomValue');
        Test.stopTest();
        System.assertEquals(True, !string.isBlank(positiveData)?true:false);
-       System.assertEquals(True, string.isBlank(NegativeData)?true:false);
-       System.assertEquals(True, string.isBlank(NegativeData2)?true:false);
+       System.assertEquals(True, string.isBlank(negativeData)?true:false);
+       System.assertEquals(True, string.isBlank(negativeData2)?true:false);
     }
 
 @isTest 
@@ -47,12 +45,12 @@ static void getOrderReportEU() {
        }
        Test.startTest();
        List<TCP_OrderWrapper> positiveData=TCP_OrderController.getOrderEUReport(testOrderRecords[0].Accountid, orderNumbers);
-       List<TCP_OrderWrapper> NegativeData=TCP_OrderController.getOrderEUReport(null,null);
-       List<TCP_OrderWrapper> NegativeData2=TCP_OrderController.getOrderEUReport(testOrderRecords[0].Accountid,null);
+       List<TCP_OrderWrapper> negativeData=TCP_OrderController.getOrderEUReport(null,null);
+       List<TCP_OrderWrapper> negativeData2=TCP_OrderController.getOrderEUReport(testOrderRecords[0].Accountid,null);
        Test.stopTest();
        System.assertEquals(True, !positiveData.isEmpty()?true:false);
-       System.assertEquals(null, NegativeData);
-       System.assertEquals(null, NegativeData2);
+       System.assertEquals(null, negativeData);
+       System.assertEquals(null, negativeData2);
     }
 
 
@@ -60,25 +58,27 @@ static void getOrderReportEU() {
 static void getOrderReportCU() {
        List<Order> testOrderRecords=new List<Order>([select id,ordernumber,Accountid from order]);
        List<String> orderNumbers=new List<String>();
+       List<String> accIds=new List<String>();
        for(order o:testOrderRecords){
             orderNumbers.add(o.ordernumber);
+            accIds.add(o.Accountid);
        }
        Test.startTest();
-       List<TCP_OrderWrapper> positiveData=TCP_OrderController.getOrderCUReport(testOrderRecords[0].Accountid, orderNumbers);
-       List<TCP_OrderWrapper> NegativeData=TCP_OrderController.getOrderCUReport(null,null);
-       List<TCP_OrderWrapper> NegativeData2=TCP_OrderController.getOrderCUReport(testOrderRecords[0].Accountid,null);
+       List<TCP_OrderWrapper> positiveData=TCP_OrderController.getOrderCUReport(accIds, orderNumbers);
+       List<TCP_OrderWrapper> negativeData2=TCP_OrderController.getOrderCUReport(accIds,null);
        Test.stopTest();
        System.assertEquals(True, !positiveData.isEmpty()?true:false);
-       System.assertEquals(null, NegativeData);
-       System.assertEquals(null, NegativeData2);
+       System.assertEquals(null, negativeData2);
     }
     
-    @isTest
+   @isTest
 	public static void testGetOrderDetailsBySoldToIdCU(){
     	List<Order> ordData =new List<Order>([select id,ordernumber,Accountid from order limit 1]);
+        List<string> accId  =new List<String>();
+        accId.add(ordData[0].Accountid);
         Test.startTest();
-        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsBySoldToIdCU(ordData[0].Accountid, 'Current Orders');
-        List<TCP_OrderWrapper> resp1 = TCP_OrderController.getOrderDetailsBySoldToIdCU(ordData[0].Accountid, 'Order History');
+        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsBySoldToIdCU(accId, 'Current Orders');
+        TCP_OrderController.getOrderDetailsBySoldToIdCU(accId, 'Order History');
 		Test.stopTest();
         System.assert(resp.size()>0);
     }
@@ -87,7 +87,7 @@ static void getOrderReportCU() {
 	public static void testGetOrderDetailsBySoldToIdEU(){
     	List<Order> ordData =new List<Order>([select id,ordernumber,Accountid from order limit 1]);
         Test.startTest();
-        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsBySoldToIdEU(ordData[0].Accountid, 'Previous Orders');
+        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsBySoldToIdEU(ordData[0].Accountid, PREVIOUS_ORDERS);
 		Test.stopTest();
         System.assert(resp.size()>0);
     }
@@ -95,7 +95,7 @@ static void getOrderReportCU() {
     @isTest
 	public static void testGetOrderLineItemsByOrderId(){
     	List<Order> ordData =new List<Order>([select id,ordernumber,Accountid from order limit 1]);
-        List<TCP_OrderLineItem__c> ordLineList = TCP_TestDataUtilities.createOrderLineItems(2, ordData[0]);
+        TCP_TestDataUtilities.createOrderLineItems(2, ordData[0]);
         Test.startTest();
         List<TCP_OrderLineItem__c> resp = TCP_OrderController.getOrderLineItemsByOrderId(ordData[0].Id);
         Test.stopTest();
@@ -108,7 +108,6 @@ static void getOrderReportCU() {
         TCP_OrderWrapper ordWrap = new TCP_OrderWrapper();
         ordWrap.id = ordData[0].Id;
         ordWrap.status = 'Approved';
-        //ordWrap.isThirdParty = true;
         ordWrap.isChemicalGSAP= true;
         ordWrap.isRushOrder = true;
         ordWrap.isLateOrder = true;
@@ -117,7 +116,6 @@ static void getOrderReportCU() {
         Test.startTest();
         Order resp = TCP_OrderController.updateOrderReviewDetails(ordWrap);
         Test.stopTest();
-        System.debug('Order response:'+resp);
 		System.assertEquals(ordWrap.status, resp.TCP_Order_Status__c);
     }
     
@@ -134,8 +132,7 @@ static void getOrderReportCU() {
         Test.startTest();
         Order resp = TCP_OrderController.updateOrderReviewDetails(ordWrap);
         Test.stopTest();
-        System.debug('Order response:'+resp);
-		System.assertEquals(ordWrap.status, resp.TCP_Order_Status__c);
+        System.assertEquals(ordWrap.status, resp.TCP_Order_Status__c);
     }
     
     @isTest
@@ -152,14 +149,13 @@ static void getOrderReportCU() {
         Test.startTest();
         Order resp = TCP_OrderController.updateOrderReviewDetails(ordWrap);
         Test.stopTest();
-        System.debug('Order response:'+resp);
 		System.assertEquals(ordWrap.status, resp.TCP_Order_Status__c);
     }
     
     @isTest
 	public static void testGetOrderDetailsByWONumber(){
     	List<Order> ordData =new List<Order>([select id,ordernumber,Accountid from order limit 1]);
-        List<TCP_OrderLineItem__c> ordLineList = TCP_TestDataUtilities.createOrderLineItems(2, ordData[0]);
+        TCP_TestDataUtilities.createOrderLineItems(2, ordData[0]);
         Test.startTest();
         List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsByWONumber(ordData[0].ordernumber);
         Test.stopTest();
@@ -171,18 +167,8 @@ static void getOrderReportCU() {
     	Order ordData = TCP_TestDataUtilities.createOrderWithGSAPData('Approved');
         List<Product2> prodList = TCP_TestDataUtilities.createProducts(1);
         List<TCP_OrderLineItem__c> ordLineList = TCP_TestDataUtilities.createOrderLineItems(1, ordData);
-        List<contact> testCons=new List<contact> ([select id,TCP_TandC__c, Email, Name from contact limit 1]);
-       // List<User> listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
         List<User> listofusers = new List<user>();
         listofusers  = [select Id,UserName, Email from user where UserName ='testuserAdminDataUtility@test.com'];
-        System.debug('Checking list size '+listofusers.size());
-        system.runas(listofusers[0]){
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'TCP_Commercial_Operational_Permission_Set'];
-        insert new PermissionSetAssignment(AssigneeId = listofusers[0].id, PermissionSetId = ps.Id);
-        }   
-        System.debug('Checking Id'+ [SELECT AssigneeId FROM PermissionSetAssignment WHERE Assignee.Username='testuserAdminDataUtility@test.com']);
-        system.debug('Checking2' + listofusers);
-        
         ordLineList[0].Product__c = prodList[0].Id;
         update ordLineList;
         TCP_OrderWrapper ordWrap = new TCP_OrderWrapper();
@@ -210,17 +196,18 @@ static void getOrderReportCU() {
         ordWrap2.fullfilledBy = 'ThirdParty';
         ordWrap2.orderPriority = 'Late Order';
     	system.runas(listofusers[0]){
+       
         Test.startTest();
-        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsByFilter(ordWrap, ordLineWrap,'','End User','Previous Orders');
-        List<TCP_OrderWrapper> resp2 = TCP_OrderController.getOrderDetailsByFilter(ordWrap2, ordLineWrap,'Approved','Comm Ops User','Previous Orders');
+        List<TCP_OrderWrapper> resp = TCP_OrderController.getOrderDetailsByFilter(ordWrap, ordLineWrap,'','End User',PREVIOUS_ORDERS);
+        List<TCP_OrderWrapper> resp2 = TCP_OrderController.getOrderDetailsByFilter(ordWrap2, ordLineWrap,'Approved','Comm Ops User',PREVIOUS_ORDERS);
         Test.stopTest();
         
-		//System.assert(resp.size()>0);
-       	//System.assertEquals(ordWrap.poNumber, resp[0].poNumber);
+		// System.assert(resp.size()>0);
+        //System.assertEquals(ordWrap.poNumber, resp[0].poNumber);
         //System.assertEquals(ordWrap.deliveryTerms, resp[0].deliveryTerms);
         //System.assertEquals(ordWrap.modeOfTransport, resp[0].modeOfTransport);
         //System.assert(resp2.size()>0);
-        //System.assertEquals(ordWrap2.deliveryTerms, resp2[0].deliveryTerms);
+       //System.assertEquals(ordWrap2.deliveryTerms, resp2[0].deliveryTerms);
         //System.assertEquals(ordWrap2.modeOfTransport, resp2[0].modeOfTransport);
         }
     }
@@ -238,10 +225,8 @@ static void getOrderReportCU() {
             String resp = TCP_OrderController.validateMappingReference(ordData[0].Id);
             Test.stopTest();
         	System.assertEquals('Failed', resp);
-            
-            
         }catch(Exception e){
-            
+            System.debug('Failed');
         }
         
     }
@@ -266,7 +251,7 @@ static void getOrderReportCU() {
         testOrderRec[0].TCP_Order_Status__c='Approved';
         testOrderRec[0].Is_Order_Confirmed__c=false;
         Update testOrderRec;
-         
+         system.debug('Testing OrderRec'+testOrderRec[0].Accountid);
         test.startTest();
         TCP_OrderController.fetchGSAPCurrentOrders(testOrderRec[0].Accountid);
         test.stopTest();
