@@ -3,12 +3,12 @@
     <authorizeUrl>https://dev.account.shell.com/authorize</authorizeUrl>
     <consumerKey>qa4cax6ftb74uq95y8j6pbpxabxvmkfp</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
-    <executionUser>tcpsuperuser@stasco.com.devtcp</executionUser>
+    <executionUser>tcpsuperuser@stasco.com.tcpqa2</executionUser>
     <friendlyName>CIPM</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <logoutUrl>https://stasco--devtcp.sandbox.my.site.com/tradingandsupply/TCPLandingPage</logoutUrl>
     <providerType>OpenIdConnect</providerType>
-    <registrationHandler></registrationHandler>
+    <registrationHandler>TCP_OpenId_RegistrationHandler</registrationHandler>
     <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>false</sendSecretInApis>
