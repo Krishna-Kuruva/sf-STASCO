@@ -612,6 +612,11 @@ public with sharing class TCP_GSAPDataService {
         return data;
     }
     
+    @future
+    public static void  getDeliveryDetailsAsync(string completeString, string soldtoID, string stnsapSoldTo){
+        getDeliveryDetails(completeString,soldtoID,stnsapSoldTo);
+    }
+    
     public static void getDeliveryDetails(string completeString, string soldtoID,string stnsapSoldTo){
         try{
             CurrentOrdersDelivery__x lstGetDelivery = new CurrentOrdersDelivery__x();

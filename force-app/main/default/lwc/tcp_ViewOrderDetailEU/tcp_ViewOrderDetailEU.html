@@ -437,13 +437,13 @@
                 <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
                 <p>You are not allowed to modify the order since</p>
                 <template if:true={dnMessage}>
-                <p>Sl. No {dnMessage}  has DN (Delivery Note)</p>
+                <p>S. No {dnMessage}  has DN (Delivery Note)</p>
                 </template>
                 <template if:true={cnMessage}>
-                <p>Sl. No {cnMessage}  is Cancelled</p>
+                <p>S. No {cnMessage}  is Cancelled</p>
                 </template>
                 <template if:true={rcMessage}>
-                <p>Sl. No {rcMessage}  has RC (Requested for Cancellation)</p>
+                <p>S. No {rcMessage}  has RC (Requested for Cancellation)</p>
                 </template>
                 <div class="modalBtn">
                     <button class="slds-button yellowBtn" onclick={hideModalDnCreated} aria-label="yellow background color okay">Okay</button>

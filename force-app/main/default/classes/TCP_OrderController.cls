@@ -413,7 +413,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
     }
     //method to handle order confirmation service
     @AuraEnabled(cacheable=false)
-    public static string fetchDeliveryNotedetails(String soldToId){
+    public static string fetchDeliveryNotedetails(String soldToId, boolean asyncRequest){
         List<Account> accountList = new List<Account>();
         accountList = [SELECT id, AccountNumber, GSAP_Account_Number__c, toLabel(Customer_Type__c) FROM Account where id=: soldToId and RecordTypeId=:tcpAccountRecTypeid  LIMIT 1];
                   
@@ -430,7 +430,12 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                     string completeString = 'SELECT Soldto__c,SalesItemNo__c,BolDeliveryNo__c,Status__c,Weborder__c,BolDelItemNo__c,MotId__c, mot__c FROM CurrentOrdersDelivery__x where ';
                     completeString = completeString+'Soldto__c=\''+gsapSoldToNo+'\' '+' and '+' Months__c=\''+string.valueof(monthsDiff)+'\' and '+' (Status__c=\'Confirmed\' or Status__c!=\'Shipped\')';                    
                     system.debug('completeString=====>'+completeString);  
-                    TCP_GSAPDataService.getDeliveryDetails(completeString, gsapSoldToNo, stnsapSoldToAccNo);     
+                    if(asyncRequest==false){
+                    	TCP_GSAPDataService.getDeliveryDetails(completeString, gsapSoldToNo, stnsapSoldToAccNo);
+                    }else{
+                        TCP_GSAPDataService.getDeliveryDetailsAsync(completeString, gsapSoldToNo, stnsapSoldToAccNo);
+                    }
+                    
                     return 'Success';
                 }else{
                     System.debug('ERROR ==> missing GSAP Sold to Mapping reference');

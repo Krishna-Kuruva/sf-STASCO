@@ -28,16 +28,16 @@ public with sharing class TCP_DeliveryNoteQueueable implements Queueable, Databa
             jrAudit.RE_User__c = UserInfo.getUserId();
             jrAudit.RE_Job_Run_Count__c = 1;
             jrAudit.RE_Job_Status__c='Processing';
-            //insert jrAudit;
+            insert jrAudit;
             if(!soldToIds.isEmpty()){
                 for(string tempSoldID :  soldToIds){
-                    TCP_OrderController.fetchDeliveryNotedetails(tempSoldID);
+                    TCP_OrderController.fetchDeliveryNotedetails(tempSoldID,true);
                 }
             }
             
             //Finalizer class to manage final actions based on outcome of current job
-            //TCP_Queueable_finalizer tcpFinalActions = new TCP_Queueable_finalizer(jrAudit);
-            //System.attachFinalizer(tcpFinalActions);
+            TCP_Queueable_finalizer tcpFinalActions = new TCP_Queueable_finalizer(jrAudit);
+            System.attachFinalizer(tcpFinalActions);
             }
         catch(Exception e){
             system.debug('Exception in TCP_DeliveryNoteQueueable class : '+e.getMessage()+'line : '+e.getLineNumber());
