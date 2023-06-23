@@ -1,6 +1,6 @@
-import { LightningElement, track, wire, api } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 
-import TCP_RoundCheck_icon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
+import TCPRoundCheckicon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
 import getContacts from '@salesforce/apex/TCP_MyCompanyUsersController.getShellContacts';
 import getNewRequestDetails from '@salesforce/apex/TCP_MyCompanyUsersController.getNewRequestDetails';
 import getComplaintDetails from '@salesforce/apex/TCP_MyCompanyUsersController.getComplaintDetails';
@@ -9,9 +9,9 @@ import getEnquiryDetails from '@salesforce/apex/TCP_MyCompanyUsersController.get
 import loggedInAsTcpUser from '@salesforce/apex/TCP_HomePageController.loggedInAsTcpUser';
 import getAccountDetails from '@salesforce/apex/TCP_HomePageController.getAccountDetails';
 
-export default class Tcp_ContactUs extends LightningElement {
+export default class TCPContactUs extends LightningElement {
 
-    TCP_RoundCheck_icon = TCP_RoundCheck_icon;
+    TCPRoundCheckicon = TCPRoundCheckicon;
     @track convalue;
     @track showError;
     @track typeOffeedbackValue;
@@ -58,7 +58,7 @@ export default class Tcp_ContactUs extends LightningElement {
     wiredAccounts({ data, error }) {
 
         if (data) {
-            for (let key in data) {
+            for (const key in data) {
                 this.accountData = data;
                 const option = {
                     label: data[key].Name,
@@ -68,7 +68,7 @@ export default class Tcp_ContactUs extends LightningElement {
                 
             }
             if(!this.commpos){
-            if (this.accountData.length == 1) {
+            if (this.accountData.length === 1) {
                 this.value = this.customerOptions[0].value;
                 this.custName = this.customerOptions[0].label;
                 this.accId = this.customerOptions[0].value;
@@ -78,7 +78,7 @@ export default class Tcp_ContactUs extends LightningElement {
             }
         }
 
-            this.error = undefined;
+            this.error = null;
         }
         else if (error) {
             this.isLoading = false;
@@ -97,16 +97,16 @@ export default class Tcp_ContactUs extends LightningElement {
             else {
                 this.commpos = false;
                 if (this.parentaccid !== null) {
-                    let data = this.parentaccid;
+                    const data = this.parentaccid;
                     this.fetchContacts(data);
                 }
             }
             
-            this.error = undefined;
+            this.error = null;
         })
             .catch(error => {
                 this.error = error;
-                this.name = undefined;
+                this.name = null;
                 window.console.log('ERROR====>' + JSON.stringify(this.error));
             });
 
@@ -115,12 +115,12 @@ export default class Tcp_ContactUs extends LightningElement {
     handleAccountChange(event) {
         this.accId = event.target.value;
         this.value=event.target.value;
-        let data = event.target.value;
+        const data = event.target.value;
         this.fetchContacts(data);
     }
 
     fetchContacts(data) {
-        getContacts({ AccountId: this.accId })
+        getContacts({ accountId: this.accId })
             .then(result => {
                 this.contacts = result.map((cls) => Object.assign({}, { label: cls.Contact_Name__c, value: cls.Id }));
             })
@@ -145,10 +145,10 @@ export default class Tcp_ContactUs extends LightningElement {
 
     handletypeOffeedbackChange(event) {
         
-        let value = event.detail.value;
+        const value = event.detail.value;
         this.feedbackType = event.detail.value;
         this.typeOffeedbackValue = event.detail.value;
-        if (value == 'RequestNewUser') {
+        if (value === 'RequestNewUser') {
 
             this.complaint = false;
             this.comment = false;
@@ -156,13 +156,13 @@ export default class Tcp_ContactUs extends LightningElement {
             this.inquiry = false;
             this.enableSubmit = false;
         }
-        else if (value == 'Comment') {
+        else if (value === 'Comment') {
             this.complaint = false;
             this.comment = true;
             this.requestNewUser = false;
             this.inquiry = false;
             this.description = '';
-            if (this.conId == '' || this.description == '') {
+            if (this.conId === '' || this.description === '') {
                 this.enableSubmit = false;
             }
             else {
@@ -170,7 +170,7 @@ export default class Tcp_ContactUs extends LightningElement {
             }
 
         }
-        else if (value == 'Complaint') {
+        else if (value === 'Complaint') {
             this.complaint = true;
             this.comment = false;
             this.requestNewUser = false;
@@ -178,13 +178,13 @@ export default class Tcp_ContactUs extends LightningElement {
             this.enableSubmit = false;
 
         }
-        else if (value == 'Inquiry') {
+        else if (value === 'Inquiry') {
             this.complaint = false;
             this.comment = false;
             this.requestNewUser = false;
             this.inquiry = true;
             this.description = '';
-            if (this.conId == '' || this.description == '') {
+            if (this.conId === '' || this.description === '') {
                 this.enableSubmit = false;
             }
             else {
@@ -205,7 +205,7 @@ export default class Tcp_ContactUs extends LightningElement {
         this.convalue = event.detail.value;
         this.conId = this.convalue;
         if (this.requestNewUser) {
-            if (this.firstName == '' || this.lastName == '' || this.phone == '' || this.email == '' || this.feedbackType == '' || this.conId == '') {
+            if (this.firstName === '' || this.lastName === '' || this.phone === '' || this.email === '' || this.feedbackType === '' || this.conId === '') {
                 this.enableSubmit = false;
             }
             else {
@@ -213,25 +213,23 @@ export default class Tcp_ContactUs extends LightningElement {
             }
         }
         if (this.complaint) {
-            if (this.shellRefNuber == '' || this.customerpo == '' || this.product == '' || this.feedbackType == '' || this.conId == '') {
+            if (this.shellRefNuber === '' || this.customerpo === '' || this.product === '' || this.feedbackType === '' || this.conId === '') {
                 this.enableSubmit = false;
             }
             else {
                 this.enableSubmit = true;
             }
         }
-        if (this.comment == true || this.inquiry == true) {
-            if (this.feedbackType == '' || this.conId == '' || this.description == '') {
-                this.enableSubmit = false;
-            }
-            else {
-                this.enableSubmit = true;
-            }
+      
+
+        if(this.comment === true || this.enquiry === true){
+            this.enableSubmit=this.feedbackType === '' || this.conId === '' || this.description === '' ? true : false;
+            console.log('Enable submit:--:'+this.enableSubmit);
         }
 
     }
     handleNewUserDetailsChange(event) {
-        let enteredValue = event.target.value;
+        const enteredValue = event.target.value;
         if (event.target.dataset.id === 'firstName') {
             this.firstName = enteredValue;
         } else if (event.target.dataset.id === 'lastName') {
@@ -247,7 +245,7 @@ export default class Tcp_ContactUs extends LightningElement {
             this.description = enteredValue;
 
         }
-        if (this.firstName == '' || this.lastName == '' || this.phone == '' || this.email == '' || this.feedbackType == '' || this.conId == '') {
+        if (this.firstName === '' || this.lastName === '' || this.phone === '' || this.email === '' || this.feedbackType === '' || this.conId === '') {
             this.enableSubmit = false;
         }
         else {
@@ -255,7 +253,7 @@ export default class Tcp_ContactUs extends LightningElement {
         }
     }
     handleComplaintDetailsChange(event) {
-        let enteredValue = event.target.value;
+        const enteredValue = event.target.value;
         if (event.target.dataset.id === 'shellRefNuber') {
             this.shellRefNuber = enteredValue;
         } else if (event.target.dataset.id === 'customerpo') {
@@ -267,7 +265,7 @@ export default class Tcp_ContactUs extends LightningElement {
             this.description = enteredValue;
 
         }
-        if (this.shellRefNuber == '' || this.customerpo == '' || this.product == '' || this.feedbackType == '' || this.conId == '') {
+        if (this.shellRefNuber === '' || this.customerpo === '' || this.product === '' || this.feedbackType === '' || this.conId === '') {
             this.enableSubmit = false;
         }
         else {
@@ -275,12 +273,12 @@ export default class Tcp_ContactUs extends LightningElement {
         }
     }
     handleCommentChange(event) {
-        let enteredValue = event.target.value;
+        const enteredValue = event.target.value;
         if (event.target.dataset.id === 'description') {
             this.description = enteredValue;
 
         }
-        if (this.feedbackType == '' || this.conId == '' || this.description == '') {
+        if (this.feedbackType === '' || this.conId === '' || this.description === '') {
             this.enableSubmit = false;
         }
         else {
@@ -288,12 +286,12 @@ export default class Tcp_ContactUs extends LightningElement {
         }
     }
     handleInquiryChange(event) {
-        let enteredValue = event.target.value;
+        const enteredValue = event.target.value;
         if (event.target.dataset.id === 'comment') {
             this.description = enteredValue;
 
         }
-        if (this.feedbackType == '' || this.conId == '' || this.description == '') {
+        if (this.feedbackType === '' || this.conId === '' || this.description === '') {
             this.enableSubmit = false;
         }
         else {
@@ -301,27 +299,27 @@ export default class Tcp_ContactUs extends LightningElement {
         }
     }
     handleSubmit() {
-
+        const CONTACT_VALUE='lightning-input[data-formfield';
         if (this.feedbackType === 'RequestNewUser') {
             if (this.doInputValidation('.valid')) {
                 this.isLoading = true;
-                getNewRequestDetails({ AccountId: this.accId, ContactId: this.conId, FirstName: this.firstName, LastName: this.lastName, Email: this.email, Phone: this.phone, Comments: this.description })
+                getNewRequestDetails({ accountId: this.accId, contactId: this.conId, firstName: this.firstName, lastName: this.lastName, email: this.email, phone: this.phone, comments: this.description })
                     .then(result => {
                         this.isLoading = false;
                         this.requestNewUser = false;
                         this.inquiry = true;
                         this.enableSubmit = false;
                         this.contactUs = true;
-                        this.template.querySelectorAll('lightning-input[data-formfield="contactValue"]').forEach(element => {
+                        this.template.querySelectorAll(CONTACT_VALUE+'="contactValue"]').forEach(element => {
                             element.value = null;
                         });
                         this.convalue = [];
-                        this.template.querySelectorAll('lightning-input[data-formfield="typeValue"]').forEach(element => {
+                        this.template.querySelectorAll(CONTACT_VALUE+'="typeValue"]').forEach(element => {
                             element.value = null;
                         });
                         this.typeOffeedbackValue = [];
                         if(this.commpos){
-                            this.template.querySelectorAll('lightning-input[data-formfield="custValue"]').forEach(element => {
+                            this.template.querySelectorAll(CONTACT_VALUE+'="custValue"]').forEach(element => {
                                 element.value = null;
                             });
                         this.value=[];
@@ -344,7 +342,6 @@ export default class Tcp_ContactUs extends LightningElement {
                     .catch(error => {
                         this.isLoading = false;
                         this.error = error;
-                        window.console.log('Error ====>' + JSON.stringify(this.error));
                     });
                 setTimeout(() => {
                     this.successNewRequest = false;
@@ -355,20 +352,20 @@ export default class Tcp_ContactUs extends LightningElement {
         }
         else if (this.feedbackType === 'Comment') {
             this.isLoading = true;
-            getCommentDetails({ AccountId: this.accId, ContactId: this.conId, Description: this.description })
+            getCommentDetails({ accountId: this.accId, contactId: this.conId, description: this.description })
                 .then(result => {
                     this.isLoading = false;
                     this.contactUs = true;
-                    this.template.querySelectorAll('lightning-input[data-formfield="contactValue"]').forEach(element => {
+                    this.template.querySelectorAll(CONTACT_VALUE+'="contactValue"]').forEach(element => {
                         element.value = null;
                     });
                     this.convalue = [];
-                    this.template.querySelectorAll('lightning-input[data-formfield="typeValue"]').forEach(element => {
+                    this.template.querySelectorAll(CONTACT_VALUE+'="typeValue"]').forEach(element => {
                         element.value = null;
                     });
                     this.typeOffeedbackValue = [];
                     if(this.commpos){
-                        this.template.querySelectorAll('lightning-input[data-formfield="custValue"]').forEach(element => {
+                        this.template.querySelectorAll(CONTACT_VALUE+'="custValue"]').forEach(element => {
                             element.value = null;
                         });
                     this.value=[];
@@ -397,7 +394,7 @@ export default class Tcp_ContactUs extends LightningElement {
         else if (this.feedbackType === 'Complaint') {
             if (this.doInputValidation('.valid')) {
                 this.isLoading = true;
-                getComplaintDetails({ AccountId: this.accId, ContactId: this.conId, Description: this.description, ShellRefNumber: this.shellRefNuber, CustomerPO: this.customerpo, Product: this.product })
+                getComplaintDetails({ accountId: this.accId, contactId: this.conId, description: this.description, shellRefNumber: this.shellRefNuber, customerPO: this.customerpo, product: this.product })
                     .then(result => {
                         this.isLoading = false;
                         this.contactUs = true;
@@ -443,7 +440,7 @@ export default class Tcp_ContactUs extends LightningElement {
         }
         else if (this.feedbackType === 'Inquiry') {
             this.isLoading = true;
-            getEnquiryDetails({ AccountId: this.accId, ContactId: this.conId, Description: this.description })
+            getEnquiryDetails({ accountId: this.accId, contactId: this.conId, description: this.description })
                 .then(result => {
                     this.isLoading = false;
                     this.contactUs = true;
@@ -477,7 +474,6 @@ export default class Tcp_ContactUs extends LightningElement {
                 .catch(error => {
                     this.isLoading = false;
                     this.error = error;
-                    window.console.log('Error ====>' + JSON.stringify(this.error));
                 });
             setTimeout(() => {
                 this.successInquiry = false;
@@ -489,12 +485,12 @@ export default class Tcp_ContactUs extends LightningElement {
         window.scrollTo(0, 0);
     }
     doInputValidation(classname) {
-        const isInputsCorrect = [...this.template.querySelectorAll(classname)]
+       return [...this.template.querySelectorAll(classname)]
             .reduce((validSoFar, inputField) => {
                 inputField.reportValidity();
                 return validSoFar && inputField.checkValidity();
             }, true);
-        return isInputsCorrect;
+       
 
     }
 

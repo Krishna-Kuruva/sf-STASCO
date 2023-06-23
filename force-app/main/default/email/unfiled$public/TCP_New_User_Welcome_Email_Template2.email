@@ -1,0 +1,22 @@
+<html >
+<body style="font-family:Verdana; font-size:13.33px;">
+Dear {!Receiving_User.FirstName}, 
+<br/><br/>
+Welcome to Shell Trading Chemicals Hub. <br/>
+<br/><br/>
+You might have received another email to complete your registration.
+Once the email verification is successful, Please use below username and URL to access the portal.
+
+<br/><br/>
+Your username:  {!Receiving_User.Username} <br/>
+URL {!$Label.TCP_Portal_URL}
+
+
+<br/><br/>
+In case of further inquiry please reach to commercial operations team.
+<br/><br/>
+
+Thank you,<br/>
+Shell Trading Chemicals Hub
+</body>
+</html>

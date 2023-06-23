@@ -39,9 +39,10 @@
     margin-right: 8px;
 }
 .mr2{
-    margin-right: 3px;
+   
     cursor: pointer;
     vertical-align: top;
+    margin-left: -15px;
 }
 
 .flex{
@@ -381,7 +382,5 @@ right: 10px;
     border: 1px solid rgba(0, 0, 0, 0.15)!important;
     margin-left: 16px !important;
 }
-
-
 
 /*---------popup css----------*/

@@ -1,6 +1,6 @@
 <template>
     <div class="spinner">
-        <template if:true={isLoading}>
+        <template if:true={isViewEULoading}>
             <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
             </lightning-spinner>
         </template>
@@ -165,8 +165,8 @@
                                 
                             </th>
                             <th class="" scope="col" style="width:20%">
-                                <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                                    Product Name
+                                <div class="slds-truncate slds-cell-fixed" title="Product Name/Code" style="margin-top: -9px">
+                                    Product Name/<br/>Code
                                 </div>
                             </th>
                             <th style="width:10%" class="" scope="col">
@@ -206,24 +206,32 @@
                     </thead>
                     <tbody>
                         <template for:each={ordLineItemList} for:item="product">
-                            <tr key={product.Id} class="slds-hint-parent">
+                            <tr key={product.Id} class={product.oliStatusAttr.customClass}>
                                 <td style="width:6%">
-                                    <div class="">
-                                        <template if:true={chevronrightShow}>
-                                            <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                    <div class="slds-text-align_center">
+                                        <!-- <template if:true = {chevronrightShow}> -->
+                                        <template lwc:if={chevronrightShow}>
+                                            <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
                                                 alternative-text="chevronright Button" title="chevronright"
                                                 onclick={showCollapseRow} size="xx-small" class="mr2">
                                             </lightning-icon>
                                         </template>
+                                        <template lwc:elseif={product.oliStatusAttr.expStatus}>
+                                            <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
+                                                alternative-text="chevronright Button" title="chevronright"
+                                                onclick={showCollapseRow} size="xx-small" class="mr2">
+                                            </lightning-icon>
+                                        </template>
+                                        <!--</template> -->
                                         
                                         {product.sno}
                                     </div>
                                 </td>
 
                                 <td style="width:20%">
-                                    <div class="tooltip">
+                                    <div class="productName">
                                         {product.Material_Name__c}
-                                        <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                        <span class="tooltiptext">{product.MaterialNumber__c}</span>
                                     </div>
                                 </td>
                                 <td style="width:10%">
@@ -263,7 +271,8 @@
                             </tr>
 
                             <tr key={product.Id} style="visibility:collapse;height:0px !important" class={product.Id}>
-                                <td colspan="7">
+                                <td colspan="8">
+                                    
                                     <table class="slds-table--fixed-layout" aria-label="View Order Details table">
                                         <thead aria-hidden="true" class="slds-hide">
                                             <tr class="noBorder">
@@ -271,12 +280,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <template if:true={chevronrightShow}>
                                         <tr class="noBorder">
                                             <td class="boldTd">Dispatch Date</td>
                                             <td>
                                                 <lightning-formatted-date-time class="textCapital" value={product.GSAP_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
                                                  
                                            </td>
+                                           <td class="boldTd">Loading Date</td>
+                                            <td>
+                                                <lightning-formatted-date-time class="textCapital" value={product.Expected_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+
+                                            </td>
                                         </tr>
                                         <tr class="noBorder">
                                             <td class="boldTd">Bol/Delivery</td>
@@ -300,7 +315,16 @@
                                             <td class="boldTd">Goods Issue Status</td>
                                             <td>{product.GSAP_Goods_Issue_Status__c}</td>
                                         </tr>
+                                    </template>
+                                    <template if:true={product.oliStatusAttr.expStatus}>
+                                        <tr class="noBorder">
+                                            <td class="boldTd width25">Alert <lightning-icon icon-name="utility:warning" alternative-text="Alert!" variant="error"
+                                                title="Alert" size="xx-small"></lightning-icon></td>
+                                            <td>{product.oliStatusAttr.expStatus}</td>
+                                        </tr>
+                                    </template>
                                     </tbody>
+                                     
                                     </table>
                                 </td>
                             </tr>
@@ -330,9 +354,9 @@
             <template if:true={isShowModifyButton}>
             <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleModifyOrder} aria-label="yellow background color Modify Order">Modify Order</button>
             </template>
-            <template if:true={isShowCancelButton}>
+            <!-- <template if:true={isShowCancelButton}>
             <button class="slds-button cancelBtn mr16" onclick={showModalCancelOrder} aria-label="Cancel Order">Cancel Order</button>
-            </template>
+            </template> -->
         </div>
     </div>
 
@@ -394,6 +418,44 @@
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
    <!-- Cancellation Order Request modal End -->
+
+   <!-- DN Created  modal start -->
+   <template if:true={isShowModalDnCreated}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalDnCreated}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-1">
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
+                <p>You are not allowed to modify the order since</p>
+                <template if:true={dnMessage}>
+                <p>Sl. No {dnMessage}  has DN (Delivery Note)</p>
+                </template>
+                <template if:true={cnMessage}>
+                <p>Sl. No {cnMessage}  is Cancelled</p>
+                </template>
+                <template if:true={rcMessage}>
+                <p>Sl. No {rcMessage}  has RC (Requested for Cancellation)</p>
+                </template>
+                <div class="modalBtn">
+                    <button class="slds-button yellowBtn" onclick={hideModalDnCreated} aria-label="yellow background color okay">Okay</button>
+                </div>
+            </div>
+           
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- DN Created modal end -->
    </template>
     <template if:false={showDetails}>
         <c-tcp_-view-all-documents onbackbutton={handleViewAllDocumentsBack} salesordnum={docSalesOrdNum}  boldel={docBolDelivery}> </c-tcp_-view-all-documents>

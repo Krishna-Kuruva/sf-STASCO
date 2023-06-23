@@ -11,15 +11,16 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
         Order ordResp = new Order();
         try { 
         List<order> toBeApprovedOrderList = new List<order>([select id,Is_Order_Confirmed__c,ordernumber,Remarks__c,TCP_Order_Status__c,TCP_Latest_Approved_Modify_Cancel__c,TCP_Modify_Cancel_Remarks__c,(select id,name,Quantity__c,TCP_Modify_Cancel_Status__c from order_line_items__r),(select id,Name,Web_Order__c,Status__c,Type__c,Modify_Cancel_Remarks__c,createdby.contactId from Change_Cancel_Requests__r order by createddate desc limit 1) from order where ordernumber=: ordWrap.orderNumber and recordtype.id=:tcpOrderRecTypeid limit 1]);
-        List<TCP_OrderLineItem__c> ApprovedOrdersLineItemList=new List<TCP_OrderLineItem__c>();
-        List<TCP_Change_Cancel_Order_Line_Items__c> ApprovedChangeOLI=new List<TCP_Change_Cancel_Order_Line_Items__c>();
+        List<TCP_OrderLineItem__c> approvedOrdersLineItemList=new List<TCP_OrderLineItem__c>();
+        List<TCP_Change_Cancel_Order_Line_Items__c> approvedChangeOLI=new List<TCP_Change_Cancel_Order_Line_Items__c>();
+        List<String> appOLIs=new List<String>();
         
         if(!toBeApprovedOrderList.isEmpty()){
         Order toBeApprovedOrder=toBeApprovedOrderList[0];
             
             if(!toBeApprovedOrder.order_line_items__r.isEmpty()){
-                      ApprovedOrdersLineItemList =toBeApprovedOrder.order_line_items__r;
-                 }
+                    approvedOrdersLineItemList =toBeApprovedOrder.order_line_items__r;
+              }
             
         	if(!toBeApprovedOrder.change_Cancel_Requests__r.isEmpty()){
         	  TCP_Change_Cancel_Request__c approvedChange=toBeApprovedOrder.change_Cancel_Requests__r[0];
@@ -29,12 +30,11 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                 toBeApprovedOrder.Reviewed_By__c = UserInfo.getUserId();
                 
                 //latest approved change OLI
-                ApprovedChangeOLI=[select id,Item_number__c,TCP_Modification_Cancellation_Status__c from TCP_Change_Cancel_Order_Line_Items__c where Change_Cancel_Request_Order__r.id=:approvedChange.id];
+                approvedChangeOLI=[select id,Item_number__c,TCP_Modification_Cancellation_Status__c from TCP_Change_Cancel_Order_Line_Items__c where Change_Cancel_Request_Order__r.id=:approvedChange.id];
                  //Setting the modify status on orderline and change orderline       
-                if(!ApprovedChangeOLI.isEmpty()){
-                   system.debug('Inside ApprovedChangeOLI'+ApprovedChangeOLI);
-                             for(TCP_OrderLineItem__c appOrdLineItem : ApprovedOrdersLineItemList){
-                              for(TCP_Change_Cancel_Order_Line_Items__c appChangeOLI : ApprovedChangeOLI){
+                if(!approvedChangeOLI.isEmpty()){
+                             for(TCP_OrderLineItem__c appOrdLineItem : approvedOrdersLineItemList){
+                              for(TCP_Change_Cancel_Order_Line_Items__c appChangeOLI : approvedChangeOLI){
                                 if(appOrdLineItem.name==appChangeOLI.Item_number__c){
                                     if(appOrdLineItem.TCP_Modify_Cancel_Status__c=='Modification'){
                                         appOrdLineItem.TCP_Modify_Cancel_Status__c='Modified';
@@ -49,6 +49,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                              //to update the order line modification status, if multiple modifications are placed and one of the previous modification has a OLI cancelled.     
                              if(appOrdLineItem.TCP_Modify_Cancel_Status__c=='Cancellation' && appOrdLineItem.quantity__c==0){
                                         appOrdLineItem.TCP_Modify_Cancel_Status__c='Cancelled';
+                                 		appOLIs.add(appOrdLineItem.Name);
                                     }
                          }
                          }
@@ -85,18 +86,29 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                         }
                     }
                 Update toBeApprovedOrder;
-                Update ApprovedOrdersLineItemList;
-      		 Update approvedChange;
-                Update ApprovedChangeOLI;
+                Update approvedOrdersLineItemList;
+      		    Update approvedChange;
+                Update approvedChangeOLI;
                 
-                ordResp = [SELECT id, name,Sales_Order_Number__c, Order_Other_Instructions__c, Sold_To__c,Sold_To__r.GSAP_Account_Number__c, Ship_To__r.GSAP_Account_Number__c, Bill_To__r.GSAP_Account_Number__c, Payer__r.GSAP_Account_Number__c,  CreatedBy.Name, Chemical_GSAP_P_31__c, Third_Party__c, Sold_To__r.AccountNumber, Delivery_Terms__c, Mode_of_Transport__c,  ShipToNo__c, BillToNo__c, Payer__c, PayerNo__c,  PoNumber,   TCP_Order_Status__c, OrderNumber, AccountId, createdby.contactId  FROM Order where id =: toBeApprovedOrder.id  and recordtype.id=:tcpOrderRecTypeid ];
+                ordResp = [SELECT id,TCP_GSAP_Account_Number__c,name,Sales_Order_Number__c, Order_Other_Instructions__c, Sold_To__c,Sold_To__r.GSAP_Account_Number__c, Ship_To__r.GSAP_Account_Number__c, Bill_To__r.GSAP_Account_Number__c, Payer__r.GSAP_Account_Number__c,  CreatedBy.Name, Chemical_GSAP_P_31__c, Third_Party__c, Sold_To__r.AccountNumber, Delivery_Terms__c, Mode_of_Transport__c,  ShipToNo__c, BillToNo__c, Payer__c, PayerNo__c,  PoNumber,   TCP_Order_Status__c, OrderNumber, AccountId, createdby.contactId  FROM Order where id =: toBeApprovedOrder.id  and recordtype.id=:tcpOrderRecTypeid ];
                 if((ordResp.TCP_Order_Status__c == 'Approved')||(ordResp.TCP_Order_Status__c == 'Cancelled')){
                     if(ordResp.Chemical_GSAP_P_31__c){
-                        List<TCP_OrderLineItem__c> ordLineList = TCP_OrderController.getOrderLineItemsByOrderId(ordResp.Id);
-                        TCP_GSAPDataService.GenerateGSAPQueryStringForModifyCancel(ordResp, ordLineList,'');
+                        //List<TCP_OrderLineItem__c> ordLineList = TCP_OrderController.getOrderLineItemsByOrderId(ordResp.Id);
+                        //TCP_GSAPDataService.GenerateGSAPQueryStringForModifyCancel(ordResp, ordLineList,'');
+                        List<TCP_OrderLineItem__c> appOLIsList=new List<TCP_OrderLineItem__c>();
+                        
+                        for(TCP_Change_Cancel_Order_Line_Items__c appChangeOLI : ApprovedChangeOLI){
+                            if(appChangeOLI.TCP_Modification_Cancellation_Status__c=='Modified' || appChangeOLI.TCP_Modification_Cancellation_Status__c=='Cancelled'){
+                             appOLIs.add(appChangeOLI.Item_number__c );
+                            }
+                        }
+                        if(appOLIs.size()>0 && !appOLIs.isEmpty()){
+                            appOLIsList=[Select id,TCP_Modify_Cancel_Status__c, Product__r.Product_Number__c, Sales_Order_Line_Item_No__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c from TCP_OrderLineItem__c WHERE Name in:appOLIs order by Sales_Order_Line_Item_No__c];
+                        }
+                         TCP_GSAPDataService.GenerateGSAPQueryStringForModifyCancel(ordResp, appOLIsList,''); 
                         }
                     if(ordResp.Third_Party__c){
-                        deleteModifyCancelledOLI3rdParty(ordResp.id);
+                        //deleteModifyCancelledOLI3rdParty(ordResp.id);
                         }
                     if(ordResp.TCP_Order_Status__c == 'Approved'){
                       sendDynamicEmail(approvedChange.id, approvedChange.createdby.contactId, ordResp.AccountId);
@@ -117,7 +129,6 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
     @AuraEnabled(cacheable=false) 
     public static Order getOrderOnCommopsRejection(TCP_OrderWrapper ordWrap){
         Order ordResp = new Order();
-        Boolean isCancellationRequest;
         try { 
         List<order> rejectedOrderList = new List<order>([select id,ordernumber,Remarks__c,TCP_Order_Status__c,TCP_Latest_Approved_Modify_Cancel__c,TCP_Modify_Cancel_Remarks__c,(select id,createdby.contactId,Name,Web_Order__c,Status__c,Type__c,Modify_Cancel_Remarks__c from Change_Cancel_Requests__r order by createddate desc limit 1),(select id, Name,Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c,TCP_Modify_Cancel_Status__c from order_line_items__r Order By CreatedDate) from order where  ordernumber=: ordWrap.orderNumber and recordtype.id=:tcpOrderRecTypeid limit 1]);
             if(!rejectedOrderList.isEmpty()){
@@ -216,7 +227,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                                 rejOrdLineItem.Unit__c=chngeOrdLineItem.Unit__c;
                                 rejOrdLineItem.Contract_No__c=chngeOrdLineItem.Shell_Contract_No__c;
                                 rejOrdLineItem.Other_Instruction__c=chngeOrdLineItem.Instruction__c;
-                                rejOrdLineItem.TCP_Modify_Cancel_Status__c='No Change';
+                                rejOrdLineItem.TCP_Modify_Cancel_Status__c=TCP_Constants.NO_CHANGE;
                             }
                         }
                     }
@@ -396,8 +407,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                     }
                   }
                 }  
-                    
-                //system.debug('rejectedChange'+rejectedChange);
+                
                 Update cancellationRejectedOrd;
                 Update cancellationRejectedOLIs;
                     
@@ -442,10 +452,10 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
         }
     }
     
-    public static void deleteModifyCancelledOLI3rdParty(String OrderId){
+    public static void deleteModifyCancelledOLI3rdParty(String orderId){
         try{
-            if(OrderId!=null){
-                List <TCP_OrderLineItem__c> toBedeletedOLI=new List<TCP_OrderLineItem__c>([select id from TCP_OrderLineItem__c where Order__r.id=:OrderId and quantity__c=0 and TCP_Modify_Cancel_Status__c='Cancelled' and Order__r.Third_Party__c=true]);
+            if(orderId!=null){
+                List <TCP_OrderLineItem__c> toBedeletedOLI=new List<TCP_OrderLineItem__c>([select id from TCP_OrderLineItem__c where Order__r.id=:orderId and quantity__c=0 and TCP_Modify_Cancel_Status__c='Cancelled' and Order__r.Third_Party__c=true]);
                 if(!toBedeletedOLI.isEmpty()){
                     delete toBedeletedOLI;
                 }

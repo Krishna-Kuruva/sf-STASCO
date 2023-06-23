@@ -27,6 +27,10 @@
                 <behavior>Edit</behavior>
                 <field>Products_Sales_Line__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TCP_P94_Prod_ExternalId__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

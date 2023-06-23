@@ -1,0 +1,200 @@
+<apex:page docType="html-5.0" showHeader="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" title="TCP | Landing Page">
+    <html>
+     <apex:slds />
+        <div class="slds-scope">
+           <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                 <!--<link rel="shortcut icon" href="{!URLFOR($Resource.TCP_favicon)}" type="image/x-icon" />-->
+              
+               <link rel="icon shortcut" href="{!$Resource.TCP_favicon}/favicon.ico" />
+              <meta http-equiv = "refresh" content = "2; url = {!$Label.TCP_CIPM_URL}/?startURL={!$CurrentPage.parameters.startURL}" /> 
+             <!--  <meta http-equiv = "refresh" content = "2; url = https://stasco--tcpqa.sandbox.my.site.com/tradingandsupply/services/auth/sso/CIPM" /> -->
+                <title>TCP | Landing Page</title>
+               <style>
+              @font-face {
+                 font-family: SFProText ;
+                src: url(/resource/SFProTextRegular) format('TrueType');
+            }
+
+                @font-face {
+                  font-family: SFProTextBold ;
+                 src: url(/resource/SFProTextBold) format('TrueType');
+            }
+
+                 body{
+              font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell, 'Helvetica Neue',sans-serif;
+              
+
+            }
+
+                 .mainBg{
+                    background-image: url("{!$Resource.TCP_landingPageBg}")!important;
+                   background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    -webkit-background-size: 100% 100%;
+                      -moz-background-size: 100% 100%;
+                      -o-background-size: 100% 100%;
+                      background-size: 100% 100%;
+                      height:100vh;
+                      position: relative;
+                   padding:0px;
+                   margin:0px;
+                 }
+
+                .Background  {
+                    position:Fixed;
+                   
+                }
+                   
+               .messageBox{
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    width: 587px;
+                    height: 288px;
+                    position: absolute;
+                    top:20%;
+                    right:12%;
+                    padding: 39px 50px 39px 32px;
+                }
+
+.footer{
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    height: 56px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+}
+
+.copy{
+    color: rgba(255, 255, 255, 0.97);
+    font-size: 16px;
+     line-height: 24px;
+     font-family: SFProText;
+     font-weight: 400;
+}
+
+.links ul li a{
+    color: rgba(255, 255, 255, 0.97);
+    font-size: 16px;
+     line-height: 24px;
+     font-family: SFProTextBold;
+     font-weight: 700;
+     margin-right: 32px;
+
+}
+                   
+ .links ul li a:hover{
+      color: rgba(255, 255, 255, 0.97);              
+                   
+                   }  
+ .links ul li a:focus{
+      color: rgba(255, 255, 255, 0.97);              
+                   
+                   }                    
+
+.pl12{
+    padding-left: 12%;
+}
+
+.pl24{
+    padding-left: 29%;
+}
+
+.logo{
+    margin-right: 20px;
+}
+
+.logo img{
+    width:125px;
+}
+
+.logoName span{
+    color: #DD1D21;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: SFProText;
+}
+
+.logoName p{
+    color: #32619F;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+}
+
+.logoName h2{
+    color: #404040;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    margin-bottom: 16px;
+    margin-top: 32px;
+}
+
+.logoName h6{
+    color: #757575;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    
+}
+.logoName h6 span{
+    color: #404040;
+    font-size: 20px;
+    
+}
+
+.hideHeader{
+    display: none !important;
+}                   
+                   
+            </style>
+            </head> 
+             <body class="mainBg" style="background-color:powderblue;">
+                 
+                 <lightning-layout-item size="12">
+            <div class="slds-grid bgImage">
+
+                <div class="messageBox">
+                    <div class="slds-grid">
+                        <div class="logo">
+                            <apex:image id="theImage" value="{!$Resource.TCP_landingPageLogo}" alt="shell logo with red border and yellow background" />
+                            
+                        </div>
+                        <div class="logoName">
+                          <span>Shell</span>
+                          <p>Trading &#38; Supply Chemical Portal</p>
+                          <h2>Welcome to Trading &#38; Supply
+                            Chemical Portal, Your OneStop
+                            Destination for Shell Chemical Orders</h2>
+                          <h6>You will be redirected to Login screen</h6> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer slds-grid ">
+                    <div class="slds-size_6-of-12 pl12">
+                        <p class="copy">© Shell International B.V. 2022</p>
+                    </div> 
+                    <div class="slds-size_6-of-12 links pl24">
+                        <ul class="slds-list_horizontal">
+                            <li><a href="https://www.shell.com/privacy.html" target="_blank">Privacy policy</a></li>
+                            <!-- <li><a href="Javascript:void(0)">Terms & Conditions</a></li> -->
+                        </ul>
+                    </div> 
+                </div>
+
+            </div>
+        </lightning-layout-item>
+                 
+            </body>
+        </div>   
+    </html>     
+</apex:page>

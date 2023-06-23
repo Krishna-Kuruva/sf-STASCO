@@ -12,7 +12,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
     public static void trackStatusGSAPOrder(String orderId,Boolean orderCreated, Boolean ErrorInData, String salesOrderNum, Boolean responseRcvd){
         try{           
             system.debug('orderCreated=====>'+orderCreated);
-            system.debug('salesOrderNum=====>'+salesOrderNum);
+            system.debug('salesOrderNum=====>'+salesOrderNum); 
             Order savedOrder = new Order();
             savedOrder = [select id, GSAP_Status__c, Sales_Order_Number__c, OrderNumber, ShipToNo__c, CreatedDate,Account.AccountNumber, AccountId,CreatedBy.Name, CreatedById from order where id =:orderId];
             string TableBody;
@@ -59,82 +59,102 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
     // method to track status of tcp get current orders(goods issue) in gsap(Called from a future method in TCP_GSAPDataService Class)
     public static void trackCurrentOrderFromsGSAP(list<CurrentOrders__x> getCurrentOrdersResp, string soldtono, string stnsapSoldToNo){  
                
-        integer size = getCurrentOrdersResp.size();        
+        try{
+            integer size = getCurrentOrdersResp.size();        
         
-        map<String,order> OrdersListMap = new map<String,order>();
-        
-        map<string,list<CurrentOrders__x>> currentOrderMap = new map<string,list<CurrentOrders__x>>();
-        
-        for (CurrentOrders__x co : getCurrentOrdersResp){
-            system.debug('co data <><><><><><><><><>'+ co);
-            if (co.Soldto__c == soldtono){               
-                if(currentOrderMap.containskey(co.Weborder__c)){                    
-                    list<CurrentOrders__x> tmpList = currentOrderMap.get(co.Weborder__c);
-                    tmpList.add(co);
-                    currentOrderMap.put(co.Weborder__c,tmpList);
-                }
-                else{
-                    currentOrderMap.put(co.Weborder__c, new list<CurrentOrders__x>{co} );   
-                }
-            }            
-        }
-        list<order> finalOrderList = [select id,OrderNumber,Name,PoNumber,Sales_Order_Number__c,(select id,Order_Line_Status__c,TCP_Modify_Cancel_Status__c,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c,GSAP_Goods_Issue_Value__c,GSAP_Goods_Issue_Unit__c,GSAP_Goods_Issue_Status__c,GSAP_Goods_Issue_Date__c,GSAP_Dispatch_Date__c,GSAP_Due_Date__c from order_line_items__r) from order where TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToNo AND recordtypeid =: tcpOrderRecTypeid ORDER BY OrderNumber DESC];
-        list<Order> finalOrders =  new list<Order>();
-        list<TCP_OrderLineItem__c> finalOrderLineItems = new list<TCP_OrderLineItem__c>();
-        list<CurrentOrders__x> tmpList1 =  new list<CurrentOrders__x>();
-        
-        for(order ord : finalOrderList){
-            if(currentOrderMap.containskey(ord.OrderNumber)){
-                list<CurrentOrders__x> tmpList = currentOrderMap.get(ord.OrderNumber);
-                
-                ord.Sales_Order_Number__c = tmpList[0].SalesOrder__c;
-                ord.GSAP_Status__c = 'Processed';
-                //ord.TCP_Order_Status__c = 'Shipped'; //this order status should get updated to shippedpnly when all the products in the orderline item have status has shipped.
-                
-                Boolean allLineItemsShipped = true;
-                for(TCP_OrderLineItem__c li : ord.order_line_items__r){
-                    
-                    for(CurrentOrders__x ops : tmplist){
-                        System.debug('Checking Sales Item Number '+li.Sales_Order_Line_Item_No__c + '---'+ops.SalesItemNo__c);
-                        if(li.Sales_Order_Line_Item_No__c == ops.SalesItemNo__c){                            
-                            li.GSAP_Goods_Issue_Value__c = ops.GmQuan__c;                            
-                            if (ops.GmDate__c != NULL){
-                            	li.GSAP_Goods_Issue_Date__c = Date.valueOf(ops.GmDate__c);  
-                            }
-                            if (ops.GmDate__c != NULL){
-                            	li.GSAP_Dispatch_Date__c =  Date.valueOf(ops.GmDate__c);   
-                            }
-                            if (string.isNotBlank(ops.DueDate__c)){
-                            	li.GSAP_Due_Date__c =  Date.valueOf(ops.DueDate__c);   
-                            }
-                            if (string.isNotBlank(ops.GmStat__c)){								
-								li.GSAP_Goods_Issue_Status__c = ops.GmStat__c;
-                                li.Order_Line_Status__c = 'Shipped';
-                            }
-                            if (string.isNotBlank(ops.GmUnit__c)){                            	
-                            	li.GSAP_Goods_Issue_Unit__c = ops.GmUnit__c;  
-                            }
-                            if (string.isNotBlank(ops.BolDeliveryNo__c)){                            	 
-                            	li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
-                            }                                                  
-                            if (string.isNotBlank(ops.MotId__c)){								  
-								li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;                              
-                            }         
-                        }
+            map<String,order> OrdersListMap = new map<String,order>();
+            
+            map<string,list<CurrentOrders__x>> currentOrderMap = new map<string,list<CurrentOrders__x>>();
+            
+            for (CurrentOrders__x co : getCurrentOrdersResp){
+                system.debug('co data <><><><><><><><><>'+ co);
+                if (co.Soldto__c == soldtono){               
+                    if(currentOrderMap.containskey(co.Weborder__c)){                    
+                        list<CurrentOrders__x> tmpList = currentOrderMap.get(co.Weborder__c);
+                        tmpList.add(co);
+                        currentOrderMap.put(co.Weborder__c,tmpList);
                     }
-                    if((li.Order_Line_Status__c != 'Shipped')&&(li.TCP_Modify_Cancel_Status__c != 'Cancelled')){
-                        allLineItemsShipped=false;
+                    else{
+                        currentOrderMap.put(co.Weborder__c, new list<CurrentOrders__x>{co} );   
                     }
-                    finalOrderLineItems.add(li);                   
-                }
-                if(allLineItemsShipped){
-                    ord.TCP_Order_Status__c = 'Shipped';
-                }
-                finalOrders.add(ord);                
+                }            
             }
-        }            
-        update finalOrders;
-        update finalOrderLineItems; 
+            list<order> finalOrderList = [select id,OrderNumber,Name,PoNumber,Sales_Order_Number__c,(select id,Order_Line_Status__c,TCP_Modify_Cancel_Status__c,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c,GSAP_Goods_Issue_Value__c,GSAP_Goods_Issue_Unit__c,GSAP_Goods_Issue_Status__c,GSAP_Goods_Issue_Date__c,GSAP_Dispatch_Date__c,GSAP_Due_Date__c,Invoice_Status__c from order_line_items__r where Invoice_Status__c != 'C') from order where TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToNo AND recordtypeid =: tcpOrderRecTypeid ORDER BY OrderNumber DESC];
+            list<Order> finalOrders =  new list<Order>();
+            list<TCP_OrderLineItem__c> finalOrderLineItems = new list<TCP_OrderLineItem__c>();
+            list<CurrentOrders__x> tmpList1 =  new list<CurrentOrders__x>();
+            
+            for(order ord : finalOrderList){
+                if(currentOrderMap.containskey(ord.OrderNumber)){
+                    list<CurrentOrders__x> tmpList = currentOrderMap.get(ord.OrderNumber);
+                    if(ord.Sales_Order_Number__c==null){
+                    ord.Sales_Order_Number__c = tmpList[0].SalesOrder__c;
+                    }
+                    ord.GSAP_Status__c = 'Processed';
+                    //ord.TCP_Order_Status__c = 'Shipped'; //this order status should get updated to shippedpnly when all the products in the orderline item have status has shipped.
+                    
+                    Boolean allLineItemsShipped = true;
+                    for(TCP_OrderLineItem__c li : ord.order_line_items__r){
+                        
+                        for(CurrentOrders__x ops : tmplist){
+                            System.debug('Checking Sales Item Number '+li.Sales_Order_Line_Item_No__c + '---'+ops.SalesItemNo__c);
+                            if(li.Sales_Order_Line_Item_No__c == ops.SalesItemNo__c){                            
+                                li.GSAP_Goods_Issue_Value__c = ops.GmQuan__c;                            
+                                if (ops.GmDate__c != NULL){
+                                    li.GSAP_Goods_Issue_Date__c = Date.valueOf(ops.GmDate__c);  
+                                }
+                                if (ops.GmDate__c != NULL){
+                                    li.GSAP_Dispatch_Date__c =  Date.valueOf(ops.GmDate__c);   
+                                }
+                                if (string.isNotBlank(ops.DueDate__c)){
+                                    li.GSAP_Due_Date__c =  Date.valueOf(ops.DueDate__c);   
+                                }
+                                if (string.isNotBlank(ops.GmStat__c)){								
+                                    li.GSAP_Goods_Issue_Status__c = ops.GmStat__c;
+                                    //li.Order_Line_Status__c = 'Shipped';
+                                }
+                                if (string.isNotBlank(ops.GmUnit__c)){                            	
+                                    li.GSAP_Goods_Issue_Unit__c = ops.GmUnit__c;  
+                                }
+                                /*if (string.isNotBlank(ops.BolDeliveryNo__c)){                            	 
+                                    li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
+                                }                                                  
+                                if (string.isNotBlank(ops.MotId__c)){								  
+                                    li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;                              
+                                }*/
+                                //added by Rafi - May 17,2023 - PBI#1810939
+                                if(string.isNotBlank(ops.InvStat__c)){
+                                    li.Invoice_Status__c = ops.InvStat__c;
+                                }
+                                
+                                if(string.isNotBlank(ops.GmStat__c) && string.isNotBlank(ops.InvStat__c) && ops.GmStat__c == 'C' && ops.InvStat__c == 'C'){
+                                    li.Order_Line_Status__c = 'Shipped';
+                                }
+                            }
+                        }
+                        if((li.Order_Line_Status__c != 'Shipped')&&(li.TCP_Modify_Cancel_Status__c != 'Cancelled')){
+                            allLineItemsShipped=false;
+                        }
+                        finalOrderLineItems.add(li);                   
+                    }
+                    if(allLineItemsShipped){
+                        ord.TCP_Order_Status__c = 'Shipped';
+                    }
+                    finalOrders.add(ord);                
+                }
+            }
+            system.debug('finalOrders : '+finalOrders);
+            system.debug('finalOrderLineItems : '+finalOrderLineItems);
+            if(!finalOrders.isEmpty())
+                update finalOrders;
+            if(!finalOrderLineItems.isEmpty())
+                update finalOrderLineItems;
+        } 
+        catch(Exception e){
+            system.debug('in trackCurrentOrderFromsGSAP catch : '+e.getCause()+'message '+e.getmessage()+'line '+e.getLineNumber());
+        	TCP_ExceptionLogClass.insertExceptionRecord('trackCurrentOrderFromsGSAP exception',e.getMessage(),'TCP_OrderManagementProcessor','trackCurrentOrderFromsGSAP','Exception');
+        
+        }
                 
     }
     
@@ -276,12 +296,98 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
             }
             system.debug('finalOrders '+finalOrders);
             system.debug('finalOrderLineItems '+finalOrderLineItems);
-            if(!finalOrders.isEmpty()){
-                update finalOrders;
-            }
+        
             if(!finalOrderLineItems.isEmpty()){
                 update finalOrderLineItems;
             }
+            if(!finalOrders.isEmpty()){
+                update finalOrders;
+            }
+        }
+        catch(Exception e){
+            system.debug('in updateOrderConfirmationDetails catch : '+e.getCause()+'message '+e.getmessage()+'line '+e.getLineNumber());
+        	TCP_ExceptionLogClass.insertExceptionRecord('updateOrderConfirmationDetails exception',e.getMessage(),'TCP_OrderManagementProcessor','updateOrderConfirmationDetails','Exception');
+        } 
+                
+    }
+    
+    
+    
+     //method to process order delivery data and update orders and line items accordingly
+    public static void updateOrderDeliveryDetails(list<CurrentOrdersDelivery__x> OrdConfirmData, string soldtono, string stnsapSoldToNo){  
+        system.debug('in updateOrderDeliveryDetails ');       
+        try{
+            map<string,list<CurrentOrdersDelivery__x>> OrdDelMap = new map<string,list<CurrentOrdersDelivery__x>>();
+            list<Order> finalOrders =  new list<Order>();
+            list<TCP_OrderLineItem__c> finalOrderLineItems = new list<TCP_OrderLineItem__c>();
+            for (CurrentOrdersDelivery__x co : OrdConfirmData){
+                system.debug('co data <><><><><><><><><>'+ co);
+                if (co.Soldto__c == soldtono){               
+                    if(OrdDelMap.containskey(co.Weborder__c)){                    
+                        list<CurrentOrdersDelivery__x> tmpList = OrdDelMap.get(co.Weborder__c);
+                        tmpList.add(co);
+                        OrdDelMap.put(co.Weborder__c,tmpList);
+                    }
+                    else{
+                        OrdDelMap.put(co.Weborder__c, new list<CurrentOrdersDelivery__x>{co} );   
+                    }
+                }            
+            }
+            list<order> finalOrderList = [select id,OrderNumber,Sales_Order_Number__c,TCP_Order_Status__c,GSAP_Status__c,(select id,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c from order_line_items__r) from order where TCP_Order_Status__c != 'shipped' AND TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToNo AND OrderNumber IN: OrdDelMap.keyset() AND recordtypeid =: tcpOrderRecTypeid ORDER BY OrderNumber DESC];
+            
+            if(!finalOrderList.isEmpty()){
+                system.debug('inside if '+finalOrderList.size());
+                map<string,list<TCP_OrderLineItem__c>> orderlineitemsByorderNumberMap = new map<string,list<TCP_OrderLineItem__c>>();
+                map<string,order> orderbyWebOrdMap = new map<string,order>();
+                for(order tempOrd : finalOrderList){
+                    list<TCP_OrderLineItem__c> tmplineitmlist = tempOrd.order_line_items__r;
+                    orderlineitemsByorderNumberMap.put(tempOrd.OrderNumber,tmplineitmlist);
+                    orderbyWebOrdMap.put(tempOrd.OrderNumber,tempOrd);
+                    System.debug('orderlineitemsByorderNumberMap '+orderlineitemsByorderNumberMap);
+                    System.debug('orderbyWebOrdMap '+orderbyWebOrdMap);
+                }
+                
+                //loop thru response data and update line items
+                set<id> tempLineitems = new set<id>();
+                for(CurrentOrdersDelivery__x tempExtData : OrdConfirmData){
+                    system.debug('in for 1');
+                    if(!orderlineitemsByorderNumberMap.isEmpty() && orderlineitemsByorderNumberMap.containskey(tempExtData.Weborder__c)){
+                    system.debug('webordernumber '+tempExtData.Weborder__c);
+                        list<TCP_OrderLineItem__c> tempList = orderlineitemsByorderNumberMap.get(tempExtData.Weborder__c);
+                        if(!tempList.isEmpty()){
+                            for(TCP_OrderLineItem__c tempItem : tempList){
+                                string tempitemNo = tempExtData.SalesItemNo__c;
+                                
+                                system.debug('tempitemNo '+tempitemNo);
+                                System.debug('Checking item order item No '+tempItem.Sales_Order_Line_Item_No__c+'----'+tempitemNo+'------'+tempLineitems);
+                                //if(string.isNotBlank(tempExtData.SalesItemNo__c) && tempExtData.SalesItemNo__c.length()==5 && tempExtData.SalesItemNo__c.contains(tempItem.Sales_Order_Line_Item_No__c)){
+                                if(tempItem.Sales_Order_Line_Item_No__c == tempitemNo && !tempLineitems.contains(tempItem.id)){  
+                                	system.debug('inside Sales_Order_Line_Item_No__c if '+tempitemNo + 'order '+tempExtData.Weborder__c); 
+                                    
+                                    if(string.isNotBlank(tempExtData.BolDeliveryNo__c))
+                                        tempItem.GSAP_Bol_Delivery__c = tempExtData.BolDeliveryNo__c;
+                                    if(string.isNotBlank(tempExtData.MotId__c))
+                                        tempItem.GSAP_Mode_of_Transport_ID__c = tempExtData.MotId__c;
+                                    
+                                    
+                                    finalOrderLineItems.add(tempItem);
+                                    tempLineitems.add(tempItem.id);
+                                    break; 
+                                }
+                                
+                            }
+                        }	
+                        
+                    }
+                }
+                
+            }
+            
+        
+            if(!finalOrderLineItems.isEmpty()){
+                update finalOrderLineItems;
+            }
+            
         }
         catch(Exception e){
             system.debug('in updateOrderConfirmationDetails catch : '+e.getCause()+'message '+e.getmessage()+'line '+e.getLineNumber());

@@ -95,7 +95,16 @@ public class TCP_OrderWrapper{
     @AuraEnabled
     public String cancellationDate{get;set;}
     @AuraEnabled
+    public String accountNumber{get;set;}
+    @AuraEnabled
+    public String gsapSoldToNumber{get;set;}
+    @AuraEnabled
+    public String gsapSoldToName{get;set;}
+    @AuraEnabled
     public List<TCP_OrderLineItem__c> orderLineItemList{get;set;}
     @AuraEnabled
     public List<TCP_OrderLineItemWrapper> orderLineItemWrapList{get;set;}
+    @AuraEnabled
+    public List<String> soldToIdList{get;set;}
+    
 }

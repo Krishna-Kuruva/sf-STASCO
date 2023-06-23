@@ -1,0 +1,131 @@
+<apex:page docType="html-5.0" showHeader="false" lightningStylesheets="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="icon" href="{!URLFOR($Resource.TCP_favicon)}" type="img/x-icon"/>
+        <title>TCP | Terms and Conditions</title>
+       <style> 
+        body{
+              font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+              padding: 5px;
+              margin: 0px;
+              font-size: 11pt;
+            }
+
+            .main{
+                
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: auto;
+                margin-top: 10px;
+            }
+
+            .content{
+                margin-left: 10px;
+                 margin-right: 10px;
+            }
+       
+            .header{
+                font-family: Roboto, Arial, Helvetica, sans-serif;
+                font-size: 14pt!important;
+                font-weight: 700;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.67;
+                letter-spacing: .5px;
+                color: #404040;
+                padding: 5px 5px 10px 0;
+                display: inline-block;
+                text-decoration: underline;
+                margin-bottom: 0px !important;
+            }
+            .header1{
+                font-family: Roboto, Arial, Helvetica, sans-serif;
+                font-size: 14pt!important;
+                font-weight: 700;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.67;
+                letter-spacing: .5px;
+                color: #404040;
+                padding-top: 10px;
+            }
+
+            .text{
+                    text-align: justify;
+                    font-size: 11pt;
+                    margin: 0 0 8pt;
+                    color: #212529;
+                }
+
+            p{
+                    text-align: justify;
+                    font-size: 11pt;
+                    margin: 0 0 8pt;
+                    color: #212529;
+        
+            }   
+            
+            .logoSection{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .logoSection p{
+                margin-bottom: 0px !important;
+
+            }
+
+            .logoText{
+                font-family: Roboto, Arial, Helvetica, sans-serif;
+                font-size: 12pt!important;
+                font-weight: 900;
+                font-style: normal;
+                font-stretch: normal;
+                color: #09357b;
+               
+            }
+
+            .logoTextSmall{
+                text-align: justify;
+                    font-size: 9pt;
+                    margin: 0 0 8pt;
+                    color: #09357b;
+
+            }
+
+            
+
+
+       </style>
+
+    </head>
+    <body>
+        <div class="main">
+            <div class="logoSection">
+                <apex:image id="theImage" value="{!$Resource.TCP_logo}" alt="shell logo with red border and yellow background" width="100px" height="100px" styleClass="logo"/>
+                <p><span class="logoTextSmall">Trading &amp; Supply</span><br/>
+                    <span class='logoText'>Chemical Customer Portal</span>  </p>
+           
+            </div>
+              <div class="content"> 
+                <p class="header"> Terms &#38; Conditions</p>
+                
+                <apex:outputText styleClass="text" escape="false" value="{!$Label.TCP_TandC}" ></apex:outputText>
+                <p class="header1">Disclaimer and Limitation of Liability</p>
+                <apex:outputText styleClass="text" escape="false" value="{!$Label.TCP_Disclaimer +''+$Label.TCP_terms_Liability}" />
+            
+            </div>
+        </div>
+
+
+ 
+
+    </body>  
+    </html>      
+
+
+                    </apex:page>

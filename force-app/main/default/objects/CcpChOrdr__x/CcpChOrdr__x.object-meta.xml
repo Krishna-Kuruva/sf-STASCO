@@ -114,10 +114,11 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <description>CcpChOrdrSet</description>
     <enableFeeds>false</enableFeeds>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableSearch>false</enableSearch>
     <externalDataSource>TCP_Modify_Change_Order</externalDataSource>
     <externalName>CcpChOrdrSet</externalName>
     <label>CcpChOrdr</label>

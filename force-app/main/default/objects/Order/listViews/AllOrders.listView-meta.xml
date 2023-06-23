@@ -3,12 +3,14 @@
     <fullName>AllOrders</fullName>
     <columns>ORDERS.ORDER_NUMBER</columns>
     <columns>SALES.ACCOUNT.NAME</columns>
-    <columns>ORDERS.CREATED_DATE</columns>
-    <columns>Ordered_By__c</columns>
     <columns>TCP_Order_Status__c</columns>
     <columns>GSAP_Status__c</columns>
     <columns>Sales_Order_Number__c</columns>
-    <columns>Is_Order_Confirmed__c</columns>
+    <columns>Chemical_GSAP_P_31__c</columns>
+    <columns>Third_Party__c</columns>
+    <columns>ORDERS.CREATED_DATE</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
     <filterScope>Everything</filterScope>
     <label>All Orders</label>
+    <language>en_US</language>
 </ListView>

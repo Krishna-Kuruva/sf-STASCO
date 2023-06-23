@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is to Map shipping Condition number with Mode of Transportation description
+for example:
+32    Road Tank Truck
+11    Bulk tanker</description>
     <label>TCP Shipping Condition</label>
     <pluralLabel>TCP Shipping Conditions</pluralLabel>
     <visibility>Public</visibility>

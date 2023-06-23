@@ -216,62 +216,6 @@ margin-right: 5px;
     padding:0px 12px;
 }
 
-.setTable {
-    background: #ffffff;
-    border-radius: 0px 0px 2px 2px;
-    margin-top: 16px;
-
-}
-.setTable .slds-table, .setTableVertical .slds-table{
-    background: #ffffff !important;
-    
-
-}
-
-
-.setTable table thead tr th{
-    padding: 15px 4px;
-    height: 48px;
-    color: #404040;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
-    white-space: normal;
-
-}
-
-.setTable table tbody{
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    border-bottom:1px solid rgba(0, 0, 0, 0.15);
-}
-
-.setTable table tbody tr{
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.setTable table tbody tr td{
-    padding: 5px 4px;
-    color: #404040;
-    height: 40px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    font-family: SFProText, Arial, Helvetica, sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-
-}
-
-.setTable table thead tr th:first-child, .setTable table tbody tr td:first-child{
-    padding-left: 15px;
-}
-.setTable table thead tr th:last-child, .setTable table tbody tr td:last-child{
-    padding-right: 15px;
-    
-}
 
 .boldTd{
     color: #404040;
@@ -287,52 +231,6 @@ margin-right: 5px;
     overflow: visible !important;
 }
 
-.setTableVertical{
-    background: #ffffff;
-    border-radius: 0px 0px 2px 2px;
-    
-
-}
-
-.setTableVertical table thead tr th{
-    padding: 15px 7px;
-    height: 48px;
-    color: #404040;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
-
-}
-
-.setTableVertical table tbody{
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    border-bottom:1px solid rgba(0, 0, 0, 0.15);
-}
-
-.setTableVertical table tbody tr{
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.setTableVertical table tbody tr td{
-    padding: 10px 7px;
-    color: #404040;
-    height: 40px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    font-family: SFProText, Arial, Helvetica, sans-serif;
-    
-
-}
-
-.setTableVertical table thead tr th:first-child, .setTableVertical table tbody tr td:first-child{
-    padding-left: 15px;
-}
-.setTableVertical table thead tr th:last-child, .setTableVertical table tbody tr td:last-child{
-    padding-right: 15px;
-    
-}
 
 .setCheckbox{
     border: 2px solid rgba(0, 0, 0, 0.15);
@@ -546,6 +444,20 @@ align-items: center;
     background-color: rgba(0, 151, 187, 0.1) !important;
 }
 
+.showRow{
+    visibility: visible !important;
+}
+
+.showRow td{
+    padding: 4px 10px !important;
+}
+
+.showRow td .no-padding
+{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
 
 .setScrollbarTable table tbody tr td{
     padding: 5px 4px;
@@ -735,19 +647,7 @@ right: 10px;
     font-family: SFProTextBold, Arial, Helvetica, sans-serif;
 }
 
-.showRow{
-    visibility: visible !important;
-}
 
-.showRow td{
-    padding: 4px 10px !important;
-}
-
-.showRow td .no-padding
-{
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-}
 
 
 /* vertical css*/

@@ -1,6 +1,10 @@
 import { LightningElement,track,api  } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-
+const statusData = new Map([
+    ['CN', { customClass: 'cn-line-item', expStatus: 'Line Item Cancelled'}],
+    ['RC', { customClass: 'rc-line-item', expStatus: 'Requested for Cancellation'}],
+    ['NIL', { customClass: 'slds-hint-parent', expStatus: ''}]
+  ]);
 
 export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningElement) {
 
@@ -11,6 +15,7 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
     error;
     @api orderdetaildata;
     @api soldtoid;
+    @api ordhisaccids;
     @api type;
     @api iswebemail;
     @api cufilterdata;
@@ -38,8 +43,9 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
     @track ordLineItemList = [];
 
     connectedCallback(){
+        window.console.log('inside connected callback'+this.ordhisaccids);
         if(this.iswebemail === "yes"){
-            window.console.log('inside connected callback');
+            
             this.tableType = 'For Review/Approval';
             this.orderDetailList = this.orderdetaildata;
             this.orderLineItemsList = this.orderDetailList.orderLineItemList;
@@ -114,6 +120,7 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
    
     showCollapseRow(event) {
         const dataId = event.currentTarget.dataset.id;
+        const existClass=event.currentTarget.dataset.name;
         let target = this.template.querySelector('[data-id="'+dataId+'"]');
         if( target && target != null){
             if(target.classList.contains('iconRotate')){
@@ -129,6 +136,7 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
                 let row = this.template.querySelector(className);
                 if(row && row != null){
                     row.classList.add('showRow');
+                    row.classList.add(existClass);
                 }
             }
         }
@@ -158,19 +166,23 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
             tempList.Id = ordLineList[i].Id ? ordLineList[i].Id : '';
             tempList.Material_Name__c = ordLineList[i].Material_Name__c ? ordLineList[i].Material_Name__c : '';
             tempList.MaterialNumber__c = ordLineList[i].MaterialNumber__c ? ordLineList[i].MaterialNumber__c : '';
-            tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            //tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            tempList.Quantity__c = ordLineList[i].Quantity__c;
             tempList.Unit__c = ordLineList[i].Unit__c ? ordLineList[i].Unit__c : '';
             tempList.Delivery_Collection_Date__c = ordLineList[i].Delivery_Collection_Date__c ? ordLineList[i].Delivery_Collection_Date__c : '';
             tempList.Contract_No__c = ordLineList[i].Contract_No__c ? ordLineList[i].Contract_No__c : '';
             tempList.Other_Instruction__c = ordLineList[i].Other_Instruction__c ? ordLineList[i].Other_Instruction__c : '';
             tempList.GSAP_Due_Date__c = ordLineList[i].GSAP_Due_Date__c ? ordLineList[i].GSAP_Due_Date__c : '';
             tempList.GSAP_Dispatch_Date__c = ordLineList[i].GSAP_Dispatch_Date__c ? ordLineList[i].GSAP_Dispatch_Date__c : '';
+            tempList.Expected_Dispatch_Date__c = ordLineList[i].Expected_Dispatch_Date__c ? ordLineList[i].Expected_Dispatch_Date__c : '';
             tempList.GSAP_Bol_Delivery__c = ordLineList[i].GSAP_Bol_Delivery__c ? ordLineList[i].GSAP_Bol_Delivery__c : '';
             tempList.GSAP_Mode_of_Transport_ID__c = ordLineList[i].GSAP_Mode_of_Transport_ID__c ? ordLineList[i].GSAP_Mode_of_Transport_ID__c : '';
-            tempList.GSAP_Goods_Issue_Value__c = ordLineList[i].GSAP_Goods_Issue_Value__c ? ordLineList[i].GSAP_Goods_Issue_Value__c : '';
+            tempList.GSAP_Goods_Issue_Value__c = ordLineList[i].GSAP_Goods_Issue_Value__c ? ordLineList[i].GSAP_Goods_Issue_Value__c.toFixed(3) : '';
             tempList.GSAP_Goods_Issue_Date__c = ordLineList[i].GSAP_Goods_Issue_Date__c ? ordLineList[i].GSAP_Goods_Issue_Date__c : '';
             tempList.GSAP_Goods_Issue_Unit__c = ordLineList[i].GSAP_Goods_Issue_Unit__c ? ordLineList[i].GSAP_Goods_Issue_Unit__c : '';
             tempList.GSAP_Goods_Issue_Status__c = ordLineList[i].GSAP_Goods_Issue_Status__c ? ordLineList[i].GSAP_Goods_Issue_Status__c : '';
+            tempList.oliStatus=this.handleOliStatus(ordLineList[i].TCP_Modify_Cancel_Status__c,ordLineList[i].Quantity__c);
+            tempList.oliStatusAttr=statusData.get(tempList.oliStatus);
             
             tempOrdLineList = [...tempOrdLineList, tempList];
         }
@@ -182,5 +194,16 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
     renderedCallback(){
 
         document.title = 'TCP | Order Details';
+    }
+
+    handleOliStatus(status,quantity){
+        if(status==='Cancelled' && quantity===0){
+            return 'CN';
+        }else if(status==='Cancellation' && quantity===0){
+            return 'RC';
+        }else{
+            return 'NIL';
+        }
+
     }
 }

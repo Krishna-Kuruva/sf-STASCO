@@ -1,20 +1,12 @@
 public with sharing class TCP_Utilities {
 
-       //Get Month in number
-    /*public static integer getMonthNumber(string MonthName){    
-        integer MonthNumber;          
-        Map<String,string> monthMAp = new Map<String,string>{'Jan' => '01', 'Feb' => '02', 'Mar' => '03', 'Apr' => '04', 'May' => '05', 'Jun' => '06', 'Jul' => '07', 'Aug' => '08', 'Sep' => '09', 'Oct' => '10', 'Nov' => '11', 'Dec' => '12'};
-        MonthNumber = Integer.valueof(monthMap.get(MonthName));
-        return MonthNumber;
-    } */ 
-    
-        //Get Month in Text
-       @AuraEnabled
-    public static string getMonthName(integer Monthnumber){    
-        string MonthName;          
+    //Get Month in Text
+    @AuraEnabled
+    public static string getMonthName(integer monthNumber){    
+        string monthName;          
         Map<String,string> monthMAp = new Map<String,string>{'1' => 'Jan', '2' => 'Feb', '3' => 'Mar', '4' => 'Apr', '5' => 'May', '6' => 'Jun', '7' => 'Jul', '8' => 'Aug', '9' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'};
-        MonthName = monthMap.get(string.valueof(Monthnumber));
-        return MonthName;
+        monthName = monthMap.get(string.valueof(monthNumber));
+        return monthName;
     }
 
     // get logged in user details

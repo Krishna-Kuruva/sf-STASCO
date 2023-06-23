@@ -1,12 +1,10 @@
-public without sharing class TCP_ResendOrderController {
-    
-    //public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeInfosByDeveloperName().get('TCP_Orders').getRecordTypeId();
+public with sharing class TCP_ResendOrderController {
     
     @AuraEnabled
     public static String reProcessFailedGsapOrder(String orderId){
         try{
             if(String.isNotBlank(orderId)){
-                List<Order> orderList = [SELECT id,Sales_Order_Number__c, GSAP_Status__c, name,Is_Order_Confirmed__c, Order_Other_Instructions__c, Sold_To__c,Sold_To__r.GSAP_Account_Number__c, Ship_To__r.GSAP_Account_Number__c, Bill_To__r.GSAP_Account_Number__c, Payer__r.GSAP_Account_Number__c,  CreatedBy.Name, Chemical_GSAP_P_31__c, Third_Party__c, Sold_To__r.AccountNumber, Delivery_Terms__c, Mode_of_Transport__c,  ShipToNo__c, BillToNo__c, Payer__c, PayerNo__c,  PoNumber,   TCP_Order_Status__c, OrderNumber, AccountId, createdby.contactId, (select id,TCP_Modify_Cancel_Status__c, Product__r.Product_Number__c, Sales_Order_Line_Item_No__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c from order_line_items__r) from Order where id =:orderId];
+                List<Order> orderList = [SELECT id,Account.AccountNumber,TCP_GSAP_Account_Name__c,TCP_GSAP_Account_Number__c,Sales_Order_Number__c, GSAP_Status__c, name,Is_Order_Confirmed__c, Order_Other_Instructions__c, Sold_To__c,Sold_To__r.GSAP_Account_Number__c, Ship_To__r.GSAP_Account_Number__c, Bill_To__r.GSAP_Account_Number__c, Payer__r.GSAP_Account_Number__c,  CreatedBy.Name, Chemical_GSAP_P_31__c, Third_Party__c, Sold_To__r.AccountNumber, Delivery_Terms__c, Mode_of_Transport__c,  ShipToNo__c, BillToNo__c, Payer__c, PayerNo__c,  PoNumber,   TCP_Order_Status__c, OrderNumber, AccountId, createdby.contactId, (select id,TCP_Modify_Cancel_Status__c, Product__r.Product_Number__c, Sales_Order_Line_Item_No__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c from order_line_items__r  where Cancelled_in_Submitted__c=false Order By Sales_Order_Line_Item_No__c) from Order where id =:orderId];
                 if(orderList[0].GSAP_Status__c == 'Processed'){
                     return System.label.TCP_GSAPOrderProcessedMessage;
                 }else if(String.isBlank(orderList[0].GSAP_Status__c)){
