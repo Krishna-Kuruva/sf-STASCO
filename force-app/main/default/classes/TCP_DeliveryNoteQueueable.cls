@@ -36,8 +36,8 @@ public with sharing class TCP_DeliveryNoteQueueable implements Queueable, Databa
             }
             
             //Finalizer class to manage final actions based on outcome of current job
-            TCP_Queueable_finalizer tcpFinalActions = new TCP_Queueable_finalizer(jrAudit);
-            System.attachFinalizer(tcpFinalActions);
+            //TCP_Queueable_finalizer tcpFinalActions = new TCP_Queueable_finalizer(jrAudit);
+            //System.attachFinalizer(tcpFinalActions);
             }
         catch(Exception e){
             system.debug('Exception in TCP_DeliveryNoteQueueable class : '+e.getMessage()+'line : '+e.getLineNumber());

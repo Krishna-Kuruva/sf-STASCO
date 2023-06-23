@@ -87,7 +87,7 @@ public with sharing class TCP_OrderSearchController{
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('Order Search exception',e.getMessage(),'TCP_OrderSearchController','getOrderDetailsBySearchKey','Exception');
-            throw new AuraHandledException(e.getMessage());
+            //throw new AuraHandledException(e.getMessage());
         }
         return ordWrapList;
     }
