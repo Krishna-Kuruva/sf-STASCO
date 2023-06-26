@@ -162,7 +162,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
         this.isViewEULoading=true;
         this.sendFilterData = this.eufilterdata;
         //call apex method
-         fetchDeliveryNotedetails({soldToId : this.accountId})
+         fetchDeliveryNotedetails({soldToId : this.accountId,asyncRequest: false})
          .then(result=>{
             window.console.log('result'+JSON.stringify(result));
             if(result==='Success'){

@@ -584,7 +584,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
         this.dnMessage='';
         this.rcMessage='';
         this.cnMessage='';
-    fetchDeliveryNotedetails({soldToId : soldTo})
+    fetchDeliveryNotedetails({soldToId : soldTo,asyncRequest: false})
          .then(result=>{
             window.console.log('result'+JSON.stringify(result));
             if(result==='Success'){
