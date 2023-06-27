@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resend_CIPM_request</fullName>
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Resend CIPM request</masterLabel>
+    <openType>sidebar</openType>
+    <page>TCP_vf_for_customLink</page>
+    <protected>false</protected>
+</WebLink>
