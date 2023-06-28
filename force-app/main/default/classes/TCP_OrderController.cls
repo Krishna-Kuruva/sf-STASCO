@@ -428,7 +428,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                     integer monthsDiff = lastCallDate.monthsBetween(system.today()); 
                     system.debug('monthsDiff '+monthsDiff);
                     string completeString = 'SELECT Soldto__c,SalesItemNo__c,BolDeliveryNo__c,Status__c,Weborder__c,BolDelItemNo__c,MotId__c, mot__c FROM CurrentOrdersDelivery__x where ';
-                    completeString = completeString+'Soldto__c=\''+gsapSoldToNo+'\' '+' and '+' Months__c=\''+string.valueof(monthsDiff)+'\' and '+' (Status__c=\'Confirmed\' or Status__c!=\'Shipped\')';                    
+                    completeString = completeString+'Soldto__c=\''+gsapSoldToNo+'\' '+' and '+' Months__c=\''+string.valueof(monthsDiff)+'\' and '+' (Status__c=\'Confirmed\' or Status__c=\'Shipped\')';                    
                     system.debug('completeString=====>'+completeString);  
                     if(asyncRequest==false){
                     	TCP_GSAPDataService.getDeliveryDetails(completeString, gsapSoldToNo, stnsapSoldToAccNo);
