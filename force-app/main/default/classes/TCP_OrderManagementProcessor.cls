@@ -116,12 +116,12 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                                 if (string.isNotBlank(ops.GmUnit__c)){                            	
                                     li.GSAP_Goods_Issue_Unit__c = ops.GmUnit__c;  
                                 }
-                                /*if (string.isNotBlank(ops.BolDeliveryNo__c)){                            	 
+                                if (string.isNotBlank(ops.BolDeliveryNo__c)){                            	 
                                     li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
                                 }                                                  
                                 if (string.isNotBlank(ops.MotId__c)){								  
                                     li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;                              
-                                }*/
+                                }
                                 //added by Rafi - May 17,2023 - PBI#1810939
                                 if(string.isNotBlank(ops.InvStat__c)){
                                     li.Invoice_Status__c = ops.InvStat__c;
