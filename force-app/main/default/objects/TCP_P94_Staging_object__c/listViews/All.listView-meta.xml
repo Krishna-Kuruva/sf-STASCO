@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Data_Type__c</columns>
+    <columns>Sold_To__c</columns>
+    <columns>Full_load__c</columns>
+    <columns>Partner_Number__c</columns>
+    <columns>Partner_Function__c</columns>
+    <columns>Partner_Counter__c</columns>
+    <columns>Cust_No_External_Id__c</columns>
+    <columns>Sales_Area_External_Id__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Sales_Org__c</columns>
+    <columns>Is_Cust_Processed__c</columns>
+    <columns>Is_Matr_Processed__c</columns>
+    <columns>Is_CMIR_Processed__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>
