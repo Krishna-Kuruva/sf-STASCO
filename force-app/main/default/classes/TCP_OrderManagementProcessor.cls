@@ -87,9 +87,9 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
             for(order ord : finalOrderList){
                 if(currentOrderMap.containskey(ord.OrderNumber)){
                     list<CurrentOrders__x> tmpList = currentOrderMap.get(ord.OrderNumber);
-                    if(ord.Sales_Order_Number__c==null){
-                    ord.Sales_Order_Number__c = tmpList[0].SalesOrder__c;
-                    }
+                    // if(ord.Sales_Order_Number__c==null){
+                    // ord.Sales_Order_Number__c = tmpList[0].SalesOrder__c;
+                    // }
                     ord.GSAP_Status__c = 'Processed';
                     //ord.TCP_Order_Status__c = 'Shipped'; //this order status should get updated to shippedpnly when all the products in the orderline item have status has shipped.
                     
@@ -98,35 +98,52 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                         
                         for(CurrentOrders__x ops : tmplist){
                             System.debug('Checking Sales Item Number '+li.Sales_Order_Line_Item_No__c + '---'+ops.SalesItemNo__c);
-                            if(li.Sales_Order_Line_Item_No__c == ops.SalesItemNo__c){                            
-                                li.GSAP_Goods_Issue_Value__c = ops.GmQuan__c;                            
-                                if (ops.GmDate__c != NULL){
+                            //Normal Order
+							if((ord.Sales_Order_Number__c==ops.SalesOrder__c) && (li.Sales_Order_Line_Item_No__c == ops.SalesItemNo__c)){        
+                            
+                                if(ops.GmStat__c=='C' && ops.GmDate__c != NULL){
+                                 //GI Processed
+                                 li.GSAP_Goods_Issue_Status__c ='Completely Processed';
+                                 li.GSAP_Goods_Issue_Value__c = ops.GmQuan__c;
+                                 if(ops.GmDate__c != NULL){
                                     li.GSAP_Goods_Issue_Date__c = Date.valueOf(ops.GmDate__c);  
-                                }
-                                if (ops.GmDate__c != NULL){
-                                    li.GSAP_Dispatch_Date__c =  Date.valueOf(ops.GmDate__c);   
-                                }
-                                if (string.isNotBlank(ops.DueDate__c)){
+                                 	li.GSAP_Dispatch_Date__c =  Date.valueOf(ops.GmDate__c);
+                                 }else{
+                                   li.GSAP_Goods_Issue_Date__c =null;  
+                                 	li.GSAP_Dispatch_Date__c =null;
+                                 }
+                                 li.GSAP_Goods_Issue_Unit__c = ops.GmUnit__c;  
+                                 li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
+                                 li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;                              
+                                 li.Invoice_Status__c = ops.InvStat__c;
+                                 if(string.isNotBlank(ops.DueDate__c)){
                                     li.GSAP_Due_Date__c =  Date.valueOf(ops.DueDate__c);   
+                                 }else{
+                                    li.GSAP_Due_Date__c =null;
+                                 }
+                                    
+                                }else if(ops.GmStat__c=='A'){
+                                  if(li.GSAP_Goods_Issue_Status__c=='Completely Processed'){
+                                       //GI Reversed  
+                                  		li.GSAP_Goods_Issue_Status__c ='Reversed'; 
+                                   }else if(li.GSAP_Goods_Issue_Status__c==null){
+                                        //Fresh Order   
+                                 		li.GSAP_Goods_Issue_Status__c ='Not yet processed';
+                                  }
+                                  li.GSAP_Goods_Issue_Value__c = null;  
+                                  li.GSAP_Goods_Issue_Date__c=null;
+                                  li.GSAP_Dispatch_Date__c =null;
+                                  li.GSAP_Due_Date__c =null;
+                                  li.GSAP_Goods_Issue_Unit__c = null; 
+                                  li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
+                                  li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;
+                                  li.Invoice_Status__c = ops.InvStat__c;
+                                  if(string.isNotBlank(ops.DueDate__c)){
+                                    li.GSAP_Due_Date__c =  Date.valueOf(ops.DueDate__c);   
+                                  }else{
+                                        li.GSAP_Due_Date__c =null;
+                                  }
                                 }
-                                if (string.isNotBlank(ops.GmStat__c)){								
-                                    li.GSAP_Goods_Issue_Status__c = ops.GmStat__c;
-                                    //li.Order_Line_Status__c = 'Shipped';
-                                }
-                                if (string.isNotBlank(ops.GmUnit__c)){                            	
-                                    li.GSAP_Goods_Issue_Unit__c = ops.GmUnit__c;  
-                                }
-                                if (string.isNotBlank(ops.BolDeliveryNo__c)){                            	 
-                                    li.GSAP_Bol_Delivery__c = ops.BolDeliveryNo__c;  
-                                }                                                  
-                                if (string.isNotBlank(ops.MotId__c)){								  
-                                    li.GSAP_Mode_of_Transport_ID__c = ops.MotId__c;                              
-                                }
-                                //added by Rafi - May 17,2023 - PBI#1810939
-                                if(string.isNotBlank(ops.InvStat__c)){
-                                    li.Invoice_Status__c = ops.InvStat__c;
-                                }
-                                
                                 if(string.isNotBlank(ops.GmStat__c) && string.isNotBlank(ops.InvStat__c) && ops.GmStat__c == 'C' && ops.InvStat__c == 'C'){
                                     li.Order_Line_Status__c = 'Shipped';
                                 }
@@ -333,7 +350,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                     }
                 }            
             }
-            list<order> finalOrderList = [select id,OrderNumber,Sales_Order_Number__c,TCP_Order_Status__c,GSAP_Status__c,(select id,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c from order_line_items__r) from order where TCP_Order_Status__c != 'shipped' AND TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToNo AND OrderNumber IN: OrdDelMap.keyset() AND recordtypeid =: tcpOrderRecTypeid ORDER BY OrderNumber DESC];
+            list<order> finalOrderList = [select id,OrderNumber,Sales_Order_Number__c,TCP_Order_Status__c,GSAP_Status__c,(select id,GSAP_Goods_Issue_Unit__c,GSAP_Due_Date__c,GSAP_Dispatch_Date__c,GSAP_Goods_Issue_Date__c,GSAP_Goods_Issue_Status__c,GSAP_Goods_Issue_Value__c,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c from order_line_items__r) from order where TCP_Order_Status__c != 'shipped' AND TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToNo AND OrderNumber IN: OrdDelMap.keyset() AND recordtypeid =: tcpOrderRecTypeid ORDER BY OrderNumber DESC];
             
             if(!finalOrderList.isEmpty()){
                 system.debug('inside if '+finalOrderList.size());
@@ -364,10 +381,21 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                                 if(tempItem.Sales_Order_Line_Item_No__c == tempitemNo && !tempLineitems.contains(tempItem.id)){  
                                 	system.debug('inside Sales_Order_Line_Item_No__c if '+tempitemNo + 'order '+tempExtData.Weborder__c); 
                                     
-                                    if(string.isNotBlank(tempExtData.BolDeliveryNo__c))
+                                    //if(string.isNotBlank(tempExtData.BolDeliveryNo__c))
                                         tempItem.GSAP_Bol_Delivery__c = tempExtData.BolDeliveryNo__c;
-                                    if(string.isNotBlank(tempExtData.MotId__c))
+                                    //if(string.isNotBlank(tempExtData.MotId__c))
                                         tempItem.GSAP_Mode_of_Transport_ID__c = tempExtData.MotId__c;
+                                    
+                                    //Removing goods issue when delivery is deleted.
+                                    if(string.isBlank(tempExtData.BolDeliveryNo__c)){
+                                        tempItem.GSAP_Goods_Issue_Status__c=null;
+                                        tempItem.GSAP_Goods_Issue_Value__c = null;  
+                                        tempItem.GSAP_Goods_Issue_Date__c=null;
+                                        tempItem.GSAP_Dispatch_Date__c =null;
+                                        tempItem.GSAP_Due_Date__c =null;
+                                        tempItem.GSAP_Goods_Issue_Unit__c = null;
+                                    }
+                                        
                                     
                                     
                                     finalOrderLineItems.add(tempItem);
