@@ -16,7 +16,7 @@ public class TCP_GSAPDataServiceTest {
     @istest
     static void getCurrentOrdersFromGsapTest(){
         
-        Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' limit 1];
+        Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber,Sales_Order_Number__c, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' limit 1];
         
         TCP_TestDataUtilities.createOrderLineItems(1,ord);
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
@@ -30,10 +30,11 @@ public class TCP_GSAPDataServiceTest {
         dateFormat += lastCallDateFormat; 
         List<CurrentOrders__x > mockRecords = new List<CurrentOrders__x >();
         CurrentOrders__x mock1 = new CurrentOrders__x ();
+        CurrentOrders__x mock2 = new CurrentOrders__x ();
         mock1.Weborder__c=ord.OrderNumber;
         mock1.SalesItemNo__c='000010';
         mock1.Soldto__c=acc.GSAP_Account_Number__c;
-        
+        mock1.SalesOrder__c=ord.Sales_Order_Number__c;
         mock1.CustomerPoNo__c=ord.PoNumber;
         mock1.Quantity__c=ordLine.Quantity__c;
         mock1.ProductName__c=ordLine.Material_Name__c;
@@ -46,6 +47,9 @@ public class TCP_GSAPDataServiceTest {
         mock1.MotId__c='12345';
         
         mockRecords.add(mock1);
+        mock2=mock1;
+        mock2.GmStat__c='A';
+        mockRecords.add(mock2);
         TCP_GSAPDataService.MocklistGetCurrentOrder1=mockRecords;
         
         
@@ -118,6 +122,56 @@ public class TCP_GSAPDataServiceTest {
         test.stopTest();
         
     }
+    
+    @istest
+    static void getDeliveryDetailsFromGsapTest(){
+        
+        Order ord=[select id,Name,recordtype.id,createddate, AccountId, OrderNumber,Sales_Order_Number__c, Sold_To__c, Ship_To__c,Payer__c,Bill_To__c, EffectiveDate,Ship_To__r.GSAP_Account_Number__c,Sold_To__r.GSAP_Account_Number__c,Bill_To__r.GSAP_Account_Number__c, poNumber, Payer__r.GSAP_Account_Number__c,Order_Other_Instructions__c, Mode_of_Transport__c, Delivery_Terms__c, TCP_Order_Status__c, status,CreatedBy.Name from Order where TCP_Order_Status__c='Approved' limit 1];
+        
+        TCP_TestDataUtilities.createOrderLineItems(1,ord);
+        string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
+        Account acc=[select id,name,recordtype.id,GSAP_Account_Number__c,AccountNumber from account where name='SampleAccount0' limit 1];
+        acc.recordtype.id=tcpAccountRecTypeid;
+        update acc;
+        TCP_OrderLineItem__c ordLine=[Select Id, GSAP_Goods_Issue_Unit__c,GSAP_Due_Date__c,GSAP_Dispatch_Date__c,GSAP_Goods_Issue_Date__c,GSAP_Goods_Issue_Status__c,GSAP_Goods_Issue_Value__c,Sales_Order_Line_Item_No__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c,Order__c,Quantity__c, Unit__c, Delivery_Collection_Date__c, MaterialNumber__c, Material_Name__c, Contract_No__c, Special_Price__c, Other_Instruction__c from TCP_OrderLineItem__c where Order__c=:ord.Id];
+        Date lastCallDate = date.valueOf(ord.createddate);
+        integer monthsDiff = lastCallDate.monthsBetween(system.today()); 
+        List<CurrentOrdersDelivery__x > mockRecords = new List<CurrentOrdersDelivery__x >();
+        CurrentOrdersDelivery__x mock1 = new CurrentOrdersDelivery__x ();
+        CurrentOrdersDelivery__x mock2 = new CurrentOrdersDelivery__x ();
+        mock1.Weborder__c=ord.OrderNumber;
+        mock1.SalesItemNo__c='000010';
+        mock1.Soldto__c=acc.GSAP_Account_Number__c;
+        mock1.SalesOrder__c=ord.Sales_Order_Number__c;
+        mock1.CustomerPoNo__c=ord.PoNumber;
+        mock1.Quantity__c=ordLine.Quantity__c;
+        mock1.ProductName__c=ordLine.Material_Name__c;
+        mock1.Unit__c=ordLine.Unit__c;
+        mock1.DueDate__c=String.valueOf(system.today()+1);
+        mock1.BolDeliveryNo__c='1234';
+        mock1.MotId__c='12345';
+        
+        mockRecords.add(mock1);
+        mock2=mock1;
+        mock2.BolDeliveryNo__c=null;
+        mockRecords.add(mock2);
+        TCP_GSAPDataService.MocklistGetOrderDeliverys1=mockRecords;
+        
+        
+        string completeString = 'SELECT Soldto__c,SalesItemNo__c,BolDeliveryNo__c,Status__c,Weborder__c,BolDelItemNo__c,MotId__c, mot__c FROM CurrentOrdersDelivery__x where ';
+        completeString = completeString+'Soldto__c=\''+acc.GSAP_Account_Number__c+'\' '+' and '+' Months__c=\''+string.valueof(monthsDiff)+'\' and '+' (Status__c=\'Confirmed\' or Status__c=\'Shipped\')';                    
+
+        test.startTest();
+        try{
+            TCP_GSAPDataService.getDeliveryDetailsAsync(completeString, acc.GSAP_Account_Number__c, acc.AccountNumber);  
+          }
+        catch(Exception e){
+            system.debug('getDeliveryDetailsAsync exception=====>');
+        }
+        
+        test.stopTest();
+    } 
+    
     @istest
     static void generateGSAPQueryStringForModifyCancelTest(){
         
