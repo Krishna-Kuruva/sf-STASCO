@@ -8,13 +8,13 @@ public class TCP_PlaceOrderConfirmationCtrlTest {
 static void createTestData() {
     List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
     for(Account testAccount:testAccounts){
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccount);
+        TCP_TestDataUtilities.createContacts(1,testAccount);
         List<Order> testOrders=TCP_TestDataUtilities.createOrders(1,testAccount);
             for(Order testOrder:testOrders){
-           		 List<TCP_OrderLineItem__c> testOrderLineItem=TCP_TestDataUtilities.createOrderLineItems(1,testOrder);
+           		TCP_TestDataUtilities.createOrderLineItems(1,testOrder);
             }
     }
-    List<Document> testDocs=TCP_TestDataUtilities.createDocs(1);
+    TCP_TestDataUtilities.createDocs(1);
 }
 
 @isTest 

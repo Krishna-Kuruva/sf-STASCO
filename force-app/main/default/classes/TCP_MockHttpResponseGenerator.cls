@@ -1,7 +1,5 @@
 @isTest
 global class TCP_MockHttpResponseGenerator implements HttpCalloutMock {
-    //public integer statusCode;
-   
     // Implement this interface method
     global HTTPResponse respond(HTTPRequest req) {
         // Optionally, only send a mock response for a specific endpoint

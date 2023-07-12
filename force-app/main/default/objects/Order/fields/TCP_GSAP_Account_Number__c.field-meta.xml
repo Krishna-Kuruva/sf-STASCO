@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCP_GSAP_Account_Number__c</fullName>
+    <description>To capture GSAP Sold To number set during fresh order approval.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>To capture GSAP Sold To number set during fresh order approval.</inlineHelpText>
+    <label>TCP GSAP Account Number</label>
+    <length>10</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

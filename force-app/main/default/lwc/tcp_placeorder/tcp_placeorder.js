@@ -1037,6 +1037,7 @@ export default class TcpPlaceOrder extends LightningElement {
                 this.showProducts = true;
                 this.productList = tempProdData;
                 this.productListData = tempProdData;
+                this.hasProductData = true;
             }else{
                 this.productList = null;
                 this.showProducts = false;
@@ -1080,17 +1081,36 @@ export default class TcpPlaceOrder extends LightningElement {
 
     sortProductDesc(){
         if(this.showProducts){
-            if(this.productList.length >0){
-                let prodList =[];
-                for(let i=this.productList.length-1 ; i>=0 ;i--){
-                    const prodData =[];
-                    prodData.Name = this.productList[i].Name;
-                    prodData.Id = this.productList[i].Id;
-                    prodData.Number=this.productList[i].Number;
-                    prodList = [...prodList,prodData];
-                }
-                this.productList = prodList;
-            }
+            // if(this.productList.length >0){
+            //     let prodList =[];
+            //     for(let i=this.productList.length-1 ; i>=0 ;i--){
+            //         const prodData =[];
+            //         prodData.Name = this.productList[i].Name;
+            //         prodData.Id = this.productList[i].Id;
+            //         prodData.Number=this.productList[i].Number;
+            //         prodList = [...prodList,prodData];
+            //     }
+            //     this.productList = prodList;
+            // }
+            this.productList.sort((a, b) => (a.Name > b.Name) ? 1 : -1);
+        }
+    }
+    sortProductAsc(){
+        if(this.showProducts){
+            this.productList.sort((a, b) => (a.Name < b.Name) ? 1 : -1);
+         
+        }
+    }
+    sortProductCodeDesc(){
+        if(this.showProducts){
+            
+            this.productList.sort((a, b) => (a.Number > b.Number) ? 1 : -1);
+        }
+    }
+    sortProductCodeAsc(){
+        if(this.showProducts){
+            
+            this.productList.sort((a, b) => (a.Number < b.Number) ? 1 : -1);
         }
     }
 

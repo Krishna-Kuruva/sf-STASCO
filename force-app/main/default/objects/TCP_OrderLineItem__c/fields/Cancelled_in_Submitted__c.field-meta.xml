@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled_in_Submitted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To capture if the order line item has been cancelled when order was in submitted state.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>To capture if the order line item has been cancelled when order was in submitted state.</inlineHelpText>
+    <label>Cancelled in Submitted</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -28,7 +28,7 @@ global with sharing class TCP_OrderConfirmationScheduler implements Schedulable 
                 accountIdInSplits.add(tempSet);
             }
             for(Integer i=0;i<accountIdInSplits.size();i++){
-                String jobId =System.enqueueJob(new TCP_OrderConfirmQueueable(accountIdInSplits.get(i),i) );
+                System.enqueueJob(new TCP_OrderConfirmQueueable(accountIdInSplits.get(i),i) );
             }
         }
         catch(Exception e){

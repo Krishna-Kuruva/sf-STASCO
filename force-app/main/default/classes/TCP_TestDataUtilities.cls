@@ -5,7 +5,7 @@
 @isTest(SeeAllData=false)
 public class TCP_TestDataUtilities {
      public static User createAdminUsers(){
-        User userCreated = new user();
+        
         Id profileId = [SELECT Id FROM Profile WHERE Name=:'System Administrator'].Id;
          Id roleId=[Select Id, Name from UserRole where Name=:'Administrator'].Id;
             User u = new User();
@@ -47,7 +47,7 @@ public class TCP_TestDataUtilities {
     }
     // Parent Account creation
     public static Account createParentAccounts() {
-       
+        string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         TCP_Sales_Area__c testSalesArea=new TCP_Sales_Area__c();
         
             testSalesArea.Sales_Org__c='SETO';
@@ -63,6 +63,7 @@ public class TCP_TestDataUtilities {
             acc.GSAP_Account_Number__c = String.valueOf(80026);
 			acc.Sales_Area__c=testSalesArea.id;
         	acc.Active__c=true;
+            acc.RecordTypeId=tcpAccountRecTypeid;
             acc.Customer_Type__c = 'Sold To';
         	acc.ShippingStreet = 'Test';
             acc.ShippingCity = 'Test';
@@ -144,7 +145,7 @@ public class TCP_TestDataUtilities {
     }
     // Account creation for general SoldTo Accounts
     public static List<Account> createAccounts(Integer noOfAccounts, boolean SalesArea) {
-         //User u=createAdminUsers();
+         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         TCP_Sales_Area__c testSalesArea=new TCP_Sales_Area__c();
         TCP_DistributionEmailList__c testDistList= new TCP_DistributionEmailList__c();
         if(SalesArea)
@@ -177,6 +178,7 @@ public class TCP_TestDataUtilities {
             acc.Customer_Type__c = 'Ship To';
             acc.Active__c=true;
             acc.ShippingStreet = 'Test';
+            acc.RecordTypeId=tcpAccountRecTypeid;
             acc.ShippingCity = 'Test';
             acc.ShippingState = 'Test';
             acc.ShippingCountry = 'Test';
@@ -214,6 +216,10 @@ public class TCP_TestDataUtilities {
     
     //create Order
     public static List<Order> createOrders(Integer noofOrders, Account account){
+        //List<Contact> conList=createContacts(1,account);
+        //List<user> userDetails=createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', conList[0]);
+        
+        //String UserName = userDetails.Id;
         string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeInfosByDeveloperName().get('TCP_Orders').getRecordTypeId();
         List<Order> orderList = new List<Order>();
         for(Integer i=0; i<noOfOrders; i++){
@@ -232,6 +238,10 @@ public class TCP_TestDataUtilities {
                 Delivery_Terms__c = 'FCA',
                 TCP_Order_Status__c = 'Submitted',
                 status='Draft',
+                /*TCP_Modification_Requested_By__r = userDetails[0],
+                TCP_Modification_Requested_Date__c = system.today(),
+                TCP_Cancellation_Placed_By__r = userDetails[0],
+                TCP_Cancellation_Requested_Date__c = system.today(),*/
                 Recordtypeid=tcpOrderRecTypeid
             );
             Order order1 = new Order(
@@ -283,7 +293,7 @@ public class TCP_TestDataUtilities {
         List<TCP_Change_Cancel_Request__c> orderList = new List<TCP_Change_Cancel_Request__c>();
         for(Integer i=0; i<noOfOrders; i++){
             TCP_Change_Cancel_Request__c order = new TCP_Change_Cancel_Request__c(
-                //Name = 'Test Order ' + i,
+                
                 Customer_Name__c = 'customerName',
                 Customer_PO__c='CustomerPO',
                 Customer_PO_New__c= 'CustomerPo2',
@@ -309,7 +319,7 @@ public class TCP_TestDataUtilities {
         List<TCP_Change_Cancel_Order_Line_Items__c> orderList = new List<TCP_Change_Cancel_Order_Line_Items__c>();
         for(Integer i=0; i<noOfOrders; i++){
             TCP_Change_Cancel_Order_Line_Items__c order = new TCP_Change_Cancel_Order_Line_Items__c(
-                //Name = 'Test Order ' + i,
+                
                 Change_Cancel_Request_Order__c = ord.Id,
                 Delivery_Collection_Date__c=System.today(),
                 Delivery_Collection_Date_New__c= System.today(),
@@ -418,7 +428,7 @@ public class TCP_TestDataUtilities {
     }
     //Create customer users with test data
     public static List<User> createcustomerUsers(Integer numberOfUsers, String profileName, contact con){
-      //  User us=createAdminUsers();
+      
         List<User> userList = new List<user>();
         Id profileId = [SELECT Id FROM Profile WHERE Name=:profileName].Id;
         for(Integer i=0; i<numberOfUsers; i++){
@@ -436,7 +446,7 @@ public class TCP_TestDataUtilities {
             u.contactId=con.id;
             u.LastName = 'Test2';
             u.Is_First_Time_Login__c=false;
-            //u.UserRoleId=ur.id;
+          
             
             userList.add(u);
             
@@ -456,7 +466,7 @@ public class TCP_TestDataUtilities {
             usr.LastName = 'Test-Last';
             usr.Alias = 'test';
             usr.email = 'test' + math.random() + '@test.com';
-            //usr.CommunityNickName = string.valueOf(math.random()).substring(0,6);
+            
             usr.ProfileID = p.id;
             usr.TimeZoneSidKey = 'America/New_York';
         
@@ -465,7 +475,7 @@ public class TCP_TestDataUtilities {
             usr.LanguageLocaleKey = 'en_US';
             usr.ContactID = con.Id;
         insert usr;
-        //System.setPassword(usr.Id, 'Test@1234');
+        
         return usr;
     }
     //Create  users with test data

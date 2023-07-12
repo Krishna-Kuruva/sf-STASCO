@@ -4,9 +4,6 @@
         <div class="slds-grid bgPage">
             <!--sidbar menu start-->
             <div class="slds-size_3-of-12">
-
-                <!-- <c-tcp_-sidebar-menu> </c-tcp_-sidebar-menu> -->
-
                <div class="outer-sidebar">
                     <div class="sidebarMenu">  
                        
@@ -18,10 +15,6 @@
                                         <lightning-vertical-navigation-item-icon onclick={orderHistoryClick} aria-label="Order History" label="Order History" name="link_orderhistory"
                                             icon-name="utility:work_order_type">
                                         </lightning-vertical-navigation-item-icon>
-                                
-                                        <!-- <lightning-vertical-navigation-item-icon  aria-label="Safety & Product Information" label="Safety & Product Information" name="link_safetyproductinfo"
-                                            icon-name="utility:page">
-                                        </lightning-vertical-navigation-item-icon> -->
                                 
                                         <lightning-vertical-navigation-item-icon href="../s/my-shell-contacts" aria-label="My Shell Contacts" label="My Shell Contacts" name="link_myshellcontacts"
                                             icon-name="utility:justify_text">
@@ -79,14 +72,8 @@
             <div class="slds-size_9-of-12 pl40">
                 <!--Revieworder details section start-->
                 <template if:true={tcpReviewOrderDetailCU}>    
-                       <c-tcp_-review-order-detail-c-u onbackbutton={handleOrderDetailback} type={tableType} orderdetaildata={orderDetailData} soldtoid={soldtoid} cufilterdata={filterdata}> </c-tcp_-review-order-detail-c-u>  
+                       <c-tcp_-review-order-detail-c-u onbackbutton={handleOrderDetailback} type={tableType} orderdetaildata={orderDetailData} soldtoid={soldtoid} ordhisaccids={ordHisAccIds} cufilterdata={filterdata}> </c-tcp_-review-order-detail-c-u>  
                </template> 
-
-                <!-- view all document section Start
-               <template if:true={viewAllDocumentsCU}>
-                <c-tcp_-view-all-documents-c-u onbackbutton={handleViewAllDocumentsBack} type={tableType} orderdetaildata={orderDetailData} soldtoid={soldtoid}> </c-tcp_-view-all-documents-c-u>  
-              </template> -->
-             
 
                 <!--placeorder LWC-->
                 <template if:true={placeorder}>
@@ -95,13 +82,11 @@
                 
                 <!--view order details com ops section start-->
                 <template if:true={viewOrderDetailCU}>
-                    <!-- <c-tcp_-view-order-detail-e-u> </c-tcp_-view-order-detail-e-u> -->
-                    <c-tcp_-view-order-detail-c-u onbackbutton={handleViewOrderCUBack} type={tableType} orderdetaildata={orderDetailData} soldtoid={soldtoid} cufilterdata={filterdata}> </c-tcp_-view-order-detail-c-u>                
+                    <c-tcp_-view-order-detail-c-u onbackbutton={handleViewOrderCUBack} type={tableType} orderdetaildata={orderDetailData} soldtoid={soldtoid} cufilterdata={filterdata} ordhisaccids={ordHisAccIds}> </c-tcp_-view-order-detail-c-u>                
                </template> 
 
                <!--view order details com ops section start-->
                 <template if:true={viewOrderDetailCU2}>
-                    <!-- <c-tcp_-view-order-detail-e-u> </c-tcp_-view-order-detail-e-u> -->
                     <c-tcp_-view-order-detail-c-u onbackbutton={handleViewOrderCUBack2} orderdetaildata={orderDetailData} iswebemail={iswebemailvar}> </c-tcp_-view-order-detail-c-u>                
                </template> 
 
@@ -270,8 +255,6 @@
 
                   <!--OrderHistory LWC-->
                   <template if:true={orderhistory}>
-                    <!--c-tcp_-order-history-e-u logonastcp={logOnAsTCP} soldtoid={soldtoid} soldtoname={custName}> </c-tcp_-order-history-e-u>
-                    <c-tcp_-order-history-c-u> </c-tcp_-order-history-c-u> -->
                     <div class="slds-size_9-of-12">
                         <div class="orderTitle mb36">
                            <h1>Order History</h1>
@@ -284,7 +267,7 @@
                             </template>
                             <template if:true={logOnAsTCP}>
                                 <div>
-                                    <c-tcp_-all-orders-c-u  onorderdetail={handleOrderDetail} onsoldtoidchanged={handleSoldToidChanged} initialloadtile={initialLoadTileHomePage} customeroptionscu={customerOptions} onvieworderdetailcu={handleviewOrderDetailCU} soldtoid={soldtoid} parentaccid={parentaccid} filterlist={filterdata}></c-tcp_-all-orders-c-u>
+                                    <c-tcp_-all-orders-c-u  onorderdetail={handleOrderDetail} onsoldtoidchanged={handleSoldToidChanged} initialloadtile={initialLoadTileHomePage} customeroptionscu={accountData} onvieworderdetailcu={handleviewOrderDetailCU} soldtoid={accountIds} parentaccid={parentaccid} filterlist={filterdata} selectedaccids={ordHisAccIds}></c-tcp_-all-orders-c-u>
                                 </div>
                             </template>
                    
@@ -298,13 +281,8 @@
                             <div>
                                 <c-tcp_-portal-action-button></c-tcp_-portal-action-button>
                             </div>
-                            <!-- <div class="bellIcon">
-                                <img src={TCP_bell_icon} alt="Bell Icon">    
-                                <span></span>
-                            </div> -->
                         </div>
-                       </div>
-                <!-- <c-tcp_-portal-action-button></c-tcp_-portal-action-button> -->
+                    </div>
                 <!--welcome message section end-->
                 <!--select option-->
                 <div class="slds-size_12-of-12 mtb36">
@@ -314,7 +292,7 @@
                                 <div class="slds-form-element">
                                     <div class="slds-form-element__control">   
                                     <template if:true={logOnAsTCP}>
-                                        <lightning-combobox
+                                        <!-- <lightning-combobox
                                             placeholder="Select a customer"
                                             variant="label-hidden"
                                             value={value}
@@ -324,16 +302,64 @@
                                             message-when-value-missing="Please select a customer"
                                             required
                                         >
-                                        </lightning-combobox>
+                                        </lightning-combobox> -->
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-combobox_container setCombobox">
+                                                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"><!-- slds-is-open -->
+                                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                                            <button type="button"
+                                                                class="slds-input_faux slds-combobox__input  slds-cust-focus slds-combobox__input-value"
+                                                                aria-labelledby="combobox-label-id-130 combobox-id-6-selected-value"
+                                                                id="combobox-id-6-selected-value" aria-controls="listbox-id-7" aria-expanded="true"
+                                                                aria-haspopup="listbox" onclick={handleCustDropDown}>
+                                                                <span class="slds-truncate" id="combobox-value-id-93">{customerSelectText}</span>
+                                                            </button>
+                                                            <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                                                <lightning-icon icon-name="utility:down" alternative-text="down!" title="down" size="x-small" class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"></lightning-icon>
+                                                            </span>
+                                                        </div>
+                                                        <div id="listbox-id-7" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                <li role="presentation" class="slds-listbox__item">
+                                                                    <div aria-checked="true" id="option1" onclick ={handleCustChange}
+                                                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected"
+                                                                        role="option">
+                                                                        <span class="slds-media__figure slds-listbox__option-icon slds-visible all-cust-check">
+                                                                                <lightning-icon icon-name="utility:check" alternative-text="check" title="check" size="xx-small" class="slds-icon-utility-check slds-icon_container"></lightning-icon>
+                                                                            
+                                                                        </span>
+                                                                        <span class="slds-media__body">
+                                                                            <span class="slds-truncate" title="All Customer">All Customer</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <template for:each ={accountData} for:item="account">
+                                                                    <li key={account.Id} role="presentation" class="slds-listbox__item">
+                                                                        <div data-id={account.Id} aria-checked="true" 
+                                                                            class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                            role="option" onclick={handleCustMultiSelect}>
+                                                                            <span data-name={account.Id} class="slds-media__figure slds-listbox__option-icon slds-hidden uncheck-all">
+                                                                                <lightning-icon icon-name="utility:check" alternative-text="check" title="check" size="xx-small" class="slds-icon-utility-check slds-icon_container"></lightning-icon>
+                                                                            </span>
+                                                                            <span class="slds-media__body">
+                                                                                <span class="slds-truncate" title={account.Name}>{account.Name}</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </li>
+                                                                </template>  
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </template>
                                     <template if:false={logOnAsTCP}>
-                                        <p class="slds-m-top_small slds-text-heading_small heading3"><b>{custName}</b></p>
+                                        <p class="slds-m-top_small slds-text-heading_small heading3"><strong>{custName}</strong></p>
                                     </template>
-                                        
-                                            <!-- <select aria-label="select" class="slds-select setSelect">
-                                                <option value=" A"> XYZ German Chemicals</option>
-                                                <option value=" B"> ABCD German Chemicals</option>  
-                                            </select> -->
+                                            
                                     </div>
                                 </div> 
                             
@@ -472,49 +498,11 @@
                      
                     </div>
                 </div>
-                <!--table section start-->
-                  <!-- <div class="slds-grid slds-gutters verticalSet">
-                    <div class="slds-size_3-of-12 setPadding">
-                        <h2 class="heading3">My Current Orders</h2>
-                     </div> 
-                    <div class="slds-size_9-of-12 setPadding">
-                        <div class="flex slds-grid slds-gutters">
-                            <div class="slds-size_12-of-12 setPadding filter">
-                                 <div class="searchWidth">
-                                        <div class="slds-form-element">
-                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-                                              <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
-                                                 <lightning-button-icon icon-name="utility:search"  variant="bare" alternative-text="search" title="search"></lightning-button-icon>
-                                            </span>
-                                              <input type="text" id="text-input-id-47" placeholder="Search" class="slds-input setSearch" />
-                                            </div>
-                                          </div>
-                                 </div>
-                                
-                           
-                                <div>
-                                    <button class="slds-button slds-button_neutral setBtnFilter mlr16"> Filters <img src={TCP_filter} alt="Filters button black color Filter icon"></button>
-                                </div>
-                                <div>
-                                    <button class="slds-button slds-button_neutral setBtnReport"> Download Report <img src={TCP_download_icon} alt="Download Report button black color Download icon"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div> -->
-
-            <!--  End user table start  -->
-                    <!-- <template if:true={endUserTabel}>
-                        <div class="mt16">
-                            <c-tcp-all-orders-e-u> </c-tcp-all-orders-e-u>
-                        </div>
-                    </template>    -->
-            <!--  End user table End  -->
 
             <!--   Comm ops user table start  -->
             <template if:true={commopsUserTabel}>
                 <div class="mt16">
-                    <c-tcp_-all-orders-c-u  onorderdetail={handleOrderDetail} filterlist={filterdata} initialloadtile={initialLoadTileHomePage}  onvieworderdetailcu={handleviewOrderDetailCU} soldtoid={soldtoid} parentaccid={parentaccid}></c-tcp_-all-orders-c-u>
+                    <c-tcp_-all-orders-c-u  onorderdetail={handleOrderDetail} filterlist={filterdata} initialloadtile={initialLoadTileHomePage}  onvieworderdetailcu={handleviewOrderDetailCU} soldtoid={accountIdsToProcess} parentaccid={parentaccid}></c-tcp_-all-orders-c-u>
                  </div>
             </template>
              <!--   Comm ops user table End  -->
@@ -526,35 +514,6 @@
                 </div>
            </template>
          <!--  Review Order Detail Com ops User section End  -->
-                
-                <!--service & delivery section start-->
-                <!--<div class="slds-size_12-of-12 mtb">
-                    <article class="slds-card setCard">
-                        <div class="slds-grid">
-                            <div class="slds-col slds-size_11-of-12 ">
-                                <div class="slds-card__header slds-grid">
-                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                                        <div class="slds-media__body">
-                                            <h2 class="slds-card__header-title setCardTitle">
-                                                <span>Service & Delivery Standards</span>
-                                            </h2>
-                                        </div>
-                                    </header>
-                                </div>
-                                <div class="slds-card__body slds-card__body_inner setCardBody">Service &
-                                    Delivery Standards apply to
-                                    singapore/Malaysia, US/Canada and Europe - <span class="clickText"><a
-                                            href="javascript:void(0)">click here.</a></span> </div>
-                            </div>
-                            <div class="slds-col slds-size_1-of-12 ">
-                                <div class="circleArrow">
-                                    <img src={TCP_circleArrow} alt="circle border black color right arroe icon">
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>-->
-                <!--service & delivery section end-->
                 
                 </template>
             </div>

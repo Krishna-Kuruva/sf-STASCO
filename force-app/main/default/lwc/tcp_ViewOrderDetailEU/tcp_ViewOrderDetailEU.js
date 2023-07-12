@@ -70,7 +70,6 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
     @track isShowReturnOrderModal=false;
     @track lineitemId;
     @track returnLineItem = [];
-
     connectedCallback(){
        
         
@@ -227,6 +226,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
             return add;
         }
     }
+
 
     navigateToViewOrderDetail(data,type,filterdata){
         
@@ -421,7 +421,6 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
         }
 
     }
-
     handleReturnOrderShowModel(event) {  
     const clickedOLI = event.currentTarget.dataset.id;
        

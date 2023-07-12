@@ -58,7 +58,7 @@ public with sharing class TCP_STNSAPDataService {
                                              
             } 
         } catch (Exception e) {
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured Fetch STNSAP SoldTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('Fetch STNSAP SoldTo Exception',e.getMessage(),'TCP_STNSAPDataService','fetchSTNSAPSoldTo','Exception');
         }
         return null;
@@ -98,14 +98,9 @@ public with sharing class TCP_STNSAPDataService {
             
             if(listSoldTo != null){
                 TCP_STNSAPManagementProcessor.trackStatusSTNSAPSoldTo(listSoldTo);
-                /*TCP_STNSAP_1stService__c updateCustSetting = TCP_STNSAP_1stService__c.getInstance(salesorg);
-                if(updateCustSetting.Full_Load__c == 'Y'){
-                	updateCustSetting.Full_Load__c = 'N'; 
-                    update updateCustSetting;
-                } */
             }
         }catch(Exception e){
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage()); 
+            system.debug('Exception occured STNSAP SoldTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage()); 
             TCP_ExceptionLogClass.insertExceptionRecord('STNSAP SoldTo Exception',e.getMessage(),'TCP_STNSAPDataService','STNSAPSoldToData','Exception');
         }     
     }
@@ -127,10 +122,6 @@ public with sharing class TCP_STNSAPDataService {
         String soldToNumber;
     	list<account> accList = [SELECT id, AccountNumber, GSAP_Account_Number__c, Sales_Area__c, Sales_Area__r.Sales_Org__c, Sales_Area__r.Distribution_Channel__c, Sales_Area__r.Division__c FROM Account where id =: soldToId and recordtypeid =: tcpAccountRecTypeid and Customer_Type__c ='Sold To' and AccountNumber != null];
         system.debug('accList size====>'+accList.size());        
-        Map<id, list<account>> accMap = new Map<id, list<account>>();
-        integer count = 0;
-        list<account> saAccNoList = new list<account>();
-        List<TCP_Sales_Area__c> salesAreaData = new List<TCP_Sales_Area__c>();
         
         try{           
             if(String.isNotBlank(soldToId) && accList.size()>0){           
@@ -174,7 +165,7 @@ public with sharing class TCP_STNSAPDataService {
                //}
             }
         } catch (Exception e) {
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured STNSAP SoldTo ShipTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('STNSAP SoldTo ShipTo Exception',e.getMessage(),'TCP_STNSAPDataService','fetchSTNSAPSoldToShipTo','Exception');
         }       
 		return null;
@@ -221,16 +212,9 @@ public with sharing class TCP_STNSAPDataService {
             
             if(listSoldToShipTo != null){
                 TCP_STNSAPManagementProcessor.trackStatusSTNSAPSoldToShipTo(listSoldToShipTo);
-                /*TCP_STNSAP_2ndService__c updateCustSetting = TCP_STNSAP_2ndService__c.getInstance(salesorg);
-                if(updateCustSetting.Full_Load__c == 'Y'){
-                	updateCustSetting.Full_Load__c = 'N'; 
-                    //updateCustSetting.Last_call_timestamp__c = lastdatetime;
-                    update updateCustSetting;
-                } */ 
             }
         }catch(Exception e){
-            //TCP_STNSAPManagementProcessor.trackStatusSTNSAPSoldToShipTo(listSoldToShipTo);
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured STNSAP SoldTo ShipTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('STNSAP SoldTo ShipTo Data Exception',e.getMessage(),'TCP_STNSAPDataService','STNSAPSoldToShipToData','Exception');
         }
         
@@ -284,7 +268,7 @@ public with sharing class TCP_STNSAPDataService {
                 }                
             }  
         } catch (Exception e) {
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured Fetch STNSAP SoldTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('Fetch STNSAP SoldTo Exception',e.getMessage(),'TCP_STNSAPDataService','fetchSTNSAPSoldTo','Exception');
         }
         return null;
@@ -322,7 +306,6 @@ public with sharing class TCP_STNSAPDataService {
         try{
             if(Test.isRunningTest()){
                 ZST_TCP_PROD_OUT__x lstProd1 = new ZST_TCP_PROD_OUT__x();
-                list<ZST_TCP_PROD_OUT__x> listProd1 = new list<ZST_TCP_PROD_OUT__x>();
                 lstProd = lstProd1;
             }
             else{                
@@ -331,15 +314,9 @@ public with sharing class TCP_STNSAPDataService {
             
             if(listProd != null){                
                 TCP_STNSAPManagementProcessor.trackStatusSTNSAPProducts(listProd, soldToNum, PartnerFun, salesorg, distChnl);
-                /*TCP_STNSAP_1stService__c updateCustSetting = TCP_STNSAP_1stService__c.getInstance(salesorg);
-                if(updateCustSetting.Full_Load__c == 'Y'){
-                	updateCustSetting.Full_Load__c = 'N'; 
-                    update updateCustSetting;
-                } */
             }
         }catch(Exception e){
-            //TCP_STNSAPManagementProcessor.trackStatusSTNSAPProducts(listProd, soldToNum, PartnerFun, salesorg, distChnl);
-            system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage()); 
+            system.debug('Exception occured Product CMIR'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage()); 
             TCP_ExceptionLogClass.insertExceptionRecord('Product CMIR external Exception',e.getMessage(),'TCP_STNSAPDataService','STNSAPProductCMIRData','Exception');
         }     
     }

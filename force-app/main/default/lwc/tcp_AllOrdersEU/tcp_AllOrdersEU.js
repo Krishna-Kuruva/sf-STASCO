@@ -342,7 +342,7 @@ export default class TcpAllOrdersEU extends NavigationMixin (LightningElement) {
                 orderNumbersInReport.push(ord.WebOrderNo);
 
             });
-            
+
             const columnHeader = ['Customer Name','Web Order Number',custPo,'Order Name',devTo,'Product Code','Product','Invoice To','Status','Delivery/Collection Date','Quantity','Unit','Ordered Quantity in TO','Shell Contract No.','Shell Ref No.','Goods Issue Date','Goods Issue Value','Goods Issue Unit','Goods Issue Quantity in TO','Goods Issue status','Loading Date','Mode of Transport','Dispatch Date','Delivery Term','Other Instruction','Instructions','Ordered by','Ordered Date','Bol/Delivery','Mode of Transport ID','Remarks from Comm Ops','Modified By','Modified Date','Cancelled By','Cancelled Date','Return Order','Return Delivery','Return Goods Issue','New Sales Order','New Dispatch Date','New Loading Date','New Bol/Delivery','New Mode of Transport ID','New Goods Issue Date','New Goods Issue','New Goods Issue Unit','New Goods Issue Status'];
             
             getOrderEUReport({soldToId:this.accountId, ordersInReport:orderNumbersInReport})

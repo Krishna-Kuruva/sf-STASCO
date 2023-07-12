@@ -19,7 +19,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     display: block;
     padding: 9px 0px;
 }
@@ -38,7 +38,7 @@ a[aria-current="page"]{
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
     border-right: 3px solid #FBCF09;  
 }
 
@@ -55,7 +55,7 @@ a[aria-current="page"]{
 
 .quickLink h3{
     padding-bottom: 16px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
@@ -67,7 +67,7 @@ a[aria-current="page"]{
     font-size: 12px;
     line-height: 16px;
     color: #757575;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .quickLink ul li{
@@ -80,7 +80,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 16px;
     color: #404040;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .quickLink ul li a:hover { 

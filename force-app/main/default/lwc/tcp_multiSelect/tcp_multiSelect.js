@@ -295,12 +295,14 @@ export default class Tcp_multiSelect extends LightningElement {
 
      
   @api clearStatusPills(){
+    window.console.log('Started pills');
     this.selectedPills = [];
     this.options_.forEach(function(element) {
       if (element.selected) {
         element.selected = false;
       }
     });
+    window.console.log('Ended pills');
   }
 
   @api closeMultiSelect(){

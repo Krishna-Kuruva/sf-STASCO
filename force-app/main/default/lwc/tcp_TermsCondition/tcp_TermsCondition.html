@@ -1,25 +1,4 @@
 <template>
-    <!-- ================ Breadcrumbs Section Start ============= -->
-
-   <!-- <div id="top" class="slds-size_12-of-12 mb24">
-    <div class="flex slds-grid">
-        <div class="breadcrumbs setBreadcrumbs">
-            <nav role="navigation" aria-label="Breadcrumbs">
-                <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
-                    <li class="slds-breadcrumb__item">
-                        <a href="../s" onclick={handleHomepage} aria-label="Go to dashboard link">Dashboard</a>
-                    </li>
-                    <li class="slds-breadcrumb__item">
-                        <a href="javascript:void(0)" aria-label="Bulk Order ">Terms & Conditions</a>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-       
-    </div>
-   </div> -->
-   <!-- ================ Breadcrumbs Section Start ============= -->
-
  <!-- ================ Terms & Conditions text ============= -->
 
  <div class="slds-size_9-of-12">
@@ -52,8 +31,7 @@
       class="setCheckboxLabel"
       data-id="checkbox"
       disabled=True
-    ></lightning-input><!--value="GRA" 
-        checked={graValue}-->
+    ></lightning-input>
     <template if:true={dateofaccept}>
         <p class="checkedStatus">Last agreed to the Terms & Conditions on {dateofaccept}.</p>
     </template>

@@ -39,8 +39,8 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #757575;
-    font-family: SFProText;
+    color: #595959;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .setTableVertical .slds-table{
@@ -53,6 +53,10 @@
     
 
 }
+.width25{
+    width:25%;
+
+}
 
 .setTableVertical table thead tr th{
     padding: 15px 7px;
@@ -61,7 +65,7 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
 
 }
 
@@ -83,7 +87,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     white-space: normal;
     word-break: break-word;
     
@@ -103,7 +107,7 @@
     font-weight: 700 !important;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
     white-space: normal;
 
 }
@@ -126,6 +130,11 @@
     font-weight: 700 !important;
     font-size: 14px;
     line-height: 16px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
 
+}
+
+.tableSet{
+    width:100%;
+    border-collapse: collapse;
 }

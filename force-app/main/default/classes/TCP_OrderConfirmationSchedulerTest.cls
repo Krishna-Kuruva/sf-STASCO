@@ -12,22 +12,14 @@ public class TCP_OrderConfirmationSchedulerTest {
  }
     @TestSetup
     static void createTestData() {
-        
-        // List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-       
-        List<Account> testAccounts=TCP_TestDataUtilities.createParentAccountsBulk(50);
-         List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+      List<Account> testAccounts=TCP_TestDataUtilities.createParentAccountsBulk(50);
+      TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
     }
     @isTest
     static  void testScheduledJob() {
-        List<Account> acc=[select id,name,recordtype.id from account];
-        
-
-        String CRON_EXP = '0 0 13 * * ?';
+        String cronExp = '0 0 13 * * ?';
         Test.startTest();
-      
-        String jobId = System.schedule('Account Updates',CRON_EXP,new TCP_OrderConfirmationScheduler());
-        
+        System.schedule('Account Updates',cronExp,new TCP_OrderConfirmationScheduler());
         Test.stopTest();
         System.assert(true);
     }

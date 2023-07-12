@@ -26,7 +26,7 @@ global class TCP_STNSAPProductCMIRScheduler implements Schedulable {
                 system.debug('accountIdInSplits====>'+accountIdInSplits);
             }
             for(Integer i=0;i<accountIdInSplits.size();i++){
-                String jobId =System.enqueueJob(new TCP_STNSAPProductCMIRQueueable(accountIdInSplits.get(i),i) );
+                System.enqueueJob(new TCP_STNSAPProductCMIRQueueable(accountIdInSplits.get(i),i) );
             }
         }
         catch(Exception e){

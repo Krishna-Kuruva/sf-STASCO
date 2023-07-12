@@ -4,8 +4,8 @@ public class TCP_OrdrManagementProcessorTest {
     static void createTestData() {
         
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
-        List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
-        List<Order> testOrder=TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
+        TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
+        TCP_TestDataUtilities.createOrders(1,testAccounts[0]);
         
     }
      @istest

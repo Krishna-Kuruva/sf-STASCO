@@ -1,12 +1,12 @@
 import { LightningElement,track, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import TCP_RoundCheck_icon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
+import TcpRoundCheckIcon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
 import getContacts from '@salesforce/apex/TCP_MyCompanyUsersController.getContacts';
 import getShellContacts from '@salesforce/apex/TCP_MyCompanyUsersController.getShellContacts';
 import getNewRequestDetails from '@salesforce/apex/TCP_MyCompanyUsersController.getNewRequestDetails';
 import getUserEditDetails from '@salesforce/apex/TCP_MyCompanyUsersController.getUserEditDetails';
 import getUserDeleteDetails from '@salesforce/apex/TCP_MyCompanyUsersController.getUserDeleteDetails';
-
+//using
 
 const actions = [
     { label: 'Edit', name: 'edit' },
@@ -35,185 +35,6 @@ const columns = [
     },
         
 ];
-
-const data = [
-        
-            { id: 1,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-               },
-
-
-               { id: 2,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-
-               { id: 3,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                
-               },
-
-               { id: 4,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active ', initialWidth: 70,
-                update:'(Deletion request sent)',initialWidth: 170,
-               
-               },
-
-               { id: 5,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 6,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 7,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 8,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 9,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 10,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active ', initialWidth: 70,
-                update:'(Deletion request sent)',initialWidth: 170,
-                 
-               },
-
-               { id: 11,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 12,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-              
-               { id: 13,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 14,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 15,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 16,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-               { id: 17,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-               { id: 18,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-               { id: 19,
-                Name: 'Sadiya Sultana',
-                Email: 'sadiya.sultana@shell.com', 
-                Company:'Shell Trading Rotterdam B V',
-                Status:'Active', initialWidth: 70,
-                update:'',initialWidth: 170,
-                 
-               },
-
-];
-
-
-
-
 export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElement) {
   @track MyCompanyUsers = true;
   @track RequestNewUser = false;
@@ -241,16 +62,16 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
   @track isLoading=false;
   @track enableSpecify=false;
   @track comment='';
-  TCP_RoundCheck_icon=TCP_RoundCheck_icon;
+  TcpRoundCheckIcon=TcpRoundCheckIcon;
 
-    data = data;
+    // data = data;
     columns = columns;
     connectedCallback(){
         getContacts()
             .then(result=>{
                 this.ContactList =[];
                 for(let key in result){
-                    let dataList = [];
+                    const dataList = [];
                     dataList.Company = result[key].Company;
                     dataList.Email = result[key].Email;
                     dataList.Id = result[key].Id;
@@ -268,14 +89,14 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
             })
                 .catch(error => {
                     this.error = error;
-                    this.ContactList = undefined;
+                    this.ContactList = null;
                     window.console.log('ERROR====>'+JSON.stringify(this.error));
                 });
         }
         
         getShellContacts(data){
 
-            getShellContacts({AccountId:data})
+            getShellContacts({accountId:data})
             .then(result=>{
                 this.contacts = result.map((cls) => Object.assign({}, { label: cls.Contact_Name__c, value: cls.Id }));
             })
@@ -315,7 +136,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     handleRequest(event){
         this.requestedTo=event.target.value;
         if(this.RequestNewUser){
-        if(this.firstName=='' || this.lastName=='' || this.phone=='' || this.email=='' || this.requestedTo==''){
+        if(this.firstName==='' || this.lastName==='' || this.phone==='' || this.email==='' || this.requestedTo===''){
             this.enableSubmit=false;
         }
         else{
@@ -323,7 +144,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
         }
     }
     else if(this.isShowUsersEdit){
-        if(this.requestedTo=='' || this.editDetails==''){
+        if(this.requestedTo==='' || this.editDetails===''){
             this.enableSubmit=false;
         }
         else{
@@ -331,10 +152,10 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
         }
     }
     else if(this.isShowUsersDelete){
-            if(this.enableSpecify==false && (this.requestedTo=='' || this.deleteReason=='' )){
+            if(this.enableSpecify===false && (this.requestedTo==='' || this.deleteReason==='' )){
                 this.enableSubmit=false;
             }
-            else if(this.enableSpecify==true && (this.requestedTo=='' || this.deleteReason=='' || this.comment=='')){
+            else if(this.enableSpecify===true && (this.requestedTo==='' || this.deleteReason==='' || this.comment==='')){
                 this.enableSubmit=false;
             }
             else{
@@ -345,7 +166,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     
     }
     handleRequestChange(event){
-        let enteredValue = event.target.value;
+        const enteredValue = event.target.value;
     if(event.target.dataset.id === 'firstName'){
         this.firstName = enteredValue;
     }else if(event.target.dataset.id === 'lastName'){
@@ -360,7 +181,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     else if(event.target.dataset.id === 'additionalComment'){
         this.comment = enteredValue;
     }
-    if(this.firstName=='' || this.lastName=='' || this.phone=='' || this.email=='' || this.requestedTo==''){
+    if(this.firstName==='' || this.lastName==='' || this.phone==='' || this.email==='' || this.requestedTo===''){
         this.enableSubmit=false;
     }
     else{
@@ -369,7 +190,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     }
     handleEditChange(event){
         this.editDetails = event.target.value;
-        if(this.requestedTo=='' || this.editDetails==''){
+        if(this.requestedTo==='' || this.editDetails===''){
             this.enableSubmit=false;
         }
         else{
@@ -379,28 +200,28 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     handleChangeDeletion(event){
         this.deleteReason=event.target.value;
         
-        if(this.requestedTo=='' || this.deleteReason==''){
+        if(this.requestedTo==='' || this.deleteReason===''){
             this.enableSubmit=false;
         }
         else{
             this.enableSubmit=true;
         }
-        if(this.deleteReason=='Others'){
+        if(this.deleteReason==='Others'){
             this.enableSpecify=true;
         }
         else{
             this.enableSpecify=false;
         }
-        if(this.deleteReason!='Others'){
-            if(this.requestedTo=='' || this.deleteReason=='' ){
+        if(this.deleteReason!=='Others'){
+            if(this.requestedTo==='' || this.deleteReason==='' ){
                 this.enableSubmit=false;
             }
             else{
                 this.enableSubmit=true;
             }
         }
-        else if(this.deleteReason=='Others'){
-            if(this.requestedTo=='' || this.deleteReason=='' || this.comment==''){
+        else if(this.deleteReason==='Others'){
+            if(this.requestedTo==='' || this.deleteReason==='' || this.comment===''){
                 this.enableSubmit=false;
             }
             else{
@@ -410,16 +231,16 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     }
     handleDeletion(event){
         this.comment=event.target.value;
-        if(this.deleteReason!='Others'){
-            if(this.requestedTo=='' || this.deleteReason=='' ){
+        if(this.deleteReason!=='Others'){
+            if(this.requestedTo==='' || this.deleteReason==='' ){
                 this.enableSubmit=false;
             }
             else{
                 this.enableSubmit=true;
             }
         }
-        else if(this.deleteReason=='Others'){
-            if(this.requestedTo=='' || this.deleteReason=='' || this.comment==''){
+        else if(this.deleteReason==='Others'){
+            if(this.requestedTo==='' || this.deleteReason==='' || this.comment===''){
                 this.enableSubmit=false;
             }
             else{
@@ -431,14 +252,14 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     handelRequestNewUser(){
         this.MyCompanyUsers = false;
         this.RequestNewUser = true;
-        let data=null;
+        const data=null;
         this.getShellContacts(data);
     }
    
     handleReqSubmit(){
         if(this.doInputValidation('.requiredSet')){
         this.isLoading=true;
-        getNewRequestDetails({AccountId:this.accountId,ContactId:this.requestedTo,FirstName:this.firstName,LastName:this.lastName,Email:this.email,Phone:this.phone,Comments:this.comment})
+        getNewRequestDetails({accountId:this.accountId,contactId:this.requestedTo,firstName:this.firstName,lastName:this.lastName,email:this.email,phone:this.phone,comments:this.comment})
         .then(result=>{
             this.isLoading=false;
             this.RequestNewUser=false;
@@ -465,7 +286,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     handleUsersEdit(){
         
         this.isLoading=true;
-        getUserEditDetails({contactEmail:this.contactEmail,companyName:this.companyName,contactName:this.contactName,requestedTo:this.requestedTo,EditDetails:this.editDetails})
+        getUserEditDetails({contactEmail:this.contactEmail,companyName:this.companyName,contactName:this.contactName,requestedTo:this.requestedTo,editDetails:this.editDetails})
         .then(result=>{
             this.isLoading=false;
             this.isShowUsersEdit=false;
@@ -489,7 +310,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
     }
     handleUsersDelete(){
         this.isLoading=true;
-        getUserDeleteDetails({contactEmail:this.contactEmail,companyName:this.companyName,contactName:this.contactName,requestedTo:this.requestedTo,Description:this.comment,deletereason:this.deleteReason})
+        getUserDeleteDetails({contactEmail:this.contactEmail,companyName:this.companyName,contactName:this.contactName,requestedTo:this.requestedTo,description:this.comment,deletereason:this.deleteReason})
         .then(result=>{
             this.isLoading=false;
             this.isShowUsersDelete=false;
@@ -526,7 +347,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
 
     showModalUsersEdit(){
         this.isShowUsersEdit = true;
-        let data=null;
+        const data=null;
         this.getShellContacts(data);
     }
 
@@ -541,7 +362,7 @@ export default class Tcp_MyCompanyUsers extends NavigationMixin (LightningElemen
 
     showModalUsersDelete(){
         this.isShowUsersDelete = true;
-        let data=null;
+        const data=null;
         this.getShellContacts(data);
     }
 

@@ -164,18 +164,22 @@
                         <tr>
                             <td class="boldTd" style="width:25%">Fulfilled By</td>
                             <td>{orderDetailList.fullfilledBy}</td>
+                            <td class="boldTd" style="width:25%">Sold To</td>
+                            <td>{orderDetailList.gsapSoldToName}</td>
+                        </tr>
+                        <tr>
                             <td class="boldTd" style="width:25%">Late Order</td>
                             <td>{orderDetailList.isLateOrderVal}</td>
-                        </tr>
-                        <tr>
                             <td class="boldTd" style="width:25%">Rush Order</td>
                             <td>{orderDetailList.isRushOrderVal}</td>
-                            <td class="boldTd" style="width:25%">Last Minute Changes</td>
-                            <td>{orderDetailList.isLastMinuteChangeVal}</td>
                         </tr>
                         <tr>
+                            <td class="boldTd" style="width:25%">Last Minute Changes</td>
+                            <td>{orderDetailList.isLastMinuteChangeVal}</td>
                             <td class="boldTd" style="width:25%">Reviewed By</td>
                             <td>{orderDetailList.reviewedBy}</td>
+                        </tr>
+                        <tr>
                             <td class="boldTd" style="width:25%">Reviewed Date/Time</td>
                             <td>{orderDetailList.reviewedDateTime}</td>
                         </tr>
@@ -210,8 +214,8 @@
                             </div>
                         </th>
                         <th class="" scope="col" style="width:20%">
-                            <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                            Product Name
+                            <div class="slds-truncate slds-cell-fixed" title="Product Name/Code">
+                            Product Name/Code
                             </div>
                         </th>
                         <th style="width:9%" class="" scope="col">
@@ -245,11 +249,17 @@
                 </thead>
                 <tbody>
                     <template for:each ={ordLineItemList} for:item="product">
-                        <tr key={product.Id} class="slds-hint-parent">
+                        <tr key={product.Id} class={product.oliStatusAttr.customClass}>
                             <td style="width:6%">
-                                <div class="">
-                                    <template if:true={chevronrightShow}>
-                                        <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                <div class="slds-text-align_center">
+                                    <template lwc:if={chevronrightShow}>
+                                        <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
+                                            alternative-text="chevronright Button" title="chevronright"
+                                            onclick={showCollapseRow} size="xx-small" class="mr2">
+                                        </lightning-icon>
+                                    </template>
+                                    <template lwc:elseif={product.oliStatusAttr.expStatus}>
+                                        <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
                                             alternative-text="chevronright Button" title="chevronright"
                                             onclick={showCollapseRow} size="xx-small" class="mr2">
                                         </lightning-icon>
@@ -258,11 +268,11 @@
                                 </div>
                             </td>
                             <td style="width:20%">
-                                <div class="tooltip">
+                                <div class="productName">
                                     {product.Material_Name__c}
-                                    <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                    <span class="tooltiptext">{product.MaterialNumber__c}</span>
                                 </div>
-                            </td>
+                                </td>
                             <td style="width:9%">
                                 <div class="">
                                     {product.Quantity__c}
@@ -301,9 +311,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <template if:true={chevronrightShow}>
                                     <tr class="noBorder">
                                         <td class="boldTd">Dispatch Date</td>
                                         <td>{product.GSAP_Dispatch_Date__c}</td>
+                                        <td class="boldTd">Loading Date</td>
+                                        <td>{product.Expected_Dispatch_Date__c}</td>
                                     </tr>
                                     <tr class="noBorder">
                                         <td class="boldTd">Bol/Delivery</td>
@@ -323,6 +336,14 @@
                                         <td class="boldTd">Goods Issue Status</td>
                                         <td>{product.GSAP_Goods_Issue_Status__c}</td>
                                     </tr>
+                                    </template>
+                                    <template if:true={product.oliStatusAttr.expStatus}>
+                                        <tr class="noBorder">
+                                            <td class="boldTd width25">Alert <lightning-icon icon-name="utility:warning" alternative-text="Alert!" variant="error"
+                                                title="Alert" size="xx-small"></lightning-icon></td>
+                                            <td>{product.oliStatusAttr.expStatus}</td>
+                                        </tr>
+                                    </template>
                                    </tbody>
                                 </table>
                             </td>
@@ -389,8 +410,41 @@
                             </div>
                             
                         </div>
-                    </div>    
-                    
+                    </div> 
+                    <template if:true={enableSoldTo}>
+                    <div class="slds-grid">
+                        <div class="slds-size_4-of-12 setPadding setInput">
+                            <div class="slds-p-vertical_x-small">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <lightning-combobox
+                                                placeholder="Select"
+                                                label="Sold To"
+                                                value={selectGsapSoldTo}
+                                                options={gsapSoldToOptions}
+                                                class="setCombobox placeordercheck"
+                                                onchange={handleGsapSoldToChange}
+                                                disabled={isDisableGsapSoldTo}
+                                            >
+                                            </lightning-combobox>
+                                        </div>
+                                    </div>
+                             </div>
+                        </div>
+                    </div> 
+                    <template if:false={gsapSoldToOptions}>
+                        <div class="slds-m-bottom_xx-small">
+                            <p class="slds-text-color_error">No Sold To found, There seems to be a data mapping/reference mismatch.</p>
+                        </div>
+                    </template>
+                    <div class="slds-grid">
+                        <div class="slds-size_11-of-12 setPadding">
+                            <div class="slds-m-bottom_small">
+                                <p class="noteText">Note: Sold To appearing above is the Sold To that will be sent to Chem GSAP P31 for order fulfillment.</p>
+                            </div>
+                        </div>
+                    </div>                          
+                    </template>
                     <div class="flex slds-grid">
                         <div class="slds-size_11-of-12 setPadding">
                             <div class="slds-p-vertical_x-small setInput1">

@@ -5,13 +5,11 @@ public with sharing class TCP_HomePageController {
     public static Account getAccountDataOfEndUser(){
         Account accData= new account();
         try{
-            Map<String,String> accountDetailsMap = new Map<String,String>();
             ID accountId = getAccountId();
             accData = [SELECT Id, Name, Active__c FROM Account where Active__c = true AND recordtypeid =: tcpAccountRecTypeid AND id=:accountId];
           
         } catch(Exception e){
             TCP_ExceptionLogClass.insertExceptionRecord('Account data exception',e.getMessage(),'TCP_HomePageController','getAccountDataOfEndUser','Exception');
-           // throw new AuraHandledException(e.getMessage());
         }
           return accData;
     }
@@ -40,7 +38,6 @@ public with sharing class TCP_HomePageController {
             }
         } catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('Account data exception',e.getMessage(),'TCP_HomePageController','getAccountDetails','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return accWrap;
     }
@@ -49,9 +46,10 @@ public with sharing class TCP_HomePageController {
     public static List<Account_Contact_Relationship__c> getAccountDetailsOfComOps(User userData){
         List<Account_Contact_Relationship__c> accountData = new List<Account_Contact_Relationship__c>();
         try{  
-            accountData = [SELECT id, Account__r.name, Account__r.Active__c,Account__c FROM Account_Contact_Relationship__c WHERE Account__r.recordtypeid =: tcpAccountRecTypeid AND  Account__r.Active__c = true AND Portal_User_Contact__r.Email =: userData.Email order by CreatedDate ASC];
+            accountData = [SELECT id, Account__r.name, Account__r.Active__c,Account__c FROM Account_Contact_Relationship__c WHERE Account__r.recordtypeid =: tcpAccountRecTypeid AND  Account__r.Active__c = true AND Portal_User_Contact__r.Email =: userData.Email order by Account__r.name];
+            System.debug('result::'+accountData);
         }catch (Exception e) {
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('Accounts commops exception',e.getMessage(),'TCP_HomePageController','getAccountDetailsOfComOps','Exception');
         }
         return accountData;
     }
@@ -67,7 +65,6 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('user details exception',e.getMessage(),'TCP_HomePageController','loggedInAsTcpUser','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return false;
     }
@@ -89,8 +86,26 @@ public with sharing class TCP_HomePageController {
                 } 
             }
         }catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Account details exception',e.getMessage(),'TCP_HomePageController','getAccDetailsByParentId','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('Accounts by parent Id exception',e.getMessage(),'TCP_HomePageController','getAccDetailsByParentId','Exception');
+        }
+        return null;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccDetailsBySoldToIds(List<String> soldToIds){
+        try{
+            if(soldToIds.size()>0){
+                List<Account> childAccDetails = new List<Account>();
+                List<Account> accList = [SELECT id ,(SELECT id, Name, AccountNumber, ShippingAddress, toLabel(Customer_Type__c) FROM ChildAccounts order by Name) FROM Account where Active__c = true AND recordtypeid =: tcpAccountRecTypeid AND id IN: soldToIds];
+                for(Account accObj : accList){
+                    childAccDetails.addAll(accObj.ChildAccounts);
+                }
+                if(childAccDetails.size()>0){
+                    return childAccDetails;
+                } 
+            }
+        }catch (Exception e) {
+            TCP_ExceptionLogClass.insertExceptionRecord('Accounts exception',e.getMessage(),'TCP_HomePageController','getAccDetailsBySoldToIds','Exception');
         }
         return null;
     }
@@ -103,8 +118,7 @@ public with sharing class TCP_HomePageController {
                 return accData;
             }
         }catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Account details exception',e.getMessage(),'TCP_HomePageController','getCustomerByAccountId','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('Accounts details exception',e.getMessage(),'TCP_HomePageController','getCustomerByAccountId','Exception');
         }
         return null;
     }
@@ -115,9 +129,6 @@ public with sharing class TCP_HomePageController {
             if(String.isNotBlank(soldToId) && String.isNotBlank(shipToId)){
                 Set<String> accountIds = new Set<String>{soldToId,shipToId};
                 List<TCP_Product_Customer__c> productList = [SELECT id, Active__c, Product__r.ProductCode, Account__r.Id, Product__r.Id, Product__r.Name FROM TCP_Product_Customer__c WHERE Account__r.Id IN :accountIds AND Active__c = true AND Product__r.IsActive = true  order by  Account__r.Customer_Type__c desc];
-                // if(productList.size()>0){
-                //     return productList;
-                // }
                 Map<Id,TCP_Product_Customer__c> prodMap = new  Map<Id,TCP_Product_Customer__c>();
                 for(TCP_Product_Customer__c prodCust : productList){
                     if(!prodMap.containsKey(prodCust.Product__r.Id)){
@@ -128,7 +139,6 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('product details exception',e.getMessage(),'TCP_HomePageController','getProductDetails','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return null;       
     }
@@ -146,7 +156,6 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('product search exception',e.getMessage(),'TCP_HomePageController','getProductDetailsBySearchKey','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return null;
     }
@@ -157,8 +166,8 @@ public with sharing class TCP_HomePageController {
         try{
             
             Schema.SObjectType targetType = Schema.getGlobalDescribe().get(objectApiName);
-            Sobject Object_name = targetType.newSObject();
-            Schema.sObjectType sobject_type = Object_name.getSObjectType();
+            Sobject object_name = targetType.newSObject();
+            Schema.sObjectType sobject_type = object_name.getSObjectType();
             Schema.DescribeSObjectResult sobject_describe = sobject_type.getDescribe();
             Map<String, Schema.SObjectField> field_map = sobject_describe.fields.getMap();
             List<Schema.PicklistEntry> pick_list_values = field_map.get(fieldApiName).getDescribe().getPickListValues();
@@ -167,7 +176,6 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('Picklist exception',e.getMessage(),'TCP_HomePageController','getPickListValues','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return pickListValuesList;
     }
@@ -209,9 +217,6 @@ public with sharing class TCP_HomePageController {
                 if(String.isNotBlank(orderWrapper.billToId)){
                     orderObj.Bill_To__c = orderWrapper.billToId;
                 }
-                // if(String.isNotBlank(orderWrapper.soldToNumber)){
-                //     orderObj.AccountNumber = orderWrapper.soldToNumber;
-                // }
                 if(String.isNotBlank(orderWrapper.shipToNumber)){
                     orderObj.ShipToNo__c = orderWrapper.shipToNumber;
                 }
@@ -238,6 +243,7 @@ public with sharing class TCP_HomePageController {
                     orderObj.EffectiveDate = System.today();
                     String userId = getOrderedByUserId();
                     orderObj.Ordered_By__c = userId;
+                    system.debug('Checking order by '+ orderObj.Ordered_By__c);
                     orderObj.recordtypeid = tcpOrderRecTypeid;
                     Upsert orderObj;
                     Order orderDetails = [SELECT id,TCP_Order_Status__c, OrderNumber,AccountId,createdby.contactId,createdbyId FROM Order where id=:orderObj.ID];
@@ -250,7 +256,6 @@ public with sharing class TCP_HomePageController {
             }       
         } catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('place order exception',e.getMessage(),'TCP_HomePageController','getOrderNumberOnSave','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return null;
     }
@@ -262,8 +267,6 @@ public with sharing class TCP_HomePageController {
             ordData = [Select id, orderNumber, TCP_Order_Status__c from Order where Sold_To__c =: soldToId AND TCP_Order_Status__c=: status AND recordtypeid =: tcpOrderRecTypeid];
         } catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('order count exception',e.getMessage(),'TCP_HomePageController','getCountOfOrders','Exception');
-            //throw new AuraHandledException(e.getMessage());
-            
         }
         return ordData.Size()+'';
     }
@@ -294,22 +297,22 @@ public with sharing class TCP_HomePageController {
             }
             
         } catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('order count exception',e.getMessage(),'TCP_HomePageController','getCountOfOrdersEU','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('order count EU exception',e.getMessage(),'TCP_HomePageController','getCountOfOrdersEU','Exception');
         }
        return ordCountData;
     }
 
     @AuraEnabled
-    public static Map<String,String> getCountOfOrdersCU(String soldToId){    
+    public static Map<String,String> getCountOfOrdersCU(List<String> soldToIds){    
         Map<String,String> ordCountData = new Map<String,String>();
         try {
             List<String> cuTilesList=new List<string>{system.label.TCP_ReviewOrApprovalLabel+system.label.TCP_ApprovalLabel,system.label.TCP_ModificationOrCancelLabel+system.label.TCP_CancellationReqLabel,system.label.TCP_CurrentOrderCULabel,system.label.TCP_PreviousOrdersLabel};
             for(String tileName:cuTilesList)
             {
               List<string> selectedStatuses=TCP_Utilities.getStatusForSelectedTile(tileName,true);
-              If(selectedStatuses!=null){
-               String query='SELECT count() from Order where Sold_To__c =: soldToId and tcp_order_status__c In:selectedStatuses';
+              if(selectedStatuses!=null){
+               String query='SELECT count() from Order where Sold_To__c IN: soldToIds and tcp_order_status__c In:selectedStatuses';
+               System.debug('query::'+query);
                Integer queryNoOfDays=TCP_Utilities.getQueryDaysForSelectedTile(tileName); 
                   
                if(queryNoOfDays!=null){
@@ -326,21 +329,22 @@ public with sharing class TCP_HomePageController {
             }
             
         } catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('order count exception',e.getMessage(),'TCP_HomePageController','getCountOfOrdersCU','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('order count CU exception',e.getMessage(),'TCP_HomePageController','getCountOfOrdersCU','Exception');
         }
        return ordCountData;
     }
 
     @AuraEnabled(cacheable=false) 
     public static void saveOrderLineItems(List<TCP_OrderLineItemWrapper> orderLineWrapList, String orderId){
-        try{ 
-            if(orderLineWrapList != null){
-                List<TCP_OrderLineItem__c> OrdLineItemList = new List<TCP_OrderLineItem__c>();
-                Integer salesItemNo = 10;
+        if(orderLineWrapList != null){
+                List<TCP_OrderLineItem__c> ordLineItemList = new List<TCP_OrderLineItem__c>();
+                //Integer salesItemNo = 10;
                 for(TCP_OrderLineItemWrapper wrap: orderLineWrapList){
+                    Integer salesItemNo=wrap.sno*10;
+                    system.debug('****Index'+salesItemNo+'****'+wrap.sno);
                     TCP_OrderLineItem__c objData = new TCP_OrderLineItem__c();
                     objData.Sales_Order_Line_Item_No__c = String.valueOf(salesItemNo).leftPad(6, '0');
+                    system.debug('****Index'+objData.Sales_Order_Line_Item_No__c);
                     if(String.isNotBlank(wrap.shellContractNo)){
                         objData.Contract_No__c = wrap.shellContractNo;
                     }
@@ -375,17 +379,13 @@ public with sharing class TCP_HomePageController {
                     if(String.isNotBlank(wrap.id)){
                         objData.Id = wrap.id;
                     }
-                    salesItemNo += 10;
-                    OrdLineItemList.add(objData);
+                    //salesItemNo += 10;
+                    ordLineItemList.add(objData);
                 }
-                if(OrdLineItemList.size()>0){
-                    Upsert OrdLineItemList;
+                if(ordLineItemList.size()>0){
+                    Upsert ordLineItemList;
                 }
             }
-
-        } catch (Exception e) {
-            //throw new AuraHandledException(e.getMessage());
-        }
     }
     
     @future
@@ -408,10 +408,26 @@ public with sharing class TCP_HomePageController {
     public static String getOrderedByUserId(){
         String userId;
         try{
-            list<AuthSession> sessions = [SELECT Id, LoginType, UsersId, IsCurrent, UserType from AuthSession where UsersId=: UserInfo.getUserId() AND LoginType = 'Chatter Communities External User' AND IsCurrent = true];
-            if(sessions.size()>0 && sessions[0].UserType == 'PowerCustomerSuccess'){
-                userId = UserInfo.getUserId();
-            }else{
+            //list<AuthSession> sessions = [SELECT Id, LoginType, UsersId, IsCurrent, UserType from AuthSession where UsersId=: UserInfo.getUserId() AND LoginType = 'Chatter Communities External User' AND IsCurrent = true];
+            //list<AuthSession> sessions = [SELECT Id, LoginType, UsersId, IsCurrent, UserType from AuthSession where UsersId=: UserInfo.getUserId() AND LoginType = 'Chatter Communities External User Third Party SSO' AND IsCurrent = true];
+            //if(sessions.size()>0 && sessions[0].UserType == 'PowerCustomerSuccess'){
+                //userId = UserInfo.getUserId();
+            //}
+            Map<String, String> session = new map<String, String>();
+             if(!Test.isRunningTest()){
+            session = Auth.SessionManagement.getCurrentSession();
+            system.debug('UserType'+session.get('UserType'));
+            system.debug('SourceIp'+session.get('SourceIp'));
+            system.debug('LoginType'+session.get('LoginType'));
+             }
+             else if(Test.isRunningTest()){
+                session.put('UserType','PowerCustomerSuccess');
+                session.put('LoginType','Chatter Communities External User Third Party SSO');
+            }
+            if(session.get('UserType') == 'PowerCustomerSuccess' && session.get('LoginType') == 'Chatter Communities External User Third Party SSO'){
+				userId = UserInfo.getUserId();                
+            }
+            else{
                 User userObj = [SELECT Id,Name,Email, Profile.Name,ContactId FROM User where Id =: UserInfo.getUserId()]; 
                 if(userObj.ContactId!=null){
                 Contact contactObj = [SELECT Id,Name,TCP_User_Clicked__c,TCP_User_Clicked__r.Name FROM Contact where Id =: userObj.ContactId];
@@ -420,9 +436,37 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('order by exception',e.getMessage(),'TCP_HomePageController','getOrderedByUserId','Exception');
-            //throw new AuraHandledException(e.getMessage());
         }
         return userId;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<TCP_Product_Customer__c> getAllProductDetailsBySoldToIdCU(List<String> soldToIds){
+        
+        try{
+            if(soldToIds.size()>0){
+                Set<String> accountIds = new Set<String>(soldToIds);
+                List<Account> accList = getAccDetailsBySoldToIds(soldToIds);
+                if(accList.size()>0){
+                    for(Account acc: accList){
+                        if(acc.Customer_Type__c == 'Ship To'){
+                            accountIds.add(acc.Id);
+                        }
+                    }
+                }
+                List<TCP_Product_Customer__c> productList = [SELECT id, Active__c, Product__r.ProductCode, Account__r.Id, Product__r.Id, Product__r.Name FROM TCP_Product_Customer__c WHERE Account__r.Id IN :accountIds AND Active__c = true AND Product__r.IsActive = true order by Product__r.Name];
+                Map<String,TCP_Product_Customer__c> prodMap = new Map<String,TCP_Product_Customer__c>();
+                for(TCP_Product_Customer__c prodObj : productList){
+                    prodMap.put(prodObj.Product__r.Id,prodObj);
+                }
+                if(prodMap.size()>0){
+                    return prodMap.values();
+                }
+            }
+        }catch (Exception e) {
+            TCP_ExceptionLogClass.insertExceptionRecord('product exception',e.getMessage(),'TCP_HomePageController','getAllProductDetailsBySoldToIdCU','Exception');
+        }
+        return null;       
     }
 
     @AuraEnabled(cacheable=true)
@@ -473,8 +517,22 @@ public with sharing class TCP_HomePageController {
                 } 
             }
         }catch (Exception e) {
-            TCP_ExceptionLogClass.insertExceptionRecord('Account details exception',e.getMessage(),'TCP_HomePageController','getCustomerBySoldToAndType','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('Account by sold to exception',e.getMessage(),'TCP_HomePageController','getCustomerBySoldToAndType','Exception');
+        }
+            return null;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getCustomerBySoldToAndTypeCU(List<String> parentAccIds, String type){
+        try{
+            if(parentAccIds.size()>0){
+                List<Account> childAccDetails = [SELECT id, Name, Active__c,  AccountNumber, ShippingAddress, toLabel(Customer_Type__c) FROM Account where Active__c = True AND ParentId IN:parentAccIds  AND Customer_Type__c =: type AND recordtypeid =: tcpAccountRecTypeid order by Name];
+                if(childAccDetails.size()>0){
+                    return childAccDetails;
+                } 
+            }
+        }catch (Exception e) {
+            TCP_ExceptionLogClass.insertExceptionRecord('Account by ship to exception',e.getMessage(),'TCP_HomePageController','getCustomerBySoldToAndTypeCU','Exception');
         }
             return null;
     }
@@ -497,7 +555,27 @@ public with sharing class TCP_HomePageController {
             }
         }catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('Ordered by exception',e.getMessage(),'TCP_HomePageController','getOrderedBySoldToId','Exception');
-            //throw new AuraHandledException(e.getMessage());
+        }
+        return null;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Order> getOrderedBySoldToIdCU(List<String> soldToIds){
+        try{
+            if(soldToIds.size()>0){
+                List<Order> orderList = [SELECT  Sold_To__c, Ordered_By__c, Ordered_By__r.Id, Ordered_By__r.Name from Order where Sold_To__c IN:soldToIds  AND Ordered_By__c  != null order by Ordered_By__r.Name];
+                if(orderList.size()>0){
+                    Map<Id,Order> ordMap = new Map<Id, Order>();
+                    for(Order ordObj: orderList){
+                        ordMap.put(ordObj.Ordered_By__r.Id,ordObj);
+                    }
+                    if(ordMap.size()>0){
+                        return ordMap.values();
+                    }
+                }
+            }
+        }catch (Exception e) {
+            TCP_ExceptionLogClass.insertExceptionRecord('Ordered by CU exception',e.getMessage(),'TCP_HomePageController','getOrderedBySoldToIdCU','Exception');
         }
         return null;
     }

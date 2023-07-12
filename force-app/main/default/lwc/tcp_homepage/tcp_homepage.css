@@ -17,7 +17,7 @@
     font-size: 14px;
     line-height: 14px;
     color: #404040;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 .bgPage{
 
@@ -76,7 +76,7 @@
     font-size: 16px;
     line-height: 24px;
     color: #404040;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     
    
 }
@@ -104,14 +104,9 @@
     font-size: 12px;
     line-height: 18px;
     color: #404040;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 
 }
-
-.newLine{
-    display: block;
-}
-
 
 .colorSubmitted{
     color: #3173C9 !important;
@@ -214,7 +209,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     display: block;
     padding: 9px 0px;
 }
@@ -233,7 +228,7 @@ a[aria-current="page"]{
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
     border-right: 3px solid #FBCF09;  
 }
 
@@ -250,7 +245,7 @@ a[aria-current="page"]{
 
 .quickLink h3{
     padding-bottom: 16px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
@@ -262,7 +257,7 @@ a[aria-current="page"]{
     font-size: 12px;
     line-height: 16px;
     color: #757575;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .quickLink ul li{
@@ -275,7 +270,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 16px;
     color: #404040;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .quickLink ul li a:hover { 
@@ -377,7 +372,7 @@ a[aria-current="page"]{
     font-size: 16px;
     line-height: 24px;
     color: #757575;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .clickText a{
@@ -385,7 +380,7 @@ a[aria-current="page"]{
     font-size: 16px;
     line-height: 24px;
     color: #757575;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     text-decoration: underline;
 }
 
@@ -404,7 +399,7 @@ a[aria-current="page"]{
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .setBtn{
@@ -427,7 +422,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 16px;
     color: #404040;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     height: 32px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     padding: 8px 12px;
@@ -444,7 +439,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 16px;
     color: #404040;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     height: 32px;
 
 }
@@ -456,7 +451,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 16px;
     color: #404040;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     height: 40px;
 
 }
@@ -468,8 +463,6 @@ a[aria-current="page"]{
 
 .btnGray{
     background: #f5f5f5;
-    border: none;
-    border-radius: 2px;
     color: #404040;
     margin-left: auto;
     float: right;
@@ -479,7 +472,7 @@ a[aria-current="page"]{
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     height: 40px;
     
 }
@@ -517,7 +510,7 @@ a[aria-current="page"]{
     font-weight: 400;
     font-size: 14px;
     color: #404040;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     width: auto;
     margin-right: 5px;
     background-image: url("/resource/TCP_downArrow");
@@ -540,7 +533,7 @@ a[aria-current="page"]{
     font-size: 14px;
     line-height: 22px;
     color: #404040;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .grayBox{
@@ -608,7 +601,7 @@ a[aria-current="page"]{
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
-    font-family: SFProTextBold; 
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif; 
 
 }
 
@@ -627,7 +620,7 @@ a[aria-current="page"]{
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     
 
 }
@@ -652,10 +645,7 @@ a[aria-current="page"]{
     white-space: normal;
   } */
 
-.tableflex{
-    display: flex;
-    align-items: center;
-}
+
 
 .labelText{
     width: 85%;
@@ -721,7 +711,7 @@ color: #404040;
 display: inline-block;
 border: 1px solid rgba(0, 0, 0, 0.15);
 border-radius: 2px;
-font-family: SFProTextBold;
+font-family: SFProTextBold, Arial, Helvetica, sans-serif;
 background: #FFFFFF;
 margin: 3px;
 width: 32px;
@@ -735,7 +725,7 @@ text-align: center;
     font-size: 14px;
     line-height: 14px;
     color: #404040;
-    font-family: SFProText ;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     width: auto;
     margin-right: 5px;
 }
@@ -769,7 +759,7 @@ color: #006077;
 border-radius: 2px;
 /* color: #0097BB; */
 font-weight: 700;
-font-family: SFProTextBold;
+font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     }
 
 .setPage ul li a{
@@ -805,7 +795,7 @@ text-align: center;
         background: #ffffff;
     font-weight: 400;
     font-size: 14px;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 2px;
     color: #404040;
@@ -845,7 +835,7 @@ text-align: center;
         font-size: 14px;
         line-height: 24px;
         color: #404040;
-        font-family: SFProText ;
+        font-family: SFProText, Arial, Helvetica, sans-serif;
     }
 
     .messageText img{

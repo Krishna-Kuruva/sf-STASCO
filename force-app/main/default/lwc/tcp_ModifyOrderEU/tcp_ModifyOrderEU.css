@@ -989,6 +989,8 @@ input[type="date"]::before {
   color: #404040;
   width: 85%;
   background-color: inherit;
+  /* top: 50%;
+  transform: translate(0px, -50%); */
   
 }
 
@@ -1064,4 +1066,12 @@ input[type="date"]:required:invalid{
 
 .inputError{
   box-shadow: #ea001e 0 0 0 1px inset;
+}
+
+.tooltiptext{
+    color: #404040;
+    font-size: 12px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    margin-left: 3px;
+    font-weight: bold;
 }

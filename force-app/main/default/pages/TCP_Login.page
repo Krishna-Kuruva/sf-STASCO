@@ -1,4 +1,4 @@
-<apex:page standardStylesheets="false" showheader="false" applyBodyTag="false" applyHtmlTag="false" controller="TCP_LoginController">
+<apex:page lightningStylesheets="false" standardStylesheets="false" showheader="false" applyBodyTag="false" applyHtmlTag="false" controller="TCP_LoginController">
     
     <html lang="en">
     <apex:slds />
@@ -64,7 +64,7 @@
                     font-size: 16px;
                     line-height: 20px;
                     color: #404040;
-                    font-family: SFProTextBold;
+                    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
 
                 }
 
@@ -119,7 +119,7 @@
                     font-size: 16px !important;
                     line-height: 20px !important;
                     color: #404040 !important;
-                    font-family: SFProTextBold !important;
+                    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
                     background-color: #FBCF09;
                     border-radius: 2px !important;
                     padding: 14px 24px;
@@ -141,7 +141,7 @@
                     font-weight: 400;
                     font-size: 11px;
                     line-height: 16px;
-                    font-family: SFProText;
+                    font-family: SFProText, Arial, Helvetica, sans-serif;
                     color: #404040;
                 }
 
@@ -154,7 +154,7 @@
                     font-weight: 700;
                     font-size: 14px;
                     line-height: 18px;
-                    font-family: SFProTextBold;
+                    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
                     color: #404040;
                    
 
@@ -174,7 +174,7 @@
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 22px;
-                    font-family: SFProText;
+                    font-family: SFProText, Arial, Helvetica, sans-serif;
                     color: #404040;
                 }
 
@@ -183,10 +183,16 @@
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 22px;
-                    font-family: SFProText;
+                    font-family: SFProText, Arial, Helvetica, sans-serif;
                     color: #404040;
 
                 }
+
+                .textPassword input {
+                        margin-right: 5px;
+                        vertical-align: middle;
+                        margin-top: -1px;
+                    }
 
                 a {
                     color: #404040 !important;
@@ -217,6 +223,36 @@
 
                 .header {
                     margin-bottom: 35px;
+                }
+
+                .isRelative{
+                    position: relative;
+                }
+
+                .Eyelogo{
+                    position: absolute;
+                    top: 40px;
+                    right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+
+                .HideEyelogo{
+                    position: absolute;
+                    top: 38px;
+                    right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+
+                }
+                .hide{
+                    display: none;
+                }
+
+                .show{
+                    display: block
                 }
                  
             </style>
@@ -257,11 +293,11 @@
                                 <apex:inputtext label="username" title="username" value="{!username}" styleClass="form-control slds-input setInput" maxlength="40" id="theInput" />
                                
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group isRelative">
                                     <!-- <label for="thePassword" class="required label">Password </label>-->
                                     <apex:outputLabel for="thePassword" styleClass="required label" value="Password" />
                                     <apex:inputsecret label="password" title="password" value="{!password}" styleClass="form-control slds-input setInput" maxlength="30" id="thePassword" />
-                                    
+                                   
                                     <div class="bottonSec">
                                         <span class="showpassword">
                                             <label for="checkbx" class="textPassword">
@@ -273,11 +309,16 @@
                                                 Forgot Password?
                                             </a>
                                         </span>
+
+                                        
                                     </div>
+                                    
                                 </div>
                                 <div class="errorMessages">
                                     <apex:messages />
                                 </div>
+
+                                
                                 <apex:commandbutton value="Login" action="{!doLogin}" styleClass="customBtn" />
                             </apex:form>
 
@@ -287,7 +328,11 @@
                 </div>
                 </section>
             </div>
+
+          
             </main>
+
+           
         </body>
         <script>
 
@@ -314,6 +359,16 @@
                 }
             }
 
+        </script>
+
+        <script>
+            window.onload = function() {
+            const element = document.getElementsByTagName("ul")[0];
+            const attr = element.getAttributeNode("role");
+            element.removeAttributeNode(attr);
+            element.setAttribute("role", "list");
+            
+            };
         </script>
     </div>
 

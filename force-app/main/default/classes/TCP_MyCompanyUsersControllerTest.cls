@@ -4,13 +4,14 @@
 * **************************************************************************/
 @isTest
 public class TCP_MyCompanyUsersControllerTest {
+
     @TestSetup
     static void createTestData() {
-         User us=TCP_TestDataUtilities.createAdminUsers();
+        User us=TCP_TestDataUtilities.createAdminUsers();
         System.runAs(us){
         List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,false);
         List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccounts[0]);
-        List<Account_Contact_Relationship__c> testacr=TCP_TestDataUtilities.createACRRecords(testAccounts[0], testContact[0], 1);
+        TCP_TestDataUtilities.createACRRecords(testAccounts[0], testContact[0], 1);
         }
     }
     @isTest 
@@ -23,7 +24,7 @@ public class TCP_MyCompanyUsersControllerTest {
         List<Account_Contact_Relationship__c>  acrRecList=[select id, account__c,Portal_User_Contact__c from Account_Contact_Relationship__c where account__c=:acc.id limit 1];
         List<contact> testCons=new List<contact> ([select id,TCP_TandC__c, Email, Name from contact limit 1]);
         List<User> listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
-        TCP_ShellContactEmail__c shellCon=TCP_TestDataUtilities.createShellContacts();
+        TCP_TestDataUtilities.createShellContacts();
         TCP_ShellContactEmail__c shellConIns=[Select Id,Contact_Email__c from TCP_ShellContactEmail__c];
         shellConList.add(shellConIns);
         system.runas(listofusers[0]){
@@ -31,9 +32,8 @@ public class TCP_MyCompanyUsersControllerTest {
         List<Id> accIds=new List<Id>();
         accIds.add(acrRecList[0].id);
         system.assert(accIds.size()>0);
-        List<TCP_MyCompanyUsersController.ContactWrapper> wrapperList = TCP_MyCompanyUsersController.getContacts();
         TCP_MyCompanyUsersController.getAccountDetailsOfComOps();
-        List<TCP_ShellContactEmail__c> conList=TCP_MyCompanyUsersController.getShellContacts(acc.Id);
+        TCP_MyCompanyUsersController.getContacts();
         TCP_MyCompanyUsersController.getNewRequestDetails(acc.id, shellConIns.Id, 'FirstName', 'LastName', '1234', 'Email@gmail.com', 'Comments');
         TCP_MyCompanyUsersController.getComplaintDetails(acc.id, shellConIns.Id, 'ShellRefNumber', 'CustomerPO', 'Description', 'Product');
         TCP_MyCompanyUsersController.getCommentDetails(acc.id, shellConIns.Id, 'Description');

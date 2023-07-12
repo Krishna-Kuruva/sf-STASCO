@@ -32,6 +32,21 @@ export default class Tcp_pillContainer extends LightningElement {
         return false;
       });
     }
+
+    handleKeyPress(event){
+      if(event.keyCode === 13){
+        let key = event.target.dataset.key;
+        this.items_.some( (pill,index) => {
+          if (pill.internalKey == key){
+            this.items_.splice(index, 1);
+            this.despatchItemRemoveEventEvent(pill);
+            this.dispatchEventToOpen('open');
+            return true;
+          }
+          return false;
+        });
+      }
+    }
   
     despatchItemRemoveEventEvent(pill) {
       const eventDetail = { item: pill };
@@ -40,7 +55,10 @@ export default class Tcp_pillContainer extends LightningElement {
     }
 
 
-
+    dispatchEventToOpen(eventDetail){
+      const changeEvent = new CustomEvent("openpill", { detail: eventDetail });
+      this.dispatchEvent(changeEvent);
+    }
 
 
 

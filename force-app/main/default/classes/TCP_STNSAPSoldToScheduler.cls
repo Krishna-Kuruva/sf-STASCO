@@ -23,7 +23,7 @@ global class TCP_STNSAPSoldToScheduler implements Schedulable {
                 salesAreaIdInSplits.add(tempSet);
             }
             for(Integer i=0;i<salesAreaIdInSplits.size();i++){                
-                String jobId =System.enqueueJob(new TCP_STNSAPSoldToQueueable(salesAreaIdInSplits.get(i),i) );
+                System.enqueueJob(new TCP_STNSAPSoldToQueueable(salesAreaIdInSplits.get(i),i) );
             }
 		
 		}

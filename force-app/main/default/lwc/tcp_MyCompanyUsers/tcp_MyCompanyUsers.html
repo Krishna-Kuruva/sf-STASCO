@@ -1,16 +1,13 @@
 <template>
     
     <!--My Company Users Section Start -->
-        
-
-
             <!--submitted successfully Section Start -->
             <template if:true={isShowMyRequestSuccess}>
                     <div class="slds-size_12-of-12 mb30">
                         <div class="slds-grid">
                             <div class="flex customToast" data-id="toast">
                                 <div>
-                                    <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user request has submitted successfully </p>
+                                    <p class="messageText"><img src={TcpRoundCheckIcon} alt="check mark image with green circle around border" > Your user request has submitted successfully </p>
                                 
                                 </div>
 
@@ -27,7 +24,7 @@
                             <div class="slds-grid">
                                 <div class="flex customToast" data-id="toast">
                                     <div>
-                                        <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user edit request has submitted successfully </p>
+                                        <p class="messageText"><img src={TcpRoundCheckIcon} alt="check mark image with green circle around border" > Your user edit request has submitted successfully </p>
                                     
                                     </div>
     
@@ -44,7 +41,7 @@
                                 <div class="slds-grid">
                                     <div class="flex customToast" data-id="toast">
                                         <div>
-                                            <p class="messageText"><img src={TCP_RoundCheck_icon} alt="check mark image with green circle around border" > Your user delete request has submitted successfully </p>
+                                            <p class="messageText"><img src={TcpRoundCheckIcon} alt="check mark image with green circle around border" > Your user delete request has submitted successfully </p>
                                         
                                         </div>
         
@@ -212,7 +209,6 @@
                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Edit">
                     <div class="setModal slds-modal__container">
                         <!-- modal header start -->
-                        <!-- <header class="slds-modal__header"> -->
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalUsersEdit}>
                             <lightning-icon icon-name="utility:close"
                             alternative-text="close"
@@ -220,7 +216,6 @@
                             size="small" ></lightning-icon>
                             <span class="slds-assistive-text">Close</span>
                         </button>
-                        <!-- </header> -->
                         <!-- modal body start -->
                         <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-2">
                             <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate modalHeading">Enter the change request details for <span>{contactName}</span></h2>
@@ -274,7 +269,6 @@
                 aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="delete">
                 <div class="setModal slds-modal__container">
                     <!-- modal header start -->
-                    <!-- <header class="slds-modal__header"> -->
                     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalUsersDelete}>
                         <lightning-icon icon-name="utility:close"
                         alternative-text="close"
@@ -282,7 +276,6 @@
                         size="small" ></lightning-icon>
                         <span class="slds-assistive-text">Close</span>
                     </button>
-                    <!-- </header> -->
                     <!-- modal body start -->
                     <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-3">
                         <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate modalHeading">Enter the deletion request details for <span>{contactName}</span></h2>

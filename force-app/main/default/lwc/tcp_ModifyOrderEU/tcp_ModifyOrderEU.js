@@ -7,6 +7,12 @@ import getOrderNumberOnModify from '@salesforce/apex/TCP_ChangeCancelOrderContro
 const columns = [
     { label: 'Product Name', fieldName: 'Name' },
 ];
+const statusData = new Map([
+    ['CN', { customClass: 'cn-line-item', expStatus: 'Line Item Cancelled'}],
+    ['RC', { customClass: 'rc-line-item', expStatus: 'Requested for Cancellation'}],
+    ['DN', { customClass: 'dn-line-item', expStatus: 'Delivery Note Created'}]
+  ]);
+  
 
 
 export default class tcp_ModifyOrderEU extends LightningElement {
@@ -16,6 +22,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
     modeofTransportApiName = 'Mode_of_Transport__c';
     orderLineItemApiName = 'TCP_OrderLineItem__c';
     unitApiName = 'Unit__c';
+    reqForCancel='RC';
     columns = columns;
     
     @api orderdetaildata;
@@ -108,9 +115,15 @@ export default class tcp_ModifyOrderEU extends LightningElement {
     @track deliveryDateWithMonthMap=new Map();
     @track shellContractMap =new Map();
     @track instructionsMap = new Map();
+    @track oliStatusMap = new Map();
     @track lineItemIdMap=new Map();
     @track productNumberMap = new Map();
     @track unitComboMap = new Map();
+    @track initialQuantityMap = new Map();
+    @track initialDeliveryDateMap = new Map();
+    @track initialShellContractMap =new Map();
+    @track initialUnitComboMap = new Map();
+    @track initialInstructionsMap = new Map();
     @track orderLineItemsList = [];
     @track isShowModal = false;
     @track isShowModalOrderModificationRequest = false;
@@ -129,6 +142,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
     @track ordActionType;
     @track sameData=false;
     @track showPopUp=false;
+    @track showInstPopup=false;
     @track modifiedCustomerPO;
     @track modifiedDeliveryTerm;
     @track modifiedModeOfTransport;
@@ -337,6 +351,9 @@ export default class tcp_ModifyOrderEU extends LightningElement {
     hideShowPopUp(){
         this.showPopUp=false;
     }
+    hideshowInstPopup(){
+        this.showInstPopup=false;
+    }
     handlePrev() {
         const getselectedStep = this.selectedStep;
 
@@ -362,6 +379,11 @@ export default class tcp_ModifyOrderEU extends LightningElement {
             this.progressStep2 = true;
             this.progressStep3 = false;
             
+            setTimeout(() => {
+                for(let i=0; i<this.selectedProdDetails.length; i++){
+                    this.handleInstructionLogic(this.selectedProdDetails[i].Index,true);
+                }
+            }, 500);
         }
         
     }    
@@ -521,6 +543,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
         const inputValue = event.currentTarget.value;
         if(dataId){
             this.unitComboMap.set(Number(dataId),inputValue);
+            this.handleInstructionLogic(dataId,false);  
         }
     }
 
@@ -535,7 +558,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
         if(prodName && prodName.length>0){
             this.materialNameMap.push({key:Number(dataId), value:prodName});
         }
-
+        this.handleInstructionLogic(dataId,false);    
     }
     
     handleDeliveryDate(event){
@@ -546,9 +569,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
             this.mapDeliveryDate(dataId);
         }
         getDateWithMonthName({ reqDate: inputValue }) .then(result => {
-            window.console.log('Checking date '+result);
             inputValue = result;
-            window.console.log('Checking date2 '+this.inputValue);
             if(inputValue && inputValue.length>0){
                 this.deliveryDateWithMonthMap.set(Number(dataId),inputValue);
                 this.mapDeliveryDate(dataId);
@@ -560,13 +581,46 @@ export default class tcp_ModifyOrderEU extends LightningElement {
             window.console.log('Error in updating date====>' + JSON.stringify(this.error));
         });        
 
-        
+        this.handleInstructionLogic(dataId,false);
     }
+
+    handleInstructionLogic(dataId,isPrevious){
+        let enableEditing=false;
+        
+        if(!this.initialShellContractMap.get(Number(dataId))){
+            this.initialShellContractMap.set(Number(dataId),'');
+        }
+        if(!this.shellContractMap.get(Number(dataId))){
+            this.shellContractMap.set(Number(dataId),'');
+        }
+
+        if((this.shellContractMap.get(Number(dataId))!==this.initialShellContractMap.get(Number(dataId))) || (this.quantityMap.get(Number(dataId))!==this.initialQuantityMap.get(Number(dataId))) || (this.deliveryDateMap.get(Number(dataId))!==this.initialDeliveryDateMap.get(Number(dataId))) || (this.unitComboMap.get(Number(dataId))!==this.initialUnitComboMap.get(Number(dataId)))){
+            enableEditing=true;
+        }
+
+        const target = this.template.querySelector(`[data-name="${dataId}"]`);
+        if( target && target != null){
+            if(enableEditing){
+                if(target.classList.contains('disabled-input')){
+                    target.classList.remove('disabled-input');
+                }    
+            }else{
+                target.classList.add('disabled-input');  
+                if(this.instructionsMap.get(Number(dataId))!==this.initialInstructionsMap.get(Number(dataId))){
+                target.value=this.initialInstructionsMap.get(Number(dataId));
+                this.instructionsMap.set(Number(dataId),this.initialInstructionsMap.get(Number(dataId)));
+                if(!isPrevious){
+                this.showInstPopup=true;
+                }
+             }
+            }
+        }
+    }
+
     mapDeliveryDate(dataId){
         for(let i=0; i<this.selectedProdDetails.length; i++){
             if(this.selectedProdDetails[i].Index === dataId){   
                 this.selectedProdDetails[i].deliveryCollDate = this.productInfoMapNullChecker(this.deliveryDateMap, dataId);
-                console.log('new date:::'+JSON.stringify(this.selectedProdDetails[i].deliveryCollDate));
             }
         }
     }
@@ -576,7 +630,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
         const dataId = event.currentTarget.dataset.id;
         const inputValue = event.currentTarget.value;
         this.shellContractMap.set(Number(dataId),inputValue);
-        
+        this.handleInstructionLogic(dataId,false);  
     }
     handleInstructions(event){
         const dataId = event.currentTarget.dataset.id;
@@ -640,9 +694,18 @@ export default class tcp_ModifyOrderEU extends LightningElement {
     }
 
     handleDeleteButton(event){
-       if(this.selectedProdDetails.length > 1){ 
+        let nonDeletedCount=0;
+        for(let i=0; i<this.selectedProdDetails.length; i++){
+            if(this.selectedProdDetails[i].quantity!==0){   
+               nonDeletedCount++;
+            }
+        }
+        
+        if(nonDeletedCount>1){ 
             const dataId = event.currentTarget.dataset.id;
-            this.quantityMap.delete(Number(dataId));
+            //this.quantityMap.delete(Number(dataId));
+            this.quantityMap.set(Number(dataId),0);
+            this.oliStatusMap.set(Number(dataId),this.reqForCancel);
             let prodIndex=0;
             for(let i=0;i<this.selectedProdDetails.length;i++){
                 
@@ -650,10 +713,13 @@ export default class tcp_ModifyOrderEU extends LightningElement {
                 if(Number(data.Index) === Number(dataId)){
                     prodIndex = i;
                     this.deletedProdDetails=[...this.deletedProdDetails,this.selectedProdDetails[i].LineItemId];
+                    this.selectedProdDetails[i].quantity=0;
+                    this.selectedProdDetails[i].oliStatus=this.reqForCancel;
+                    this.selectedProdDetails[i].oliStatusAttr=statusData.get(this.reqForCancel);
                 }
             }
            
-            this.selectedProdDetails.splice(Number(prodIndex),1);
+            //this.selectedProdDetails.splice(Number(prodIndex),1);
             this.deletedProducts=[...this.deletedProducts,this.deletedProdDetails];
             this.generateSerialNumbers();
             this.handleScrollBar();
@@ -723,7 +789,21 @@ export default class tcp_ModifyOrderEU extends LightningElement {
         }
         this.saveOrderLineItems();
         if(!this.hasOrderSubmitted){
-            
+            //newly added code
+            window.console.log('before'+JSON.stringify(this.orderLineItemsList));
+
+            for(let i=0;i<this.orderLineItemsList.length;i++){
+                
+                const data = this.orderLineItemsList[i];
+                window.console.log('inside'+JSON.stringify(data.oliStatus));
+
+                if(data.oliStatus==='CN' || data.oliStatus===this.reqForCancel){
+                    this.orderLineItemsList.splice(i,1);
+                    i=i-1;
+                }
+            }
+            window.console.log('after'+JSON.stringify(this.orderLineItemsList));
+
             getOrderNumberOnModify({orderWrapper: this.orderWrapper, orderLineWrapList: this.orderLineItemsList, deletedProducts:this.deletedProdDetails})
             .then(result=>{
                 this.hasOrderSubmitted = true;
@@ -773,19 +853,27 @@ export default class tcp_ModifyOrderEU extends LightningElement {
                     prodData.shellContractNo = this.oldOrderLineItemsList[i].Contract_No__c;
                     prodData.instructions = this.oldOrderLineItemsList[i].Other_Instruction__c;
                     prodData.Name=this.oldOrderLineItemsList[i].Material_Name__c;
+                    prodData.Number=this.oldOrderLineItemsList[i].MaterialNumber__c;
                     prodData.LineItemId=this.oldOrderLineItemsList[i].Id;
+                    prodData.oliStatus=this.handleOliStatus(this.oldOrderLineItemsList[i].TCP_Modify_Cancel_Status__c,this.oldOrderLineItemsList[i].Quantity__c,this.oldOrderLineItemsList[i].GSAP_Bol_Delivery__c);
+                    prodData.oliStatusAttr=statusData.get(prodData.oliStatus);
                     productData = [...productData, prodData];   
                     this.quantityMap.set(prodData.Index,prodData.quantity);
+                    this.initialQuantityMap.set(prodData.Index,prodData.quantity);
                     this.unitComboMap.set(prodData.Index,prodData.unit);
+                    this.initialUnitComboMap.set(prodData.Index,prodData.unit);
                     this.shellContractMap.set(prodData.Index, prodData.shellContractNo);
+                    this.initialShellContractMap.set(prodData.Index, prodData.shellContractNo);
                     this.instructionsMap.set(prodData.Index, prodData.instructions);
+                    this.initialInstructionsMap.set(prodData.Index, prodData.instructions);
                     this.lineItemIdMap.set(prodData.Index,prodData.LineItemId);
                     this.deliveryDateMap.set(prodData.Index,prodData.deliveryCollDate);
+                    this.initialDeliveryDateMap.set(prodData.Index,prodData.deliveryCollDate);
+                    this.productNumberMap.set(prodData.Index,prodData.Number);
                     this.materialNameMap.push({key:prodData.Index, value:prodData.Name});
+                    this.oliStatusMap.set(prodData.Index,prodData.oliStatus);
                     getDateWithMonthName({ reqDate: this.oldOrderLineItemsList[i].Delivery_Collection_Date__c }) .then(result => {
-                        window.console.log('Checking date '+result);
                         prodData.deliveryDateWithMonth = result;
-                        window.console.log('Checking date2 '+prodData.deliveryDateWithMonth);
                         if(prodData.deliveryDateWithMonth && prodData.deliveryDateWithMonth.length>0){
                             this.deliveryDateWithMonthMap.set(prodData.Index,prodData.deliveryDateWithMonth);
                         
@@ -805,6 +893,17 @@ export default class tcp_ModifyOrderEU extends LightningElement {
             }
             
         }
+    }
+
+    handleOliStatus(status,quantity,boldel){
+        if(status==='Cancelled' && quantity===0){
+            return 'CN';
+        }else if(status==='Cancellation' && quantity===0){
+            return this.reqForCancel;
+        }else if(boldel){
+            return 'DN';
+        }
+
     }
 
     renderedCallback(){
@@ -883,8 +982,8 @@ export default class tcp_ModifyOrderEU extends LightningElement {
                     if(this.materialNameMap.find(o => o.key === mapkey)){
                         orderLine['materialName'] = this.materialNameMap.find(o => o.key === mapkey).value;
                     }
-                    if(this.productNumberMap.has(orderLine['materialName'])){
-                        orderLine['materialNumber'] = this.productNumberMap.get(orderLine['materialName']);
+                    if(this.productNumberMap.has(mapkey)){
+                        orderLine['materialNumber'] = this.productNumberMap.get(mapkey);
                     }
                     if(this.selectedProductMap.find(o => o.key === orderLine['materialName'])){
                         orderLine['productId'] = this.selectedProductMap.find(o => o.key === orderLine['materialName']).value;
@@ -899,6 +998,12 @@ export default class tcp_ModifyOrderEU extends LightningElement {
                     if(this.unitComboMap.has(mapkey)){
                         orderLine['unit'] = this.unitComboMap.get(mapkey);
                     }
+                    //newly added
+                    if(this.oliStatusMap.has(mapkey)){
+                        orderLine['oliStatus'] = this.oliStatusMap.get(mapkey);
+                        orderLine['oliStatusAttr']=statusData.get(this.oliStatusMap.get(mapkey));
+                    }
+
                     i++;
                     this.orderLineItemsList = [...this.orderLineItemsList,orderLine];               
                 
@@ -916,6 +1021,7 @@ export default class tcp_ModifyOrderEU extends LightningElement {
             this.selectedProdDetails[i].deliveryDateWithMonth =this.productInfoMapNullChecker(this.deliveryDateWithMonthMap, dataId);
             this.selectedProdDetails[i].shellContractNo = this.productInfoMapNullChecker(this.shellContractMap, dataId);
             this.selectedProdDetails[i].instructions = this.productInfoMapNullChecker(this.instructionsMap, dataId);
+            this.selectedProdDetails[i].oliStatus = this.productInfoMapNullChecker(this.oliStatusMap, dataId);
             
         }
     }

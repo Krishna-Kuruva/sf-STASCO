@@ -8,6 +8,8 @@ public class TCP_CommopsModifyCancelApproveRejectTest {
     @TestSetup
     static void createTestData() {
         List<Account> testAccounts=new List<Account>();
+        List<Order> cancelOrderList=new List<order>();
+        List<User> listofusers=new List<User>();
         User us=TCP_TestDataUtilities.createAdminUsers();
         System.runAs(us){
         testAccounts=TCP_TestDataUtilities.createAccounts(1,true);
@@ -16,7 +18,7 @@ public class TCP_CommopsModifyCancelApproveRejectTest {
             System.runAs(us){
             List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccount);
             }
-            List<User> listofusers=new List<User>();
+            
              List<contact> testCons=new List<contact> ([select id,TCP_TandC__c, Email, Name from contact limit 1]);
        	 	     System.runAs(us){
             listofusers=TCP_TestDataUtilities.createcustomerUsers(1, 'TCPCustomerCommunityPlusUser', testCons[0]);
@@ -71,10 +73,13 @@ public class TCP_CommopsModifyCancelApproveRejectTest {
                             cancelOrder.TCP_Cancellation_Requested_By__c=listofusers[0].id;
                             
                         }
-                       Update toCancelOrders;
-                     
+                        cancelOrderList.addAll(toCancelOrders);
+                        
                     } 
             
+        }
+        System.runAs(listofusers[0]) {
+            Update cancelOrderList;
         }
         
         List<order> testOrdersListAfter=new List<order>([select id,ordernumber,Accountid,TCP_Order_Status__c from order]);
