@@ -39,9 +39,10 @@
     margin-right: 8px;
 }
 .mr2{
-    margin-right: 3px;
+   
     cursor: pointer;
     vertical-align: top;
+    margin-left: -15px;
 }
 
 .flex{
@@ -363,7 +364,7 @@ right: 10px;
     font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
     background-color: #FBCF09;
     border-radius: 2px !important;
-    padding: 14px 24px;
+    padding: 10px 16px;
     cursor: pointer;
     border: 1px solid #FBCF09 !important;
 }
@@ -376,12 +377,27 @@ right: 10px;
     font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
     background-color: rgba(255, 255, 255, 0.97) !important;
     border-radius: 2px !important;
-    padding: 14px 24px;
+    padding: 10px 16px;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.15)!important;
     margin-left: 16px !important;
 }
 
+.modalBtnNew{
+    margin-top: 24px;
+    align-items: center;
+    
+}
 
+.setModalBody .modalHeadingNew{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #404040;
+    margin-bottom: 24px;
+    margin-top: 0px;
+
+}
 
 /*---------popup css----------*/

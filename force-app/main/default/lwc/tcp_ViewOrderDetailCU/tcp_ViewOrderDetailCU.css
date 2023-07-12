@@ -42,9 +42,9 @@
     margin-right: 8px;
 }
 .mr2{
-    margin-right: 3px;
     cursor: pointer;
     vertical-align: top;
+    margin-left: -15px;
 }
 
 .textCapital{
@@ -311,3 +311,81 @@ margin-right: 5px;
     height:320px;
     padding-bottom: 17px;
 }
+
+
+
+
+
+
+/*---------popup css----------*/
+
+.setModal .slds-modal__container>.slds-modal__content:last-child, .setModalBody{
+    border-radius: 0px !important;
+}
+.setModalBody{
+    background-color: rgba(255, 255, 255, 0.97) !important;
+}
+.setModal .slds-modal__close{
+    top: 40px;
+right: 10px;
+}
+:host .setModal .slds-icon{
+    --sds-c-icon-color-foreground:#000000 !important;
+    --lwc-colorTextIconInverse:#000000 !important;
+}
+
+.setModalBody .modalHeading{
+    font-family: Shell Font, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #404040;
+    margin-bottom: 24px;
+    margin-top: 0px;
+
+}
+
+.setModalBody p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #595959;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+
+}
+
+.modalBtn{
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.yellowBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: #FBCF09;
+    border-radius: 2px !important;
+    padding: 10px 16px;
+    cursor: pointer;
+    border: 1px solid #FBCF09 !important;
+}
+
+.borderBtn {
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: #404040 !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
+    background-color: rgba(255, 255, 255, 0.97) !important;
+    border-radius: 2px !important;
+    padding: 10px 16px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.15)!important;
+    margin-left: 16px !important;
+}
+
+/*---------popup css----------*/

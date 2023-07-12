@@ -1,6 +1,6 @@
 <template>
     <div class="spinner">
-        <template if:true={isLoading}>
+        <template if:true={isViewEULoading}>
             <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
             </lightning-spinner>
         </template>
@@ -165,8 +165,8 @@
                                 
                             </th>
                             <th class="" scope="col" style="width:20%">
-                                <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                                    Product Name
+                                <div class="slds-truncate slds-cell-fixed" title="Product Name/Code" style="margin-top: -9px">
+                                    Product Name/<br/>Code
                                 </div>
                             </th>
                             <th style="width:10%" class="" scope="col">
@@ -206,24 +206,32 @@
                     </thead>
                     <tbody>
                         <template for:each={ordLineItemList} for:item="product">
-                            <tr key={product.Id} class="slds-hint-parent">
+                            <tr key={product.Id} class={product.oliStatusAttr.customClass}>
                                 <td style="width:6%">
-                                    <div class="">
-                                        <template if:true={chevronrightShow}>
-                                            <lightning-icon data-id={product.Id} icon-name="utility:chevronright"
+                                    <div class="slds-text-align_center">
+                                        <!-- <template if:true = {chevronrightShow}> -->
+                                        <template lwc:if={chevronrightShow}>
+                                            <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
                                                 alternative-text="chevronright Button" title="chevronright"
                                                 onclick={showCollapseRow} size="xx-small" class="mr2">
                                             </lightning-icon>
                                         </template>
+                                        <template lwc:elseif={product.oliStatusAttr.expStatus}>
+                                            <lightning-icon data-id={product.Id} data-name={product.oliStatusAttr.customClass} icon-name="utility:chevronright"
+                                                alternative-text="chevronright Button" title="chevronright"
+                                                onclick={showCollapseRow} size="xx-small" class="mr2">
+                                            </lightning-icon>
+                                        </template>
+                                        <!--</template> -->
                                         
                                         {product.sno}
                                     </div>
                                 </td>
 
                                 <td style="width:20%">
-                                    <div class="tooltip">
+                                    <div class="productName">
                                         {product.Material_Name__c}
-                                        <span tabindex="0" class="tooltiptext" role="tooltip">{product.MaterialNumber__c}</span>
+                                        <span class="tooltiptext">{product.MaterialNumber__c}</span>
                                     </div>
                                 </td>
                                 <td style="width:10%">
@@ -255,15 +263,28 @@
                                 </td>
                                 <template if:true={viewAllAction}>
                                 <td style="width:8%;text-align:center">
-                                    <div class="">
-                                      <a data-id={product.Id} data-name={product.GSAP_Bol_Delivery__c} onclick={handleViewAllDocument} aria-describedby="View Documents"><lightning-helptext alternative-text="View Documents" icon-name="utility:file" size="xx-small" content="View Documents" class="iconColor newColor" nubbin="left"></lightning-helptext></a>
+                                    <div class="slds-grid slds-grid_align-space slds-grid_vertical-align-center">
+                                      <a data-id={product.Id} data-name={product.GSAP_Bol_Delivery__c} data-value={product.New_delivery__c} onclick={handleViewAllDocument} aria-describedby="View Documents"><lightning-helptext alternative-text="View Documents" icon-name="utility:file" size="xx-small" content="View Documents" class="iconColor newColor" nubbin="left"></lightning-helptext></a>
+                                     <!-- <a onclick={handleReturnOrderShowModel}><lightning-helptext alternative-text="Return Order Line" icon-name="utility:enter" size="xx-small"  content="Return Order Line" class="returnIcon" nubbin="left" ></lightning-helptext></a>-->
+                                     <template if:true={product.Return_order__c}>
+                                            <lightning-button-icon 
+                                            icon-name="utility:enter" 
+                                            data-id={product.Id} 
+                                            alternative-text="Return Order Line" 
+                                            class="returnIcon"
+                                            value={index} 
+                                            onclick={handleReturnOrderShowModel}
+                                            tooltip="Return Order Line">
+                                        </lightning-button-icon>
+                                    </template>
                                     </div>
                                  </td>
                                 </template>
                             </tr>
 
                             <tr key={product.Id} style="visibility:collapse;height:0px !important" class={product.Id}>
-                                <td colspan="7">
+                                <td colspan="8">
+                                    
                                     <table class="slds-table--fixed-layout" aria-label="View Order Details table">
                                         <thead aria-hidden="true" class="slds-hide">
                                             <tr class="noBorder">
@@ -271,12 +292,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <template if:true={chevronrightShow}>
                                         <tr class="noBorder">
                                             <td class="boldTd">Dispatch Date</td>
                                             <td>
                                                 <lightning-formatted-date-time class="textCapital" value={product.GSAP_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
                                                  
                                            </td>
+                                           <td class="boldTd">Loading Date</td>
+                                            <td>
+                                                <lightning-formatted-date-time class="textCapital" value={product.Expected_Dispatch_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+
+                                            </td>
                                         </tr>
                                         <tr class="noBorder">
                                             <td class="boldTd">Bol/Delivery</td>
@@ -291,7 +318,7 @@
                                                 <lightning-formatted-date-time class="textCapital" value={product.GSAP_Goods_Issue_Date__c} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
                                                  
                                            </td>
-                                            <td class="boldTd">Goods Issue</td>
+                                            <td class="boldTd">Goods Issue Value</td>
                                             <td>{product.GSAP_Goods_Issue_Value__c}</td>
                                         </tr>
                                         <tr class="noBorder">
@@ -300,7 +327,16 @@
                                             <td class="boldTd">Goods Issue Status</td>
                                             <td>{product.GSAP_Goods_Issue_Status__c}</td>
                                         </tr>
+                                    </template>
+                                    <template if:true={product.oliStatusAttr.expStatus}>
+                                        <tr class="noBorder">
+                                            <td class="boldTd width25">Alert <lightning-icon icon-name="utility:warning" alternative-text="Alert!" variant="error"
+                                                title="Alert" size="xx-small"></lightning-icon></td>
+                                            <td>{product.oliStatusAttr.expStatus}</td>
+                                        </tr>
+                                    </template>
                                     </tbody>
+                                     
                                     </table>
                                 </td>
                             </tr>
@@ -330,9 +366,9 @@
             <template if:true={isShowModifyButton}>
             <button class="slds-button slds-button_brand nextBtn mr16" onclick={handleModifyOrder} aria-label="yellow background color Modify Order">Modify Order</button>
             </template>
-            <template if:true={isShowCancelButton}>
+            <!-- <template if:true={isShowCancelButton}>
             <button class="slds-button cancelBtn mr16" onclick={showModalCancelOrder} aria-label="Cancel Order">Cancel Order</button>
-            </template>
+            </template> -->
         </div>
     </div>
 
@@ -394,8 +430,154 @@
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
    <!-- Cancellation Order Request modal End -->
+
+   <!-- DN Created  modal start -->
+   <template if:true={isShowModalDnCreated}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+        <div class="setModal slds-modal__container">
+            <!-- modal header start -->
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalDnCreated}>
+                <lightning-icon icon-name="utility:close"
+                alternative-text="close"
+                variant="inverse"
+                size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-1">
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
+                <p>You are not allowed to modify the order since</p>
+                <template if:true={dnMessage}>
+                <p>S. No {dnMessage}  has DN (Delivery Note)</p>
+                </template>
+                <template if:true={cnMessage}>
+                <p>S. No {cnMessage}  is Cancelled</p>
+                </template>
+                <template if:true={rcMessage}>
+                <p>S. No {rcMessage}  has RC (Requested for Cancellation)</p>
+                </template>
+                <div class="modalBtn">
+                    <button class="slds-button yellowBtn" onclick={hideModalDnCreated} aria-label="yellow background color okay">Okay</button>
+                </div>
+            </div>
+           
+            </div> 
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- DN Created modal end -->
+
+<!--Return Order  modal start -->
+<template if:true={isShowReturnOrderModal}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Return Order Line Details">
+        <div class="setModal slds-modal__container">
+           
+         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleReturnOrderCloseModal}>
+            <lightning-icon icon-name="utility:close"
+               alternative-text="close"
+               variant="inverse"
+               size="small" ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+         </button>
+                
+            <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-12">
+                <h2 id="modal-heading-12" class="slds-text-heading_medium slds-hyphenate modalHeadingNew">Return Order Line Details</h2>
+                <!--model Tabel start-->
+                <div class="slds-grid ">
+                    <div class="slds-size_12-of-12">
+                        <div class="setTableVertical">
+                            <table class="slds-table " style="width:100%;border-collapse: collapse;" aria-label="Return Order Line Details table">
+                                <thead aria-hidden="true" class="slds-hide">
+                                    <tr class="noBorder">
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template if:true={returnLineItem}>
+                                       
+                                        <template if:true={returnLineItem.Return_order__c}>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">Return Order</td>
+                                            <td>{returnLineItem.Return_order__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">Return Delivery</td>
+                                            <td>{returnLineItem.Return_delivery__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">Return Goods Issue</td>
+                                            <td>{returnLineItem.Return_GI__c}</td>
+                                        </tr>
+                                    
+                                        <template if:true={returnLineItem.New_SO__c}>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Sales Order</td>
+                                            <td>{returnLineItem.New_SO__c}</td>
+                                        </tr>
+                                       <tr>
+                                            <td class="boldTd" style="width:40%">New Dispatch Date</td>
+                                            <td>{returnLineItem.New_dispatch_date__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Loading Date</td>
+                                            <td>{returnLineItem.New_loading_date__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Bol/Delivery</td>
+                                            <td>{returnLineItem.New_delivery__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Mode of Transport ID</td>
+                                            <td>{returnLineItem.New_Mot_Id__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Goods Issue Date</td>
+                                            <td>{returnLineItem.New_GI_date__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Goods Issue</td>
+                                            <td>{returnLineItem.New_GI_quantity__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Goods Issue Unit</td>
+                                            <td>{returnLineItem.New_GI_unit__c}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="boldTd" style="width:40%">New Goods Issue Status</td>
+                                            <td>{returnLineItem.New_GI_status__c}</td>
+                                        </tr>
+                                    
+                                    </template>
+                                </template>
+                            </template>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--model Tabel End-->
+            <div class="modalBtnNew">
+                <button class="slds-button yellowBtn" onclick={handleReturnOrderCloseModal} aria-label="yellow background color Close">Close</button>
+                
+             </div>
+            </div>
+           
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+<!-- Return Order modal end -->
+
+
+
+
+
    </template>
     <template if:false={showDetails}>
-        <c-tcp_-view-all-documents onbackbutton={handleViewAllDocumentsBack} salesordnum={docSalesOrdNum}  boldel={docBolDelivery}> </c-tcp_-view-all-documents>
+        <c-tcp_-view-all-documents onbackbutton={handleViewAllDocumentsBack} salesordnum={docSalesOrdNum}  boldel={docBolDelivery} redirectdel={docRedirectDelivery}></c-tcp_-view-all-documents>
     </template>
 </template>

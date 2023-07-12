@@ -11,7 +11,7 @@
                     <h2 class="heading3">{cuselectedtile}</h2>
                 </template>
                 <template if:true={isOrderHistory}>
-                    <lightning-combobox
+                    <!-- <lightning-combobox
                                         placeholder="Select a customer"
                                         variant="label-hidden"
                                         value={value}
@@ -21,7 +21,57 @@
                                         message-when-value-missing="Please select a customer"
                                         required
                                     >
-                                    </lightning-combobox>
+                    </lightning-combobox> -->
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container setCombobox">
+                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"><!-- slds-is-open -->
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <button type="button"
+                                            class="slds-input_faux slds-combobox__input  slds-cust-focus slds-combobox__input-value"
+                                            aria-labelledby="combobox-label-id-130 combobox-id-6-selected-value"
+                                            id="combobox-id-6-selected-value" aria-controls="listbox-id-7" aria-expanded="true"
+                                            aria-haspopup="listbox" onclick={handleCustDropDown}>
+                                            <span class="slds-truncate" id="combobox-value-id-93">{customerSelectText}</span>
+                                        </button>
+                                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                            <lightning-icon icon-name="utility:down" alternative-text="down!" title="down" size="x-small" class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"></lightning-icon>
+                                        </span>
+                                    </div>
+                                    <div id="listbox-id-7" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <li role="presentation" class="slds-listbox__item">
+                                                <div aria-checked="true" id="option1" onclick ={handleCustChange}
+                                                    class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected"
+                                                    role="option">
+                                                    <span class="slds-media__figure slds-listbox__option-icon slds-visible all-cust-check">
+                                                            <lightning-icon icon-name="utility:check" alternative-text="check" title="check" size="xx-small" class="slds-icon-utility-check slds-icon_container"></lightning-icon> 
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-truncate" title="All Customer">All Customer</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <template for:each ={accountData} for:item="account">
+                                                <li key={account.Id} role="presentation" class="slds-listbox__item">
+                                                    <div data-id={account.Id} aria-checked="true" 
+                                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                        role="option" onclick={handleCustMultiSelect}>
+                                                        <span data-name={account.Id} class="slds-media__figure slds-listbox__option-icon slds-hidden uncheck-all">
+                                                            <lightning-icon icon-name="utility:check" alternative-text="check" title="check" size="xx-small" class="slds-icon-utility-check slds-icon_container"></lightning-icon>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span class="slds-truncate" title={account.Name}>{account.Name}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>  
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </template>
                  </div> 
@@ -89,7 +139,7 @@
                         </div>
                         <div class="slds-card__body filterBody scrollBarStyle">
                             <div class="slds-p-vertical_xx-small setInputFilter">
-                                <lightning-input class="Step2" type="text"  label="Customers PO" maxlength="40" data-id="customerPo"  placeholder="" onchange={handleFilterChange} value={customerPo}></lightning-input>
+                                <lightning-input class="Step2" type="text"  label="Customer PO" maxlength="40" data-id="customerPo"  placeholder="" onchange={handleFilterChange} value={customerPo}></lightning-input>
                             </div>
             
                             <div class="slds-p-vertical_xx-small setInputFilter">                                           

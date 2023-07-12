@@ -7,14 +7,15 @@
 public with sharing class TCP_GSAPDataService {     
     @TestVisible private static list<CurrentOrders__x> MocklistGetCurrentOrder1 = new list<CurrentOrders__x>();
     @TestVisible private static List<OrdCnfDet__x> MocklistGetOrderConfirmation1=new List<OrdCnfDet__x>();
+    @TestVisible private static List<CurrentOrdersDelivery__x> MocklistGetOrderDeliverys1=new List<CurrentOrdersDelivery__x>();
      @TestVisible private static list<Filenet__x> MocklstofFiles = new list<Filenet__x>();
     @TestVisible private static CcpOrdr__x MockOrder=new CcpOrdr__x();
     @TestVisible private static List<CcpOrdr__x> MocklstOrder1 = new List<CcpOrdr__x>();
     
     /******* TCP Place Order call *******/
     @future
-    public static void  SubmitToGsap(string completeString,String OrderId){
-        string err_not_sent;
+    public static void  SubmitToGsap(string completeString,String orderId){
+        
         CcpOrdr__x lstOrder = new CcpOrdr__x();
         try{
             if(Test.isRunningTest()){
@@ -31,22 +32,22 @@ public with sharing class TCP_GSAPDataService {
             }
             system.debug('response form the gsap is'+ lstorder);
             if(lstOrder != null && lstOrder.Message__c != 'Order NOT Processed' && lstOrder.Msgid__c != null ){                
-                TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,true,false,lstorder.Msgid__c,false);
+                TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,true,false,lstorder.Msgid__c,false);
             }
             else if(lstOrder != null && lstOrder.Message__c == 'Order NOT Processed' && lstOrder.Msgid__c != null ){ 
-                TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,false,lstorder.Msgid__c,false);    
+                TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,false,lstorder.Msgid__c,false);    
             }else{
-                TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,false,lstorder.Msgid__c,false);
+                TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,false,lstorder.Msgid__c,false);
             }
         }
         catch(ExternalObjectException e){
-            system.debug('Exception occured3+++'+e.getCause() +'message '+e.getMessage());
-            TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,false,lstorder.Msgid__c,true);
+            system.debug('External object Exception'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+            TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,false,lstorder.Msgid__c,true);
             TCP_ExceptionLogClass.insertExceptionRecord('Place order exception',e.getMessage(),'TCP_GSAPDataService','SubmitToGsap','Exception');
         }
 		catch(Exception e){
-            system.debug('Exception occured5+++'+e.getCause() +'message '+e.getMessage());
-            TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,true,lstorder.Msgid__c,false);
+            system.debug('Exception occured SubmitToGsap'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+            TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,true,lstorder.Msgid__c,false);
             TCP_ExceptionLogClass.insertExceptionRecord('Place order exception',e.getMessage(),'TCP_GSAPDataService','SubmitToGsap','Exception');
         }
 		       
@@ -54,8 +55,8 @@ public with sharing class TCP_GSAPDataService {
     
    /******* TCP Modify/Cancel Order call *******/ 
     @future
-    public static void  SubmitToGSAPforModifyCancel(string completeString,String OrderId){
-        string err_not_sent;
+    public static void  SubmitToGSAPforModifyCancel(string completeString,String orderId){
+        
         CcpChOrdr__x lstChOrder = new CcpChOrdr__x();
         try{
             if(Test.isRunningTest()){
@@ -71,26 +72,21 @@ public with sharing class TCP_GSAPDataService {
             system.debug('response form the gsap is'+ lstChOrder);
             if(lstChOrder != null && lstChOrder.Message__c != 'Order NOT Processed'){ 
                 system.debug('response sales order: '+ lstChOrder.Msgid__c);          
-                TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,true,false,lstChOrder.Msgid__c,false);
+                TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,true,false,lstChOrder.Msgid__c,false);
             }else{
-                TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,false,lstChOrder.Msgid__c,false);
+                TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,false,lstChOrder.Msgid__c,false);
             }
-            /* if(Test.isRunningTest()){
-                DmlException e = new DmlException();
-                //e.setMessage('This is a constructed exception for testing and code coverage');
-                throw e;
-        	}*/
+           
         }
         
         catch(ExternalObjectException e){
-            system.debug('Exception occured3+++'+e.getCause() +'message '+e.getMessage());
-            //TCP_ExceptionLogClass.insertExceptionRecord('Modify order exception',e.getMessage(),'TCP_GSAPDataService','SubmitToGSAPforModifyCancel','Exception');
-            TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,false,lstChOrder.Msgid__c,true);
-            //TCP_SAPRetry_Service.p31ModifyCancelRetry( completeString, OrderId);
-           // throw e;
+            system.debug('External object exception modify'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+            
+            TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,false,lstChOrder.Msgid__c,true);
+            
         }catch(Exception e){
-            system.debug('Exception occured5+++'+e.getCause() +'message '+e.getMessage());
-            TCP_OrderManagementProcessor.trackStatusGSAPOrder(OrderId,false,true,lstChOrder.Msgid__c,false);
+            system.debug('Exception modify'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+            TCP_OrderManagementProcessor.trackStatusGSAPOrder(orderId,false,true,lstChOrder.Msgid__c,false);
             TCP_ExceptionLogClass.insertExceptionRecord('Modify order exception',e.getMessage(),'TCP_GSAPDataService','SubmitToGSAPforModifyCancel','Exception');
         }
         
@@ -112,15 +108,7 @@ public with sharing class TCP_GSAPDataService {
                 listGetOrderConfirmation = listGetOrderConfirmation1;
             }
             else{
-                //String RefreshAccessTocken = getAccessToken();
-                //system.debug('RefreshAccessTocken checks '+RefreshAccessTocken);
-                /*map<String,String> mapVal=new map<String,String>();
-                mapVal.put('Token_URL__c','https://api-dev.shell.com/v1/oauth/token');
-                mapVal.put('Consumer_Key__c','6UfAySWxNCJR3OUQv6o9WLFE65x0zK2n');
-                mapVal.put('Consumer_Secret__c','31h4w38yuTlPdn8G');
-                mapVal.put('scope__c','');
-                APIGEE_AuthProvider temp = new APIGEE_AuthProvider();
-                temp.refresh(mapVal,null);*/
+               
                 listGetOrderConfirmation = Database.query(completeString); 
                  
             }  
@@ -131,21 +119,13 @@ public with sharing class TCP_GSAPDataService {
             } 
             
         }
-        // catch(CalloutException e){
-        //     system.debug('Exception occured1+++'+e.getCause() +'message '+e.getMessage());            
-        //     TCP_ExceptionLogClass.insertExceptionRecord('Order confirmation service Exception',e.getMessage(),'TCP_GSAPDataService','GetOrderConfirmationFromGsap','Exception');
-        //     throw e;
-        // }catch(DmlException e){
-        //     system.debug('Exception occured2+++'+e.getCause() +'message '+e.getMessage());            
-        //     TCP_ExceptionLogClass.insertExceptionRecord('Order confirmation service Exception',e.getMessage(),'TCP_GSAPDataService','GetOrderConfirmationFromGsap','Exception');
-        //     throw e;
-        // }
+        
         catch(ExternalObjectException e){
-            system.debug('Exception occured3+++'+e.getCause() +'message '+e.getMessage());            
+            system.debug('External object Exception order confirmation'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());            
             TCP_SAPRetry_Service.p31OrdConfirmRetry( completeString,  soldtoID, stnsapSoldTo);
             throw e;
         }catch(Exception e){
-            system.debug('Exception occured5+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception order confirmation'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('Order confirmation service Exception',e.getMessage(),'TCP_GSAPDataService','GetOrderConfirmationFromGsap','Exception');
             throw e;
         }  
@@ -155,8 +135,6 @@ public with sharing class TCP_GSAPDataService {
     /******* TCP Get Current Orders call *******/
     @future
     public static void  GetCurrentOrdersFromGsap(string completeString, string soldtoID, string stnsapSoldTo){
-    	
-        integer maxRetries = 0;    
        
         CurrentOrders__x lstGetCurrentOrder = new CurrentOrders__x();
         list<CurrentOrders__x> listGetCurrentOrder = new list<CurrentOrders__x>();
@@ -164,22 +142,14 @@ public with sharing class TCP_GSAPDataService {
             if(Test.isRunningTest()){
                 CurrentOrders__x lstGetCurrentOrder1 = new CurrentOrders__x();
                 list<CurrentOrders__x> listGetCurrentOrder1 = new list<CurrentOrders__x>();
-               // listGetCurrentOrder1 = [Select Soldto__c,Ztype__c,Weborder__c,SalesOrder__c,SalesItemNo__c,GmQuan__c,GmDate__c,Months__c,DueDate__c,GmStat__c,GmUnit__c,BolDelItemNo__c,BolDeliveryNo__c,CustomerPoNo__c,DeliverOn__c,DeliverTo__c,DisplayUrl,TotVatAmount__c,TotGrossAmount__c,InvoiceAmount__c,InvoiceItm__c,InvoiceNo__c,InvoiceType__c,Mot__c,MotId__c,MotKey__c,OrderCreatedOn__c,Ordername__c,ProductId__c,ProductName__c,Quantity__c,ShipDspOn__c,Status__c,Unit__c,Terms__c,Currency__c from CurrentOrders__x];
+               
               listGetCurrentOrder1.addAll(MocklistGetCurrentOrder1);
                 lstGetCurrentOrder = lstGetCurrentOrder1;
                 listGetCurrentOrder = listGetCurrentOrder1;
             }
             else{
                 System.debug('@@: '+completeString);
-			/*	map<String,String> mapVal=new map<String,String>();
-                mapVal.put('Token_URL__c','https://api-dev.shell.com/v1/oauth/token');
-                mapVal.put('Consumer_Key__c','6UfAySWxNCJR3OUQv6o9WLFE65x0zK2n');
-                mapVal.put('Consumer_Secret__c','31h4w38yuTlPdn8G');
-                mapVal.put('scope__c','');
-                APIGEE_AuthProvider temp = new APIGEE_AuthProvider();
-                temp.refresh(mapVal,null);   
-                String accessToken = Auth.AuthToken.getAccessToken('0SO250000008RAEGA2','APIGEE_AuthProvider');
-                system.debug('***accessToken'+accessToken);*/
+			
                 listGetCurrentOrder = Database.query(completeString);                
                 system.debug('response form: '+ listGetCurrentOrder);
             }  
@@ -188,38 +158,19 @@ public with sharing class TCP_GSAPDataService {
                 TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
                 
             } 
-           /*  if(test.isRunningTest()){
-                DmlException e=new DmlException();
-                 throw e;
-            } */
+           
         }
         
-        //  catch(CalloutException e){
-        //     system.debug('Exception occured1+++'+e.getCause() +'message '+e.getMessage());
-		// 	TCP_ExceptionLogClass.insertExceptionRecord('Current order service Exception',e.getMessage(),'TCP_GSAPDataService','GetCurrentOrdersFromGsap','Exception');
-        //     TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
-        //     throw e;
-        // }catch(DmlException e){
-        //     system.debug('Exception occured2+++'+e.getCause() +'message '+e.getMessage());
-		// 	TCP_ExceptionLogClass.insertExceptionRecord('Current order service Exception',e.getMessage(),'TCP_GSAPDataService','GetCurrentOrdersFromGsap','Exception');            
-        //     TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
-        //     throw e;
-        // }
+        
         catch(ExternalObjectException e){
-            system.debug('Exception occured3+++'+e.getCause() +'message '+e.getMessage());
-		//TCP_ExceptionLogClass.insertExceptionRecord('Current order service Exception',e.getMessage(),'TCP_GSAPDataService','GetCurrentOrdersFromGsap','Exception');            
-           //TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
+            system.debug('external object Exception occured current orders'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+		
            TCP_SAPRetry_Service.p31GoodsIssueRetry( completeString, soldtoID, stnsapSoldTo); 
 		throw e;
         }
-        // catch(NullPointerException e){
-        //     system.debug('Exception occured4+++'+e.getCause() +'message '+e.getMessage());
-        //     TCP_ExceptionLogClass.insertExceptionRecord('Current order service Exception',e.getMessage(),'TCP_GSAPDataService','GetCurrentOrdersFromGsap','Exception');
-        //     TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
-        //     throw e;
-        // }
+        
         catch(Exception e){
-            system.debug('Exception occured5+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured current orders'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('Current order service Exception',e.getMessage(),'TCP_GSAPDataService','GetCurrentOrdersFromGsap','Exception');
             TCP_OrderManagementProcessor.trackCurrentOrderFromsGSAP(listGetCurrentOrder, soldtoID, stnsapSoldTo);
             throw e;
@@ -230,8 +181,7 @@ public with sharing class TCP_GSAPDataService {
     /******* TCP File Net call *******/
     // @future
     public static List<TCP_GSAPFileWrapper>  GetListofFilesFromGsap(string completeString){
-        //SalesOrderNo = '8003569173';
-        //string err_not_sent;
+       
         Filenet__x fetchFiles  = new Filenet__x();
         list<Filenet__x> lstofFiles = new list<Filenet__x>();
         List<TCP_GSAPFileWrapper> wrapFilesList = new List<TCP_GSAPFileWrapper>();
@@ -239,7 +189,7 @@ public with sharing class TCP_GSAPDataService {
             if(Test.isRunningTest()){
                 Filenet__x fetchFiles1  = new Filenet__x();
                 list<Filenet__x> lstofFiles1 = new list<Filenet__x>();
-                //lstGetCurrentOrder1.Message__c = 'Order NOT Processed';
+                
                 fetchFiles1.Reserve__c='String';
                 lstofFiles1.addAll(MocklstofFiles);
                 fetchFiles = fetchFiles1;
@@ -255,38 +205,20 @@ public with sharing class TCP_GSAPDataService {
                 system.debug('response form: =========>'+ lstofFiles);
                 wrapFilesList = TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
             }
-          /*   if(test.isRunningTest()){
-                DmlException e=new DmlException();
-                 throw e;
-            } */
+          
             
         }
         
-        // catch(CalloutException e){
-        //     system.debug('Exception occured1+++'+e.getCause() +'message '+e.getMessage());
-        //     TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
-        //     TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
-        //     throw e;
-        // }catch(DmlException e){
-        //     system.debug('Exception occured2+++'+e.getCause() +'message '+e.getMessage());
-        //     TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
-        //     TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
-        //     throw e;
-        // }
+        
         catch(ExternalObjectException e){
-            system.debug('Exception occured3+++'+e.getCause() +'message '+e.getMessage());
-            TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
+            system.debug('external object Exception occured get list of files'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
+            TCP_ExceptionLogClass.insertExceptionRecord('FileNet service external object Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
             TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
             throw e;
         }
-        // catch(NullPointerException e){
-        //     system.debug('Exception occured4+++'+e.getCause() +'message '+e.getMessage());
-        //     TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
-        //     TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
-        //     throw e;
-        // }
+        
         catch(Exception e){
-            system.debug('Exception occured5+++'+e.getCause() +'message '+e.getMessage());
+            system.debug('Exception occured get list of files'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','GetListofFilesFromGsap','Exception');
             TCP_OrderManagementProcessor.fetchFilesFromGSAP(lstofFiles);
             throw e;
@@ -305,7 +237,7 @@ public with sharing class TCP_GSAPDataService {
             List<Filenet__x> fileNetDocumentList = [SELECT Outputdesc__c, Zsectyp__c, Outputtype__c, Reserve__c, Uri__c, Document__c,Filenetid__c FROM Filenet__x WHERE Document__c = : docIDFromCS];
            if(Test.isRunningTest()){
                 Filenet__x fetchFilesSample  = new Filenet__x(Filenetid__c='testId',Uri__c='sampleUrl');
-                //list<Filenet__x> lstofFiles1 = new list<Filenet__x>();
+                
                 fileNetDocumentList.add(fetchFilesSample);
                	fileIDFromCS='testId';
             }
@@ -340,7 +272,7 @@ public with sharing class TCP_GSAPDataService {
             
         }
         catch(Exception e){
-            TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception',e.getMessage(),'TCP_GSAPDataService','getPDFURL','Exception');
+            TCP_ExceptionLogClass.insertExceptionRecord('FileNet service Exception get pdf',e.getMessage(),'TCP_GSAPDataService','getPDFURL','Exception');
         }
         
         if(string.isNotBlank(base64Response))
@@ -382,7 +314,7 @@ public with sharing class TCP_GSAPDataService {
             }            
         }
         catch(exception e){
-        
+            system.debug('Exception in getAccessToken'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
         }
         
         return accessToken;
@@ -403,7 +335,8 @@ public with sharing class TCP_GSAPDataService {
             String TextDataType='';
             String TextDataLine = '';
             Integer lineItemNumber = 1001;                   
-            completeString = completeString+'Soldto__c=\''+OrderDetails.Sold_To__r.GSAP_Account_Number__c+'\''+' and '+'Shipto__c=\''+OrderDetails.Ship_To__r.GSAP_Account_Number__c+'\''+' and '+'Billto__c=\''+OrderDetails.Bill_To__r.GSAP_Account_Number__c+'\''+' and '+'Payer__c=\''+OrderDetails.Payer__r.GSAP_Account_Number__c+'\''+' and '+'WebOrder__c=\''+OrderDetails.OrderNumber+'\''+' and '+'Incoterms1__c=\''+OrderDetails.Delivery_Terms__c+'\''+' and '+'PurchNoC__c=\''+OrderDetails.PoNumber+'\''+' and '+'CcluserId__c=\''+OrderDetails.CreatedBy.Name+'\''+' and '+'ShipCond__c=\''+shipCondition+'\'';
+            //completeString = completeString+'Soldto__c=\''+OrderDetails.Sold_To__r.GSAP_Account_Number__c+'\''+' and '+'Shipto__c=\''+OrderDetails.Ship_To__r.GSAP_Account_Number__c+'\''+' and '+'Billto__c=\''+OrderDetails.Bill_To__r.GSAP_Account_Number__c+'\''+' and '+'Payer__c=\''+OrderDetails.Payer__r.GSAP_Account_Number__c+'\''+' and '+'WebOrder__c=\''+OrderDetails.OrderNumber+'\''+' and '+'Incoterms1__c=\''+OrderDetails.Delivery_Terms__c+'\''+' and '+'PurchNoC__c=\''+OrderDetails.PoNumber+'\''+' and '+'CcluserId__c=\''+OrderDetails.CreatedBy.Name+'\''+' and '+'ShipCond__c=\''+shipCondition+'\'';
+			completeString = completeString+'Soldto__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'Shipto__c=\''+OrderDetails.Ship_To__r.GSAP_Account_Number__c+'\''+' and '+'Billto__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'Payer__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'WebOrder__c=\''+OrderDetails.OrderNumber+'\''+' and '+'Incoterms1__c=\''+OrderDetails.Delivery_Terms__c+'\''+' and '+'PurchNoC__c=\''+OrderDetails.PoNumber+'\''+' and '+'CcluserId__c=\''+OrderDetails.CreatedBy.Name+'\''+' and '+'ShipCond__c=\''+shipCondition+'\'';
 
             // order name
             TextDataType = 'Ttype__c=\''+'0000'+'01Name\'';
@@ -431,7 +364,7 @@ public with sharing class TCP_GSAPDataService {
             }
             
 
-            if(ordLineList.size()>0){
+            if(!ordLineList.isempty() && ordLineList.size()>0){
                 for(TCP_OrderLineItem__c lineItem : ordLineList){
                     String prefix = lineItem.Sales_Order_Line_Item_No__c;
                     if(String.isBlank(ItmNumber)){
@@ -473,16 +406,17 @@ public with sharing class TCP_GSAPDataService {
 
                     // order line item instructions
                     if(String.isNotBlank(lineItem.Other_Instruction__c)){
-                        String lineItmNum = String.valueOf(lineItemNumber).leftPad(6,'0');
+                        //String lineItmNum = String.valueOf(lineItemNumber).leftPad(6,'0');
+                        String lineItmNum =String.valueOf(prefix).removeStart('00')+'01';
                         TextDataType = TextDataType+' Or Ttype__c=\''+ lineItmNum+'ITEM\'';
                         string OI =  ReplaceSpecialChar(lineItem.Other_Instruction__c);
                         TextDataLine = TextDataLine+' Or Tdline__c=\''+lineItmNum+OI+'\'';
-                        lineItemNumber += 1000;
+                        //lineItemNumber += 1000;
                     }
                 
                     
                 }
-               // completeString = completeString+' and '+'('+ItmNumber+')'+' and '+'('+MatNumber+')'+' and '+'('+Quantity+')'+' and '+'('+Unit+')'+' and '+'('+DeliveryDate+')'+' and '+'('+TextDataType+')'+' and '+'('+TextDataLine+')'+' and '+'('+ContractNo+')';
+               
                 completeString = completeString+' and '+'('+ItmNumber+')'+' and '+'('+MatNumber+')'+' and '+'('+Quantity+')'+' and '+'('+Unit+')'+' and '+'('+DeliveryDate+')'+' and '+'('+ContractNo+')'+' and '+'('+TextDataType+')'+' and '+'('+TextDataLine+')';
                 System.debug('Result: '+completeString);
                 Order updateStatusOrder = new Order(id = OrderDetails.id,GSAP_Status__c = 'Sent');
@@ -493,10 +427,7 @@ public with sharing class TCP_GSAPDataService {
                 SubmitToGsap(completeString, OrderDetails.Id);
                 
             }
-           /*  if(test.isRunningTest()){
-                DmlException e=new DmlException();
-                 throw e;
-            } */
+           
         }catch (Exception e) {
             system.debug('Exception---->'+e.getMessage()+';'+e.getStackTraceString() + e.getLineNumber());
             TCP_ExceptionLogClass.insertExceptionRecord('GenerateGSAPQueryString exception',e.getMessage(),'TCP_GSAPDataService','GenerateGSAPQueryString','Exception');
@@ -523,23 +454,46 @@ public with sharing class TCP_GSAPDataService {
     }
 
     @AuraEnabled
-    public static List<TCP_GSAPFileWrapper> fetchFilesFromGSAP(String salesordnum,String boldel){
+    public static List<TCP_GSAPFileWrapper> fetchFilesFromGSAP(String salesordnum,String boldel,String redirectdel){
         List<TCP_GSAPFileWrapper> wrapFilesList = new List<TCP_GSAPFileWrapper>();
+        List<TCP_GSAPFileWrapper> rrWrapFilesList = new List<TCP_GSAPFileWrapper>();
+        
         try {
             String salesNum=salesordnum;
 			String oliBolDel=boldel;
-            
+            String rrDelivery=redirectdel;
+             String rrCompleteString;
             if(String.isNotBlank(salesNum)){
             String completeString = 'SELECT Id, ExternalId, DisplayUrl, Application__c, Coa__c, Document__c, Filenetid__c, Outputdesc__c, Outputtype__c, Reserve__c, Uri__c, Zsectyp__c FROM Filenet__x where ';
-            
-            	
-                if(String.isBlank(oliBolDel)){
+           
+                /*if(String.isBlank(oliBolDel)){
                     completeString = completeString+'Document__c=\''+String.escapeSingleQuotes(salesNum)+'\'';
                 }
                 if(String.isNotBlank(oliBolDel)){
                     completeString = completeString+'Document__c in (\''+salesNum+'\''+',\''+String.escapeSingleQuotes(oliBolDel)+'\')';
+                }*/
+              
+                completeString = completeString+'Document__c in (\'';
+            	if(String.isNotBlank(salesNum)){
+                    completeString = completeString+salesNum+'\'';
                 }
-            wrapFilesList = GetListofFilesFromGsap(completeString);
+                if(String.isNotBlank(oliBolDel)){
+                    completeString = completeString+',\''+String.escapeSingleQuotes(oliBolDel)+'\'';
+                }
+                completeString = completeString+')';
+                system.debug('completeString '+completeString);
+                wrapFilesList = GetListofFilesFromGsap(completeString);
+                
+                //redirect related docs
+                if(String.isNotBlank(rrDelivery)){
+                   rrCompleteString = 'SELECT Id, ExternalId, DisplayUrl, Application__c, Coa__c, Document__c, Filenetid__c, Outputdesc__c, Outputtype__c, Reserve__c, Uri__c, Zsectyp__c FROM Filenet__x where ';
+           		   rrCompleteString = rrCompleteString+'Document__c in (\''+String.escapeSingleQuotes(rrDelivery)+'\')';
+                   rrWrapFilesList = GetListofFilesFromGsap(rrCompleteString);
+                    if(!rrWrapFilesList.isEmpty()){
+                        wrapFilesList.addall(rrWrapFilesList);
+                    }
+                }
+                
             }
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -563,7 +517,7 @@ public with sharing class TCP_GSAPDataService {
             String TextDataType='';
             String TextDataLine = '';
             Integer lineItemNumber = 1001;                   
-            completeString = completeString+'Soldto__c=\''+OrderDetails.Sold_To__r.GSAP_Account_Number__c+'\''+' and '+'Shipto__c=\''+OrderDetails.Ship_To__r.GSAP_Account_Number__c+'\''+' and '+'Billto__c=\''+OrderDetails.Bill_To__r.GSAP_Account_Number__c+'\''+' and '+'Payer__c=\''+OrderDetails.Payer__r.GSAP_Account_Number__c+'\''+' and '+'WebOrder__c=\''+OrderDetails.Sales_Order_Number__c+'\''+' and '+'Incoterms1__c=\''+OrderDetails.Delivery_Terms__c+'\''+' and '+'PurchNoC__c=\''+OrderDetails.PoNumber+'\''+' and '+'CcluserId__c=\''+OrderDetails.CreatedBy.Name+'\''+' and '+'ShipCond__c=\''+shipCondition+'\'';
+            completeString = completeString+'Soldto__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'Shipto__c=\''+OrderDetails.Ship_To__r.GSAP_Account_Number__c+'\''+' and '+'Billto__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'Payer__c=\''+OrderDetails.TCP_GSAP_Account_Number__c+'\''+' and '+'WebOrder__c=\''+OrderDetails.Sales_Order_Number__c+'\''+' and '+'Incoterms1__c=\''+OrderDetails.Delivery_Terms__c+'\''+' and '+'PurchNoC__c=\''+OrderDetails.PoNumber+'\''+' and '+'CcluserId__c=\''+OrderDetails.CreatedBy.Name+'\''+' and '+'ShipCond__c=\''+shipCondition+'\'';
 
             // order name
             TextDataType = 'Ttype__c=\''+'0000'+'01Name\'';
@@ -592,7 +546,7 @@ public with sharing class TCP_GSAPDataService {
             }
             
 
-            if(ordLineList.size()>0){
+            if(!ordLineList.isempty() && ordLineList.size()>0){
                 for(TCP_OrderLineItem__c lineItem : ordLineList){
                     String prefix = lineItem.Sales_Order_Line_Item_No__c;
                     if(String.isBlank(ItmNumber)){
@@ -636,30 +590,29 @@ public with sharing class TCP_GSAPDataService {
 
                     // order line item instructions
                     if(String.isNotBlank(lineItem.Other_Instruction__c)){
-                        String lineItmNum = String.valueOf(lineItemNumber).leftPad(6,'0');
+                        //String lineItmNum = String.valueOf(lineItemNumber).leftPad(6,'0');
+                        String lineItmNum =String.valueOf(prefix).removeStart('00')+'01';
+                        system.debug('***lineItmNum'+lineItmNum);
                         TextDataType = TextDataType+' Or Ttype__c=\''+ lineItmNum+'ITEM\'';
                         string OI =  ReplaceSpecialChar(lineItem.Other_Instruction__c);
                         TextDataLine = TextDataLine+' Or Tdline__c=\''+lineItmNum+OI+'\'';
-                        lineItemNumber += 1000;
+                        //lineItemNumber += 1000;
                     }
                 
                     
                 }
-               // completeString = completeString+' and '+'('+ItmNumber+')'+' and '+'('+MatNumber+')'+' and '+'('+Quantity+')'+' and '+'('+Unit+')'+' and '+'('+DeliveryDate+')'+' and '+'('+TextDataType+')'+' and '+'('+TextDataLine+')'+' and '+'('+ContractNo+')';
+               
                 completeString = completeString+' and '+'('+ItmNumber+')'+' and '+'('+MatNumber+')'+' and '+'('+Quantity+')'+' and '+'('+Unit+')'+' and '+'('+DeliveryDate+')'+' and '+'('+ContractNo+')'+' and '+'('+TextDataType+')'+' and '+'('+TextDataLine+')';
-                System.debug('Result: '+completeString);
-                Order updateStatusOrder = new Order(id = OrderDetails.id,GSAP_Status__c = 'Sent');
-                if(ResentRequest == 'Resent'){
-                    updateStatusOrder.GSAP_Status__c = 'Resent';
-                }
-                update updateStatusOrder;
-                SubmitToGSAPforModifyCancel(completeString, OrderDetails.Id);
-                //SubmitToGSAPforModifyCancel(completeString, OrderDetails.Id);
+            }else{
+            completeString = completeString+' and '+'('+TextDataType+')'+' and '+'('+TextDataLine+')'; 
             }
-          /*  if(test.isRunningTest()){
-                DmlException e=new DmlException();
-                 throw e;
-            } */
+            System.debug('Result: '+completeString);
+            Order updateStatusOrder = new Order(id = OrderDetails.id,GSAP_Status__c = 'Sent');
+            if(ResentRequest == 'Resent'){
+                updateStatusOrder.GSAP_Status__c = 'Resent';
+            }
+            update updateStatusOrder;
+            SubmitToGSAPforModifyCancel(completeString, OrderDetails.Id);
         }catch (Exception e) {
             system.debug('Exception---->'+e.getMessage()+';'+e.getStackTraceString() + e.getLineNumber());
 			TCP_ExceptionLogClass.insertExceptionRecord('GenerateGSAPQueryStringForModifyCancel exception',e.getMessage(),'TCP_GSAPDataService','GenerateGSAPQueryStringForModifyCancel','Exception');  
@@ -677,9 +630,46 @@ public with sharing class TCP_GSAPDataService {
             update data;
         } catch (Exception e) {
             TCP_ExceptionLogClass.insertExceptionRecord('GSAP Data Services exception',e.getMessage(),'TCP_GSAPDataService','saveDocIdToCS','Exception');
-            //throw new AuraHandledException(e.getMessage());
+            
         }
         return data;
+    }
+    
+    @future
+    public static void  getDeliveryDetailsAsync(string completeString, string soldtoID, string stnsapSoldTo){
+        getDeliveryDetails(completeString,soldtoID,stnsapSoldTo);
+    }
+    
+    public static void getDeliveryDetails(string completeString, string soldtoID,string stnsapSoldTo){
+        try{
+            CurrentOrdersDelivery__x lstGetDelivery = new CurrentOrdersDelivery__x();
+            list<CurrentOrdersDelivery__x> listGetDeliverys = new list<CurrentOrdersDelivery__x>();
+            
+                if(Test.isRunningTest()){
+                    CurrentOrdersDelivery__x lstGetDelivery2 = new CurrentOrdersDelivery__x();
+                    list<CurrentOrdersDelivery__x> listGetDeliverys1 = new list<CurrentOrdersDelivery__x>();
+                    listGetDeliverys1.addAll(MocklistGetOrderDeliverys1);
+                    lstGetDelivery = lstGetDelivery2;
+                    listGetDeliverys = listGetDeliverys1;
+                }
+                else{
+                   
+                    listGetDeliverys = Database.query(completeString);
+                    for(CurrentOrdersDelivery__x tpdl : listGetDeliverys){
+                        system.debug('rec : '+tpdl);
+                    }
+                     
+                }
+            	
+            if(!listGetDeliverys.isEmpty()){                
+                TCP_OrderManagementProcessor.updateOrderDeliveryDetails(listGetDeliverys, soldtoID, stnsapSoldTo);
+                
+            } 
+            
+        }
+        catch(Exception e){
+            TCP_ExceptionLogClass.insertExceptionRecord('GSAP Data Services exception',e.getMessage(),'TCP_GSAPDataService','getDeliveryDetails','Exception');
+        }
     }
 
 }

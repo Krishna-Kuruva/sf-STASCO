@@ -14,9 +14,9 @@ import TCP_InvalidDateError from '@salesforce/label/c.TCP_InvalidDateError';
 import TCP_NoDataFilterError from '@salesforce/label/c.TCP_NoDataFilterError';
 import TCP_MinCharSearchError from '@salesforce/label/c.TCP_MinCharSearchError';
 import getPickListValues from '@salesforce/apex/TCP_HomePageController.getPickListValues';
-import getAllProductDetailsBySoldToId from '@salesforce/apex/TCP_HomePageController.getAllProductDetailsBySoldToId';
-import getCustomerBySoldToAndType from '@salesforce/apex/TCP_HomePageController.getCustomerBySoldToAndType';
-import getOrderedBySoldToId from '@salesforce/apex/TCP_HomePageController.getOrderedBySoldToId';
+import getAllProductDetailsBySoldToId from '@salesforce/apex/TCP_HomePageController.getAllProductDetailsBySoldToIdCU';
+import getCustomerBySoldToAndType from '@salesforce/apex/TCP_HomePageController.getCustomerBySoldToAndTypeCU';
+import getOrderedBySoldToId from '@salesforce/apex/TCP_HomePageController.getOrderedBySoldToIdCU';
 import getOrderDetailsByFilter from '@salesforce/apex/TCP_OrderController.getOrderDetailsByFilter';
 import getOrderDetailsBySearchKey from '@salesforce/apex/TCP_OrderSearchController.getOrderDetailsBySearchKey';
 
@@ -68,7 +68,8 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     @api initialloadtile;
     @api customeroptionscu;
     @api filterlist;
-    @track accountId;
+    @api selectedaccids;
+    @track accountId = [];
     @track orderList =[];
     @track refreshOrderList = [];
     @track orderDetailsMap = new Map();
@@ -126,6 +127,12 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     @track prodNameList=[];
     @track prodIdList=[];
     @track selectedProductId;
+    @track customerSelectText;
+    @track accountData = [];
+    @track selectedCustMap = new Map();
+    @track accountIds = [];
+    @track setAccIds = true;
+
     productNameCodeMap = new Map();
     productMap = new Map();
     deliveryToMap = new Map();
@@ -137,6 +144,16 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     defaultStatusOnApply;
     userType ='Comm Ops User';
     error;
+    defaultCustText = 'All Customer Selected';
+    custDropDownAction ='slds-is-open';
+    custDropDownName = '.slds-dropdown-trigger';
+    allCustCheck ='.all-cust-check';
+    sldsVisible = 'slds-visible';
+    sldsHidden = 'slds-hidden';
+    sldsHasFocus = 'slds-has-focus';
+    sldsCustFocus = '.slds-cust-focus';
+    uncheckAll = '.uncheck-all';
+    docTitle = 'TCP | Order History';
     
     constructor() {
         super();
@@ -151,7 +168,9 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     }
 
     connectedCallback(){
+        this.accountData = this.customeroptionscu;
         this.filteredData = this.filterlist;
+        this.customerSelectText = this.defaultCustText;
         if(this.filteredData && this.filteredData.length>0){
             if(this.filteredData[0] && Object.keys(this.filteredData[0]).length > 0){
                 this.populateFilterPickListData();
@@ -165,7 +184,160 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
             
         }
         this.handleData(this.initialloadtile);
-        this.value=this.soldtoid;
+        this.accountIds = this.soldtoid;
+    }
+
+    validateAccountIds(){
+        if(this.selectedaccids && this.selectedaccids.length>0 && this.setAccIds){
+            this.setAccIds = false;
+            this.accountId = this.selectedaccids;
+            this.populateDropDownOnBack();
+        }else{
+            this.accountId = this.soldtoid;
+        }
+    }
+
+    handleCustDropDown(event){
+        const target = this.template.querySelector(this.custDropDownName);
+        const focusElement = this.template.querySelector(this.sldsCustFocus);
+    
+        if(target != null && target.classList.contains(this.custDropDownAction)){
+            target.classList.remove(this.custDropDownAction);
+            if(focusElement != null && target.classList.contains(this.sldsHasFocus)){
+                target.classList.remove(this.sldsHasFocus); 
+            }
+        }else{
+            target.classList.add(this.custDropDownAction);
+            if(focusElement != null){
+                target.classList.add(this.sldsHasFocus);
+            }
+            event.stopImmediatePropagation();
+            window.addEventListener('click', this.handleClose);
+        }
+    }
+
+    handleClose = (event) => {
+        event.stopPropagation();
+        this.closeDropdown();
+        window.removeEventListener('click', this.handleClose);
+    }
+
+    closeDropdown(){
+        document.title = this.docTitle;
+        const target = this.template.querySelector(this.custDropDownName);
+        const focusElement = this.template.querySelector(this.sldsCustFocus);
+        if(target != null && target.classList.contains(this.custDropDownAction)){
+            target.classList.remove(this.custDropDownAction);
+            if(focusElement != null && target.classList.contains(this.sldsHasFocus)){
+                target.classList.remove(this.sldsHasFocus); 
+            }
+        }
+    }
+
+    handleAllCustCheck(){
+        document.title = this.docTitle;
+        const target = this.template.querySelector(this.allCustCheck);
+        if(target != null && target.classList.contains(this.sldsVisible)){
+            target.classList.remove(this.sldsVisible);
+            target.classList.add(this.sldsHidden);
+        }else{
+            target.classList.remove(this.sldsHidden);
+            target.classList.add(this.sldsVisible);
+            this.uncheckAllOtherCustomers();
+            this.handleChange();
+            this.customerSelectText = this.defaultCustText;
+
+        }
+    }
+
+    handleChange(){
+        let accIds = [];
+        if(this.selectedCustMap.size > 0){
+           accIds = this.formatDataToList(this.selectedCustMap);
+        }else{
+            accIds = this.accountIds;
+        }
+        this.handleDataOnSoldtoChange(accIds);
+    }
+
+    formatDataToList(input){
+        let data = [];
+        if(input){
+            for(const [mapkey,mapvalue] of input){
+                data = [...data,mapvalue];
+            }
+        }
+        return data;
+    }
+
+
+    handleCustChange(event){
+        this.handleCustDropDown();
+        this.handleAllCustCheck();
+    }
+
+    handleCustMultiSelect(event){
+        const dataId = event.currentTarget.dataset.id;
+        const target = this.template.querySelector(`[data-name="${dataId}"]`);
+        if(target != null && target.classList.contains(this.sldsVisible)){
+            target.classList.remove(this.sldsVisible);
+            target.classList.add(this.sldsHidden);
+            this.selectedCustMap.delete(dataId);
+        }else{
+            target.classList.remove(this.sldsHidden);
+            target.classList.add(this.sldsVisible);
+            this.selectedCustMap.set(dataId,dataId);
+        }
+        this.uncheckAllCustomer();
+        this.handleCustDropDown();
+        if(this.selectedCustMap.size > 0){
+            this.handleChange();
+            this.customerSelectText = `${this.selectedCustMap.size} Customer/s Selected`;
+        }else{
+            this.handleAllCustCheck();
+        }
+    }
+
+    uncheckAllCustomer(){
+        if(this.selectedCustMap.size > 0){
+            const target = this.template.querySelector(this.allCustCheck);
+            if(target != null && target.classList.contains(this.sldsVisible)){
+                target.classList.remove(this.sldsVisible);
+                target.classList.add(this.sldsHidden);
+            }
+        }
+    }
+
+    uncheckAllOtherCustomers(){
+        this.template.querySelectorAll(this.uncheckAll).forEach(targetElement => {
+            targetElement.classList.remove(this.sldsVisible);
+            targetElement.classList.add(this.sldsHidden);
+        });
+        this.selectedCustMap.clear();
+    }
+
+    populateDropDownOnBack(){
+        if(this.selectedaccids.length>0){
+            this.customerSelectText = `${this.selectedaccids.length} Customer/s Selected`;
+            setTimeout(() => {
+                this.handleCustDropDown();
+                for(const data of this.selectedaccids){
+                    this.selectDropDownValue(data);
+                    this.selectedCustMap.set(data,data);
+                }
+                
+                this.handleAllCustCheck();
+                this.handleCustDropDown();
+            }, 2000);
+        }
+    }
+    
+    selectDropDownValue(dataId){
+        const target = this.template.querySelector(`[data-name="${dataId}"]`);
+        if(target != null){
+            target.classList.remove(this.sldsHidden);
+            target.classList.add(this.sldsVisible);
+        }
     }
 
     @api handleDataOnSoldtoChange(soldToIdChanged){
@@ -173,7 +345,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         if(this.isOrderHistory){
             this.handleData('Order History');
         }else{
-        this.handleData(TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel);
+            this.handleData(TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel);
         }
     }
 
@@ -196,12 +368,14 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         this.sortDirection = 'asc';
         this.sortedBy=null;
         this.isLoadingCU = true;
-        this.accountId = this.soldtoid;
+        //this.accountId = this.soldtoid;
+        this.validateAccountIds();
         this.cuselectedtile=cuselecttile;
         if(cuselecttile==='Order History'){
             this.isOrderHistory=true;
         }
         this.tableShow=false;
+        
         if(this.accountId){
             getOrderDetailsBySoldToIdCU({soldToId:this.accountId, selectedTile:this.cuselectedtile})
             .then(result=>{
@@ -272,11 +446,11 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         return product;
     }
 
-    handleOptionChange(event) {
-        this.value = event.detail.value;
-        this.soldtoIdChanged(this.value);
-        this.handleDataOnSoldtoChange(this.value);
-    }
+    // handleOptionChange(event) {
+    //     this.value = event.detail.value;
+    //     this.soldtoIdChanged(this.value);
+    //     this.handleDataOnSoldtoChange(this.value);
+    // }
 
     handleStatusText(inputStatus){
         const statSplit = inputStatus.split(' ');
@@ -356,7 +530,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     handleDownloadPDFCU(data){
         if(data){
         this.isLoadingCU=true;
-        generatePDF({orderNumber:data,soldToId:this.accountId}).then(response => {
+        generatePDF({orderNumber:data}).then(response => {
         if(response){
         const element = document.createElement('a');
         element.setAttribute('href', 'data:application/pdf;base64,' + response);
@@ -384,8 +558,8 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
 
             });
             
-            const columnHeader = ['Customer Name','Web Order Number',custPo,'Order Name',devTo,'Product Number','Product','Invoice To','Status','Delivery/Collection Date','Quantity','Unit','Ordered Quantity in TO','Shell Contract No.','Shell Ref No.','Goods Issue Date','Goods Issue','Goods Issue Unit','Goods Issue Quantity in TO','Goods Issue status','Fulfilled By',this.lateOrder,this.rushOrder,'last Minute Changes','Mode of Transport','Dispatch Date','Delivery Term','Other Instruction','Instructions','Ordered by','Ordered Date','Bol/Delivery','Mode of Transport ID','Reviewed By','Reviewed Date/Time','Remarks','Modified By','Modified Date','Cancelled By','Cancelled Date'];
-            getOrderCUReport({soldToId:this.accountId, ordersInReportCU:orderNumbersInReport})
+            const columnHeader = ['Customer Name','Web Order Number',custPo,'Order Name',devTo,'Product Code','Product','Invoice To','Status','Delivery/Collection Date','Quantity','Unit','Ordered Quantity in TO','Shell Contract No.','Shell Ref No.','Goods Issue Date','Goods Issue Value','Goods Issue Unit','Goods Issue Quantity in TO','Goods Issue status','Loading Date','Fulfilled By','Sold To',this.lateOrder,this.rushOrder,'last Minute Changes','Mode of Transport','Dispatch Date','Delivery Term','Other Instruction','Instructions','Ordered by','Ordered Date','Bol/Delivery','Mode of Transport ID','Reviewed By','Reviewed Date/Time','Remarks','Modified By','Modified Date','Cancelled By','Cancelled Date','Return Order','Return Delivery','Return Goods Issue','New Sales Order','New Dispatch Date','New Loading Date','New Bol/Delivery','New Mode of Transport ID','New Goods Issue Date','New Goods Issue','New Goods Issue Unit','New Goods Issue Status'];
+            getOrderCUReport({soldToIds:this.accountId, ordersInReportCU:orderNumbersInReport})
             .then(result=>{
                 if(result){
                     
@@ -471,11 +645,13 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
             doc += this.handleHtmlNullTextCheck(lineItem[item].Contract_No__c);
             doc += this.handleHtmlNullTextCheck(result[key].salesordernumber);
             doc += this.handleHtmlNullDCheck(lineItem[item].GSAP_Goods_Issue_Date__c);
-            doc += this.handleHtmlNullCheck(lineItem[item].GSAP_Goods_Issue_Value__c);
+            doc += this.handleHtmlNullCheckQuantity(lineItem[item].GSAP_Goods_Issue_Value__c);
             doc += this.handleHtmlNullCheck(lineItem[item].GSAP_Goods_Issue_Unit__c);
             doc += this.handleHtmlNullCheckUnit(lineItem[item].GSAP_Goods_Issue_Unit__c,lineItem[item].GSAP_Goods_Issue_Value__c);
             doc += this.handleHtmlNullTextCheck(lineItem[item].GSAP_Goods_Issue_Status__c);
+            doc += this.handleHtmlNullDCheck(lineItem[item].Expected_Dispatch_Date__c);
             doc += this.handleHtmlNullTextCheck(result[key].fullfilledBy);
+            doc += this.handleHtmlNullTextCheck(result[key].gsapSoldToName);
             doc += this.handleHtmlNullCheck(result[key].isLateOrderVal);
             doc += this.handleHtmlNullCheck(result[key].isRushOrderVal);
             doc += this.handleHtmlNullCheck(result[key].isLastMinuteChangeVal);
@@ -495,6 +671,18 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
             doc += this.handleHtmlNullDCheck(result[key].modificationDate);
             doc += this.handleHtmlNullCheck(result[key].cancellationBy);
             doc += this.handleHtmlNullDCheck(result[key].cancellationDate);
+            doc += this.handleHtmlNullCheck(lineItem[item].Return_order__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].Return_delivery__c);
+            doc += this.handleHtmlNullCheckQuantity(lineItem[item].Return_GI__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].New_SO__c);
+            doc += this.handleHtmlNullDCheck(lineItem[item].New_dispatch_date__c);
+            doc += this.handleHtmlNullDCheck(lineItem[item].New_loading_date__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].New_delivery__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].New_Mot_Id__c);
+            doc += this.handleHtmlNullDCheck(lineItem[item].New_GI_date__c);
+            doc += this.handleHtmlNullCheckQuantity(lineItem[item].New_GI_quantity__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].New_GI_unit__c);
+            doc += this.handleHtmlNullCheck(lineItem[item].New_GI_status__c);
             doc += '</tr>'; 
             }  
         }
@@ -506,6 +694,14 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
             return `<td>${inputValue}</td>`;
         }else{
             return '<td></td>';
+        }
+    }
+
+    handleHtmlNullCheckQuantity(inputValue){
+        if(inputValue){
+            return `<td>${inputValue}</td>`;
+        }else{
+            return '<td>0</td>';
         }
     }
 
@@ -525,7 +721,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
                 return `<td>${inputValue}</td>`; 
             }
         }else{
-            return '<td></td>';
+            return '<td>0</td>';
         }
 
     }
@@ -599,7 +795,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
                         this.wrapList[index3] = this.handleValueCheck(this.searchTerm);
                     }
                   }
-                  this.navigateToOrderDetail(data, this.cuselectedtile,this.wrapList);
+                  this.navigateToOrderDetail(data, this.cuselectedtile,this.wrapList, this.formatDataToList(this.selectedCustMap));
                   break;
             case 'view_order_details':
                 this.wrapList = [];  
@@ -611,7 +807,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
                         this.wrapList[index3] = this.handleValueCheck(this.searchTerm);
                     }
                 }
-                this.navigateToViewOrderDetailCU(data, this.cuselectedtile,this.wrapList);
+                this.navigateToViewOrderDetailCU(data, this.cuselectedtile,this.wrapList, this.formatDataToList(this.selectedCustMap));
                 break;
             case 'download_order_details':
                 this.handleDownloadPDFCU(row.WebOrderNo);
@@ -719,24 +915,26 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
 
     }
 
-    navigateToOrderDetail(data,type,filterdata){
-        this.dispatchEvent(new CustomEvent('orderdetail',{detail : {data, type, filterdata}}));
+    navigateToOrderDetail(data,type,filterdata,accountids){
+        this.dispatchEvent(new CustomEvent('orderdetail',{detail : {data, type, filterdata, accountids}}));
     }  
 
-    navigateToViewOrderDetailCU(data, type, filterdata){
-        this.dispatchEvent(new CustomEvent('vieworderdetailcu',{detail : {data, type, filterdata}}));
+    navigateToViewOrderDetailCU(data, type, filterdata,accountids){
+        this.dispatchEvent(new CustomEvent('vieworderdetailcu',{detail : {data, type, filterdata, accountids}}));
     } 
 
     soldtoIdChanged(data){
-        this.dispatchEvent(new CustomEvent('soldtoidchanged',{detail : {data}}));
+        this.dispatchEvent(new CustomEvent('c',{detail : {data}}));
     } 
   
     filterClick(){
         this.filterSection = true;
         this.isStatusActive = true;
         this.populateFilterPickListData();
+        
         this.clearStatusData();
         this.clearProductData();
+       
     }
 
    closefilterClick(){
@@ -748,6 +946,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
            { label: 'None', value: 'None' },
            { label: 'Delivery Date', value: 'DeliveryDate' },
            { label: 'Dispatch Date', value: 'DispatchDate' },
+           { label: 'Loading Date', value: 'LoadingDate' },
        ];
    }
 
@@ -791,7 +990,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         });
 
     
-    getAllProductDetailsBySoldToId({soldToId: this.soldtoid})
+    getAllProductDetailsBySoldToId({soldToIds: this.soldtoid})
         .then(result=>{
             this.prodListOptions.splice(0,this.prodListOptions.length);
             result.forEach(opt => {            
@@ -810,7 +1009,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
             window.console.log('Error in getting products====>'+JSON.stringify(this.error));
         });
 
-    getCustomerBySoldToAndType({parentAccId: this.soldtoid, type: 'Ship To'})
+    getCustomerBySoldToAndType({parentAccIds: this.soldtoid, type: 'Ship To'})
     .then(result=>{
         if(result){
             this.deliveryToOptions.splice(0,this.deliveryToOptions.length);
@@ -833,7 +1032,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         window.console.log('ERROR=>'+this.error);
     });
 
-    getOrderedBySoldToId({soldToId: this.soldtoid})
+    getOrderedBySoldToId({soldToIds: this.soldtoid})
         .then(result=>{
             this.orderedByOptions.splice(0,this.orderedByOptions.length);
             result.forEach(opt => {            
@@ -868,12 +1067,12 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         this.disableDate = true;
         this.dateError = false;
         
-        if(this.orderStatus && this.orderStatus.length >0){
+        if(this.orderStatus && this.orderStatus.length >0 && this.filterSection){
             this.template.querySelector(this.tcpMultiselectJS).clearStatusPills();
         }
         
         this.orderStatus = '';
-        if(this.selectedProduct && this.selectedProduct.length>0)
+        if(this.selectedProduct && this.selectedProduct.length>0 && this.filterSection)
           {
             this.template.querySelector('c-tcp_-product-multi-select').clearStatusPills();
             }       
@@ -899,7 +1098,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         this.orderLineWrapper = {};
         this.activeFilters = [];
         if(this.soldtoid && this.soldtoid.length >0){
-            this.orderWrapper.soldToId = this.soldtoid;
+            this.orderWrapper.soldToIdList = this.soldtoid;
             this.handleRequestWrapper1();
         }
 
@@ -1149,7 +1348,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
         }
         this.isLoadingCU = true;
         
-        getOrderDetailsBySearchKey({soldToId: this.soldtoid, searchKey: this.searchTerm.toLocaleLowerCase(), defaultStatus: this.defaultStatusOnSearch, userType: this.userType, selectedTile: this.cuselectedtile})
+        getOrderDetailsBySearchKey({soldToIds: this.soldtoid, searchKey: this.searchTerm.toLocaleLowerCase(), defaultStatus: this.defaultStatusOnSearch, userType: this.userType, selectedTile: this.cuselectedtile})
         .then(result=>{
             
             if(result && result.length>0){
@@ -1316,6 +1515,7 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     handleClearActiveFilters(){
         this.isFilterActive = false;
         this.orderStatus = '';
+        this.selectedProduct='';
         this.clearAllFilterValues();
         this.orderWrapper = [];
         this.orderLineWrapper = [];
@@ -1334,14 +1534,20 @@ export default class TcpAllOrdersCU extends NavigationMixin (LightningElement) {
     }
 
     clearStatusData(){
+        window.console.log('Coming to order status');
         if(this.orderStatus.length===0){
+            window.console.log('Coming to order status inside');
             this.template.querySelector(this.tcpMultiselectJS).clearStatusPills();
         }
+        window.console.log('outside of order status check');
     }
     clearProductData(){
-        if(this.orderStatus.length===0){
+        window.console.log('Coming to product data');
+        if(this.selectedProduct.length===0){
+            window.console.log('hecking coming inside');
             this.template.querySelector(this.tcpProductMultiSelect).clearStatusPills();
         }
+        
     }
 
    

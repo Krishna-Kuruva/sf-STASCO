@@ -15,7 +15,7 @@
 font-size: 14px;
 line-height: 16px;
 color: #404040;
-font-family: SFProText ;
+font-family: SFProText, Arial, Helvetica, sans-serif;
 }
 
 .setBreadcrumbs ol li a{
@@ -61,13 +61,19 @@ margin-right: 5px;
 iframe {
     min-height: 675px;
 }
+.setIframe {
+  overflow:hidden;
+  height:100%;
+  width:100%;
+  border:0px;
+}
 
 .backBtn{
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
     color: #404040;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     background-color: transparent;
     height: 40px;
     border-radius: 2px;
@@ -111,7 +117,7 @@ right: 10px;
     font-size: 16px;
     line-height: 24px;
     color: #595959;
-    font-family: SFProText;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
 
 }
 
@@ -127,7 +133,7 @@ right: 10px;
     font-size: 16px !important;
     line-height: 20px !important;
     color: #404040 !important;
-    font-family: SFProTextBold !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
     background-color: #FBCF09;
     border-radius: 2px !important;
     padding: 14px 24px;
@@ -140,7 +146,7 @@ right: 10px;
     font-size: 16px !important;
     line-height: 20px !important;
     color: #404040 !important;
-    font-family: SFProTextBold !important;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
     background-color: rgba(255, 255, 255, 0.97) !important;
     border-radius: 2px !important;
     padding: 14px 24px;
@@ -155,7 +161,7 @@ right: 10px;
     line-height: 20px;
     color: #404040;
     height: 40px;
-    font-family: SFProTextBold;
+    font-family: SFProTextBold, Arial, Helvetica, sans-serif;
     border: none;
 }
 

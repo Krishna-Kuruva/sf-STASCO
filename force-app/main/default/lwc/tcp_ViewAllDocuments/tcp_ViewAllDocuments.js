@@ -2,13 +2,14 @@ import { LightningElement, track, api } from 'lwc';
 import { NavigationMixin } from "lightning/navigation";
 import fetchFilesFromGSAP from '@salesforce/apex/TCP_GSAPDataService.fetchFilesFromGSAP';
 
-export default class Tcp_ViewAllDocuments extends NavigationMixin(LightningElement) {
+export default class tcp_ViewAllDocuments extends NavigationMixin(LightningElement) {
 
     error;
     siteURL;
     @track isViewLoading;
     @api salesordnum;
     @api boldel;
+    @api redirectdel;
     @track docNameList = [];
     @track data1;
     @track pdfData ='data:application/pdf,';
@@ -17,15 +18,17 @@ export default class Tcp_ViewAllDocuments extends NavigationMixin(LightningEleme
     @track isShowModal = false;
     @track noDocs = false;
     @track initialDoc=null;
+    @track backText='Back';
+    
 
     connectedCallback(){
         
-        fetchFilesFromGSAP({salesordnum : this.salesordnum, boldel : this.boldel}).then(result=>{
+        fetchFilesFromGSAP({salesordnum : this.salesordnum, boldel : this.boldel, redirectdel:this.redirectdel}).then(result=>{
             this.isViewLoading=true;
             
             for(let i=0; i<result.length; i++){
-                let data = [];
-                data.docName = result[i].Outputdesc;
+                const data = [];
+                data.docName = result[i].Outputdesc+' '+result[i].Document;
                 data.docLink = result[i].Uri;
                 
                 if(!this.docDetailsMap.has(data.docName) && data.docLink){
@@ -37,7 +40,7 @@ export default class Tcp_ViewAllDocuments extends NavigationMixin(LightningEleme
                 } 
             }
             if(this.docDetailsMap && this.docDetailsMap.size>0){
-                let docName = this.docNameList[0].docName;
+                const docName = this.docNameList[0].docName;
                 this.initialDoc=docName;
             }else{
                 this.noDocs=true;
@@ -64,15 +67,15 @@ export default class Tcp_ViewAllDocuments extends NavigationMixin(LightningEleme
 
     handleSelect(event){
         this.isViewLoading=true;
-        let docName = event.detail.name;
-        let docId = this.docDetailsMap.get(docName);
-        let fileNetId=this.fileNetIdMap.get(docName);
+        const docName = event.detail.name;
+        const docId = this.docDetailsMap.get(docName);
+        const fileNetId=this.fileNetIdMap.get(docName);
         window.console.log('docId '+docId);
         window.console.log('fileNetId '+fileNetId);
         window.console.log('*2*');
         if(docId && docId.length>0){
             
-            this.siteURL = '/tradingandsupply/apex/TCP_ViewDocument?q='+docId+'&i='+fileNetId;
+            this.siteURL = `/tradingandsupply/apex/TCP_ViewDocument?q=${docId}&i=${fileNetId}`;
         }
         setTimeout(() => {
             this.isViewLoading=false;

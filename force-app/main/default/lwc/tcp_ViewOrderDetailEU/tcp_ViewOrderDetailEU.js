@@ -2,6 +2,14 @@ import { LightningElement,track,api,wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import { CurrentPageReference } from 'lightning/navigation';
 import getOrderId from '@salesforce/apex/TCP_ChangeCancelOrderController.getOrderId';
+import getOrderDetailsByWONumber from '@salesforce/apex/TCP_OrderController.getOrderDetailsByWONumber';
+import fetchDeliveryNotedetails from '@salesforce/apex/TCP_OrderController.fetchDeliveryNotedetails';
+
+const statusData = new Map([
+    ['CN', { customClass: 'cn-line-item', expStatus: 'Line Item Cancelled'}],
+    ['RC', { customClass: 'rc-line-item', expStatus: 'Requested for Cancellation'}],
+    ['NIL', { customClass: 'slds-hint-parent', expStatus: ''}]
+  ]);
 
 export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningElement) {
     @wire(CurrentPageReference)
@@ -19,6 +27,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
     @api iswebemail;
     @track orderDetailList;
     @track orderLineItemsList =[];
+    @track orderItemsList =[];
     @track orderIdsList=[];
     @track decision;
     @track orderParty;
@@ -29,13 +38,14 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
     @track enableSubmit=false; 
     @track accountId;
     @track isShowModal; 
-    @track isLoading;
+    @track isViewEULoading;
     @track tableType;
     @track tableClassName = 'slds-table--header-fixed_container';
     @track sendFilterData;
     @track isShowModalCancellationOrderRequest = false;
     @track isShowModalCancelOrder = false;
     @track isShowModalCancelOrderWhenSubmitted = false;
+    @track isShowModalDnCreated = false;
     @track orderName;
     @track customerPo;
     @track orderNumber;
@@ -49,10 +59,17 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
     @track backToDashboard=true;
     @track docSalesOrdNum;
     @track docBolDelivery;
+    @track docRedirectDelivery;
     @track showDetails=true;
     @track viewAllAction=true;
     @track isDraftOrder=false;
     @track ordLineItemList = [];
+    @track dnMessage='';
+    @track rcMessage='';
+    @track cnMessage='';
+    @track isShowReturnOrderModal=false;
+    @track lineitemId;
+    @track returnLineItem = [];
 
     connectedCallback(){
        
@@ -90,6 +107,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
                 this.isShowCancelButton=false;
             }
         }
+        window.console.log('Checking OrderLine Iteam List'+this.orderLineItemsList);
         this.addSerailNumberToList(this.orderLineItemsList);
         
         if(this.orderDetailList.fullfilledBy==='Third Party'){
@@ -104,6 +122,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
             this.isDraftOrder=true;
         }
         
+        window.console.log(JSON.stringify(this.orderLineItemsList));
     }
 
     get options() {
@@ -141,10 +160,74 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
         this.navigateToHomePageCancel(data,status,this.tableType, this.sendFilterData);
     }
     handleModifyOrder(){
-        const data = this.orderdetaildata;
+        //var data = this.orderdetaildata;
+        this.dnMessage='';
+        this.rcMessage='';
+        this.cnMessage='';
+        this.isViewEULoading=true;
         this.sendFilterData = this.eufilterdata;
-        this.navigateToViewOrderDetail(data,'Modify Order',this.sendFilterData);
+        //call apex method
+         fetchDeliveryNotedetails({soldToId : this.accountId,asyncRequest: false})
+         .then(result=>{
+            window.console.log('result'+JSON.stringify(result));
+            if(result==='Success'){
+            this.getOrderwithWebOrderNumber(this.orderdetaildata.orderNumber);
+            }
+         })
+         .catch(error => {
+            this.isViewEULoading = false;
+             this.error = error;
+             window.console.log('error in DN'+JSON.stringify(this.error));
+         });
     }
+
+    getOrderwithWebOrderNumber(webordnumber){
+        //call apex method
+        getOrderDetailsByWONumber({woNumber : webordnumber})
+         .then(result=>{
+             var recordData = result;
+             window.console.log('recordData[0]'+recordData[0]);
+             if(result){
+                let editAllowed=false; 
+                this.orderDetailData = recordData[0];
+                const updOliList=this.orderDetailData.orderLineItemList;
+                for(let i=0; i<updOliList.length;i++){
+                    let j=i+1;
+                    if((!updOliList[i].GSAP_Bol_Delivery__c)&&(updOliList[i].TCP_Modify_Cancel_Status__c!=='Cancelled')&&(updOliList[i].TCP_Modify_Cancel_Status__c!=='Cancellation')){
+                        editAllowed=true; 
+                    }else if(updOliList[i].GSAP_Bol_Delivery__c){
+                        this.dnMessage=this.getNotifyText(this.dnMessage,j);
+                    }else if(updOliList[i].TCP_Modify_Cancel_Status__c==='Cancelled'){
+                        this.cnMessage=this.getNotifyText(this.cnMessage,j);
+                    }else if(updOliList[i].TCP_Modify_Cancel_Status__c==='Cancellation'){
+                        this.rcMessage=this.getNotifyText(this.rcMessage,j);
+                    }
+                }
+                if(editAllowed){
+                window.console.log('inside edit allowed');
+                this.navigateToViewOrderDetail(this.orderDetailData,'Modify Order',this.sendFilterData);
+                }else{
+                    window.console.log('inside isShowModalDnCreated');
+                    this.isShowModalDnCreated=true;
+                }
+                this.isViewEULoading = false;
+             }
+         })
+         .catch(error => {
+            this.isViewEULoading = false;
+             this.error = error;
+             window.console.log('error in web order details'+JSON.stringify(this.error));
+         });
+    }
+
+    getNotifyText(prev,add){
+        if(prev){
+            return `${prev}, ${add}`;
+        }else{
+            return add;
+        }
+    }
+
     navigateToViewOrderDetail(data,type,filterdata){
         
         this.dispatchEvent(new CustomEvent('vieworderdetail',{detail : {"data":data,"type":type,"filterdata": filterdata}}));
@@ -152,6 +235,8 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
     handleViewAllDocument(event){
         this.docBolDelivery= event.currentTarget.dataset.name;
         this.docSalesOrdNum=this.orderDetailList.salesordernumber;
+        this.docRedirectDelivery=event.currentTarget.dataset.value;
+        window.console.log('this.docRedirectDelivery '+this.docRedirectDelivery);
         this.showDetails=false;
     }
     handleViewAllDocumentsBack(){
@@ -169,6 +254,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
    
     showCollapseRow(event) {
         const dataId = event.currentTarget.dataset.id;
+        const existClass=event.currentTarget.dataset.name;
         let target = this.template.querySelector('[data-id="'+dataId+'"]');
         if( target && target != null){
             if(target.classList.contains('iconRotate')){
@@ -184,6 +270,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
                 let row = this.template.querySelector(className);
                 if(row && row != null){
                     row.classList.add('showRow');
+                    row.classList.add(existClass);
                 }
             }
         }
@@ -212,10 +299,15 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
         this.isShowModalCancelOrder=false;
     }
 
+    hideModalDnCreated(){
+        this.isShowModalDnCreated=false;
+    }
+
+
     handleSubmit(){
         this.prepareSelectedOrder();
         this.saveOrderDetails();
-        this.isLoading=true
+        this.isViewEULoading=true
         
         getOrderId({orderData: this.orderWrapper})
         .then(result=>{
@@ -225,7 +317,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
                 this.handleHome();
         })
         .catch(error => {
-            this.isLoading = false;
+            this.isViewEULoading = false;
             this.error = error;
             window.console.log('Error in getting Order Number====>'+JSON.stringify(this.error));
         });
@@ -250,7 +342,7 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
         }
         
     }
-    //check if URL contains webordernumber and redirect
+    // check if URL contains webordernumber and redirect
     checkForWOnumber(){
         var wonumber =  this.currentPageReference.state.c__wonumber;
         
@@ -274,30 +366,77 @@ export default class Tcp_ViewOrderDetailEU extends NavigationMixin (LightningEle
             tempList.Id = ordLineList[i].Id ? ordLineList[i].Id : '';
             tempList.Material_Name__c = ordLineList[i].Material_Name__c ? ordLineList[i].Material_Name__c : '';
             tempList.MaterialNumber__c=ordLineList[i].MaterialNumber__c ? ordLineList[i].MaterialNumber__c : '';
-            tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            //tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            tempList.Quantity__c = ordLineList[i].Quantity__c;
             tempList.Unit__c = ordLineList[i].Unit__c ? ordLineList[i].Unit__c : '';
             tempList.Delivery_Collection_Date__c = ordLineList[i].Delivery_Collection_Date__c ? ordLineList[i].Delivery_Collection_Date__c : '';
             tempList.Contract_No__c = ordLineList[i].Contract_No__c ? ordLineList[i].Contract_No__c : '';
             tempList.Other_Instruction__c = ordLineList[i].Other_Instruction__c ? ordLineList[i].Other_Instruction__c : '';
             tempList.GSAP_Due_Date__c = ordLineList[i].GSAP_Due_Date__c ? ordLineList[i].GSAP_Due_Date__c : '';
             tempList.GSAP_Dispatch_Date__c = ordLineList[i].GSAP_Dispatch_Date__c ? ordLineList[i].GSAP_Dispatch_Date__c : '';
+            tempList.Expected_Dispatch_Date__c = ordLineList[i].Expected_Dispatch_Date__c ? ordLineList[i].Expected_Dispatch_Date__c : '';
             tempList.GSAP_Bol_Delivery__c = ordLineList[i].GSAP_Bol_Delivery__c ? ordLineList[i].GSAP_Bol_Delivery__c : '';
             tempList.GSAP_Mode_of_Transport_ID__c = ordLineList[i].GSAP_Mode_of_Transport_ID__c ? ordLineList[i].GSAP_Mode_of_Transport_ID__c : '';
-            tempList.GSAP_Goods_Issue_Value__c = ordLineList[i].GSAP_Goods_Issue_Value__c ? ordLineList[i].GSAP_Goods_Issue_Value__c : '';
+            tempList.GSAP_Goods_Issue_Value__c = ordLineList[i].GSAP_Goods_Issue_Value__c ? ordLineList[i].GSAP_Goods_Issue_Value__c.toFixed(3) : '';
             tempList.GSAP_Goods_Issue_Date__c = ordLineList[i].GSAP_Goods_Issue_Date__c ? ordLineList[i].GSAP_Goods_Issue_Date__c : '';
             tempList.GSAP_Goods_Issue_Unit__c = ordLineList[i].GSAP_Goods_Issue_Unit__c ? ordLineList[i].GSAP_Goods_Issue_Unit__c : '';
             tempList.GSAP_Goods_Issue_Status__c = ordLineList[i].GSAP_Goods_Issue_Status__c ? ordLineList[i].GSAP_Goods_Issue_Status__c : '';
+            //tempList.TCP_Modify_Cancel_Status__c = ordLineList[i].TCP_Modify_Cancel_Status__c ? ordLineList[i].TCP_Modify_Cancel_Status__c : '';
+            tempList.oliStatus=this.handleOliStatus(ordLineList[i].TCP_Modify_Cancel_Status__c,ordLineList[i].Quantity__c);
+            tempList.oliStatusAttr=statusData.get(tempList.oliStatus);
+            //return redirect fields.
+            tempList.Return_order__c = ordLineList[i].Return_order__c ? ordLineList[i].Return_order__c : '';
+            tempList.Return_delivery__c = ordLineList[i].Return_delivery__c ? ordLineList[i].Return_delivery__c : '';
+            tempList.Return_GI__c = ordLineList[i].Return_GI__c ? ordLineList[i].Return_GI__c : '';
+            tempList.New_SO__c = ordLineList[i].New_SO__c ? ordLineList[i].New_SO__c : '';
+            tempList.New_dispatch_date__c = ordLineList[i].New_dispatch_date__c ? ordLineList[i].New_dispatch_date__c : '';
+            tempList.New_loading_date__c = ordLineList[i].New_loading_date__c ? ordLineList[i].New_loading_date__c : '';
+            tempList.New_delivery__c = ordLineList[i].New_delivery__c ? ordLineList[i].New_delivery__c : '';
+            tempList.New_Mot_Id__c = ordLineList[i].New_Mot_Id__c ? ordLineList[i].New_Mot_Id__c : '';
+            tempList.New_GI_date__c = ordLineList[i].New_GI_date__c ? ordLineList[i].New_GI_date__c : '';
+            tempList.New_GI_quantity__c = ordLineList[i].New_GI_quantity__c ? ordLineList[i].New_GI_quantity__c : '';
+            tempList.New_GI_status__c = ordLineList[i].New_GI_status__c ? ordLineList[i].New_GI_status__c : '';
+            tempList.New_GI_unit__c = ordLineList[i].New_GI_unit__c ? ordLineList[i].New_GI_unit__c : '';
             
             tempOrdLineList = [...tempOrdLineList, tempList];
         }
         if(tempOrdLineList.length>0){
             this.ordLineItemList = tempOrdLineList;
+            window.console.log('Checking temp OrderLine Iteam List'+tempOrdLineList);
         }
     }
     
     renderedCallback(){
 
         document.title = 'TCP | Order Details';
+    }
+
+    handleOliStatus(status,quantity){
+        if(status==='Cancelled' && quantity===0){
+            return 'CN';
+        }else if(status==='Cancellation' && quantity===0){
+            return 'RC';
+        }else{
+            return 'NIL';
+        }
+
+    }
+
+    handleReturnOrderShowModel(event) {  
+    const clickedOLI = event.currentTarget.dataset.id;
+       
+       for(let i=0; i<this.ordLineItemList.length;i++){
+        
+            if(this.ordLineItemList[i].Id==clickedOLI){
+                console.log('matched');
+                this.returnLineItem=this.ordLineItemList[i];
+                this.isShowReturnOrderModal = true;
+            }
+        }
+      
+    }
+    handleReturnOrderCloseModal() {  
+        this.isShowReturnOrderModal = false;
     }
    
 

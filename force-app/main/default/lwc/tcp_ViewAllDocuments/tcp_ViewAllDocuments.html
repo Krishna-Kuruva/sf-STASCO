@@ -21,19 +21,21 @@
     <div class="slds-size_12-of-12">
         <div class="slds-grid ">
             <div class="slds-size_3-of-12">
-                 <!-- view all document navigation-->
+                 <!-- view all document navigation -->
                 <div class="outer-viewDocumentsSidebar">
                     <div class="viewDocumentsSidebar">
                                 <lightning-vertical-navigation selected-item={initialDoc} onselect={handleSelect}>
                                     <lightning-vertical-navigation-section>
                                         <template for:each ={docNameList} for:item="doc">
-                                            
-                                            <lightning-vertical-navigation-item target="_blank" key={doc.docName} aria-label={doc.docName} label={doc.docName}  name={doc.docName} onclick={handleNavigate}></lightning-vertical-navigation-item>
+                                            <lightning-vertical-navigation-item
+                                              target="_blank"
+                                              key={doc.docName}
+                                              aria-label={doc.docName}
+                                              label={doc.docName}
+                                              name={doc.docName}
+                                              onclick={handleNavigate}
+                                              onkeypress={handleNavigate}></lightning-vertical-navigation-item>
                                         </template>
-                                
-                                       
-
-
                                     </lightning-vertical-navigation-section>
                                 </lightning-vertical-navigation>
                     </div>
@@ -41,11 +43,15 @@
             </div>
            <template if:false={noDocs}>
             <div class="slds-size_9-of-12">
-                 <!--iframe section-->
+                 <!-- iframe section start -->
                 <div class="iframeBox">
-                  
-                  <iframe title="View Documents" src={siteURL} height="100%" width="100%" frameborder="0" scrolling="no" style="overflow:hidden;height:100%;width:100%"> </iframe>  
-                
+                  <iframe
+                    title="View Documents"
+                    src={siteURL}
+                    height="100%"
+                    width="100%"
+                    class="setIframe">
+                    </iframe> 
                 </div> 
             </div>
             </template>
@@ -53,10 +59,18 @@
         <div class="slds-grid ">
             <div class="slds-size_9-of-12">
                 <div class="documentBack mt36">
-                    <button class="slds-button slds-button_neutral backBtn" onclick={handleBack} aria-label="gray border color Back"><lightning-icon icon-name="utility:back" alternative-text="back" title="back" size="xx-small" class="mr8 iconColor"></lightning-icon> Back</button>
+                    <button
+                      class="slds-button slds-button_neutral backBtn"
+                      onclick={handleBack}
+                      aria-label="gray border color Back"><lightning-icon
+                      icon-name="utility:back"
+                      alternative-text="back"
+                      title="back"
+                      size="xx-small"
+                      class="mr8 iconColor"></lightning-icon>
+                      Back</button>
                    </div>
-                </div> 
-      
+                </div>
         </div>
     </div>  
     
@@ -66,17 +80,20 @@
             aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
             <div class="setModal slds-modal__container">
                 <!-- modal header start -->
-                <!-- <header class="slds-modal__header"> -->
-             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleBack}>
-                <lightning-icon icon-name="utility:close"
-                   alternative-text="close"
-                   variant="inverse"
-                   size="small" ></lightning-icon>
-                <span class="slds-assistive-text">Close</span>
-             </button>
-                    <!-- <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Cancel Order</h2> -->
-                <!-- </header> -->
-                <!-- modal body start -->
+             <button
+               class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+               title="Close"
+               onclick={handleBack}>
+               <lightning-icon
+               icon-name="utility:close"
+               alternative-text="close"
+               variant="inverse"
+               size="small"
+               ></lightning-icon>
+               <span
+               class="slds-assistive-text">Close Modal</span>
+               </button>
+                <!-- modal body -->
                 <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-1">
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert!</h2>
                     <template if:true={noDocs}>
@@ -86,7 +103,10 @@
                         <p>Looks like we might need a refresh</p>
                         </template>
                     <div class="modalBtn">
-                        <button class="slds-button yellowBtn" onclick={handleBack} aria-label="yellow background color Back">Back</button>
+                        <button
+                          class="slds-button yellowBtn"
+                          onclick={handleBack}
+                          aria-label="yellow background color Back">{backText}</button>
                     </div>
                 </div>
             </div>
