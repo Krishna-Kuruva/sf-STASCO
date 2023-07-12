@@ -1,6 +1,6 @@
 public with sharing class TCP_MyCompanyUsersController {
      public static string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<Id> getAccountDetailsOfComOps(){
         List<Id> accIds=new List<Id>();
         
@@ -18,7 +18,7 @@ public with sharing class TCP_MyCompanyUsersController {
         }
         return accIds;
     }
-    @auraEnabled(cacheable=true)
+    @auraEnabled
     public static List<ContactWrapper> getContacts(){
         List<ContactWrapper> conWrap=new List<ContactWrapper>();
         set<Id> conIds=new Set<Id>();
@@ -63,8 +63,8 @@ public with sharing class TCP_MyCompanyUsersController {
         }
         return conWrap;
     }
-    @AuraEnabled(cacheable=true) 
-    public static List<TCP_ShellContactEmail__c> getShellContacts(String AccountId){
+    @AuraEnabled 
+    public static List<TCP_ShellContactEmail__c> getShellContacts(String accountId){
         List<TCP_ShellContactEmail__c> conList=new List<TCP_ShellContactEmail__c>();
         List<Id> accIds=new list<Id>();
         try{
@@ -75,20 +75,20 @@ public with sharing class TCP_MyCompanyUsersController {
             else if(us.TCP_Role__C=='End user'){
                 accIds.add(us.AccountId);
             }
-            if(AccountId!=null){
+            if(String.isNotBlank(accountId)){
                 Account accSalesorg = [Select id,sales_area__r.Sales_Region__c from account where id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
                 String AccountSalesorg=accSalesorg.sales_area__r.Sales_Region__c;
                 
-                conList=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Region__c=:AccountSalesorg AND Contact_Name__c!='Duplicate' ORDER By Name DESC];
+                conList=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Region__c=:AccountSalesorg ORDER By Name ASC];
                 System.debug('Check the contacts '+conList);
             }
-            if(AccountId==null && accIds.size()>0){
+            if(String.isBlank(accountId) && accIds.size()>0){
                 
                 Account acc=[Select Id, Name, Sales_Area__c, Sales_Area__r.Sales_Region__c from Account where Id=:accIds[0] and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
                 
                 String AccountSalesorg=acc.Sales_Area__r.Sales_Region__c;
                 system.debug('Check Org '+AccountSalesorg);
-                conList=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Region__c=:AccountSalesorg AND Contact_Name__c!='Duplicate' ORDER By Name DESC ];
+                conList=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Region__c=:AccountSalesorg AND Contact_Name__c!='Duplicate' ORDER By Name ASC ];
                 System.debug('Check the contacts '+conList);
             }
         }
@@ -99,21 +99,20 @@ public with sharing class TCP_MyCompanyUsersController {
     }
     
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getNewRequestDetails(String AccountId, String ContactId, String FirstName, String LastName, String Phone, String Email, String Comments){
-        System.debug('Check1 '+AccountId);
-        System.debug('Check2 '+ContactId);
-        System.debug('Check3 '+FirstName);
-        System.debug('Check4 '+LastName);
-        System.debug('Check5 '+Phone);
-        System.debug('Check6 '+Comments);
+    public static TCP_ShellContactEmail__c getNewRequestDetails(String accountId, String contactId, String firstName, String lastName, String phone, String email, String comments){
+        System.debug('Check1 '+accountId);
+        System.debug('Check2 '+contactId);
+        System.debug('Check3 '+firstName);
+        System.debug('Check4 '+lastName);
+        System.debug('Check5 '+phone);
+        System.debug('Check6 '+comments);
         
         
         TCP_ShellContactEmail__c con=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         Account acc=new Account();
         List<Id> accIds=new list<Id>();
         try{
-            if(AccountId==null){
+            if(accountId==null){
                 User us=[select Id, Name,TCP_Role__C,ContactId,AccountId, Email from User where Id=:UserInfo.getUserId()];
                 if(us.TCP_Role__C=='CommOpps user'){
                     accIds=getAccountDetailsOfComOps();
@@ -125,22 +124,17 @@ public with sharing class TCP_MyCompanyUsersController {
                     acc=[Select Id, Name from Account where Id=:accIds[0] and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
                 }
             }
-            if(AccountId!=null){
-                acc=[Select Id, Name from Account where Id=:AccountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
+            if(accountId!=null){
+                acc=[Select Id, Name from Account where Id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
                 system.debug('Check Company Name '+acc.Name);
             }
-            System.debug('Check ContactId '+ContactId);
-            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:ContactId];
+            System.debug('Check ContactId '+contactId);
+            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:contactId];
             if(con!=null && acc!=null){
-                if(con.Contact_Region__c=='Europe' && con.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
+               
                 string[] toEmails = new string[] {con.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_ContactUsEmailService.sendEmailOnNewRequest(acc.Id,toEmails,FirstName , LastName,Phone, Email, Comments,acc.Name, con.Contact_Name__c,true);
+                   
+                TCP_ContactUsEmailService.sendEmailOnNewRequest(acc.Id,toEmails,firstName , lastName,phone, email, comments,acc.Name, con.Contact_Name__c,true);
             }   
         }
         catch (Exception ex) {
@@ -150,27 +144,20 @@ public with sharing class TCP_MyCompanyUsersController {
     }
     
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getComplaintDetails(String AccountId, String ContactId, String ShellRefNumber, String CustomerPO, String Description, String Product){
+    public static TCP_ShellContactEmail__c getComplaintDetails(String accountId, String contactId, String shellRefNumber, String customerPO, String description, String product){
         TCP_ShellContactEmail__c con=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         System.debug('Checking Customer PO'+ CustomerPo);
         try{
             Account acc=new Account();
-            if(AccountId!=null){
-                acc=[Select Id, Name from Account where Id=:AccountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
+            if(accountId!=null){
+                acc=[Select Id, Name from Account where Id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
             }
-            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:ContactId];
+            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:contactId];
             if(con!=null && acc!=null){
-                if(con.Contact_Region__c=='Europe' && con.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
-                
+               
                 string[] toEmails = new string[] {con.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_ContactUsEmailService.sendEmailOnComplaintRequest(AccountId,toEmails,CustomerPO, ShellRefNumber,Product,Description,acc.Name,con.Contact_Name__c ,true);
+                  
+                TCP_ContactUsEmailService.sendEmailOnComplaintRequest(accountId,toEmails,customerPO, shellRefNumber,product,description,acc.Name,con.Contact_Name__c ,true);
             } 
         }
         catch (Exception ex) {
@@ -179,25 +166,19 @@ public with sharing class TCP_MyCompanyUsersController {
         return con;
     }
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getCommentDetails(String AccountId, String ContactId, String Description){
+    public static TCP_ShellContactEmail__c getCommentDetails(String accountId, String contactId, String description){
         TCP_ShellContactEmail__c con=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         try{
             Account acc=new Account();
-            if(AccountId!=null){
-                acc=[Select Id, Name from Account where Id=:AccountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
+            if(accountId!=null){
+                acc=[Select Id, Name from Account where Id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
             }
-            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:ContactId];
+            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:contactId];
             if(con!=null && acc!=null){
-                if(con.Contact_Region__c=='Europe' && con.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
+               
                 string[] toEmails = new string[] {con.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_ContactUsEmailService.sendEmailOnCommentRequest(AccountId,toEmails, Description,acc.Name, con.Contact_name__c,true);
+                   
+                TCP_ContactUsEmailService.sendEmailOnCommentRequest(accountId,toEmails, description,acc.Name, con.Contact_name__c,true);
             }  
         }
         catch (Exception ex) {
@@ -206,27 +187,21 @@ public with sharing class TCP_MyCompanyUsersController {
         return con;
     }
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getEnquiryDetails(String AccountId, String ContactId, String Description){
+    public static TCP_ShellContactEmail__c getEnquiryDetails(String accountId, String contactId, String description){
         
         
         TCP_ShellContactEmail__c con=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         try{
             Account acc=new Account();
-            if(AccountId!=null){
-                acc=[Select Id, Name from Account where Id=:AccountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
+            if(accountId!=null){
+                acc=[Select Id, Name from Account where Id=:accountId and recordtype.id=:tcpAccountRecTypeid and Active__c=true];
             }
-            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:ContactId];
+            con=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:contactId];
             if(con!=null && acc!=null){
-                if(con.Contact_Region__c=='Europe' && con.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
+              
                 string[] toEmails = new string[] {con.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_ContactUsEmailService.sendEmailOnInquiryRequest(AccountId,toEmails, Description,acc.Name, con.Contact_name__c,true);
+                  
+                TCP_ContactUsEmailService.sendEmailOnInquiryRequest(accountId,toEmails, description,acc.Name, con.Contact_name__c,true);
             }  
         }
         catch (Exception ex) {
@@ -235,27 +210,21 @@ public with sharing class TCP_MyCompanyUsersController {
         return con;
     }
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getUserEditDetails(String contactEmail, String companyName,String contactName,String requestedTo, String EditDetails){
+    public static TCP_ShellContactEmail__c getUserEditDetails(String contactEmail, String companyName,String contactName,String requestedTo, String editDetails){
         
         
         TCP_ShellContactEmail__c conShell=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         User conUser=new User();
         try{
             if(contactEmail!=null){
-                conUser=[select Contact.FirstName, Contact.AccountId,Contact.LastName,Contact.Email, ContactId,Contact.Name, AccountId,Contact.Account.Name from User where Contact.Email=:contactEmail AND Contact.Name=:contactName];
+                conUser=[select Contact.FirstName, Contact.accountId,Contact.LastName,Contact.Email, ContactId,Contact.Name, AccountId,Contact.Account.Name from User where Contact.Email=:contactEmail AND Contact.Name=:contactName];
             }
             conShell=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:requestedTo];
             if(conShell!=null && conUser!=null){
-                if(conShell.Contact_Region__c=='Europe' && conShell.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
+                
                 string[] toEmails = new string[] {conShell.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_MyCompanyUsersEmailService.sendEmailOnEditRequest(conUser.Contact.AccountId, toEmails, conUser.Contact.FirstName, conUser.Contact.LastName, conUser.Contact.Email, EditDetails, conUser.Contact.Account.Name, conShell.Contact_Name__c, true);
+                   
+                TCP_MyCompanyUsersEmailService.sendEmailOnEditRequest(conUser.Contact.accountId, toEmails, conUser.Contact.FirstName, conUser.Contact.LastName, conUser.Contact.Email, editDetails, conUser.Contact.Account.Name, conShell.Contact_Name__c, true);
             }
         }
         catch (Exception ex) {
@@ -264,11 +233,10 @@ public with sharing class TCP_MyCompanyUsersController {
         return conShell;
     }
     @AuraEnabled(cacheable=false) 
-    public static TCP_ShellContactEmail__c getUserDeleteDetails(String contactEmail, String companyName,String contactName,String requestedTo, String Description,String deletereason){
+    public static TCP_ShellContactEmail__c getUserDeleteDetails(String contactEmail, String companyName,String contactName,String requestedTo, String description,String deletereason){
         
         
         TCP_ShellContactEmail__c conShell=new TCP_ShellContactEmail__c();
-        TCP_ShellContactEmail__c con2=new TCP_ShellContactEmail__c();
         User conUser=new User();
         try{
             
@@ -284,15 +252,10 @@ public with sharing class TCP_MyCompanyUsersController {
             }
             conShell=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Id=:requestedTo];
             if(conShell!=null && conUser!=null){
-                if(conShell.Contact_Region__c=='Europe' && conShell.Contact_Name__c=='General mailbox (when contact not known)'){
-                    con2=[select Id, name, Contact_Email__c, Contact_Name__c,Contact_Region__c,DLs__c from TCP_ShellContactEmail__c Where Contact_Name__c='Duplicate']; 
-                    
-                }
+              
                 string[] toEmails = new string[] {conShell.Contact_Email__c,UserInfo.getUserEmail()};
-                    if(con2.Contact_Email__c!=null){
-                        toEmails.add(con2.Contact_Email__c);
-                    }
-                TCP_MyCompanyUsersEmailService.sendEmailOnDeleteRequest(conUser.Contact.AccountId, toEmails, conUser.Contact.FirstName, conUser.Contact.LastName, conUser.Contact.Email, Description,deletereason, conUser.Contact.Account.Name, conShell.Contact_Name__c, true);
+                  
+                TCP_MyCompanyUsersEmailService.sendEmailOnDeleteRequest(conUser.Contact.AccountId, toEmails, conUser.Contact.FirstName, conUser.Contact.LastName, conUser.Contact.Email, description,deletereason, conUser.Contact.Account.Name, conShell.Contact_Name__c, true);
             }
         }
         catch (Exception ex) {

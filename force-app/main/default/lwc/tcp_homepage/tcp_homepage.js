@@ -1,34 +1,6 @@
 import { LightningElement,track, wire ,api} from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { CurrentPageReference } from 'lightning/navigation';
+import { NavigationMixin,CurrentPageReference } from 'lightning/navigation';
 import communityBasePath from '@salesforce/community/basePath'; 
-//import { sitecommunityurl } from '@salesforce/community/property';
-
-import TCP_close_icon from '@salesforce/resourceUrl/TCP_close_icon';
-import TCP_Placeholder from '@salesforce/resourceUrl/TCP_Placeholder';
-import TCP_forwardIcon from '@salesforce/resourceUrl/TCP_forwardIcon';
-import TCP_rightCircleArrow from '@salesforce/resourceUrl/TCP_rightCircleArrow';
-import TCP_cross_icon from '@salesforce/resourceUrl/TCP_cross_icon';
-import TCP_PlaceholderSmall from '@salesforce/resourceUrl/TCP_PlaceholderSmall';
-import TCP_search from '@salesforce/resourceUrl/TCP_search';
-import TCP_filter from '@salesforce/resourceUrl/TCP_filter';
-import TCP_Action from '@salesforce/resourceUrl/TCP_Action';
-import TCP_downArrow from '@salesforce/resourceUrl/TCP_downArrow';
-import TCP_grid_icon from '@salesforce/resourceUrl/TCP_grid_icon';
-import TCP_rows_icon from '@salesforce/resourceUrl/TCP_rows_icon';
-import TCP_file_icon from '@salesforce/resourceUrl/TCP_file_icon';
-import TCP_list_icon from '@salesforce/resourceUrl/TCP_list_icon';
-import TCP_person_icon from '@salesforce/resourceUrl/TCP_person_icon';
-import TCP_comment_icon from '@salesforce/resourceUrl/TCP_comment_icon';
-import TCP_send_icon from '@salesforce/resourceUrl/TCP_send_icon';
-import TCP_refresh_icon from '@salesforce/resourceUrl/TCP_refresh_icon';
-import TCP_time_icon from '@salesforce/resourceUrl/TCP_time_icon';
-import TCP_eye_icon from '@salesforce/resourceUrl/TCP_eye_icon';
-import TCP_download_icon from '@salesforce/resourceUrl/TCP_download_icon';
-import TCP_circleArrow from '@salesforce/resourceUrl/TCP_circleArrow';
-import TCP_bell_icon from '@salesforce/resourceUrl/TCP_bell_icon';
-import TCP_RoundCheck_icon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
-import TCP_RoundClose_icon from '@salesforce/resourceUrl/TCP_RoundClose_icon';
 import getAccountDetails from '@salesforce/apex/TCP_HomePageController.getAccountDetails';
 import getCountOfOrders from '@salesforce/apex/TCP_HomePageController.getCountOfOrders';
 import getCountOfOrdersEU from '@salesforce/apex/TCP_HomePageController.getCountOfOrdersEU';
@@ -58,12 +30,19 @@ import TCP_EUGuide from '@salesforce/label/c.TCP_EU_Guide';
 import TCP_CSAccountMapping from '@salesforce/label/c.TCP_CS_Account_Mapping';
 import TCP_CSUserCreation from '@salesforce/label/c.TCP_CS_User_Creation';
 import TCP_CSUserGuide from '@salesforce/label/c.TCP_CS_User_Guide';
+import TCP_send_icon from '@salesforce/resourceUrl/TCP_send_icon';
+import TCP_refresh_icon from '@salesforce/resourceUrl/TCP_refresh_icon';
+import TCP_time_icon from '@salesforce/resourceUrl/TCP_time_icon';
+import TCP_eye_icon from '@salesforce/resourceUrl/TCP_eye_icon';
+import TCP_rightCircleArrow from '@salesforce/resourceUrl/TCP_rightCircleArrow';
+import TCP_RoundCheck_icon from '@salesforce/resourceUrl/TCP_RoundCheck_icon';
+import TCP_RoundClose_icon from '@salesforce/resourceUrl/TCP_RoundClose_icon';
 
 
 
 
 
-export default class Tcp_homepage extends NavigationMixin (LightningElement) {
+export default class Tcphomepage extends NavigationMixin (LightningElement) {
 
     @api orderhistory;
     @api label;
@@ -92,29 +71,11 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
                 TCP_CSUserGuide
     }
     
-    TCP_close_icon=TCP_close_icon;
-    TCP_Placeholder=TCP_Placeholder;
-    TCP_forwardIcon=TCP_forwardIcon;
-    TCP_rightCircleArrow=TCP_rightCircleArrow;
-    TCP_cross_icon=TCP_cross_icon;
-    TCP_PlaceholderSmall=TCP_PlaceholderSmall;
-    TCP_search=TCP_search;
-    TCP_filter=TCP_filter;
-    TCP_Action=TCP_Action;
-    TCP_downArrow=TCP_downArrow;
-    TCP_grid_icon=TCP_grid_icon;
-    TCP_rows_icon=	TCP_rows_icon;
-    TCP_file_icon=	TCP_file_icon;
-    TCP_list_icon= TCP_list_icon;
-    TCP_person_icon= TCP_person_icon;
-    TCP_comment_icon=TCP_comment_icon;
     TCP_send_icon=TCP_send_icon;
     TCP_refresh_icon=TCP_refresh_icon;
     TCP_time_icon=TCP_time_icon;
     TCP_eye_icon=TCP_eye_icon;
-    TCP_download_icon=TCP_download_icon;
-    TCP_circleArrow=TCP_circleArrow;
-    TCP_bell_icon=TCP_bell_icon;
+    TCP_rightCircleArrow=TCP_rightCircleArrow;
     TCP_RoundCheck_icon=TCP_RoundCheck_icon;
     TCP_RoundClose_icon=TCP_RoundClose_icon;
 
@@ -124,6 +85,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     @track orderhistory = false;
     @track userId = uId;
     @track accountData = [];
+    @track accountIds = [];
     @track value;
     @track logOnAsTCP;
     @track showOrderNumber = false;
@@ -171,18 +133,42 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     @track iswebemailvar;
     @track actionType;
     @track oneTimeLoad = true;
+    @track selectedCustMap = new Map();
+    @track customerSelectText;
+    @track ordHisAccIds = [];
     
+    defaultCustText = 'All Customer Selected';
+    allOrderEuVar = 'c-tcp_-all-orders-e-u';
+    prevCountEu ='.previousCountEU';
+    rejCanCountEu = '.rejectCancelledCountEU';
+    prevCountCu = '.previousCountCU';
+    myCurOrdCountCu = '.myCurrentOrderCountCU';
+    modCanCountCU = '.modifyCancelCountCU';
+    docTitle = 'TCP | Order History';
+    ordHistoryLabel = 'Order History';
+    allOrdCu = 'c-tcp_-all-orders-c-u';
+    docTitleHome = 'TCP | Home';
+    myCurOrdEu = '.myCurrentOrderEU';
+    reviewOrdCnt = '.reviewOrderCount';
+    custDropDownAction ='slds-is-open';
+    custDropDownName = '.slds-dropdown-trigger';
+    allCustCheck ='.all-cust-check';
+    sldsVisible = 'slds-visible';
+    sldsHidden = 'slds-hidden';
+    sldsHasFocus = 'slds-has-focus';
+    sldsCustFocus = '.slds-cust-focus';
+    uncheckAll = '.uncheck-all';
 
     constructor(){
         super();
         loggedInAsTcpUser().then(result => {
             this.logOnAsTCP = result;
             window.console.log('logged in user commops: '+this.logOnAsTCP);
-            this.error = undefined;
+            this.error = null;
         })
         .catch(error => {
             this.error = error;
-            this.name = undefined;
+            this.name = null;
         });
     
     }
@@ -190,35 +176,33 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     renderedCallback(){
         
         if(this.logOnAsTCP && this.oneTimeLoad){
-            let target = this.template.querySelector('.reviewOrderCount');
+            const target = this.template.querySelector(this.reviewOrdCnt);
             if(target && target != null){
-                target =  target.classList.add('boxHighlight');
+                target.classList.add('boxHighlight');
                 this.oneTimeLoad = false;
             }  
-        }else if(!this.logOnAsTCP && this.oneTimeLoad && this.logOnAsTCP != undefined){
-            let target = this.template.querySelector('.myCurrentOrderEU');
+        }else if(!this.logOnAsTCP && this.oneTimeLoad && this.logOnAsTCP !== undefined){
+            const target = this.template.querySelector(this.myCurOrdEu);
             if(target && target != null){
-                target =  target.classList.add('boxHighlight');
+                target.classList.add('boxHighlight');
                 this.oneTimeLoad = false;
             } 
         }
 
-        //document.title = 'Home';
-        
     }
 
 
     connectedCallback() {      
         var wonumber =  this.currentPageReference.state.c__wonumber;
         var pageNavigate =  this.currentPageReference.state.navigateTo;
-        
-        
+        this.customerSelectText = this.defaultCustText;
+        window.console.log('connected');
         if(wonumber){
             
             this.getOrderwithWebOrderNumber(wonumber);
 
         }
-        if(pageNavigate=='Ohistory'){
+        if(pageNavigate==='Ohistory'){
             this.redirectOhistory=true;
             this.navSelected='link_orderhistory';
             
@@ -263,21 +247,151 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     //window.open("https://stasco--tcp.sandbox.my.site.com/sfc/servlet.shepherd/document/download/06925000001vyWAAAY?operationContext=S1")
     window.open(label.TCP_CSAccountMapping)
    
-}
+    }
 
+    handleCustDropDown(event){
+        document.title = this.docTitleHome;
+        const target = this.template.querySelector(this.custDropDownName);
+        const focusElement = this.template.querySelector(this.sldsCustFocus);
+        if(target != null && target.classList.contains(this.custDropDownAction)){
+            target.classList.remove(this.custDropDownAction);
+            if(focusElement != null && target.classList.contains(this.sldsHasFocus)){
+                target.classList.remove(this.sldsHasFocus); 
+            }
+        }else{
+            target.classList.add(this.custDropDownAction);
+            if(focusElement != null){
+                target.classList.add(this.sldsHasFocus);
+            }
+            event.stopImmediatePropagation();
+            window.addEventListener('click', this.handleClose);
+        }
+    }
+
+    handleClose = (event) => {
+        event.stopPropagation();
+        this.closeDropdown();
+        window.removeEventListener('click', this.handleClose);
+    }
+
+    closeDropdown(){
+        document.title = this.docTitleHome;
+        const target = this.template.querySelector(this.custDropDownName);
+        const focusElement = this.template.querySelector(this.sldsCustFocus);
+        if(target != null && target.classList.contains(this.custDropDownAction)){
+            target.classList.remove(this.custDropDownAction);
+            if(focusElement != null && target.classList.contains(this.sldsHasFocus)){
+                target.classList.remove(this.sldsHasFocus); 
+            }
+        }
+    }
+
+    handleAllCustCheck(){
+        document.title = this.docTitleHome;
+        const target = this.template.querySelector(this.allCustCheck);
+        if(target != null && target.classList.contains(this.sldsVisible)){
+            target.classList.remove(this.sldsVisible);
+            target.classList.add(this.sldsHidden);
+        }else{
+            target.classList.remove(this.sldsHidden);
+            target.classList.add(this.sldsVisible);
+            this.uncheckAllOtherCustomers();
+            this.getOrderCountCU(this.accountIds);
+            this.handleChange();
+            this.customerSelectText = this.defaultCustText;
+
+        }
+    }
+
+    handleCustChange(event){
+        this.handleCustDropDown();
+        this.handleAllCustCheck();
+    }
+
+    handleCustMultiSelect(event){
+        const dataId = event.currentTarget.dataset.id;
+        const target = this.template.querySelector(`[data-name="${dataId}"]`);
+        if(target != null && target.classList.contains(this.sldsVisible)){
+            target.classList.remove(this.sldsVisible);
+            target.classList.add(this.sldsHidden);
+            this.selectedCustMap.delete(dataId);
+        }else{
+            target.classList.remove(this.sldsHidden);
+            target.classList.add(this.sldsVisible);
+            this.selectedCustMap.set(dataId,dataId);
+        }
+        this.uncheckAllCustomer();
+        this.handleCustDropDown();
+        if(this.selectedCustMap.size > 0){
+            this.getOrderCountCU(this.formatDataToList(this.selectedCustMap));
+            this.handleChange();
+            this.customerSelectText = `${this.selectedCustMap.size} Customer/s Selected`;
+        }else{
+            this.handleAllCustCheck();
+        }
+    }
+
+    uncheckAllCustomer(){
+        if(this.selectedCustMap.size > 0){
+            const target = this.template.querySelector(this.allCustCheck);
+            if(target != null && target.classList.contains(this.sldsVisible)){
+                target.classList.remove(this.sldsVisible);
+                target.classList.add(this.sldsHidden);
+            }
+        }
+    }
+
+    formatDataToList(input){
+        let data = [];
+        if(input){
+            for(const [mapkey,mapvalue] of input){
+                data = [...data,mapvalue];
+            }
+        }
+        return data;
+    }
+
+    validateAndCountOrders(){
+        if(this.selectedCustMap.size > 0){
+            this.getOrderCountCU(this.formatDataToList(this.selectedCustMap));
+        }else{
+            this.getOrderCountCU(this.accountIds);
+        }
+    }
+
+    get accountIdsToProcess(){
+        if(this.selectedCustMap.size > 0){
+            return this.formatDataToList(this.selectedCustMap);
+        }else{
+            return this.accountIds;
+        }
+    }
+
+    uncheckAllOtherCustomers(){
+        this.template.querySelectorAll(this.uncheckAll).forEach(targetElement => {
+            targetElement.classList.remove(this.sldsVisible);
+            targetElement.classList.add(this.sldsHidden);
+        });
+        this.selectedCustMap.clear();
+    }
 
    @wire(getAccountDetails)
     wiredAccounts({data, error}){
         this.isLoading = true;
         if(data){
-            
+            this.accountData = data;
+            let tepmObj = [];
             for (let key in data) {
-                this.accountData = data;
                 const option = {
                 label : data[key].Name,
                 value : data[key].Id
                 };
                 this.customerOptions = [...this.customerOptions, option];
+                tepmObj = [...tepmObj,data[key].Id];
+            }
+
+            if(tepmObj && tepmObj.length>0){
+                this.accountIds = tepmObj;
             }
             if(this.accountData.length > 0){
                 this.value = this.customerOptions[0].value;
@@ -291,7 +405,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
             if(this.logOnAsTCP){
                 this.initialLoadTileHomePage = TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel;
                 this.commopsUserTabel=true;
-                this.getOrderCountCU();
+                this.getOrderCountCU(this.accountIds);
                 if(this.redirectOhistory){
                     this.orderHistoryClick();
                 }
@@ -305,7 +419,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
                 }
             }
             this.isLoading = false;
-            this.error = undefined;
+            this.error = null;
             
         }
         else if (error) {
@@ -316,29 +430,34 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     }
 
     handleChange(event) {
-        this.isLoading = true;
-        this.value = event.detail.value;
-        this.parentaccid = this.value;
-        this.soldtoid = this.value;
-        this.callOrdConfirmService();
-        this.callGSAPService();
+        // this.isLoading = true;
+        // this.value = event.detail.value;
+        // this.parentaccid = this.value;
+        // this.soldtoid = this.value;
+        // this.callOrdConfirmService();
+        // this.callGSAPService();
 
         if(this.logOnAsTCP){    
             this.endUserTable = false;
             this.commopsUserTabel=true;
-            this.getOrderCountCU();
-            document.title = 'TCP | Home';
-            this.template.querySelector('c-tcp_-all-orders-c-u').handleDataOnSoldtoChange(this.soldtoid);
+            document.title = this.docTitleHome;
+            let accIds = [];
+            if(this.selectedCustMap.size > 0){
+                accIds = this.formatDataToList(this.selectedCustMap);
+            }else{
+                accIds = this.accountIds;
+            }
+            this.template.querySelector(this.allOrdCu).handleDataOnSoldtoChange(accIds);
         }else{
             this.endUserTable = true;
             this.commopsUserTabel = false;
-            document.title = 'TCP | Home';
+            document.title = this.docTitleHome;
             this.getOrderCountEU();
         }
 
-        setTimeout(() => {
-            this.isLoading = false;
-        }, 2000);
+        // setTimeout(() => {
+        //     this.isLoading = false;
+        // }, 2000);
     }
 
     get options(){
@@ -358,25 +477,24 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    }
 
    doInputValidation(screenName){
-        const isInputsCorrect = [...this.template.querySelectorAll(screenName)]
+        return  [...this.template.querySelectorAll(screenName)]
         .reduce((validSoFar, inputField) => {        
         inputField.reportValidity();
         return validSoFar && inputField.checkValidity();
         }, true);
-        return isInputsCorrect;
     }
 
    handlePlaceorder(event){
         this.reorderoverlay = false;
         this.placeorder=false;
-        let typeInfo = event.detail.type;
+        const typeInfo = event.detail.type;
         this.filterdata = event.detail.filtereudata;
-        if(typeInfo==='Order History'){ 
+        if(typeInfo===this.ordHistoryLabel){ 
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = false;
         this.orderhistory=true;
         this.scrollToTopOfPage(); 
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         }else{
         this.dashboard =  true;
         this.scrollToTopOfPage();
@@ -384,7 +502,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
             this.initialLoadTileHomePage=typeInfo;
             } 
         this.endUserTable = true;
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
     }
    }
 
@@ -392,29 +510,29 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    handlemodifyordereu(event){
         this.modifyOrderEU =  false;
         this.scrollToTopOfPage();
-        let type = event.detail.type;
+        const type = event.detail.type;
         this.filterdata = event.detail.filtereudata;
         this.actionType = event.detail.status;
-        if(type=='Order History'){
+        if(type===this.ordHistoryLabel){
                 this.initialLoadTileHomePage=type;
                 this.orderhistory=true;
-                document.title = 'TCP | Order History';
+                document.title = this.docTitle;
                 this.scrollToTopOfPage();
         }else{
                 this.scrollToTopOfPage();
                 this.dashboard =  true;
                 this.initialLoadTileHomePage=type;
                 this.endUserTable = true;
-                document.title = 'TCP | Home';
+                document.title = this.docTitleHome;
         }
     }
 
    handleSaveOrder(event){
     this.showOrderNumber = true;
     this.orderNumber = event.detail.ordernumber;
-    let status = event.detail.status;
+    const status = event.detail.status;
     this.filterdata = event.detail.filtereudata;
-    let typeInfo = event.detail.type;
+    const typeInfo = event.detail.type;
     
     this.reorderoverlay = false;
     this.placeorder =  false;
@@ -423,15 +541,15 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     }else if(status === 'Submitted'){
         this.hasSubmitted = true;
     }
-    if(typeInfo==='Order History'){ 
+    if(typeInfo===this.ordHistoryLabel){ 
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = false;
         this.orderhistory=true;
         this.scrollToTopOfPage(); 
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         }else{
         this.dashboard =  true;
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
         this.scrollToTopOfPage();
         if(typeInfo){
         this.initialLoadTileHomePage=typeInfo;
@@ -449,12 +567,12 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    handleModifyOrder(event){
     this.showModifiedOrderNumber = true;
     this.orderNumber = event.detail.ordernumber;
-    let status = event.detail.status;
+    
         this.hasSubmitted = true;
         this.endUserTable = true;
        
     this.dashboard =   true;
-    document.title = 'TCP | Home';
+    document.title = this.docTitleHome;
     this.scrollToTopOfPage();
     this.modifyOrderEU =  false;
     setTimeout(() => {
@@ -473,51 +591,51 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         document.title = 'TCP | Review/Approval';
         this.tcpReviewOrderDetailCU = false;        
         this.commopsUserTabel = true;
-        this.template.querySelector('.reviewOrderCount').classList.add('boxHighlight');
-        this.template.querySelector('.modifyCancelCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.myCurrentOrderCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountCU').classList.remove('boxHighlight');
+        this.template.querySelector(this.reviewOrdCnt).classList.add('boxHighlight');
+        this.template.querySelector(this.modCanCountCU).classList.remove('boxHighlight');
+        this.template.querySelector(this.myCurOrdCountCu).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountCu).classList.remove('boxHighlight');
         this.endUserTable = false
-        this.template.querySelector('c-tcp_-all-orders-c-u').handleData(TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel);
+        this.template.querySelector(this.allOrdCu).handleData(TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel);
    }
 
    handleModifyCancelCU(){
         document.title = 'TCP | Modification/Cancellation Requests';
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.reviewOrderCount').classList.remove('boxHighlight');
-        this.template.querySelector('.myCurrentOrderCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.modifyCancelCountCU').classList.add('boxHighlight');
+        this.template.querySelector(this.reviewOrdCnt).classList.remove('boxHighlight');
+        this.template.querySelector(this.myCurOrdCountCu).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountCu).classList.remove('boxHighlight');
+        this.template.querySelector(this.modCanCountCU).classList.add('boxHighlight');
         this.commopsUserTabel = true;
         this.endUserTable = false
-        this.getOrderCountCU();
-        this.template.querySelector('c-tcp_-all-orders-c-u').handleData(TCP_ModificationOrCancelLabel+TCP_CancellationReqLabel);
+        this.validateAndCountOrders();
+        this.template.querySelector(this.allOrdCu).handleData(TCP_ModificationOrCancelLabel+TCP_CancellationReqLabel);
     }
 
     handleCurrentOrderCU(){
         document.title = 'TCP | Current Orders';
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.myCurrentOrderCountCU').classList.add('boxHighlight');
-        this.template.querySelector('.reviewOrderCount').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.modifyCancelCountCU').classList.remove('boxHighlight');
+        this.template.querySelector(this.myCurOrdCountCu).classList.add('boxHighlight');
+        this.template.querySelector(this.reviewOrdCnt).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountCu).classList.remove('boxHighlight');
+        this.template.querySelector(this.modCanCountCU).classList.remove('boxHighlight');
         this.commopsUserTabel = true;
         this.endUserTable = false
-        this.template.querySelector('c-tcp_-all-orders-c-u').handleData(TCP_CurrentOrderCULabel);
+        this.template.querySelector(this.allOrdCu).handleData(TCP_CurrentOrderCULabel);
 
     }
 
     handlePreviousCU(){
         document.title = 'TCP | Previous Orders';
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.myCurrentOrderCountCU').classList.remove('boxHighlight');
-        this.template.querySelector('.reviewOrderCount').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountCU').classList.add('boxHighlight');
-        this.template.querySelector('.modifyCancelCountCU').classList.remove('boxHighlight');
+        this.template.querySelector(this.myCurOrdCountCu).classList.remove('boxHighlight');
+        this.template.querySelector(this.reviewOrdCnt).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountCu).classList.add('boxHighlight');
+        this.template.querySelector(this.modCanCountCU).classList.remove('boxHighlight');
         this.commopsUserTabel = true;
         this.endUserTable = false
         
-        this.template.querySelector('c-tcp_-all-orders-c-u').handleData(TCP_PreviousOrdersLabel);
+        this.template.querySelector(this.allOrdCu).handleData(TCP_PreviousOrdersLabel);
 
     }
 
@@ -526,12 +644,12 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         
         this.commopsUserTabel = false;
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.myCurrentOrderEU').classList.add('boxHighlight');
-        this.template.querySelector('.rejectCancelledCountEU').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountEU').classList.remove('boxHighlight');
+        this.template.querySelector(this.myCurOrdEu).classList.add('boxHighlight');
+        this.template.querySelector(this.rejCanCountEu).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountEu).classList.remove('boxHighlight');
         this.endUserTable = true
         
-        this.template.querySelector('c-tcp_-all-orders-e-u').handleData(TCP_CurrentOrderLabel+TCP_OrderLabel);
+        this.template.querySelector(this.allOrderEuVar).handleData(TCP_CurrentOrderLabel+TCP_OrderLabel);
     }
 
    handlePreviousOrder(){
@@ -539,12 +657,12 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         
         this.commopsUserTabel = false;
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.previousCountEU').classList.add('boxHighlight');
-        this.template.querySelector('.myCurrentOrderEU').classList.remove('boxHighlight');
-        this.template.querySelector('.rejectCancelledCountEU').classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountEu).classList.add('boxHighlight');
+        this.template.querySelector(this.myCurOrdEu).classList.remove('boxHighlight');
+        this.template.querySelector(this.rejCanCountEu).classList.remove('boxHighlight');
 
         this.endUserTable = true
-        this.template.querySelector('c-tcp_-all-orders-e-u').handleData(TCP_PreviousOrdersLabel);
+        this.template.querySelector(this.allOrderEuVar).handleData(TCP_PreviousOrdersLabel);
 
     }
 
@@ -553,12 +671,12 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         
         this.commopsUserTabel = false;
         this.tcpReviewOrderDetailCU = false;
-        this.template.querySelector('.rejectCancelledCountEU').classList.add('boxHighlight');
-        this.template.querySelector('.myCurrentOrderEU').classList.remove('boxHighlight');
-        this.template.querySelector('.previousCountEU').classList.remove('boxHighlight');
+        this.template.querySelector(this.rejCanCountEu).classList.add('boxHighlight');
+        this.template.querySelector(this.myCurOrdEu).classList.remove('boxHighlight');
+        this.template.querySelector(this.prevCountEu).classList.remove('boxHighlight');
         this.endUserTable = true
        
-        this.template.querySelector('c-tcp_-all-orders-e-u').handleData(TCP_RejectLabel+TCP_CancelledOrderLabel);
+        this.template.querySelector(this.allOrderEuVar).handleData(TCP_RejectLabel+TCP_CancelledOrderLabel);
 
     }   
 
@@ -572,13 +690,14 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     this.commopsUserTabel = false;
     this.dashboard =  false;
     this.orderhistory=false;
+    this.ordHisAccIds = event.detail.accountids;
     this.tcpReviewOrderDetailCU = true;
     this.scrollToTopOfPage();
     this.orderDetailData = event.detail.data;
     this.tableType = event.detail.type;
     this.filterdata = event.detail.filterdata;
     document.title = 'TCP | Review Order Details';
-    
+     
    }
 
    handleModifyAction(event){
@@ -609,7 +728,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     this.placeorder=true;
     this.scrollToTopOfPage();
     this.orderDetailData = event.detail.data;
-    if(this.orderDetailData.status=='Draft'){
+    if(this.orderDetailData.status==='Draft'){
         document.title = 'TCP | Place Order';  
     }
     else{
@@ -630,11 +749,12 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     this.dashboard =  false;
     this.orderhistory=false;
     this.endUserTable=false;
-    if(event.detail.type == 'View All Docs'){
+    if(event.detail.type === 'View All Docs'){
         this.viewAllDocumentsCU = true;
         this.scrollToTopOfPage();
 
     }else{
+        this.ordHisAccIds = event.detail.accountids;
         this.viewOrderDetailCU = true;
         this.scrollToTopOfPage();
         this.orderDetailData = event.detail.data;
@@ -649,7 +769,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     this.orderhistory=false;
     this.endUserTable=false;
 
-    if(event.detail.type == 'Modify Order'){
+    if(event.detail.type === 'Modify Order'){
         this.modifyOrderEU = true;
         this.viewOrderDetailEU=false;
         this.viewOrderDetailEU2=false;
@@ -674,32 +794,34 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    handleSoldToidChanged(event){
     this.soldtoid=event.detail.data;
     this.value=event.detail.data;
-    this.getOrderCountCU();
+    this.validateAndCountOrders();
     this.callOrdConfirmService();
     this.callGSAPService();
    }
 
    handleOrderDetailback(event){
-    let status = event.detail.status;
-    let type = event.detail.type;
+    const status = event.detail.status;
+    const type = event.detail.type;
     this.tcpReviewOrderDetailCU = false;
     this.endUserTable = false;
     this.filterdata = event.detail.filtercudata;
-    if(type==='Order History'){
-            this.initialLoadTileHomePage=type;
-            this.commopsUserTabel = false;
-            this.orderhistory=true;
-            document.title = 'TCP | Order History';
-            this.scrollToTopOfPage();
-        }else{
-            this.scrollToTopOfPage();
-            this.dashboard =  true;
-            this.initialLoadTileHomePage=type;
-            this.commopsUserTabel = true;
-            document.title = 'TCP | Home';
-        } 
+    if(type===this.ordHistoryLabel){
+        this.initialLoadTileHomePage=type;
+        this.commopsUserTabel = false;
+        this.selectedCustMap = event.detail.selectedaccids;
+        this.orderhistory=true;
+        document.title = this.docTitle;
+        this.scrollToTopOfPage();
+    }else{
+        this.scrollToTopOfPage();
+        this.dashboard =  true;
+        this.initialLoadTileHomePage=type;
+        this.commopsUserTabel = true;
+        document.title = this.docTitleHome;
+        this.populateDropDownOnBack();
+    } 
         
-    if(status == 'Approved'){
+    if(status === 'Approved'){
         this.orderNumber = event.detail.ordernumber;
         this.hasApprovedOrder = true;
         this.showOrderNumber = true;
@@ -708,7 +830,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
             this.showOrderNumber = false;
             this.hasApprovedOrder = false;
         }, 6000);
-    }else if(status =='Approved GSAP'){
+    }else if(status ==='Approved GSAP'){
         this.orderNumber = event.detail.ordernumber;
         this.showGSAPOrderNumber = true;
         this.hasApprovedGSAPOrder = true;
@@ -717,14 +839,14 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
             this.hasApprovedGSAPOrder = false;
             this.showGSAPOrderNumber = false;
         }, 6000);
-    }else if(status =='Rejected'){
+    }else if(status ==='Rejected'){
         this.orderNumber = event.detail.ordernumber;
         this.hasRejectedOrder = true;
         this.scrollToTopOfPage();
         setTimeout(() => {
             this.hasRejectedOrder = false;
         }, 6000);
-    }else if(status =='Approved Cancel'){
+    }else if(status ==='Approved Cancel'){
         this.orderNumber = event.detail.ordernumber;
         this.hasCommopsCancelApproved = true;
         this.showOrderNumber = true;
@@ -734,29 +856,29 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
             this.hasCommopsCancelApproved = false;
         }, 6000);
     }
-    if(status == 'Approved' || status == 'Rejected' || status =='Approved Cancel' || status =='Approved GSAP'){
-        this.getOrderCountCU();
+    if(status === 'Approved' || status === 'Rejected' || status ==='Approved Cancel' || status ==='Approved GSAP'){
+        this.validateAndCountOrders();
     }    
    }
 
    handleViewOrderEUBack(event){
-    let status = event.detail.status;
-    if(status == 'back'){
+    const status = event.detail.status;
+    if(status === 'back'){
         this.viewOrderDetailEU = false;
-        let typeInfo = event.detail.type;
+        const typeInfo = event.detail.type;
         this.filterdata = event.detail.filtereudata;
-        if(typeInfo==='Order History'){ 
+        if(typeInfo===this.ordHistoryLabel){ 
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = false;
         this.orderhistory=true;
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         this.scrollToTopOfPage(); 
         }else{
         this.dashboard =  true;
         this.scrollToTopOfPage();
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = true;
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
     }
     }
    }
@@ -766,20 +888,20 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     
         this.reorderoverlay = false;
         this.placeorder=false;
-        let typeInfo = event.detail.type;
+        const typeInfo = event.detail.type;
         this.filterdata = event.detail.filtereudata;
-        if(typeInfo==='Order History'){ 
+        if(typeInfo===this.ordHistoryLabel){ 
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = false;
         this.orderhistory=true;
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         this.scrollToTopOfPage(); 
         }else{
         this.dashboard =  true;
         this.scrollToTopOfPage();
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = true;
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
     }
    }
 
@@ -787,9 +909,9 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    
     this.orderNumber = event.detail.data;
         this.viewOrderDetailEU = false;
-        let typeInfo = event.detail.type;
+        const typeInfo = event.detail.type;
         this.filterdata = event.detail.filtereudata;
-        if(typeInfo==='Order History'){ 
+        if(typeInfo===this.ordHistoryLabel){ 
             this.hasCancelledOrder=true;
             if(event.detail.status==='Submitted'){
             this.hasSubmitted=true;
@@ -800,7 +922,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = false;
         this.orderhistory=true;
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         this.scrollToTopOfPage(); 
         }else{
             this.hasCancelledOrder=true;
@@ -814,7 +936,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         this.scrollToTopOfPage();
         this.initialLoadTileHomePage=typeInfo;
         this.endUserTable = true;
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
         
     }
     setTimeout(() => {
@@ -827,36 +949,59 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
    }
 
    handleViewOrderEUBack2(event){
-    let status = event.detail.status;
-    if(status == 'back'){
+    const status = event.detail.status;
+    if(status === 'back'){
         this.dashboard =  true;
         this.scrollToTopOfPage();
         this.endUserTable = true;
         this.checkForWOnumber();
-        document.title = 'TCP | Home';
+        document.title = this.docTitleHome;
     }
    }
   
 
    handleViewOrderCUBack(event){
-    let status = event.detail.status;
-    if(status == 'back'){
+    const status = event.detail.status;
+    if(status === 'back'){
         this.viewOrderDetailCU = false;
-        let typeInfo = event.detail.type;
+        const typeInfo = event.detail.type;
         this.filterdata = event.detail.filtercudata;
-        if(typeInfo==='Order History'){
+        if(typeInfo===this.ordHistoryLabel){
             this.initialLoadTileHomePage=typeInfo;
             this.commopsUserTabel = false;
             this.orderhistory=true;
-            document.title = 'TCP | Order History';
+            document.title = this.docTitle;
             this.scrollToTopOfPage();
         }else{
             this.dashboard =  true;
             this.scrollToTopOfPage();
             this.initialLoadTileHomePage=typeInfo;
             this.commopsUserTabel = true;
-            document.title = 'TCP | Home';
+            document.title = this.docTitleHome;
+            this.populateDropDownOnBack();
         }
+        
+    }
+   }
+
+   populateDropDownOnBack(){
+    if(this.selectedCustMap.size>0){
+        setTimeout(() => {
+            this.handleCustDropDown();
+            for(const data of this.selectedCustMap.values()){
+                this.selectDropDownValue(data);
+            }
+            this.handleAllCustCheck();
+            this.handleCustDropDown();
+        }, 2000);
+    }
+   }
+
+   selectDropDownValue(dataId){
+    const target = this.template.querySelector(`[data-name="${dataId}"]`);
+    if(target != null){
+        target.classList.remove(this.sldsHidden);
+        target.classList.add(this.sldsVisible);
     }
    }
 
@@ -864,24 +1009,13 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     var baseurltemp = window.location.href;
     const baseurl = baseurltemp.substring(0, baseurltemp.indexOf('?'));
     window.open(baseurl,'_self');
-    // let status = event.detail.status;
-    // if(status == 'back'){
-    //     this.viewOrderDetailCU2 = false;
-    //     let typeInfo = event.detail.type;
-    //     window.console.log('back button -- clicked:'+typeInfo);
-    //     this.initialLoadTileHomePage=typeInfo;
-    //     this.commopsUserTabel = true;
-    //     this.dashboard =  true;
-    //     this.scrollToTopOfPage();
-    //     this.checkForWOnumber();
-    // }
         
    }
 
    getOrderCount(){
         getCountOfOrders({soldToId: this.soldtoid, status: 'Submitted'})
         .then(result=>{
-            if(result.length ==1){
+            if(result.length ===1){
                 this.reviewOrderCount = '0'+result;
             }else{
                 this.reviewOrderCount = result;
@@ -889,7 +1023,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
         })
         .catch(error => {
             this.error = error;
-            window.console.log("ERROR in getting details: "+this.error);
+            
         });
    }
 
@@ -897,7 +1031,7 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     getCountOfOrdersEU({soldToId: this.soldtoid})
     .then(result=>{
         if(result){
-            for (let key in result) {
+            for (const key in result) {
                 if(key===TCP_CurrentOrderLabel+TCP_OrderLabel){
                     this.myCurrentOrderCountEU = result[key];
                 }
@@ -912,15 +1046,17 @@ export default class Tcp_homepage extends NavigationMixin (LightningElement) {
     })
     .catch(error => {
         this.error = error;
-        window.console.log("ERROR in getting details: "+this.error);
+        
     });
 }
 
-getOrderCountCU(){
-    getCountOfOrdersCU({soldToId: this.soldtoid})
+getOrderCountCU(accountIds){
+    this.isLoading = true;
+    
+    getCountOfOrdersCU({soldToIds: accountIds})
     .then(result=>{
         if(result){
-            for (let key in result) {
+            for (const key in result) {
                 if(key===TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel){
                     this.reviewOrderCount = result[key];
                 }
@@ -934,16 +1070,19 @@ getOrderCountCU(){
                     this.myCurrentOrderCountCU =result[key];
                 }
             }
+            this.isLoading = false;
         }
     })
     .catch(error => {
+        window.console.log('Catch:'+JSON.stringify(accountIds));
+        this.isLoading = false;
         this.error = error;
-        window.console.log("ERROR in getting details: "+this.error);
+        
     });
 }
   
    dashboardClick(){
-    document.title = 'TCP | Home';
+    document.title = this.docTitleHome;
     var wonumber =  this.currentPageReference.state.c__wonumber;
     if(wonumber){
         this.handleViewOrderCUBack2();
@@ -960,6 +1099,8 @@ getOrderCountCU(){
     if(this.logOnAsTCP){
         this.initialLoadTileHomePage = TCP_ReviewOrApprovalLabel+TCP_ApprovalLabel;
         this.commopsUserTabel=true;
+        this.selectedCustMap.clear();
+        this.customerSelectText = this.defaultCustText;
     }else{
         this.initialLoadTileHomePage=TCP_CurrentOrderLabel+TCP_OrderLabel;
         this.endUserTable=true;
@@ -974,7 +1115,7 @@ getOrderCountCU(){
 }
 
    orderHistoryClick(){
-        document.title = 'TCP | Order History';
+        document.title = this.docTitle;
         this.checkForWOnumber();
         this.dashboard = false;
         this.placeorder = false;
@@ -983,7 +1124,7 @@ getOrderCountCU(){
         this.tcpReviewOrderDetailCU=false;
         this.endUserTable=false;
         this.commopsUserTabel=false;
-        this.initialLoadTileHomePage='Order History';
+        this.initialLoadTileHomePage=this.ordHistoryLabel;
         this.viewAllDocumentsCU=false;
         this.modifyOrderEU = false;
         this.orderhistory = true;
@@ -1006,7 +1147,7 @@ getOrderCountCU(){
    }
 
    callGSAPService(){
-        if(this.soldtoid){
+        if(this.soldtoid && !this.logOnAsTCP){
         fetchGSAPCurrentOrders({soldToId : this.soldtoid})
         .then(result=>{
 
@@ -1019,7 +1160,7 @@ getOrderCountCU(){
    }
 
    callOrdConfirmService(){
-    if(this.soldtoid){
+    if(this.soldtoid && !this.logOnAsTCP){
     fetchGSAPOrderConfirmationdetails({soldToId : this.soldtoid})
     .then(result=>{
     
@@ -1037,7 +1178,7 @@ getOrderCountCU(){
 
    getOrderwithWebOrderNumber(webordnumber){
        //call apex method
-       getOrderDetailsByWONumber({WONumber : webordnumber})
+       getOrderDetailsByWONumber({woNumber : webordnumber})
         .then(result=>{
             var recordData = result;
             
@@ -1139,17 +1280,5 @@ handleBulkOrder(){
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

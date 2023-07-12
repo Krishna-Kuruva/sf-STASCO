@@ -176,7 +176,8 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
             tempList.Id = ordLineList[i].Id ? ordLineList[i].Id : '';
             tempList.Material_Name__c = ordLineList[i].Material_Name__c ? ordLineList[i].Material_Name__c : '';
             tempList.MaterialNumber__c = ordLineList[i].MaterialNumber__c ? ordLineList[i].MaterialNumber__c : '';
-            tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            //tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            tempList.Quantity__c = ordLineList[i].Quantity__c;
             tempList.Unit__c = ordLineList[i].Unit__c ? ordLineList[i].Unit__c : '';
             tempList.Delivery_Collection_Date__c = ordLineList[i].Delivery_Collection_Date__c ? ordLineList[i].Delivery_Collection_Date__c : '';
             tempList.Contract_No__c = ordLineList[i].Contract_No__c ? ordLineList[i].Contract_No__c : '';
@@ -203,7 +204,7 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
             tempList.New_GI_quantity__c = ordLineList[i].New_GI_quantity__c ? ordLineList[i].New_GI_quantity__c : '';
             tempList.New_GI_status__c = ordLineList[i].New_GI_status__c ? ordLineList[i].New_GI_status__c : '';
             tempList.New_GI_unit__c = ordLineList[i].New_GI_unit__c ? ordLineList[i].New_GI_unit__c : '';           
-            
+
             tempList.oliStatus=this.handleOliStatus(ordLineList[i].TCP_Modify_Cancel_Status__c,ordLineList[i].Quantity__c);
             tempList.oliStatusAttr=statusData.get(tempList.oliStatus);
             
@@ -229,7 +230,6 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
         }
 
     }
-
     handleReturnOrderShowModel(event) {  
         const clickedOLI = event.currentTarget.dataset.id;
        for(let i=0; i<this.ordLineItemList.length;i++){
@@ -248,5 +248,4 @@ export default class tcp_ViewOrderDetailCU extends NavigationMixin (LightningEle
         this.isShowReturnOrderModal = false;
     }
 
-   
 }

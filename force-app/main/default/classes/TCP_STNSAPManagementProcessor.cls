@@ -47,7 +47,12 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 }                
                 finalAccountsData.AccountNumber = SoldToRecs.SOLD_TO__c;  
                 finalAccountsData.Name = SoldToRecs.NAME__c; 
+                /* finalAccountsData.Name = SoldToRecs.NAME__c + SoldToRecs.NAME2__c;
+                */
                 finalAccountsData.ShippingStreet = SoldToRecs.STREET__c;
+                /* 
+                 * finalAccountsData.Name = SoldToRecs.NAME3__c + ' ' + SoldToRecs.NAME4__c + ' ' + SoldToRecs.STREET__c;
+                */
                 finalAccountsData.ShippingCity = SoldToRecs.CITY__c;
                 finalAccountsData.ShippingState = SoldToRecs.STATE__c ; 
                 finalAccountsData.ShippingCountry =  SoldToRecs.COUNTRY__c;
@@ -60,9 +65,8 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 finalAccountsData.Mode_of_Transport__c = SoldToRecs.SHIP_COND__c;
                 finalAccountsData.Active__c = !(SoldToRecs.DELETION_FLAG__c);
                 finalAccountsData.TCP_STNSAP_Status__c = SoldToRecs.STATUS__c;
-                finalAccountsData.RecordTypeId =  tcpAccountRecTypeid;
                 finalAccountsData.TCP_STNSAP_ExternalId1__c = soldToExternalId1;
-                //finalAccountsData.TCP_Sales_Area_text__c = SoldToRecs.SALESORG__c;
+                finalAccountsData.RecordTypeId =  tcpAccountRecTypeid;
                 finalAccountsData.TCP_Sales_Area_text__c = salesArea.Sales_Region__c;
                 finalUpsertSoldToAccountList.add(finalAccountsData);    
                 system.debug('finalUpsertSoldToAccountList====>'+finalUpsertSoldToAccountList);
@@ -74,7 +78,7 @@ public with sharing class TCP_STNSAPManagementProcessor {
                     update updateCustSetting;
                 }
         }catch (Exception e) {
-         	system.debug('Exception occured+++'+e.getCause() +'message '+e.getMessage());
+         	system.debug('Exception occured Track status STNSAP SoldTo'+e.getCause() +TCP_Constants.ERROR_MESSAGE+e.getMessage());
             TCP_ExceptionLogClass.insertExceptionRecord('Track status STNSAP SoldTo Exception',e.getMessage(),'TCP_STNSAPManagementProcessor','trackStatusSTNSAPSoldTo','Exception');            
         }        
     }
@@ -87,7 +91,6 @@ public with sharing class TCP_STNSAPManagementProcessor {
         integer size = getSoldToShipToResp.size();  
         system.debug('size======>'+size);
         
-        //List<TCP_STNSAPSoldToShipToWrapper> wrapSoldToShipToList = new List<TCP_STNSAPSoldToShipToWrapper>();
         List<TCP_Sales_Area__c> salesAreaData = new List<TCP_Sales_Area__c>();
         List<Account> accountParentId = new List<Account>();
         list<Account> finalUpsertAccountList =  new list<Account>();       
@@ -118,13 +121,14 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 string shipToBillToPayerExternalId2 = SoldToShipToRecs.SOLD_TO__c + SoldToShipToRecs.SALESORG__c + SoldToShipToRecs.DIST_CHNL__c + SoldToShipToRecs.DIVISION__c + SoldToShipToRecs.PARTNER_NO__c + SoldToShipToRecs.PARTNER_FUNC__c;
                 string salesAreaKey=SoldToShipToRecs.SALESORG__c + SoldToShipToRecs.DIST_CHNL__c + SoldToShipToRecs.DIVISION__c;             
                 TCP_Sales_Area__c salesArea =  salesAreaMap.get(salesAreaKey);
-                Account AccSoldToExtId = accMap.get(soldToExternalId1);
+                Account accSoldToExtId = accMap.get(soldToExternalId1);
                                 
                 Account finalAccountsData = new Account(); 
                 finalAccountsData.AccountNumber = SoldToShipToRecs.PARTNER_NO__c;    
                 finalAccountsData.Sales_Area__c = salesArea.Id;
                 finalAccountsData.Name = SoldToShipToRecs.NAME__c; 
-                //finalAccountsData.TCP_Sales_Area_text__c = SoldToShipToRecs.SALESORG__c;
+                /* finalAccountsData.Name = SoldToRecs.NAME__c + SoldToRecs.NAME2__c;
+                */
                 finalAccountsData.TCP_Sales_Area_text__c = salesArea.Sales_Region__c;
                 finalAccountsData.Partner_Function__c = SoldToShipToRecs.PARTNER_FUNC__c;  
                 finalAccountsData.Partner_Counter__c = String.valueOf(SoldToShipToRecs.PARTNER_CNT__c).leftpad(3,'0');			 
@@ -132,6 +136,9 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 finalAccountsData.Delivery_Block__c = SoldToShipToRecs.DELIVERY_BLK__c; 
                 finalAccountsData.Order_Block__c = SoldToShipToRecs.ORDER_BLK__c; 
                 finalAccountsData.ShippingStreet = SoldToShipToRecs.STREET__c;
+                /* 
+                 * finalAccountsData.Name = SoldToRecs.NAME3__c + ' ' + SoldToRecs.NAME4__c + ' ' + SoldToRecs.STREET__c;
+                */
                 finalAccountsData.ShippingCity = SoldToShipToRecs.CITY__c;
                 finalAccountsData.ShippingState = SoldToShipToRecs.STATE__c ; 
                 finalAccountsData.ShippingCountry =  SoldToShipToRecs.COUNTRY__c;
@@ -139,7 +146,7 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 finalAccountsData.AccountNumber = SoldToShipToRecs.PARTNER_NO__c;
                 finalAccountsData.Incoterms1__c = SoldToShipToRecs.INCO1__c;
                 finalAccountsData.Incoterms2__c = SoldToShipToRecs.INCO2__c;
-                finalAccountsData.ParentId = AccSoldToExtId.Id;
+                finalAccountsData.ParentId = accSoldToExtId.Id;
                 finalAccountsData.Mode_of_Transport__c = SoldToShipToRecs.SHIP_COND__c;
                 finalAccountsData.RecordTypeId =  tcpAccountRecTypeid;
                 if(SoldToShipToRecs.PARTNER_FUNC__c == 'SP'){
@@ -175,34 +182,21 @@ public with sharing class TCP_STNSAPManagementProcessor {
         	accountIds = [SELECT id, Name, AccountNumber, ParentId, Customer_Type__c, Partner_Function__c, TCP_STNSAP_ExternalId2__c, Sales_Area__c   FROM Account where recordtypeid =: tcpAccountRecTypeid  and Partner_Function__c =: PartnerFunction  and AccountNumber =: SoldToNumber and  (TCP_STNSAP_ExternalId1__c != null OR TCP_STNSAP_ExternalId2__c != null) and Sales_Area__c != null and Active__c = TRUE];
             system.debug('accountIds===>'+accountIds);
             system.debug('accountIds size====>'+accountIds.size());
-            string ProdSalesLineExtID = salesorg + distChnl;           
+            string prodSalesLineExtID = salesorg + distChnl;           
             List<String> CMIRExtIDList = new List<String>();
                 
             TCP_Products_Sales_Line__c psl = new TCP_Products_Sales_Line__c();
             psl.Sales_Org__c = salesorg;
             psl.Distribution_Channel__c = distChnl;
-            psl.STNSAP_ProdSL_ExternalId__c = ProdSalesLineExtID;
+            psl.STNSAP_ProdSL_ExternalId__c = prodSalesLineExtID;
             psl.Active__c = true;                
             upsert psl STNSAP_ProdSL_ExternalId__c;
-            
-            //holds list of ProductSalesLine
-            List<SObject> lstProductSalesLine = new List<SObject>(); 
             
             //holds list of Product
             List<product2> lstProduct = new List<product2>();
             
             //holds list of ProductCustomer
             List<TCP_Product_Customer__c> lstProductCustomer = new List<TCP_Product_Customer__c>(); 
-            
-            //final list for insertion
-            SObject[] sobjList = new List<SObject>(); 
-            String strInsertError = '';
-            
-            //holds PSL Id and PSL External Id in a Map
-            Map<String,String> productSalesLineMap = new Map<String,String>();
-            
-            //holds Prd Id and Prd External Id in a Map
-            Map<String,String> productMap = new Map<String,String>();
             
             Map<String, TCP_Product_Customer__c> prodCustMap = new Map<String, TCP_Product_Customer__c>();
             
@@ -215,7 +209,7 @@ public with sharing class TCP_STNSAPManagementProcessor {
                 prd.Net_Weight__c = CustomerProductRecs.NET_WEIGHT__c;            
                 prd.Products_Sales_Line__c = psl.Id;
                 prd.IsActive = true;
-                prd.TCP_STNSAP_Prod_ExternalId__c = CustomerProductRecs.MATERIAL__c + ProdSalesLineExtID; //8000034ROTOD
+                prd.TCP_STNSAP_Prod_ExternalId__c = CustomerProductRecs.MATERIAL__c + prodSalesLineExtID; //8000034ROTOD
                 lstProduct.add(prd);
     
                 TCP_Product_Customer__c CMIR =  new TCP_Product_Customer__c();

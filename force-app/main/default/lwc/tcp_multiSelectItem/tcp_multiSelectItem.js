@@ -11,7 +11,16 @@ export default class MultiSelectItem extends LightningElement {
       return this.selected === true ? baseStyles + ' slds-is-selected ' : baseStyles ;
     }
     selectHandler(event) {
+      window.console.log('inside item '+event);
       // Prevents the anchor element from navigating to a URL.
+      event.preventDefault();
+      event.stopPropagation();
+      const selectedEvent = new CustomEvent('selected', { detail: {label:this.label,value:this.value,selected:this.selected,shift:event.shiftKey} });
+      this.dispatchEvent(selectedEvent);
+    }
+
+    handleKeyPress(event){
+      window.console.log('inside item key press'+event);
       event.preventDefault();
       event.stopPropagation();
       const selectedEvent = new CustomEvent('selected', { detail: {label:this.label,value:this.value,selected:this.selected,shift:event.shiftKey} });

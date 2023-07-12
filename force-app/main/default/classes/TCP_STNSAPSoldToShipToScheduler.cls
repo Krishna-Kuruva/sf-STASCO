@@ -24,7 +24,7 @@ global class TCP_STNSAPSoldToShipToScheduler implements Schedulable {
                 accountIdInSplits.add(tempSet);
             }
             for(Integer i=0;i<accountIdInSplits.size();i++){
-                String jobId =System.enqueueJob(new TCP_STNSAPSoldToShipToQueueable(accountIdInSplits.get(i),i) );
+                System.enqueueJob(new TCP_STNSAPSoldToShipToQueueable(accountIdInSplits.get(i),i) );
             }
         }
         catch(Exception e){

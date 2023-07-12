@@ -5,17 +5,16 @@ public class TCP_BulkOrderControllerTest{
     static void createTestData() {
     List<Account> testAccounts=TCP_TestDataUtilities.createAccounts(1,true);
         for(Account testAccount:testAccounts){
-            List<contact> testContact=TCP_TestDataUtilities.createContacts(1,testAccount);
+            TCP_TestDataUtilities.createContacts(1,testAccount);
             List<Order> testOrders=TCP_TestDataUtilities.createOrders(1,testAccount);
                 for(Order testOrder:testOrders){
-                    List<TCP_OrderLineItem__c> testOrderLineItem=TCP_TestDataUtilities.createOrderLineItems(1,testOrder);
+                    TCP_TestDataUtilities.createOrderLineItems(1,testOrder);
                 }
         }
     }
 
     @isTest
     public static void testSaveBulkOrderDetails(){
-        List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
         string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
         Account acc=[select id, ParentId,recordtype.id, AccountNumber, name from account where name='SampleAccount0' limit 1];
         acc.recordtypeId=tcpAccountRecTypeid;
@@ -34,6 +33,7 @@ public class TCP_BulkOrderControllerTest{
         wrap.materialName = prod[0].Name;
         wrap.materialNumber = prod[0].productCode;
         wrap.productId = prod[0].Id;
+        wrap.sno=1;
 
         TCP_OrderWrapper orderWrapper = new TCP_OrderWrapper();
         orderWrapper.name = 'Test Order';
@@ -76,19 +76,18 @@ public class TCP_BulkOrderControllerTest{
     @isTest
     public static void testGetContactsByCustomerId(){
         try{
-            List<TCP_OrderLineItemWrapper> lineWrapList=new List<TCP_OrderLineItemWrapper>();
             string tcpAccountRecTypeid = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('TCP_Account').getRecordTypeId();
             Account acc=[select id, ParentId,recordtype.id, AccountNumber, name from account where name='SampleAccount0' limit 1];
             acc.recordtypeId=tcpAccountRecTypeid;
             update acc;
             List<contact> conList = TCP_TestDataUtilities.createContacts(1, acc);
-            User userlist = TCP_TestDataUtilities.createCommunityUser(conList[0]);
+            TCP_TestDataUtilities.createCommunityUser(conList[0]);
             Test.startTest();
             List<user> resp = TCP_BulkOrderController.getContactsByCustomerId(acc.Id);
             Test.stopTest();
             System.assert(resp.size()>0);
         }catch(Exception e){
-
+            system.debug('Error Occured');
         }
 
 

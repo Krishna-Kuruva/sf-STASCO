@@ -12,6 +12,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
             
             If(selectedStatuses!=null){
                 String query='SELECT Id,Account.AccountNumber,TCP_GSAP_Account_Name__c,TCP_GSAP_Account_Number__c,Sold_To__c, TCP_Modification_Requested_By__r.name, TCP_Modification_Requested_Date__c, TCP_Cancellation_Placed_By__r.name, TCP_Cancellation_Requested_Date__c,Sales_Order_Number__c, Account.ShippingAddress,Account.Shippingcity, Ship_To__r.ShippingAddress, Bill_To__r.ShippingAddress, Customer_Name__c, Delivery_Terms__c, Mode_of_Transport__c, PoNumber, Order_Other_Instructions__c,OrderNumber, Name, Ship_To__r.Name, Bill_To__r.Name,ordered_by__c, CreatedDate, TCP_Order_Status__c,Chemical_GSAP_P_31__c,Third_Party__c,Late_Order__c,Rush_Order__c,Last_Minute_Changes__c,Reviewed_By__r.Name,Reviewed_Date_Time__c,Remarks__c, Ordered_By__r.Name, (select id,TCP_Modify_Cancel_Status__c,Return_order__c,Return_delivery__c,Return_GI__c,New_SO__c,New_dispatch_date__c,New_loading_date__c,New_delivery__c,New_Mot_Id__c,New_GI_date__c,New_GI_quantity__c,New_GI_status__c,New_GI_unit__c, Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c,GSAP_Due_Date__c,GSAP_Dispatch_Date__c,Expected_Dispatch_Date__c,GSAP_Bol_Delivery__c,GSAP_Mode_of_Transport_ID__c,GSAP_Goods_Issue_Date__c,GSAP_Goods_Issue_Value__c,GSAP_Goods_Issue_Unit__c,GSAP_Goods_Issue_Status__c from order_line_items__r where Cancelled_in_Submitted__c=false Order By Sales_Order_Line_Item_No__c) from Order where Sold_To__c IN: soldToId and tcp_order_status__c In:selectedStatuses and recordtype.id=:tcpOrderRecTypeid';
+
                 Integer queryNoOfDays=TCP_Utilities.getQueryDaysForSelectedTile(selectedTile); 
                     if(queryNoOfDays!=null){
                          query +=TCP_Constants.CREATEDDATE_LASTNDAYS+queryNoOfDays+TCP_Constants.ORD_BY_CREATEDDATE;
@@ -176,6 +177,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
         if(ordData.TCP_Modification_Requested_Date__c!=null){
              ordWrap.modificationDate=TCP_Utilities.getDateWithMonthName(ordData.TCP_Modification_Requested_Date__c);
         }
+
         if(ordData.TCP_Cancellation_Placed_By__r.name!=null){
              ordWrap.cancellationBy=ordData.TCP_Cancellation_Placed_By__r.name;
         }
@@ -361,6 +363,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                 //check if there are orders awaiting for goods issue data and then make callouts based on it
                 //list<order> pendingOrders = [select id,createddate from order where TCP_Order_Status__c != 'shipped' AND Chemical_GSAP_P_31__c=True AND TCP_Order_Status__c = 'Approved' AND Account.AccountNumber =:stnsapSoldToAccNo order by createddate ASC]; 
                 list<order> pendingOrders = [select id,createddate from order where Chemical_GSAP_P_31__c=True AND TCP_Order_Status__c in  ('Approved','Approved (M)','Shipped') AND Account.AccountNumber =:stnsapSoldToAccNo order by createddate ASC]; 
+
                 if(String.isNotBlank(gsapSoldToNo) && !pendingOrders.isEmpty()){
                     String dateFormat ='IEQ';
                     Date lastCallDate = date.valueOf(pendingOrders[0].createddate);
@@ -425,6 +428,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                 //check if there are orders awaiting for confirmation data and then make callouts based on it
                 //list<order> pendingOrders = [select id,createddate from order where Chemical_GSAP_P_31__c=True AND TCP_Order_Status__c != 'shipped' AND TCP_Order_Status__c = 'Approved' and Account.AccountNumber =:stnsapSoldToAccNo order by createddate ASC ]; 
                 list<order> pendingOrders = [select id,createddate from order where Chemical_GSAP_P_31__c=True AND TCP_Order_Status__c in  ('Approved','Approved (M)','Shipped') and Account.AccountNumber =:stnsapSoldToAccNo order by createddate ASC ]; 
+
                 if(String.isNotBlank(gsapSoldToNo) && !pendingOrders.isEmpty()){
                     Date lastCallDate = date.valueOf(pendingOrders[0].createddate);
                     integer monthsDiff = lastCallDate.monthsBetween(system.today()); 
@@ -538,6 +542,7 @@ public static string tcpOrderRecTypeid = Schema.SObjectType.Order.getRecordTypeI
                     lineQueryString = 'SELECT Order__c FROM TCP_OrderLineItem__c where Order__r.Sold_To__c IN:soldToIds';
                 }else if(String.isNotBlank(userType) && userType == 'End User'){
                     queryString = 'SELECT Id,Account.AccountNumber,TCP_GSAP_Account_Name__c,TCP_GSAP_Account_Number__c, Sold_To__c,TCP_Modification_Requested_By__r.name, TCP_Modification_Requested_Date__c, TCP_Cancellation_Placed_By__r.name, TCP_Cancellation_Requested_Date__c,Sales_Order_Number__c, Ordered_By__r.Name, Account.ShippingAddress,Account.ShippingCity, Ship_To__r.ShippingAddress, Bill_To__r.ShippingAddress, Customer_Name__c, Delivery_Terms__c, Mode_of_Transport__c, PoNumber, Order_Other_Instructions__c,OrderNumber, Name, Ship_To__r.Name, Bill_To__r.Name, CreatedDate, TCP_Order_Status__c,Remarks__c,Chemical_GSAP_P_31__c,Third_Party__c, (select id, Return_order__c,Quantity__c, Unit__c, Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c from order_line_items__r Order By CreatedDate) from Order where recordtypeid=:tcpOrderRecTypeid AND Sold_To__c='+'\''+ordWrap.soldToId+'\'';
+
                     lineQueryString = 'SELECT Order__c FROM TCP_OrderLineItem__c where Order__r.Sold_To__c ='+'\''+ordWrap.soldToId+'\'';
                 } 
                 Integer queryNoOfDays=TCP_Utilities.getQueryDaysForSelectedTile(selectedTile); 

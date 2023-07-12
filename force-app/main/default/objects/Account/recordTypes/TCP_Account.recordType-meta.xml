@@ -1297,6 +1297,10 @@
             <fullName>FOB</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>Industry</picklist>
@@ -1649,10 +1653,6 @@
     </picklistValues>
     <picklistValues>
         <picklist>Product__c</picklist>
-        <values>
-            <fullName>380 CST SINGAPORE FUEL OIL</fullName>
-            <default>false</default>
-        </values>
         <values>
             <fullName>AA - Gasoil 0%2E5 SGP Cargo</fullName>
             <default>false</default>

@@ -1,11 +1,16 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track, wire } from 'lwc';
 import updateOrderReviewDetails from '@salesforce/apex/TCP_OrderController.updateOrderReviewDetails';
 import validateMappingReference from '@salesforce/apex/TCP_OrderController.validateMappingReference';
 import getOrderOnCommopsApproval from '@salesforce/apex/TCP_CommopsModifyCancelApproveReject.getOrderOnCommopsApproval';
 import getOrderOnCommopsRejection from '@salesforce/apex/TCP_CommopsModifyCancelApproveReject.getOrderOnCommopsRejection';
 import getOrderOnCommopsCancellationApproval from '@salesforce/apex/TCP_CommopsModifyCancelApproveReject.getOrderOnCommopsCancellationApproval';
 import getOrderOnCommopsCancellationRejection from '@salesforce/apex/TCP_CommopsModifyCancelApproveReject.getOrderOnCommopsCancellationRejection';
-
+import getGsapSoldToValues from '@salesforce/apex/TCP_OrderController.getGsapSoldToValues';
+const statusData = new Map([
+    ['CN', { customClass: 'cn-line-item', expStatus: 'Line Item Cancelled'}],
+    ['RC', { customClass: 'rc-line-item', expStatus: 'Requested for Cancellation'}],
+    ['NIL', { customClass: 'slds-hint-parent', expStatus: ''}]
+  ]);
 export default class TcpReviewOrderDetailCU extends LightningElement {
 
     @track chevronrightShow = true;
@@ -14,6 +19,7 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
     error;
     @api orderdetaildata;
     @api soldtoid;
+    @api ordhisaccids;
     @api type;
     @api cufilterdata;
     @track orderDetailList;
@@ -33,6 +39,7 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
     @track modifyCommopsRemarks;
     @track cancelCommopsRemarks;
     @track isDisableParty = true;
+    @track isDisableGsapSoldTo = false;
     @track isDisableModifyPriority = true;
     @track enableSubmit=false; 
     @track enableModifySubmit=false; 
@@ -54,11 +61,19 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
     @track backToDashboard=true;
     @track ordLineItemList = [];
     @track orderId;
+    @track enableSoldTo =false;
+    @track gsapSoldToOptions= [];
+    @track selectGsapSoldTo;
+    @track selectGsapName;
+    @track accountNumber;
 
     connectedCallback(){
         this.accountId = this.soldtoid;
+        window.console.log(' this.accountId'+ this.accountId);
         this.orderDetailList = this.orderdetaildata;
         this.orderId = this.orderdetaildata.id;
+        this.accountNumber=this.orderdetaildata.accountNumber;
+        window.console.log(' this.accountNumber '+ this.accountNumber);
         this.orderLineItemsList = this.orderDetailList.orderLineItemList;
         this.tableType = this.type;
         if(this.tableType=='Order History'){
@@ -83,6 +98,37 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
         }
         else if(this.orderDetailList.status=='Approved (C)'){
             this.showCancellationOptions=true;
+        }
+    }
+
+    @wire(getGsapSoldToValues, {accountNumber:'$accountNumber'})
+    wiredAccounts({data, error}){
+        if(data){
+            for (const key in data) {
+                const option = {
+                    label : `${data[key].GSAP_Account_Name__c}`,
+                    value : `${data[key].GSAP_Account_Number__c}`
+                };
+                window.console.log('option'+JSON.stringify(option));
+                this.gsapSoldToOptions = [...this.gsapSoldToOptions, option];
+            }
+            window.console.log('this.gsapSoldToOptions'+JSON.stringify(this.gsapSoldToOptions));
+            if(this.gsapSoldToOptions.length === 1){
+                this.selectGsapSoldTo = this.gsapSoldToOptions[0].value;
+                this.selectGsapName=this.gsapSoldToOptions[0].label;
+                this.isDisableGsapSoldTo=true;
+                window.console.log('this.selectGsapSoldTo'+this.selectGsapSoldTo);
+                window.console.log('this.selectGsapName'+this.selectGsapName);
+            }
+            if(this.gsapSoldToOptions.length === 0){
+                this.isDisableGsapSoldTo=true;
+            } 
+            this.error = null;
+           
+        }
+        else if (error) {
+            this.error = error; 
+            window.console.log('ERROR====>'+JSON.stringify(this.error));
         }
     }
 
@@ -160,6 +206,7 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
             this.isDisableParty = true;
             this.enableSubmit = true;
         }   
+        this.enableSoldTo=false;
     }
 
     handleModifyDecision(event){
@@ -190,7 +237,36 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
 
     handleParty(event){
         this.orderParty = event.detail.value;
-        this.enableSubmit = true;
+        if(this.orderParty == 'ChemicalGSAP'){
+            this.enableSoldTo=true;
+            if(this.selectGsapSoldTo){
+                this.enableSubmit = true;
+            }else{
+                this.enableSubmit = false;
+            }
+        }else if(this.orderParty == 'ThirdParty'){
+            this.enableSoldTo=false;
+            this.enableSubmit = true;
+        }
+        // if(this.selectGsapSoldTo){
+        //     this.enableSubmit = true;
+        //     this.isDisableGsapSoldTo=true;
+        // }
+        //
+    }
+
+    handleGsapSoldToChange(event){
+        window.console.log('event.detail.value '+event.detail.value);
+        window.console.log('event.detail.label '+event.detail.label);
+        this.selectGsapSoldTo = event.detail.value;
+        window.console.log('this.selectGsapSoldTo'+this.selectGsapSoldTo);
+        this.selectGsapName = event.target.options.find(opt => opt.value === event.detail.value).label;
+        window.console.log('this.selectGsapName'+this.selectGsapName);
+        if(this.selectGsapSoldTo){
+            this.enableSubmit = true;
+        }
+        
+        
     }
 
     handleBack(){
@@ -198,7 +274,7 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
     }
 
     navigateToHomePage(data,orderNumber, type,filterdata){
-        this.dispatchEvent(new CustomEvent('backbutton',{detail : {"status":data, "ordernumber":orderNumber , "type" : type, "filtercudata": filterdata}}));
+        this.dispatchEvent(new CustomEvent('backbutton',{detail : {"status":data, "ordernumber":orderNumber , "type" : type, "filtercudata": filterdata, "selectedaccids": this.ordhisaccids}}));
     }
 
     handleSubmit(){
@@ -333,6 +409,9 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
         }
         if(this.orderParty === 'ChemicalGSAP'){
             this.orderWrapper.isChemicalGSAP = true;
+            this.orderWrapper.gsapSoldToName = this.selectGsapName;
+            this.orderWrapper.gsapSoldToNumber = this.selectGsapSoldTo;
+            window.console.log(this.orderWrapper.gsapSoldToNumber+' '+this.orderWrapper.gsapSoldToName);
         }else if(this.orderParty === 'ThirdParty'){
             this.orderWrapper.isThirdParty = true;
         }
@@ -520,6 +599,7 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
 
     showCollapseRow(event) {
         let dataId = event.currentTarget.dataset.id;
+        const existClass=event.currentTarget.dataset.name;
         let target = this.template.querySelector('[data-id="'+dataId+'"]');
         if( target && target != null){
             if(target.classList.contains('iconRotate')){
@@ -534,7 +614,9 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
                 let className = '.'+dataId;
                 let row = this.template.querySelector(className);
                 if(row && row != null){
-                    row = row.classList.add('showRow');
+                    //row = row.classList.add('showRow');
+                    row.classList.add('showRow');
+                    row.classList.add(existClass);
                 }
             }
         }
@@ -552,25 +634,40 @@ export default class TcpReviewOrderDetailCU extends LightningElement {
             tempList.Id = ordLineList[i].Id ? ordLineList[i].Id : '';
             tempList.Material_Name__c = ordLineList[i].Material_Name__c ? ordLineList[i].Material_Name__c : '';
             tempList.MaterialNumber__c = ordLineList[i].MaterialNumber__c ? ordLineList[i].MaterialNumber__c : '';
-            tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            // tempList.Quantity__c = ordLineList[i].Quantity__c ? ordLineList[i].Quantity__c : '';
+            tempList.Quantity__c = ordLineList[i].Quantity__c;
             tempList.Unit__c = ordLineList[i].Unit__c ? ordLineList[i].Unit__c : '';
             tempList.Delivery_Collection_Date__c = ordLineList[i].Delivery_Collection_Date__c ? ordLineList[i].Delivery_Collection_Date__c : '';
             tempList.Contract_No__c = ordLineList[i].Contract_No__c ? ordLineList[i].Contract_No__c : '';
             tempList.Other_Instruction__c = ordLineList[i].Other_Instruction__c ? ordLineList[i].Other_Instruction__c : '';
             tempList.GSAP_Due_Date__c = ordLineList[i].GSAP_Due_Date__c ? ordLineList[i].GSAP_Due_Date__c : '';
             tempList.GSAP_Dispatch_Date__c = ordLineList[i].GSAP_Dispatch_Date__c ? ordLineList[i].GSAP_Dispatch_Date__c : '';
+            tempList.Expected_Dispatch_Date__c = ordLineList[i].Expected_Dispatch_Date__c ? ordLineList[i].Expected_Dispatch_Date__c : '';
             tempList.GSAP_Bol_Delivery__c = ordLineList[i].GSAP_Bol_Delivery__c ? ordLineList[i].GSAP_Bol_Delivery__c : '';
             tempList.GSAP_Mode_of_Transport_ID__c = ordLineList[i].GSAP_Mode_of_Transport_ID__c ? ordLineList[i].GSAP_Mode_of_Transport_ID__c : '';
-            tempList.GSAP_Goods_Issue_value__c = ordLineList[i].GSAP_Goods_Issue_value__c ? ordLineList[i].GSAP_Goods_Issue_value__c : '';
+            tempList.GSAP_Goods_Issue_value__c = ordLineList[i].GSAP_Goods_Issue_value__c ? ordLineList[i].GSAP_Goods_Issue_value__c.toFixed(3) : '';
             tempList.GSAP_Goods_Issue_Date__c = ordLineList[i].GSAP_Goods_Issue_Date__c ? ordLineList[i].GSAP_Goods_Issue_Date__c : '';
             tempList.GSAP_Goods_Issue_Unit__c = ordLineList[i].GSAP_Goods_Issue_Unit__c ? ordLineList[i].GSAP_Goods_Issue_Unit__c : '';
             tempList.GSAP_Goods_Issue_Status__c = ordLineList[i].GSAP_Goods_Issue_Status__c ? ordLineList[i].GSAP_Goods_Issue_Status__c : '';
+            tempList.oliStatus=this.handleOliStatus(ordLineList[i].TCP_Modify_Cancel_Status__c,ordLineList[i].Quantity__c);
+            tempList.oliStatusAttr=statusData.get(tempList.oliStatus);
             
             tempOrdLineList = [...tempOrdLineList, tempList];
         }
         if(tempOrdLineList.length>0){
             this.ordLineItemList = tempOrdLineList;
         }
+    }
+
+    handleOliStatus(status,quantity){
+        if(status==='Cancelled' && quantity===0){
+            return 'CN';
+        }else if(status==='Cancellation' && quantity===0){
+            return 'RC';
+        }else{
+            return 'NIL';
+        }
+
     }
 
     renderedCallback(){

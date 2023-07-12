@@ -169,7 +169,7 @@
    
                                                            <div class="slds-size_6-of-12 setPadding">
                                                                <div class="slds-p-vertical_x-small setInput">
-                                                                   <lightning-input class="Step2 Step2CustPo requiredSet" type="text" data-id="customerPo"  maxlength="40" label="Customer Po" placeholder="" required onchange={handleOrdDetailsChange} value={customerPo} message-when-value-missing="Please enter Customer PO">
+                                                                   <lightning-input class="Step2 Step2CustPo requiredSet" type="text" data-id="customerPo"  maxlength="35" label="Customer Po" placeholder="" required onchange={handleOrdDetailsChange} value={customerPo} message-when-value-missing="Please enter Customer PO">
                                                                    </lightning-input>
                                                                </div>
                                                            </div>
@@ -268,8 +268,8 @@
                                                                     </div>
                                                                 </th>
                                                                <th class="" scope="col" style="width:18%">
-                                                                   <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                                                                   Product Name
+                                                                   <div class="slds-truncate slds-cell-fixed" title="Product Name/Code" style="margin-top: -9px">
+                                                                   Product Name/<br/>Code
                                                                    </div>
                                                                </th>
                                                                <th style="width:8%" class="" scope="col">
@@ -300,8 +300,8 @@
                                                                    </div>
                                                                </th>
                                                                <th style="width:10%" class="" scope="col">
-                                                                   <div class="slds-truncate slds-cell-fixed" title="Action">
-                                                                      Action
+                                                                   <div class="slds-truncate slds-cell-fixed" title="Action" style="margin-top: -9px">
+                                                                      Action/<br/>Status
                                                                    </div>
                                                                </th>
                                                            </tr>
@@ -309,19 +309,22 @@
                                                        <tbody>
                                                            
                                                                <template for:each ={selectedProdDetails} for:item="product">
-                                                                   <tr key={product.Id} class="slds-hint-parent">
+                                                                   <!-- <tr key={product.Id} class="slds-hint-parent"> -->
+                                                                <template if:false={product.oliStatus}>
+                                                                    <tr key={product.Id} class="slds-hint-parent">
                                                                         <td style="width:6%">
-                                                                            <div class="">
+                                                                            <div class="sNo">
                                                                                 {product.sno}
                                                                             </div>
                                                                         </td>
                                                                        <td style="width:18%">
-                                                                           <div class="">
-                                                                            {product.Name} 
+                                                                           <div class="productName">  
+                                                                            {product.Name}
+                                                                            <span class="tooltiptext">{product.Number}</span>
                                                                            </div>
                                                                        </td>
                                                                        <td style="width:8%">
-                                                                           <lightning-input data-id={product.Index} min="1" class="Step2 errorMsg" data-name={product.materialName} type="number" variant="label-hidden" value={product.quantity}  placeholder="Quantity"  maxlength="10" onblur={handleQuantityChange} required message-when-value-missing="Please enter the required quantity"  message-when-range-underflow="Please enter the Minimum quantity : 1"></lightning-input>
+                                                                           <lightning-input data-id={product.Index} min="1" class="Step2 errorMsg" data-name={product.materialName} type="number" variant="label-hidden" value={product.quantity}  placeholder="Quantity"  maxlength="7" onblur={handleQuantityChange} required message-when-value-missing="Please enter the required quantity"  message-when-range-underflow="Please enter the Minimum quantity : 1"></lightning-input>
                                                                         
                                                                         </td>   
                                                                        <td style="width:9%">
@@ -357,15 +360,97 @@
                                                                            <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.shellContractNo} placeholder="Shell Contract No" max-length="10" pattern="[0-9]+" onblur={handleShellContract}></lightning-input>
                                                                        </td>
                                                                        <td style="width:14%">
-                                                                           <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.instructions} placeholder="Instructions" maxlength="200" onblur={handleInstructions}></lightning-input>
+                                                                           <lightning-input type="text" class="Step2 errorMsg disabled-input" data-id={product.Index} data-name={product.Index} variant="label-hidden" value={product.instructions} placeholder="Instructions" maxlength="200" onblur={handleInstructions}></lightning-input>
                                                                        </td>
                                                                        <td style="width:10%">
                                                                            <div class="orderTd">
                                                                            <a data-id={product.Index} onclick={handleDeleteButton}><lightning-icon icon-name="utility:delete" size="xx-small" alternative-text="delete" title="delete"></lightning-icon></a>
-                                                                       </div>
+                                                                            </div>
                                                                        </td>
                                                                    </tr>
-                                                               
+                                                                </template>
+                                                                <template if:true={product.oliStatus}>
+                                                                    <tr key={product.Id} class={product.oliStatusAttr.customClass}>
+                                                                        <td style="width:6%">
+                                                                            <div class="sNo">
+                                                                                {product.sno}
+                                                                            </div>
+                                                                        </td>
+                                                                       <td style="width:18%">
+                                                                           <div class="productName">
+                                                                            {product.Name}
+                                                                            <span class="tooltiptext">{product.Number}</span>
+                                                                           </div>
+                                                                       </td>
+                                                                       <td style="width:8%">
+                                                                           <!-- <lightning-input data-id={product.Index} min="1" class="Step2 errorMsg" data-name={product.materialName} type="number" variant="label-hidden" value={product.quantity}  placeholder="Quantity"  maxlength="10" onblur={handleQuantityChange} required message-when-value-missing="Please enter the required quantity"  message-when-range-underflow="Please enter the Minimum quantity : 1"></lightning-input> -->
+                                                                           <div class="setBorderBox">
+                                                                           {product.quantity}
+                                                                           </div>
+                                                                        </td>   
+                                                                       <td style="width:9%">
+                                                   
+                                                                           <!-- <div class="slds-form-element">
+                                                                               <div class="slds-form-element__control">
+                                                                                   <lightning-combobox
+                                                                                       placeholder="Unit"
+                                                                                       name={product.Index}
+                                                                                       variant="label-hidden"
+                                                                                       value={product.unit}
+                                                                                       options={unitProdOptions}
+                                                                                       dropdown-alignment="auto"
+                                                                                       onchange={handleUnitChange}
+                                                                                       class="setUnitCombobox Step2 errorMsg"
+                                                                                       required
+                                                                                       message-when-value-missing="Please select unit of measure"
+                                                                                       >
+                                                                                   </lightning-combobox>
+                                                                                       
+                                                                                   
+                                                                               </div>
+                                                                           </div> -->
+                                                                           <div class="setBorderBox">
+                                                                            {product.unit}
+                                                                           </div>
+                                                   
+                                                                       </td>
+                                                                       <td style="width:18%">
+                                                                       
+                                                                        <!-- <input type="date" id={datePickerId} data-id={product.Index} min={currentdate} max={maximumdate}  class="Step2" placeholder="Delivery date" name="myDate" value={product.deliveryCollDate} lwc:dom="manual" onchange={handleDeliveryDate}  required />
+                                                                        <div class="error" id={nameErr}></div> -->
+                                                                       <div class="setBorderBox">
+                                                                        <lightning-formatted-date-time
+                                                                                    value={product.deliveryCollDate}
+                                                                                    year="numeric"
+                                                                                    month="2-digit"
+                                                                                    day="2-digit"
+                                                                                >
+                                                                                </lightning-formatted-date-time>
+                                                                        </div>
+
+                                                                       </td>
+                                                                       <td style="width:15%">
+                                                                           <!-- <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.shellContractNo} placeholder="Shell Contract No" max-length="10" pattern="[0-9]+" onblur={handleShellContract}></lightning-input> -->
+                                                                      
+                                                                           <div class="setBorderBox">
+                                                                            {product.shellContractNo}
+                                                                           </div>
+                                                                      
+                                                                        </td>
+                                                                       <td style="width:14%">
+                                                                           <!-- <lightning-input type="text" class="Step2 errorMsg" data-id={product.Index} variant="label-hidden" value={product.instructions} placeholder="Instructions" maxlength="200" onblur={handleInstructions}></lightning-input> -->
+                                                                           <div class="setBorderBox">
+                                                                            {product.instructions}
+                                                                           </div>
+                                                                      
+                                                                      
+                                                                        </td>
+                                                                       <td style="width:10%" class="setBorderBox textBox">      
+                                                                             {product.oliStatus}
+                                                                              <lightning-helptext alternative-text={product.oliStatus} content={product.oliStatusAttr.expStatus} nubbin="left" ></lightning-helptext>
+                                                                        </td>
+                                                                   </tr>
+                                                                </template>
                                                                </template>
                                                        </tbody>
                                                    </table>
@@ -446,17 +531,17 @@
                                                                     S. No
                                                                 </div>
                                                             </th> 
-                                                               <th class="" scope="col" style="width:20%">
-                                                                   <div class="slds-truncate slds-cell-fixed" title="Product Name">
-                                                                   Product Name
+                                                               <th class="" scope="col" style="width:18%">
+                                                                   <div class="slds-truncate slds-cell-fixed" title="Product Name/Code" style="margin-top: -9px">
+                                                                   Product Name/<br/>Code
                                                                    </div>
                                                                </th>
-                                                               <th style="width:10%" class="" scope="col">
+                                                               <th style="width:8%" class="" scope="col">
                                                                    <div class="slds-truncate slds-cell-fixed" title="Quantity">
                                                                        Quantity
                                                                    </div>
                                                                </th>
-                                                               <th style="width:8%" class="" scope="col">
+                                                               <th style="width:9%" class="" scope="col">
                                                                    <div class="slds-truncate slds-cell-fixed" title="Unit">
                                                                        Unit
                                                                    </div>
@@ -472,33 +557,41 @@
                                                                        Shell Contract No
                                                                    </div>
                                                                </th>
-                                                               <th style="width:22%" class="" scope="col">
+                                                               <th style="width:16%" class="" scope="col">
                                                                    <div class="slds-truncate slds-cell-fixed" title="Instructions">
                                                                        Instructions
                                                                    </div>
                                                                </th>
+                                                               <th style="width:8%" class="" scope="col">
+                                                                <div class="slds-truncate slds-cell-fixed" title="Status">
+                                                                   Status
+                                                                </div>
+                                                            </th>
                                                                
                                                            </tr> 
                                                        </thead>
                                                        <tbody>
                                                            <template for:each ={orderLineItemsList} for:item="product">
+                                                            <template if:false={product.oliStatus}>
                                                                <tr key={product.productId} class="slds-hint-parent">
                                                                 <td style="width:6%">
                                                                     <div class="">
                                                                         {product.sno}
                                                                     </div>
                                                                 </td>
-                                                                   <td style="width:20%">
-                                                                       <div class="">
+                                                                   <td style="width:18%">
+                                                                       <div>
                                                                         {product.materialName}
-                                                                       </div>
+                                                                        <span class="tooltiptext">{product.materialNumber}</span>
+                                                                    </div>
+
                                                                        </td>
-                                                                   <td style="width:10%">
+                                                                   <td style="width:8%">
                                                                        <div class="">
                                                                            {product.quantity}
                                                                        </div>
                                                                    </td>
-                                                                   <td style="width:8%">
+                                                                   <td style="width:9%">
                                                                        <div class="">
                                                                            {product.unit}
                                                                        </div>
@@ -515,13 +608,68 @@
                                                                            {product.shellContractNo}
                                                                        </div>
                                                                    </td>
-                                                                   <td style="width:22%">
+                                                                   <td style="width:16%">
                                                                        <div class="">
                                                                            {product.instructions}
                                                                        </div>
                                                                    </td>
+                                                                   <td style="width:8%" class="setBorderBox textBox"> 
+                                                                   
+                                                                    </td>
                                                                    
                                                                </tr>
+                                                            </template>
+                                                            <template if:true={product.oliStatus}>
+                                                                <tr key={product.productId} class={product.oliStatusAttr.customClass}>
+                                                                 <td style="width:6%">
+                                                                     <div class="sNo">
+                                                                         {product.sno}
+                                                                     </div>
+                                                                 </td>
+                                                                    <td style="width:18%">
+                                                                        <div class="productName">
+                                                                         {product.materialName}
+                                                                         <span class="tooltiptext">{product.materialNumber}</span>
+                                                                     </div>
+ 
+                                                                        </td>
+                                                                    <td style="width:8%">
+                                                                        <div class="setBorderBox">
+                                                                            {product.quantity}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:9%">
+                                                                        <div class="setBorderBox">
+                                                                            {product.unit}
+                                                                        </div>
+                                                
+                                                                    </td>
+                                                                    <td style="width:18%">
+                                                                        <div class="setBorderBox">
+                                                                         <lightning-formatted-date-time class="textCapital" value={product.deliveryCollDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                                                           
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:15%">
+                                                                        <div class="setBorderBox">
+                                                                            {product.shellContractNo}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:16%">
+                                                                        <div class="setBorderBox">
+                                                                            {product.instructions}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:8%" class="setBorderBox textBox"> 
+                                                                    
+                                                                     {product.oliStatus}
+                                                                         <template if:true={product.oliStatusAttr}>
+                                                                         <lightning-helptext alternative-text={product.oliStatus} content={product.oliStatusAttr.expStatus} nubbin="left" ></lightning-helptext>
+                                                                         </template>
+                                                                     </td>
+                                                                    
+                                                                </tr>
+                                                             </template>
                                                            </template>
                                                        </tbody>
                                                    </table>
@@ -629,6 +777,31 @@
                     <div class="modalBtn">
         
                      <button class="slds-button yellowBtn mr16" onclick={hideShowPopUp} title="Ok" aria-label="yellow background color Ok" >Ok</button>
+                  </div>
+                </div> 
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showInstPopup}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" aria-label="Alert">
+            <div class="setModal slds-modal__container">
+                <!-- modal header start -->
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideshowInstPopup}>
+                    <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_large setModalBody" id="modal-content-id-inst">
+                    <h2 id="modal-heading-inst" class="slds-text-heading_medium slds-hyphenate modalHeading">Alert ! </h2>
+                    <p>Instructions are allowed to change only when other fields in respective line items are changed. Hence, Instruction field is turned to read-only with last saved value.</p>
+                    <div class="modalBtn">
+        
+                     <button class="slds-button yellowBtn mr16" onclick={hideshowInstPopup} title="Ok" aria-label="yellow background color Ok" >Continue</button>
                   </div>
                 </div> 
             </div>

@@ -23,7 +23,7 @@ public with sharing class TCP_ChangeCancelOrderController {
             
             if(orderWrapper!= null){
                 oldorderList=[select OrderNumber,Name,Description,Sold_To__c,Delivery_Terms__c,Sales_Order_Number__c,PoNumber,Order_Other_Instructions__c,GSAP_Status__c,Remarks__c,Mode_of_Transport__c,
-                              TCP_Order_Status__c,Customer_Name__c, (select id, Name,Quantity__c, Product__r.Name,Unit__c, TCP_Modify_Cancel_Status__c,Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, MaterialNumber__c from order_line_items__r Order By CreatedDate) from order where OrderNumber=:orderWrapper.OrderNumber  and recordtype.id=:tcpOrderRecTypeid];
+                              TCP_Order_Status__c,Customer_Name__c, (select id, Name,Quantity__c, Product__r.Name,Unit__c, TCP_Modify_Cancel_Status__c,Delivery_Collection_Date__c, Contract_No__c, Other_Instruction__c, Order__c, Product__c, Material_Name__c, Sales_Order_Line_Item_No__c, MaterialNumber__c from order_line_items__r Order By CreatedDate) from order where OrderNumber=:orderWrapper.OrderNumber  and recordtype.id=:tcpOrderRecTypeid];
                 
                 //create change order object
                 
@@ -164,6 +164,7 @@ Map for OrderId and Change Order name **/
                                 changeLineItem.Type__c='Modification';
                                 changeLineItem.Unit__c=OrderLI.Unit__c;
                                 changeLineItem.Unit_New__c=lineWrapper.unit;
+                                changeLineItem.Sales_Order_Line_Item_No__c=OrderLI.Sales_Order_Line_Item_No__c;
                                 changeLineItem.Change_Cancel_Request_Order__c=chOrdNewOrdMap.get(OrderLI.Order__c);
                                 
                                 if( (OrderLI.Contract_No__c!=lineWrapper.shellContractNo)||(OrderLI.Delivery_Collection_Date__c!=changeLineItem.Delivery_Collection_Date_New__c) ||(OrderLI.Quantity__c!=changeLineItem.Quantity_New__c) || (OrderLI.Unit__c!=lineWrapper.unit) ||(OrderLI.Other_Instruction__c!=lineWrapper.instructions) ){
@@ -205,6 +206,7 @@ Map for OrderId and Change Order name **/
                                 changeLineItem.Type__c='Modification';
                                 changeLineItem.Unit__c=deletedItem.Unit__c;
                                 changeLineItem.Unit_New__c=deletedItem.Unit__c;
+                                changeLineItem.Sales_Order_Line_Item_No__c=OrderLI.Sales_Order_Line_Item_No__c;
                                 changeLineItem.Change_Cancel_Request_Order__c=chOrdNewOrdMap.get(deletedItem.Order__c);
                                 if(oldOrder.TCP_Order_Status__c=='Submitted'){
                                     changeLineItem.TCP_Modification_Cancellation_Status__c='Cancelled';
@@ -314,15 +316,22 @@ Map for OrderId and Change Order name **/
                             if(OrderLI.id==deletedItem.id){
                                 
                                 updateLineItem.Quantity__c=0;
-                                if(oldOrder.TCP_Order_Status__c=='Submitted'){
-                                    deleteLineItem.Id=deletedItem.id;
-                                    deleteOrderLIList.add(deleteLineItem);
-                                }
-                                else{
+                                //if(oldOrder.TCP_Order_Status__c=='Submitted'){
+                                  //  deleteLineItem.Id=deletedItem.id;
+                                   // deleteOrderLIList.add(deleteLineItem);
+                                //}
+                                //else{
                                     updateLineItem.id=deletedItem.id;
+                                //added code
+                                if(oldOrder.TCP_Order_Status__c=='Submitted'){
+                                    updateLineItem.TCP_Modify_Cancel_Status__c='Cancelled';
+                                    updateLineItem.Cancelled_in_Submitted__c=true;
+                                }else{
                                     updateLineItem.TCP_Modify_Cancel_Status__c='Cancellation';
-                                    updateOrderLIList.add(updateLineItem);
                                 }
+                                    
+                                    updateOrderLIList.add(updateLineItem);
+                                //}
                                 
                                 
                             }
@@ -350,7 +359,7 @@ Map for OrderId and Change Order name **/
                     }
                 }
                 if(deleteOrderLIList.size()>0){
-                    delete deleteOrderLIList;
+                    //delete deleteOrderLIList;
                 }
                 if(updateOrderLIList.size()>0 && updateorderList.size()>0 && chOrdLineIteamList.size()>0 && chOrderlist.size()>0){
                     TCP_Change_Cancel_Request__c chOrd=[select Id, Web_Order__r.AccountId,createdby.Name,createdby.contactId from TCP_Change_Cancel_Request__c where Id=:changeOrderId];

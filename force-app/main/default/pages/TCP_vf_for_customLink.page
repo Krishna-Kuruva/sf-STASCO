@@ -1,0 +1,5 @@
+<apex:page standardController="User" extensions="TCP_CIPM_PreRegisterHandler" action="{!resendCIPMRequest}">
+<apex:form >
+
+</apex:form>
+</apex:page>

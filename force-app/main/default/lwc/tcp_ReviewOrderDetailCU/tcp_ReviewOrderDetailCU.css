@@ -14,6 +14,19 @@
 
 }
 
+:host .setCombobox{
+    --lwc-heightInput: 40px;
+    --lwc-borderRadiusMedium:2px;
+    --slds-c-input-color-border: rgba(0, 0, 0, 0.15);
+    /* width: 341px;  */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+    
+}
+
 
 
 .mtb{
@@ -48,9 +61,10 @@
 }
 
 .mr2{
-    margin-right: 3px;
+   
     cursor: pointer;
     vertical-align: top;
+    margin-left: -15px;
 }
 
 .flex{
@@ -368,3 +382,11 @@ right: 10px;
 
 
 /*---------popup css----------*/
+
+.noteText{
+    color: #404040;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: SFProText, Arial, Helvetica, sans-serif;
+}

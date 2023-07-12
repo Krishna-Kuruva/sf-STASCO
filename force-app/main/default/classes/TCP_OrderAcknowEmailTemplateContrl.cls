@@ -60,7 +60,7 @@ public with sharing class TCP_OrderAcknowEmailTemplateContrl {
     public list<TCP_OrderLineItem__c> getOrderLIDetails(){
         try{
         list<TCP_OrderLineItem__c> orderLineItemDetails;
-        orderLineItemDetails= [Select TCP_Modify_Cancel_Status__c,SICC_Code__c,Shipping_City__c,Shipping_Street__c,Shipping_Country__c,Shipping_Postcode__c,Unit__c,Net_Weight__c,Plant_Name__c,Shipping_Point__c,Shipping_Point_Name__c,Plant__c, Netweight_Unitprice__c, Expected_Dispatch_Date__c,Special_Price__c,Shell_Material_No__c, Quantity__c, Other_Instruction__c, Order__c, Name, Material_Name__c, MaterialNumber__c, Contract_No__c,Delivery_Collection_Date__c,Product__r.Net_Weight__c, Product__r.Product_Number__c,Product__r.Unit_of_Measure__c From TCP_OrderLineItem__c where Order__r.Id=: RecordId and quantity__c!=0];
+        orderLineItemDetails= [Select TCP_Modify_Cancel_Status__c,SICC_Code__c,Shipping_City__c,Shipping_Street__c,Shipping_Country__c,Shipping_Postcode__c,Unit__c,Net_Weight__c,Plant_Name__c,Shipping_Point__c,Shipping_Point_Name__c,Plant__c, Netweight_Unitprice__c, Expected_Dispatch_Date__c,Special_Price__c,Shell_Material_No__c, Quantity__c, Other_Instruction__c, Order__c, Name, Material_Name__c, MaterialNumber__c, Contract_No__c,Delivery_Collection_Date__c,Product__r.Net_Weight__c, Product__r.Product_Number__c,Product__r.Unit_of_Measure__c From TCP_OrderLineItem__c where Order__r.Id=: RecordId and Cancelled_in_Submitted__c=false Order By Sales_Order_Line_Item_No__c];
         return orderLineItemDetails; 
         }
 	  catch (Exception e) {

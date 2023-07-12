@@ -7,15 +7,7 @@
     <picklistValues>
         <picklist>Delivery_Terms__c</picklist>
         <values>
-            <fullName>CFR</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>CIF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>CIP</fullName>
             <default>false</default>
         </values>
         <values>
@@ -69,6 +61,10 @@
     <picklistValues>
         <picklist>Mode_of_Transport__c</picklist>
         <values>
+            <fullName>Air-transport</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Bulk Cont%2E road%2Fsea</fullName>
             <default>false</default>
         </values>
@@ -81,6 +77,22 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>No transport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pack Cont%2E road%2Fsea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline-transport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rail Hopper Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Rail Tank Car</fullName>
             <default>false</default>
         </values>
@@ -89,7 +101,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Road %28Bulk%29 %2F Barge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Road Hopper Truck</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Road IM Portable Tnk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Road Package Trk%2ELTL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Road Package Truck</fullName>
             <default>false</default>
         </values>
         <values>
@@ -98,6 +126,10 @@
         </values>
         <values>
             <fullName>Road%28Bulk%29%2FShort Sea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Road%28Pack%29%2FShort Sea</fullName>
             <default>false</default>
         </values>
     </picklistValues>

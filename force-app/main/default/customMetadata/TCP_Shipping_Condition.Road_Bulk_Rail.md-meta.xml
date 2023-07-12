@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Shipping_Condition_Description__c</field>
-        <value xsi:type="xsd:string">Road (Bulk) / Rail</value>
+        <value xsi:type="xsd:string">Road (Bulk)  / Rail</value>
     </values>
 </CustomMetadata>

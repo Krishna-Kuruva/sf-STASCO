@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Send_OC</name>
-        <label>Send OC</label>
-        <locationX>308</locationX>
-        <locationY>288</locationY>
+        <name>Send_Order_Confirmation</name>
+        <label>Send Order Confirmation</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
         <actionName>Order.TCP_Place_Order_Confirmation_with_PDF</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -15,10 +15,11 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>57.0</apiVersion>
+    <apiVersion>56.0</apiVersion>
+    <description>To Send email alert when customer received place order confirmation with PDF</description>
     <environments>Default</environments>
     <interviewLabel>TCP Place Order Confirmation Email with PDF File {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>TCP Place Order Confirmation Email with PDF File</label>
+    <label>TCP Place Order Confirmation Email with PDF File V1.0</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -41,15 +42,10 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <connector>
+            <targetReference>Send_Order_Confirmation</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
-        <filters>
-            <field>Sales_Order_Number__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <filters>
             <field>Is_Order_Confirmed__c</field>
             <operator>EqualTo</operator>
@@ -58,26 +54,15 @@
             </value>
         </filters>
         <filters>
-            <field>TCP_Order_Status__c</field>
-            <operator>EqualTo</operator>
+            <field>Is_Order_Confirmed__c</field>
+            <operator>IsChanged</operator>
             <value>
-                <stringValue>Approved</stringValue>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Order</object>
         <recordTriggerType>Update</recordTriggerType>
-        <scheduledPaths>
-            <name>Send_Email</name>
-            <connector>
-                <targetReference>Send_OC</targetReference>
-            </connector>
-            <label>Send Email</label>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Minutes</offsetUnit>
-            <recordField>LastModifiedDate</recordField>
-            <timeSource>RecordField</timeSource>
-        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

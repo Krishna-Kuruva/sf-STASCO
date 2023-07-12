@@ -5,7 +5,7 @@ public class TCP_ResendOrderControllerTest {
     static void createTestData() {       
     	List<Account> accList = TCP_TestDataUtilities.createAccounts(1, true);
         List<Order> ordList = TCP_TestDataUtilities.createOrders(1, accList[0]);
-        List<TCP_OrderLineItem__c> ordLineList = TCP_TestDataUtilities.createOrderLineItems(2, ordList[0]); 
+        TCP_TestDataUtilities.createOrderLineItems(2, ordList[0]); 
     }
     
     @isTest
@@ -93,7 +93,7 @@ public class TCP_ResendOrderControllerTest {
     public static void testReProcessFailedGsapOrderNegative(){
        
         Test.startTest();
-        String resp = TCP_ResendOrderController.reProcessFailedGsapOrder(null);
+        TCP_ResendOrderController.reProcessFailedGsapOrder(null);
         Test.stopTest();
     }
 }

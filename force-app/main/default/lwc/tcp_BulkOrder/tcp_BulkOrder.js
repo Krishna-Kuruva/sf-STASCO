@@ -34,7 +34,7 @@ export default class TcpBulkOrder extends LightningElement{
     unitApiName = 'Unit__c';
     columns = columns;
     
-    /* Progress  Steps */
+    /*  Progress  Steps */
     @track selectproduct = true;
     @track enterdetails  = false;
     @track reviewsubmit  = false;
@@ -822,6 +822,7 @@ export default class TcpBulkOrder extends LightningElement{
             sno++;
             const serialNo = sno+'';
             value.sno = serialNo.padStart(this.padNo,'0');
+            window.console.log('Checking S.No Value' +value);
         }
     }
     getChildAccounts(){
@@ -832,6 +833,8 @@ export default class TcpBulkOrder extends LightningElement{
                 const data = result;
                 this.childAccounts = data;
                 if(this.childAccounts && this.childAccounts.length >0){
+                    this.hasDeliveryToData = true;
+                    this.hasInvoiceToData = true;
                     this.formatChildAccData();
                 }
                 else{
@@ -1013,18 +1016,38 @@ export default class TcpBulkOrder extends LightningElement{
         });
 
     }
-
+    //Sort
     sortProductDesc(){
         if(this.showProducts && this.productList.length >0){
-            let prodList =[];
-                for(let i=this.productList.length-1 ; i>=0 ;i--){
-                    const prodData =[];
-                    prodData.Name = this.productList[i].Name;
-                    prodData.Id = this.productList[i].Id;
-                    prodData.Number=this.productList[i].Number;
-                    prodList = [...prodList,prodData];
-                }
-                this.productList = prodList;
+            // let prodList =[];
+            //     for(let i=this.productList.length-1 ; i>=0 ;i--){
+            //         const prodData =[];
+            //         prodData.Name = this.productList[i].Name;
+            //         prodData.Id = this.productList[i].Id;
+            //         prodData.Number=this.productList[i].Number;
+            //         prodList = [...prodList,prodData];
+            //     }
+            //     this.productList = prodList;
+                this.productList.sort((a, b) => (a.Name > b.Name) ? 1 : -1);
+        }
+    }
+
+    sortProductAsc(){
+        if(this.showProducts){
+            this.productList.sort((a, b) => (a.Name < b.Name) ? 1 : -1);
+         
+        }
+    }
+    sortProductCodeDesc(){
+        if(this.showProducts){
+            
+            this.productList.sort((a, b) => (a.Number > b.Number) ? 1 : -1);
+        }
+    }
+    sortProductCodeAsc(){
+        if(this.showProducts){
+            
+            this.productList.sort((a, b) => (a.Number < b.Number) ? 1 : -1);
         }
     }
 
@@ -1051,10 +1074,11 @@ export default class TcpBulkOrder extends LightningElement{
     prepareSelectedProductList(){
         if(this.selectedProducts && this.selectedProducts.length >0){
             let productData =[];
+            let i=0;
             for(const value of this.selectedProducts){
                 const prodData =[];
                 let flag = false;
-                let i=0;
+                
                 flag = this.selectedProductChecker();
                 prodData.productId = value;
                 prodData.materialName= this.materialNameChecker(this.fetchedProductsMap,prodData.productId);
@@ -1618,6 +1642,8 @@ export default class TcpBulkOrder extends LightningElement{
             orderLine['productId'] = prodId;
             orderLine['instructions'] = data.instructions;
             orderLine['unit'] = data.unit;
+            //newly added
+            orderLine['sno'] = data.sno;
             lineItemData = [...lineItemData,orderLine];
            // window.console.log('prodId checking' +prodId);
            // window.console.log('Checking the list ',JSON.stringify(this.))

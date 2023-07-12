@@ -1,4 +1,4 @@
-public without sharing class TCP_ExceptionLogClass {
+public with sharing class TCP_ExceptionLogClass {
 	public static String insertExceptionRecord(String  getStatusCode,String getMessage,String className,String methodName,String type){
         
         RV_Exception__c rvExcep = new RV_Exception__c();

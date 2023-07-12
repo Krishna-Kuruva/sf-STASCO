@@ -28,7 +28,7 @@ global with sharing class TCP_GoodsIssueScheduler implements Schedulable {
                 accountIdInSplits.add(tempSet);
             }
             for(Integer i=0;i<accountIdInSplits.size();i++){
-                String jobId =System.enqueueJob(new TCP_GoodsIssueQueueable(accountIdInSplits.get(i),i) );
+                System.enqueueJob(new TCP_GoodsIssueQueueable(accountIdInSplits.get(i),i) );
             }
         }
         catch(Exception e){

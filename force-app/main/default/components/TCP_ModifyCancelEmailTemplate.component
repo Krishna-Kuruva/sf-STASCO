@@ -30,7 +30,10 @@
                                 <p style="font-family: verdana;font-face: verdana;font-size: 11px;">Your order {!LOWER(ChnOrd.Type__c)} request to your Shell Trading and Supply is {!LOWER(ChnOrd.Status__c)}.</p> 
                             <apex:outputPanel rendered="{!ChnOrd.Status__c == 'Approved'}">
                                 <p style="font-family: verdana;font-face: verdana;font-size: 11px;"><strong>Note:</strong> Order contractually accepted subject to receipt of SALES ORDER CONFIRMATION WHICH WILL FOLLOW IN SEPARATE EMAIL NOTIFICATION.</p>
-                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!ChnOrd.Status__c == 'Rejected'}">
+                                <p style="font-family: verdana;font-face: verdana;font-size: 11px;"><strong>Note:</strong> The below details in the order are valid as per the Last approved order and will be processed accordingly.</p>
+                            </apex:outputPanel>
                             </apex:repeat>
                             <hr/>
                             <p align="Center"><b>{!$Label.TCP_Order_Details}</b></p>
@@ -185,6 +188,7 @@
                                 </thead>
                                 <tbody>
                                     <apex:variable value="{!1}" var="count"/>
+                                    <apex:repeat value="{!ChangeOrderDetails}" var="ChnOrd">
                                     <apex:repeat var="LI" value="{!ChangeProdWrapList}">
                                         <tr style="border: 1px solid black;">
                                             <td width="20%" align="left" style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px">
@@ -194,10 +198,32 @@
                                             </td>
                                             <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="20%" align="left">{!LI.ProdNumber}</td>
                                             <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="20%" align="left">{!LI.ProdName}</td>
-                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="15%" align="left">{!LI.QtyNew} {!LI.UnitNew}</td>
-                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="35%" align="left">{!LI.CollectionDateNew}</td>                                              
-                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="30%" align="left">{!LI.OtherInstructionNew}</td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="15%" align="left">
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c == 'Rejected')}">
+                                                    {!LI.Qty} {!LI.Unit}
+                                                </apex:outputText>
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c == 'Approved')}">
+                                                    {!LI.QtyNew} {!LI.UnitNew}
+                                                </apex:outputText>   
+                                            </td>
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="35%" align="left">
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c == 'Rejected')}">
+                                                    {!LI.CollectionDate}
+                                                </apex:outputText>
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c == 'Approved')}">
+                                                    {!LI.CollectionDateNew}
+                                                </apex:outputText>
+                                            </td>                                              
+                                            <td style="border: 1px solid black;font-family: verdana;font-face: verdana;font-size: 11px;word-break:break-all" class="block" width="30%" align="left">
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c == 'Rejected')}">
+                                                   {!LI.OtherInstruction}
+                                                </apex:outputText>
+                                                <apex:outputText rendered="{!(ChnOrd.Status__c != 'Rejected')}">
+                                                   {!LI.OtherInstructionNew}
+                                                </apex:outputText>
+                                            </td>
                                         </tr>
+                                    </apex:repeat>
                                     </apex:repeat>
                                 </tbody>
                             </table>

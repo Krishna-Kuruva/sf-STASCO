@@ -43,7 +43,7 @@
                     font-weight: 400;
                     font-size: 11px;
                     line-height: 16px;
-                    font-family: SFProText;
+                    font-family: SFProText, Arial, Helvetica, sans-serif;
                     color: #404040;
                 }
 
@@ -96,7 +96,7 @@
                 font-weight: 700;
                     font-size: 16px;
                    line-height: 20px;
-                   font-family: SFProTextBold;
+                   font-family: SFProTextBold, Arial, Helvetica, sans-serif;
                     color: #404040;
                 }
 
@@ -105,7 +105,7 @@
                     font-size: 16px !important;
                     line-height: 20px !important;
                     color: #404040 !important;
-                    font-family: SFProTextBold !important;
+                    font-family: SFProTextBold, Arial, Helvetica, sans-serif !important;
                     background-color: #FBCF09;
                     border-radius: 2px !important;
                     padding: 14px 24px;
